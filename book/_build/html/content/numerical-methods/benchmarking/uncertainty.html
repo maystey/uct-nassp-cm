@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Measurement and Uncertainty &#8212; AST4007W Computational Methods</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/sphinx-book-theme.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/mystnb.js"></script>
+    <script src="../../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Linear Regression Algorithms" href="../regression/intro.html" />
+    <link rel="prev" title="Timing With time.perf_counter" href="time.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/UCTcircular_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">AST4007W Computational Methods</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/intro.html">
+   Programming and Python in a Nutshell
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Python Standard Library
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/basics/intro.html">
+   Python Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/data-structures/intro.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/if-statements/intro.html">
+   Control Flow: If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/loops/intro.html">
+   Control Flow: Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/functions/intro.html">
+   Defining Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/file-io/intro.html">
+   File I/O
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Scientific Packages
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../scientific-packages/numpy/intro.html">
+   Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../scientific-packages/matplotlib/intro.html">
+   Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../scientific-packages/astropy/intro.html">
+   Astropy
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Numerical Methods
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="intro.html">
+   Benchmarking
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="time.html">
+     Timing With
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       time.perf_counter
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Measurement and Uncertainty
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regression/intro.html">
+   Linear Regression Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../ode/intro.html">
+   Numerical Solutions to Ordinary Differential Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../integration/intro.html">
+   Numerical Integration Techniques
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/content/numerical-methods/benchmarking/uncertainty.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/numerical-methods/benchmarking/uncertainty.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#measurements">
+   Measurements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sources-of-uncertainty-in-computing">
+   Sources of Uncertainty in Computing
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#precision-of-data-values">
+     Precision of Data Values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#background-processes">
+     Background Processes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#error-or-approximations-in-numerical-solutions">
+     Error or Approximations in Numerical Solutions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#type-a-uncertainty">
+   Type A Uncertainty
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#coverage-probability">
+     Coverage Probability
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#in-summary">
+     In Summary
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quoting-a-measurement-with-it-s-uncertainty">
+   Quoting a Measurement With It’s Uncertainty
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#significant-figures">
+     Significant Figures
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#comparing-different-measurements">
+   Comparing Different Measurements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="measurement-and-uncertainty">
+<h1>Measurement and Uncertainty<a class="headerlink" href="#measurement-and-uncertainty" title="Permalink to this headline">¶</a></h1>
+<p>This section is a summary of some key points that are relevant to this course taken from the UCT Physics laboratory manual <a class="bibtex reference internal" href="../ode/runge-kutta.html#phy-gum" id="id1">[BALC09]</a>.</p>
+<div class="section" id="measurements">
+<h2>Measurements<a class="headerlink" href="#measurements" title="Permalink to this headline">¶</a></h2>
+<p>When taking a physical measurement of a quantity (the <strong>measurand</strong>), the value you acquire is only a best approximation of the “true value” of the quantity (if that even exists for the given measurement).</p>
+<p>Many factors, from the precision of your apparatus to random or systematic noise, introduce some form of <strong>uncertainty</strong> to your measurand. That is a quantifiable measure of the interval in which the “true value” for your measurand may lie with knowledge of the probability of it lying in that interval.<!--- Needs editing --></p>
+</div>
+<div class="section" id="sources-of-uncertainty-in-computing">
+<h2>Sources of Uncertainty in Computing<a class="headerlink" href="#sources-of-uncertainty-in-computing" title="Permalink to this headline">¶</a></h2>
+<p>Seeing as we are working with computers, we don’t have measurement apparatus to worry about. There are, however, other sources to consider.</p>
+<div class="section" id="precision-of-data-values">
+<h3>Precision of Data Values<a class="headerlink" href="#precision-of-data-values" title="Permalink to this headline">¶</a></h3>
+<p>Floating point numbers can only approximately represent a real numbers and have a finite precision due to having finite memory available.</p>
+<p>Although we generally won’t have to worry about the precision of our floats in this course. Be careful when preforming numerical operations (especially division) that intermediate values don’t become too small. <!--- ellaborate: enlarge inaccuracies by multiplying etc --></p>
+</div>
+<div class="section" id="background-processes">
+<h3>Background Processes<a class="headerlink" href="#background-processes" title="Permalink to this headline">¶</a></h3>
+<p>If you are using a personal computer with an operating system there are always going to be background processes being preformed. These processes (however light they may be) are competing with your programs for resources.</p>
+<p>This is especially relevant when you are running benchmarks for your code (time it takes to complete execution, memory use, etc.).</p>
+<p>This form of uncertainty can be quite noisy and thus treated as <strong>Type A</strong> uncertainty (see the section below).<!--- Type A --></p>
+</div>
+<div class="section" id="error-or-approximations-in-numerical-solutions">
+<h3>Error or Approximations in Numerical Solutions<a class="headerlink" href="#error-or-approximations-in-numerical-solutions" title="Permalink to this headline">¶</a></h3>
+<p>Every numerical solution or simulation contains some approximation. This leads to uncertainty in the results you’ve acquired. How you handle this uncertainty depends on the particular method in question.</p>
+</div>
+</div>
+<div class="section" id="type-a-uncertainty">
+<h2>Type A Uncertainty<a class="headerlink" href="#type-a-uncertainty" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you encounter fluctuation in your measurements of a single measurand. If this dispersion is unavoidable, the recommended approach is to take a data set of repeated measurements.</p>
+<p>In many cases, given enough data points, the data will appear to follow a Gaussian probability distribution function (plot the data in a histogram if you’re not sure).</p>
+<p>Here we will denote the data set as <span class="math notranslate nohighlight">\({x_i}\)</span> where <span class="math notranslate nohighlight">\(i = 1, 2, 3, \dots, N\)</span> (there are <span class="math notranslate nohighlight">\(N\)</span> data points). <!--- Show a typical histogram for this data --></p>
+<p>The Gaussian probability distribution function is:</p>
+<div class="math notranslate nohighlight">
+\[
+p(x) = \frac{1}{\sigma \sqrt{2 \pi}}~\exp\bigg(-\frac{1}{2}\Big(\frac{x - \mu}{\sigma}\Big)^2\bigg)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\exp\)</span> is the natural exponential function, <span class="math notranslate nohighlight">\(x\)</span> is a possible value of a data point, <span class="math notranslate nohighlight">\(\mu\)</span> is the first moment of the distribution and <span class="math notranslate nohighlight">\(\sigma^2\)</span> is the second moment of the distribution.</p>
+<!--- Mention the approximation using data later  or rather that the histogram should roughly match this--><div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/uncertainty_6_0.png" src="../../../_images/uncertainty_6_0.png" />
+</div>
+</div>
+<p>As you can see illustrated in the figure above, the Gaussian peaks around <span class="math notranslate nohighlight">\(x = \mu\)</span>. We could say the most likely value of <span class="math notranslate nohighlight">\(x\)</span> lies in an interval around <span class="math notranslate nohighlight">\(\mu\)</span> (continuous probability distribution functions represent probability densities).</p>
+<!---
+In our histogram of the data we expect the bin with the highest frequency to contain $\mu$.
+--->
+<p>For Gaussian distributed data, such as <span class="math notranslate nohighlight">\({x_i}\)</span>, we can approximate <span class="math notranslate nohighlight">\(\mu\)</span> using the arithmetic mean, <span class="math notranslate nohighlight">\(\bar{x}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x} = \frac{1}{N} \sum_{i=1}^{N} x_i
+\]</div>
+<p>This value will be taken as our <strong>best approximation</strong> of the value of the measurand.</p>
+<p><span class="math notranslate nohighlight">\(\sigma^2\)</span> can be approximated by the variance of the data:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{N-1}\sum_{i=1}^{N} (x - \bar{x})^2
+\]</div>
+<p>The variance gives us a measure of the spread of the data (it is essentially the average square distance of each data point from the mean). Note the division by <span class="math notranslate nohighlight">\(N-1\)</span> and not <span class="math notranslate nohighlight">\(N\)</span>.</p>
+<p>Of more immediate use to us is the square root of the variance, or the <strong>experimental standard deviation</strong> <span class="math notranslate nohighlight">\(s(d)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+s(x) = \sqrt{\frac{1}{N-1} \sum_{i = 1}^{N} (x - \bar{x})^2}
+\]</div>
+<p>But how do we use <span class="math notranslate nohighlight">\(s(x)\)</span>, a measure of the spread of our data <span class="math notranslate nohighlight">\({x_i}\)</span>, to determine the uncertainty of our best approximation of the value of the measurand <span class="math notranslate nohighlight">\(\bar{x}\)</span>?</p>
+<div class="section" id="coverage-probability">
+<h3>Coverage Probability<a class="headerlink" href="#coverage-probability" title="Permalink to this headline">¶</a></h3>
+<p>Now we need to consider the uncertainty of this best approximation. The uncertainty will represent an interval around our best approximation of the value of the measurand in which we have some confidence that the “true value” lies.</p>
+<p>We can quantify this interval by looking back at our pdf. If we take the area under <span class="math notranslate nohighlight">\(p(x)\)</span> for a given interval that tells us the probability of finding <span class="math notranslate nohighlight">\(x\)</span> in that interval.</p>
+<p>For example, taking an interval of <span class="math notranslate nohighlight">\([\mu - \sigma, \mu + \sigma]\)</span> (or <span class="math notranslate nohighlight">\(\mu \pm \sigma\)</span>) gives us a probability of <span class="math notranslate nohighlight">\(68\%\)</span> (or rather the value of the area is 0.68). That is the probability of finding any <span class="math notranslate nohighlight">\(x\)</span> value inside that interval. &lt;!— Show gaussians with different sigmas to illustrate how it characterises the spread of data —&gt;</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/uncertainty_14_0.png" src="../../../_images/uncertainty_14_0.png" />
+</div>
+</div>
+<p>This interval is often used for quoting the coverage probability of a measured variable <span class="math notranslate nohighlight">\(x\)</span>. Sometimes an interval of <span class="math notranslate nohighlight">\(\mu \pm 2\sigma\)</span> is used, which gives us a coverage probability of <span class="math notranslate nohighlight">\(95%\)</span> (though normally the narrower interval of <span class="math notranslate nohighlight">\(1\sigma\)</span> is preferred).</p>
+<p>Note that, for a Gaussian distribution, <span class="math notranslate nohighlight">\(100\%\)</span> coverage requires an infinitely large interval and is thus meaningless.</p>
+<p>Remember that <span class="math notranslate nohighlight">\(\sigma\)</span> characterizes the width of the Gaussian, so this interval is also an indication of the spread of the measured data (illustrated below, each region has an area of 0.68 and the scale is maintained):</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/uncertainty_17_0.png" src="../../../_images/uncertainty_17_0.png" />
+</div>
+</div>
+<p>So how do we turn an interval with a coverage probability of <span class="math notranslate nohighlight">\(68\%\)</span> into an uncertainty?</p>
+<p>Firstly, for our data set of measured <span class="math notranslate nohighlight">\(x_i\)</span> values, the value of our measurand is approximated as the arithmetic mean of the data, <span class="math notranslate nohighlight">\(\bar{x}\)</span>. We are, therefore, not interested in the spread of the <span class="math notranslate nohighlight">\(x_i\)</span> values, but rather the spread in possible values of <span class="math notranslate nohighlight">\(\bar{x}\)</span>.</p>
+<p>If we want to quote the interval with a coverage probability of <span class="math notranslate nohighlight">\(68\%\)</span>  (the standard uncertainty) for <span class="math notranslate nohighlight">\(\bar{x}\)</span>, we will need to calculate <span class="math notranslate nohighlight">\(s(\bar{x})\)</span> (an approximation of <span class="math notranslate nohighlight">\(\sigma\)</span> for the distribution of possible <span class="math notranslate nohighlight">\(\bar{x}\)</span> values). This can be calculated using the relationship:</p>
+<div class="math notranslate nohighlight">
+\[
+s(\bar{x}) = \frac{s(x)}{\sqrt{N}}
+\]</div>
+<!--- where $N$ is the number of data values in our data set. --->
+<p>This result is derived by taking samples of the data set and calculating the variance of the mean values of the samples. The derivation is not included in these notes.</p>
+</div>
+<div class="section" id="in-summary">
+<h3>In Summary<a class="headerlink" href="#in-summary" title="Permalink to this headline">¶</a></h3>
+<p>For a data set <span class="math notranslate nohighlight">\({x_i}\)</span> where <span class="math notranslate nohighlight">\(i = 1, 2, 3, \dots, N\)</span> of measured values, if the data is Gaussian distributed, the <strong>best approximation</strong> for the value of the <strong>measurand</strong> is the <strong>arithmetic mean</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{x} = \frac{1}{N} \sum_{i = 1}^{N}
+\]</div>
+<p>The <strong>standard uncertainty</strong> for the mean value is given by the <strong>experimental standard deviation of the mean</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+u(\bar{x}) = s(\bar{x}) = \frac{s(x)}{\sqrt{N}}
+\]</div>
+<p>which gives us a <span class="math notranslate nohighlight">\(68\%\)</span> probability coverage.</p>
+<p><span class="math notranslate nohighlight">\(s(x)\)</span> is the <strong>experimental standard deviation</strong> of the data:</p>
+<div class="math notranslate nohighlight">
+\[
+s(x) = \sqrt{\frac{1}{N-1} \sum_{i = 1}^{N} (x - x_i)^2}
+\]</div>
+<p>(Note: when using <code class="docutils literal notranslate"><span class="pre">numpy.std()</span></code> to calculate <span class="math notranslate nohighlight">\(s(x)\)</span>, make sure to set the keyword argument <code class="docutils literal notranslate"><span class="pre">ddof</span> <span class="pre">=</span> <span class="pre">1</span></code>, as the divisor is given by <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">-</span> <span class="pre">ddof</span></code>. See the <a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.std.html">documentation</a> for more.)</p>
+</div>
+</div>
+<div class="section" id="quoting-a-measurement-with-it-s-uncertainty">
+<h2>Quoting a Measurement With It’s Uncertainty<a class="headerlink" href="#quoting-a-measurement-with-it-s-uncertainty" title="Permalink to this headline">¶</a></h2>
+<p>You have a measurand <span class="math notranslate nohighlight">\(Y\)</span> (that is a quantity you wish to measure). You’ve found that the best approximation for the value of that measurand is <span class="math notranslate nohighlight">\(y\)</span> and you’ve determined an uncertainty of that value <span class="math notranslate nohighlight">\(u(y)\)</span> with a coverage probability of <span class="math notranslate nohighlight">\(P\%\)</span>.</p>
+<p>When quoting the results of the measurement, make sure all of this data is present and clearly stated.</p>
+<p>One way to quote your data is:<br />
+<span class="math notranslate nohighlight">\(Y ~ = ~ y ~ \pm ~ u(y)\)</span> units (<span class="math notranslate nohighlight">\(P\%\)</span> coverage probability)</p>
+<p>or in a body of text, you can use something along the lines of:<br />
+“The best approximation of the measurand <span class="math notranslate nohighlight">\(Y\)</span> was found to be <span class="math notranslate nohighlight">\(y ~ \pm u(y)\)</span> units (<span class="math notranslate nohighlight">\(P\%\)</span> coverage probability)”</p>
+<p><strong>Don’t forget to quote your units!</strong></p>
+<div class="section" id="significant-figures">
+<h3>Significant Figures<a class="headerlink" href="#significant-figures" title="Permalink to this headline">¶</a></h3>
+<p>Your approximation of the value of the measurand will likely carry a lengthy decimal part (potentially up to floating point precision). You select the number of decimal places to quote by looking at your uncertainty.</p>
+<p>You should generally quote your uncertainty within <strong>two</strong> significant figures and round your measurand value to match that. Significant figures are the first non-zero figures in a value.</p>
+<p>For example, the measurement (with coverage probability omitted):</p>
+<p><span class="math notranslate nohighlight">\(L ~ = ~ 14.567354536267\dots ~ \pm ~ 0.00346735838\dots\)</span>cm</p>
+<p>should be rounded to:</p>
+<p><span class="math notranslate nohighlight">\(L ~ = ~ 14.5674 ~ \pm ~ 0.0035\)</span>cm</p>
+</div>
+</div>
+<div class="section" id="comparing-different-measurements">
+<h2>Comparing Different Measurements<a class="headerlink" href="#comparing-different-measurements" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have a way of quoting measurements, let’s discuss how to compare measurements.</p>
+<p>Consider the figure below, where measurements A, B and C are compared. The best approximation of the value of the measurand is represented by the dots and the uncertainty intervals are represented by the capped lines.</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/uncertainty_36_0.png" src="../../../_images/uncertainty_36_0.png" />
+</div>
+</div>
+<p>In this case we can say that the results of measurements A and B <strong>agree within their stated experimental uncertainties</strong>, as do B and C, however B and C <strong>do not agree</strong> with each other.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-content/numerical-methods/benchmarking/uncertainty-0"><dl class="citation">
+<dt class="bibtex label" id="net-info-compiling-python"><span class="brackets">net</span></dt>
+<dd><p>Compiling and linking in python — Net-informations.com. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="http://net-informations.com/python/iq/linking.htm">http://net-informations.com/python/iq/linking.htm</a>.</p>
+</dd>
+<dt class="bibtex label" id="mozilla-dynamic"><span class="brackets">moz</span></dt>
+<dd><p>Dynaimc programming language — MDN Web Docs. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_programming_language">https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_programming_language</a>.</p>
+</dd>
+<dt class="bibtex label" id="ned-python-interp"><span class="brackets">Bat</span></dt>
+<dd><p>Ned Batchelder. Is python interpreted or compiled? yes. — Ned Batchelder. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://nedbatchelder.com/blog/201803/is_python_interpreted_or_compiled_yes.html">https://nedbatchelder.com/blog/201803/is_python_interpreted_or_compiled_yes.html</a>.</p>
+</dd>
+<dt class="bibtex label" id="phy-gum"><span class="brackets"><a class="fn-backref" href="#id1">BALC09</a></span></dt>
+<dd><p>Andy Buffler, Saalih Allie, Fred Lubben, and Bob Campbell. <em>Introduction to Measurement in the Physics Laboratory. A probabilistic approach.</em> Department of Physics, University of Cape Town, South Africa and Science Education Group, Department of Educational Studies, University of York, UK, version 3.5 edition, 2009. [Online; accessed 18-February-2020]. URL: <a class="reference external" href="http://www.phy.uct.ac.za/phy/people/academic/buffler/downloads/labmanual">http://www.phy.uct.ac.za/phy/people/academic/buffler/downloads/labmanual</a>.</p>
+</dd>
+<dt class="bibtex label" id="wikipedia-assembly"><span class="brackets">Wikipediacontributorsa</span></dt>
+<dd><p>Wikipedia contributors. Assembly language — Wikipedia, the free encyclopedia. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Assembly_language">https://en.wikipedia.org/wiki/Assembly_language</a>.</p>
+</dd>
+<dt class="bibtex label" id="wikipedia-compiler"><span class="brackets">Wikipediacontributorsb</span></dt>
+<dd><p>Wikipedia contributors. Compiler — Wikipedia, the free encyclopedia. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Compiler">https://en.wikipedia.org/wiki/Compiler</a>.</p>
+</dd>
+<dt class="bibtex label" id="wikipedia-machine-code"><span class="brackets">Wikipediacontributorsc</span></dt>
+<dd><p>Wikipedia contributors. Machine code — Wikipedia, the free encyclopedia. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_code">https://en.wikipedia.org/wiki/Machine_code</a>.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="time.html" title="previous page">Timing With <code class="docutils literal notranslate"><span class="pre">time.perf_counter</span></code></a>
+    <a class='right-next' id="next-link" href="../regression/intro.html" title="next page">Linear Regression Algorithms</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../../_static/js/index.js"></script>
+    
+  </body>
+</html>

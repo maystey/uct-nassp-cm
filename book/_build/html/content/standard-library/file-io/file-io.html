@@ -1,0 +1,647 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>File I/O &#8212; AST4007W Computational Methods</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/sphinx-book-theme.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/mystnb.js"></script>
+    <script src="../../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Structured Data Files" href="data.html" />
+    <link rel="prev" title="File I/O" href="intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/UCTcircular_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">AST4007W Computational Methods</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/intro.html">
+   Programming and Python in a Nutshell
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Python Standard Library
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../basics/intro.html">
+   Python Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../data-structures/intro.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../if-statements/intro.html">
+   Control Flow: If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../loops/intro.html">
+   Control Flow: Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../functions/intro.html">
+   Defining Functions
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="intro.html">
+   File I/O
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     File I/O
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data.html">
+     Structured Data Files
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Scientific Packages
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../scientific-packages/numpy/intro.html">
+   Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../scientific-packages/matplotlib/intro.html">
+   Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../scientific-packages/astropy/intro.html">
+   Astropy
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Numerical Methods
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../numerical-methods/benchmarking/intro.html">
+   Benchmarking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../numerical-methods/regression/intro.html">
+   Linear Regression Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../numerical-methods/ode/intro.html">
+   Numerical Solutions to Ordinary Differential Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../numerical-methods/integration/intro.html">
+   Numerical Integration Techniques
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/content/standard-library/file-io/file-io.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/standard-library/file-io/file-io.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-function">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     open()
+    </span>
+   </code>
+   Function
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#file-modes">
+     File Modes
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#open-files-in-a-with-statement">
+   Open Files in a
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     with
+    </span>
+   </code>
+   Statement
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-to-files">
+   Writing to Files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-files">
+   Reading Files
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-read-method">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .read()
+      </span>
+     </code>
+     Method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-readline-method">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .readline()
+      </span>
+     </code>
+     Method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#the-readlines-method">
+     The
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       .readlines()
+      </span>
+     </code>
+     Method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iterating-through-file-objects">
+     Iterating Through File Objects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#opening-files-without-with">
+   Opening Files Without
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     with
+    </span>
+   </code>
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="file-i-o">
+<h1>File I/O<a class="headerlink" href="#file-i-o" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="open-function">
+<h2><code class="docutils literal notranslate"><span class="pre">open()</span></code> Function<a class="headerlink" href="#open-function" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">open()</span></code> function is the Standard Library option for reading and writing both text and binary files. It returns a file object, the exact type depending on the type of file you read.</p>
+<p>The file object has methods for reading from and writing to the file.</p>
+<ul>
+<li><p>The file object is iterable</p></li>
+<li><p>Signature</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="section" id="file-modes">
+<h3>File Modes<a class="headerlink" href="#file-modes" title="Permalink to this headline">¶</a></h3>
+<p>The different modes for <code class="docutils literal notranslate"><span class="pre">open()</span></code> are (taken from the docstring):</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:left head"><p>Character</p></th>
+<th class="text-align:left head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:left"><p>‘r’</p></td>
+<td class="text-align:left"><p>open for reading (<strong>default</strong>)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘w’</p></td>
+<td class="text-align:left"><p>open for writing, truncating the file first</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘x’</p></td>
+<td class="text-align:left"><p>create a new file and open it for writing</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘a’</p></td>
+<td class="text-align:left"><p>open for writing, appending to the end of the file if it exists</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘b’</p></td>
+<td class="text-align:left"><p>binary mode</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘t’</p></td>
+<td class="text-align:left"><p>text mode (<strong>default</strong>)</p></td>
+</tr>
+<tr class="row-even"><td class="text-align:left"><p>‘+’</p></td>
+<td class="text-align:left"><p>open a disk file for updating (reading and writing)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:left"><p>‘U’</p></td>
+<td class="text-align:left"><p>universal newline mode (deprecated)</p></td>
+</tr>
+</tbody>
+</table>
+<p>Modes can be combined. For example, the default mode is <code class="docutils literal notranslate"><span class="pre">'rt'</span></code>, or “read text-file”. If you wanted to open a binary file in write mode, you could use <code class="docutils literal notranslate"><span class="pre">'wb'</span></code>. See the docstring for more of an explanation.</p>
+</div>
+</div>
+<div class="section" id="open-files-in-a-with-statement">
+<h2>Open Files in a <code class="docutils literal notranslate"><span class="pre">with</span></code> Statement<a class="headerlink" href="#open-files-in-a-with-statement" title="Permalink to this headline">¶</a></h2>
+<p>A good practice when opening files with <code class="docutils literal notranslate"><span class="pre">open()</span></code> is to use a with statement:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="c1">#file object can be used here</span>
+<span class="c1">#file object is closed</span>
+</pre></div>
+</div>
+<p>Here the variable <code class="docutils literal notranslate"><span class="pre">f</span></code> refers to the file object that <code class="docutils literal notranslate"><span class="pre">open()</span></code> returns. When control leaves the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement, the file is closed (see the section at the bottom of this page on how to do this manually). Outside the <code class="docutils literal notranslate"><span class="pre">with</span></code> the file object will still exist, but you won’t be able to read from or write to it.</p>
+</div>
+<div class="section" id="writing-to-files">
+<h2>Writing to Files<a class="headerlink" href="#writing-to-files" title="Permalink to this headline">¶</a></h2>
+<p>You can write to files using the <code class="docutils literal notranslate"><span class="pre">'w'</span></code> mode in <code class="docutils literal notranslate"><span class="pre">open()</span></code>. This creates a new file if the file specified doesn’t already exist, or <strong>over-writes</strong> the file if it already does (replacing the content). To write to the file use the <code class="docutils literal notranslate"><span class="pre">.write()</span></code> method on the file object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;A line of text in the file.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the example above we have written to a file called <code class="docutils literal notranslate"><span class="pre">'new_file.txt'</span></code>. This file will be located in the same directory as your script/notebook. The contents of the file is a single line:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>A line of text in the file
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.rite()</span></code> method writes strings to the file. Unlike <code class="docutils literal notranslate"><span class="pre">print</span></code>, <code class="docutils literal notranslate"><span class="pre">write</span></code> <strong>only</strong> takes strings. Also, if you want to write to a new line you need to use the new line special character <code class="docutils literal notranslate"><span class="pre">'\n'</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;First line of the file.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Second line of the file. &#39;</span><span class="p">)</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;This is still the second line of the file.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The contents of <strong>new_file.txt</strong> now reads as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>First line of the file.
+Second line of the file. This is still the second line of the file.
+</pre></div>
+</div>
+<p>Alternatively you could write the contents as a multi-lined string literal:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;First line.</span>
+<span class="s1">Second line.</span>
+<span class="s1">Third line.&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see the string literal above does not have indentations. This is because those indentations would be a part of the string literal itself. Multi-lined string literals can, thus make it difficult to read indented code blocks. The contents of <strong>new_file.txt</strong> now reads:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>First line.
+Second line.
+Third line.
+</pre></div>
+</div>
+</div>
+<div class="section" id="reading-files">
+<h2>Reading Files<a class="headerlink" href="#reading-files" title="Permalink to this headline">¶</a></h2>
+<p>You can read a function using the <code class="docutils literal notranslate"><span class="pre">'r'</span></code> mode of <code class="docutils literal notranslate"><span class="pre">open()</span></code>. The file object returned has a few options for reading the content.</p>
+<div class="section" id="the-read-method">
+<h3>The <code class="docutils literal notranslate"><span class="pre">.read()</span></code> Method<a class="headerlink" href="#the-read-method" title="Permalink to this headline">¶</a></h3>
+<p>If you want to read the entire contents of the file into a single string, you can use the <code class="docutils literal notranslate"><span class="pre">.read()</span></code> method of the file object:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>First line.
+Second line.
+Third line.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the file object keeps track of where you have read to in the file. When you have reached the end of the file (as is the case after using <code class="docutils literal notranslate"><span class="pre">.read()</span></code>) you cannot read more content.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">data1</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">data2</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="c1">#A second reading</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First reading:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Second reading&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>First reading:
+First line.
+Second line.
+Third line.
+
+Second reading
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-readline-method">
+<h3>The <code class="docutils literal notranslate"><span class="pre">.readline()</span></code> Method<a class="headerlink" href="#the-readline-method" title="Permalink to this headline">¶</a></h3>
+<p>If you want to read the next line of the file object, you can use the <code class="docutils literal notranslate"><span class="pre">.readline()</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;1&#39;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>1 First line.
+
+2 Second line.
+
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="the-readlines-method">
+<h3>The <code class="docutils literal notranslate"><span class="pre">.readlines()</span></code> Method<a class="headerlink" href="#the-readlines-method" title="Permalink to this headline">¶</a></h3>
+<p>If you want to create a list of the lines in the file, you can use the <code class="docutils literal notranslate"><span class="pre">.readlines()</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>[&#39;First line.\n&#39;, &#39;Second line.\n&#39;, &#39;Third line.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="iterating-through-file-objects">
+<h3>Iterating Through File Objects<a class="headerlink" href="#iterating-through-file-objects" title="Permalink to this headline">¶</a></h3>
+<p>The file object returned by <code class="docutils literal notranslate"><span class="pre">open()</span></code> is iterable. Each iteration call returns a line of the file. We can use this in a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>First line.
+
+Second line.
+
+Third line.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s print the corresponding line numbers of each line to further illustrate what is happening:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">f</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">line</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-none notranslate"><div class="highlight"><pre><span></span>1 First line.
+
+2 Second line.
+
+3 Third line.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="opening-files-without-with">
+<h2>Opening Files Without <code class="docutils literal notranslate"><span class="pre">with</span></code><a class="headerlink" href="#opening-files-without-with" title="Permalink to this headline">¶</a></h2>
+<p>If, for some reason, you don’t want to make use of the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement when opening your files, make sure to close your file objects when you are done with them:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;new_file.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+
+<span class="c1">#file object used</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">File I/O</a>
+    <a class='right-next' id="next-link" href="data.html" title="next page">Structured Data Files</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../../_static/js/index.js"></script>
+    
+  </body>
+</html>

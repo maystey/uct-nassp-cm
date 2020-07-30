@@ -1,0 +1,108 @@
+- file: content/intro
+
+- header: Introduction
+
+- file: content/intro/intro
+
+####################################################################
+
+- header: The Python Standard Library
+
+- file: content/standard-library/basics/intro
+  sections:
+  - file: content/standard-library/basics/variables
+  - file: content/standard-library/basics/comments
+  - file: content/standard-library/basics/types
+  - file: content/standard-library/basics/operators
+  - file: content/standard-library/basics/assignment-operators
+  - file: content/standard-library/basics/functions
+  - file: content/standard-library/basics/strings
+  - file: content/standard-library/basics/string-formatting
+
+- file: content/standard-library/data-structures/intro
+  sections:
+  - file: content/standard-library/data-structures/tuple
+  - file: content/standard-library/data-structures/lists
+  - file: content/standard-library/data-structures/dictionaries
+
+- file: content/standard-library/if-statements/intro
+  sections:
+  - file: content/standard-library/if-statements/bools
+  - file: content/standard-library/if-statements/comparison-operators
+  - file: content/standard-library/if-statements/logical-operators
+  - file: content/standard-library/if-statements/if
+
+- file: content/standard-library/loops/intro
+  sections:
+  - file: content/standard-library/loops/for
+  - file: content/standard-library/loops/list-comp
+  - file: content/standard-library/loops/while
+  - file: content/standard-library/loops/break
+  - file: content/standard-library/loops/else
+
+- file: content/standard-library/functions/intro
+  sections:
+  - file: content/standard-library/functions/return
+  - file: content/standard-library/functions/arguments
+  - file: content/standard-library/functions/local-variables
+  - file: content/standard-library/functions/recursive
+
+- file: content/standard-library/file-io/intro
+  sections:
+  - file: content/standard-library/file-io/file-io
+  - file: content/standard-library/file-io/data
+
+####################################################################
+
+- header: Scientific Packages
+
+- file: content/scientific-packages/numpy/intro
+  sections:
+  - file: content/scientific-packages/numpy/arrays
+  - file: content/scientific-packages/numpy/array-methods
+  - file: content/scientific-packages/numpy/arrays2d
+  - file: content/scientific-packages/numpy/random
+  - file: content/scientific-packages/numpy/where
+
+- file: content/scientific-packages/matplotlib/intro
+  sections:
+  - file: content/scientific-packages/matplotlib/simple
+  - file: content/scientific-packages/matplotlib/subplots
+
+
+- file: content/scientific-packages/astropy/intro
+  sections:
+  - file: content/scientific-packages/astropy/units
+  - file: content/scientific-packages/astropy/constants
+
+
+##################################################################
+- header: Numerical Methods
+
+- file: content/numerical-methods/benchmarking/intro
+  sections:
+  - file: content/numerical-methods/benchmarking/time
+  - file: content/numerical-methods/benchmarking/uncertainty
+
+
+- file: content/numerical-methods/regression/intro
+  sections:
+  - file: content/numerical-methods/regression/least-squares
+  - file: content/numerical-methods/regression/chi-squared
+  - file: content/numerical-methods/regression/multivariate-least-squares
+  - file: content/numerical-methods/regression/scipy
+
+
+- file: content/numerical-methods/ode/intro
+  sections:
+  - file: content/numerical-methods/ode/euler
+  - file: content/numerical-methods/ode/euler-error
+  - file: content/numerical-methods/ode/higher-order
+  - file: content/numerical-methods/ode/runge-kutta
+
+
+- file: content/numerical-methods/integration/intro
+  sections:
+  - file: content/numerical-methods/integration/midpoint
+  - file: content/numerical-methods/integration/trapezoidal
+  - file: content/numerical-methods/integration/simpson

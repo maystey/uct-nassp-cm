@@ -1,0 +1,21 @@
+#######################################################################################
+# Book settings
+title: AST4007W Computational Methods
+author: Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn
+logo: images/UCTcircular_logo.png
+
+description: >-
+  Course notes for the NASSP Honours Computational Methods module at the University of Cape Town.
+
+#######################################################################################
+# Launch button settings
+repository:
+ url: https://github.com/maystey/uct-nassp-cm-2021
+ path_to_book : book
+
+#######################################################################################
+# HTML-specific settings
+html:
+ use_repository_button: true
+ use_issues_button: true
+

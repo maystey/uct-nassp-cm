@@ -1,0 +1,714 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Units and Quantities &#8212; AST4007W Computational Methods</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/sphinx-book-theme.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/mystnb.js"></script>
+    <script src="../../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Constants" href="constants.html" />
+    <link rel="prev" title="Astropy" href="intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/UCTcircular_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">AST4007W Computational Methods</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/intro.html">
+   Programming and Python in a Nutshell
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Python Standard Library
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/basics/intro.html">
+   Python Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/data-structures/intro.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/if-statements/intro.html">
+   Control Flow: If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/loops/intro.html">
+   Control Flow: Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/functions/intro.html">
+   Defining Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/file-io/intro.html">
+   File I/O
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Scientific Packages
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../numpy/intro.html">
+   Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../matplotlib/intro.html">
+   Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="intro.html">
+   Astropy
+  </a>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Units and Quantities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="constants.html">
+     Constants
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Numerical Methods
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../numerical-methods/benchmarking/intro.html">
+   Benchmarking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../numerical-methods/regression/intro.html">
+   Linear Regression Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../numerical-methods/ode/intro.html">
+   Numerical Solutions to Ordinary Differential Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../numerical-methods/integration/intro.html">
+   Numerical Integration Techniques
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/content/scientific-packages/astropy/units.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/scientific-packages/astropy/units.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantities">
+   Quantities
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#converting-units">
+   Converting Units
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quantities-and-numpy-arrays">
+   Quantities and NumPy Arrays
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compose-units">
+   Compose Units
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decompose-units">
+   Decompose Units
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dimensionless-quantities">
+   Dimensionless Quantities
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#find-equivalent-units">
+   Find Equivalent Units
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#set-equivalencies">
+   Set Equivalencies
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#finding-equivalent-units-with-set-equivalencies">
+     Finding Equivalent Units with Set Equivalencies
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fractional-units">
+   Fractional Units
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defining-your-own-units">
+   Defining Your Own Units
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="units-and-quantities">
+<h1>Units and Quantities<a class="headerlink" href="#units-and-quantities" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">astropy.units</span></code> module gives us the tools to work with units and quantities (values paired with units). The documentation can be found <a class="reference external" href="https://docs.astropy.org/en/stable/units/">here</a>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">astropy.units.Unit</span></code> class is used to represent base units of measurement, such as meters, seconds, kilograms, ect). These units can be manipulated, for example to determine conversion factors from one set of units to another.</p>
+<p>You can also define your own units, either as standalone base units or by composing other units together. It is also possible to decompose units into its base units.</p>
+<p>As an example, consider the SI unit for mass : kilograms (kg)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">units</span> <span class="k">as</span> <span class="n">u</span>
+
+<span class="n">u</span><span class="o">.</span><span class="n">kg</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\mathrm{kg}\]</div>
+</div>
+</div>
+<div class="section" id="quantities">
+<h2>Quantities<a class="headerlink" href="#quantities" title="Permalink to this headline">¶</a></h2>
+<p>Quantities are created by multiplying a float/integer with units, for example a mass:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mass</span> <span class="o">=</span> <span class="mf">3.0</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">kg</span>
+<span class="n">mass</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[3 \; \mathrm{kg}\]</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">value</span></code> and <code class="docutils literal notranslate"><span class="pre">unit</span></code> of the quantity can be accessed separately:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mass</span><span class="o">.</span><span class="n">value</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>3.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mass</span><span class="o">.</span><span class="n">unit</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\mathrm{kg}\]</div>
+</div>
+</div>
+<p>Quantities can be combined mathematically, the units combine accordingly. For example, consider the force:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">acceleration</span> <span class="o">=</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span><span class="o">/</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="o">*</span><span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
+
+<span class="n">force</span> <span class="o">=</span> <span class="n">mass</span><span class="o">*</span><span class="n">acceleration</span>
+<span class="n">force</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[12 \; \mathrm{\frac{kg\,m}{s^{2}}}\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="converting-units">
+<h2>Converting Units<a class="headerlink" href="#converting-units" title="Permalink to this headline">¶</a></h2>
+<p>Units can be converted to like units. For example, let’s convert the force calculated above into Newtons:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">force_N</span> <span class="o">=</span> <span class="n">force</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">N</span><span class="p">)</span>
+<span class="n">force_N</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[12 \; \mathrm{N}\]</div>
+</div>
+</div>
+<p>The conversion above is still within the SI system. We can also convert to units from other systems. For example, converting the force to dynes from the cgs system:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">force_dyn</span> <span class="o">=</span> <span class="n">force</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">dyn</span><span class="p">)</span>
+<span class="n">force_dyn</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[1200000 \; \mathrm{dyn}\]</div>
+</div>
+</div>
+<p>Astropy gives us a more convenient way to convert between unit systems without requiring us to do any book keeping. Again, lets convert the force in SI units to the cgs units:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">force_cgs</span> <span class="o">=</span> <span class="n">force</span><span class="o">.</span><span class="n">cgs</span>
+<span class="n">force_cgs</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[1200000 \; \mathrm{dyn}\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="quantities-and-numpy-arrays">
+<h2>Quantities and NumPy Arrays<a class="headerlink" href="#quantities-and-numpy-arrays" title="Permalink to this headline">¶</a></h2>
+<p>Astropy quantities support NumPy arrays. The whole array will have the same units.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
+<span class="n">distances</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[1,~2,~3,~4] \; \mathrm{m}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">distances</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">cm</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[100,~200,~300,~400] \; \mathrm{cm}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">distances</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[[1,~2,~3,~4] \; \mathrm{\frac{m}{s}}\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="compose-units">
+<h2>Compose Units<a class="headerlink" href="#compose-units" title="Permalink to this headline">¶</a></h2>
+<p>Above we converted our force from kg.m.s<span class="math notranslate nohighlight">\(^{-2}\)</span> to N directly. We can let Astropy compose those units for us:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">force</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">compose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-none notranslate"><div class="highlight"><pre><span></span>[Unit(&quot;N&quot;), Unit(&quot;100000 dyn&quot;)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see this gives us all the standard options available.</p>
+</div>
+<div class="section" id="decompose-units">
+<h2>Decompose Units<a class="headerlink" href="#decompose-units" title="Permalink to this headline">¶</a></h2>
+<p>You can also decompose units back into base units:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">force_N</span><span class="o">.</span><span class="n">decompose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[12 \; \mathrm{\frac{kg\,m}{s^{2}}}\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="dimensionless-quantities">
+<h2>Dimensionless Quantities<a class="headerlink" href="#dimensionless-quantities" title="Permalink to this headline">¶</a></h2>
+<p>Astropy understands dimensionless quantities. For example, lets take the ratio of 2 lengths:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r1</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span>
+
+<span class="n">r1</span> <span class="o">/</span> <span class="n">r2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[5 \; \mathrm{}\]</div>
+</div>
+</div>
+<p>Sometimes you will need to decompose units first:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">force1</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">N</span>
+<span class="n">force2</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">kg</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">m</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span> <span class="o">/</span> <span class="n">u</span><span class="o">.</span><span class="n">s</span>
+
+<span class="n">force_ratio</span> <span class="o">=</span> <span class="n">force1</span> <span class="o">/</span> <span class="n">force2</span>
+<span class="n">force_ratio</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[0.5 \; \mathrm{\frac{s^{2}\,N}{kg\,m}}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">force_ratio</span><span class="o">.</span><span class="n">decompose</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[0.5 \; \mathrm{}\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="find-equivalent-units">
+<h2>Find Equivalent Units<a class="headerlink" href="#find-equivalent-units" title="Permalink to this headline">¶</a></h2>
+<p>You can find equivalent units by using the <code class="docutils literal notranslate"><span class="pre">find_equivalent_units()</span></code> method. For example, for miliseconds (ms):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">u</span><span class="o">.</span><span class="n">ms</span><span class="o">.</span><span class="n">find_equivalent_units</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="width:50%"><tr><th>Primary name</th><th>Unit definition</th><th>Aliases</th></tr><tr><td>a</td><td>3.15576e+07 s</td><td>annum</td></tr><tr><td>d</td><td>86400 s</td><td>day</td></tr><tr><td>fortnight</td><td>1.2096e+06 s</td><td></td></tr><tr><td>h</td><td>3600 s</td><td>hour, hr</td></tr><tr><td>min</td><td>60 s</td><td>minute</td></tr><tr><td>s</td><td>irreducible</td><td>second</td></tr><tr><td>sday</td><td>86164.1 s</td><td></td></tr><tr><td>wk</td><td>604800 s</td><td>week</td></tr><tr><td>yr</td><td>3.15576e+07 s</td><td>year</td></tr></table></div></div>
+</div>
+</div>
+<div class="section" id="set-equivalencies">
+<h2>Set Equivalencies<a class="headerlink" href="#set-equivalencies" title="Permalink to this headline">¶</a></h2>
+<p>In some contexts we want to use certain units interchangeably, that are not actually equivalent.</p>
+<p>For example, the energy of a photon (<span class="math notranslate nohighlight">\(E\)</span>) is related to it’s wavelength (<span class="math notranslate nohighlight">\(\lambda\)</span>) and frequency (<span class="math notranslate nohighlight">\(\nu\)</span>) as:</p>
+<div class="math notranslate nohighlight">
+\[
+E = h \nu = h c / \lambda
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(h\)</span> is Planck’s constant. Radio astronomers refer to the energy of an emission line of neutral hydrogen being 1420 MHz or 21 cm. These units are obviously not that of energy, but in this context they can be treated as such.</p>
+<p>Astropy allows for this kind of treatment of our units:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wavelength</span> <span class="o">=</span> <span class="mf">21.106</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">cm</span>
+
+<span class="n">wavelength</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">MHz</span><span class="p">,</span> <span class="n">equivalencies</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[1420.4134 \; \mathrm{MHz}\]</div>
+</div>
+</div>
+<div class="section" id="finding-equivalent-units-with-set-equivalencies">
+<h3>Finding Equivalent Units with Set Equivalencies<a class="headerlink" href="#finding-equivalent-units-with-set-equivalencies" title="Permalink to this headline">¶</a></h3>
+<p>You can also find equivalent within the context of the equivalencies:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">Hz</span>
+
+<span class="n">freq</span><span class="o">.</span><span class="n">unit</span><span class="o">.</span><span class="n">find_equivalent_units</span><span class="p">(</span><span class="n">equivalencies</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">spectral</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table style="width:50%"><tr><th>Primary name</th><th>Unit definition</th><th>Aliases</th></tr><tr><td>AU</td><td>1.49598e+11 m</td><td>au, astronomical_unit</td></tr><tr><td>Angstrom</td><td>1e-10 m</td><td>AA, angstrom</td></tr><tr><td>Bq</td><td>1 / s</td><td>becquerel</td></tr><tr><td>Ci</td><td>3.7e+10 / s</td><td>curie</td></tr><tr><td>Hz</td><td>1 / s</td><td>Hertz, hertz</td></tr><tr><td>J</td><td>kg m2 / s2</td><td>Joule, joule</td></tr><tr><td>Ry</td><td>2.17987e-18 kg m2 / s2</td><td>rydberg</td></tr><tr><td>cm</td><td>0.01 m</td><td>centimeter</td></tr><tr><td>eV</td><td>1.60218e-19 kg m2 / s2</td><td>electronvolt</td></tr><tr><td>earthRad</td><td>6.3781e+06 m</td><td>R_earth, Rearth</td></tr><tr><td>erg</td><td>1e-07 kg m2 / s2</td><td></td></tr><tr><td>jupiterRad</td><td>7.1492e+07 m</td><td>R_jup, Rjup, R_jupiter, Rjupiter</td></tr><tr><td>k</td><td>100 / m</td><td>Kayser, kayser</td></tr><tr><td>lyr</td><td>9.46073e+15 m</td><td>lightyear</td></tr><tr><td>m</td><td>irreducible</td><td>meter</td></tr><tr><td>micron</td><td>1e-06 m</td><td></td></tr><tr><td>pc</td><td>3.08568e+16 m</td><td>parsec</td></tr><tr><td>solRad</td><td>6.957e+08 m</td><td>R_sun, Rsun</td></tr></table></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="fractional-units">
+<h2>Fractional Units<a class="headerlink" href="#fractional-units" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes we’ll need to work with fractional units (units with a fractional power). Floats can work for this, but it is better to use the Standard Library’s <code class="docutils literal notranslate"><span class="pre">fraction.Fraction</span></code> objects:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">fractions</span> <span class="kn">import</span> <span class="n">Fraction</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="mf">3000.0</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">K</span>
+<span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[3000 \; \mathrm{K}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">T</span> <span class="o">**</span> <span class="n">Fraction</span><span class="p">(</span><span class="mi">3</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[164316.77 \; \mathrm{K^{3/2}}\]</div>
+</div>
+</div>
+</div>
+<div class="section" id="defining-your-own-units">
+<h2>Defining Your Own Units<a class="headerlink" href="#defining-your-own-units" title="Permalink to this headline">¶</a></h2>
+<p>You can define your own units derived from other units. For example, lets make a unit called a baker’s fortnight (bf), which is a fortnight (14 days) and an extra day:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bakers_fortnight</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">def_unit</span><span class="p">(</span><span class="s1">&#39;bf&#39;</span><span class="p">,</span> <span class="mi">15</span> <span class="o">*</span> <span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+
+<span class="n">bakers_fortnight</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[\mathrm{bf}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">bakers_fortnight</span>
+<span class="n">time</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[3 \; \mathrm{bf}\]</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">day</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_latex math notranslate nohighlight">
+\[45 \; \mathrm{d}\]</div>
+</div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Astropy</a>
+    <a class='right-next' id="next-link" href="constants.html" title="next page">Constants</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../../_static/js/index.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,664 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Runge-Kutta Methods &#8212; AST4007W Computational Methods</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/sphinx-book-theme.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/mystnb.js"></script>
+    <script src="../../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Numerical Integration Techniques" href="../integration/intro.html" />
+    <link rel="prev" title="Solving Higher Order ODEs" href="higher-order.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/UCTcircular_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">AST4007W Computational Methods</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/intro.html">
+   Programming and Python in a Nutshell
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Python Standard Library
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/basics/intro.html">
+   Python Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/data-structures/intro.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/if-statements/intro.html">
+   Control Flow: If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/loops/intro.html">
+   Control Flow: Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/functions/intro.html">
+   Defining Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../standard-library/file-io/intro.html">
+   File I/O
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Scientific Packages
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../scientific-packages/numpy/intro.html">
+   Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../scientific-packages/matplotlib/intro.html">
+   Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../scientific-packages/astropy/intro.html">
+   Astropy
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Numerical Methods
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../benchmarking/intro.html">
+   Benchmarking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../regression/intro.html">
+   Linear Regression Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="reference internal" href="intro.html">
+   Numerical Solutions to Ordinary Differential Equations
+  </a>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="euler.html">
+     Euler’s Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="euler-error.html">
+     Euler’s Method: Truncation Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="higher-order.html">
+     Solving Higher Order ODEs
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Runge-Kutta Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../integration/intro.html">
+   Numerical Integration Techniques
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/content/numerical-methods/ode/runge-kutta.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/numerical-methods/ode/runge-kutta.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#outline-of-the-derivation">
+   Outline of the Derivation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#second-order-runge-kutta">
+     Second Order Runge-Kutta
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fourth-order-runge-kutta-rk4">
+   Fourth Order Runge-Kutta (RK4)
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#worked-example">
+     Worked Example
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#high-order-odes">
+     High Order ODEs
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#id2">
+       Worked Example
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="runge-kutta-methods">
+<h1>Runge-Kutta Methods<a class="headerlink" href="#runge-kutta-methods" title="Permalink to this headline">¶</a></h1>
+<p>The aforementioned Euler’s method is the simplest single step ODE solving method, but has a fairly large error. The Runge-Kutta methods are more popular due to their improved accuracy, in particular 4th and 5th order methods.</p>
+<div class="section" id="outline-of-the-derivation">
+<h2>Outline of the Derivation<a class="headerlink" href="#outline-of-the-derivation" title="Permalink to this headline">¶</a></h2>
+<p>The idea behind Runge-Kutta is to perform integration steps using a weighted average of Euler-like steps. The following outline <a class="bibtex reference internal" href="#efferson-numerical-methods" id="id1">[Eff13]</a> is not a full derivation of the method, as this requires theorems outside the scope of this course.</p>
+<div class="section" id="second-order-runge-kutta">
+<h3>Second Order Runge-Kutta<a class="headerlink" href="#second-order-runge-kutta" title="Permalink to this headline">¶</a></h3>
+<p>We shall start by looking at second order Runge-Kutta methods. We want to solve an ODE of the form</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{dy}{dx} = f(x, y)
+\]</div>
+<p>on the interval <span class="math notranslate nohighlight">\([x_i, x_{i+1}]\)</span>, where <span class="math notranslate nohighlight">\(x_{i+1} = x_i + h\)</span>, with a given initial condition <span class="math notranslate nohighlight">\(y(x = x_i) = y_i\)</span>. That is we wish to determine the value of <span class="math notranslate nohighlight">\(y(x_{i+1}) = y_{i+1}\)</span>. We start by calculating the gradient of <span class="math notranslate nohighlight">\(y\)</span> at 2 places:</p>
+<ul class="simple">
+<li><p>The start of the interval: <span class="math notranslate nohighlight">\((x_i, y_i)\)</span></p></li>
+<li><p>A point inside the interval, for which we approximate the <span class="math notranslate nohighlight">\(y\)</span> value using Euler’s method: <span class="math notranslate nohighlight">\((x_i + \alpha h, y_i + \alpha h f(x_i, y_i))\)</span>, for some choice of <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+</ul>
+<!--- Not necessarily inside the interval though... --->
+<p>We then approximate the value of <span class="math notranslate nohighlight">\(y_{i+1}\)</span> using Euler’s method with each of these gradients:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y_{i+1} \approx y_i + h f(x_i, y_i)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(y_{i+1} \approx y_i + h f(x_i + \alpha h, y_i + \alpha h f(x_i, y_i))\)</span></p></li>
+</ul>
+<p>The final approximation of <span class="math notranslate nohighlight">\(y_{i+1}\)</span> is calculated by taking a weighted average of these two approximations:</p>
+<div class="math notranslate nohighlight">
+\[
+y_{i+1} \approx y_i + c_1 h f(x_i, y_i) + c_2 h f(x_i + \alpha h, y_i + \alpha h f(x_i, y_i) )
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(c_1 + c_2 = 1\)</span> is required.</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/runge-kutta_6_0.png" src="../../../_images/runge-kutta_6_0.png" />
+</div>
+</div>
+<p>Now, how do we go about choosing good values for <span class="math notranslate nohighlight">\(c_1\)</span>, <span class="math notranslate nohighlight">\(c_2\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span>? If we Taylor expand the left-hand side of the equation above, and the last term on the right-hand side gives us the relation:</p>
+<div class="math notranslate nohighlight">
+\[
+\alpha = \frac{1}{2 c_2}
+\]</div>
+<p>This still gives us a free choice of one of the parameters. Two popular choices are:</p>
+<p><strong>The trapezoid rule:</strong> <span class="math notranslate nohighlight">\(c1 = c2 = \tfrac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, which yields:</p>
+<div class="math notranslate nohighlight">
+\[
+y_{i+1} = y_i + \tfrac{1}{2} h \left[ f(x_i, y_i) + f(x_i + h, y_i + h f(x_i, y_i)) \right]
+\]</div>
+<p><strong>The midpoint rule:</strong> <span class="math notranslate nohighlight">\(c1 = 0\)</span>, <span class="math notranslate nohighlight">\(c2 = 1\)</span> and <span class="math notranslate nohighlight">\(\alpha = \tfrac{1}{2}\)</span>, which yields:</p>
+<div class="math notranslate nohighlight">
+\[
+y_{i+1} = y_i + hf\left(x_i + \tfrac{1}{2} h, y_i + \tfrac{1}{2} h f(x_i, y_i) \right)
+\]</div>
+<p>Both of these methods have an accumulated error of <span class="math notranslate nohighlight">\(\mathcal(h^2)\)</span>, as opposed to Euler’s method with <span class="math notranslate nohighlight">\(\mathcal(h)\)</span></p>
+</div>
+</div>
+<div class="section" id="fourth-order-runge-kutta-rk4">
+<h2>Fourth Order Runge-Kutta (RK4)<a class="headerlink" href="#fourth-order-runge-kutta-rk4" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned, the more popular Runge-Kutta method is the fourth order (for which we will not cover the derivation):</p>
+<div class="math notranslate nohighlight">
+\[
+y_{i+1} = y_i + \tfrac{1}{6} h~ (k_1 + 2 k_2 + 2 k_3 + k_4)
+\]</div>
+<p>where the <span class="math notranslate nohighlight">\(k\)</span> values are the slopes:</p>
+<p>\begin{align*}
+k_1 &amp;= f(x_i, y_i)\
+k_2 &amp;= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h k_1 \right)\
+k_3 &amp;= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h k_2\right)\
+k_4 &amp;= f(x_i + h, y_i + k_3)
+\end{align*}</p>
+<p><span class="math notranslate nohighlight">\(k_1\)</span> is gradient value at the left of the interval. <span class="math notranslate nohighlight">\(k_2\)</span> is the gradient at the midpoint of the interval, approximated using <span class="math notranslate nohighlight">\(k_1\)</span>. The <span class="math notranslate nohighlight">\(k_3\)</span> value is the gradient at the midpoint of the interval using <span class="math notranslate nohighlight">\(k_2\)</span> to approximate it. <span class="math notranslate nohighlight">\(k_4\)</span> is the value of the gradient at the right end of the interval using <span class="math notranslate nohighlight">\(k_3\)</span> to approximate it.</p>
+<!--- Give interpretation for the the different k terms --->
+<p>This method has an accumulated error of <span class="math notranslate nohighlight">\(\mathcal(h^4)\)</span></p>
+<div class="section" id="worked-example">
+<h3>Worked Example<a class="headerlink" href="#worked-example" title="Permalink to this headline">¶</a></h3>
+<p>Consider the ordinary differential equation:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d y}{dx} = \frac{1}{1 + x^2}
+\]</div>
+<p>with the initial condition <span class="math notranslate nohighlight">\(y = 1\)</span> at <span class="math notranslate nohighlight">\(x = 0\)</span>.</p>
+<p>This has the exact solution:</p>
+<div class="math notranslate nohighlight">
+\[
+y = 1 + \arctan(x)
+\]</div>
+<p>which we can compare are results to.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="c1">#initial conditions</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">x_end</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1">#Differential equation</span>
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1">#Exact solution</span>
+<span class="k">def</span> <span class="nf">y_exact</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1">#Constructing the arrays:</span>
+<span class="n">x_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">x_end</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="c1">#make sure it goes up to and including x_end</span>
+
+<span class="n">y_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">x_arr</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">y_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">y0</span>
+
+<span class="c1">#Runge-Kutta method</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x_arr</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+    
+    <span class="c1">#k values</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_arr</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">y_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">k1</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">y_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">k2</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">k3</span><span class="p">)</span>
+    
+    <span class="c1">#update</span>
+    <span class="n">y_arr</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">h</span><span class="o">/</span><span class="mi">6</span><span class="o">*</span><span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k3</span> <span class="o">+</span> <span class="n">k4</span><span class="p">)</span>
+    
+
+<span class="c1">#Plotting the solution</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_arr</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">(</span><span class="n">x_arr</span><span class="p">),</span> <span class="s1">&#39;-r&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Exact solution&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_arr</span><span class="p">,</span> <span class="n">y_arr</span><span class="p">,</span> <span class="s1">&#39;--k&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;RK4 solution&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/runge-kutta_12_0.png" src="../../../_images/runge-kutta_12_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="high-order-odes">
+<h3>High Order ODEs<a class="headerlink" href="#high-order-odes" title="Permalink to this headline">¶</a></h3>
+<p>As we have discussed in a previous page, higher order ODEs can be reduced to a collection of coupled first order ODEs, for example:</p>
+<p>\begin{align}
+\frac{d y_0}{dx} &amp;= f_0(x, y_0, y_1, \dots, y_{n-1})\
+\frac{d y_1}{dx} &amp;= f_1(x, y_0, y_1, \dots, y_{n-1})\
+\frac{d y_2}{dx} &amp;= f_2(x, y_0, y_1, \dots, y_{n-1})\
+&amp;\vdots \
+\frac{d y_{n-1}}{dx} &amp;= f_{n-1}(x, y_0, y_1, \dots, y_{n-1})
+\end{align}</p>
+<p>As we have seen, the Euler’s method solution for this is fairly simple. For the RK4 method, things are slightly more complicated. We must decide how to calculate the <span class="math notranslate nohighlight">\(k\)</span> values.</p>
+<div class="math notranslate nohighlight">
+\[
+y_{j, i+1} = y_{j, i} + \tfrac{h}{6} (k_{1, j} + 2 k_{2, j} + 2 k_{3, j} + k_{4, j} )
+\]</div>
+<p>Note that the <span class="math notranslate nohighlight">\(y_j\)</span> variables are not explicitly dependent on each other, but on the independant variable <span class="math notranslate nohighlight">\(x\)</span>. Thus we do not have free choice over which <span class="math notranslate nohighlight">\(y_j\)</span> values to use when examining another for a particular value of <span class="math notranslate nohighlight">\(x\)</span>. For any change in <span class="math notranslate nohighlight">\(x\)</span>, we expect simultenous change in all of the <span class="math notranslate nohighlight">\(y_j\)</span>. For this reason, when calculating the <span class="math notranslate nohighlight">\(k_j\)</span> values for a particular <span class="math notranslate nohighlight">\(y_j\)</span>, we need to consider the changes in the other <span class="math notranslate nohighlight">\(y_l\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{l l l l l l l}
+k_{1, j} &amp;= f_j (x_i, &amp;y_{0, i}~, &amp;\dots, &amp;y_{j, i}~, &amp;\dots, &amp;~y_{n-1, i}~)\\
+k_{2, j} &amp;= f_j \big(x_i + \tfrac{1}{2}h, &amp;y_{0, i}~ + \tfrac{1}{2} k_{1, 0}~, &amp;\dots, &amp;y_{j, i}~ + \tfrac{1}{2} k_{1, j}, &amp;\dots, &amp;y_{n-1, i}~ + \tfrac{1}{2} k_{1, n-1}~ \big)\\
+k_{3, j} &amp;= f_j \big(x_i + \tfrac{1}{2}h, &amp;y_{0, i}~ + \tfrac{1}{2} k_{2, 0}~, &amp;\dots, &amp;y_{j, i}~ + \tfrac{1}{2} k_{2, j}, &amp;\dots, &amp;y_{n-1, i}~ + \tfrac{1}{2} k_{2, n-1}~\big)\\
+k_{4, j} &amp;= f_j ( x_i + h, &amp;y_{0, i}~ + k_{3, 0}~, &amp;\dots, &amp;y_{j, i}~ + k_{3, j}, &amp;\dots, &amp;y_{n-1, i}~ + k_{3, n-1} )\\
+\end{array}
+\end{split}\]</div>
+<p>This looks more complicated then it is to apply in practice. All we need to do is vectorize the solution, as on the previous page. We can represent all the <span class="math notranslate nohighlight">\(y_j\)</span> as a vector <span class="math notranslate nohighlight">\(\vec{y}\)</span>, i.e</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{y} = \begin{pmatrix} y_0 \\ y_1 \\ \vdots \\ y_{n-1} \end{pmatrix}
+\end{split}\]</div>
+<p>the ODE can thus be represented as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\frac{d \vec{y}}{dx} = \vec{f}(x, \vec{y}) = \begin{pmatrix} f_0 (x, \vec{y}) \\ f_1 (x, \vec{y}) \\ \vdots \\ f_{n-1} (x, \vec{y}) \end{pmatrix}
+\end{split}\]</div>
+<p>and an update step as:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{y}_{i+1} = \vec{y}_i + \tfrac{1}{6} h (\vec{k_1} + 2 \vec{k_2} + 2 \vec{k_3} + \vec{k_4})
+\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{k_m} = \begin{pmatrix} k_{0, m} \\ k_{1, m} \\ \vdots \\ k_{n-1, m} \end{pmatrix}
+\end{split}\]</div>
+<p>Note that we can write:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{pmatrix}
+y_{0, i}~ + \tfrac{1}{2} h k_{1, 0} \\\vdots \\y_{j, i}~ + \tfrac{1}{2} h k_{1, j} \\ \dots \\ y_{n-1, i}~ + \tfrac{1}{2} h k_{1, n-1}
+\end{pmatrix}
+= \vec{y}_i + \tfrac{1}{2} h \vec{k1}
+\end{split}\]</div>
+<p>with this in mind, we can simply write the <span class="math notranslate nohighlight">\(k\)</span> values as:</p>
+<p>\begin{align*}
+\vec{k_1} &amp;= \vec{f}(x_i, \vec{y}_i)\
+\vec{k_2} &amp;= \vec{f}\left(x_i + \tfrac{1}{2} h, \vec{y}_i + \tfrac{1}{2} h ~ \vec{k_1} \right)\
+\vec{k_3} &amp;= \vec{f}\left(x_i + \tfrac{1}{2} h, \vec{y}_i + \tfrac{1}{2} h ~ \vec{k_2} \right)\
+\vec{k_4} &amp; = \vec{f}\left(x_i + h, \vec{y}_i + h ~ \vec{k_3} \right)
+\end{align*}</p>
+<div class="section" id="id2">
+<h4>Worked Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<p>Consider the third order differential equation:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^{4}y}{dx^4} = -12 x y - 4 x^2 \frac{d y}{dx}
+\]</div>
+<p>with the initial conditions: <span class="math notranslate nohighlight">\(y(x = 0) = 0\)</span>, <span class="math notranslate nohighlight">\(y^\prime(0) = 0\)</span> and <span class="math notranslate nohighlight">\(y^{\prime\prime}(0) = 2\)</span>.</p>
+<p>This has an exact solution of:</p>
+<div class="math notranslate nohighlight">
+\[
+y(x) = e^{-x^2}
+\]</div>
+<p>which we shall use to test our numerical result.</p>
+<p>We shall solve this up to <span class="math notranslate nohighlight">\(x = 5\)</span> with steps of size <span class="math notranslate nohighlight">\(h = 0.1\)</span>.</p>
+<p>First we reduce this to a system of first order equations by introducing the variables <span class="math notranslate nohighlight">\(y_0(x) = y(x)\)</span>, <span class="math notranslate nohighlight">\(y_1(x) = y^\prime(x)\)</span> and <span class="math notranslate nohighlight">\(y_2(x) = y^{\prime\prime}(x)\)</span>:</p>
+<p>\begin{align*}
+\frac{d y_0}{dx} &amp;= y_1\
+\frac{d y_1}{dx} &amp;= y_2\
+\frac{d y_2}{dx} &amp;= -12 x y_0 - 4 x^2 y_1
+\end{align*}</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">x0</span><span class="p">,</span> <span class="n">y0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="c1">#initial conditions</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">x_end</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="c1">#Important! This must return an array!</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+        <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+        <span class="o">-</span><span class="mi">12</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">y_exact</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1">#Constructing the arrays:</span>
+<span class="n">x_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">x_end</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> <span class="c1">#make sure it goes up to and including x_end</span>
+
+<span class="n">y_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">x_arr</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y0</span><span class="p">)))</span>
+<span class="n">y_arr</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">y0</span>
+
+<span class="c1">#Runge-Kutta method</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x_arr</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y_arr</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span>
+    
+    <span class="c1">#k values</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">k2</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">k1</span><span class="p">)</span>
+    <span class="n">k3</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">h</span><span class="o">*</span><span class="n">k2</span><span class="p">)</span>
+    <span class="n">k4</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span><span class="o">*</span><span class="n">k3</span><span class="p">)</span>
+    
+    <span class="c1">#update</span>
+    <span class="n">y_arr</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span><span class="o">/</span><span class="mi">6</span><span class="o">*</span><span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k2</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">k3</span> <span class="o">+</span> <span class="n">k4</span><span class="p">)</span>
+    
+
+<span class="c1">#Plotting the solution</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_arr</span><span class="p">,</span> <span class="n">y_exact</span><span class="p">(</span><span class="n">x_arr</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_arr</span><span class="p">,</span> <span class="n">y_arr</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/runge-kutta_18_0.png" src="../../../_images/runge-kutta_18_0.png" />
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-content/numerical-methods/ode/runge-kutta-0"><dl class="citation">
+<dt class="bibtex label" id="net-info-compiling-python"><span class="brackets">net</span></dt>
+<dd><p>Compiling and linking in python — Net-informations.com. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="http://net-informations.com/python/iq/linking.htm">http://net-informations.com/python/iq/linking.htm</a>.</p>
+</dd>
+<dt class="bibtex label" id="mozilla-dynamic"><span class="brackets">moz</span></dt>
+<dd><p>Dynaimc programming language — MDN Web Docs. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_programming_language">https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_programming_language</a>.</p>
+</dd>
+<dt class="bibtex label" id="ned-python-interp"><span class="brackets">Bat</span></dt>
+<dd><p>Ned Batchelder. Is python interpreted or compiled? yes. — Ned Batchelder. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://nedbatchelder.com/blog/201803/is_python_interpreted_or_compiled_yes.html">https://nedbatchelder.com/blog/201803/is_python_interpreted_or_compiled_yes.html</a>.</p>
+</dd>
+<dt class="bibtex label" id="phy-gum"><span class="brackets">BALC09</span></dt>
+<dd><p>Andy Buffler, Saalih Allie, Fred Lubben, and Bob Campbell. <em>Introduction to Measurement in the Physics Laboratory. A probabilistic approach.</em> Department of Physics, University of Cape Town, South Africa and Science Education Group, Department of Educational Studies, University of York, UK, version 3.5 edition, 2009. [Online; accessed 18-February-2020]. URL: <a class="reference external" href="http://www.phy.uct.ac.za/phy/people/academic/buffler/downloads/labmanual">http://www.phy.uct.ac.za/phy/people/academic/buffler/downloads/labmanual</a>.</p>
+</dd>
+<dt class="bibtex label" id="efferson-numerical-methods"><span class="brackets"><a class="fn-backref" href="#id1">Eff13</a></span></dt>
+<dd><p>James F. Efferson. <em>An Introduction to Numerical Methods and Analysis</em>. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.</p>
+</dd>
+<dt class="bibtex label" id="wikipedia-assembly"><span class="brackets">Wikipediacontributorsa</span></dt>
+<dd><p>Wikipedia contributors. Assembly language — Wikipedia, the free encyclopedia. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Assembly_language">https://en.wikipedia.org/wiki/Assembly_language</a>.</p>
+</dd>
+<dt class="bibtex label" id="wikipedia-compiler"><span class="brackets">Wikipediacontributorsb</span></dt>
+<dd><p>Wikipedia contributors. Compiler — Wikipedia, the free encyclopedia. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Compiler">https://en.wikipedia.org/wiki/Compiler</a>.</p>
+</dd>
+<dt class="bibtex label" id="wikipedia-machine-code"><span class="brackets">Wikipediacontributorsc</span></dt>
+<dd><p>Wikipedia contributors. Machine code — Wikipedia, the free encyclopedia. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_code">https://en.wikipedia.org/wiki/Machine_code</a>.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="higher-order.html" title="previous page">Solving Higher Order ODEs</a>
+    <a class='right-next' id="next-link" href="../integration/intro.html" title="next page">Numerical Integration Techniques</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../../_static/js/index.js"></script>
+    
+  </body>
+</html>

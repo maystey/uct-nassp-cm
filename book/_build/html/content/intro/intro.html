@@ -1,0 +1,364 @@
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Programming and Python in a Nutshell &#8212; AST4007W Computational Methods</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha384-KA6wR/X5RY4zFAHpv/CnoG2UW1uogYfdnP67Uv7eULvTveboZJg0qUpmJZb5VqzN" crossorigin="anonymous">
+    <link href="../../_static/css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css" />
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/mystnb.js"></script>
+    <script src="../../_static/sphinx-book-theme.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Python Basics" href="../standard-library/basics/intro.html" />
+    <link rel="prev" title="UCT NASSP AST4007W Computational Methods" href="../intro.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="docsearch:language" content="en">
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  <img src="../../_static/UCTcircular_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">AST4007W Computational Methods</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Programming and Python in a Nutshell
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Python Standard Library
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../standard-library/basics/intro.html">
+   Python Basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../standard-library/data-structures/intro.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../standard-library/if-statements/intro.html">
+   Control Flow: If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../standard-library/loops/intro.html">
+   Control Flow: Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../standard-library/functions/intro.html">
+   Defining Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../standard-library/file-io/intro.html">
+   File I/O
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Scientific Packages
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../scientific-packages/numpy/intro.html">
+   Numpy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../scientific-packages/matplotlib/intro.html">
+   Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../scientific-packages/astropy/intro.html">
+   Astropy
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Numerical Methods
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../numerical-methods/benchmarking/intro.html">
+   Benchmarking
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../numerical-methods/regression/intro.html">
+   Linear Regression Algorithms
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../numerical-methods/ode/intro.html">
+   Numerical Solutions to Ordinary Differential Equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../numerical-methods/integration/intro.html">
+   Numerical Integration Techniques
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/content/intro/intro.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/intro/intro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> On this page
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-programming-language">
+   What is a programming language?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-a-script">
+   What is a Script?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#python-a-dynamic-programming-language">
+   Python, a Dynamic Programming Language.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="programming-and-python-in-a-nutshell">
+<h1>Programming and Python in a Nutshell<a class="headerlink" href="#programming-and-python-in-a-nutshell" title="Permalink to this headline">¶</a></h1>
+<p>In this chapter we will go over a brief overview of programming languages and Python. While important, not having a full grasp of this chapter should not hinder your ability to program using Python.</p>
+<div class="section" id="what-is-a-programming-language">
+<h2>What is a programming language?<a class="headerlink" href="#what-is-a-programming-language" title="Permalink to this headline">¶</a></h2>
+<p>Programming is, in essence, writing a series of instructions for the computer to execute. This is done using a programming language, which can be understood or translated to a form that can be understood by the computer.</p>
+<p>At the lowest level the language of computers is called machine code. This language is used to communicate with the computer’s CPU through binary or hexadecimal instructions.
+Machine code is dependent on the computer hardware being used and is not easy to understand as humans. A step up from this is
+an assembly language, which uses some human language, but is still difficult to understand and dependent on the computer architecture <a class="bibtex reference internal" href="../numerical-methods/ode/runge-kutta.html#wikipedia-machine-code" id="id1">[Wikipediacontributorsc]</a><a class="bibtex reference internal" href="../numerical-methods/ode/runge-kutta.html#wikipedia-assembly" id="id2">[Wikipediacontributorsa]</a>.</p>
+<p>Hardware dependence could be a big problem. Programs written for one computer would not necessarily work on another computer, they would have to be translated (by a human) first. To bridge this difference between hardware specifications high level programming languages were developed.</p>
+<p>Most of the programming languages you are likely to use these days are high-level programming languages. Besides being CPU independent, these languages are designed to be readable by humans. <!--They also allow for programs to be written independently (to some degree) from the hardware in question. -->
+At some level these languages will need to be compiled (translated <a class="bibtex reference internal" href="../numerical-methods/ode/runge-kutta.html#wikipedia-compiler" id="id3">[Wikipediacontributorsb]</a>)
+to machine code <a class="bibtex reference internal" href="../numerical-methods/ode/runge-kutta.html#wikipedia-machine-code" id="id4">[Wikipediacontributorsc]</a>.</p>
+</div>
+<div class="section" id="what-is-a-script">
+<h2>What is a Script?<a class="headerlink" href="#what-is-a-script" title="Permalink to this headline">¶</a></h2>
+<p>A script is a text file containing source code (instructions for the computer) written in a programming language. Programs can be composed of a single script, or many scripts working together.</p>
+<p>Generally scripts for a particular language are given a specific file suffix. Relevant to us, Python scripts end with a <code class="docutils literal notranslate"><span class="pre">.py</span></code>.</p>
+</div>
+<div class="section" id="python-a-dynamic-programming-language">
+<h2>Python, a Dynamic Programming Language.<a class="headerlink" href="#python-a-dynamic-programming-language" title="Permalink to this headline">¶</a></h2>
+<p>Python is a high level language and thus needs to eventually be compiled down. <!-- translated into machine code. Python is a dynamic programming language. --></p>
+<p>Many high level programming languages’ source code is compiled to machine code once, and then can be executed in this form. These are called static programming languages (C is an example).</p>
+<p>Dynamic programming languages are languages where operations that would normally take place at compile-time (when the code is compiled) can instead be done at run-time (when the program is executed) <a class="bibtex reference internal" href="../numerical-methods/ode/runge-kutta.html#mozilla-dynamic" id="id5">[moz]</a>. Python is a dynamic programming language.</p>
+<p>When you run a python script it is compiled to byte code (if it hasn’t been already). This byte code is a lower-level, platform independent representation of your source code <!--- sic --> <a class="bibtex reference internal" href="../numerical-methods/ode/runge-kutta.html#ned-python-interp" id="id6">[Bat]</a><a class="bibtex reference internal" href="../numerical-methods/ode/runge-kutta.html#net-info-compiling-python" id="id7">[net]</a>.</p>
+<p>Byte code is similar to the CPU <!--- Necessary repeatition?--> specific assembly code, but is instead executed by software called a virtual machine (which simulates a CPU environment). <a class="bibtex reference internal" href="../numerical-methods/ode/runge-kutta.html#ned-python-interp" id="id8">[Bat]</a>. The Python Virtual Machine is always present in the Python system and is the last step of the Python Interpreter <a class="bibtex reference internal" href="../numerical-methods/ode/runge-kutta.html#net-info-compiling-python" id="id9">[net]</a>. <!-- Too much jargon invoked? --></p>
+<!--- These virtual machines can be written in any language. {%cite ned %} -->
+<!-- Briefly mention dynamic typing? -->
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-content/intro/intro-0"><dl class="citation">
+<dt class="bibtex label" id="net-info-compiling-python"><span class="brackets">net</span><span class="fn-backref">(<a href="#id7">1</a>,<a href="#id9">2</a>)</span></dt>
+<dd><p>Compiling and linking in python — Net-informations.com. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="http://net-informations.com/python/iq/linking.htm">http://net-informations.com/python/iq/linking.htm</a>.</p>
+</dd>
+<dt class="bibtex label" id="mozilla-dynamic"><span class="brackets"><a class="fn-backref" href="#id5">moz</a></span></dt>
+<dd><p>Dynaimc programming language — MDN Web Docs. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_programming_language">https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_programming_language</a>.</p>
+</dd>
+<dt class="bibtex label" id="ned-python-interp"><span class="brackets">Bat</span><span class="fn-backref">(<a href="#id6">1</a>,<a href="#id8">2</a>)</span></dt>
+<dd><p>Ned Batchelder. Is python interpreted or compiled? yes. — Ned Batchelder. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://nedbatchelder.com/blog/201803/is_python_interpreted_or_compiled_yes.html">https://nedbatchelder.com/blog/201803/is_python_interpreted_or_compiled_yes.html</a>.</p>
+</dd>
+<dt class="bibtex label" id="wikipedia-assembly"><span class="brackets"><a class="fn-backref" href="#id2">Wikipediacontributorsa</a></span></dt>
+<dd><p>Wikipedia contributors. Assembly language — Wikipedia, the free encyclopedia. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Assembly_language">https://en.wikipedia.org/wiki/Assembly_language</a>.</p>
+</dd>
+<dt class="bibtex label" id="wikipedia-compiler"><span class="brackets"><a class="fn-backref" href="#id3">Wikipediacontributorsb</a></span></dt>
+<dd><p>Wikipedia contributors. Compiler — Wikipedia, the free encyclopedia. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Compiler">https://en.wikipedia.org/wiki/Compiler</a>.</p>
+</dd>
+<dt class="bibtex label" id="wikipedia-machine-code"><span class="brackets">Wikipediacontributorsc</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id4">2</a>)</span></dt>
+<dd><p>Wikipedia contributors. Machine code — Wikipedia, the free encyclopedia. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_code">https://en.wikipedia.org/wiki/Machine_code</a>.</p>
+</dd>
+</dl>
+</p>
+</div>
+</div>
+
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">UCT NASSP AST4007W Computational Methods</a>
+    <a class='right-next' id="next-link" href="../standard-library/basics/intro.html" title="next page">Python Basics</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    <script src="../../_static/js/index.js"></script>
+    
+  </body>
+</html>
