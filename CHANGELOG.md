@@ -8,12 +8,16 @@ the version number, `a.b.c`, follows the following scheme:
 - `b`. New chapter(s) added or drastically changed, the number increase is the number of chapters added/changed
 - `c`. New sections, corrections, etc. The number change is consecutive, not reflecting the number of changes.
 
-## [UNRELEASED]
+## [2.0.1] - 2020-12-01
 
 ### Changed
 
 - Update to Jupyter-Book version 0.8
 - Added section Standard Library/If Statements/Inclusion Operators
+
+### Fixed
+
+- Citations: labels are now unique and bibliography doesn't list uncited references.
 
 ## [2.0.0] - 2020-11-25
 
