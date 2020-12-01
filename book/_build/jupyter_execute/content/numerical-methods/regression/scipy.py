@@ -1,10 +1,16 @@
-# Least Squares Minimization with `scipy.optimize.leastsq`
+#!/usr/bin/env python
+# coding: utf-8
 
-So far we have only considered functional relationships that are linear in the unknown constants. Non-linear cases are far more complicated and generally require numerical solutions. We will use a function from the SciPy module [`scipy.optimize`](https://docs.scipy.org/doc/scipy/reference/optimize.html), which contains functions for minimization, least squares and root finding techniques.
+# # Least Squares Minimization with `scipy.optimize.leastsq`
 
-## An Example of a Nonlinear Model
+# So far we have only considered functional relationships that are linear in the unknown constants. Non-linear cases are far more complicated and generally require numerical solutions. We will use a function from the SciPy module [`scipy.optimize`](https://docs.scipy.org/doc/scipy/reference/optimize.html), which contains functions for minimization, least squares and root finding techniques.
 
-Consider the data found in the data file **nonlinear_data.csv** on [GitHub](https://raw.githubusercontent.com/maystey/uct_nassp_cm/gh-pages/regression/data/nonlinear_data.csv) , plotted below:
+# ## An Example of a Nonlinear Model
+
+# Consider the data found in the data file **nonlinear_data.csv** on [GitHub](https://raw.githubusercontent.com/maystey/uct_nassp_cm/gh-pages/regression/data/nonlinear_data.csv) , plotted below:
+
+# In[1]:
+
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -32,7 +38,11 @@ np.savetxt('data/nonlinear_data.csv', np.array((xdata, ydata)).T, header = 'x,y'
 plt.plot(xdata, ydata, 'ro')
 plt.show()
 
-Though the data may appear to follow a linear trend, this is not the case. Consider the linear fit below:
+
+# Though the data may appear to follow a linear trend, this is not the case. Consider the linear fit below:
+
+# In[2]:
+
 
 from scipy.optimize import leastsq
 import numpy as np
@@ -59,11 +69,15 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.show()
 
-Instead a more appropriate functional relation is an exponential function:
 
-$$
-y = a_0 + a_1 e^{a_2 x}
-$$
+# Instead a more appropriate functional relation is an exponential function:
+# 
+# $$
+# y = a_0 + a_1 e^{a_2 x}
+# $$
+
+# In[3]:
+
 
 #Model
 def f(a, x):
@@ -89,59 +103,63 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.show()
 
-Note that this functional relation is non-linear in $a_2$. Applying the method of least squares minimization to this functional relation will not yield an analytic solution, therefore a numerical method is required. We shall not be implementing this numerical method ourselves, instead using a function from **SciPy** to solve our problem. In short the numerical minimization technique involves following the negative gradient (or an approximation of this) from a given starting point, until a local minimum is found (essentially the solution is captured here).
 
-<!---
-Include a visual analogy of a ball rolling down a surface
---->
+# Note that this functional relation is non-linear in $a_2$. Applying the method of least squares minimization to this functional relation will not yield an analytic solution, therefore a numerical method is required. We shall not be implementing this numerical method ourselves, instead using a function from **SciPy** to solve our problem. In short the numerical minimization technique involves following the negative gradient (or an approximation of this) from a given starting point, until a local minimum is found (essentially the solution is captured here).
+# 
+# <!---
+# Include a visual analogy of a ball rolling down a surface
+# --->
 
-The trouble with trying to use least squares on this **non-linear** functional relation ...
+# The trouble with trying to use least squares on this **non-linear** functional relation ...
+# 
+# $$
+# \begin{align*}
+# \frac{\partial S^2}{\partial a_2} = \sum_{i = 1}^{N} 2 x_i \left(a_0 + a_1 e^{a_2 x_i} \right) & = 0\\
+# \therefore a_0 \langle{x}\rangle + a_1 \left\langle{x e^{a_2 x}}\right\rangle & = 
+# \end{align*}
+# $$
 
-$$
-\begin{align*}
-\frac{\partial S^2}{\partial a_2} = \sum_{i = 1}^{N} 2 x_i \left(a_0 + a_1 e^{a_2 x_i} \right) & = 0\\
-\therefore a_0 \langle{x}\rangle + a_1 \left\langle{x e^{a_2 x}}\right\rangle & = 
-\end{align*}
-$$
+# ## Nonlinear Least Squares Minimization with `scipy.optimize.leastsq`
 
-## Nonlinear Least Squares Minimization with `scipy.optimize.leastsq`
+# The SciPy module [`scipy.optimize`](https://docs.scipy.org/doc/scipy/reference/optimize.html) contains functions for minimization, least squares and root finding techniques. Of particular interest to us now is the `leastsq` function (documentation [here](https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.optimize.leastsq.html)), which we shall use to perform nonlinear least squares minimization.
+# 
+# The call signature of `leastsq`, including only the arguments of immediate interest to us, is:
+# 
+# ```python
+# leastsq(func, x0, args = () )
+# ```
+# 
+# The `x0` argument is an initial guess for the unknown parameters we are trying to find (required by the numerical minimization technique). In our case this is an initial case of the $a_j$ constants.
+# 
+# The keyword argument `args` is a tuple of the variables or data we are fitting the model to. In our case $x$ and $y$. The order in which these variables are presented is up to you, but must correspond to the order they are used in `fun`. Each element of this tuple should be an array or list of data points, for instance `(xdata, ydata)`.
+# 
+# The `func` argument is a callable object (function). It is referred to as the residual. It is the sum of the residuals squared that will be minimized.For the sum of errors squared the residual is equivalent to our error terms ($\epsilon_i$). 
+# 
+# <!---
+# Mention that the sum of errors squared is called the objective function
+# --->
+# 
+# $$
+# S^2 = \sum_{i = 1}^{N} \text{func(arguments)}^2
+# $$
+# 
+# 
+# The call signature of `func` is:
+# 
+# ```python
+# func(params, *args)
+# ```
+# 
+# where `params` is a list or array of the parameters we are trying to find ($a_j$), and `args` is the tuple of the data for our variables ($x$ and $y$).
 
-The SciPy module [`scipy.optimize`](https://docs.scipy.org/doc/scipy/reference/optimize.html) contains functions for minimization, least squares and root finding techniques. Of particular interest to us now is the `leastsq` function (documentation [here](https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.optimize.leastsq.html)), which we shall use to perform nonlinear least squares minimization.
+# The `*` operator before a sequence data structure in a function argument unpacks that data structure as if each element where entered into the function individually. For example `f( *(x,y,z) )` is equivalent to `f(x, y, z)`
 
-The call signature of `leastsq`, including only the arguments of immediate interest to us, is:
+# The return value of the `leastsq` function (if it is only given the arguments listed above) is a tuple containing the solution for the $a_j$ and an integer flag (for which a value between 1 and 4 indicates the solution was found).
 
-```python
-leastsq(func, x0, args = () )
-```
+# Putting this all together, we can solve the problem from above:
 
-The `x0` argument is an initial guess for the unknown parameters we are trying to find (required by the numerical minimization technique). In our case this is an initial case of the $a_j$ constants.
+# In[4]:
 
-The keyword argument `args` is a tuple of the variables or data we are fitting the model to. In our case $x$ and $y$. The order in which these variables are presented is up to you, but must correspond to the order they are used in `fun`. Each element of this tuple should be an array or list of data points, for instance `(xdata, ydata)`.
-
-The `func` argument is a callable object (function). It is referred to as the residual. It is the sum of the residuals squared that will be minimized.For the sum of errors squared the residual is equivalent to our error terms ($\epsilon_i$). 
-
-<!---
-Mention that the sum of errors squared is called the objective function
---->
-
-$$
-S^2 = \sum_{i = 1}^{N} \text{func(arguments)}^2
-$$
-
-
-The call signature of `func` is:
-
-```python
-func(params, *args)
-```
-
-where `params` is a list or array of the parameters we are trying to find ($a_j$), and `args` is the tuple of the data for our variables ($x$ and $y$).
-
-The `*` operator before a sequence data structure in a function argument unpacks that data structure as if each element where entered into the function individually. For example `f( *(x,y,z) )` is equivalent to `f(x, y, z)`
-
-The return value of the `leastsq` function (if it is only given the arguments listed above) is a tuple containing the solution for the $a_j$ and an integer flag (for which a value between 1 and 4 indicates the solution was found).
-
-Putting this all together, we can solve the problem from above:
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -175,15 +193,19 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.show()
 
-### Solutions Converging on Local Minima
 
-As mentioned before, the numerical algorithm is complete once it has minimized the objective function (the sum of errors squared in out case) to a **local minimum**. It is possible for the solution to not represent the global minimum, which is the ideal solution to obtain.
+# ### Solutions Converging on Local Minima
 
-Let's take a relatively simple example to illustrate this. Consider the functional relation:
+# As mentioned before, the numerical algorithm is complete once it has minimized the objective function (the sum of errors squared in out case) to a **local minimum**. It is possible for the solution to not represent the global minimum, which is the ideal solution to obtain.
+# 
+# Let's take a relatively simple example to illustrate this. Consider the functional relation:
+# 
+# $$
+# y = a_0 + a_1 e^{-a_2 x} \sin(a_3 x)
+# $$
 
-$$
-y = a_0 + a_1 e^{-a_2 x} \sin(a_3 x)
-$$
+# In[5]:
+
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -207,7 +229,11 @@ ax.set_ylabel('y')
 
 plt.show()
 
-Given a set of data characterized by this relation:
+
+# Given a set of data characterized by this relation:
+
+# In[6]:
+
 
 #data
 
@@ -228,7 +254,11 @@ ydata = np.random.normal(loc = f_sin(a, xdata), scale = sigma_y)
 plt.plot(xdata, ydata, 'ro')
 plt.show()
 
-It is relatively easy to find a good fit using `leastsq`:
+
+# It is relatively easy to find a good fit using `leastsq`:
+
+# In[7]:
+
 
 a0 = [1, 2.5, 0.2 , 2]
 
@@ -248,7 +278,11 @@ ax.set_ylabel('y')
 
 plt.show()
 
-Here are a couple of examples of solutions that returns a supposedly successful solution, but have obviously not converged to the best fit.
+
+# Here are a couple of examples of solutions that returns a supposedly successful solution, but have obviously not converged to the best fit.
+
+# In[8]:
+
 
 a0 = [1, 2.5, 0.2 , 6]
 
@@ -268,6 +302,10 @@ ax.set_ylabel('y')
 
 plt.show()
 
+
+# In[9]:
+
+
 a0 = [1, 2.5, -1.3 , 2]
 
 xdata, ydata = np.loadtxt('data/nonlinear_sine.csv', delimiter = ',', unpack = True)
@@ -286,7 +324,11 @@ ax.set_ylabel('y')
 
 plt.show()
 
-Here is an example of a solution that has not succeded (returned an integer flag greater than 4):
+
+# Here is an example of a solution that has not succeded (returned an integer flag greater than 4):
+
+# In[10]:
+
 
 a0 = [1, 2.5, 0.2 , 1.17]
 
@@ -306,5 +348,11 @@ ax.set_ylabel('y')
 
 plt.show()
 
-If your model does not fit, try varying the initial guess for the fit parameters.
+
+# If your model does not fit, try varying the initial guess for the fit parameters.
+
+# In[ ]:
+
+
+
 

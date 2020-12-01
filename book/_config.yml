@@ -19,3 +19,14 @@ html:
  use_repository_button: true
  use_issues_button: true
 
+######################################################################################
+# Exclude
+exclude_patterns: [
+  content/standard-library/loops/for-examples.ipynb,
+  content/standard-library/loops/nested.ipynb,
+  content/standard-library/loops/while-examples.ipynb,
+
+  content/scientific-packages/numpy/special-functions.ipynb,
+
+  content/numerical-methods/regression/notation.md
+]

@@ -1,12 +1,22 @@
-# List Comprehension
+#!/usr/bin/env python
+# coding: utf-8
 
-There will be many times you will want to automate the creation of a list. You can use loops for this but can become impractical. A nice way to generate lists is using **list comprehension**:
+# # List Comprehension
+# 
+# There will be many times you will want to automate the creation of a list. You can use loops for this but can become impractical. A nice way to generate lists is using **list comprehension**:
+
+# In[1]:
+
 
 #Generating a list of integers in ascending order
 numbers = [i for i in range(6)]
 print(numbers)
 
-You can treat the `for` inside the list just like a `for` loop, including looping through collections:
+
+# You can treat the `for` inside the list just like a `for` loop, including looping through collections:
+
+# In[2]:
+
 
 string = 'abcdefg'
 
@@ -14,9 +24,19 @@ string = 'abcdefg'
 char_list = [char for char in string]
 print(char_list)
 
-Only use list comprehension if you are interested in the list itself. Do not use it in place of a `for` loop.
 
-You can also embed list comprehension: 
+# Only use list comprehension if you are interested in the list itself. Do not use it in place of a `for` loop.
+
+# You can also embed list comprehension: 
+
+# In[3]:
+
 
 print([[i + j for j in range(3)] for i in range(4) ])
+
+
+# In[ ]:
+
+
+
 
