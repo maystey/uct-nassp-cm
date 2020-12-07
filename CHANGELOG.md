@@ -8,6 +8,12 @@ the version number, `a.b.c`, follows the following scheme:
 - `b`. New chapter(s) added or drastically changed, the number increase is the number of chapters added/changed
 - `c`. New sections, corrections, etc. The number change is consecutive, not reflecting the number of changes.
 
+## [2.0.2] - 2020-12-07
+
+### Changed
+
+- Add scripts to generate pdf version of the book (WIP)
+
 ## [2.0.1] - 2020-12-01
 
 ### Changed

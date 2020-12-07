@@ -3,3 +3,6 @@ pandas
 matplotlib
 quantecon
 jupyter-book
+pyppeteer
+PyPDF2
+fpdf
