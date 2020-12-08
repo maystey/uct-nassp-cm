@@ -188,7 +188,7 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../if-statements/intro.html">
-   Control Flow: If Statements
+   If Statements
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -228,22 +228,22 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../loops/intro.html">
-   Control Flow: Loops
+   Loops
   </a>
   <ul class="collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../loops/while.html">
+     While Loops
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../loops/for.html">
      For Loops
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../loops/list-comp.html">
-     List Comprehension
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../loops/while.html">
-     While Loops
+    <a class="reference internal" href="../loops/nested.html">
+     Nested Loops
     </a>
    </li>
    <li class="toctree-l2">
@@ -659,6 +659,11 @@
    </code>
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-comprehension">
+   List Comprehension
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -862,6 +867,56 @@ Removing first 1 from numbers
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 4, 5]
 Retrieving number at index 2: 3
 [1, 2, 4, 5]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="list-comprehension">
+<h2>List Comprehension<a class="headerlink" href="#list-comprehension" title="Permalink to this headline">¶</a></h2>
+<p>If you are not familiar with for loops you may wish to read the page {doc}’Python Standard Library / Loops / For Loops &lt;content/standard-library/loops/for&gt;’ before returning to this section.</p>
+<p>There will be many times you will want to automate the creation of a list. You can use loops for this but can become impractical. A nice way to generate lists is using <strong>list comprehension</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generating a list of integers in ascending order</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5]
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can treat the <code class="docutils literal notranslate"><span class="pre">for</span></code> inside the list just like a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, including looping through collections:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;abcdefg&#39;</span>
+
+<span class="c1">#Generating a list of characters from a string</span>
+<span class="n">char_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">char</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">char_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Only use list comprehension if you are interested in the list itself. Do not use it in place of a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
+<p>You can also nest list comprehension:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0, 1, 2], [1, 2, 3], [2, 3, 4], [3, 4, 5]]
 </pre></div>
 </div>
 </div>

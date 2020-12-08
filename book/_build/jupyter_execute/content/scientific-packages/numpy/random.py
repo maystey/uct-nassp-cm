@@ -23,13 +23,13 @@ np.random.random()
 
 # If the length or shape is specified, `random()` returns an array of random numbers:
 
-# In[4]:
+# In[3]:
 
 
 np.random.random(5)
 
 
-# In[5]:
+# In[4]:
 
 
 np.random.random((2, 3))
@@ -42,7 +42,7 @@ np.random.random((2, 3))
 #     
 # For example, to generate uniform random numbers on the interval $[18, 30)$:
 
-# In[6]:
+# In[5]:
 
 
 np.random.random(4)*(30 -18) + 18
@@ -56,7 +56,7 @@ np.random.random(4)*(30 -18) + 18
 # 
 # The interval is defined by the first 2 arguments of `randint()`, the end of the interval (second number) is not included in the interval:
 
-# In[10]:
+# In[6]:
 
 
 #Random numbers from 1 up to 10
@@ -65,13 +65,13 @@ np.random.randint(1, 10)
 
 # Again, you can specify a size or shape of the output array:
 
-# In[11]:
+# In[7]:
 
 
 np.random.randint(1, 10, 3)
 
 
-# In[9]:
+# In[8]:
 
 
 np.random.randint(1, 10, (2, 4))

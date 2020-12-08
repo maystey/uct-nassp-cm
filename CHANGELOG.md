@@ -8,6 +8,16 @@ the version number, `a.b.c`, follows the following scheme:
 - `b`. New chapter(s) added or drastically changed, the number increase is the number of chapters added/changed
 - `c`. New sections, corrections, etc. The number change is consecutive, not reflecting the number of changes.
 
+## [UNRELEASED]
+
+### Changed
+
+- Moved `list-comprehension` page from `standard-library/loops` to `standard-library/data-structures/lists`.
+- Re-wrote chapter `standard-library/loops`.
+- Change `_toc` chapter titles:
+  - **Control Flow: If Statements** to **If Statements**
+  - **Control Flow: Loops** to **Loops**
+
 ## [2.0.2] - 2020-12-07
 
 ### Changed

@@ -3,23 +3,36 @@
 
 # # While Loops
 # 
-# For loops are useful if you know what you want to iterate over, but what if you wanted to keep looping until a certain condition is met? `while` loops are the tool for this job.
-# 
-# <!--- Give an example problem that isn't exactly solvable using a for loop -->
+# While loops are used to repeat a block of code **while** a given condition is true. If this condition is false (or becomes false), the code block will not be repeated. I will refer to individual loop repetitions as **"iterations"** (the first time the code in the loop is run is the **first iteration**, the next time is the **second iteration**, etc.).
 
 # The syntax for a `while` loop is:
-# ```
+# 
+# ```python
 # while condition:
-#     block of code to be repeated
+#     code block
 # ```
 # 
-# where `condition` is/evaluates to a boolean value. The loop will keep repeating, executing the block of code indented after the `:` as long as `condition` evaluates to `True`. When `condition` evaluates to `False` the loop will no longer be repeated and control will progress to the code after the loop. <!--- is control the correct term here? --> Note that if `condition` starts as `False`, the code inside the loop will never be executed.
+# Note the use of the `while` statement and the `:` following the condition. All the code indented after the `:` is inside the loop, represented by `code block` here. The `condition` used in the loop must either evaluate to or be a boolean value.
+# 
+# 
+# In each loop iteration `condition` is evaluated. If `condition` is found to be **true** then the loop will go through another iteration, executing `code block`, and checking for another iteration. If `condition` is found to be **false**, then control will leave the loop and it will not undergo another iteration.
+# 
+# Note that if `condition` starts as false, then `code block` will never be executed.
+# 
 # 
 # <!-- example -->
 
+# The while loop can be illustrated with the control flow diagram:
+# 
+# ```{figure} ./figures/while.png
+# :name: fig-while-control-flow
+# 
+# Control flow diagram of the while loop.
+# ```
+
 # ## Worked Example
 # 
-# Let's consider the following problem where we can make use of a `while` loop. Consider the recursive series: <!--- Introduce recursive series in For Loop Examples -->
+# Let's consider the following problem where we can make use of a `while` loop to solve the recursive series: <!--- Introduce recursive series in For Loop Examples -->
 # 
 # $$
 # \begin{eqnarray}
@@ -28,7 +41,7 @@
 # \end{eqnarray}
 # $$
 # 
-# We want to know when this series drops below 2 (what is the first value of $n$ for which $T_n < 2$). One solution is:
+# Let's say we want to know when this series drops below 2 (what is the first value of $n$ for which $T_n < 2$). One solution is:
 
 # In[1]:
 
@@ -49,7 +62,8 @@ print('T_n is less than 2 for n =', n)
 # ## Avoiding Infinite Recursion
 # 
 # Something to be careful of when using `while` loops is a loop that doesn't stop looping. If `condition` never evaluates to `False`, or if you never break out of the loop in another way, control will never leave the loop. Sometimes it is useful to use a maximum number of loop iterations to avoid this:
-# ```
+# 
+# ```python
 # counter = 0
 # 
 # while condition and counter < max_count:

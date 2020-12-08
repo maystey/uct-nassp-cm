@@ -13,7 +13,7 @@ import numpy as np
 # 
 # You can created 2D arrays from a nested sequence using the `np.array()` function:
 
-# In[3]:
+# In[2]:
 
 
 print(
@@ -26,7 +26,7 @@ np.array(
 
 # When you are doing this, make sure that your dimensions are correct, otherwise you will end up with an array of sequences:
 
-# In[4]:
+# In[3]:
 
 
 print(np.array([[1, 2, 3], [4, 5]]))
@@ -36,7 +36,7 @@ print(np.array([[1, 2, 3], [4, 5]]))
 
 # Now would be a good time to talk about the distinction between the `shape` and `size` attributes of an array.
 
-# In[5]:
+# In[4]:
 
 
 arr = np.array( 
@@ -47,7 +47,7 @@ arr = np.array(
 
 # The `size` of the array is a count of how many elements the array contains.
 
-# In[6]:
+# In[5]:
 
 
 arr.size
@@ -55,7 +55,7 @@ arr.size
 
 # The `shape` of an array is a tuple which tells you the length of each axis:
 
-# In[7]:
+# In[6]:
 
 
 arr.shape
@@ -67,13 +67,13 @@ arr.shape
 
 # You can also generate 2D arrays quickly by using the `np.ones()` and `np.zeros()` functions by specifying the shape the array instead of the size:
 
-# In[8]:
+# In[7]:
 
 
 np.ones( (3, 6) )
 
 
-# In[9]:
+# In[8]:
 
 
 np.zeros( (5, 2) )
@@ -90,7 +90,7 @@ np.zeros( (5, 2) )
 # 
 # Note the use of commas to separate each axis. For example, let's index the 2D array:
 
-# In[10]:
+# In[9]:
 
 
 arr = np.array(
@@ -100,13 +100,13 @@ arr = np.array(
 )
 
 
-# In[11]:
+# In[10]:
 
 
 arr[1, 2]
 
 
-# In[12]:
+# In[11]:
 
 
 arr[2, -1]
@@ -114,7 +114,7 @@ arr[2, -1]
 
 # You can slice multidimensional arrays by separating the slice along each axis by commas:
 
-# In[13]:
+# In[12]:
 
 
 arr[:, 1:3]
@@ -122,21 +122,21 @@ arr[:, 1:3]
 
 # You can extract individual rows and columns by slicing along one axis and indexing the other. For example:
 
-# In[14]:
+# In[13]:
 
 
 #Slicing the first row
 arr[0, :]
 
 
-# In[18]:
+# In[14]:
 
 
 #Slicing the third column
 arr[:, 2]
 
 
-# In[19]:
+# In[15]:
 
 
 #Slicing the last column
@@ -147,7 +147,7 @@ arr[:, -1]
 
 # You can use the `.T` attribute of an array (or matrix) to get the transpose (swap the rows and columns):
 
-# In[20]:
+# In[16]:
 
 
 arr.T
@@ -159,7 +159,7 @@ arr.T
 # 
 # You can create a matrix by using the `np.matrix()` function with a sequence argument:
 
-# In[21]:
+# In[17]:
 
 
 np.matrix(
@@ -171,7 +171,7 @@ np.matrix(
 
 # To generate large, structured matrices, you can use some of the array generating functions:
 
-# In[22]:
+# In[18]:
 
 
 np.matrix(np.ones( (2, 3) ))
@@ -185,7 +185,7 @@ np.matrix(np.ones( (2, 3) ))
 
 # Consider the 2 by 3 matrix `mat1` and the 3 by 2 matrix `mat2`.
 
-# In[23]:
+# In[19]:
 
 
 mat1 = np.matrix(np.ones( (2, 3) ))
@@ -196,13 +196,13 @@ mat2 = np.matrix([[1, 2],
 
 # **Addition**, **subtraction** and **division** between matrices are the same as for arrays (vectorized):
 
-# In[24]:
+# In[20]:
 
 
 mat1.T + mat2
 
 
-# In[25]:
+# In[21]:
 
 
 mat1.T/mat2
@@ -212,13 +212,13 @@ mat1.T/mat2
 # 
 # **Multiplication** is matrix multiplication:
 
-# In[26]:
+# In[22]:
 
 
 mat1*mat2
 
 
-# In[27]:
+# In[23]:
 
 
 mat2*mat1
@@ -228,7 +228,7 @@ mat2*mat1
 
 # You can use the `.I` attribute to get the multiplicative inverse of a matrix.
 
-# In[28]:
+# In[24]:
 
 
 mat = np.matrix(
@@ -238,19 +238,19 @@ mat = np.matrix(
 )
 
 
-# In[29]:
+# In[25]:
 
 
 mat.I
 
 
-# In[30]:
+# In[26]:
 
 
 mat*mat.I
 
 
-# In[31]:
+# In[27]:
 
 
 mat.I*mat

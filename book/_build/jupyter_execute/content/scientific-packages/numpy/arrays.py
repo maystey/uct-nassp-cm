@@ -21,14 +21,14 @@ import numpy as np
 # 
 # Arrays can be created using the `np.array()` function with a list, tuple or another array as the argument:
 
-# In[3]:
+# In[2]:
 
 
 #Array of integers
 np.array([1, 2, 3, 4])
 
 
-# In[4]:
+# In[3]:
 
 
 #Array pf strings
@@ -37,7 +37,7 @@ np.array(('a', 'b', 'c'))
 
 # Remember that arrays are homogeneous:
 
-# In[7]:
+# In[4]:
 
 
 #Trying to create an array with different types
@@ -48,7 +48,7 @@ np.array([1, 2.3, 'x'])
 
 # As said before, arrays can be indexed and sliced similarly to lists and strings
 
-# In[15]:
+# In[5]:
 
 
 letters = np.array(['a', 'b', 'c', 'd', 'e'])
@@ -63,7 +63,7 @@ print('Every second character:', letters[::2])
 # 
 # Similarly to lists, arrays are mutable (you can change the array after initializing it). For example, you can change an element of an array:
 
-# In[9]:
+# In[6]:
 
 
 arr = np.array((1, 2, 3 ,4))
@@ -85,7 +85,7 @@ print('Array:', arr)
 
 # Like strings, tuples and lists, arrays are iterable:
 
-# In[16]:
+# In[7]:
 
 
 arr = np.array([1, 2, 3, 4])
@@ -100,13 +100,13 @@ for a in arr:
 # 
 # For example consider the scalar operations:
 
-# In[10]:
+# In[8]:
 
 
 2*np.array([1, 2, 3, 4])
 
 
-# In[12]:
+# In[9]:
 
 
 np.array([1, 4, 5]) + 1
@@ -114,7 +114,7 @@ np.array([1, 4, 5]) + 1
 
 # Array on array operations are also performed element by element:
 
-# In[13]:
+# In[10]:
 
 
 arr1 = np.array([1, 2, 3, 4])
@@ -126,14 +126,14 @@ print(arr2, '/', arr1, 'is', arr2/arr1)
 
 # These vectorized operations are far more efficient than iterating through the arrays and operating on each element individually, i.e.
 
-# In[14]:
+# In[11]:
 
 
 #More efficient:
 print(arr1, '+', arr2, 'is', arr1 + arr2)
 
 
-# In[16]:
+# In[12]:
 
 
 #Less efficient
@@ -159,21 +159,21 @@ print(arr1, '+', arr2, 'is', arr3)
 # ```
 # Similar to the `range()` function, you can use 1, 2 or 3 arguments:
 
-# In[19]:
+# In[13]:
 
 
 #1 argument: stop
 np.arange(5)
 
 
-# In[21]:
+# In[14]:
 
 
 #2 arguments: start, stop
 np.arange(1, 5)
 
 
-# In[22]:
+# In[15]:
 
 
 #3 arguments: start, stop, step
@@ -182,7 +182,7 @@ np.arange(1, 10 ,2)
 
 # Unlike the `range()` function. `np.arange()` also allows for floating point values:
 
-# In[24]:
+# In[16]:
 
 
 np.arange(2.3, 3, 0.1)
@@ -200,7 +200,7 @@ np.arange(2.3, 3, 0.1)
 # ```
 # If `number` is not specified an array of length 50 is created. 
 
-# In[7]:
+# In[17]:
 
 
 np.linspace(0, 1, 10)
@@ -215,7 +215,7 @@ np.linspace(0, 1, 10)
 # 
 # For a one dimensional array `shape` is just the size of the array:
 
-# In[11]:
+# In[18]:
 
 
 np.zeros(5)
@@ -227,7 +227,7 @@ np.zeros(5)
 
 # `np.ones()` is similar to `np.zeros()`, except it generates a uniform array of ones.
 
-# In[13]:
+# In[19]:
 
 
 np.ones(7)

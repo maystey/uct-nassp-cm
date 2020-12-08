@@ -27,6 +27,7 @@
     - file: content/standard-library/data-structures/dictionaries
 
   - file: content/standard-library/if-statements/intro
+    title: If Statements
     sections:
     - file: content/standard-library/if-statements/bools
     - file: content/standard-library/if-statements/comparison-operators
@@ -35,10 +36,11 @@
     - file: content/standard-library/if-statements/if
 
   - file: content/standard-library/loops/intro
+    title: Loops
     sections:
-    - file: content/standard-library/loops/for
-    - file: content/standard-library/loops/list-comp
     - file: content/standard-library/loops/while
+    - file: content/standard-library/loops/for
+    - file: content/standard-library/loops/nested
     - file: content/standard-library/loops/break
     - file: content/standard-library/loops/else
 

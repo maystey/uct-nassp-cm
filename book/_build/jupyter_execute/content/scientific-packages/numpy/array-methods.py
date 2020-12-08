@@ -31,7 +31,7 @@ heights = np.array(
 
 # To get the number of elements in an array, we can use the `size` attribute:
 
-# In[12]:
+# In[3]:
 
 
 print('The size of the heights array:', heights.size)
@@ -43,7 +43,7 @@ print('The size of the heights array:', heights.size)
 # 
 # You can use the `min()` and `max()` methods to get the minimum and maximum values of an array respectively.
 
-# In[13]:
+# In[4]:
 
 
 print('Minimum height:', heights.min())
@@ -56,14 +56,14 @@ print('Maximum height', heights.max())
 
 # NumPy provides us with some basic statistical functions out of the box. For example the `mean()` (arithmetic mean or average) and `std()` (standard deviation).
 
-# In[9]:
+# In[5]:
 
 
 print('Average height: ', heights.mean())
 print('Standard deviation of heights: ', heights.std())
 
 
-# In[8]:
+# In[6]:
 
 
 print('Average height:', np.mean(heights))

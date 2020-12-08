@@ -58,7 +58,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Else Statement and Loops" href="else.html" />
-    <link rel="prev" title="While Loops" href="while.html" />
+    <link rel="prev" title="Nested Loops" href="nested.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -188,7 +188,7 @@
  </li>
  <li class="toctree-l1 collapsible-parent">
   <a class="reference internal" href="../if-statements/intro.html">
-   Control Flow: If Statements
+   If Statements
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
@@ -228,22 +228,22 @@
  </li>
  <li class="toctree-l1 current active collapsible-parent">
   <a class="reference internal" href="intro.html">
-   Control Flow: Loops
+   Loops
   </a>
   <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="while.html">
+     While Loops
+    </a>
+   </li>
    <li class="toctree-l2">
     <a class="reference internal" href="for.html">
      For Loops
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="list-comp.html">
-     List Comprehension
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="while.html">
-     While Loops
+    <a class="reference internal" href="nested.html">
+     Nested Loops
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -652,7 +652,39 @@
 <p>Sometimes you want to exit a loop before it’s finished, or skip the remainder of a loop and move to the next iteration. To do this you can use the <code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code> statements respectively.</p>
 <div class="section" id="break">
 <h2><code class="docutils literal notranslate"><span class="pre">break</span></code><a class="headerlink" href="#break" title="Permalink to this headline">¶</a></h2>
-<p>As a first example, consider:</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">break</span></code> statement causes control to exit the loop it is situated in. For example, if we were to put a break directly in the loop’s code block:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can see that only the first loop iteration completed.</p>
+<p>Let’s illustrate this with a pseudo code example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">condition1</span><span class="p">:</span>
+    <span class="n">code_block_1</span>
+    
+    <span class="k">if</span> <span class="n">condition2</span><span class="p">:</span>
+        <span class="k">break</span>
+    
+    <span class="n">code_block_2</span>
+</pre></div>
+</div>
+<p>In the example above <code class="docutils literal notranslate"><span class="pre">condition2</span></code> is evaluated as <strong>true</strong> in a loop iteration, then control will exit the loop before executing <code class="docutils literal notranslate"><span class="pre">code_block_2</span></code> for that iteration.</p>
+<p>Illustrating this using a control flow diagram:</p>
+<div class="figure align-default" id="fig-while-control-flow-break">
+<img alt="../../../_images/while_break.png" src="../../../_images/while_break.png" />
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Control flow diagram of the break example above.</span><a class="headerlink" href="#fig-while-control-flow-break" title="Permalink to this image">¶</a></p>
+</div>
+<p>Let’s consider a similar script that loops through a sequence of numbers and stops when it reaches <code class="docutils literal notranslate"><span class="pre">5</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
@@ -660,21 +692,29 @@
     
     <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
         <span class="k">break</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;next iteration&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+next iteration
 1
+next iteration
 2
+next iteration
 3
+next iteration
 4
+next iteration
 5
 </pre></div>
 </div>
 </div>
 </div>
-<p>where you can see that the loop terminated before it was finished iterating through <code class="docutils literal notranslate"><span class="pre">range(10)</span></code>. The <code class="docutils literal notranslate"><span class="pre">break</span></code> may be inside the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, but it’s the loop that it affects.</p>
+<p>As you can see in the example above the loop terminated before it finished iterating through <code class="docutils literal notranslate"><span class="pre">range(10)</span></code>. When <code class="docutils literal notranslate"><span class="pre">i</span></code> had a value of <code class="docutils literal notranslate"><span class="pre">5</span></code> the <code class="docutils literal notranslate"><span class="pre">break</span></code> statement was called, exiting from the loop.</p>
+<p>Note that it doesn’t matter that the <code class="docutils literal notranslate"><span class="pre">break</span></code> is nested in an if statement, it will always make control exit the nearest loop that it is nested in.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">break</span></code> statement exits the first loop that it’s nested in. For example, if we had multiple nested loops:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -720,6 +760,23 @@ for i in range(3):
 <div class="section" id="continue">
 <h2><code class="docutils literal notranslate"><span class="pre">continue</span></code><a class="headerlink" href="#continue" title="Permalink to this headline">¶</a></h2>
 <p>If you want to end the current loop iteration, but you don’t want to break out of the loop, you can use the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement.</p>
+<p>Consider the pseudo code example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">condition1</span><span class="p">:</span>
+    <span class="n">code_block_1</span>
+    
+    <span class="k">if</span> <span class="n">condition2</span><span class="p">:</span>
+        <span class="k">continue</span>
+       
+    <span class="n">code_block_2</span>
+</pre></div>
+</div>
+<p>Here if <code class="docutils literal notranslate"><span class="pre">condition2</span></code> is found to be <strong>true</strong> in a loop iteration, the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement will cause control to move directly to the next loop iteration, skipping <code class="docutils literal notranslate"><span class="pre">code_block_2</span></code> for that iteration.</p>
+<p>Illustrating this example in a control flow diagram:</p>
+<div class="figure align-default" id="fig-while-control-flow-continue">
+<img alt="../../../_images/while_continue.png" src="../../../_images/while_continue.png" />
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Control flow diagram of the continue example above.</span><a class="headerlink" href="#fig-while-control-flow-continue" title="Permalink to this image">¶</a></p>
+</div>
+<p>Let’s look at real code example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
@@ -743,7 +800,7 @@ for i in range(3):
 </div>
 </div>
 </div>
-<p>As you can see in the example above, <code class="docutils literal notranslate"><span class="pre">5</span></code> is not printed.</p>
+<p>As you can see in the example above, <code class="docutils literal notranslate"><span class="pre">5</span></code> is not printed as the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement has caused control to ‘skip’ the print statement.</p>
 </div>
 </div>
 
@@ -775,7 +832,7 @@ for i in range(3):
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="while.html" title="previous page">While Loops</a>
+    <a class='left-prev' id="prev-link" href="nested.html" title="previous page">Nested Loops</a>
     <a class='right-next' id="next-link" href="else.html" title="next page">Else Statement and Loops</a>
 
     </div>

@@ -7,9 +7,43 @@
 
 # ## `break`
 # 
-#  As a first example, consider:
+# The `break` statement causes control to exit the loop it is situated in. For example, if we were to put a break directly in the loop's code block:
 
 # In[1]:
+
+
+for i in range(5):
+    print(i)
+    break
+
+
+# You can see that only the first loop iteration completed.
+# 
+# Let's illustrate this with a pseudo code example:
+# 
+# ```python
+# while condition1:
+#     code_block_1
+#     
+#     if condition2:
+#         break
+#     
+#     code_block_2
+# ```
+# 
+# In the example above `condition2` is evaluated as **true** in a loop iteration, then control will exit the loop before executing `code_block_2` for that iteration.
+# 
+# Illustrating this using a control flow diagram:
+# 
+# ```{figure} ./figures/while_break.png
+# :name: fig-while-control-flow-break
+# 
+# Control flow diagram of the break example above.
+# ```
+
+# Let's consider a similar script that loops through a sequence of numbers and stops when it reaches `5`:
+
+# In[2]:
 
 
 for i in range(10):
@@ -17,13 +51,17 @@ for i in range(10):
     
     if i == 5:
         break
+    
+    print('next iteration')
 
 
-# where you can see that the loop terminated before it was finished iterating through `range(10)`. The `break` may be inside the `if` statement, but it's the loop that it affects.  
+# As you can see in the example above the loop terminated before it finished iterating through `range(10)`. When `i` had a value of `5` the `break` statement was called, exiting from the loop.
 # 
+# Note that it doesn't matter that the `break` is nested in an if statement, it will always make control exit the nearest loop that it is nested in.
+
 # The `break` statement exits the first loop that it's nested in. For example, if we had multiple nested loops:
 
-# In[2]:
+# In[5]:
 
 
 for i in range(3):
@@ -58,7 +96,31 @@ for i in range(3):
 # 
 # If you want to end the current loop iteration, but you don't want to break out of the loop, you can use the `continue` statement.
 
-# In[3]:
+# Consider the pseudo code example:
+# 
+# ```python
+# while condition1:
+#     code_block_1
+#     
+#     if condition2:
+#         continue
+#        
+#     code_block_2
+# ```
+# 
+# Here if `condition2` is found to be **true** in a loop iteration, the `continue` statement will cause control to move directly to the next loop iteration, skipping `code_block_2` for that iteration.
+# 
+# Illustrating this example in a control flow diagram:
+# 
+# ```{figure} ./figures/while_continue.png
+# :name: fig-while-control-flow-continue
+# 
+# Control flow diagram of the continue example above.
+# ```
+
+# Let's look at real code example:
+
+# In[9]:
 
 
 for i in range(10):
@@ -67,10 +129,4 @@ for i in range(10):
     print(i)
 
 
-# As you can see in the example above, `5` is not printed.
-
-# In[ ]:
-
-
-
-
+# As you can see in the example above, `5` is not printed as the `continue` statement has caused control to 'skip' the print statement.
