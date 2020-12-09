@@ -12,11 +12,13 @@ the version number, `a.b.c`, follows the following scheme:
 
 ### Changed
 
+- Added chapter `numerical-methods/root-finding`
 - Moved `list-comprehension` page from `standard-library/loops` to `standard-library/data-structures/lists`.
 - Re-wrote chapter `standard-library/loops`.
 - Change `_toc` chapter titles:
   - **Control Flow: If Statements** to **If Statements**
   - **Control Flow: Loops** to **Loops**
+- Add custom css for formatting tables: `table.css`
 
 ## [2.0.2] - 2020-12-07
 

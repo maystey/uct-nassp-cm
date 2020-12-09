@@ -24,9 +24,9 @@ html:
 exclude_patterns: [
   pdf_book
 
-  content/standard-library/loops/nested.ipynb,
-
   content/scientific-packages/numpy/special-functions.ipynb,
+
+  content/numerical-methods/root-finding/utils.py,
 
   content/numerical-methods/regression/notation.md
 ]

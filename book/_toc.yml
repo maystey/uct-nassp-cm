@@ -90,6 +90,14 @@
     - file: content/numerical-methods/benchmarking/uncertainty
 
 
+  - file: content/numerical-methods/root-finding/intro
+    sections:
+    - file: content/numerical-methods/root-finding/bisection
+    - file: content/numerical-methods/root-finding/secant
+    - file: content/numerical-methods/root-finding/newton
+    - file: content/numerical-methods/root-finding/comparison
+
+
   - file: content/numerical-methods/regression/intro
     sections:
     - file: content/numerical-methods/regression/least-squares

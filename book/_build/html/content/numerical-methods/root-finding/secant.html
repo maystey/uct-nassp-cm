@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>List Comprehension &#8212; AST4007W Computational Methods</title>
+    <title>Secant Method &#8212; AST4007W Computational Methods</title>
     
   <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -31,6 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/table.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -57,8 +58,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="While Loops" href="while.html" />
-    <link rel="prev" title="For Loops" href="for.html" />
+    <link rel="next" title="Newton-Raphson Method" href="newton.html" />
+    <link rel="prev" title="Bisection Method" href="bisection.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -112,49 +113,49 @@
   The Python Standard Library
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../basics/intro.html">
+  <a class="reference internal" href="../../standard-library/basics/intro.html">
    Python Basics
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/variables.html">
+    <a class="reference internal" href="../../standard-library/basics/variables.html">
      Variables
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/comments.html">
+    <a class="reference internal" href="../../standard-library/basics/comments.html">
      Comments
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/types.html">
+    <a class="reference internal" href="../../standard-library/basics/types.html">
      Type Conversion
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/operators.html">
+    <a class="reference internal" href="../../standard-library/basics/operators.html">
      Numerical Operators
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/assignment-operators.html">
+    <a class="reference internal" href="../../standard-library/basics/assignment-operators.html">
      Compound Assignment Operators
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/functions.html">
+    <a class="reference internal" href="../../standard-library/basics/functions.html">
      Introduction to Using Functions
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/strings.html">
+    <a class="reference internal" href="../../standard-library/basics/strings.html">
      Strings
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../basics/string-formatting.html">
+    <a class="reference internal" href="../../standard-library/basics/string-formatting.html">
      String Formatting
     </a>
    </li>
@@ -163,22 +164,22 @@
   </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../data-structures/intro.html">
+  <a class="reference internal" href="../../standard-library/data-structures/intro.html">
    Data Structures
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../data-structures/tuple.html">
+    <a class="reference internal" href="../../standard-library/data-structures/tuple.html">
      Tuple
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../data-structures/lists.html">
+    <a class="reference internal" href="../../standard-library/data-structures/lists.html">
      Lists
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../data-structures/dictionaries.html">
+    <a class="reference internal" href="../../standard-library/data-structures/dictionaries.html">
      Dictionaries
     </a>
    </li>
@@ -187,12 +188,12 @@
   </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../if-statements/intro.html">
-   Control Flow: If Statements
+  <a class="reference internal" href="../../standard-library/if-statements/intro.html">
+   If Statements
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../if-statements/bools.html">
+    <a class="reference internal" href="../../standard-library/if-statements/bools.html">
      Booleans (
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -203,22 +204,22 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../if-statements/comparison-operators.html">
+    <a class="reference internal" href="../../standard-library/if-statements/comparison-operators.html">
      Comparison Operators
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../if-statements/logical-operators.html">
+    <a class="reference internal" href="../../standard-library/if-statements/logical-operators.html">
      Logical Operators
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../if-statements/inclusion-operators.html">
+    <a class="reference internal" href="../../standard-library/if-statements/inclusion-operators.html">
      Inclusion Operators
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../if-statements/if.html">
+    <a class="reference internal" href="../../standard-library/if-statements/if.html">
      If Statement
     </a>
    </li>
@@ -226,33 +227,33 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="reference internal" href="intro.html">
-   Control Flow: Loops
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../../standard-library/loops/intro.html">
+   Loops
   </a>
-  <ul class="current collapse-ul">
+  <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="for.html">
-     For Loops
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     List Comprehension
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="while.html">
+    <a class="reference internal" href="../../standard-library/loops/while.html">
      While Loops
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="break.html">
+    <a class="reference internal" href="../../standard-library/loops/for.html">
+     For Loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/loops/nested.html">
+     Nested Loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/loops/break.html">
      Breaking Out of Loops
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="else.html">
+    <a class="reference internal" href="../../standard-library/loops/else.html">
      Else Statement and Loops
     </a>
    </li>
@@ -261,12 +262,12 @@
   </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../functions/intro.html">
+  <a class="reference internal" href="../../standard-library/functions/intro.html">
    Defining Functions
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../functions/return.html">
+    <a class="reference internal" href="../../standard-library/functions/return.html">
      <code class="docutils literal notranslate">
       <span class="pre">
        return
@@ -276,17 +277,17 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../functions/arguments.html">
+    <a class="reference internal" href="../../standard-library/functions/arguments.html">
      Function Arguments
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../functions/local-variables.html">
+    <a class="reference internal" href="../../standard-library/functions/local-variables.html">
      Local Variables
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../functions/recursive.html">
+    <a class="reference internal" href="../../standard-library/functions/recursive.html">
      Recursive Functions
     </a>
    </li>
@@ -295,17 +296,17 @@
   </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../file-io/intro.html">
+  <a class="reference internal" href="../../standard-library/file-io/intro.html">
    File I/O
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../file-io/file-io.html">
+    <a class="reference internal" href="../../standard-library/file-io/file-io.html">
      File I/O
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../file-io/data.html">
+    <a class="reference internal" href="../../standard-library/file-io/data.html">
      Structured Data Files
     </a>
    </li>
@@ -403,14 +404,14 @@
   Numerical Methods
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="current nav sidenav_l1">
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/benchmarking/intro.html">
+  <a class="reference internal" href="../benchmarking/intro.html">
    Benchmarking
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/benchmarking/time.html">
+    <a class="reference internal" href="../benchmarking/time.html">
      Timing With
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -420,7 +421,7 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/benchmarking/uncertainty.html">
+    <a class="reference internal" href="../benchmarking/uncertainty.html">
      Measurement and Uncertainty
     </a>
    </li>
@@ -428,28 +429,57 @@
   <i class="fas fa-chevron-down">
   </i>
  </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="reference internal" href="intro.html">
+   Numerical Root Finding
+  </a>
+  <ul class="current collapse-ul">
+   <li class="toctree-l2">
+    <a class="reference internal" href="bisection.html">
+     Bisection Method
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Secant Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton.html">
+     Newton-Raphson Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="comparison.html">
+     Comparing the Methods
+    </a>
+   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/regression/intro.html">
+  <a class="reference internal" href="../regression/intro.html">
    Linear Regression Algorithms
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/regression/least-squares.html">
+    <a class="reference internal" href="../regression/least-squares.html">
      Linear Least Squares Minimization
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/regression/chi-squared.html">
+    <a class="reference internal" href="../regression/chi-squared.html">
      Chi Squared Minimization
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/regression/multivariate-least-squares.html">
+    <a class="reference internal" href="../regression/multivariate-least-squares.html">
      Multivariate Linear Least Squares Minimization
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/regression/scipy.html">
+    <a class="reference internal" href="../regression/scipy.html">
      Least Squares Minimization with
      <code class="docutils literal notranslate">
       <span class="pre">
@@ -463,27 +493,27 @@
   </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/ode/intro.html">
+  <a class="reference internal" href="../ode/intro.html">
    Numerical Solutions to Ordinary Differential Equations
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/ode/euler.html">
+    <a class="reference internal" href="../ode/euler.html">
      Euler’s Method
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/ode/euler-error.html">
+    <a class="reference internal" href="../ode/euler-error.html">
      Euler’s Method: Truncation Error
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/ode/higher-order.html">
+    <a class="reference internal" href="../ode/higher-order.html">
      Solving Higher Order ODEs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/ode/runge-kutta.html">
+    <a class="reference internal" href="../ode/runge-kutta.html">
      Runge-Kutta Methods
     </a>
    </li>
@@ -492,22 +522,22 @@
   </i>
  </li>
  <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/integration/intro.html">
+  <a class="reference internal" href="../integration/intro.html">
    Numerical Integration Techniques
   </a>
   <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/integration/midpoint.html">
+    <a class="reference internal" href="../integration/midpoint.html">
      Midpoint Rule
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/integration/trapezoidal.html">
+    <a class="reference internal" href="../integration/trapezoidal.html">
      Trapezoidal Rule
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/integration/simpson.html">
+    <a class="reference internal" href="../integration/simpson.html">
      Simpson’s Rule
     </a>
    </li>
@@ -555,7 +585,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/content/standard-library/loops/list-comp.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/content/numerical-methods/root-finding/secant.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -575,7 +605,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/standard-library/loops/list-comp.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/numerical-methods/root-finding/secant.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -596,7 +626,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/maystey/uct-nassp-cm-2021/master?urlpath=tree/book/content/standard-library/loops/list-comp.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/maystey/uct-nassp-cm-2021/master?urlpath=tree/book/content/numerical-methods/root-finding/secant.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../../_static/images/logo_binder.svg"
@@ -613,6 +643,25 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#precision">
+   Precision
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#instability">
+   Instability
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -620,53 +669,47 @@
         
               <div>
                 
-  <div class="section" id="list-comprehension">
-<h1>List Comprehension<a class="headerlink" href="#list-comprehension" title="Permalink to this headline">¶</a></h1>
-<p>There will be many times you will want to automate the creation of a list. You can use loops for this but can become impractical. A nice way to generate lists is using <strong>list comprehension</strong>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generating a list of integers in ascending order</span>
-<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+  <div class="section" id="secant-method">
+<h1>Secant Method<a class="headerlink" href="#secant-method" title="Permalink to this headline">¶</a></h1>
+<p>In the secant method we construct a line running between two points on the curve <span class="math notranslate nohighlight">\((x_0, f(x_0))\)</span> and <span class="math notranslate nohighlight">\((x_1, f(x_1))\)</span>, and find where it intersects with the <span class="math notranslate nohighlight">\(x\)</span>-axis: <span class="math notranslate nohighlight">\(x_2\)</span>:</p>
+<div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5]
-</pre></div>
+<img alt="../../../_images/secant_4_0.png" src="../../../_images/secant_4_0.png" />
 </div>
 </div>
-</div>
-<p>You can treat the <code class="docutils literal notranslate"><span class="pre">for</span></code> inside the list just like a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, including looping through collections:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;abcdefg&#39;</span>
-
-<span class="c1">#Generating a list of characters from a string</span>
-<span class="n">char_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">char</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">char_list</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
+<p>It is assumed that the new point is closer to the root. The justification behind this is beyond the scope of this course.</p>
+<p>Note that the starting values <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_1\)</span> can bracket the root, though they need not. You should choose points that are close to the root you desire to find, especially if the function has multiple roots.</p>
+<p>We can continue in this fashion, constructing a line between <span class="math notranslate nohighlight">\((x_1, f(x_1))\)</span> and <span class="math notranslate nohighlight">\((x_2, f(x_2))\)</span>, and finding the point where this line intersects with the <span class="math notranslate nohighlight">\(x\)</span>-axis, <span class="math notranslate nohighlight">\(x_3\)</span>. We can continue using the last two points to find the new one, all the while getting closer to the root with each point, as illustrated with the following figures:</p>
+<div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;]
-</pre></div>
+<img alt="../../../_images/secant_6_0.png" src="../../../_images/secant_6_0.png" />
+<img alt="../../../_images/secant_6_1.png" src="../../../_images/secant_6_1.png" />
+<img alt="../../../_images/secant_6_2.png" src="../../../_images/secant_6_2.png" />
 </div>
 </div>
+<p>To calculate the intersection <span class="math notranslate nohighlight">\(x_n\)</span> for the line constructed from the previous two points <span class="math notranslate nohighlight">\((x_{n-2}, f(x_{n-2}))\)</span> and <span class="math notranslate nohighlight">\((x_{n-2}, f(x_{n-2}))\)</span> we find the equation of the line:</p>
+<div class="math notranslate nohighlight">
+\[
+y = \frac{f(x_{n-1}) - f(x_{n-2})}{x_{n-1} - x_{n-2}}(x - x_{n-1}) + f(x_{n-1})
+\]</div>
+<p>At the <span class="math notranslate nohighlight">\(x\)</span>-intercept <span class="math notranslate nohighlight">\(y=0\)</span> and <span class="math notranslate nohighlight">\(x = x_n\)</span>:</p>
+<p>\begin{align*}
+0 &amp;= \frac{f(x_{n-1}) - f(x_{n-2})}{x_{n-1} - x_{n-2}}(x_n - x_{n-1}) + f(x_{n-1})\
+\therefore x_n &amp;= x_{n-1} - f(x_{n-1}) \frac{x_{n-1} - x_{n-2}}{f(x_{n-1}) - f(x_{n-2})}
+\end{align*}</p>
+<div class="section" id="precision">
+<h2>Precision<a class="headerlink" href="#precision" title="Permalink to this headline">¶</a></h2>
+<p>In general the secant method converges far faster than the bisection method, however it is not possible to predict how many iterations are required to achieve a given precision. The precision of the solution can be determined by measuring the convergence of you solution. For a given tolerance, you have reached your required precision when:</p>
+<div class="math notranslate nohighlight">
+\[
+|x_n - x_{n-1}| &lt; \text{tolerance}
+\]</div>
+<p>Practically you can use a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to achieve this.</p>
 </div>
-<p>Only use list comprehension if you are interested in the list itself. Do not use it in place of a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
-<p>You can also embed list comprehension:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0, 1, 2], [1, 2, 3], [2, 3, 4], [3, 4, 5]]
-</pre></div>
-</div>
-</div>
+<div class="section" id="instability">
+<h2>Instability<a class="headerlink" href="#instability" title="Permalink to this headline">¶</a></h2>
+<p>Unlike the bisection method, the secant method isn’t always guaranteed to converge, depending on the characteristics of <span class="math notranslate nohighlight">\(f(x)\)</span>. For example, if there is a stationary point, or if the gradient of <span class="math notranslate nohighlight">\(f(x)\)</span> approaches 0 the constructed line can become nearly horizontal, causing the next value of <span class="math notranslate nohighlight">\(x_n\)</span> to diverge.</p>
+<p>It is also possible for the solution to converge to a different root if they are in close proximity.</p>
 </div>
 </div>
 
@@ -682,13 +725,13 @@
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
-            path: "./content/standard-library/loops"
+            kernelName: "python37364bitbaseconda97808f46a65a4f1e9dfdbcff18a07fbf",
+            path: "./content/numerical-methods/root-finding"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'python37364bitbaseconda97808f46a65a4f1e9dfdbcff18a07fbf'</script>
 
               </div>
               
@@ -698,8 +741,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="for.html" title="previous page">For Loops</a>
-    <a class='right-next' id="next-link" href="while.html" title="next page">While Loops</a>
+    <a class='left-prev' id="prev-link" href="bisection.html" title="previous page">Bisection Method</a>
+    <a class='right-next' id="next-link" href="newton.html" title="next page">Newton-Raphson Method</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
