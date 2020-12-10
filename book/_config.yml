@@ -20,6 +20,11 @@ html:
  use_issues_button: true
 
 ######################################################################################
+# MyST Markdown settings:
+parse:
+  myst_url_schemes: [mailto, http, https]
+
+######################################################################################
 # Exclude
 exclude_patterns: [
   pdf_book

@@ -59,7 +59,7 @@
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="String Formatting" href="string-formatting.html" />
-    <link rel="prev" title="Introduction to Using Functions" href="functions.html" />
+    <link rel="prev" title="Introduction to Using Functions" href="../basics/functions.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -114,46 +114,50 @@
  </span>
 </p>
 <ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="reference internal" href="intro.html">
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../basics/intro.html">
    Python Basics
   </a>
-  <ul class="current collapse-ul">
+  <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="variables.html">
+    <a class="reference internal" href="../basics/variables.html">
      Variables
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="comments.html">
+    <a class="reference internal" href="../basics/comments.html">
      Comments
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="types.html">
+    <a class="reference internal" href="../basics/types.html">
      Type Conversion
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="operators.html">
+    <a class="reference internal" href="../basics/operators.html">
      Numerical Operators
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="assignment-operators.html">
+    <a class="reference internal" href="../basics/assignment-operators.html">
      Compound Assignment Operators
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="functions.html">
+    <a class="reference internal" href="../basics/functions.html">
      Introduction to Using Functions
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Strings
-    </a>
-   </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 current active collapsible-parent">
+  <a class="current reference internal" href="#">
+   Strings
+  </a>
+  <ul class="collapse-ul">
    <li class="toctree-l2">
     <a class="reference internal" href="string-formatting.html">
      String Formatting
@@ -585,7 +589,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/content/standard-library/basics/strings.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/content/standard-library/strings/strings.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -605,7 +609,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/standard-library/basics/strings.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/standard-library/strings/strings.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -626,7 +630,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/maystey/uct-nassp-cm-2021/master?urlpath=tree/book/content/standard-library/basics/strings.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/maystey/uct-nassp-cm-2021/master?urlpath=tree/book/content/standard-library/strings/strings.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../../_static/images/logo_binder.svg"
@@ -648,6 +652,11 @@
         </div>
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#string-literals">
+   String Literals
+  </a>
+ </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#concatenation">
    Concatenation
@@ -683,6 +692,11 @@
    Slicing
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -696,7 +710,101 @@
                 
   <div class="section" id="strings">
 <h1>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h1>
-<p>In this section we shall take a closer look at the string type and some of the operations associated with them. The following section makes heavy reference to online notes by Dr. Andrew N. Harrington, <a class="reference external" href="http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml/index.html">Hands-on Python 3 Tutorial</a> released under the <a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> license.</p>
+<p>In this chapter we shall take a closer look at the string data type and some of the operations associated with it. The following page makes heavy reference to online notes by Dr. Andrew N. Harrington, <a class="reference external" href="http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml/index.html">Hands-on Python 3 Tutorial</a> <a class="bibtex reference internal" href="#sl-s-s-harrington-python3-tut" id="id1">[S1]</a>.</p>
+<div class="section" id="string-literals">
+<h2>String Literals<a class="headerlink" href="#string-literals" title="Permalink to this headline">¶</a></h2>
+<p>A string literal simply refers to how you specify that the data you are writing is a string. In Python this is achieved by placing quotes around the string contents. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">str_single</span> <span class="o">=</span> <span class="s1">&#39;This is a string&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You are not limited to single quotes. For single line strings you can use double quotes as well:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">str_double</span> <span class="o">=</span> <span class="s2">&quot;This is a string&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that these two strings are identical. <!-- Haven't introduced == or booleans yet --></p>
+<p>In most cases you are free to decide which quotes you want to use. The standard for Python is to use single quotes where possible, but what’s most important is that your style choice is consistent within a project.</p>
+<p>Sometimes it is advantages to use single or double quotes specifically. For example, if you want to use double quotes inside your string this will break a double quote string literal, but not a single quote one, and vice versa.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;String using single quotes, &quot; does not break the string.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;String using double quotes, &#39; doesn&#39;t break the string.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>String using single quotes, &quot; does not break the string.
+String using double quotes, &#39; doesn&#39;t break the string.
+</pre></div>
+</div>
+</div>
+</div>
+<p>For strings containing line breaks, you can use either <code class="docutils literal notranslate"><span class="pre">'''</span></code> (three single quotes) or <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code> (three double quotes) to enclose the string contents:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+<span class="sd">&#39;&#39;&#39;String with a</span>
+<span class="sd">line break&#39;&#39;&#39;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span>
+<span class="sd">&quot;&quot;&quot;Another string with a</span>
+<span class="sd">line break&quot;&quot;&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>String with a
+line break
+Another string with a
+line break
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that white space (like indentations) will show up in these strings:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    A string with</span>
+<span class="sd">    Indented lines</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    A string with
+    Indented lines
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>This can give you trouble when you are defining strings in an indented code block, in these cases you may be better off using the <code class="docutils literal notranslate"><span class="pre">\n</span></code> special character, which creates new lines.</p>
+<p>Triple quotes can be used for single line strings as well. This may come in handy when single or double quotes are no longer an option:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;&#39;I said: &quot;Hello world! How&#39;s it going?&quot; &#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I said: &quot;Hello world! How&#39;s it going?&quot; 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="concatenation">
 <h2>Concatenation <code class="docutils literal notranslate"><span class="pre">+</span></code><a class="headerlink" href="#concatenation" title="Permalink to this headline">¶</a></h2>
 <p>For strings the <code class="docutils literal notranslate"><span class="pre">+</span></code> symbol is used to concatenate two strings together. For example:</p>
@@ -794,7 +902,7 @@ Index 7: r
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">&lt;ipython-input-8-abeba3add71f&gt;</span> in <span class="ni">&lt;module&gt;</span><span class="nt">()</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">10</span><span class="o">-</span><span class="n">abeba3add71f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Index 11&#39;</span><span class="p">,</span> <span class="n">computer_string</span><span class="p">[</span><span class="mi">11</span><span class="p">])</span>
 
 <span class="ne">IndexError</span>: string index out of range
@@ -1008,6 +1116,17 @@ Not empty slice: etupmo
 </div>
 <p>Also notice how, in the second slice above, the <code class="docutils literal notranslate"><span class="pre">0</span></code> index character is not present. Even when slicing with a negative step size the <code class="docutils literal notranslate"><span class="pre">stop_index</span></code> is <strong>not</strong> included in the slice.</p>
 </div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="bibtex-bibliography-content/standard-library/strings/strings-0"><dl class="citation">
+<dt class="bibtex label" id="sl-s-s-harrington-python3-tut"><span class="brackets"><a class="fn-backref" href="#id1">S1</a></span></dt>
+<dd><p>Dr. Andrew N. Harrington. Hands-on python 3 tutorial. 2019. [Online; accessed 6-December-2019; released under the CC BY-NC-SA 4.0 license]. URL: <a class="reference external" href="http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml/index.html">http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml/index.html</a>.</p>
+</dd>
+</dl>
+</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1023,7 +1142,7 @@ Not empty slice: etupmo
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./content/standard-library/basics"
+            path: "./content/standard-library/strings"
         },
         predefinedOutput: true
     }
@@ -1038,7 +1157,7 @@ Not empty slice: etupmo
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="functions.html" title="previous page">Introduction to Using Functions</a>
+    <a class='left-prev' id="prev-link" href="../basics/functions.html" title="previous page">Introduction to Using Functions</a>
     <a class='right-next' id="next-link" href="string-formatting.html" title="next page">String Formatting</a>
 
     </div>

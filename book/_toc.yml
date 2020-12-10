@@ -17,9 +17,11 @@
     - file: content/standard-library/basics/operators
     - file: content/standard-library/basics/assignment-operators
     - file: content/standard-library/basics/functions
-    - file: content/standard-library/basics/strings
-    - file: content/standard-library/basics/string-formatting
-
+    
+  - file: content/standard-library/strings/strings
+    sections:
+    - file: content/standard-library/strings/string-formatting
+  
   - file: content/standard-library/data-structures/intro
     sections:
     - file: content/standard-library/data-structures/tuple

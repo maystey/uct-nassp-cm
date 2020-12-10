@@ -149,13 +149,17 @@
      Introduction to Using Functions
     </a>
    </li>
+  </ul>
+  <i class="fas fa-chevron-down">
+  </i>
+ </li>
+ <li class="toctree-l1 collapsible-parent">
+  <a class="reference internal" href="../strings/strings.html">
+   Strings
+  </a>
+  <ul class="collapse-ul">
    <li class="toctree-l2">
-    <a class="reference internal" href="strings.html">
-     Strings
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="string-formatting.html">
+    <a class="reference internal" href="../strings/string-formatting.html">
      String Formatting
     </a>
    </li>
@@ -659,8 +663,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assigning-variables-to-other-variables">
-   Assigning Variables to other Variables
+  <a class="reference internal nav-link" href="#assigning-variable-values-to-other-variable-values">
+   Assigning Variable Values to other Variable Values
   </a>
  </li>
 </ul>
@@ -741,46 +745,7 @@
 </div>
 </div>
 </div>
-<p>You are not limited to single quotes. For single line strings you can use double quotes as well:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;String using single quotes, &quot; does not break the string.&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;String using double quotes, &#39; doesn&#39;t break the string.&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>String using single quotes, &quot; does not break the string.
-String using double quotes, &#39; doesn&#39;t break the string.
-</pre></div>
-</div>
-</div>
-</div>
-<p>For strings containing line breaks, you can use <code class="docutils literal notranslate"><span class="pre">'''</span></code> or <code class="docutils literal notranslate"><span class="pre">&quot;&quot;&quot;</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
-<span class="sd">&#39;&#39;&#39;String with a</span>
-<span class="sd">line break&#39;&#39;&#39;</span>
-<span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span>
-<span class="sd">&quot;&quot;&quot;Another string with a</span>
-<span class="sd">line break&quot;&quot;&quot;</span>
-<span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>String with a
-line break
-Another string with a
-line break
-</pre></div>
-</div>
-</div>
-</div>
-<p>You could also insert line breaks using a the special character <code class="docutils literal notranslate"><span class="pre">'\n</span></code> <!--- , but we will discuss this later. #I'm not sure if I got to this --></p>
+<p>You are not limited to using single quotes to define strings, see the chapter <a class="reference internal" href="../strings/strings.html"><span class="doc std std-doc">Standard Library/Strings</span></a> for more.</p>
 </div>
 <div class="section" id="variable-names">
 <h2>Variable Names<a class="headerlink" href="#variable-names" title="Permalink to this headline">¶</a></h2>
@@ -851,8 +816,8 @@ line break
 </ul>
 <p>The standard in Python is to use underscore seperations for variable and function names.</p>
 </div>
-<div class="section" id="assigning-variables-to-other-variables">
-<h2>Assigning Variables to other Variables<a class="headerlink" href="#assigning-variables-to-other-variables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="assigning-variable-values-to-other-variable-values">
+<h2>Assigning Variable Values to other Variable Values<a class="headerlink" href="#assigning-variable-values-to-other-variable-values" title="Permalink to this headline">¶</a></h2>
 <p>You can assign the value of one variable to another:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

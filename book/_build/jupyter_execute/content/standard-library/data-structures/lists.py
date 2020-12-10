@@ -138,7 +138,7 @@ print(numbers)
 
 # ## List Comprehension
 # 
-# If you are not familiar with for loops you may wish to read the page {doc}'Python Standard Library / Loops / For Loops <content/standard-library/loops/for>' before returning to this section.
+# If you are not familiar with for loops you may wish to read the page [Python Standard Library/Loops/For Loops](../loops/for) before returning to this section.
 # 
 # There will be many times you will want to automate the creation of a list. You can use loops for this but can become impractical. A nice way to generate lists is using **list comprehension**:
 

@@ -50,32 +50,7 @@ print(type(5.2))
 print(type('This is a string.'))
 
 
-# You are not limited to single quotes. For single line strings you can use double quotes as well:
-
-# In[6]:
-
-
-print('String using single quotes, " does not break the string.')
-print("String using double quotes, ' doesn't break the string.")
-
-
-# For strings containing line breaks, you can use `'''` or `"""`:
-
-# In[7]:
-
-
-print(
-'''String with a
-line break'''
-)
-
-print(
-"""Another string with a
-line break"""
-)
-
-
-# You could also insert line breaks using a the special character `'\n` <!--- , but we will discuss this later. #I'm not sure if I got to this -->
+# You are not limited to using single quotes to define strings, see the chapter [Standard Library/Strings](../strings/strings) for more.
 
 # ## Variable Names
 # So far we have been using single letters (`a`, `b`, `c`, `d`, ...) as variable names, but this approach can be confusing for long segments of codes. Variable names should be as clear and descriptive as possible (describing what they are used for), while still being short enough to type out efficiently.
@@ -145,11 +120,11 @@ line break"""
 # 
 # The standard in Python is to use underscore seperations for variable and function names.
 
-# ## Assigning Variables to other Variables
+# ## Assigning Variable Values to other Variable Values
 # 
 # You can assign the value of one variable to another:
 
-# In[8]:
+# In[6]:
 
 
 var1 = 3
@@ -161,7 +136,7 @@ print('Variable 2 is', var2)
 
 # When you assign assign a variable using another variable, in most cases it is only the value of the variable that is assigned:
 
-# In[9]:
+# In[7]:
 
 
 var1 = 3
