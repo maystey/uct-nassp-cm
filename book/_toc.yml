@@ -36,6 +36,7 @@
     - file: content/standard-library/if-statements/logical-operators
     - file: content/standard-library/if-statements/inclusion-operators
     - file: content/standard-library/if-statements/if
+    - file: content/standard-library/if-statements/nested
 
   - file: content/standard-library/loops/intro
     title: Loops

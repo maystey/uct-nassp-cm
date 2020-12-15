@@ -224,7 +224,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../standard-library/if-statements/if.html">
-     If Statement
+     If Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/if-statements/nested.html">
+     Nested If Statements
     </a>
    </li>
   </ul>
@@ -697,10 +702,11 @@
 y = \frac{f(x_{n-1}) - f(x_{n-2})}{x_{n-1} - x_{n-2}}(x - x_{n-1}) + f(x_{n-1})
 \]</div>
 <p>At the <span class="math notranslate nohighlight">\(x\)</span>-intercept <span class="math notranslate nohighlight">\(y=0\)</span> and <span class="math notranslate nohighlight">\(x = x_n\)</span>:</p>
-<p>\begin{align*}
-0 &amp;= \frac{f(x_{n-1}) - f(x_{n-2})}{x_{n-1} - x_{n-2}}(x_n - x_{n-1}) + f(x_{n-1})\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+0 &amp;= \frac{f(x_{n-1}) - f(x_{n-2})}{x_{n-1} - x_{n-2}}(x_n - x_{n-1}) + f(x_{n-1})\\
 \therefore x_n &amp;= x_{n-1} - f(x_{n-1}) \frac{x_{n-1} - x_{n-2}}{f(x_{n-1}) - f(x_{n-2})}
-\end{align*}</p>
+\end{align*}\]</div>
 <div class="section" id="precision">
 <h2>Precision<a class="headerlink" href="#precision" title="Permalink to this headline">¶</a></h2>
 <p>In general the secant method converges far faster than the bisection method, however it is not possible to predict how many iterations are required to achieve a given precision. The precision of the solution can be determined by measuring the convergence of you solution. For a given tolerance, you have reached your required precision when:</p>

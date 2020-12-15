@@ -13,8 +13,11 @@ the version number, `a.b.c`, follows the following scheme:
 ### Changed
 
 - Added chapter `numerical-methods/root-finding`
+- Added page `standard-library/if-statements/nested`
 - Moved `list-comprehension` page from `standard-library/loops` to `standard-library/data-structures/lists`.
-- Re-wrote chapter `standard-library/loops`.
+- Re-wrote chapters:
+  - `standard-library/if-statements`
+  - `standard-library/loops`.
 - Change `_toc` chapter titles:
   - **Control Flow: If Statements** to **If Statements**
   - **Control Flow: Loops** to **Loops**

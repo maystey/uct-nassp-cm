@@ -224,7 +224,12 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../standard-library/if-statements/if.html">
-     If Statement
+     If Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/if-statements/nested.html">
+     Nested If Statements
     </a>
    </li>
   </ul>
@@ -766,12 +771,13 @@ y_{i+1} = y_i + hf\left(x_i + \tfrac{1}{2} h, y_i + \tfrac{1}{2} h f(x_i, y_i) \
 y_{i+1} = y_i + \tfrac{1}{6} h~ (k_1 + 2 k_2 + 2 k_3 + k_4)
 \]</div>
 <p>where the <span class="math notranslate nohighlight">\(k\)</span> values are the slopes:</p>
-<p>\begin{align*}
-k_1 &amp;= f(x_i, y_i)\
-k_2 &amp;= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h k_1 \right)\
-k_3 &amp;= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h k_2\right)\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+k_1 &amp;= f(x_i, y_i)\\
+k_2 &amp;= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h k_1 \right)\\
+k_3 &amp;= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h k_2\right)\\
 k_4 &amp;= f(x_i + h, y_i + k_3)
-\end{align*}</p>
+\end{align*}\]</div>
 <p><span class="math notranslate nohighlight">\(k_1\)</span> is gradient value at the left of the interval. <span class="math notranslate nohighlight">\(k_2\)</span> is the gradient at the midpoint of the interval, approximated using <span class="math notranslate nohighlight">\(k_1\)</span>. The <span class="math notranslate nohighlight">\(k_3\)</span> value is the gradient at the midpoint of the interval using <span class="math notranslate nohighlight">\(k_2\)</span> to approximate it. <span class="math notranslate nohighlight">\(k_4\)</span> is the value of the gradient at the right end of the interval using <span class="math notranslate nohighlight">\(k_3\)</span> to approximate it.</p>
 <!--- Give interpretation for the the different k terms --->
 <p>This method has an accumulated error of <span class="math notranslate nohighlight">\(\mathcal(h^4)\)</span></p>
@@ -847,13 +853,14 @@ y = 1 + \arctan(x)
 <div class="section" id="high-order-odes">
 <h3>High Order ODEs<a class="headerlink" href="#high-order-odes" title="Permalink to this headline">¶</a></h3>
 <p>As we have discussed in a previous page, higher order ODEs can be reduced to a collection of coupled first order ODEs, for example:</p>
-<p>\begin{align}
-\frac{d y_0}{dx} &amp;= f_0(x, y_0, y_1, \dots, y_{n-1})\
-\frac{d y_1}{dx} &amp;= f_1(x, y_0, y_1, \dots, y_{n-1})\
-\frac{d y_2}{dx} &amp;= f_2(x, y_0, y_1, \dots, y_{n-1})\
-&amp;\vdots \
+<div class="amsmath math notranslate nohighlight" id="equation-1f231c82-12c9-495d-8c0b-c4ba2519ea29">
+<span class="eqno">(1)<a class="headerlink" href="#equation-1f231c82-12c9-495d-8c0b-c4ba2519ea29" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\frac{d y_0}{dx} &amp;= f_0(x, y_0, y_1, \dots, y_{n-1})\\
+\frac{d y_1}{dx} &amp;= f_1(x, y_0, y_1, \dots, y_{n-1})\\
+\frac{d y_2}{dx} &amp;= f_2(x, y_0, y_1, \dots, y_{n-1})\\
+                 &amp;\vdots \\
 \frac{d y_{n-1}}{dx} &amp;= f_{n-1}(x, y_0, y_1, \dots, y_{n-1})
-\end{align}</p>
+\end{align}\]</div>
 <p>As we have seen, the Euler’s method solution for this is fairly simple. For the RK4 method, things are slightly more complicated. We must decide how to calculate the <span class="math notranslate nohighlight">\(k\)</span> values.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -898,12 +905,13 @@ y_{0, i}~ + \tfrac{1}{2} h k_{1, 0} \\\vdots \\y_{j, i}~ + \tfrac{1}{2} h k_{1, 
 = \vec{y}_i + \tfrac{1}{2} h \vec{k1}
 \end{split}\]</div>
 <p>with this in mind, we can simply write the <span class="math notranslate nohighlight">\(k\)</span> values as:</p>
-<p>\begin{align*}
-\vec{k_1} &amp;= \vec{f}(x_i, \vec{y}_i)\
-\vec{k_2} &amp;= \vec{f}\left(x_i + \tfrac{1}{2} h, \vec{y}_i + \tfrac{1}{2} h ~ \vec{k_1} \right)\
-\vec{k_3} &amp;= \vec{f}\left(x_i + \tfrac{1}{2} h, \vec{y}_i + \tfrac{1}{2} h ~ \vec{k_2} \right)\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\vec{k_1} &amp;= \vec{f}(x_i, \vec{y}_i)\\
+\vec{k_2} &amp;= \vec{f}\left(x_i + \tfrac{1}{2} h, \vec{y}_i + \tfrac{1}{2} h ~ \vec{k_1} \right)\\
+\vec{k_3} &amp;= \vec{f}\left(x_i + \tfrac{1}{2} h, \vec{y}_i + \tfrac{1}{2} h ~ \vec{k_2} \right)\\
 \vec{k_4} &amp; = \vec{f}\left(x_i + h, \vec{y}_i + h ~ \vec{k_3} \right)
-\end{align*}</p>
+\end{align*}\]</div>
 <div class="section" id="id2">
 <h4>Worked Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <p>Consider the third order differential equation:</p>
@@ -920,11 +928,12 @@ y(x) = e^{-x^2}
 <p>which we shall use to test our numerical result.</p>
 <p>We shall solve this up to <span class="math notranslate nohighlight">\(x = 5\)</span> with steps of size <span class="math notranslate nohighlight">\(h = 0.1\)</span>.</p>
 <p>First we reduce this to a system of first order equations by introducing the variables <span class="math notranslate nohighlight">\(y_0(x) = y(x)\)</span>, <span class="math notranslate nohighlight">\(y_1(x) = y^\prime(x)\)</span> and <span class="math notranslate nohighlight">\(y_2(x) = y^{\prime\prime}(x)\)</span>:</p>
-<p>\begin{align*}
-\frac{d y_0}{dx} &amp;= y_1\
-\frac{d y_1}{dx} &amp;= y_2\
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{d y_0}{dx} &amp;= y_1\\
+\frac{d y_1}{dx} &amp;= y_2\\
 \frac{d y_2}{dx} &amp;= -12 x y_0 - 4 x^2 y_1
-\end{align*}</p>
+\end{align*}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>

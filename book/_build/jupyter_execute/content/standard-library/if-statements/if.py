@@ -1,19 +1,41 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # If Statement
+# # If Statements
+
+# If statements give us the ability to execute different blocks of code depending on the outcome of a logical statement (or boolean value).
 # 
-# <!--- Make a flow chart to illustrate the control flow!-->
-# The `if` statement is used to execute a block of code if a condition is true. The syntax of an if statement is:
-# ```
+# The syntax for an if statement is:
+# 
+# ```python
 # if condition:
 #     block of code
 # ```
-# where `condition` must be/evaluate to a boolean value. If `condition` evaluates to `True` then control moves to the block of code indented after the `:` and it is executed. <!--- Is this language correct?--> If `condition` evaluates to `False`, then the block of code is skipped and control moves on to the code after the `if` statement.
+# 
+# where `block of code` following the `:` and indented is considered as the code inside the if statement. `block of code` will only be executed if condition is/evaluates to `true`.
+# 
+# Consider an if statement with code around it:
+# 
+# ```python
+# code block before
+# 
+# if condition:
+#     code block inside
+# 
+# code block after
+# ```
+# 
+# here `code block before` will be executed first, then `condition` will be evaluated. If `condition` is true, `code block inside` will be executed. Finally `code block after` will be executed (regardless of whether or not `condition` is true). Illustrated in a control flow diagram:
+
+# ```{figure} ./figures/if.png
+# :name: fig-if-control-flow
+# 
+# Control flow diagram of the pseudo code if statement example.
+# ```
 
 # ## Worked Example
 # 
-# Let's consider the case where we want to check if one variable is greater than the other:
+# Let's consider the problem where we want to check if one variable is greater than the other. One solution using an if statement is:
 
 # In[1]:
 
@@ -30,20 +52,32 @@ if a > b:
 # a = 2
 # b = 2
 # ```
-# then we would see nothing printed out.
+# then we would see nothing printed out as `a > b` would evaluate to `False` and the code block contained in the if statement would not be executed.
 
 # ## Else
 # 
-# What if you wanted to execute a code block if a statement is true; and another if it's false. The `else` part of an if statement can be used for this:
-# ```
-# if condition:
-#     code block 1
-# else:
-#     code block 2
-# ```
-# If `condition` evaluates to `True` then `code block 1` will be executed. If, on the other hand, `condition` evaluates to `False`, `code block 2` will be executed.
+# What if you wanted to execute a code block if a statement is true; and another if it's false? The `else` part of an if statement can be used for this:
 # 
-# ![if else flow chart](if_else.png) <!--- Figure caption?-->
+# ```python
+# if condition:
+#     code_block_1
+# else:
+#     code_block_2
+# ```
+# 
+# If `condition` evaluates to `True` then `code_block_1` will be executed. If, on the other hand, `condition` evaluates to `False`, `code_block_2` will be executed.
+# 
+# This pseudo code can be illustrated by the control flow diagram:
+
+# ```{figure} ./figures/if_else.png
+# :name: fig-if-else-control-flow
+# 
+# Control flow diagram of the pseudo code if statement with an else part example.
+# ```
+
+# :::{note}
+# The `else` statement cannot stand by itself. It requires a preceding if statement or loop for context.
+# :::
 
 # ### Worked Example
 # 
@@ -74,49 +108,126 @@ else:
 
 
 # ## Elif
-# 
-# Now, what if you have more than 2 mutually/partially exclusive conditions? This is a job for `elif` statements:
-# 
-# ```
-# if condition_1:
-#     code block 1
-# elif condition_2:
-#     code block 2
-# elif condition_3:
-#     code block 3
-# ```
-# Here computer first checks `condition_1`. If `condition_1` evaluates `True` then `code block 1` is executed and control moves leaves the if statement. If `condition_1` evaluates as `False` then the computer will check `condition_2`, if this evaluates as `True` then `code block 2` will be executed and control will leave the if statement. If both `condition_1` and `condition_2` are both `False`, then the computer will check `condition_3`, if this evaluates to `True` `code block 3` will be executed and control will leave the if statement. 
-# 
-# See the flow chart in the **`else` and `elif`** section if this explanation was confusing.
-# 
-# An alternative to using `elif` statements is nested `if`/`else` statements:
-# 
-# ```
-# if condition_1:
-#     code block 1
-# else:
-#     if condition_2:
-#         code block 2
-#     else:
-#         if condition_3:
-#             code block 3
-# ```
-# This is quite messy. A general rule of thumb for Python is to avoid nesting where possible. There are certain scenarios where nested `if` statements are desired, however.
-# 
-# Never use multiple `if` statements to do the job of `elif` statements:
-# ```
-# if condition_1:
-#     code block 1
-# if (not condition_1) and condition_2:
-#     code block 2
-# if (not condition_1) and (not condition_2) and condition_3:
-#     code block 3
-# ```
-# this is not only annoying to write, it is computationally expensive. If one of these conditions is true, then the others aren't, but the computer will still check each condition in turn.
 
-# For example, lets write a script that checks if a variable is a multiple of 2, 3, or 5.
+# Now, what if we had 2 conditions which are mutually exclusive (if one is true the other is necessarily false) and the one isn't just the converse of the other. For this we can use the `elif` part of the if statement (to be read "else if"):
+# 
+# ```python
+# if condition1:
+#     code_block_1
+# elif condition2:
+#     code_block_2
+# ```
+# 
+# If `condition 1` is false, `condition 2` will be evaluated. If `condition 2` is found to be true, then `code block 2` will be executed, if not then control will move from the if statement. Illustrated as a control flow diagram:
+
+# ```{figure} ./figures/if_elif.png
+# :name: fig-if-elif-control-flow
+# 
+# Control flow diagram of the pseudo code example of an if statement with an elif part.
+# ```
+
+# ### Worked Example
+# 
+# Let's continue with our worked example and change the `else` part to be more specific:
 
 # In[4]:
+
+
+a = 1
+b = 2
+
+if a > b:
+    print(a, 'is greater than', b)
+elif a < b:
+    print(a, 'is less than', b)
+
+
+# In[5]:
+
+
+a = 1
+b = 1
+
+if a > b:
+    print(a, 'is greater than', b)
+elif a < b:
+    print(a, 'is less than', b)
+
+
+# ## Else After an Elif
+
+# Now, if we want to catch the case where both the conditions in the `if` and `elif` parts of the if statement are false, we can use an `else` part at the very end of the if statement. In pseudo code:
+# 
+# ```python
+# if condition1:
+#     code_block_1
+# elif condition2:
+#     code_block_2
+# else:
+#     code_block_3
+# ```
+# 
+# Illustrated in a control flow diagram:
+
+# ```{figure} ./figures/if_elif_else.png
+# :name: fig-if-elif-else-control-flow
+# 
+# Control flow diagram of the pseudo code example of an if statement with an elif and else part.
+# ```
+
+# :::{warning}
+# The `else` must **always** be the last part of the if statement and **there can only be one**.
+# :::
+
+# ### Worked Example
+
+# Now, let's re-introduce an `else` part to our worked example:
+
+# In[6]:
+
+
+a = 1
+b = 1
+
+if a > b:
+    print(a, 'is greater than', b)
+elif a < b:
+    print(a, 'is less than', b)
+else:
+    print(a, 'is equal to', b)
+
+
+# ## Multiple Elif Parts
+
+# Though you may only use one `else` part in an if statement, you are not limited by how many `elif` parts you wish to use. For example:
+# 
+# ```python
+# if condition1:
+#     code_block_1
+#     
+# elif condition2:
+#     code_block_2
+# 
+# elif condition3:
+#     code_block_3
+# 
+# else:
+#     code_block_4
+# ```
+# 
+# This can be illustrated using a control flow diagram:
+
+# ```{figure} ./figures/if_elif_elif_else.png
+# :name: fig-if-elif-elif-else-control-flow
+# 
+# Control flow diagram of the pseudo code example of an if statement with two elif parts and an else part.
+# ```
+
+# ### Worked Example
+
+# As an example of a script with multiple `elif` parts, lets write a script that checks if a variable is a multiple of 2, 3, or 5:
+
+# In[7]:
 
 
 var = 4
@@ -127,9 +238,11 @@ elif var % 3 == 0:
     print('Variable is a multiple of 3')
 elif var % 5 == 0:
     print('Variable is a multiple of 5')
+else:
+    print('Variable is not a multiple of 2, 3 or 5')
 
 
-# In[5]:
+# In[8]:
 
 
 var = 21
@@ -140,9 +253,11 @@ elif var % 3 == 0:
     print('Variable is a multiple of 3')
 elif var % 5 == 0:
     print('Variable is a multiple of 5')
+else:
+    print('Variable is not a multiple of 2, 3 or 5')
 
 
-# In[6]:
+# In[9]:
 
 
 var = 25
@@ -153,9 +268,11 @@ elif var % 3 == 0:
     print('Variable is a multiple of 3')
 elif var % 5 == 0:
     print('Variable is a multiple of 5')
+else:
+    print('Variable is not a multiple of 2, 3 or 5')
 
 
-# In[7]:
+# In[10]:
 
 
 var = 6
@@ -166,11 +283,13 @@ elif var % 3 == 0:
     print('Variable is a multiple of 3')
 elif var % 5 == 0:
     print('Variable is a multiple of 5')
+else:
+    print('Variable is not a multiple of 2, 3 or 5')
 
 
-# Note that even though 6 is a multiple of both 2 and 3, because 2 appears above 3 in the `if` statement that's the message we see.
+# Note that even though 6 is a multiple of both 2 and 3, because 2 appears above 3 in the `if` statement, that's the message we see.
 
-# In[8]:
+# In[11]:
 
 
 var = 7
@@ -181,62 +300,6 @@ elif var % 3 == 0:
     print('Variable is a multiple of 3')
 elif var % 5 == 0:
     print('Variable is a multiple of 5')
-
-
-# Note that 7 is not a multiple 2, 3 or 5 and thus all of the `if` and `elif` conditions are false.
-
-# ### Else and Elif
-# 
-# If you include an `else` part of an `if` statement with `elif` parts, the code block in the `else` statement only executes if all of the conditions in the `if` and `elif` statements that precede it are false.
-# 
-# ![if elif else flow chart](if_elif_else.png)
-# 
-# As an example of this let's go back to our original example:
-
-# In[9]:
-
-
-a = 3
-b = 2
-
-if a > b:
-    print(a, 'is greater than', b)
-elif a < b:
-    print(a, 'is less than', b)
 else:
-    print(a, 'is equal to', b)
-
-
-# In[10]:
-
-
-a = 1
-b = 2
-
-if a > b:
-    print(a, 'is greater than', b)
-elif a < b:
-    print(a, 'is less than', b)
-else:
-    print(a, 'is equal to', b)
-
-
-# In[11]:
-
-
-a = 2
-b = 2
-
-if a > b:
-    print(a, 'is greater than', b)
-elif a < b:
-    print(a, 'is less than', b)
-else:
-    print(a, 'is equal to', b)
-
-
-# In[ ]:
-
-
-
+    print('Variable is not a multiple of 2, 3 or 5')
 

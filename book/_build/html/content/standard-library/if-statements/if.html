@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>If Statement &#8212; AST4007W Computational Methods</title>
+    <title>If Statements &#8212; AST4007W Computational Methods</title>
     
   <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -58,7 +58,7 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Control Flow: Loops" href="../loops/intro.html" />
+    <link rel="next" title="Nested If Statements" href="nested.html" />
     <link rel="prev" title="Inclusion Operators" href="inclusion-operators.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -224,7 +224,12 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     If Statement
+     If Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="nested.html">
+     Nested If Statements
     </a>
    </li>
   </ul>
@@ -675,8 +680,32 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#else-and-elif">
-     Else and Elif
+    <a class="reference internal nav-link" href="#id2">
+     Worked Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#else-after-an-elif">
+   Else After an Elif
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Worked Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-elif-parts">
+   Multiple Elif Parts
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Worked Example
     </a>
    </li>
   </ul>
@@ -692,18 +721,32 @@
         
               <div>
                 
-  <div class="section" id="if-statement">
-<h1>If Statement<a class="headerlink" href="#if-statement" title="Permalink to this headline">¶</a></h1>
-<!--- Make a flow chart to illustrate the control flow!-->
-<p>The <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is used to execute a block of code if a condition is true. The syntax of an if statement is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+  <div class="section" id="if-statements">
+<h1>If Statements<a class="headerlink" href="#if-statements" title="Permalink to this headline">¶</a></h1>
+<p>If statements give us the ability to execute different blocks of code depending on the outcome of a logical statement (or boolean value).</p>
+<p>The syntax for an if statement is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
     <span class="n">block</span> <span class="n">of</span> <span class="n">code</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal notranslate"><span class="pre">condition</span></code> must be/evaluate to a boolean value. If <code class="docutils literal notranslate"><span class="pre">condition</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code> then control moves to the block of code indented after the <code class="docutils literal notranslate"><span class="pre">:</span></code> and it is executed. <!--- Is this language correct?--> If <code class="docutils literal notranslate"><span class="pre">condition</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>, then the block of code is skipped and control moves on to the code after the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement.</p>
+<p>where <code class="docutils literal notranslate"><span class="pre">block</span> <span class="pre">of</span> <span class="pre">code</span></code> following the <code class="docutils literal notranslate"><span class="pre">:</span></code> and indented is considered as the code inside the if statement. <code class="docutils literal notranslate"><span class="pre">block</span> <span class="pre">of</span> <span class="pre">code</span></code> will only be executed if condition is/evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>Consider an if statement with code around it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">code</span> <span class="n">block</span> <span class="n">before</span>
+
+<span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="n">code</span> <span class="n">block</span> <span class="n">inside</span>
+
+<span class="n">code</span> <span class="n">block</span> <span class="n">after</span>
+</pre></div>
+</div>
+<p>here <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">before</span></code> will be executed first, then <code class="docutils literal notranslate"><span class="pre">condition</span></code> will be evaluated. If <code class="docutils literal notranslate"><span class="pre">condition</span></code> is true, <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">inside</span></code> will be executed. Finally <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">after</span></code> will be executed (regardless of whether or not <code class="docutils literal notranslate"><span class="pre">condition</span></code> is true). Illustrated in a control flow diagram:</p>
+<div class="figure align-default" id="fig-if-control-flow">
+<img alt="../../../_images/if.png" src="../../../_images/if.png" />
+<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Control flow diagram of the pseudo code if statement example.</span><a class="headerlink" href="#fig-if-control-flow" title="Permalink to this image">¶</a></p>
+</div>
 <div class="section" id="worked-example">
 <h2>Worked Example<a class="headerlink" href="#worked-example" title="Permalink to this headline">¶</a></h2>
-<p>Let’s consider the case where we want to check if one variable is greater than the other:</p>
+<p>Let’s consider the problem where we want to check if one variable is greater than the other. One solution using an if statement is:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
@@ -725,19 +768,27 @@
 <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
 </pre></div>
 </div>
-<p>then we would see nothing printed out.</p>
+<p>then we would see nothing printed out as <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span></code> would evaluate to <code class="docutils literal notranslate"><span class="pre">False</span></code> and the code block contained in the if statement would not be executed.</p>
 </div>
 <div class="section" id="else">
 <h2>Else<a class="headerlink" href="#else" title="Permalink to this headline">¶</a></h2>
-<p>What if you wanted to execute a code block if a statement is true; and another if it’s false. The <code class="docutils literal notranslate"><span class="pre">else</span></code> part of an if statement can be used for this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
-    <span class="n">code</span> <span class="n">block</span> <span class="mi">1</span>
+<p>What if you wanted to execute a code block if a statement is true; and another if it’s false? The <code class="docutils literal notranslate"><span class="pre">else</span></code> part of an if statement can be used for this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+    <span class="n">code_block_1</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">code</span> <span class="n">block</span> <span class="mi">2</span>
+    <span class="n">code_block_2</span>
 </pre></div>
 </div>
-<p>If <code class="docutils literal notranslate"><span class="pre">condition</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code> then <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">1</span></code> will be executed. If, on the other hand, <code class="docutils literal notranslate"><span class="pre">condition</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">2</span></code> will be executed.</p>
-<p><img alt="if else flow chart" src="../../../_images/if_else.png" /> <!--- Figure caption?--></p>
+<p>If <code class="docutils literal notranslate"><span class="pre">condition</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code> then <code class="docutils literal notranslate"><span class="pre">code_block_1</span></code> will be executed. If, on the other hand, <code class="docutils literal notranslate"><span class="pre">condition</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">code_block_2</span></code> will be executed.</p>
+<p>This pseudo code can be illustrated by the control flow diagram:</p>
+<div class="figure align-default" id="fig-if-else-control-flow">
+<img alt="../../../_images/if_else.png" src="../../../_images/if_else.png" />
+<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Control flow diagram of the pseudo code if statement with an else part example.</span><a class="headerlink" href="#fig-if-else-control-flow" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">else</span></code> statement cannot stand by itself. It requires a preceding if statement or loop for context.</p>
+</div>
 <div class="section" id="id1">
 <h3>Worked Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Let’s take our first example and add an <code class="docutils literal notranslate"><span class="pre">else</span></code> part to it:</p>
@@ -781,40 +832,123 @@
 </div>
 <div class="section" id="elif">
 <h2>Elif<a class="headerlink" href="#elif" title="Permalink to this headline">¶</a></h2>
-<p>Now, what if you have more than 2 mutually/partially exclusive conditions? This is a job for <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition_1</span><span class="p">:</span>
-    <span class="n">code</span> <span class="n">block</span> <span class="mi">1</span>
-<span class="k">elif</span> <span class="n">condition_2</span><span class="p">:</span>
-    <span class="n">code</span> <span class="n">block</span> <span class="mi">2</span>
-<span class="k">elif</span> <span class="n">condition_3</span><span class="p">:</span>
-    <span class="n">code</span> <span class="n">block</span> <span class="mi">3</span>
+<p>Now, what if we had 2 conditions which are mutually exclusive (if one is true the other is necessarily false) and the one isn’t just the converse of the other. For this we can use the <code class="docutils literal notranslate"><span class="pre">elif</span></code> part of the if statement (to be read “else if”):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span><span class="p">:</span>
+    <span class="n">code_block_1</span>
+<span class="k">elif</span> <span class="n">condition2</span><span class="p">:</span>
+    <span class="n">code_block_2</span>
 </pre></div>
 </div>
-<p>Here computer first checks <code class="docutils literal notranslate"><span class="pre">condition_1</span></code>. If <code class="docutils literal notranslate"><span class="pre">condition_1</span></code> evaluates <code class="docutils literal notranslate"><span class="pre">True</span></code> then <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">1</span></code> is executed and control moves leaves the if statement. If <code class="docutils literal notranslate"><span class="pre">condition_1</span></code> evaluates as <code class="docutils literal notranslate"><span class="pre">False</span></code> then the computer will check <code class="docutils literal notranslate"><span class="pre">condition_2</span></code>, if this evaluates as <code class="docutils literal notranslate"><span class="pre">True</span></code> then <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">2</span></code> will be executed and control will leave the if statement. If both <code class="docutils literal notranslate"><span class="pre">condition_1</span></code> and <code class="docutils literal notranslate"><span class="pre">condition_2</span></code> are both <code class="docutils literal notranslate"><span class="pre">False</span></code>, then the computer will check <code class="docutils literal notranslate"><span class="pre">condition_3</span></code>, if this evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code> <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">3</span></code> will be executed and control will leave the if statement.</p>
-<p>See the flow chart in the <strong><code class="docutils literal notranslate"><span class="pre">else</span></code> and <code class="docutils literal notranslate"><span class="pre">elif</span></code></strong> section if this explanation was confusing.</p>
-<p>An alternative to using <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements is nested <code class="docutils literal notranslate"><span class="pre">if</span></code>/<code class="docutils literal notranslate"><span class="pre">else</span></code> statements:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition_1</span><span class="p">:</span>
-    <span class="n">code</span> <span class="n">block</span> <span class="mi">1</span>
+<p>If <code class="docutils literal notranslate"><span class="pre">condition</span> <span class="pre">1</span></code> is false, <code class="docutils literal notranslate"><span class="pre">condition</span> <span class="pre">2</span></code> will be evaluated. If <code class="docutils literal notranslate"><span class="pre">condition</span> <span class="pre">2</span></code> is found to be true, then <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">2</span></code> will be executed, if not then control will move from the if statement. Illustrated as a control flow diagram:</p>
+<div class="figure align-default" id="fig-if-elif-control-flow">
+<img alt="../../../_images/if_elif.png" src="../../../_images/if_elif.png" />
+<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Control flow diagram of the pseudo code example of an if statement with an elif part.</span><a class="headerlink" href="#fig-if-elif-control-flow" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="id2">
+<h3>Worked Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Let’s continue with our worked example and change the <code class="docutils literal notranslate"><span class="pre">else</span></code> part to be more specific:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is greater than&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is less than&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 is less than 2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is greater than&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is less than&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="else-after-an-elif">
+<h2>Else After an Elif<a class="headerlink" href="#else-after-an-elif" title="Permalink to this headline">¶</a></h2>
+<p>Now, if we want to catch the case where both the conditions in the <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">elif</span></code> parts of the if statement are false, we can use an <code class="docutils literal notranslate"><span class="pre">else</span></code> part at the very end of the if statement. In pseudo code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span><span class="p">:</span>
+    <span class="n">code_block_1</span>
+<span class="k">elif</span> <span class="n">condition2</span><span class="p">:</span>
+    <span class="n">code_block_2</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">condition_2</span><span class="p">:</span>
-        <span class="n">code</span> <span class="n">block</span> <span class="mi">2</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">condition_3</span><span class="p">:</span>
-            <span class="n">code</span> <span class="n">block</span> <span class="mi">3</span>
+    <span class="n">code_block_3</span>
 </pre></div>
 </div>
-<p>This is quite messy. A general rule of thumb for Python is to avoid nesting where possible. There are certain scenarios where nested <code class="docutils literal notranslate"><span class="pre">if</span></code> statements are desired, however.</p>
-<p>Never use multiple <code class="docutils literal notranslate"><span class="pre">if</span></code> statements to do the job of <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition_1</span><span class="p">:</span>
-    <span class="n">code</span> <span class="n">block</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">condition_1</span><span class="p">)</span> <span class="ow">and</span> <span class="n">condition_2</span><span class="p">:</span>
-    <span class="n">code</span> <span class="n">block</span> <span class="mi">2</span>
-<span class="k">if</span> <span class="p">(</span><span class="ow">not</span> <span class="n">condition_1</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="ow">not</span> <span class="n">condition_2</span><span class="p">)</span> <span class="ow">and</span> <span class="n">condition_3</span><span class="p">:</span>
-    <span class="n">code</span> <span class="n">block</span> <span class="mi">3</span>
+<p>Illustrated in a control flow diagram:</p>
+<div class="figure align-default" id="fig-if-elif-else-control-flow">
+<img alt="../../../_images/if_elif_else.png" src="../../../_images/if_elif_else.png" />
+<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Control flow diagram of the pseudo code example of an if statement with an elif and else part.</span><a class="headerlink" href="#fig-if-elif-else-control-flow" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">else</span></code> must <strong>always</strong> be the last part of the if statement and <strong>there can only be one</strong>.</p>
+</div>
+<div class="section" id="id3">
+<h3>Worked Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>Now, let’s re-introduce an <code class="docutils literal notranslate"><span class="pre">else</span></code> part to our worked example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is greater than&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is less than&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is equal to&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>this is not only annoying to write, it is computationally expensive. If one of these conditions is true, then the others aren’t, but the computer will still check each condition in turn.</p>
-<p>For example, lets write a script that checks if a variable is a multiple of 2, 3, or 5.</p>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 is equal to 1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="multiple-elif-parts">
+<h2>Multiple Elif Parts<a class="headerlink" href="#multiple-elif-parts" title="Permalink to this headline">¶</a></h2>
+<p>Though you may only use one <code class="docutils literal notranslate"><span class="pre">else</span></code> part in an if statement, you are not limited by how many <code class="docutils literal notranslate"><span class="pre">elif</span></code> parts you wish to use. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span><span class="p">:</span>
+    <span class="n">code_block_1</span>
+    
+<span class="k">elif</span> <span class="n">condition2</span><span class="p">:</span>
+    <span class="n">code_block_2</span>
+
+<span class="k">elif</span> <span class="n">condition3</span><span class="p">:</span>
+    <span class="n">code_block_3</span>
+
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">code_block_4</span>
+</pre></div>
+</div>
+<p>This can be illustrated using a control flow diagram:</p>
+<div class="figure align-default" id="fig-if-elif-elif-else-control-flow">
+<img alt="../../../_images/if_elif_elif_else.png" src="../../../_images/if_elif_elif_else.png" />
+<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Control flow diagram of the pseudo code example of an if statement with two elif parts and an else part.</span><a class="headerlink" href="#fig-if-elif-elif-else-control-flow" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="id4">
+<h3>Worked Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>As an example of a script with multiple <code class="docutils literal notranslate"><span class="pre">elif</span></code> parts, lets write a script that checks if a variable is a multiple of 2, 3, or 5:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="mi">4</span>
@@ -825,6 +959,8 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is a multiple of 3&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">var</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is a multiple of 5&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is not a multiple of 2, 3 or 5&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -844,6 +980,8 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is a multiple of 3&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">var</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is a multiple of 5&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is not a multiple of 2, 3 or 5&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -863,6 +1001,8 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is a multiple of 3&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">var</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is a multiple of 5&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is not a multiple of 2, 3 or 5&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -882,6 +1022,8 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is a multiple of 3&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">var</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is a multiple of 5&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is not a multiple of 2, 3 or 5&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -891,7 +1033,7 @@
 </div>
 </div>
 </div>
-<p>Note that even though 6 is a multiple of both 2 and 3, because 2 appears above 3 in the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement that’s the message we see.</p>
+<p>Note that even though 6 is a multiple of both 2 and 3, because 2 appears above 3 in the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement, that’s the message we see.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="mi">7</span>
@@ -902,72 +1044,13 @@
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is a multiple of 3&#39;</span><span class="p">)</span>
 <span class="k">elif</span> <span class="n">var</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is a multiple of 5&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Note that 7 is not a multiple 2, 3 or 5 and thus all of the <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">elif</span></code> conditions are false.</p>
-<div class="section" id="else-and-elif">
-<h3>Else and Elif<a class="headerlink" href="#else-and-elif" title="Permalink to this headline">¶</a></h3>
-<p>If you include an <code class="docutils literal notranslate"><span class="pre">else</span></code> part of an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement with <code class="docutils literal notranslate"><span class="pre">elif</span></code> parts, the code block in the <code class="docutils literal notranslate"><span class="pre">else</span></code> statement only executes if all of the conditions in the <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">elif</span></code> statements that precede it are false.</p>
-<p><img alt="if elif else flow chart" src="../../../_images/if_elif_else.png" /></p>
-<p>As an example of this let’s go back to our original example:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
-
-<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is greater than&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is less than&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is equal to&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Variable is not a multiple of 2, 3 or 5&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 is greater than 2
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
-
-<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is greater than&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is less than&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is equal to&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 is less than 2
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
-
-<span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is greater than&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">elif</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is less than&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="k">else</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s1">&#39;is equal to&#39;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2 is equal to 2
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Variable is not a multiple of 2, 3 or 5
 </pre></div>
 </div>
 </div>
@@ -1005,7 +1088,7 @@
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="inclusion-operators.html" title="previous page">Inclusion Operators</a>
-    <a class='right-next' id="next-link" href="../loops/intro.html" title="next page">Control Flow: Loops</a>
+    <a class='right-next' id="next-link" href="nested.html" title="next page">Nested If Statements</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
