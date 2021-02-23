@@ -19,20 +19,29 @@ html:
  use_repository_button: true
  use_issues_button: true
 
+#######################################################################################
+# Sphinx settings
+bibtex_bibfiles:
+  - _bibliography/references.bib
+
 ######################################################################################
 # MyST Markdown settings:
 parse:
-  myst_extended_syntax: true
   myst_url_schemes: [mailto, http, https]
+  myst_enable_extensions:
+    - colon_fence
+    - dollarmath
+    - linkify
+    - substitution
+
+    - amsmath
+    - html_admonition
+
 
 ######################################################################################
 # Exclude
-exclude_patterns: [
-  pdf_book
-
-  content/scientific-packages/numpy/special-functions.ipynb,
-
-  content/numerical-methods/root-finding/utils.py,
-
-  content/numerical-methods/regression/notation.md
-]
+exclude_patterns:
+  - pdf_book
+  - content/scientific-packages/numpy/special-functions.ipynb
+  - content/numerical-methods/root-finding/utils.py
+  - content/numerical-methods/regression/notation.md

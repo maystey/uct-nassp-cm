@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>If Statements &#8212; AST4007W Computational Methods</title>
     
-  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -31,24 +31,22 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/table.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -96,471 +94,483 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro/intro.html">
-   Programming and Python in a Nutshell
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro/control-flow/control-flow-diagrams.html">
-   Control Flow Diagrams
-  </a>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  The Python Standard Library
- </span>
-</p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../basics/intro.html">
-   Python Basics
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../basics/variables.html">
-     Variables
+<figcaption>
+ <p>
+  <span class="caption-text">
+   Introduction
+  </span>
+ </p>
+ <ul>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/intro.html">
+    Programming and Python in a Nutshell
+   </a>
+  </li>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/installing/anaconda.html">
+    Managing Your Python Installation with Anaconda
+   </a>
+  </li>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/control-flow/control-flow-diagrams.html">
+    Control Flow Diagrams
+   </a>
+  </li>
+ </ul>
+ <figcaption>
+  <p>
+   <span class="caption-text">
+    The Python Standard Library
+   </span>
+  </p>
+  <ul class="current">
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../basics/intro.html">
+     Python Basics
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../basics/variables.html">
+       Variables
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../basics/comments.html">
+       Comments
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../basics/types.html">
+       Type Conversion
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../basics/operators.html">
+       Numerical Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../basics/assignment-operators.html">
+       Compound Assignment Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../basics/functions.html">
+       Introduction to Using Functions
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../basics/comments.html">
-     Comments
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../strings/strings.html">
+     Strings
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../strings/string-formatting.html">
+       String Formatting
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../basics/types.html">
-     Type Conversion
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../data-structures/intro.html">
+     Data Structures
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../data-structures/tuple.html">
+       Tuple
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../data-structures/lists.html">
+       Lists
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../data-structures/dictionaries.html">
+       Dictionaries
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../basics/operators.html">
-     Numerical Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../basics/assignment-operators.html">
-     Compound Assignment Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../basics/functions.html">
-     Introduction to Using Functions
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../strings/strings.html">
-   Strings
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../strings/string-formatting.html">
-     String Formatting
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../data-structures/intro.html">
-   Data Structures
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../data-structures/tuple.html">
-     Tuple
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../data-structures/lists.html">
-     Lists
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../data-structures/dictionaries.html">
-     Dictionaries
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="reference internal" href="intro.html">
-   If Statements
-  </a>
-  <ul class="current collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="bools.html">
-     Booleans (
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       bool
-      </span>
-     </code>
-     )
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="comparison-operators.html">
-     Comparison Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="logical-operators.html">
-     Logical Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="inclusion-operators.html">
-     Inclusion Operators
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l1 current active collapsible-parent">
+    <a class="reference internal" href="intro.html">
      If Statements
     </a>
+    <ul class="current collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="bools.html">
+       Booleans (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         bool
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="comparison-operators.html">
+       Comparison Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="logical-operators.html">
+       Logical Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="inclusion-operators.html">
+       Inclusion Operators
+      </a>
+     </li>
+     <li class="toctree-l2 current active">
+      <a class="current reference internal" href="#">
+       If Statements
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="nested.html">
+       Nested If Statements
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="nested.html">
-     Nested If Statements
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../loops/intro.html">
+     Loops
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../loops/while.html">
+       While Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../loops/for.html">
+       For Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../loops/nested.html">
+       Nested Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../loops/break.html">
+       Breaking Out of Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../loops/else.html">
+       Else Statement and Loops
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../loops/intro.html">
-   Loops
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../loops/while.html">
-     While Loops
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../functions/intro.html">
+     Defining Functions
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../functions/return.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         return
+        </span>
+       </code>
+       Statement
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../functions/arguments.html">
+       Function Arguments
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../functions/local-variables.html">
+       Local Variables
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../functions/recursive.html">
+       Recursive Functions
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../loops/for.html">
-     For Loops
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../loops/nested.html">
-     Nested Loops
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../loops/break.html">
-     Breaking Out of Loops
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../loops/else.html">
-     Else Statement and Loops
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../functions/intro.html">
-   Defining Functions
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../functions/return.html">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       return
-      </span>
-     </code>
-     Statement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../functions/arguments.html">
-     Function Arguments
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../functions/local-variables.html">
-     Local Variables
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../functions/recursive.html">
-     Recursive Functions
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../file-io/intro.html">
-   File I/O
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../file-io/file-io.html">
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../file-io/intro.html">
      File I/O
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../file-io/data.html">
-     Structured Data Files
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Scientific Packages
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../scientific-packages/numpy/intro.html">
-   Numpy
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/numpy/arrays.html">
-     Arrays
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/numpy/array-methods.html">
-     Array Methods and Attributes
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/numpy/arrays2d.html">
-     2D Arrays and Matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/numpy/random.html">
-     NumPy Random Module
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/numpy/where.html">
-     Array Conditional Statements and
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       numpy.where()
-      </span>
-     </code>
-    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../file-io/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../file-io/data.html">
+       Structured Data Files
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../scientific-packages/matplotlib/intro.html">
-   Matplotlib
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/matplotlib/simple.html">
-     Simple Plots with Pyplot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/matplotlib/subplots.html">
-     Subplots
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../scientific-packages/astropy/intro.html">
-   Astropy
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/astropy/units.html">
-     Units and Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/astropy/constants.html">
-     Constants
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Numerical Methods
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/benchmarking/intro.html">
-   Benchmarking
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/benchmarking/time.html">
-     Timing With
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       time.perf_counter
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/benchmarking/uncertainty.html">
-     Measurement and Uncertainty
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/root-finding/intro.html">
-   Numerical Root Finding
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/root-finding/bisection.html">
-     Bisection Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/root-finding/secant.html">
-     Secant Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/root-finding/newton.html">
-     Newton-Raphson Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/root-finding/comparison.html">
-     Comparing the Methods
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/regression/intro.html">
-   Linear Regression Algorithms
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/regression/least-squares.html">
-     Linear Least Squares Minimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/regression/chi-squared.html">
-     Chi Squared Minimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/regression/multivariate-least-squares.html">
-     Multivariate Linear Least Squares Minimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/regression/scipy.html">
-     Least Squares Minimization with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       scipy.optimize.leastsq
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/ode/intro.html">
-   Numerical Solutions to Ordinary Differential Equations
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/ode/euler.html">
-     Euler’s Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/ode/euler-error.html">
-     Euler’s Method: Truncation Error
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/ode/higher-order.html">
-     Solving Higher Order ODEs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/ode/runge-kutta.html">
-     Runge-Kutta Methods
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/integration/intro.html">
-   Numerical Integration Techniques
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/integration/midpoint.html">
-     Midpoint Rule
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/integration/trapezoidal.html">
-     Trapezoidal Rule
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/integration/simpson.html">
-     Simpson’s Rule
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
-</ul>
-
+  <figcaption>
+   <p>
+    <span class="caption-text">
+     Scientific Packages
+    </span>
+   </p>
+   <ul>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../../scientific-packages/numpy/intro.html">
+      Numpy
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/arrays.html">
+        Arrays
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/array-methods.html">
+        Array Methods and Attributes
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/arrays2d.html">
+        2D Arrays and Matrices
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/random.html">
+        NumPy Random Module
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/where.html">
+        Array Conditional Statements and
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          numpy.where()
+         </span>
+        </code>
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../../scientific-packages/matplotlib/intro.html">
+      Matplotlib
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/matplotlib/simple.html">
+        Simple Plots with Pyplot
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/matplotlib/subplots.html">
+        Subplots
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../../scientific-packages/astropy/intro.html">
+      Astropy
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/astropy/units.html">
+        Units and Quantities
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/astropy/constants.html">
+        Constants
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+   </ul>
+   <figcaption>
+    <p>
+     <span class="caption-text">
+      Numerical Methods
+     </span>
+    </p>
+    <ul>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/benchmarking/intro.html">
+       Benchmarking
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/benchmarking/time.html">
+         Timing With
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           time.perf_counter
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/benchmarking/uncertainty.html">
+         Measurement and Uncertainty
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/root-finding/intro.html">
+       Numerical Root Finding
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/root-finding/bisection.html">
+         Bisection Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/root-finding/secant.html">
+         Secant Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/root-finding/newton.html">
+         Newton-Raphson Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/root-finding/comparison.html">
+         Comparing the Methods
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/regression/intro.html">
+       Linear Regression Algorithms
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/regression/least-squares.html">
+         Linear Least Squares Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/regression/chi-squared.html">
+         Chi Squared Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/regression/multivariate-least-squares.html">
+         Multivariate Linear Least Squares Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/regression/scipy.html">
+         Least Squares Minimization with
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           scipy.optimize.leastsq
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/ode/intro.html">
+       Numerical Solutions to Ordinary Differential Equations
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/ode/euler.html">
+         Euler’s Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/ode/euler-error.html">
+         Euler’s Method: Truncation Error
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/ode/higher-order.html">
+         Solving Higher Order ODEs
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/ode/runge-kutta.html">
+         Runge-Kutta Methods
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/integration/intro.html">
+       Numerical Integration Techniques
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/integration/midpoint.html">
+         Midpoint Rule
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/integration/trapezoidal.html">
+         Trapezoidal Rule
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/integration/simpson.html">
+         Simpson’s Rule
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+    </ul>
+   </figcaption>
+  </figcaption>
+ </figcaption>
+</figcaption>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -726,7 +736,7 @@
         
               <div>
                 
-  <div class="section" id="if-statements">
+  <section id="if-statements">
 <h1>If Statements<a class="headerlink" href="#if-statements" title="Permalink to this headline">¶</a></h1>
 <p>If statements give us the ability to execute different blocks of code depending on the outcome of a logical statement (or boolean value).</p>
 <p>The syntax for an if statement is:</p>
@@ -745,11 +755,13 @@
 </pre></div>
 </div>
 <p>here <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">before</span></code> will be executed first, then <code class="docutils literal notranslate"><span class="pre">condition</span></code> will be evaluated. If <code class="docutils literal notranslate"><span class="pre">condition</span></code> is true, <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">inside</span></code> will be executed. Finally <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">after</span></code> will be executed (regardless of whether or not <code class="docutils literal notranslate"><span class="pre">condition</span></code> is true). Illustrated in a control flow diagram:</p>
-<div class="figure align-default" id="fig-if-control-flow">
+<figure class="align-default" id="fig-if-control-flow">
 <img alt="../../../_images/if.png" src="../../../_images/if.png" />
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Control flow diagram of the pseudo code if statement example.</span><a class="headerlink" href="#fig-if-control-flow" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="worked-example">
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Control flow diagram of the pseudo code if statement example.</span><a class="headerlink" href="#fig-if-control-flow" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="worked-example">
 <h2>Worked Example<a class="headerlink" href="#worked-example" title="Permalink to this headline">¶</a></h2>
 <p>Let’s consider the problem where we want to check if one variable is greater than the other. One solution using an if statement is:</p>
 <div class="cell docutils container">
@@ -774,8 +786,8 @@
 </pre></div>
 </div>
 <p>then we would see nothing printed out as <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span></code> would evaluate to <code class="docutils literal notranslate"><span class="pre">False</span></code> and the code block contained in the if statement would not be executed.</p>
-</div>
-<div class="section" id="else">
+</section>
+<section id="else">
 <h2>Else<a class="headerlink" href="#else" title="Permalink to this headline">¶</a></h2>
 <p>What if you wanted to execute a code block if a statement is true; and another if it’s false? The <code class="docutils literal notranslate"><span class="pre">else</span></code> part of an if statement can be used for this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
@@ -786,15 +798,17 @@
 </div>
 <p>If <code class="docutils literal notranslate"><span class="pre">condition</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code> then <code class="docutils literal notranslate"><span class="pre">code_block_1</span></code> will be executed. If, on the other hand, <code class="docutils literal notranslate"><span class="pre">condition</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>, <code class="docutils literal notranslate"><span class="pre">code_block_2</span></code> will be executed.</p>
 <p>This pseudo code can be illustrated by the control flow diagram:</p>
-<div class="figure align-default" id="fig-if-else-control-flow">
+<figure class="align-default" id="fig-if-else-control-flow">
 <img alt="../../../_images/if_else.png" src="../../../_images/if_else.png" />
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Control flow diagram of the pseudo code if statement with an else part example.</span><a class="headerlink" href="#fig-if-else-control-flow" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Control flow diagram of the pseudo code if statement with an else part example.</span><a class="headerlink" href="#fig-if-else-control-flow" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">else</span></code> statement cannot stand by itself. It requires a preceding if statement or loop for context.</p>
 </div>
-<div class="section" id="id1">
+<section id="id1">
 <h3>Worked Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p>Let’s take our first example and add an <code class="docutils literal notranslate"><span class="pre">else</span></code> part to it:</p>
 <div class="cell docutils container">
@@ -833,9 +847,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="elif">
+</section>
+</section>
+<section id="elif">
 <h2>Elif<a class="headerlink" href="#elif" title="Permalink to this headline">¶</a></h2>
 <p>Now, what if we had 2 conditions which are mutually exclusive (if one is true the other is necessarily false) and the one isn’t just the converse of the other. For this we can use the <code class="docutils literal notranslate"><span class="pre">elif</span></code> part of the if statement (to be read “else if”):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span><span class="p">:</span>
@@ -845,11 +859,13 @@
 </pre></div>
 </div>
 <p>If <code class="docutils literal notranslate"><span class="pre">condition</span> <span class="pre">1</span></code> is false, <code class="docutils literal notranslate"><span class="pre">condition</span> <span class="pre">2</span></code> will be evaluated. If <code class="docutils literal notranslate"><span class="pre">condition</span> <span class="pre">2</span></code> is found to be true, then <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block</span> <span class="pre">2</span></code> will be executed, if not then control will move from the if statement. Illustrated as a control flow diagram:</p>
-<div class="figure align-default" id="fig-if-elif-control-flow">
+<figure class="align-default" id="fig-if-elif-control-flow">
 <img alt="../../../_images/if_elif.png" src="../../../_images/if_elif.png" />
-<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Control flow diagram of the pseudo code example of an if statement with an elif part.</span><a class="headerlink" href="#fig-if-elif-control-flow" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="id2">
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Control flow diagram of the pseudo code example of an if statement with an elif part.</span><a class="headerlink" href="#fig-if-elif-control-flow" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="id2">
 <h3>Worked Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>Let’s continue with our worked example and change the <code class="docutils literal notranslate"><span class="pre">else</span></code> part to be more specific:</p>
 <div class="cell docutils container">
@@ -883,9 +899,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="else-after-an-elif">
+</section>
+</section>
+<section id="else-after-an-elif">
 <h2>Else After an Elif<a class="headerlink" href="#else-after-an-elif" title="Permalink to this headline">¶</a></h2>
 <p>Now, if we want to catch the case where both the conditions in the <code class="docutils literal notranslate"><span class="pre">if</span></code> and <code class="docutils literal notranslate"><span class="pre">elif</span></code> parts of the if statement are false, we can use an <code class="docutils literal notranslate"><span class="pre">else</span></code> part at the very end of the if statement. In pseudo code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span><span class="p">:</span>
@@ -897,15 +913,17 @@
 </pre></div>
 </div>
 <p>Illustrated in a control flow diagram:</p>
-<div class="figure align-default" id="fig-if-elif-else-control-flow">
+<figure class="align-default" id="fig-if-elif-else-control-flow">
 <img alt="../../../_images/if_elif_else.png" src="../../../_images/if_elif_else.png" />
-<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Control flow diagram of the pseudo code example of an if statement with an elif and else part.</span><a class="headerlink" href="#fig-if-elif-else-control-flow" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Control flow diagram of the pseudo code example of an if statement with an elif and else part.</span><a class="headerlink" href="#fig-if-elif-else-control-flow" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">else</span></code> must <strong>always</strong> be the last part of the if statement and <strong>there can only be one</strong>.</p>
 </div>
-<div class="section" id="id3">
+<section id="id3">
 <h3>Worked Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <p>Now, let’s re-introduce an <code class="docutils literal notranslate"><span class="pre">else</span></code> part to our worked example:</p>
 <div class="cell docutils container">
@@ -928,9 +946,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="multiple-elif-parts">
+</section>
+</section>
+<section id="multiple-elif-parts">
 <h2>Multiple Elif Parts<a class="headerlink" href="#multiple-elif-parts" title="Permalink to this headline">¶</a></h2>
 <p>Though you may only use one <code class="docutils literal notranslate"><span class="pre">else</span></code> part in an if statement, you are not limited by how many <code class="docutils literal notranslate"><span class="pre">elif</span></code> parts you wish to use. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span><span class="p">:</span>
@@ -947,11 +965,13 @@
 </pre></div>
 </div>
 <p>This can be illustrated using a control flow diagram:</p>
-<div class="figure align-default" id="fig-if-elif-elif-else-control-flow">
+<figure class="align-default" id="fig-if-elif-elif-else-control-flow">
 <img alt="../../../_images/if_elif_elif_else.png" src="../../../_images/if_elif_elif_else.png" />
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Control flow diagram of the pseudo code example of an if statement with two elif parts and an else part.</span><a class="headerlink" href="#fig-if-elif-elif-else-control-flow" title="Permalink to this image">¶</a></p>
-</div>
-<div class="section" id="id4">
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Control flow diagram of the pseudo code example of an if statement with two elif parts and an else part.</span><a class="headerlink" href="#fig-if-elif-elif-else-control-flow" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="id4">
 <h3>Worked Example<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <p>As an example of a script with multiple <code class="docutils literal notranslate"><span class="pre">elif</span></code> parts, lets write a script that checks if a variable is a multiple of 2, 3, or 5:</p>
 <div class="cell docutils container">
@@ -1060,9 +1080,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1113,7 +1133,7 @@
     </div>
 
     
-  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../../../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     

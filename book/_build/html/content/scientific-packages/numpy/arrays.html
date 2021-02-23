@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Arrays &#8212; AST4007W Computational Methods</title>
     
-  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -31,24 +31,22 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/table.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -96,471 +94,483 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro/intro.html">
-   Programming and Python in a Nutshell
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro/control-flow/control-flow-diagrams.html">
-   Control Flow Diagrams
-  </a>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  The Python Standard Library
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/basics/intro.html">
-   Python Basics
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/basics/variables.html">
-     Variables
+<figcaption>
+ <p>
+  <span class="caption-text">
+   Introduction
+  </span>
+ </p>
+ <ul>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/intro.html">
+    Programming and Python in a Nutshell
+   </a>
+  </li>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/installing/anaconda.html">
+    Managing Your Python Installation with Anaconda
+   </a>
+  </li>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/control-flow/control-flow-diagrams.html">
+    Control Flow Diagrams
+   </a>
+  </li>
+ </ul>
+ <figcaption>
+  <p>
+   <span class="caption-text">
+    The Python Standard Library
+   </span>
+  </p>
+  <ul>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/basics/intro.html">
+     Python Basics
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/variables.html">
+       Variables
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/comments.html">
+       Comments
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/types.html">
+       Type Conversion
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/operators.html">
+       Numerical Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/assignment-operators.html">
+       Compound Assignment Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/functions.html">
+       Introduction to Using Functions
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/basics/comments.html">
-     Comments
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/strings/strings.html">
+     Strings
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/strings/string-formatting.html">
+       String Formatting
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/basics/types.html">
-     Type Conversion
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/data-structures/intro.html">
+     Data Structures
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/data-structures/tuple.html">
+       Tuple
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/data-structures/lists.html">
+       Lists
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/data-structures/dictionaries.html">
+       Dictionaries
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/basics/operators.html">
-     Numerical Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/basics/assignment-operators.html">
-     Compound Assignment Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/basics/functions.html">
-     Introduction to Using Functions
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/strings/strings.html">
-   Strings
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/strings/string-formatting.html">
-     String Formatting
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/data-structures/intro.html">
-   Data Structures
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/data-structures/tuple.html">
-     Tuple
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/data-structures/lists.html">
-     Lists
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/data-structures/dictionaries.html">
-     Dictionaries
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/if-statements/intro.html">
-   If Statements
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/if-statements/bools.html">
-     Booleans (
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       bool
-      </span>
-     </code>
-     )
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/if-statements/comparison-operators.html">
-     Comparison Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/if-statements/logical-operators.html">
-     Logical Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/if-statements/inclusion-operators.html">
-     Inclusion Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/if-statements/if.html">
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/if-statements/intro.html">
      If Statements
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/bools.html">
+       Booleans (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         bool
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/comparison-operators.html">
+       Comparison Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/logical-operators.html">
+       Logical Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/inclusion-operators.html">
+       Inclusion Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/if.html">
+       If Statements
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/nested.html">
+       Nested If Statements
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/if-statements/nested.html">
-     Nested If Statements
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/loops/intro.html">
+     Loops
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/while.html">
+       While Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/for.html">
+       For Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/nested.html">
+       Nested Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/break.html">
+       Breaking Out of Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/else.html">
+       Else Statement and Loops
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/loops/intro.html">
-   Loops
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/loops/while.html">
-     While Loops
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/functions/intro.html">
+     Defining Functions
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/functions/return.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         return
+        </span>
+       </code>
+       Statement
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/functions/arguments.html">
+       Function Arguments
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/functions/local-variables.html">
+       Local Variables
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/functions/recursive.html">
+       Recursive Functions
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/loops/for.html">
-     For Loops
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/loops/nested.html">
-     Nested Loops
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/loops/break.html">
-     Breaking Out of Loops
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/loops/else.html">
-     Else Statement and Loops
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/functions/intro.html">
-   Defining Functions
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/functions/return.html">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       return
-      </span>
-     </code>
-     Statement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/functions/arguments.html">
-     Function Arguments
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/functions/local-variables.html">
-     Local Variables
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/functions/recursive.html">
-     Recursive Functions
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/file-io/intro.html">
-   File I/O
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/file-io/file-io.html">
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/file-io/intro.html">
      File I/O
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/file-io/data.html">
-     Structured Data Files
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Scientific Packages
- </span>
-</p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="reference internal" href="intro.html">
-   Numpy
-  </a>
-  <ul class="current collapse-ul">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Arrays
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="array-methods.html">
-     Array Methods and Attributes
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="arrays2d.html">
-     2D Arrays and Matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="random.html">
-     NumPy Random Module
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="where.html">
-     Array Conditional Statements and
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       numpy.where()
-      </span>
-     </code>
-    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/file-io/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/file-io/data.html">
+       Structured Data Files
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../matplotlib/intro.html">
-   Matplotlib
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../matplotlib/simple.html">
-     Simple Plots with Pyplot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../matplotlib/subplots.html">
-     Subplots
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../astropy/intro.html">
-   Astropy
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../astropy/units.html">
-     Units and Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../astropy/constants.html">
-     Constants
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Numerical Methods
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/benchmarking/intro.html">
-   Benchmarking
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/benchmarking/time.html">
-     Timing With
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       time.perf_counter
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/benchmarking/uncertainty.html">
-     Measurement and Uncertainty
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/root-finding/intro.html">
-   Numerical Root Finding
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/root-finding/bisection.html">
-     Bisection Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/root-finding/secant.html">
-     Secant Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/root-finding/newton.html">
-     Newton-Raphson Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/root-finding/comparison.html">
-     Comparing the Methods
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/regression/intro.html">
-   Linear Regression Algorithms
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/regression/least-squares.html">
-     Linear Least Squares Minimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/regression/chi-squared.html">
-     Chi Squared Minimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/regression/multivariate-least-squares.html">
-     Multivariate Linear Least Squares Minimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/regression/scipy.html">
-     Least Squares Minimization with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       scipy.optimize.leastsq
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/ode/intro.html">
-   Numerical Solutions to Ordinary Differential Equations
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/ode/euler.html">
-     Euler’s Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/ode/euler-error.html">
-     Euler’s Method: Truncation Error
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/ode/higher-order.html">
-     Solving Higher Order ODEs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/ode/runge-kutta.html">
-     Runge-Kutta Methods
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../numerical-methods/integration/intro.html">
-   Numerical Integration Techniques
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/integration/midpoint.html">
-     Midpoint Rule
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/integration/trapezoidal.html">
-     Trapezoidal Rule
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../numerical-methods/integration/simpson.html">
-     Simpson’s Rule
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
-</ul>
-
+  <figcaption>
+   <p>
+    <span class="caption-text">
+     Scientific Packages
+    </span>
+   </p>
+   <ul class="current">
+    <li class="toctree-l1 current active collapsible-parent">
+     <a class="reference internal" href="intro.html">
+      Numpy
+     </a>
+     <ul class="current collapse-ul">
+      <li class="toctree-l2 current active">
+       <a class="current reference internal" href="#">
+        Arrays
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="array-methods.html">
+        Array Methods and Attributes
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="arrays2d.html">
+        2D Arrays and Matrices
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="random.html">
+        NumPy Random Module
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="where.html">
+        Array Conditional Statements and
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          numpy.where()
+         </span>
+        </code>
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../matplotlib/intro.html">
+      Matplotlib
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../matplotlib/simple.html">
+        Simple Plots with Pyplot
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../matplotlib/subplots.html">
+        Subplots
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../astropy/intro.html">
+      Astropy
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../astropy/units.html">
+        Units and Quantities
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../astropy/constants.html">
+        Constants
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+   </ul>
+   <figcaption>
+    <p>
+     <span class="caption-text">
+      Numerical Methods
+     </span>
+    </p>
+    <ul>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/benchmarking/intro.html">
+       Benchmarking
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/benchmarking/time.html">
+         Timing With
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           time.perf_counter
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/benchmarking/uncertainty.html">
+         Measurement and Uncertainty
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/root-finding/intro.html">
+       Numerical Root Finding
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/root-finding/bisection.html">
+         Bisection Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/root-finding/secant.html">
+         Secant Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/root-finding/newton.html">
+         Newton-Raphson Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/root-finding/comparison.html">
+         Comparing the Methods
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/regression/intro.html">
+       Linear Regression Algorithms
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/regression/least-squares.html">
+         Linear Least Squares Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/regression/chi-squared.html">
+         Chi Squared Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/regression/multivariate-least-squares.html">
+         Multivariate Linear Least Squares Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/regression/scipy.html">
+         Least Squares Minimization with
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           scipy.optimize.leastsq
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/ode/intro.html">
+       Numerical Solutions to Ordinary Differential Equations
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/ode/euler.html">
+         Euler’s Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/ode/euler-error.html">
+         Euler’s Method: Truncation Error
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/ode/higher-order.html">
+         Solving Higher Order ODEs
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/ode/runge-kutta.html">
+         Runge-Kutta Methods
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/integration/intro.html">
+       Numerical Integration Techniques
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/integration/midpoint.html">
+         Midpoint Rule
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/integration/trapezoidal.html">
+         Trapezoidal Rule
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/integration/simpson.html">
+         Simpson’s Rule
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+    </ul>
+   </figcaption>
+  </figcaption>
+ </figcaption>
+</figcaption>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -742,13 +752,13 @@
         
               <div>
                 
-  <div class="section" id="arrays">
+  <section id="arrays">
 <h1>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h1>
 <p>Arrays are one of NumPy’s most important objects.</p>
 <p>An array is a sequence of homogeneous data (each element must be the same data type). NumPy arrays use NumPy specific data types which are listed <a class="reference external" href="https://numpy.org/devdocs/user/basics.types.html">here</a>.</p>
 <p>Though we shall see that arrays can be indexed and sliced similarly to strings, tuples and lists, they behave differently under operations.</p>
 <p>Arrays can have any number of dimensions. In this section we will only consider the 1 dimensional case.</p>
-<div class="section" id="creating-arrays">
+<section id="creating-arrays">
 <h2>Creating Arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Arrays can be created using the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function with a list, tuple or another array as the argument:</p>
 <div class="cell docutils container">
@@ -791,8 +801,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="indexing-and-slicing">
+</section>
+<section id="indexing-and-slicing">
 <h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
 <p>As said before, arrays can be indexed and sliced similarly to lists and strings</p>
 <div class="cell docutils container">
@@ -816,8 +826,8 @@ Every second character: [&#39;a&#39; &#39;c&#39; &#39;e&#39;]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="mutable-but-tricky-to-resize">
+</section>
+<section id="mutable-but-tricky-to-resize">
 <h2>Mutable But Tricky To Resize<a class="headerlink" href="#mutable-but-tricky-to-resize" title="Permalink to this headline">¶</a></h2>
 <p>Similarly to lists, arrays are mutable (you can change the array after initializing it). For example, you can change an element of an array:</p>
 <div class="cell docutils container">
@@ -846,8 +856,8 @@ Array: [1 2 7 4]
 </div>
 <p>However, unlike lists, it’s not easy or efficient to alter the size of an array. It is still possible to resize (with <code class="docutils literal notranslate"><span class="pre">np.resize()</span></code> ) and to concatenate (with <code class="docutils literal notranslate"><span class="pre">np.concatenate()</span></code> ) arrays, but they don’t have certain handy functions for lists like <code class="docutils literal notranslate"><span class="pre">.append()</span></code> and <code class="docutils literal notranslate"><span class="pre">.insert()</span></code>.</p>
 <p>In general you should only create an array once you know how big it needs to be. If you need to add elements to an array, consider starting with a list and converting that to an array when you need the array properties.</p>
-</div>
-<div class="section" id="iterating-through-arrays">
+</section>
+<section id="iterating-through-arrays">
 <h2>Iterating Through Arrays<a class="headerlink" href="#iterating-through-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Like strings, tuples and lists, arrays are iterable:</p>
 <div class="cell docutils container">
@@ -868,8 +878,8 @@ Array: [1 2 7 4]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="vectorized-operations">
+</section>
+<section id="vectorized-operations">
 <h2>Vectorized Operations<a class="headerlink" href="#vectorized-operations" title="Permalink to this headline">¶</a></h2>
 <p>One of the most useful properties of NumPy arrays is their vectorized operations. That is arithmetic operations between an array and array, and an array and scalar are performed element by element.</p>
 <p>For example consider the scalar operations:</p>
@@ -947,11 +957,11 @@ Array: [1 2 7 4]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="creating-structured-arrays-rename-this">
+</section>
+<section id="creating-structured-arrays-rename-this">
 <h2>Creating Structured Arrays <!--- Rename this --><a class="headerlink" href="#creating-structured-arrays-rename-this" title="Permalink to this headline">¶</a></h2>
 <p>Often we would like to create a large array with a particular structure. We could create these arrays from lists using list comprehension, but NumPy provides some useful built in functions to use instead.</p>
-<div class="section" id="np-arange">
+<section id="np-arange">
 <h3><code class="docutils literal notranslate"><span class="pre">np.arange()</span></code><a class="headerlink" href="#np-arange" title="Permalink to this headline">¶</a></h3>
 <p>This function is analogous to the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function. It produces a series of values where you can specify the starting value, stopping value and the step size.</p>
 <p>The syntax is:</p>
@@ -1011,8 +1021,8 @@ Array: [1 2 7 4]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="np-linspace">
+</section>
+<section id="np-linspace">
 <h3><code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code><a class="headerlink" href="#np-linspace" title="Permalink to this headline">¶</a></h3>
 <p>This function creates a series of evenly spaced values between a stopping and starting value. The number of items in the array can also be specified.</p>
 <p>The syntax:</p>
@@ -1033,8 +1043,8 @@ Array: [1 2 7 4]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="np-zeroes">
+</section>
+<section id="np-zeroes">
 <h3><code class="docutils literal notranslate"><span class="pre">np.zeroes()</span></code><a class="headerlink" href="#np-zeroes" title="Permalink to this headline">¶</a></h3>
 <p>This function creates a uniform array of zeros. It takes the shape of the array you want to generate as an argument.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
@@ -1054,8 +1064,8 @@ Array: [1 2 7 4]
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code> can be useful if you wish to create an array with a particular size, but will only be filling in the values later.</p>
-</div>
-<div class="section" id="np-ones">
+</section>
+<section id="np-ones">
 <h3><code class="docutils literal notranslate"><span class="pre">np.ones()</span></code><a class="headerlink" href="#np-ones" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">np.ones()</span></code> is similar to <code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code>, except it generates a uniform array of ones.</p>
 <div class="cell docutils container">
@@ -1071,9 +1081,9 @@ Array: [1 2 7 4]
 </div>
 </div>
 <p>Note that, if you want a uniform array of a different value, you can either add that value to an array of zeros or multiply that value with an array of ones.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1124,7 +1134,7 @@ Array: [1 2 7 4]
     </div>
 
     
-  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../../../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     

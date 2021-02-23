@@ -1,18 +1,12 @@
-#!/usr/bin/env python
-# coding: utf-8
+# Structured Data Files
 
-# # Structured Data Files
+In this section we focus on reading from and writing to files with a row-column format, such as is found in comma-separated (csv) and tab-separated (tsv) data files.
 
-# In this section we focus on reading from and writing to files with a row-column format, such as is found in comma-separated (csv) and tab-separated (tsv) data files.
-# 
-# Although `numpy.loadtxt()` is suitable for this task, it is valuable to be able to write your own code solution.
+Although `numpy.loadtxt()` is suitable for this task, it is valuable to be able to write your own code solution.
 
-# ## Writing a Data File
+## Writing a Data File
 
-# Let us generate some data and write it in a csv format (comma-separated values). In general what you use as the separator (delimiter) for your data is up to you, but if we use a .csv file extension it's best to stick to the standard.
-
-# In[1]:
-
+Let us generate some data and write it in a csv format (comma-separated values). In general what you use as the separator (delimiter) for your data is up to you, but if we use a .csv file extension it's best to stick to the standard.
 
 import numpy as np
 
@@ -28,26 +22,18 @@ with open('data1.csv', 'w') as f:
     for xx, yy, zz in zip(x, y, z):
         f.write(f'{xx},{yy},{zz}\n')
 
+If you are not familiar with the string formatting used (`f'{xx},{yy},{zz}\n'`) see the page on {doc}`String Formatting <../basics/string-formatting>`. Note that it is in this line (and also in the header) that we have separated the values with commas.
 
-# If you are not familiar with the string formatting used (`f'{xx},{yy},{zz}\n'`) see the page on {doc}`String Formatting <../basics/string-formatting>`. Note that it is in this line (and also in the header) that we have separated the values with commas.
+Note that the file extension **.csv** acts more as a hint for other software. There is no physical difference between a file we write with this extension or any other extension (including no extension). As long as the file mode is set to text (`'t'`), we are writing plain text files.
 
-# Note that the file extension **.csv** acts more as a hint for other software. There is no physical difference between a file we write with this extension or any other extension (including no extension). As long as the file mode is set to text (`'t'`), we are writing plain text files.
-
-# The output of our data file **data1.csv** looks like:
-
-# In[2]:
-
+The output of our data file **data1.csv** looks like:
 
 with open('data1.csv', 'r') as f:
     data1 = f.readlines()
 
 print(('{}'*10).format(*data1[:10]))
 
-
-# Or in a more presentable format:
-
-# In[3]:
-
+Or in a more presentable format:
 
 import pandas as pd
 from IPython.display import display, HTML
@@ -56,33 +42,21 @@ data1 = pd.read_csv('data1.csv')
 
 display(HTML(data1.to_html(max_rows = 8, index = False)))
 
+## Reading a Data File
 
-# ## Reading a Data File
+Now, let's read the data file we wrote. If we want to store each column in a separate list or array, it will be best to iterate through the lines of the file.
 
-# Now, let's read the data file we wrote. If we want to store each column in a separate list or array, it will be best to iterate through the lines of the file.
-
-# We will need to divide the values from each line using the separator. To do this, we will use the `.split()` string method:
-
-# In[4]:
-
+We will need to divide the values from each line using the separator. To do this, we will use the `.split()` string method:
 
 'a b c d'.split()
 
-
-# As you can see this splits the string into a list of strings. By default it uses a space as the dividing character, given a string argument it will use that as the delimiter instead:
-
-# In[5]:
-
+As you can see this splits the string into a list of strings. By default it uses a space as the dividing character, given a string argument it will use that as the delimiter instead:
 
 'a,b,c,d'.split(',')
 
+We must keep in mind that the file we are reading has a header we want to read before any of the data.
 
-# We must keep in mind that the file we are reading has a header we want to read before any of the data.
-
-# Something else to keep in mind is that the file contains text (or rather the content is a string). If we want to store the data as numbers, we need to convert them first.
-
-# In[6]:
-
+Something else to keep in mind is that the file contains text (or rather the content is a string). If we want to store the data as numbers, we need to convert them first.
 
 #Lists to hold the data
 x = []
@@ -107,13 +81,9 @@ x = np.array(x)
 y = np.array(y)
 z = np.array(z)
 
+Note that we start with lists and convert to an array later (if an array is needed). The reason for doing this is that we don't necessarily know how many lines the file has before we begin, and appending to lists is more easy and efficient than concatenating arrays.
 
-# Note that we start with lists and convert to an array later (if an array is needed). The reason for doing this is that we don't necessarily know how many lines the file has before we begin, and appending to lists is more easy and efficient than concatenating arrays.
-
-# As a sanity check, let's plot the data we have just read:
-
-# In[7]:
-
+As a sanity check, let's plot the data we have just read:
 
 import matplotlib.pyplot as plt
 
@@ -128,13 +98,9 @@ ax.legend(loc = 9)
 
 plt.show()
 
+## Writing and Reading a Tab Separated File
 
-# ## Writing and Reading a Tab Separated File
-
-# If you are comfortable with the sections above, you may skip this one. If you'd like to see another example of a data file with a different delimiter, we will write a data file using tab separation instead of commas (tsv).
-
-# In[8]:
-
+If you are comfortable with the sections above, you may skip this one. If you'd like to see another example of a data file with a different delimiter, we will write a data file using tab separation instead of commas (tsv).
 
 import numpy as np
 
@@ -150,26 +116,18 @@ with open('data2.tsv', 'w') as f:
     for xx, yy, zz in zip(x, y, z):
         f.write(f'{xx}\t{yy}\t{zz}\n')
 
+Here we use the special character `'\t'` which stands for tabs.
 
-# Here we use the special character `'\t'` which stands for tabs.
-# 
-# Again, the use of the **.tsv** file extension is a convention, it does not alter the nature of the file itself.
-# 
-# The contents of the data file we have generated looks like this:
+Again, the use of the **.tsv** file extension is a convention, it does not alter the nature of the file itself.
 
-# In[9]:
-
+The contents of the data file we have generated looks like this:
 
 with open('data2.tsv', 'r') as f:
     data2 = f.readlines()
 
 print(('{}'*10).format(*data2[:10]))
 
-
-# Now, let's read the data keeping in mind that the values are now separated with tabs.
-
-# In[10]:
-
+Now, let's read the data keeping in mind that the values are now separated with tabs.
 
 #Lists to hold the data
 x = []
@@ -194,11 +152,7 @@ x = np.array(x)
 y = np.array(y)
 z = np.array(z)
 
-
-# Plotting this data:
-
-# In[11]:
-
+Plotting this data:
 
 import matplotlib.pyplot as plt
 
@@ -213,13 +167,9 @@ ax.legend(loc = 9)
 
 plt.show()
 
+## Reading Data in as a Single Array
 
-# ## Reading Data in as a Single Array
-
-# Sometimes you want to read the data in as a single 2D array (for example if you have a large data file or if the number of columns in your data file aren't fixed). Let's read the file **data2.tsv** in this manner:
-
-# In[12]:
-
+Sometimes you want to read the data in as a single 2D array (for example if you have a large data file or if the number of columns in your data file aren't fixed). Let's read the file **data2.tsv** in this manner:
 
 #Lists to hold the data
 data = []
@@ -240,11 +190,7 @@ with open('data2.tsv', 'r') as f:
 #Converting data to array
 data = np.array(data)
 
-
-# Note that this gives us a similar output to NumPy's `numpy.loadtxt()`. Plotting the data (use slices to extract the columns):
-
-# In[13]:
-
+Note that this gives us a similar output to NumPy's `numpy.loadtxt()`. Plotting the data (use slices to extract the columns):
 
 import matplotlib.pyplot as plt
 
@@ -258,10 +204,4 @@ ax.set_ylabel('y')
 ax.legend(loc = 9)
 
 plt.show()
-
-
-# In[ ]:
-
-
-
 

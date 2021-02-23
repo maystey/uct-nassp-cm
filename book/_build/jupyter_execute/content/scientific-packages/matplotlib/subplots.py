@@ -1,31 +1,21 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
 import matplotlib.pyplot as plt
 import numpy as np
 
+# Subplots
 
-# # Subplots
+You can create subplots in two different ways:
 
-# You can create subplots in two different ways:
+## `fig.add_subplot()`
 
-# ## `fig.add_subplot()`
+One way to add subplots is by creating a figure and calling the `fig.add_subplot()` method to add an axis to it with (one of) the call signature:
 
-# One way to add subplots is by creating a figure and calling the `fig.add_subplot()` method to add an axis to it with (one of) the call signature:
-# 
-# ```python
-# fig.add_subplot(nrows, ncols, index)
-# ```
-# 
-# where `nrows` and `ncols` are the total number of rows and columns of axis and `index` is the position on the grid of axis.
-# 
-# Consider the plot with two rows and a single column:
+```python
+fig.add_subplot(nrows, ncols, index)
+```
 
-# In[2]:
+where `nrows` and `ncols` are the total number of rows and columns of axis and `index` is the position on the grid of axis.
 
+Consider the plot with two rows and a single column:
 
 x = np.linspace(0, 2)
 
@@ -46,23 +36,19 @@ ax1.set_ylabel('y = x^3')
 
 plt.show()
 
+Refer to the [documentation](https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.add_subplot) for additional options.
 
-# Refer to the [documentation](https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.add_subplot) for additional options.
+## `plt.subplots()`
 
-# ## `plt.subplots()`
+An alternative way to create subplots is to use the `plt.subplots()` function which returns the figure object and a tuple of axis. The call signature is:
 
-# An alternative way to create subplots is to use the `plt.subplots()` function which returns the figure object and a tuple of axis. The call signature is:
-# 
-# ```python
-# plt.subplots(nrows = 1, ncols = 1)
-# ```
-# 
-# where `nrows` and `ncols` are the number of rows an columns as before.
-# 
-# Let's recreate the previous plot using this function:
+```python
+plt.subplots(nrows = 1, ncols = 1)
+```
 
-# In[3]:
+where `nrows` and `ncols` are the number of rows an columns as before.
 
+Let's recreate the previous plot using this function:
 
 x = np.linspace(0, 2)
 
@@ -80,11 +66,7 @@ ax[1].set_ylabel('y = x^3')
 
 plt.show()
 
-
-# A couple of additional keyword arguments are `sharex` and `sharey`. These take boolean values. If true the subplots will share the relevant axis's ticks. For example:
-
-# In[4]:
-
+A couple of additional keyword arguments are `sharex` and `sharey`. These take boolean values. If true the subplots will share the relevant axis's ticks. For example:
 
 x = np.linspace(0, np.pi)
 
@@ -100,15 +82,11 @@ ax[0].set_ylabel('y') #You can set this for the other axis
 
 plt.show()
 
+Refer to the [documentation](https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.subplots.html) for additional options.
 
-# Refer to the [documentation](https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.subplots.html) for additional options.
+## Using Subplots For General Plots
 
-# ## Using Subplots For General Plots
-
-# The subplot functions above are also used in general practice to create single axis plots, due to the ability to create a reference to the axis, which grants further customization. Simply:
-
-# In[5]:
-
+The subplot functions above are also used in general practice to create single axis plots, due to the ability to create a reference to the axis, which grants further customization. Simply:
 
 fig = plt.figure()
 ax = fig.add_subplot()
@@ -118,4 +96,3 @@ ax.set_xlabel('x')
 ax.set_ylabel('y')
 
 plt.show()
-

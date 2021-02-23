@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Runge-Kutta Methods &#8212; AST4007W Computational Methods</title>
     
-  <link rel="stylesheet" href="../../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
     
   <link rel="stylesheet"
@@ -31,24 +31,22 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/table.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.d3f166471bb80abb5163.js">
 
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/language_data.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -56,6 +54,8 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Numerical Integration Techniques" href="../integration/intro.html" />
@@ -96,471 +96,483 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Introduction
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro/intro.html">
-   Programming and Python in a Nutshell
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro/control-flow/control-flow-diagrams.html">
-   Control Flow Diagrams
-  </a>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  The Python Standard Library
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/basics/intro.html">
-   Python Basics
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/basics/variables.html">
-     Variables
+<figcaption>
+ <p>
+  <span class="caption-text">
+   Introduction
+  </span>
+ </p>
+ <ul>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/intro.html">
+    Programming and Python in a Nutshell
+   </a>
+  </li>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/installing/anaconda.html">
+    Managing Your Python Installation with Anaconda
+   </a>
+  </li>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/control-flow/control-flow-diagrams.html">
+    Control Flow Diagrams
+   </a>
+  </li>
+ </ul>
+ <figcaption>
+  <p>
+   <span class="caption-text">
+    The Python Standard Library
+   </span>
+  </p>
+  <ul>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/basics/intro.html">
+     Python Basics
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/variables.html">
+       Variables
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/comments.html">
+       Comments
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/types.html">
+       Type Conversion
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/operators.html">
+       Numerical Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/assignment-operators.html">
+       Compound Assignment Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/functions.html">
+       Introduction to Using Functions
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/basics/comments.html">
-     Comments
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/strings/strings.html">
+     Strings
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/strings/string-formatting.html">
+       String Formatting
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/basics/types.html">
-     Type Conversion
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/data-structures/intro.html">
+     Data Structures
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/data-structures/tuple.html">
+       Tuple
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/data-structures/lists.html">
+       Lists
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/data-structures/dictionaries.html">
+       Dictionaries
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/basics/operators.html">
-     Numerical Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/basics/assignment-operators.html">
-     Compound Assignment Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/basics/functions.html">
-     Introduction to Using Functions
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/strings/strings.html">
-   Strings
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/strings/string-formatting.html">
-     String Formatting
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/data-structures/intro.html">
-   Data Structures
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/data-structures/tuple.html">
-     Tuple
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/data-structures/lists.html">
-     Lists
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/data-structures/dictionaries.html">
-     Dictionaries
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/if-statements/intro.html">
-   If Statements
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/if-statements/bools.html">
-     Booleans (
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       bool
-      </span>
-     </code>
-     )
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/if-statements/comparison-operators.html">
-     Comparison Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/if-statements/logical-operators.html">
-     Logical Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/if-statements/inclusion-operators.html">
-     Inclusion Operators
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/if-statements/if.html">
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/if-statements/intro.html">
      If Statements
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/bools.html">
+       Booleans (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         bool
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/comparison-operators.html">
+       Comparison Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/logical-operators.html">
+       Logical Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/inclusion-operators.html">
+       Inclusion Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/if.html">
+       If Statements
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/nested.html">
+       Nested If Statements
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/if-statements/nested.html">
-     Nested If Statements
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/loops/intro.html">
+     Loops
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/while.html">
+       While Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/for.html">
+       For Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/nested.html">
+       Nested Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/break.html">
+       Breaking Out of Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/else.html">
+       Else Statement and Loops
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/loops/intro.html">
-   Loops
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/loops/while.html">
-     While Loops
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/functions/intro.html">
+     Defining Functions
     </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/functions/return.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         return
+        </span>
+       </code>
+       Statement
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/functions/arguments.html">
+       Function Arguments
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/functions/local-variables.html">
+       Local Variables
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/functions/recursive.html">
+       Recursive Functions
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/loops/for.html">
-     For Loops
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/loops/nested.html">
-     Nested Loops
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/loops/break.html">
-     Breaking Out of Loops
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/loops/else.html">
-     Else Statement and Loops
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/functions/intro.html">
-   Defining Functions
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/functions/return.html">
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       return
-      </span>
-     </code>
-     Statement
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/functions/arguments.html">
-     Function Arguments
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/functions/local-variables.html">
-     Local Variables
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/functions/recursive.html">
-     Recursive Functions
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../standard-library/file-io/intro.html">
-   File I/O
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/file-io/file-io.html">
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/file-io/intro.html">
      File I/O
     </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../standard-library/file-io/data.html">
-     Structured Data Files
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Scientific Packages
- </span>
-</p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../scientific-packages/numpy/intro.html">
-   Numpy
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/numpy/arrays.html">
-     Arrays
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/numpy/array-methods.html">
-     Array Methods and Attributes
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/numpy/arrays2d.html">
-     2D Arrays and Matrices
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/numpy/random.html">
-     NumPy Random Module
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/numpy/where.html">
-     Array Conditional Statements and
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       numpy.where()
-      </span>
-     </code>
-    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/file-io/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/file-io/data.html">
+       Structured Data Files
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
    </li>
   </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../scientific-packages/matplotlib/intro.html">
-   Matplotlib
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/matplotlib/simple.html">
-     Simple Plots with Pyplot
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/matplotlib/subplots.html">
-     Subplots
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../../scientific-packages/astropy/intro.html">
-   Astropy
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/astropy/units.html">
-     Units and Quantities
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../scientific-packages/astropy/constants.html">
-     Constants
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
-</ul>
-<p class="caption collapsible-parent">
- <span class="caption-text">
-  Numerical Methods
- </span>
-</p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../benchmarking/intro.html">
-   Benchmarking
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../benchmarking/time.html">
-     Timing With
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       time.perf_counter
-      </span>
-     </code>
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../benchmarking/uncertainty.html">
-     Measurement and Uncertainty
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../root-finding/intro.html">
-   Numerical Root Finding
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../root-finding/bisection.html">
-     Bisection Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../root-finding/secant.html">
-     Secant Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../root-finding/newton.html">
-     Newton-Raphson Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../root-finding/comparison.html">
-     Comparing the Methods
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../regression/intro.html">
-   Linear Regression Algorithms
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../regression/least-squares.html">
-     Linear Least Squares Minimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../regression/chi-squared.html">
-     Chi Squared Minimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../regression/multivariate-least-squares.html">
-     Multivariate Linear Least Squares Minimization
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../regression/scipy.html">
-     Least Squares Minimization with
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       scipy.optimize.leastsq
-      </span>
-     </code>
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 current active collapsible-parent">
-  <a class="reference internal" href="intro.html">
-   Numerical Solutions to Ordinary Differential Equations
-  </a>
-  <ul class="current collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="euler.html">
-     Euler’s Method
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="euler-error.html">
-     Euler’s Method: Truncation Error
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="higher-order.html">
-     Solving Higher Order ODEs
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Runge-Kutta Methods
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
- <li class="toctree-l1 collapsible-parent">
-  <a class="reference internal" href="../integration/intro.html">
-   Numerical Integration Techniques
-  </a>
-  <ul class="collapse-ul">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/midpoint.html">
-     Midpoint Rule
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/trapezoidal.html">
-     Trapezoidal Rule
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/simpson.html">
-     Simpson’s Rule
-    </a>
-   </li>
-  </ul>
-  <i class="fas fa-chevron-down">
-  </i>
- </li>
-</ul>
-
+  <figcaption>
+   <p>
+    <span class="caption-text">
+     Scientific Packages
+    </span>
+   </p>
+   <ul>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../../scientific-packages/numpy/intro.html">
+      Numpy
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/arrays.html">
+        Arrays
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/array-methods.html">
+        Array Methods and Attributes
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/arrays2d.html">
+        2D Arrays and Matrices
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/random.html">
+        NumPy Random Module
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/where.html">
+        Array Conditional Statements and
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          numpy.where()
+         </span>
+        </code>
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../../scientific-packages/matplotlib/intro.html">
+      Matplotlib
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/matplotlib/simple.html">
+        Simple Plots with Pyplot
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/matplotlib/subplots.html">
+        Subplots
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../../scientific-packages/astropy/intro.html">
+      Astropy
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/astropy/units.html">
+        Units and Quantities
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/astropy/constants.html">
+        Constants
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+   </ul>
+   <figcaption>
+    <p>
+     <span class="caption-text">
+      Numerical Methods
+     </span>
+    </p>
+    <ul class="current">
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../benchmarking/intro.html">
+       Benchmarking
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../benchmarking/time.html">
+         Timing With
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           time.perf_counter
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../benchmarking/uncertainty.html">
+         Measurement and Uncertainty
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../root-finding/intro.html">
+       Numerical Root Finding
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../root-finding/bisection.html">
+         Bisection Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../root-finding/secant.html">
+         Secant Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../root-finding/newton.html">
+         Newton-Raphson Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../root-finding/comparison.html">
+         Comparing the Methods
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../regression/intro.html">
+       Linear Regression Algorithms
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../regression/least-squares.html">
+         Linear Least Squares Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../regression/chi-squared.html">
+         Chi Squared Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../regression/multivariate-least-squares.html">
+         Multivariate Linear Least Squares Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../regression/scipy.html">
+         Least Squares Minimization with
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           scipy.optimize.leastsq
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 current active collapsible-parent">
+      <a class="reference internal" href="intro.html">
+       Numerical Solutions to Ordinary Differential Equations
+      </a>
+      <ul class="current collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="euler.html">
+         Euler’s Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="euler-error.html">
+         Euler’s Method: Truncation Error
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="higher-order.html">
+         Solving Higher Order ODEs
+        </a>
+       </li>
+       <li class="toctree-l2 current active">
+        <a class="current reference internal" href="#">
+         Runge-Kutta Methods
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../integration/intro.html">
+       Numerical Integration Techniques
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../integration/midpoint.html">
+         Midpoint Rule
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../integration/trapezoidal.html">
+         Trapezoidal Rule
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../integration/simpson.html">
+         Simpson’s Rule
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+    </ul>
+   </figcaption>
+  </figcaption>
+ </figcaption>
+</figcaption>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -714,13 +726,13 @@
         
               <div>
                 
-  <div class="section" id="runge-kutta-methods">
+  <section id="runge-kutta-methods">
 <h1>Runge-Kutta Methods<a class="headerlink" href="#runge-kutta-methods" title="Permalink to this headline">¶</a></h1>
 <p>The aforementioned Euler’s method is the simplest single step ODE solving method, but has a fairly large error. The Runge-Kutta methods are more popular due to their improved accuracy, in particular 4th and 5th order methods.</p>
-<div class="section" id="outline-of-the-derivation">
+<section id="outline-of-the-derivation">
 <h2>Outline of the Derivation<a class="headerlink" href="#outline-of-the-derivation" title="Permalink to this headline">¶</a></h2>
-<p>The idea behind Runge-Kutta is to perform integration steps using a weighted average of Euler-like steps. The following outline <a class="bibtex reference internal" href="#nm-ode-rk-efferson-numerical-methods" id="id1">[RK1]</a> is not a full derivation of the method, as this requires theorems outside the scope of this course.</p>
-<div class="section" id="second-order-runge-kutta">
+<p>The idea behind Runge-Kutta is to perform integration steps using a weighted average of Euler-like steps. The following outline <span id="id1">[<a class="reference internal" href="#id5"><span>RK1</span></a>]</span> is not a full derivation of the method, as this requires theorems outside the scope of this course.</p>
+<section id="second-order-runge-kutta">
 <h3>Second Order Runge-Kutta<a class="headerlink" href="#second-order-runge-kutta" title="Permalink to this headline">¶</a></h3>
 <p>We shall start by looking at second order Runge-Kutta methods. We want to solve an ODE of the form</p>
 <div class="math notranslate nohighlight">
@@ -766,9 +778,9 @@ y_{i+1} = y_i + \tfrac{1}{2} h \left[ f(x_i, y_i) + f(x_i + h, y_i + h f(x_i, y_
 y_{i+1} = y_i + hf\left(x_i + \tfrac{1}{2} h, y_i + \tfrac{1}{2} h f(x_i, y_i) \right)
 \]</div>
 <p>Both of these methods have an accumulated error of <span class="math notranslate nohighlight">\(\mathcal(h^2)\)</span>, as opposed to Euler’s method with <span class="math notranslate nohighlight">\(\mathcal(h)\)</span></p>
-</div>
-</div>
-<div class="section" id="fourth-order-runge-kutta-rk4">
+</section>
+</section>
+<section id="fourth-order-runge-kutta-rk4">
 <h2>Fourth Order Runge-Kutta (RK4)<a class="headerlink" href="#fourth-order-runge-kutta-rk4" title="Permalink to this headline">¶</a></h2>
 <p>As mentioned, the more popular Runge-Kutta method is the fourth order (for which we will not cover the derivation):</p>
 <div class="math notranslate nohighlight">
@@ -786,7 +798,7 @@ k_4 &amp;= f(x_i + h, y_i + k_3)
 <p><span class="math notranslate nohighlight">\(k_1\)</span> is gradient value at the left of the interval. <span class="math notranslate nohighlight">\(k_2\)</span> is the gradient at the midpoint of the interval, approximated using <span class="math notranslate nohighlight">\(k_1\)</span>. The <span class="math notranslate nohighlight">\(k_3\)</span> value is the gradient at the midpoint of the interval using <span class="math notranslate nohighlight">\(k_2\)</span> to approximate it. <span class="math notranslate nohighlight">\(k_4\)</span> is the value of the gradient at the right end of the interval using <span class="math notranslate nohighlight">\(k_3\)</span> to approximate it.</p>
 <!--- Give interpretation for the the different k terms --->
 <p>This method has an accumulated error of <span class="math notranslate nohighlight">\(\mathcal(h^4)\)</span></p>
-<div class="section" id="worked-example">
+<section id="worked-example">
 <h3>Worked Example<a class="headerlink" href="#worked-example" title="Permalink to this headline">¶</a></h3>
 <p>Consider the ordinary differential equation:</p>
 <div class="math notranslate nohighlight">
@@ -854,12 +866,12 @@ y = 1 + \arctan(x)
 <img alt="../../../_images/runge-kutta_12_0.png" src="../../../_images/runge-kutta_12_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="high-order-odes">
+</section>
+<section id="high-order-odes">
 <h3>High Order ODEs<a class="headerlink" href="#high-order-odes" title="Permalink to this headline">¶</a></h3>
 <p>As we have discussed in a previous page, higher order ODEs can be reduced to a collection of coupled first order ODEs, for example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0790888a-aa09-467a-9d4d-67560c6aca13">
-<span class="eqno">(1)<a class="headerlink" href="#equation-0790888a-aa09-467a-9d4d-67560c6aca13" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5cfa5902-8f14-474b-ae80-c0ce62c12937">
+<span class="eqno">(1)<a class="headerlink" href="#equation-5cfa5902-8f14-474b-ae80-c0ce62c12937" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{d y_0}{dx} &amp;= f_0(x, y_0, y_1, \dots, y_{n-1})\\
 \frac{d y_1}{dx} &amp;= f_1(x, y_0, y_1, \dots, y_{n-1})\\
 \frac{d y_2}{dx} &amp;= f_2(x, y_0, y_1, \dots, y_{n-1})\\
@@ -917,7 +929,7 @@ y_{0, i}~ + \tfrac{1}{2} h k_{1, 0} \\\vdots \\y_{j, i}~ + \tfrac{1}{2} h k_{1, 
 \vec{k_3} &amp;= \vec{f}\left(x_i + \tfrac{1}{2} h, \vec{y}_i + \tfrac{1}{2} h ~ \vec{k_2} \right)\\
 \vec{k_4} &amp; = \vec{f}\left(x_i + h, \vec{y}_i + h ~ \vec{k_3} \right)
 \end{align*}\]</div>
-<div class="section" id="id2">
+<section id="id2">
 <h4>Worked Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
 <p>Consider the third order differential equation:</p>
 <div class="math notranslate nohighlight">
@@ -995,19 +1007,19 @@ y(x) = e^{-x^2}
 <img alt="../../../_images/runge-kutta_18_0.png" src="../../../_images/runge-kutta_18_0.png" />
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="section" id="references">
+</section>
+</section>
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="bibtex-bibliography-content/numerical-methods/ode/runge-kutta-0"><dl class="citation">
-<dt class="bibtex label" id="nm-ode-rk-efferson-numerical-methods"><span class="brackets"><a class="fn-backref" href="#id1">RK1</a></span></dt>
+<p id="id3"><dl class="citation">
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">RK1</a></span></dt>
 <dd><p>James F. Efferson. <em>An Introduction to Numerical Methods and Analysis</em>. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.</p>
 </dd>
 </dl>
 </p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1058,7 +1070,7 @@ y(x) = e^{-x^2}
     </div>
 
     
-  <script src="../../../_static/js/index.3da636dd464baa7582d2.js"></script>
+  <script src="../../../_static/js/index.d3f166471bb80abb5163.js"></script>
 
 
     

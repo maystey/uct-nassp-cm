@@ -1,73 +1,67 @@
-#!/usr/bin/env python
-# coding: utf-8
+# Solving Higher Order ODEs
 
-# # Solving Higher Order ODEs
+## Second Order Differential Equations
 
-# ## Second Order Differential Equations
+In general, if we wish to solve an ODE of the form
 
-# In general, if we wish to solve an ODE of the form
-# 
-# $$
-# \frac{d^2y}{dx^2} = f\left(x, y, \frac{dy}{dx}\right)
-# $$
-# 
-# <!--- Problem with notation!!!!!!!!!! --->
-# with initial conditions $y(x = x_0) = y_0$ and $y^\prime(x = x_0) = y^\prime_0$ ,
-# we can transform these into a system of coupled first order equations by introducing the variable:
-# 
-# $$
-# v = \frac{dy}{dx}
-# $$
-# 
-# which gives us the equations:
-# 
-# $$
-# \begin{align*}
-# \frac{dy}{dx} &= v\\
-# \frac{dv}{dx} &= f(x, y, v)\\
-# \end{align*}
-# $$
-# 
-# with the initial conditions
-# 
-# As the ODE for $y$ depends on $v$ and the ODE for $v$ depends on $y$, these equations need to be integrated simultaneously.
+$$
+\frac{d^2y}{dx^2} = f\left(x, y, \frac{dy}{dx}\right)
+$$
 
-# ### Worked Example
+<!--- Problem with notation!!!!!!!!!! --->
+with initial conditions $y(x = x_0) = y_0$ and $y^\prime(x = x_0) = y^\prime_0$ ,
+we can transform these into a system of coupled first order equations by introducing the variable:
 
-# Consider second order ODE:
-# 
-# $$
-# \frac{d^2 y}{dt^2} + 10 \frac{dy}{dt} + 100y = 100 |\sin(t)|
-# $$
-# 
-# which we wish to solve for the initial conditions $y = 0.1$, $dy/dx = -0.5$ at $t = 0$.
-# 
-# Firstly let's rearrange the equation to make $y^{\prime\prime}$ the subject:
-# 
-# $$
-# \frac{d^2 y}{dt^2} = 100 |\sin(t)| - 10 \frac{dy}{dt} - 100 y
-# $$
-# 
-# We start by introducing the variables:
-# 
-# $$
-# \begin{align*}
-# v_0 &= y\\
-# v_1 &= \frac{dy}{dt} = \frac{d v_0}{dt}\\
-# \end{align*}
-# $$
-# 
-# in order to reduce the second order ODE to a coupled system of two first order ODEs:
-# 
-# $$
-# \begin{align*}
-# \frac{d v_0}{dt} &= v_1\\
-# \frac{d v_1}{dt} &= 100|sin(t)| - 10 v_1 - 100 v_0
-# \end{align*}
-# $$
-# 
+$$
+v = \frac{dy}{dx}
+$$
 
-# In[1]:
+which gives us the equations:
+
+$$
+\begin{align*}
+\frac{dy}{dx} &= v\\
+\frac{dv}{dx} &= f(x, y, v)\\
+\end{align*}
+$$
+
+with the initial conditions
+
+As the ODE for $y$ depends on $v$ and the ODE for $v$ depends on $y$, these equations need to be integrated simultaneously.
+
+### Worked Example
+
+Consider second order ODE:
+
+$$
+\frac{d^2 y}{dt^2} + 10 \frac{dy}{dt} + 100y = 100 |\sin(t)|
+$$
+
+which we wish to solve for the initial conditions $y = 0.1$, $dy/dx = -0.5$ at $t = 0$.
+
+Firstly let's rearrange the equation to make $y^{\prime\prime}$ the subject:
+
+$$
+\frac{d^2 y}{dt^2} = 100 |\sin(t)| - 10 \frac{dy}{dt} - 100 y
+$$
+
+We start by introducing the variables:
+
+$$
+\begin{align*}
+v_0 &= y\\
+v_1 &= \frac{dy}{dt} = \frac{d v_0}{dt}\\
+\end{align*}
+$$
+
+in order to reduce the second order ODE to a coupled system of two first order ODEs:
+
+$$
+\begin{align*}
+\frac{d v_0}{dt} &= v_1\\
+\frac{d v_1}{dt} &= 100|sin(t)| - 10 v_1 - 100 v_0
+\end{align*}
+$$
 
 
 import numpy as np
@@ -115,80 +109,76 @@ ax[1].set_ylabel("y'(t)")
 
 plt.show()
 
+In the solution above we used separate variables to store the values for $y(x)$ and $v(x)$. In the example below, we shall see that it is more practical to store these values in a single 2D array.
 
-# In the solution above we used separate variables to store the values for $y(x)$ and $v(x)$. In the example below, we shall see that it is more practical to store these values in a single 2D array.
+## Higher Order Differential Equations
 
-# ## Higher Order Differential Equations
+We can extend this technique of creating a system of coupled first order equations to an ODE of arbitrary order:
 
-# We can extend this technique of creating a system of coupled first order equations to an ODE of arbitrary order:
-# 
-# $$
-# \frac{d^n y}{d x^n} =  f\left(x, \frac{d y}{dx}, \frac{d^2y}{dx^2}, \frac{d^3y}{dx^3}, \dots, \frac{d^{n-1} y}{dx^{n-1}} \right)
-# $$
-# 
-# with initial conditions
-# 
-# $$
-# y(x = x_0) = y_0 ~~~~~~ \frac{dy}{dx}(x = x_0) = y^\prime_0 ~~~~~~ \frac{d^2y}{dx^2}(x = x_0) = y^{\prime\prime}_0 ~~~~~~ \dots ~~~~~~ \frac{d^{n-1}y}{dx^{n-1}}(x = x_0) = y^{(n-1)}_0
-# $$
-# 
-# We start by introducing the variables:
-# 
-# $$
-# v_0 = y ~~~~~~ v_1 = \frac{dy}{dx} ~~~~~~ v_2 = \frac{d^2y}{dx^2} ~~~~~~ \dots ~~~~~ v_{n-1} = \frac{d^{n-1}y}{dx^{n-1}}
-# $$
-# 
-# we can transform the order $n$ ODE to a set of $n$ first order coupled differential equations:
-# 
-# $$
-# \begin{align*}
-# \frac{dv_0}{dx} &= v_1\\
-# \frac{dv_1}{dx} &= v_2\\
-# \frac{dv_2}{dx} &= v_3\\
-#                 &\vdots\\
-# \frac{dv_{n-2}}{dx} &= v_{n-1}\\
-# \frac{dv_{n-1}}{dx} &= f(x, v_0, v_1, v_2, v_3, \dots, v_{n-2}, v_{n-1})\\
-# \end{align*}
-# $$
-# 
-# As the subscripts suggest, it is practical to store the $v_i$ values in a vector. 
-# 
-# These equations can be integrated simultaneously, and the solution for $y$ given by $v_0$.
+$$
+\frac{d^n y}{d x^n} =  f\left(x, \frac{d y}{dx}, \frac{d^2y}{dx^2}, \frac{d^3y}{dx^3}, \dots, \frac{d^{n-1} y}{dx^{n-1}} \right)
+$$
 
-# ### Worked Example
+with initial conditions
 
-# Consider the order 3 ODE:
-# 
-# $$
-# \frac{d^3 y}{dx^3} + y \frac{d^2 y}{dx^2} = 0
-# $$
-# 
-# with the initial conditions $y = 1$, $\tfrac{d}{dx}y = 0.5$ and $\tfrac{d^2}{dx^2} y = 0.7$ at $x = 0$.
-# 
-# To solve this we introduce the variables:
-# 
-# $$
-# \begin{align*}
-# y_0 &= y\\
-# y_1 &= \frac{d y}{dx}\\
-# y_2 &= \frac{d^2y}{dx^2}
-# \end{align*}
-# $$
-# 
-# This gives us the system of equations:
-# 
-# $$
-# \begin{align*}
-# \frac{dy_0}{dx} &= y_1\\
-# \frac{dy_1}{dx} &= y_2\\
-# \frac{dy_2}{dx} &= -y_0 y_2
-# \end{align*}
-# $$
-# 
-# The solution in Python is:
+$$
+y(x = x_0) = y_0 ~~~~~~ \frac{dy}{dx}(x = x_0) = y^\prime_0 ~~~~~~ \frac{d^2y}{dx^2}(x = x_0) = y^{\prime\prime}_0 ~~~~~~ \dots ~~~~~~ \frac{d^{n-1}y}{dx^{n-1}}(x = x_0) = y^{(n-1)}_0
+$$
 
-# In[2]:
+We start by introducing the variables:
 
+$$
+v_0 = y ~~~~~~ v_1 = \frac{dy}{dx} ~~~~~~ v_2 = \frac{d^2y}{dx^2} ~~~~~~ \dots ~~~~~ v_{n-1} = \frac{d^{n-1}y}{dx^{n-1}}
+$$
+
+we can transform the order $n$ ODE to a set of $n$ first order coupled differential equations:
+
+$$
+\begin{align*}
+\frac{dv_0}{dx} &= v_1\\
+\frac{dv_1}{dx} &= v_2\\
+\frac{dv_2}{dx} &= v_3\\
+                &\vdots\\
+\frac{dv_{n-2}}{dx} &= v_{n-1}\\
+\frac{dv_{n-1}}{dx} &= f(x, v_0, v_1, v_2, v_3, \dots, v_{n-2}, v_{n-1})\\
+\end{align*}
+$$
+
+As the subscripts suggest, it is practical to store the $v_i$ values in a vector. 
+
+These equations can be integrated simultaneously, and the solution for $y$ given by $v_0$.
+
+### Worked Example
+
+Consider the order 3 ODE:
+
+$$
+\frac{d^3 y}{dx^3} + y \frac{d^2 y}{dx^2} = 0
+$$
+
+with the initial conditions $y = 1$, $\tfrac{d}{dx}y = 0.5$ and $\tfrac{d^2}{dx^2} y = 0.7$ at $x = 0$.
+
+To solve this we introduce the variables:
+
+$$
+\begin{align*}
+y_0 &= y\\
+y_1 &= \frac{d y}{dx}\\
+y_2 &= \frac{d^2y}{dx^2}
+\end{align*}
+$$
+
+This gives us the system of equations:
+
+$$
+\begin{align*}
+\frac{dy_0}{dx} &= y_1\\
+\frac{dy_1}{dx} &= y_2\\
+\frac{dy_2}{dx} &= -y_0 y_2
+\end{align*}
+$$
+
+The solution in Python is:
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -241,10 +231,4 @@ for i in range(len(y0)):
 ax2[-1].set_xlabel('x')
 
 plt.show()
-
-
-# In[ ]:
-
-
-
 

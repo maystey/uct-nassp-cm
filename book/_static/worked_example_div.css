@@ -1,0 +1,4 @@
+worked-example {
+    @extends div;
+    border: 5px outset red;
+}
