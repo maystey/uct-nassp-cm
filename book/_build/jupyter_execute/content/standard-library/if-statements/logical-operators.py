@@ -35,7 +35,7 @@ Although logical operations only act on up to 2 booleans at a time, just like ar
 
 print('True and False or True is ', True and False or True)
 print('True or True and False is', True or True and False)
-print(not True or True and False)
+print('not True or True and False', not True or True and False)
 
 <!---The order in which the logical operators are executed if no brackets are used is: `not`, `and`, `or`.
 

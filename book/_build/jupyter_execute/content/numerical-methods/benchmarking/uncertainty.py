@@ -308,7 +308,7 @@ plt.show()
 In this case we can say that the results of measurements A and B **agree within their stated experimental uncertainties**, as do B and C, however B and C **do not agree** with each other.
 
 ## References
-```{bibliography} ../../../_bibliography/references.bib
+```{bibliography}
 :cited:
 :style: plain
 :labelprefix: U

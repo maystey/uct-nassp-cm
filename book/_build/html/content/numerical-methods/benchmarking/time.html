@@ -669,20 +669,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#worked-example">
-   Worked Example
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -705,9 +691,8 @@ functions for converting time formats.</p>
 </div>
 </div>
 <p>It uses the most precise system wide clock available to it to return a time in seconds. The starting point of the timer is arbitrary and system dependent, so only time differences are of use to us. When timing a block of code make sure to take the time directly before and after the block.</p>
-<section id="worked-example">
-<h2>Worked Example<a class="headerlink" href="#worked-example" title="Permalink to this headline">¶</a></h2>
-<p>Let’s say we want to compare the time it takes to perform the sum</p>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5><p>Let’s say we want to compare the time it takes to perform the sum</p>
 <div class="math notranslate nohighlight">
 \[
 \sum_{n = 1}^{1000} \frac{(-1)^{n}}{n}
@@ -733,7 +718,7 @@ functions for converting time formats.</p>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using a loop:
 The value of the sum is: -0.6926474305598223
-The time taken to compute the sum is: 0.0009363839999423362
+The time taken to compute the sum is: 0.002308170000105747
 </pre></div>
 </div>
 </div>
@@ -759,16 +744,16 @@ The time taken to compute the sum is: 0.0009363839999423362
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Using NumPy:
 The value of the sum is: -0.6926474305598204
-The time taken to compute the sum is: 0.0023263590010174084
+The time taken to compute the sum is: 0.00217327500013198
 </pre></div>
 </div>
 </div>
 </div>
 <p>Note that the times for both the looping method and NumPy method are very similar. Every time the code is run the values also fluctuate wildly. This makes it difficult to compare the performance of these solutions.</p>
 <p>As a solution to this problem, we can take many runs of the code block in question and quote the total time taken to execute all of them. This will limit the effects of the fluctuation on our measurement and it will also make it less likely for us to run into floating point errors (the times of individual code runs can be very small).</p>
+</div>
 <p>Something to keep in mind when running a benchmark is to limit the number of background processes you have running on your computer, in particular those who’s resource requirements fluctuate.</p>
 <p>Don’t time what you don’t intend to measure, only time the code you are interested in benchmarking. If you use a loop to repeat measurements (i.e. it isn’t an essential part of the code you’re testing) don’t include the overhead from the loop in your timing. If you are using print function calls for debugging purposes, you should also exclude those from the timing (in the example above the print calls were performed <strong>after</strong> the time was taken).</p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">

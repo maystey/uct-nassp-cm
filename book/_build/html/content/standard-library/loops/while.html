@@ -675,11 +675,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#worked-example">
-   Worked Example
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#avoiding-infinite-recursion">
    Avoiding Infinite Recursion
   </a>
@@ -713,9 +708,8 @@
 <p><span class="caption-number">Fig. 13 </span><span class="caption-text">Control flow diagram of the while loop.</span><a class="headerlink" href="#fig-while-control-flow" title="Permalink to this image">¶</a></p>
 </figcaption>
 </figure>
-<section id="worked-example">
-<h2>Worked Example<a class="headerlink" href="#worked-example" title="Permalink to this headline">¶</a></h2>
-<p>Let’s consider the following problem where we can make use of a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to solve the recursive series: <!--- Introduce recursive series in For Loop Examples --></p>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5><p>Let’s consider the following problem where we can make use of a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop to solve the recursive series: <!--- Introduce recursive series in For Loop Examples --></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{eqnarray}
@@ -745,8 +739,7 @@ T_0 &amp; = &amp; 100
 </div>
 </div>
 <p>Notice how the condition is <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">&gt;=</span> <span class="pre">2</span></code> and not <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">&lt;</span> <span class="pre">2</span></code>. That is because the loop continues <strong>while</strong> the condition is true and we want the loop to stop when <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">&lt;</span> <span class="pre">2</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> (and the converse <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">&gt;=</span> <span class="pre">2</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>).</p>
-</section>
-<section id="avoiding-infinite-recursion">
+</div><section id="avoiding-infinite-recursion">
 <h2>Avoiding Infinite Recursion<a class="headerlink" href="#avoiding-infinite-recursion" title="Permalink to this headline">¶</a></h2>
 <p>Something to be careful of when using <code class="docutils literal notranslate"><span class="pre">while</span></code> loops is a loop that doesn’t stop looping. If <code class="docutils literal notranslate"><span class="pre">condition</span></code> never evaluates to <code class="docutils literal notranslate"><span class="pre">False</span></code>, or if you never break out of the loop in another way, control will never leave the loop. Sometimes it is useful to use a maximum number of loop iterations to avoid this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>

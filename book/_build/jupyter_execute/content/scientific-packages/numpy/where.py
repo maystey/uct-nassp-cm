@@ -15,7 +15,7 @@ a1 < a2
 
 As you can see this gives us an array of booleans, each element representing the outcome of comparing the corresponding element of `a1` to `a2`. 
 
-What if we wanted to combine the boolean arrays with a logical operator? For example, if we want an array of booleans for the condition `a1` is less-than `a2` and greater than `2`. Unfortunately the boolean comparison operators we used in {doc}`Comparison Operators<../if-statements/comparison-operators>` won't work, for example using `and`:
+What if we wanted to combine the boolean arrays with a logical operator? For example, if we want an array of booleans for the condition `a1` is less-than `a2` and greater than `2`. Unfortunately the boolean comparison operators we used in [**Standard Library/If Statements/Comparison Operators**](../../standard-library/if-statements/comparison-operators) won't work. For example using `and`:
 
 a1 < a2 and a1 > 2
 
@@ -56,7 +56,8 @@ Note that the comparisons must be grouped in brackets for this to work:
 
 a1 < a2 & a1 > 2
 
-### Example - Random Points in a Region
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b> - Random Points in a Region</h5>
 
 We can use `np.where()` to check which points in an array lie inside or outside of region.
 
@@ -96,6 +97,7 @@ Note that axis 0 of `points` is used to represent the x and y values, and axis 1
     </tr>
 </table>
 
+
 Now, let's plot the points which lie to the left of 0.5 as blue and the others as red:
 
 is_left = points[0, :] < 0.5 #True where left of 0.5
@@ -118,6 +120,8 @@ plt.plot(points[0, ~ (is_top_left)], points[1, ~ is_top_left], 'bo')
 
 plt.xlabel('x')
 plt.ylabel('y')
+
+</div>
 
 ## `numpy.where()`
 
@@ -150,7 +154,8 @@ print('y:', y)
 print('Condition:', condition)
 print('x where True, y where False:', np.where(condition, x, y))
 
-### Example - Piecewise defined functions
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b> - Piecewise Defined Functions</h5>
 
 One use for `np.where()` is to define a piecewise defined function that works on arrays.
 
@@ -201,3 +206,7 @@ plt.xlabel('x')
 plt.ylabel('y')
 
 plt.show()
+
+</div>
+
+</div>

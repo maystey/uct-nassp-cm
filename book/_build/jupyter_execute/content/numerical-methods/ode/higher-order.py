@@ -29,7 +29,8 @@ with the initial conditions
 
 As the ODE for $y$ depends on $v$ and the ODE for $v$ depends on $y$, these equations need to be integrated simultaneously.
 
-### Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 Consider second order ODE:
 
@@ -111,6 +112,8 @@ plt.show()
 
 In the solution above we used separate variables to store the values for $y(x)$ and $v(x)$. In the example below, we shall see that it is more practical to store these values in a single 2D array.
 
+</div>
+
 ## Higher Order Differential Equations
 
 We can extend this technique of creating a system of coupled first order equations to an ODE of arbitrary order:
@@ -148,7 +151,8 @@ As the subscripts suggest, it is practical to store the $v_i$ values in a vector
 
 These equations can be integrated simultaneously, and the solution for $y$ given by $v_0$.
 
-### Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 Consider the order 3 ODE:
 
@@ -232,3 +236,4 @@ ax2[-1].set_xlabel('x')
 
 plt.show()
 
+</div>

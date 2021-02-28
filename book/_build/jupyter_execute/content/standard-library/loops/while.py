@@ -27,7 +27,8 @@ The while loop can be illustrated with the control flow diagram:
 Control flow diagram of the while loop.
 ```
 
-## Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 Let's consider the following problem where we can make use of a `while` loop to solve the recursive series: <!--- Introduce recursive series in For Loop Examples -->
 
@@ -51,6 +52,8 @@ while T >= 2:
 print('T_n is less than 2 for n =', n)
 
 Notice how the condition is `T >= 2` and not `T < 2`. That is because the loop continues **while** the condition is true and we want the loop to stop when `T < 2` is `True` (and the converse `T >= 2` is `False`).
+
+</div>
 
 ## Avoiding Infinite Recursion
 

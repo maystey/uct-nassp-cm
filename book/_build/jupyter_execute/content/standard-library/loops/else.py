@@ -17,7 +17,8 @@ for i in range(5):
 else:
     print('Loop completed')
 
-## Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 A common use for this structure is if you're searching for an object. Consider this example where we are trying to find a `'fish'` in a list:
 
@@ -49,3 +50,5 @@ else:
     print('We did not catch a fish.')
 
 but for more complex procedures this may not be an option.
+
+</div>

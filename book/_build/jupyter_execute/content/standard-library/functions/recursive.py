@@ -4,7 +4,8 @@ Recursive functions are functions that make calls to themselves.
 
 They can be used in place of loops. Though in Python they don't necessarily provide a more efficient solution, there are many problems for which a recursive function is the most elegant and convenient solution.
 
-## Worked Example: Factorial
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 One of the most famous implementations of a recursive function is to implement the factorial:
 
@@ -57,6 +58,8 @@ factorial(10)
 The inner workings of this `factorial()` function are fairly subtle. The (informal) flow diagram below illustrates the function call for `factorial(5)`:
 
 ![Factorial flow chart](function_recursion_factorial.png)
+
+</div>
 
 ## The Base Class
 

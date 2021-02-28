@@ -30,7 +30,8 @@ here `code block before` will be executed first, then `condition` will be evalua
 Control flow diagram of the pseudo code if statement example.
 ```
 
-## Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 Let's consider the problem where we want to check if one variable is greater than the other. One solution using an if statement is:
 
@@ -46,6 +47,8 @@ a = 2
 b = 2
 ```
 then we would see nothing printed out as `a > b` would evaluate to `False` and the code block contained in the if statement would not be executed.
+
+</div>
 
 ## Else
 
@@ -72,7 +75,8 @@ Control flow diagram of the pseudo code if statement with an else part example.
 The `else` statement cannot stand by itself. It requires a preceding if statement or loop for context.
 :::
 
-### Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 Let's take our first example and add an `else` part to it:
 
@@ -91,6 +95,8 @@ if a > b:
     print(a, 'is greater than', b)
 else:
     print(a, 'is less than or equal to', b)
+
+</div>
 
 ## Elif
 
@@ -111,7 +117,8 @@ If `condition 1` is false, `condition 2` will be evaluated. If `condition 2` is 
 Control flow diagram of the pseudo code example of an if statement with an elif part.
 ```
 
-### Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 Let's continue with our worked example and change the `else` part to be more specific:
 
@@ -130,6 +137,8 @@ if a > b:
     print(a, 'is greater than', b)
 elif a < b:
     print(a, 'is less than', b)
+
+</div>
 
 ## Else After an Elif
 
@@ -156,7 +165,8 @@ Control flow diagram of the pseudo code example of an if statement with an elif 
 The `else` must **always** be the last part of the if statement and **there can only be one**.
 :::
 
-### Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 Now, let's re-introduce an `else` part to our worked example:
 
@@ -169,6 +179,8 @@ elif a < b:
     print(a, 'is less than', b)
 else:
     print(a, 'is equal to', b)
+
+</div>
 
 ## Multiple Elif Parts
 
@@ -196,20 +208,10 @@ This can be illustrated using a control flow diagram:
 Control flow diagram of the pseudo code example of an if statement with two elif parts and an else part.
 ```
 
-### Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 As an example of a script with multiple `elif` parts, lets write a script that checks if a variable is a multiple of 2, 3, or 5:
-
-var = 4
-
-if var % 2 == 0:
-    print('Variable is a multiple of 2')
-elif var % 3 == 0:
-    print('Variable is a multiple of 3')
-elif var % 5 == 0:
-    print('Variable is a multiple of 5')
-else:
-    print('Variable is not a multiple of 2, 3 or 5')
 
 var = 21
 
@@ -222,16 +224,7 @@ elif var % 5 == 0:
 else:
     print('Variable is not a multiple of 2, 3 or 5')
 
-var = 25
-
-if var % 2 == 0:
-    print('Variable is a multiple of 2')
-elif var % 3 == 0:
-    print('Variable is a multiple of 3')
-elif var % 5 == 0:
-    print('Variable is a multiple of 5')
-else:
-    print('Variable is not a multiple of 2, 3 or 5')
+Note that if we put in a value that is both a multiple of 2 and 3, the script will only print out that it is a multiple of 2:
 
 var = 6
 
@@ -244,15 +237,6 @@ elif var % 5 == 0:
 else:
     print('Variable is not a multiple of 2, 3 or 5')
 
-Note that even though 6 is a multiple of both 2 and 3, because 2 appears above 3 in the `if` statement, that's the message we see.
+This is because the check to so if it's a multiple of 2 is placed before the check for 3 in the `if` statement.
 
-var = 7
-
-if var % 2 == 0:
-    print('Variable is a multiple of 2')
-elif var % 3 == 0:
-    print('Variable is a multiple of 3')
-elif var % 5 == 0:
-    print('Variable is a multiple of 5')
-else:
-    print('Variable is not a multiple of 2, 3 or 5')
+</div>

@@ -678,13 +678,6 @@
   <a class="reference internal nav-link" href="#three-variables">
    Three Variables
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-cepheid-variables">
-     Example - Cepheid Variables
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#arbitrarily-many-variables">
@@ -749,7 +742,7 @@
                 
   <section id="multivariate-linear-least-squares-minimization">
 <h1>Multivariate Linear Least Squares Minimization<a class="headerlink" href="#multivariate-linear-least-squares-minimization" title="Permalink to this headline">¶</a></h1>
-<p>In <span class="xref myst">Linear Least Squares Minimization</span>, we considered the linear functional relation between two measurable variables, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>:</p>
+<p>In <strong><a class="reference internal" href="least-squares.html"><span class="doc">Numerical Methods/Linear Regression Algorithms/Linear Least Squares Minimization</span></a></strong>, we considered the linear functional relation between two measurable variables, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
 y = a_0 + a_1 x
@@ -836,16 +829,14 @@ $$</p>
 \therefore \boldsymbol{A} &amp;= \boldsymbol{X}^{-1} \boldsymbol{Y}\\
 \end{align*}\]</div>
 <p>$$</p>
-<section id="example-cepheid-variables">
-<h3>Example - Cepheid Variables<a class="headerlink" href="#example-cepheid-variables" title="Permalink to this headline">¶</a></h3>
-<p>You now have all you need to find the unknown coefficients for the full functional relation of the magnitude (<span class="math notranslate nohighlight">\(M\)</span>), period (<span class="math notranslate nohighlight">\(P\)</span>) and color (<span class="math notranslate nohighlight">\(B-V\)</span>) of the Cepheid variables:</p>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b> - Cepheid Variables</h5><p>You now have all you need to find the unknown coefficients for the full functional relation of the magnitude (<span class="math notranslate nohighlight">\(M\)</span>), period (<span class="math notranslate nohighlight">\(P\)</span>) and color (<span class="math notranslate nohighlight">\(B-V\)</span>) of the Cepheid variables:</p>
 <div class="math notranslate nohighlight">
 \[
 M = a_0 + a_1 \log P + a_2 (B - V)
 \]</div>
 <p>using the same data file as before. (You should find the values <span class="math notranslate nohighlight">\(a_0 = -2.15\)</span> mag, <span class="math notranslate nohighlight">\(a_1 = -3.12\)</span> mag and <span class="math notranslate nohighlight">\(a_2 = 1.49\)</span>)</p>
-</section>
-</section>
+</div></section>
 <section id="arbitrarily-many-variables">
 <h2>Arbitrarily Many Variables<a class="headerlink" href="#arbitrarily-many-variables" title="Permalink to this headline">¶</a></h2>
 <p>Consider a linear functional relation between measurable variables <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span>, <span class="math notranslate nohighlight">\(\dots\)</span>, <span class="math notranslate nohighlight">\(x_m\)</span> and <span class="math notranslate nohighlight">\(y\)</span>:</p>
@@ -943,7 +934,7 @@ a_m\\
 <section id="python-implementation">
 <h3>Python Implementation<a class="headerlink" href="#python-implementation" title="Permalink to this headline">¶</a></h3>
 <p>Let’s work on a Python implementation of this solution. You may want to try it yourself before reading further. In order to verify our implementation we will use the Cepheid data we’ve used so far, though in further exercises you will be given data sets containing more variables.</p>
-<p>We start by reading in the file. We will read the data into a 2D array. This can be achieved using the standard library as in the <span class="xref myst"><strong>Data Files</strong></span> section in the <strong>File I/O</strong> chapter, or using <code class="docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code> (documentation <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html">here</a>). We shall use the latter as it is far more convenient:</p>
+<p>We start by reading in the file. We will read the data into a 2D array. This can be achieved using the standard library as in the page <a class="reference internal" href="../../standard-library/file-io/data.html"><span class="doc">Python Standard Library/File IO/Data Files</span></a>**, or using <code class="docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code> (documentation <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html">here</a>). We shall use the latter as it is far more convenient:</p>
 <!-- as in the [**File I/O**](/numpy/file-io) section from the **NumPy** chapter. --><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -955,7 +946,7 @@ a_m\\
 </div>
 </div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> array contains all of the data points for <span class="math notranslate nohighlight">\(y_i, x_{1i}, x_{2i}, x_{3i}, \dots, x_{ji}, \dots, x_{mi}\)</span>, where <span class="math notranslate nohighlight">\(i = 1, \dots, N\)</span> corresponds to each row of <code class="docutils literal notranslate"><span class="pre">data</span></code>. Now, we want the data in the format:<!---, the first (or index 0) column contains the $y_i$ values and columns indexed 1 to $m$ contain the $x_{ij}$ values. --></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> array contains all of the data points for <span class="math notranslate nohighlight">\(y_i, x_{1i}, x_{2i}, x_{3i}, \dots, x_{ji}, \dots, x_{mi}\)</span>, where <span class="math notranslate nohighlight">\(i = 1, \dots, N\)</span> corresponds to each row of <code class="docutils literal notranslate"><span class="pre">data</span></code>. Now, we want the data in the format:<!--, the first (or index 0) column contains the $y_i$ values and columns indexed 1 to $m$ contain the $x_{ij}$ values. --></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{eqnarray*}

@@ -678,13 +678,6 @@
   <a class="reference internal nav-link" href="#comparison-and-bitwise-operations-on-arrays">
    Comparison and Bitwise Operations on Arrays
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-random-points-in-a-region">
-     Example - Random Points in a Region
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#numpy-where">
@@ -694,13 +687,6 @@
     </span>
    </code>
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#example-piecewise-defined-functions">
-     Example - Piecewise defined functions
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -735,7 +721,7 @@
 </div>
 </div>
 <p>As you can see this gives us an array of booleans, each element representing the outcome of comparing the corresponding element of <code class="docutils literal notranslate"><span class="pre">a1</span></code> to <code class="docutils literal notranslate"><span class="pre">a2</span></code>.</p>
-<p>What if we wanted to combine the boolean arrays with a logical operator? For example, if we want an array of booleans for the condition <code class="docutils literal notranslate"><span class="pre">a1</span></code> is less-than <code class="docutils literal notranslate"><span class="pre">a2</span></code> and greater than <code class="docutils literal notranslate"><span class="pre">2</span></code>. Unfortunately the boolean comparison operators we used in <span class="xref std std-doc">Comparison Operators</span> won’t work, for example using <code class="docutils literal notranslate"><span class="pre">and</span></code>:</p>
+<p>What if we wanted to combine the boolean arrays with a logical operator? For example, if we want an array of booleans for the condition <code class="docutils literal notranslate"><span class="pre">a1</span></code> is less-than <code class="docutils literal notranslate"><span class="pre">a2</span></code> and greater than <code class="docutils literal notranslate"><span class="pre">2</span></code>. Unfortunately the boolean comparison operators we used in <a class="reference internal" href="../../standard-library/if-statements/comparison-operators.html"><span class="doc std std-doc"><strong>Standard Library/If Statements/Comparison Operators</strong></span></a> won’t work. For example using <code class="docutils literal notranslate"><span class="pre">and</span></code>:</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a1</span> <span class="o">&lt;</span> <span class="n">a2</span> <span class="ow">and</span> <span class="n">a1</span> <span class="o">&gt;</span> <span class="mi">2</span>
@@ -809,9 +795,8 @@
 </div>
 </div>
 </div>
-<section id="example-random-points-in-a-region">
-<h3>Example - Random Points in a Region<a class="headerlink" href="#example-random-points-in-a-region" title="Permalink to this headline">¶</a></h3>
-<p>We can use <code class="docutils literal notranslate"><span class="pre">np.where()</span></code> to check which points in an array lie inside or outside of region.</p>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b> - Random Points in a Region</h5><p>We can use <code class="docutils literal notranslate"><span class="pre">np.where()</span></code> to check which points in an array lie inside or outside of region.</p>
 <p>First let’s generate an array of 50 random points in 2D space:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -852,7 +837,8 @@
         <td>y48</td>
         <td>y49</td>
     </tr>
-</table><p>Now, let’s plot the points which lie to the left of 0.5 as blue and the others as red:</p>
+</table>
+<p>Now, let’s plot the points which lie to the left of 0.5 as blue and the others as red:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_left</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="c1">#True where left of 0.5</span>
@@ -894,8 +880,7 @@
 <img alt="../../../_images/where_21_1.png" src="../../../_images/where_21_1.png" />
 </div>
 </div>
-</section>
-</section>
+</div></section>
 <section id="numpy-where">
 <h2><code class="docutils literal notranslate"><span class="pre">numpy.where()</span></code><a class="headerlink" href="#numpy-where" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html">Documentation</a></p>
@@ -948,9 +933,8 @@ x where True, y where False: [ 1. -2.  3.  4. -5.]
 </div>
 </div>
 </div>
-<section id="example-piecewise-defined-functions">
-<h3>Example - Piecewise defined functions<a class="headerlink" href="#example-piecewise-defined-functions" title="Permalink to this headline">¶</a></h3>
-<p>One use for <code class="docutils literal notranslate"><span class="pre">np.where()</span></code> is to define a piecewise defined function that works on arrays.</p>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b> - Piecewise Defined Functions</h5><p>One use for <code class="docutils literal notranslate"><span class="pre">np.where()</span></code> is to define a piecewise defined function that works on arrays.</p>
 <p>As a first example, let’s use <code class="docutils literal notranslate"><span class="pre">np.where()</span></code> to plot the absolute value function (you should really use <code class="docutils literal notranslate"><span class="pre">np.abs()</span></code> for this):</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -974,7 +958,7 @@ x &amp; \text{if $x \geq 0$}\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/where_28_0.png" src="../../../_images/where_28_0.png" />
+<img alt="../../../_images/where_29_0.png" src="../../../_images/where_29_0.png" />
 </div>
 </div>
 <p>Note that, in the plot above, the line does not reach zero, but flattens out to a value above it. This is because the array <code class="docutils literal notranslate"><span class="pre">x</span></code> does not contain the value 0, but values around it.</p>
@@ -1008,11 +992,10 @@ f(x) =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/where_31_0.png" src="../../../_images/where_31_0.png" />
+<img alt="../../../_images/where_32_0.png" src="../../../_images/where_32_0.png" />
 </div>
 </div>
-</section>
-</section>
+</div></div></section>
 </section>
 
     <script type="text/x-thebe-config">

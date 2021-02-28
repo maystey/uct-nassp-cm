@@ -190,7 +190,7 @@ Also notice how, in the second slice above, the `0` index character is not prese
 
 ## References
 
-```{bibliography} ../../../_bibliography/references.bib
+```{bibliography}
 :cited:
 :style: plain
 :labelprefix: S

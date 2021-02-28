@@ -1,6 +1,6 @@
 # Defining Functions
 
-In this chapter we cover how to define custom functions. <!--- Reasons for making functions --->
+In this chapter we cover how to define custom functions. <!-- Reasons for making functions -->
 
 
 
@@ -19,7 +19,8 @@ where
 
 The function above can be called in the usual way: `function_name(argument_values)`
 
-## Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 As a first example, let's create a function that takes a single argument and doubles it's value
 
@@ -33,6 +34,8 @@ double(1)
 double(5.5)
 
 double('a')
+
+</div>
 
 
 ```{toctree}

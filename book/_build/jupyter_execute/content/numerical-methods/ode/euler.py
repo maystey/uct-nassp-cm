@@ -117,7 +117,8 @@ plt.yticks(y_euler + [f(a, x_euler[1])], y_ticks, fontsize = 14)
 plt.legend(fontsize = 14)
 plt.show()
 
-## Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 Consider the ODE:
 
@@ -179,3 +180,5 @@ ax.set_xlabel('x')
 ax.set_ylabel('y')
 
 plt.show()
+
+</div>

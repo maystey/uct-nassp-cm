@@ -692,21 +692,9 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#worked-example">
-     Worked Example
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#high-order-odes">
      High Order ODEs
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#id2">
-       Worked Example
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -731,7 +719,7 @@
 <p>The aforementioned Euler’s method is the simplest single step ODE solving method, but has a fairly large error. The Runge-Kutta methods are more popular due to their improved accuracy, in particular 4th and 5th order methods.</p>
 <section id="outline-of-the-derivation">
 <h2>Outline of the Derivation<a class="headerlink" href="#outline-of-the-derivation" title="Permalink to this headline">¶</a></h2>
-<p>The idea behind Runge-Kutta is to perform integration steps using a weighted average of Euler-like steps. The following outline <span id="id1">[<a class="reference internal" href="#id5"><span>RK1</span></a>]</span> is not a full derivation of the method, as this requires theorems outside the scope of this course.</p>
+<p>The idea behind Runge-Kutta is to perform integration steps using a weighted average of Euler-like steps. The following outline <span id="id1">[<a class="reference internal" href="#id4"><span>RK1</span></a>]</span> is not a full derivation of the method, as this requires theorems outside the scope of this course.</p>
 <section id="second-order-runge-kutta">
 <h3>Second Order Runge-Kutta<a class="headerlink" href="#second-order-runge-kutta" title="Permalink to this headline">¶</a></h3>
 <p>We shall start by looking at second order Runge-Kutta methods. We want to solve an ODE of the form</p>
@@ -798,9 +786,8 @@ k_4 &amp;= f(x_i + h, y_i + k_3)
 <p><span class="math notranslate nohighlight">\(k_1\)</span> is gradient value at the left of the interval. <span class="math notranslate nohighlight">\(k_2\)</span> is the gradient at the midpoint of the interval, approximated using <span class="math notranslate nohighlight">\(k_1\)</span>. The <span class="math notranslate nohighlight">\(k_3\)</span> value is the gradient at the midpoint of the interval using <span class="math notranslate nohighlight">\(k_2\)</span> to approximate it. <span class="math notranslate nohighlight">\(k_4\)</span> is the value of the gradient at the right end of the interval using <span class="math notranslate nohighlight">\(k_3\)</span> to approximate it.</p>
 <!--- Give interpretation for the the different k terms --->
 <p>This method has an accumulated error of <span class="math notranslate nohighlight">\(\mathcal(h^4)\)</span></p>
-<section id="worked-example">
-<h3>Worked Example<a class="headerlink" href="#worked-example" title="Permalink to this headline">¶</a></h3>
-<p>Consider the ordinary differential equation:</p>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5><p>Consider the ordinary differential equation:</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{d y}{dx} = \frac{1}{1 + x^2}
@@ -866,12 +853,11 @@ y = 1 + \arctan(x)
 <img alt="../../../_images/runge-kutta_12_0.png" src="../../../_images/runge-kutta_12_0.png" />
 </div>
 </div>
-</section>
-<section id="high-order-odes">
+</div><section id="high-order-odes">
 <h3>High Order ODEs<a class="headerlink" href="#high-order-odes" title="Permalink to this headline">¶</a></h3>
 <p>As we have discussed in a previous page, higher order ODEs can be reduced to a collection of coupled first order ODEs, for example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5cfa5902-8f14-474b-ae80-c0ce62c12937">
-<span class="eqno">(1)<a class="headerlink" href="#equation-5cfa5902-8f14-474b-ae80-c0ce62c12937" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-730b6611-4e39-47d7-8e7d-25b7e546c4fe">
+<span class="eqno">(1)<a class="headerlink" href="#equation-730b6611-4e39-47d7-8e7d-25b7e546c4fe" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \frac{d y_0}{dx} &amp;= f_0(x, y_0, y_1, \dots, y_{n-1})\\
 \frac{d y_1}{dx} &amp;= f_1(x, y_0, y_1, \dots, y_{n-1})\\
 \frac{d y_2}{dx} &amp;= f_2(x, y_0, y_1, \dots, y_{n-1})\\
@@ -929,9 +915,8 @@ y_{0, i}~ + \tfrac{1}{2} h k_{1, 0} \\\vdots \\y_{j, i}~ + \tfrac{1}{2} h k_{1, 
 \vec{k_3} &amp;= \vec{f}\left(x_i + \tfrac{1}{2} h, \vec{y}_i + \tfrac{1}{2} h ~ \vec{k_2} \right)\\
 \vec{k_4} &amp; = \vec{f}\left(x_i + h, \vec{y}_i + h ~ \vec{k_3} \right)
 \end{align*}\]</div>
-<section id="id2">
-<h4>Worked Example<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
-<p>Consider the third order differential equation:</p>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5><p>Consider the third order differential equation:</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{d^{4}y}{dx^4} = -12 x y - 4 x^2 \frac{d y}{dx}
@@ -1004,16 +989,15 @@ y(x) = e^{-x^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/runge-kutta_18_0.png" src="../../../_images/runge-kutta_18_0.png" />
+<img alt="../../../_images/runge-kutta_19_0.png" src="../../../_images/runge-kutta_19_0.png" />
 </div>
 </div>
-</section>
-</section>
+</div></section>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p id="id3"><dl class="citation">
-<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">RK1</a></span></dt>
+<p id="id2"><dl class="citation">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">RK1</a></span></dt>
 <dd><p>James F. Efferson. <em>An Introduction to Numerical Methods and Analysis</em>. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.</p>
 </dd>
 </dl>

@@ -35,7 +35,7 @@ It can be useful to use this feature of `return` to break out of a loop, or even
 For example, consider the function that checks if it's argument is even or odd:
 
 def is_even(value):
-    if value%2 == 0:
+    if value % 2 == 0:
         return True
     else:
         return False
@@ -47,7 +47,7 @@ is_even(6)
 The else part of the function is unnecessary:
 
 def is_even(value):
-    if value%2 == 0:
+    if value % 2 == 0:
         return True
     return False
 

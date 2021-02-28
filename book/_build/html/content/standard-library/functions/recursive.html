@@ -675,11 +675,6 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#worked-example-factorial">
-   Worked Example: Factorial
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-base-class">
    The Base Class
   </a>
@@ -699,9 +694,8 @@
 <h1>Recursive Functions<a class="headerlink" href="#recursive-functions" title="Permalink to this headline">¶</a></h1>
 <p>Recursive functions are functions that make calls to themselves.</p>
 <p>They can be used in place of loops. Though in Python they don’t necessarily provide a more efficient solution, there are many problems for which a recursive function is the most elegant and convenient solution.</p>
-<section id="worked-example-factorial">
-<h2>Worked Example: Factorial<a class="headerlink" href="#worked-example-factorial" title="Permalink to this headline">¶</a></h2>
-<p>One of the most famous implementations of a recursive function is to implement the factorial:</p>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5><p>One of the most famous implementations of a recursive function is to implement the factorial:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
@@ -809,8 +803,7 @@ n! = n\times(n-1)!
 </div>
 <p>The inner workings of this <code class="docutils literal notranslate"><span class="pre">factorial()</span></code> function are fairly subtle. The (informal) flow diagram below illustrates the function call for <code class="docutils literal notranslate"><span class="pre">factorial(5)</span></code>:</p>
 <p><img alt="Factorial flow chart" src="../../../_images/function_recursion_factorial.png" /></p>
-</section>
-<section id="the-base-class">
+</div><section id="the-base-class">
 <h2>The Base Class<a class="headerlink" href="#the-base-class" title="Permalink to this headline">¶</a></h2>
 <p>As mentioned earlier, a recursive function must have at least one base class. The base class is a return state that <strong>doesn’t</strong> make another recursive function call.</p>
 <p>It’s also important to make sure that the recursion eventually reaches the base class when designing your function.</p>

@@ -692,18 +692,6 @@
    </span>
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#worked-example-cepheid-variables">
-   Worked Example - Cepheid Variables
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#solution">
-     Solution
-    </a>
-   </li>
-  </ul>
- </li>
 </ul>
 
         </nav>
@@ -787,10 +775,8 @@ a_0 &amp;= \langle y \rangle - a_1 \langle x \rangle\\
 &amp; = \frac{1}{N} \sum_{i=1}^N (a_0 + a_1 x_i - y_i)^2\\
 \end{align*}
 \end{split}\]</div>
-</section>
-<section id="worked-example-cepheid-variables">
-<h2>Worked Example - Cepheid Variables<a class="headerlink" href="#worked-example-cepheid-variables" title="Permalink to this headline">¶</a></h2>
-<p>For this worked example we will use data from Cepheid variables. These are pulsating stars with their luminosity (or magnitude <span class="math notranslate nohighlight">\(M\)</span>) related to the period (<span class="math notranslate nohighlight">\(P\)</span>) of their pulsations:</p>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b> - Cepheid Variables</h5><p>For this worked example we will use data from Cepheid variables. These are pulsating stars with their luminosity (or magnitude <span class="math notranslate nohighlight">\(M\)</span>) related to the period (<span class="math notranslate nohighlight">\(P\)</span>) of their pulsations:</p>
 <div class="math notranslate nohighlight">
 \[
 M = a_0 + a_1 \log P
@@ -803,8 +789,7 @@ M = a_0 + a_1 \log P
 <li><p><span class="math notranslate nohighlight">\(M\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(B - V\)</span> (color, not using yet)</p></li>
 </ul>
-<section id="solution">
-<h3>Solution<a class="headerlink" href="#solution" title="Permalink to this headline">¶</a></h3>
+<p><strong>Solution:</strong></p>
 <!--- Come back and unpack this --><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">least_square</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -858,8 +843,7 @@ M = a_0 + a_1 \log P
 <img alt="../../../_images/least-squares_19_0.png" src="../../../_images/least-squares_19_0.png" />
 </div>
 </div>
-</section>
-</section>
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">

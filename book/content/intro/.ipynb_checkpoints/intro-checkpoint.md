@@ -38,7 +38,6 @@ Byte code is similar to the CPU <!--- Necessary repeatition?--> specific assembl
 <!-- Briefly mention dynamic typing? -->
 
 ## References
-<!-- ```{bibliography} ../../_bibliography/references.bib -->
 ```{bibliography}
 :cited:
 :style: plain

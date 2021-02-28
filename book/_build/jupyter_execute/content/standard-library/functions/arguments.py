@@ -36,7 +36,7 @@ For example:
 def hello(name = 'World', time = 'today'):
     return f'Hello {name}! How are you {time}?' 
 
-(If you are unfamiliar with f-strings `f''`, see the page on {doc}`String Formatting <../basics/string-formatting>`)
+(If you are unfamiliar with f-strings `f''`, see the page on [**The Python Standard Library/Strings/String Formatting**](../strings/string-formatting))
 
 This function can be called with no arguments, in which case the default values will be used:
 

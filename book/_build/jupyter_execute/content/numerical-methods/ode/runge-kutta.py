@@ -225,7 +225,8 @@ $k_1$ is gradient value at the left of the interval. $k_2$ is the gradient at th
 
 This method has an accumulated error of $\mathcal(h^4)$
 
-### Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 Consider the ordinary differential equation:
 
@@ -288,6 +289,8 @@ ax.set_ylabel('y', fontsize = 14)
 ax.legend(fontsize = 14)
 
 plt.show()
+
+</div>
 
 ### High Order ODEs
 
@@ -361,7 +364,8 @@ with this in mind, we can simply write the $k$ values as:
 \vec{k_4} & = \vec{f}\left(x_i + h, \vec{y}_i + h ~ \vec{k_3} \right)
 \end{align*}
 
-#### Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 Consider the third order differential equation:
 
@@ -436,6 +440,8 @@ ax.set_xlabel('x', fontsize = 14)
 ax.set_ylabel('y', fontsize = 14)
 
 plt.show()
+
+</div>
 
 ## References
 ```{bibliography} ../../../_bibliography/references.bib

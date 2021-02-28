@@ -678,25 +678,11 @@
   <a class="reference internal nav-link" href="#second-order-differential-equations">
    Second Order Differential Equations
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#worked-example">
-     Worked Example
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#higher-order-differential-equations">
    Higher Order Differential Equations
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Worked Example
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -735,9 +721,8 @@ v = \frac{dy}{dx}
 \end{split}\]</div>
 <p>with the initial conditions</p>
 <p>As the ODE for <span class="math notranslate nohighlight">\(y\)</span> depends on <span class="math notranslate nohighlight">\(v\)</span> and the ODE for <span class="math notranslate nohighlight">\(v\)</span> depends on <span class="math notranslate nohighlight">\(y\)</span>, these equations need to be integrated simultaneously.</p>
-<section id="worked-example">
-<h3>Worked Example<a class="headerlink" href="#worked-example" title="Permalink to this headline">¶</a></h3>
-<p>Consider second order ODE:</p>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5><p>Consider second order ODE:</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{d^2 y}{dt^2} + 10 \frac{dy}{dt} + 100y = 100 |\sin(t)|
@@ -814,14 +799,11 @@ v_1 &amp;= \frac{dy}{dt} = \frac{d v_0}{dt}\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x500 with 2 Axes&gt;
-</pre></div>
-</div>
+<img alt="../../../_images/higher-order_5_0.png" src="../../../_images/higher-order_5_0.png" />
 </div>
 </div>
 <p>In the solution above we used separate variables to store the values for <span class="math notranslate nohighlight">\(y(x)\)</span> and <span class="math notranslate nohighlight">\(v(x)\)</span>. In the example below, we shall see that it is more practical to store these values in a single 2D array.</p>
-</section>
-</section>
+</div></section>
 <section id="higher-order-differential-equations">
 <h2>Higher Order Differential Equations<a class="headerlink" href="#higher-order-differential-equations" title="Permalink to this headline">¶</a></h2>
 <p>We can extend this technique of creating a system of coupled first order equations to an ODE of arbitrary order:</p>
@@ -853,9 +835,8 @@ v_0 = y ~~~~~~ v_1 = \frac{dy}{dx} ~~~~~~ v_2 = \frac{d^2y}{dx^2} ~~~~~~ \dots ~
 \end{split}\]</div>
 <p>As the subscripts suggest, it is practical to store the <span class="math notranslate nohighlight">\(v_i\)</span> values in a vector.</p>
 <p>These equations can be integrated simultaneously, and the solution for <span class="math notranslate nohighlight">\(y\)</span> given by <span class="math notranslate nohighlight">\(v_0\)</span>.</p>
-<section id="id1">
-<h3>Worked Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Consider the order 3 ODE:</p>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5><p>Consider the order 3 ODE:</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{d^3 y}{dx^3} + y \frac{d^2 y}{dx^2} = 0
@@ -937,12 +918,11 @@ y_2 &amp;= \frac{d^2y}{dx^2}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/higher-order_11_0.png" src="../../../_images/higher-order_11_0.png" />
-<img alt="../../../_images/higher-order_11_1.png" src="../../../_images/higher-order_11_1.png" />
+<img alt="../../../_images/higher-order_12_0.png" src="../../../_images/higher-order_12_0.png" />
+<img alt="../../../_images/higher-order_12_1.png" src="../../../_images/higher-order_12_1.png" />
 </div>
 </div>
-</section>
-</section>
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">

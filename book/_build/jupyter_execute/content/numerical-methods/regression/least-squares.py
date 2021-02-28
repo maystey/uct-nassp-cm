@@ -114,7 +114,8 @@ $$
 \end{align*}
 $$
 
-## Worked Example - Cepheid Variables
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b> - Cepheid Variables</h5>
 
 For this worked example we will use data from Cepheid variables. These are pulsating stars with their luminosity (or magnitude $M$) related to the period ($P$) of their pulsations:
 
@@ -132,7 +133,8 @@ The standard is to measure Cepheids in the Large Magellanic Cloud, whose distanc
 - $M$
 - $B - V$ (color, not using yet)
 
-### Solution
+
+**Solution:**
 
 <!--- Come back and unpack this -->
 
@@ -176,3 +178,4 @@ ax.legend(fontsize = fontsize)
 
 plt.show()
 
+</div>

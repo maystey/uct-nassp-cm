@@ -1,6 +1,6 @@
 # Multivariate Linear Least Squares Minimization
 
-In [Linear Least Squares Minimization](/numerical-methods/regression/least-squares), we considered the linear functional relation between two measurable variables, $x$ and $y$:
+In **{doc}`Numerical Methods/Linear Regression Algorithms/Linear Least Squares Minimization<./least-squares>`**, we considered the linear functional relation between two measurable variables, $x$ and $y$:
 
 $$
 y = a_0 + a_1 x
@@ -99,7 +99,8 @@ $$
 \end{align*}
 $$
 
-### Example - Cepheid Variables
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b> - Cepheid Variables</h5>
 
 You now have all you need to find the unknown coefficients for the full functional relation of the magnitude ($M$), period ($P$) and color ($B-V$) of the Cepheid variables:
 
@@ -108,6 +109,8 @@ M = a_0 + a_1 \log P + a_2 (B - V)
 $$
 
 using the same data file as before. (You should find the values $a_0 = -2.15$ mag, $a_1 = -3.12$ mag and $a_2 = 1.49$) 
+
+</div>
 
 ## Arbitrarily Many Variables
 
@@ -221,7 +224,7 @@ $$
 
 Let's work on a Python implementation of this solution. You may want to try it yourself before reading further. In order to verify our implementation we will use the Cepheid data we've used so far, though in further exercises you will be given data sets containing more variables.
 
-We start by reading in the file. We will read the data into a 2D array. This can be achieved using the standard library as in the [**Data Files**](/file-io/data) section in the **File I/O** chapter, or using `numpy.loadtxt()` (documentation [here](https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html)). We shall use the latter as it is far more convenient: 
+We start by reading in the file. We will read the data into a 2D array. This can be achieved using the standard library as in the page {doc}`Python Standard Library/File IO/Data Files<../../standard-library/file-io/data>`**, or using `numpy.loadtxt()` (documentation [here](https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html)). We shall use the latter as it is far more convenient:
 <!-- as in the [**File I/O**](/numpy/file-io) section from the **NumPy** chapter. -->
 
 import numpy as np
@@ -230,7 +233,7 @@ import numpy as np
 
 data = np.loadtxt('data/cepheid_data.csv', delimiter = ',', skiprows = 1)
 
-The `data` array contains all of the data points for $y_i, x_{1i}, x_{2i}, x_{3i}, \dots, x_{ji}, \dots, x_{mi}$, where $i = 1, \dots, N$ corresponds to each row of `data`. Now, we want the data in the format:<!---, the first (or index 0) column contains the $y_i$ values and columns indexed 1 to $m$ contain the $x_{ij}$ values. -->
+The `data` array contains all of the data points for $y_i, x_{1i}, x_{2i}, x_{3i}, \dots, x_{ji}, \dots, x_{mi}$, where $i = 1, \dots, N$ corresponds to each row of `data`. Now, we want the data in the format:<!--, the first (or index 0) column contains the $y_i$ values and columns indexed 1 to $m$ contain the $x_{ij}$ values. -->
 
 $$
 \begin{eqnarray*}

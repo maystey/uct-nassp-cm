@@ -35,7 +35,7 @@ A Matplotlib figure contains plot elements, for example a set of (or multiple se
 fig = plt.figure()
 ```
 
-When using `plt.plot()` Matplotlib will automatically add the plot to the last figure that was defined. Refer to the [Subplots](/matplotlib/subplots) page for accessing the figure axis directly.
+When using `plt.plot()` Matplotlib will automatically add the plot to the last figure that was defined. Refer to the page [**Scientific Packages/Matplotlib/Subplots**](./subplots) page for accessing the figure axis directly.
 
 If you want to specify the dimensions of the plot, you can create a figure with the first positional or keyword argument:
 

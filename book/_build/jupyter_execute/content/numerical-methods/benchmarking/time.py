@@ -13,7 +13,8 @@ from time import perf_counter
 
 It uses the most precise system wide clock available to it to return a time in seconds. The starting point of the timer is arbitrary and system dependent, so only time differences are of use to us. When timing a block of code make sure to take the time directly before and after the block.
 
-## Worked Example
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
 Let's say we want to compare the time it takes to perform the sum
 
@@ -53,6 +54,8 @@ print('The time taken to compute the sum is:', np_time)
 Note that the times for both the looping method and NumPy method are very similar. Every time the code is run the values also fluctuate wildly. This makes it difficult to compare the performance of these solutions.
 
 As a solution to this problem, we can take many runs of the code block in question and quote the total time taken to execute all of them. This will limit the effects of the fluctuation on our measurement and it will also make it less likely for us to run into floating point errors (the times of individual code runs can be very small).
+
+</div>
 
 Something to keep in mind when running a benchmark is to limit the number of background processes you have running on your computer, in particular those who's resource requirements fluctuate.
 

@@ -22,7 +22,7 @@ with open('data1.csv', 'w') as f:
     for xx, yy, zz in zip(x, y, z):
         f.write(f'{xx},{yy},{zz}\n')
 
-If you are not familiar with the string formatting used (`f'{xx},{yy},{zz}\n'`) see the page on {doc}`String Formatting <../basics/string-formatting>`. Note that it is in this line (and also in the header) that we have separated the values with commas.
+If you are not familiar with the string formatting used (`f'{xx},{yy},{zz}\n'`) see the page [**The Python Standard Library/Strings/String Formatting**](../strings/string-formatting). Note that it is in this line (and also in the header) that we have separated the values with commas.
 
 Note that the file extension **.csv** acts more as a hint for other software. There is no physical difference between a file we write with this extension or any other extension (including no extension). As long as the file mode is set to text (`'t'`), we are writing plain text files.
 
