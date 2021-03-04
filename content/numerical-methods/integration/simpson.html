@@ -1,0 +1,897 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simpson’s Rule &#8212; AST4007W Computational Methods</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/table.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="prev" title="Trapezoidal Rule" href="trapezoidal.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/UCTcircular_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">AST4007W Computational Methods</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   UCT NASSP AST4007W Computational Methods
+  </a>
+ </li>
+</ul>
+<figcaption>
+ <p>
+  <span class="caption-text">
+   Introduction
+  </span>
+ </p>
+ <ul>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/intro.html">
+    Programming and Python in a Nutshell
+   </a>
+  </li>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/installing/anaconda.html">
+    Managing Your Python Installation with Anaconda
+   </a>
+  </li>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/control-flow/control-flow-diagrams.html">
+    Control Flow Diagrams
+   </a>
+  </li>
+ </ul>
+ <figcaption>
+  <p>
+   <span class="caption-text">
+    The Python Standard Library
+   </span>
+  </p>
+  <ul>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/basics/intro.html">
+     Python Basics
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/variables.html">
+       Variables
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/comments.html">
+       Comments
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/types.html">
+       Type Conversion
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/operators.html">
+       Numerical Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/assignment-operators.html">
+       Compound Assignment Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/basics/functions.html">
+       Introduction to Using Functions
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/strings/strings.html">
+     Strings
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/strings/string-formatting.html">
+       String Formatting
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/data-structures/intro.html">
+     Data Structures
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/data-structures/tuple.html">
+       Tuple
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/data-structures/lists.html">
+       Lists
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/data-structures/dictionaries.html">
+       Dictionaries
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/if-statements/intro.html">
+     If Statements
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/bools.html">
+       Booleans (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         bool
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/comparison-operators.html">
+       Comparison Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/logical-operators.html">
+       Logical Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/inclusion-operators.html">
+       Inclusion Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/if.html">
+       If Statements
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/if-statements/nested.html">
+       Nested If Statements
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/loops/intro.html">
+     Loops
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/while.html">
+       While Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/for.html">
+       For Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/nested.html">
+       Nested Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/break.html">
+       Breaking Out of Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/loops/else.html">
+       Else Statement and Loops
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/functions/intro.html">
+     Defining Functions
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/functions/return.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         return
+        </span>
+       </code>
+       Statement
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/functions/arguments.html">
+       Function Arguments
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/functions/local-variables.html">
+       Local Variables
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/functions/recursive.html">
+       Recursive Functions
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../../standard-library/file-io/intro.html">
+     File I/O
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/file-io/file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../../standard-library/file-io/data.html">
+       Structured Data Files
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <figcaption>
+   <p>
+    <span class="caption-text">
+     Scientific Packages
+    </span>
+   </p>
+   <ul>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../../scientific-packages/numpy/intro.html">
+      Numpy
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/arrays.html">
+        Arrays
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/array-methods.html">
+        Array Methods and Attributes
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/arrays2d.html">
+        2D Arrays and Matrices
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/random.html">
+        NumPy Random Module
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/where.html">
+        Array Conditional Statements and
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          numpy.where()
+         </span>
+        </code>
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../../scientific-packages/matplotlib/intro.html">
+      Matplotlib
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/matplotlib/simple.html">
+        Simple Plots with Pyplot
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/matplotlib/subplots.html">
+        Subplots
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../../scientific-packages/astropy/intro.html">
+      Astropy
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/astropy/units.html">
+        Units and Quantities
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/astropy/constants.html">
+        Constants
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+   </ul>
+   <figcaption>
+    <p>
+     <span class="caption-text">
+      Numerical Methods
+     </span>
+    </p>
+    <ul class="current">
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../benchmarking/intro.html">
+       Benchmarking
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../benchmarking/time.html">
+         Timing With
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           time.perf_counter
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../benchmarking/uncertainty.html">
+         Measurement and Uncertainty
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../root-finding/intro.html">
+       Numerical Root Finding
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../root-finding/bisection.html">
+         Bisection Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../root-finding/secant.html">
+         Secant Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../root-finding/newton.html">
+         Newton-Raphson Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../root-finding/comparison.html">
+         Comparing the Methods
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../regression/intro.html">
+       Linear Regression Algorithms
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../regression/least-squares.html">
+         Linear Least Squares Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../regression/chi-squared.html">
+         Chi Squared Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../regression/multivariate-least-squares.html">
+         Multivariate Linear Least Squares Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../regression/scipy.html">
+         Least Squares Minimization with
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           scipy.optimize.leastsq
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../ode/intro.html">
+       Numerical Solutions to Ordinary Differential Equations
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../ode/euler.html">
+         Euler’s Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../ode/euler-error.html">
+         Euler’s Method: Truncation Error
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../ode/higher-order.html">
+         Solving Higher Order ODEs
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../ode/runge-kutta.html">
+         Runge-Kutta Methods
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 current active collapsible-parent">
+      <a class="reference internal" href="intro.html">
+       Numerical Integration Techniques
+      </a>
+      <ul class="current collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="midpoint.html">
+         Midpoint Rule
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="trapezoidal.html">
+         Trapezoidal Rule
+        </a>
+       </li>
+       <li class="toctree-l2 current active">
+        <a class="current reference internal" href="#">
+         Simpson’s Rule
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+    </ul>
+   </figcaption>
+  </figcaption>
+ </figcaption>
+</figcaption>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/content/numerical-methods/integration/simpson.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/numerical-methods/integration/simpson.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/maystey/uct-nassp-cm-2021/master?urlpath=tree/book/content/numerical-methods/integration/simpson.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#approximating-f-x-as-a-quadratic-polynomial">
+   Approximating
+   <span class="math notranslate nohighlight">
+    \(f(x)\)
+   </span>
+   as a Quadratic Polynomial
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integrating-l-x">
+   Integrating
+   <span class="math notranslate nohighlight">
+    \(L(x)\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#alternative-interpretation">
+   Alternative Interpretation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#composite-simpson-s-rule">
+   Composite Simpson’s Rule
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#composite-simpson-s-rule-with-a-discrete-data-set">
+     Composite Simpson’s Rule with a Discrete Data Set
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <section id="simpson-s-rule">
+<h1>Simpson’s Rule<a class="headerlink" href="#simpson-s-rule" title="Permalink to this headline">¶</a></h1>
+<p>One method of approximating the integral is to approximate the curve itself with something simpler that we know how to integrate. The Simpson’s rule approximates the curve as a parabola, which is simple to integrate.</p>
+<section id="approximating-f-x-as-a-quadratic-polynomial">
+<h2>Approximating <span class="math notranslate nohighlight">\(f(x)\)</span> as a Quadratic Polynomial<a class="headerlink" href="#approximating-f-x-as-a-quadratic-polynomial" title="Permalink to this headline">¶</a></h2>
+<p>In order to approximate <span class="math notranslate nohighlight">\(f(x)\)</span> as a quadratic polynomial we can use a second order Lagrange polynomial. We construct this polynomial by using 3 data points <span class="math notranslate nohighlight">\((a, f(a))\)</span>, <span class="math notranslate nohighlight">\((m, f(m))\)</span> and <span class="math notranslate nohighlight">\((b, f(b))\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+L(x) = f(a) \frac{(x - m)(x - b)}{(a - m)(a - b)} + f(m) \frac{(x - a)(x - b)}{(m - a)(m - b)} + f(b) \frac{(x - a)(x - m)}{(b - a)(b - m)}
+\]</div>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/simpson_6_0.png" src="../../../_images/simpson_6_0.png" />
+</div>
+</div>
+<p>If we use the midpoint of <span class="math notranslate nohighlight">\([a, b]\)</span> for <span class="math notranslate nohighlight">\(m\)</span>, i.e:</p>
+<div class="math notranslate nohighlight">
+\[
+m = \tfrac{1}{2} (a + b)
+\]</div>
+<p>then we have</p>
+<div class="math notranslate nohighlight">
+\[
+m - a = b - m = \tfrac{1}{2} (b - a)
+\]</div>
+<p>and the Lagrange polynomial becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+L(x) = \frac{2}{(b - a)^2} \big[ f(a) (x - m) (x - b) - 2 f(m) (x - a) (x - b) + f(b)(x - a)(x - m) \big]
+\]</div>
+</section>
+<section id="integrating-l-x">
+<h2>Integrating <span class="math notranslate nohighlight">\(L(x)\)</span><a class="headerlink" href="#integrating-l-x" title="Permalink to this headline">¶</a></h2>
+<p>Now, we wish to approximate the integral of <span class="math notranslate nohighlight">\(f(x)\)</span> as the integral of our Lagrange polynomial:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b f(x)~ dx \approx \int_a^b L(x)~ dx
+\]</div>
+<p>illustrated in the figure below:</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/simpson_10_0.png" src="../../../_images/simpson_10_0.png" />
+</div>
+</div>
+<p>by substituting the variable:</p>
+<div class="math notranslate nohighlight">
+\[
+u = \frac{x - m}{b - m} = 2 \frac{x - \tfrac{1}{2} (a + b)}{b - a}
+\]</div>
+<p>into the integral of <span class="math notranslate nohighlight">\(L(x)\)</span> we find that:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b L(x)~dx = \frac{b - a}{6} \left[ f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b) \right]
+\]</div>
+<p>thus, we approximate the integral of <span class="math notranslate nohighlight">\(f(x)\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b f(x) ~dx \approx \frac{b -a}{6} \left[f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b) \right]
+\]</div>
+</section>
+<section id="alternative-interpretation">
+<h2>Alternative Interpretation<a class="headerlink" href="#alternative-interpretation" title="Permalink to this headline">¶</a></h2>
+<p>Another way to see the Simpson’s rule is as a weighted average of the midpoint and trapezoidal rules:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2/3 midpoint + 1/3 trapezoidal
+</pre></div>
+</div>
+<p>Mathematically:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\int_a^b f(x)~ dx &amp;\approx \frac{2}{3} f\left(\frac{a + b}{2}\right) (b - a) + \frac{1}{3} \times \frac{1}{2} (b - a) [f(a) + f(b)]\\
+                 &amp;\approx \frac{b - a}{6} \left[ f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b)\right]\\   
+\end{align*}\]</div>
+</section>
+<section id="composite-simpson-s-rule">
+<h2>Composite Simpson’s Rule<a class="headerlink" href="#composite-simpson-s-rule" title="Permalink to this headline">¶</a></h2>
+<p>As before we can improve the accuracy of our solution by subdividing the interval and calculating the integral using Simpson’s rule for each subinterval.</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/simpson_16_0.png" src="../../../_images/simpson_16_0.png" />
+<img alt="../../../_images/simpson_16_1.png" src="../../../_images/simpson_16_1.png" />
+</div>
+</div>
+<p>The composite Simpson’s rule is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\int_a^b f(x)~ dx \approx \sum_{i = 1}^i \frac{x_i - x_{i-1}}{6} \left[ f(x_{i-1}) + 4 f\left(\frac{x_{i-1} + x_i}{2}\right) + f(x_i)\right]\\
+\end{split}\]</div>
+<!---
+Where $x_0 = a$, $x_n = b$ and $x_i = a +  i(b - a)/n$.
+--->
+<p>If we use equal sized subintervals, then we have that:</p>
+<div class="math notranslate nohighlight">
+\[
+x_i - x_{i -1} = \frac{b - a}{n}
+\]</div>
+<p>taking this into account and the values of <span class="math notranslate nohighlight">\(f(x_i)\)</span> which are repeated in the sum, the composite Simpson’s rule can be simplified to:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b f(x)~ dx \approx \frac{b - a}{6 n} \left[ f(a) + 2 \sum_{i = 2}^{n-1} f(x_i) + 4 \sum_{i =1}^{n} f\left( \frac{x_{i-1} + x_i}{2} \right) + f(b) \right]
+\]</div>
+<section id="composite-simpson-s-rule-with-a-discrete-data-set">
+<h3>Composite Simpson’s Rule with a Discrete Data Set<a class="headerlink" href="#composite-simpson-s-rule-with-a-discrete-data-set" title="Permalink to this headline">¶</a></h3>
+<p>Again, consider the data set <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> for <span class="math notranslate nohighlight">\(i = 0, \dots, n\)</span>, where</p>
+<div class="math notranslate nohighlight">
+\[
+f(x_i) = y_i
+\]</div>
+<p>Approximating the integral of the data using Simpson’s rule is a lot less straight forward than the Midpoint and Trapezoidal rule as we can’t calculate <span class="math notranslate nohighlight">\(f\left((x_{i -1} + x_i)/2\right)\)</span> directly, and the function values at the boundaries of the intervals are also required.</p>
+<p>If the <span class="math notranslate nohighlight">\(x_i\)</span> values are <strong>uniformly spaced</strong> (with <span class="math notranslate nohighlight">\(x_i - x_{i-1} = \Delta x\)</span>) and there is an odd number of data points, we can pair up the intervals between the points. Treating each pair of subintervals as a single subinterval, we can use the middle <span class="math notranslate nohighlight">\(x\)</span> values as the midpoints. In other words, for even <span class="math notranslate nohighlight">\(i= 2j\)</span>, the <span class="math notranslate nohighlight">\(x_{2j}\)</span> are used as the boundaries of the sub-intervals; for odd <span class="math notranslate nohighlight">\(i = 2k -1\)</span>, the <span class="math notranslate nohighlight">\(x_{2k-1}\)</span> are used as the midpoints of the subinterval. Thus the integral is approximated as:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{x_0}^{x_n} f(x)~dx \approx \frac{\Delta x}{3} \left[y_0 + 2 \sum_{i = 1}^{n/2 - 1} y_{2i} + 4 \sum_{i=1}^{n/2} y_{2i-1} + y_n \right] 
+\]</div>
+<p>Note that</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{b - a}{6 n} = \frac{2 \Delta x}{6} = \frac{\Delta x}{3}
+\]</div>
+<p>as each subinterval is made up of two intervals of length <span class="math notranslate nohighlight">\(\Delta x\)</span> each.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python37364bitbaseconda97808f46a65a4f1e9dfdbcff18a07fbf",
+            path: "./content/numerical-methods/integration"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python37364bitbaseconda97808f46a65a4f1e9dfdbcff18a07fbf'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="trapezoidal.html" title="previous page">Trapezoidal Rule</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,1096 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Structured Data Files &#8212; AST4007W Computational Methods</title>
+    
+  <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/table.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.d3f166471bb80abb5163.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Numpy" href="../../scientific-packages/numpy/intro.html" />
+    <link rel="prev" title="File I/O" href="file-io.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../../index.html">
+  
+  <img src="../../../_static/UCTcircular_logo.png" class="logo" alt="logo">
+  
+  
+  <h1 class="site-logo" id="site-title">AST4007W Computational Methods</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   UCT NASSP AST4007W Computational Methods
+  </a>
+ </li>
+</ul>
+<figcaption>
+ <p>
+  <span class="caption-text">
+   Introduction
+  </span>
+ </p>
+ <ul>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/intro.html">
+    Programming and Python in a Nutshell
+   </a>
+  </li>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/installing/anaconda.html">
+    Managing Your Python Installation with Anaconda
+   </a>
+  </li>
+  <li class="toctree-l1">
+   <a class="reference internal" href="../../intro/control-flow/control-flow-diagrams.html">
+    Control Flow Diagrams
+   </a>
+  </li>
+ </ul>
+ <figcaption>
+  <p>
+   <span class="caption-text">
+    The Python Standard Library
+   </span>
+  </p>
+  <ul class="current">
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../basics/intro.html">
+     Python Basics
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../basics/variables.html">
+       Variables
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../basics/comments.html">
+       Comments
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../basics/types.html">
+       Type Conversion
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../basics/operators.html">
+       Numerical Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../basics/assignment-operators.html">
+       Compound Assignment Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../basics/functions.html">
+       Introduction to Using Functions
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../strings/strings.html">
+     Strings
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../strings/string-formatting.html">
+       String Formatting
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../data-structures/intro.html">
+     Data Structures
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../data-structures/tuple.html">
+       Tuple
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../data-structures/lists.html">
+       Lists
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../data-structures/dictionaries.html">
+       Dictionaries
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../if-statements/intro.html">
+     If Statements
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../if-statements/bools.html">
+       Booleans (
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         bool
+        </span>
+       </code>
+       )
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../if-statements/comparison-operators.html">
+       Comparison Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../if-statements/logical-operators.html">
+       Logical Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../if-statements/inclusion-operators.html">
+       Inclusion Operators
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../if-statements/if.html">
+       If Statements
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../if-statements/nested.html">
+       Nested If Statements
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../loops/intro.html">
+     Loops
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../loops/while.html">
+       While Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../loops/for.html">
+       For Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../loops/nested.html">
+       Nested Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../loops/break.html">
+       Breaking Out of Loops
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../loops/else.html">
+       Else Statement and Loops
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l1 collapsible-parent">
+    <a class="reference internal" href="../functions/intro.html">
+     Defining Functions
+    </a>
+    <ul class="collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="../functions/return.html">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         return
+        </span>
+       </code>
+       Statement
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../functions/arguments.html">
+       Function Arguments
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../functions/local-variables.html">
+       Local Variables
+      </a>
+     </li>
+     <li class="toctree-l2">
+      <a class="reference internal" href="../functions/recursive.html">
+       Recursive Functions
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+   <li class="toctree-l1 current active collapsible-parent">
+    <a class="reference internal" href="intro.html">
+     File I/O
+    </a>
+    <ul class="current collapse-ul">
+     <li class="toctree-l2">
+      <a class="reference internal" href="file-io.html">
+       File I/O
+      </a>
+     </li>
+     <li class="toctree-l2 current active">
+      <a class="current reference internal" href="#">
+       Structured Data Files
+      </a>
+     </li>
+    </ul>
+    <i class="fas fa-chevron-down">
+    </i>
+   </li>
+  </ul>
+  <figcaption>
+   <p>
+    <span class="caption-text">
+     Scientific Packages
+    </span>
+   </p>
+   <ul>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../../scientific-packages/numpy/intro.html">
+      Numpy
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/arrays.html">
+        Arrays
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/array-methods.html">
+        Array Methods and Attributes
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/arrays2d.html">
+        2D Arrays and Matrices
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/random.html">
+        NumPy Random Module
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/numpy/where.html">
+        Array Conditional Statements and
+        <code class="docutils literal notranslate">
+         <span class="pre">
+          numpy.where()
+         </span>
+        </code>
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../../scientific-packages/matplotlib/intro.html">
+      Matplotlib
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/matplotlib/simple.html">
+        Simple Plots with Pyplot
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/matplotlib/subplots.html">
+        Subplots
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+    <li class="toctree-l1 collapsible-parent">
+     <a class="reference internal" href="../../scientific-packages/astropy/intro.html">
+      Astropy
+     </a>
+     <ul class="collapse-ul">
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/astropy/units.html">
+        Units and Quantities
+       </a>
+      </li>
+      <li class="toctree-l2">
+       <a class="reference internal" href="../../scientific-packages/astropy/constants.html">
+        Constants
+       </a>
+      </li>
+     </ul>
+     <i class="fas fa-chevron-down">
+     </i>
+    </li>
+   </ul>
+   <figcaption>
+    <p>
+     <span class="caption-text">
+      Numerical Methods
+     </span>
+    </p>
+    <ul>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/benchmarking/intro.html">
+       Benchmarking
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/benchmarking/time.html">
+         Timing With
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           time.perf_counter
+          </span>
+         </code>
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/benchmarking/uncertainty.html">
+         Measurement and Uncertainty
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/root-finding/intro.html">
+       Numerical Root Finding
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/root-finding/bisection.html">
+         Bisection Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/root-finding/secant.html">
+         Secant Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/root-finding/newton.html">
+         Newton-Raphson Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/root-finding/comparison.html">
+         Comparing the Methods
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/regression/intro.html">
+       Linear Regression Algorithms
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/regression/least-squares.html">
+         Linear Least Squares Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/regression/chi-squared.html">
+         Chi Squared Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/regression/multivariate-least-squares.html">
+         Multivariate Linear Least Squares Minimization
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/regression/scipy.html">
+         Least Squares Minimization with
+         <code class="docutils literal notranslate">
+          <span class="pre">
+           scipy.optimize.leastsq
+          </span>
+         </code>
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/ode/intro.html">
+       Numerical Solutions to Ordinary Differential Equations
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/ode/euler.html">
+         Euler’s Method
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/ode/euler-error.html">
+         Euler’s Method: Truncation Error
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/ode/higher-order.html">
+         Solving Higher Order ODEs
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/ode/runge-kutta.html">
+         Runge-Kutta Methods
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../../numerical-methods/integration/intro.html">
+       Numerical Integration Techniques
+      </a>
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/integration/midpoint.html">
+         Midpoint Rule
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/integration/trapezoidal.html">
+         Trapezoidal Rule
+        </a>
+       </li>
+       <li class="toctree-l2">
+        <a class="reference internal" href="../../numerical-methods/integration/simpson.html">
+         Simpson’s Rule
+        </a>
+       </li>
+      </ul>
+      <i class="fas fa-chevron-down">
+      </i>
+     </li>
+    </ul>
+   </figcaption>
+  </figcaption>
+ </figcaption>
+</figcaption>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/content/standard-library/file-io/data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/standard-library/file-io/data.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/maystey/uct-nassp-cm-2021/master?urlpath=tree/book/content/standard-library/file-io/data.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-a-data-file">
+   Writing a Data File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-a-data-file">
+   Reading a Data File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-and-reading-a-tab-separated-file">
+   Writing and Reading a Tab Separated File
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#reading-data-in-as-a-single-array">
+   Reading Data in as a Single Array
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <section id="structured-data-files">
+<h1>Structured Data Files<a class="headerlink" href="#structured-data-files" title="Permalink to this headline">¶</a></h1>
+<p>In this section we focus on reading from and writing to files with a row-column format, such as is found in comma-separated (csv) and tab-separated (tsv) data files.</p>
+<p>Although <code class="docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code> is suitable for this task, it is valuable to be able to write your own code solution.</p>
+<section id="writing-a-data-file">
+<h2>Writing a Data File<a class="headerlink" href="#writing-a-data-file" title="Permalink to this headline">¶</a></h2>
+<p>Let us generate some data and write it in a csv format (comma-separated values). In general what you use as the separator (delimiter) for your data is up to you, but if we use a .csv file extension it’s best to stick to the standard.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1">#Generating data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1">#Writing the data to file in csv format</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data1.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;x,sin(x),cos(x)</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1">#Header</span>
+    
+    <span class="k">for</span> <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">xx</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="n">yy</span><span class="si">}</span><span class="s1">,</span><span class="si">{</span><span class="n">zz</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are not familiar with the string formatting used (<code class="docutils literal notranslate"><span class="pre">f'{xx},{yy},{zz}\n'</span></code>) see the page <a class="reference internal" href="../strings/string-formatting.html"><span class="doc std std-doc"><strong>The Python Standard Library/Strings/String Formatting</strong></span></a>. Note that it is in this line (and also in the header) that we have separated the values with commas.</p>
+<p>Note that the file extension <strong>.csv</strong> acts more as a hint for other software. There is no physical difference between a file we write with this extension or any other extension (including no extension). As long as the file mode is set to text (<code class="docutils literal notranslate"><span class="pre">'t'</span></code>), we are writing plain text files.</p>
+<p>The output of our data file <strong>data1.csv</strong> looks like:</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x,sin(x),cos(x)
+0.0,0.0,1.0
+0.1282282715750936,0.127877161684506,0.9917900138232462
+0.2564565431501872,0.25365458390950735,0.9672948630390295
+0.38468481472528077,0.3752670048793741,0.9269167573460217
+0.5129130863003744,0.49071755200393785,0.8713187041233894
+0.6411413578754679,0.5981105304912159,0.8014136218679567
+0.7693696294505615,0.6956825506034864,0.7183493500977276
+0.8975979010256552,0.7818314824680298,0.6234898018587336
+1.0258261726007487,0.8551427630053461,0.5183925683105252
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or in a more presentable format:</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>x</th>
+      <th>sin(x)</th>
+      <th>cos(x)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0.000000</td>
+      <td>0.000000e+00</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <td>0.128228</td>
+      <td>1.278772e-01</td>
+      <td>0.991790</td>
+    </tr>
+    <tr>
+      <td>0.256457</td>
+      <td>2.536546e-01</td>
+      <td>0.967295</td>
+    </tr>
+    <tr>
+      <td>0.384685</td>
+      <td>3.752670e-01</td>
+      <td>0.926917</td>
+    </tr>
+    <tr>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <td>5.898500</td>
+      <td>-3.752670e-01</td>
+      <td>0.926917</td>
+    </tr>
+    <tr>
+      <td>6.026729</td>
+      <td>-2.536546e-01</td>
+      <td>0.967295</td>
+    </tr>
+    <tr>
+      <td>6.154957</td>
+      <td>-1.278772e-01</td>
+      <td>0.991790</td>
+    </tr>
+    <tr>
+      <td>6.283185</td>
+      <td>-2.449294e-16</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table></div></div>
+</div>
+</section>
+<section id="reading-a-data-file">
+<h2>Reading a Data File<a class="headerlink" href="#reading-a-data-file" title="Permalink to this headline">¶</a></h2>
+<p>Now, let’s read the data file we wrote. If we want to store each column in a separate list or array, it will be best to iterate through the lines of the file.</p>
+<p>We will need to divide the values from each line using the separator. To do this, we will use the <code class="docutils literal notranslate"><span class="pre">.split()</span></code> string method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;a b c d&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see this splits the string into a list of strings. By default it uses a space as the dividing character, given a string argument it will use that as the delimiter instead:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;a,b,c,d&#39;</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We must keep in mind that the file we are reading has a header we want to read before any of the data.</p>
+<p>Something else to keep in mind is that the file contains text (or rather the content is a string). If we want to store the data as numbers, we need to convert them first.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Lists to hold the data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">z</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data1.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> <span class="c1">#read header</span>
+    
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="c1">#This clears trailing whitespace (e.g. \n)</span>
+        
+        <span class="c1">#Makes a list from the string using &#39;,&#39; as the seperator</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+        
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+
+<span class="c1">#If you need to convert x, y, z to arrays:</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we start with lists and convert to an array later (if an array is needed). The reason for doing this is that we don’t necessarily know how many lines the file has before we begin, and appending to lists is more easy and efficient than concatenating arrays.</p>
+<p>As a sanity check, let’s plot the data we have just read:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;sin(x)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span>  <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;cos(x)&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">9</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 640x480 with 1 Axes&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="writing-and-reading-a-tab-separated-file">
+<h2>Writing and Reading a Tab Separated File<a class="headerlink" href="#writing-and-reading-a-tab-separated-file" title="Permalink to this headline">¶</a></h2>
+<p>If you are comfortable with the sections above, you may skip this one. If you’d like to see another example of a data file with a different delimiter, we will write a data file using tab separation instead of commas (tsv).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1">#Generating data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
+
+<span class="c1">#Writing a data file with space seperations</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data2.tsv&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;x</span><span class="se">\t</span><span class="s1">y</span><span class="se">\t</span><span class="s1">z</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1">#Header</span>
+    
+    <span class="k">for</span> <span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">,</span> <span class="n">zz</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">xx</span><span class="si">}</span><span class="se">\t</span><span class="si">{</span><span class="n">yy</span><span class="si">}</span><span class="se">\t</span><span class="si">{</span><span class="n">zz</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we use the special character <code class="docutils literal notranslate"><span class="pre">'\t'</span></code> which stands for tabs.</p>
+<p>Again, the use of the <strong>.tsv</strong> file extension is a convention, it does not alter the nature of the file itself.</p>
+<p>The contents of the data file we have generated looks like this:</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x	y	z
+0.0	0.0	0.0
+0.020202020202020204	0.1421338109037403	0.0004081216202428324
+0.04040404040404041	0.20100756305184242	0.0016324864809713297
+0.06060606060606061	0.24618298195866548	0.0036730945821854917
+0.08080808080808081	0.2842676218074806	0.006529945923885319
+0.10101010101010102	0.31782086308186414	0.010203040506070812
+0.12121212121212122	0.3481553119113957	0.014692378328741967
+0.14141414141414144	0.3760507165451775	0.019997959391898794
+0.16161616161616163	0.40201512610368484	0.026119783695541274
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, let’s read the data keeping in mind that the values are now separated with tabs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Lists to hold the data</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">z</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data2.tsv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> <span class="c1">#read header</span>
+    
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="c1">#This clears trailing whitespace (e.g. \n)</span>
+        
+        <span class="c1">#Makes a list from the string using &#39;\t&#39; as the seperator</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+        <span class="n">x</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+        <span class="n">y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+        <span class="n">z</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">line</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+
+<span class="c1">#If you need to convert x, y, z to arrays:</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plotting this data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\sqrt</span><span class="si">{x}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span>  <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$x^2$&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">9</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/data_31_0.png" src="../../../_images/data_31_0.png" />
+</div>
+</div>
+</section>
+<section id="reading-data-in-as-a-single-array">
+<h2>Reading Data in as a Single Array<a class="headerlink" href="#reading-data-in-as-a-single-array" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes you want to read the data in as a single 2D array (for example if you have a large data file or if the number of columns in your data file aren’t fixed). Let’s read the file <strong>data2.tsv</strong> in this manner:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Lists to hold the data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data2.tsv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">header</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span> <span class="c1">#read header</span>
+    
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="c1">#This clears trailing whitespace (e.g. \n)</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span> <span class="c1">#Makes a list</span>
+        
+        <span class="c1">#Converting data to floats</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">col</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">line</span><span class="p">):</span>
+            <span class="n">line</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">float</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+        
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="c1">#Converting data to array</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that this gives us a similar output to NumPy’s <code class="docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code>. Plotting the data (use slices to extract the columns):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\sqrt</span><span class="si">{x}</span><span class="s1">$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span>  <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$x^2$&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span> <span class="o">=</span> <span class="mi">9</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/data_36_0.png" src="../../../_images/data_36_0.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python37364bitbaseconda97808f46a65a4f1e9dfdbcff18a07fbf",
+            path: "./content/standard-library/file-io"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python37364bitbaseconda97808f46a65a4f1e9dfdbcff18a07fbf'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="file-io.html" title="previous page">File I/O</a>
+    <a class='right-next' id="next-link" href="../../scientific-packages/numpy/intro.html" title="next page">Numpy</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../../_static/js/index.d3f166471bb80abb5163.js"></script>
+
+
+    
+  </body>
+</html>
