@@ -7,6 +7,8 @@ logo: images/UCTcircular_logo.png
 description: >-
   Course notes for the NASSP Honours Computational Methods module at the University of Cape Town.
 
+only_build_toc_files: true
+
 #######################################################################################
 # Launch button settings
 repository:

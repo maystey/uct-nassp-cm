@@ -79,7 +79,6 @@
     - file: content/scientific-packages/matplotlib/simple
     - file: content/scientific-packages/matplotlib/subplots
 
-
   - file: content/scientific-packages/astropy/intro
     sections:
     - file: content/scientific-packages/astropy/units
@@ -89,11 +88,6 @@
 ##################################################################
 - part: Numerical Methods
   chapters:
-  - file: content/numerical-methods/benchmarking/intro
-    sections:
-    - file: content/numerical-methods/benchmarking/time
-    - file: content/numerical-methods/benchmarking/uncertainty
-
 
   - file: content/numerical-methods/root-finding/intro
     sections:
@@ -102,7 +96,6 @@
     - file: content/numerical-methods/root-finding/newton
     - file: content/numerical-methods/root-finding/comparison
 
-
   - file: content/numerical-methods/regression/intro
     sections:
     - file: content/numerical-methods/regression/least-squares
@@ -110,14 +103,12 @@
     - file: content/numerical-methods/regression/multivariate-least-squares
     - file: content/numerical-methods/regression/scipy
 
-
   - file: content/numerical-methods/ode/intro
     sections:
     - file: content/numerical-methods/ode/euler
     - file: content/numerical-methods/ode/euler-error
     - file: content/numerical-methods/ode/higher-order
     - file: content/numerical-methods/ode/runge-kutta
-
 
   - file: content/numerical-methods/integration/intro
     sections:

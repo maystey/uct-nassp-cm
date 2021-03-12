@@ -10,10 +10,16 @@ the version number, `a.b.c`, follows the following scheme:
 
 ## [UNRELEASED]
 
+### Added
+
+- Added part `numerical-methods`
+- Added page `standard-library/if-statements/nested`
+- Add custom css for formatting tables: `table.css`
+- Add custom css class for **Worked Examples**
+
 ### Changed
 
-- Added chapter `numerical-methods/root-finding`
-- Added page `standard-library/if-statements/nested`
+- Update to Jupyter-Book version 0.10
 - Moved `list-comprehension` page from `standard-library/loops` to `standard-library/data-structures/lists`.
 - Re-wrote chapters:
   - `standard-library/if-statements`
@@ -21,20 +27,26 @@ the version number, `a.b.c`, follows the following scheme:
 - Change `_toc` chapter titles:
   - **Control Flow: If Statements** to **If Statements**
   - **Control Flow: Loops** to **Loops**
-- Add custom css for formatting tables: `table.css`
+
+### Removed
+
+- Removed Chapter: `numerical-methods/benchmarking`
 
 ## [2.0.2] - 2020-12-07
 
-### Changed
+### Added
 
 - Add scripts to generate pdf version of the book (WIP)
 
 ## [2.0.1] - 2020-12-01
 
+### Added
+
+- Added section Standard Library/If Statements/Inclusion Operators
+
 ### Changed
 
 - Update to Jupyter-Book version 0.8
-- Added section Standard Library/If Statements/Inclusion Operators
 
 ### Fixed
 
