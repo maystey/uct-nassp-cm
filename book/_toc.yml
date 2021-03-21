@@ -3,7 +3,7 @@
 - part: Introduction
   chapters:
   - file: content/intro/intro
-  - file: content/intro/installing/anaconda
+  #- file: content/intro/installing/anaconda
   - file: content/intro/control-flow/control-flow-diagrams
 
 ####################################################################
