@@ -501,7 +501,7 @@
        </li>
        <li class="toctree-l2">
         <a class="reference internal" href="../../numerical-methods/ode/higher-order.html">
-         Solving Higher Order ODEs
+         Solving Coupled and Higher Order ODEs
         </a>
        </li>
        <li class="toctree-l2">
@@ -908,12 +908,22 @@ Index 7: r
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There are 8 characters in the string
+</pre></div>
+</div>
+</div>
 </div>
 <p>Notice how the length of <code class="docutils literal notranslate"><span class="pre">computer_string</span></code> is one greater than its largest index. This is because Python indexes from <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
 <p>Thus, if we don’t know how long a string is before hand (if a variable holding a string is subject to change for instance) and we want to index the last value of the string, we could use <code class="docutils literal notranslate"><span class="pre">len()</span> <span class="pre">-</span> <span class="pre">1</span></code> as the index:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The last character:&#39;</span><span class="p">,</span> <span class="n">computer_string</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">computer_string</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The last character: r
 </pre></div>
 </div>
 </div>
@@ -925,6 +935,11 @@ Index 7: r
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The last character: r
+</pre></div>
+</div>
+</div>
 </div>
 <p>In general, negative indices in Python index the strings (and other objects) backwards:</p>
 <div class="cell docutils container">
@@ -932,6 +947,12 @@ Index 7: r
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Second last character&#39;</span><span class="p">,</span> <span class="n">computer_string</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Third last character&#39;</span><span class="p">,</span> <span class="n">computer_string</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Second last character e
+Third last character t
 </pre></div>
 </div>
 </div>
@@ -951,12 +972,22 @@ Index 7: r
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mpu
+</pre></div>
+</div>
+</div>
 </div>
 <p>where the last character is <code class="docutils literal notranslate"><span class="pre">'u'</span></code>, but the character with index <code class="docutils literal notranslate"><span class="pre">5</span></code> is <code class="docutils literal notranslate"><span class="pre">'t'</span></code>.</p>
 <p>If we want to take a slice from the beginning of a string we could use <code class="docutils literal notranslate"><span class="pre">0</span></code> as the <code class="docutils literal notranslate"><span class="pre">start_index</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">computer_string</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>com
 </pre></div>
 </div>
 </div>
@@ -968,11 +999,21 @@ Index 7: r
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>com
+</pre></div>
+</div>
+</div>
 </div>
 <p>Similarly if we wanted to take a slice up to and including the last character in the string, we can use:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">computer_string</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">computer_string</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>puter
 </pre></div>
 </div>
 </div>
@@ -984,11 +1025,21 @@ Index 7: r
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>puter
+</pre></div>
+</div>
+</div>
 </div>
 <p>Notice the slice above is not the same as if we used <code class="docutils literal notranslate"><span class="pre">-1</span></code> as the <code class="docutils literal notranslate"><span class="pre">stop_index</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">computer_string</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pute
 </pre></div>
 </div>
 </div>
@@ -1006,11 +1057,22 @@ Index 7: r
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting from 0: cmue
+Starting from 1: optr
+</pre></div>
+</div>
+</div>
 </div>
 <p>The step size can be any integer. Note that by default it is set to 1. As another example lets print out every second character from <code class="docutils literal notranslate"><span class="pre">computer_string</span></code> starting from the first:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">computer_string</span><span class="p">[::</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>cpe
 </pre></div>
 </div>
 </div>
@@ -1022,12 +1084,23 @@ Index 7: r
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>retupmoc
+</pre></div>
+</div>
+</div>
 </div>
 <p>Note, when slicing with a negative step size you must ensure that <code class="docutils literal notranslate"><span class="pre">start_index</span></code> is greater than <code class="docutils literal notranslate"><span class="pre">stop_index</span></code>, otherwise your slice will be empty.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Empty slice:&#39;</span><span class="p">,</span> <span class="n">computer_string</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">6</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Not empty slice:&#39;</span><span class="p">,</span> <span class="n">computer_string</span><span class="p">[</span><span class="mi">6</span><span class="p">:</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Empty slice: 
+Not empty slice: etupmo
 </pre></div>
 </div>
 </div>
