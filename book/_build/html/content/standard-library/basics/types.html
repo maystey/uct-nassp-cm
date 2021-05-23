@@ -501,7 +501,7 @@
        </li>
        <li class="toctree-l2">
         <a class="reference internal" href="../../numerical-methods/ode/higher-order.html">
-         Solving Higher Order ODEs
+         Solving Coupled and Higher Order ODEs
         </a>
        </li>
        <li class="toctree-l2">
@@ -754,6 +754,22 @@
 
 <span class="n">int_var</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">str_var</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">int_var</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">int_var</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.563 &lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">6</span><span class="o">-</span><span class="n">a3094efdeb44</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">str_var</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">str_var</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">int_var</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">str_var</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="n">int_var</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">int_var</span><span class="p">))</span>
+
+<span class="ne">ValueError</span>: invalid literal for int() with base 10: &#39;4.563&#39;
 </pre></div>
 </div>
 </div>

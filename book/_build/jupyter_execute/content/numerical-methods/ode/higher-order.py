@@ -1,4 +1,227 @@
-# Solving Higher Order ODEs
+# Solving Coupled and Higher Order ODEs
+
+A common way to solve higher order ODEs using numerical methods is to convert this to a system of first order ODEs. We will first look at solving systems of coupled first order diffrential equations, and then we will focus on reducing higher order ODEs to solve them in a similar manner.
+
+## Coupled Ordinary Differential Equations
+
+Consider a system of first order coupled ODEs in the form:
+
+\begin{align*}
+\frac{d x}{dt}(t) &= f\big(t, x(t), y(t)\big)\\
+\frac{d y}{dt}(t) &= g\big(t, x(t), y(t)\big)
+\end{align*}
+
+given the initial conditions:
+
+\begin{align*}
+x(t_0) &= x_0\\
+y(t_0) &= y_0
+\end{align*}
+
+where there is one independent variable $t$, and two dependent variables $x(t)$ and $y(t)$.
+
+Note that we cannot simply solve the ODEs for $x$ and $y$ independently, as the ODE functions contain both of these variables. Instead, for our numerical solution, we must solve them simultaneously, step-by-step. Applying Euler's method, defining $t_{n + 1} = t_n + h$, $x_n = x(t_n)$ and $y_n = y(t_n)$, the update step is:
+
+\begin{align*}
+x_{n+1} &= x_{n} + f(t_n, x_n, y_n)\\
+y_{n+1} &= y_{n} + g(t_n, x_n, y_n)\\
+\end{align*}
+
+As you can see, in order to calculate $x_{n+1}$, you need to know both the values of $x_n$ and $y_n$ (the same goes for $y_{n+1}$).
+
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
+
+Consider the coupled system of first order ODEs: <!-- Find something less arbitrary, or at least verifiable through analytic/intuitive means-->
+
+\begin{align*}
+\frac{d x}{dt} &= t  +x y\\
+\frac{d y}{dt} &= t - x
+\end{align*}
+
+with the initial conditions
+
+\begin{align*}
+x(0) &= 0\\
+y(0) &= 1
+\end{align*}
+
+Let's write a script to integrate these ODEs using Euler's method to find $x(t)$ and $y(t)$ up to $t = 10$. We'll store the values in an array and plot them at the end.
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+t0, x0, y0 = 0, 0, 1 #initial conditions
+h = 0.05 #step size
+t_end = 10 #last time step
+
+
+#The ODE functions
+def f(t, x, y):
+    return t + x * y
+
+def g(t, x, y):
+    return t - x
+
+
+#Constructing the arrays:
+t_arr = np.arange(t0, t_end + h, h) #make sure it goes up to and including t_end
+
+x_arr = np.zeros(t_arr.size)
+y_arr = np.zeros(t_arr.size)
+
+
+#Setting the initial conditions
+x_arr[0] = x0
+y_arr[0] = y0
+
+
+#Performing the Euler method, note we don't use the last t values in the update calculations
+for i,t in enumerate(t_arr[:-1]):
+    x_arr[i + 1] = x_arr[i] + h * f(t, x_arr[i], y_arr[i])
+    y_arr[i + 1] = y_arr[i] + h * g(t, x_arr[i], y_arr[i])
+
+
+##Plotting both curves
+fig, ax = plt.subplots(2,1, sharex = True, figsize = (6.4, 5))
+
+ax[0].plot(t_arr, x_arr)
+
+ax[0].set_ylabel('x(t)')
+
+ax[1].plot(t_arr, y_arr)
+
+ax[1].set_xlabel('t')
+ax[1].set_ylabel('y(t)')
+
+plt.show()
+
+</div>
+
+### Arbitrarily Many Coupled Ordinary Differential Equations
+
+Now, let's consider a general solution for arbitrarily many coupled ODEs. Consider the system of coupled first order differential equations:
+
+\begin{align*}
+\frac{d x_1}{dt} &= f_1 (t, x_1, x_2, \dots, x_m)\\
+\frac{d x_2}{dt} &= f_2 (t, x_1, x_2, \dots, x_m)\\
+\frac{d x_3}{dt} &= f_3 (t, x_1, x_2, \dots, x_m)\\
+& \vdots\\
+\frac{d x_m}{dt} &= f_m (t, x_1, x_2, \dots, x_m)\\
+\end{align*}
+
+with initial conditions:
+
+\begin{align*}
+x_1(t_0) &= x_{1\ 0}\\
+x_2(t_0) &= x_{2\ 0}\\
+x_3(t_0) &= x_{3\ 0}\\
+& \vdots\\
+x_m(t_0) &= x_{m\ 0}
+\end{align*}
+
+We can boil down the update step to a single line of code by vectorizing the equations and conditions using NumPy arrays. Let's define the following vector and vector function:
+
+$$
+\vec{x}(t) =
+\begin{pmatrix}
+x_1 (t)\\
+x_2 (t)\\
+x_3 (t)\\
+\vdots\\
+x_m (t)
+\end{pmatrix} \quad \text{and} \quad
+\vec{f}(\vec{x}) = 
+\begin{pmatrix}
+f_1 (t, \vec{x})\\
+f_2 (t, \vec{x})\\
+f_3 (t, \vec{x})\\
+\vdots\\
+f_m (t, \vec{x})
+\end{pmatrix}
+$$
+
+The system of ODEs can now be written as:
+
+$$
+\frac{d \vec{x}}{dt} = \vec{f}(t, \vec{x})
+$$
+
+Using our usual definitions of $t_{n+1} = t_n + h$ and $\vec{x}(t_n) = \vec{x}_n$, the Euler update step can be written as:
+
+$$
+\vec{x}_{n+1} = \vec{x}_n + h  \vec{f}(t_n, \vec{x}_n)
+$$
+
+
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
+
+Consider the system of 3 first order coupled ODEs:
+
+\begin{align*}
+\frac{d x}{dt} &= t  +x y\\
+\frac{d y}{dt} &= t - x\\
+\frac{d z}{dt} &= y
+\end{align*}
+
+with the initial conditions
+
+\begin{align*}
+x(0) &= 0\\
+y(0) &= 1\\
+z(0) &= 0
+\end{align*}
+
+Let's adapt the previous script to integrate these coupled ODEs using Euler's method, this time making use of NumPy array's vectorized operations.
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+t0 = 0
+x0 = np.array([0, 1, 0]) #initial conditions
+h = 0.05 #step size
+t_end = 10 #last time step
+
+
+#The ODE function
+def f(t, x):
+    return np.array([
+        t + x[0] * x[1],
+        t - x[0],
+        x[1]
+    ])
+
+
+#Constructing the arrays:
+t_arr = np.arange(t0, t_end + h, h) #make sure it goes up to and including t_end
+
+x_arr = np.zeros((t_arr.size, x0.size)) #a 2D array, first dimension for t steps, second for the different x_i
+
+
+#Setting the initial conditions
+x_arr[0, :] = x0
+
+
+#Performing the Euler method
+for i,t in enumerate(t_arr[:-1]):
+    x_arr[i + 1, :] = x_arr[i, :] + h * f(t, x_arr[i, :])
+
+
+##Plotting all of the curves
+fig, ax = plt.subplots(x0.size, 1, sharex = True, figsize = (6.4, 2.5 * x0.size))
+
+for i in range(x0.size):
+    ax[i].plot(t_arr, x_arr[:, i])
+    ax[i].set_ylabel(fr'$x_{i}(t)$')
+
+ax[-1].set_xlabel('t')
+
+plt.show()
+
+<!-- Show a script where a function is used? -->
+
+</div>
 
 ## Second Order Differential Equations
 
@@ -48,62 +271,78 @@ $$
 
 We start by introducing the variables:
 
-$$
 \begin{align*}
-v_0 &= y\\
-v_1 &= \frac{dy}{dt} = \frac{d v_0}{dt}\\
+y_0 &= y\\
+y_1 &= \frac{dy}{dt} = \frac{d y_0}{dt}\\
 \end{align*}
+
+which form the vector:
+
+$$
+\vec{y} = \begin{pmatrix} y_0 \\ y_1 \end{pmatrix}
 $$
 
 in order to reduce the second order ODE to a coupled system of two first order ODEs:
 
 $$
 \begin{align*}
-\frac{d v_0}{dt} &= v_1\\
-\frac{d v_1}{dt} &= 100|sin(t)| - 10 v_1 - 100 v_0
+\frac{d y_0}{dt} &= y_1\\
+\frac{d y_1}{dt} &= 100|sin(t)| - 10 y_1 - 100 y_0
 \end{align*}
 $$
 
+which can be vectorized as:
+
+$$
+\frac{d \vec{y}}{dt} =
+\begin{pmatrix}
+y_1\\
+100|sin(t)| - 10 y_1 - 100 y_0
+\end{pmatrix}
+$$
+
+This can be solved by modifying our solutions from the previous worked example:
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-t0, y0, v0 = 0, 0.1, -0.5 #initial conditions
+t0 = 0
+y0 = np.array([0.1, -0.5]) #initial conditions
 h = 0.05 #step size
 t_end = 10
 
 
 #The ODE function
-def f1(t, y, v):
-    return v
-
-def f2(t, y, v):
-    return 100*np.abs(np.sin(t)) - 10 * v - 100 * y
+def f(t, y):
+    return np.array([
+        y[1],
+        100*np.abs(np.sin(t)) - 10 * y[1] - 100 * y[0]
+    ])
 
 
 #Constructing the arrays:
 t_arr = np.arange(t0, t_end + h, h) #make sure it goes up to and including x_end
 
-y_arr = np.zeros(t_arr.shape)
-v_arr = np.zeros(t_arr.shape)
+y_arr = np.zeros((t_arr.size, y0.size))
+
 
 #Setting the initial conditions
-y_arr[0] = y0
-v_arr[0] = v0
+y_arr[0, :] = y0
+
 
 #Performing the Euler method, note we don't use the last x value in the update calculations
 for i,t in enumerate(t_arr[:-1]):
-    y_arr[i + 1] = y_arr[i] + h * f1(t, y_arr[i], v_arr[i])
-    v_arr[i + 1] = v_arr[i] + h * f2(t, y_arr[i], v_arr[i])
+    y_arr[i + 1, :] = y_arr[i, :] + h * f(t, y_arr[i, :])
     
+     
 ##Plotting both curves
 fig, ax = plt.subplots(2,1, sharex = True, figsize = (6.4, 5))
 
-ax[0].plot(t_arr, y_arr)
+ax[0].plot(t_arr, y_arr[:, 0])
 
 ax[0].set_ylabel('y(t)')
 
-ax[1].plot(t_arr, v_arr)
+ax[1].plot(t_arr, y_arr[:, 1])
 
 ax[1].set_xlabel('t')
 ax[1].set_ylabel("y'(t)")
@@ -119,37 +358,45 @@ In the solution above we used separate variables to store the values for $y(x)$ 
 We can extend this technique of creating a system of coupled first order equations to an ODE of arbitrary order:
 
 $$
-\frac{d^n y}{d x^n} =  f\left(x, \frac{d y}{dx}, \frac{d^2y}{dx^2}, \frac{d^3y}{dx^3}, \dots, \frac{d^{n-1} y}{dx^{n-1}} \right)
+\frac{d^m y}{d x^m} =  f\left(x, \frac{d y}{dx}, \frac{d^2y}{dx^2}, \frac{d^3y}{dx^3}, \dots, \frac{d^{m-1} y}{dx^{m-1}} \right)
 $$
 
 with initial conditions
 
 $$
-y(x = x_0) = y_0 ~~~~~~ \frac{dy}{dx}(x = x_0) = y^\prime_0 ~~~~~~ \frac{d^2y}{dx^2}(x = x_0) = y^{\prime\prime}_0 ~~~~~~ \dots ~~~~~~ \frac{d^{n-1}y}{dx^{n-1}}(x = x_0) = y^{(n-1)}_0
+y(x = x_0) = y_0 ~~~~~~ \frac{dy}{dx}(x = x_0) = y^\prime_0 ~~~~~~ \frac{d^2y}{dx^2}(x = x_0) = y^{\prime\prime}_0 ~~~~~~ \dots ~~~~~~ \frac{d^{n-1}y}{dx^{m-1}}(x = x_0) = y^{(m-1)}_0
 $$
 
 We start by introducing the variables:
 
 $$
-v_0 = y ~~~~~~ v_1 = \frac{dy}{dx} ~~~~~~ v_2 = \frac{d^2y}{dx^2} ~~~~~~ \dots ~~~~~ v_{n-1} = \frac{d^{n-1}y}{dx^{n-1}}
+y_0 = y ~~~~~~ y_1 = \frac{dy}{dx} ~~~~~~ y_2 = \frac{d^2y}{dx^2} ~~~~~~ \dots ~~~~~ y_{m-1} = \frac{d^{m-1}y}{dx^{m-1}}
 $$
 
 we can transform the order $n$ ODE to a set of $n$ first order coupled differential equations:
 
 $$
 \begin{align*}
-\frac{dv_0}{dx} &= v_1\\
-\frac{dv_1}{dx} &= v_2\\
-\frac{dv_2}{dx} &= v_3\\
+\frac{d y_0}{dx} &= y_1\\
+\frac{d y_1}{dx} &= y_2\\
+\frac{d y_2}{dx} &= y_3\\
                 &\vdots\\
-\frac{dv_{n-2}}{dx} &= v_{n-1}\\
-\frac{dv_{n-1}}{dx} &= f(x, v_0, v_1, v_2, v_3, \dots, v_{n-2}, v_{n-1})\\
+\frac{d y_{m-2}}{dx} &= y_{m-1}\\
+\frac{d y_{m-1}}{dx} &= f(x, y_0, y_1, y_2, y_3, \dots, y_{m-2}, y_{m-1})\\
 \end{align*}
 $$
 
-As the subscripts suggest, it is practical to store the $v_i$ values in a vector. 
+Again, we can vectorize this in order to use a solution similar to those above:
 
-These equations can be integrated simultaneously, and the solution for $y$ given by $v_0$.
+$$
+\vec{y} =
+\begin{pmatrix}
+y_0\\
+y_1\\
+\vdots\\
+y_{m -1}
+\end{pmatrix}
+$$
 
 <div class="worked-example">
     <h5 class="worked-example-title"><b>Worked Example</b></h5>

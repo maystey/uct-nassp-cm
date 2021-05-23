@@ -123,44 +123,53 @@ plt.show()
 Consider the ODE:
 
 $$
-\frac{dy}{dx} = y - xy^2
+\frac{dy}{dx} = -2 (x - 1) y
 $$
 
-with the given initial conditions: $y = 0.1$ at $x = 0$.
+with the given initial conditions: $y = 1$ at $x = 0$.
 
-Let's say we want to know the value of $y$ at $x = 10$. We shall **choose** a step size of $h = 0.05$ when integrating this out.
+This has an analytic solution of:
 
-What we need to do is recursively apply Euler steps until we have reached the desired $x$:
+$$
+y(x) = e^{(x - 1)^2 + 1}
+$$
 
-x, y = 0, 0.1 #initial conditions
+which we can compare our numerical solutions to.
+
+Let's say we want to find the value of $y$ at $x = 1$ numerically (it's $e$). We shall **choose** a step size of $h = 0.05$ when integrating this out. What we need to do is recursively apply Euler steps until we have reached the desired $x$:
+
+import numpy as np
+
+x, y = 0, 1 #initial conditions
 
 h = 0.05 #step size
 
-x_end = 10 #the value of x for which we want to know y
+x_end = 1 #the value of x for which we want to know y
 
 #The ODE function
 def f(x,y):
-    return y - x*y*y
+    return - 2 * (x -1) * y
 
 #Iterating through the Euler method until x >= x_end:
 while x < x_end:
-    y = y + h*f(x,y)
+    y = y + h * f(x,y)
     x = x + h #Note, we don't want to update x before it's used in the line above
     
-print('y at x = 10 is', y)
+print('y at x = 1 approximated using Euler: ', y)
+print('y at x = 1: ', np.e)
 
-Now, it is often important for us to visualize the solution for $y(x)$ over the interval, rather than only finding the value of $y(x = 10)$. We could alter the solution above to append the values to an array (as would be the best solution if we didn't know how many iterations we needed), but instead we will create an array of $x$ values on the interval, as this is known to us before perform the Euler solution:
+Now, it is often important for us to visualize the solution for $y(x)$ over the interval, rather than only finding the value of $y$ at the end of it. We will plot the numerical solution for $y$ on the interval $0 < x < 5$ along with the exact solution for comparison. We could alter the solution above to append the values to an array (as would be the best solution if we didn't know how many iterations we needed), but instead we will create an array of $x$ values on the interval, as this is known to us before perform the Euler solution:
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-x0, y0 = 0, 0.1
+x0, y0 = 0, 1
 h = 0.05
-x_end = 10
+x_end = 5
 
 #The ODE function
 def f(x,y):
-    return y - x*y*y
+    return -2 * (x - 1) * y
 
 #Constructing the arrays:
 x_arr = np.arange(x0, x_end + h, h) #make sure it goes up to and including x_end
@@ -175,9 +184,12 @@ for i,x in enumerate(x_arr[:-1]):
 #Plotting the solution
 fig, ax = plt.subplots()
 
-ax.plot(x_arr, y_arr)
+ax.plot(x_arr, y_arr, color = '0.3', label = 'Numerical solution')
+ax.plot(x_arr, np.exp( -(x_arr - 1)**2 + 1 ), 'k--', label = 'Exact solution')
 ax.set_xlabel('x')
 ax.set_ylabel('y')
+
+ax.legend()
 
 plt.show()
 

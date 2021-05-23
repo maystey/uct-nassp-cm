@@ -19,11 +19,13 @@ the version number, `a.b.c`, follows the following scheme:
 
 ### Changed
 
-- Update to Jupyter-Book version 0.10
+- Updated to Jupyter-Book version 0.10.
+- Added CC BY-SA 4.0 license button to first page.
 - Moved `list-comprehension` page from `standard-library/loops` to `standard-library/data-structures/lists`.
 - Re-wrote chapters:
   - `standard-library/if-statements`
-  - `standard-library/loops`.
+  - `standard-library/loops`
+  - `numerical-methods/ode`
 - Change `_toc` chapter titles:
   - **Control Flow: If Statements** to **If Statements**
   - **Control Flow: Loops** to **Loops**

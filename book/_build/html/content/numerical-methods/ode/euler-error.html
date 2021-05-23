@@ -58,7 +58,7 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Solving Higher Order ODEs" href="higher-order.html" />
+    <link rel="next" title="Solving Coupled and Higher Order ODEs" href="higher-order.html" />
     <link rel="prev" title="Euler’s Method" href="euler.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -503,7 +503,7 @@
        </li>
        <li class="toctree-l2">
         <a class="reference internal" href="higher-order.html">
-         Solving Higher Order ODEs
+         Solving Coupled and Higher Order ODEs
         </a>
        </li>
        <li class="toctree-l2">
@@ -666,10 +666,10 @@
 <p>Like all numerical methods, Euler’s method has systemic error. This is introduced when we discard the higher order terms in the Taylor expansion. The <strong>local</strong> truncation error is thus:</p>
 <div class="math notranslate nohighlight">
 \[
-E_{n+1} = \tfrac{1}{2} y^{\prime\prime}(x_n) h^2 + \mathcal(h^3)
+E_{n+1} = \tfrac{1}{2} y^{\prime\prime}(x_n) h^2 + O(h^3)
 \]</div>
-<p>If you are unfamiliar with the notation for <span class="math notranslate nohighlight">\(\mathcal(h^3)\)</span> (big O notation), in this case it stands for all the terms where the lowest order of <span class="math notranslate nohighlight">\(h\)</span> is 3. The <span class="math notranslate nohighlight">\(h^3\)</span> term is more relevant than higher order terms for <span class="math notranslate nohighlight">\(0 &lt; h &lt; 1\)</span>.</p>
-<p>The <strong>local</strong> truncation error is associated with a single integration step. It is far more useful, however, to consider the <strong>global</strong> truncation error, which is the error accumulated over multiple integration steps. The global truncation error is <span class="math notranslate nohighlight">\(\mathcal(h)\)</span> <span id="id1">[<a class="reference internal" href="#id4"><span>EE1</span></a>]</span>. The derivation for the bounds of the error are beyond the scope of the course. As this error approximately scales linearly with <span class="math notranslate nohighlight">\(h\)</span>, reducing the size of <span class="math notranslate nohighlight">\(h\)</span> will generally reduce the global error:</p>
+<p>If you are unfamiliar with the notation for <span class="math notranslate nohighlight">\(O(h^3)\)</span> (big O notation), in this case it means the dominant terms are proportional to <span class="math notranslate nohighlight">\(h^3\)</span> (higher order terms of <span class="math notranslate nohighlight">\(h\)</span> will be less dominant for <span class="math notranslate nohighlight">\(0 &lt; h &lt; 1\)</span>).</p>
+<p>The <strong>local</strong> truncation error is associated with a single integration step. It is far more useful, however, to consider the <strong>global</strong> truncation error, which is the error accumulated over multiple integration steps. The global truncation error is <span class="math notranslate nohighlight">\(O(h)\)</span> <span id="id1">[<a class="reference internal" href="#id4"><span>EE1</span></a>]</span>. The derivation for the bounds of the error are beyond the scope of the course. As this error approximately scales linearly with <span class="math notranslate nohighlight">\(h\)</span>, reducing the size of <span class="math notranslate nohighlight">\(h\)</span> will generally reduce the global error:</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../../_images/euler-error_2_0.png" src="../../../_images/euler-error_2_0.png" />
@@ -722,7 +722,7 @@ E_{n+1} = \tfrac{1}{2} y^{\prime\prime}(x_n) h^2 + \mathcal(h^3)
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="euler.html" title="previous page">Euler’s Method</a>
-    <a class='right-next' id="next-link" href="higher-order.html" title="next page">Solving Higher Order ODEs</a>
+    <a class='right-next' id="next-link" href="higher-order.html" title="next page">Solving Coupled and Higher Order ODEs</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
