@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bisection Method &#8212; AST4007W Computational Methods</title>
+    <title>Statistical Notation &#8212; AST4007W Computational Methods</title>
     
   <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -58,8 +58,8 @@
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Secant Method" href="secant.html" />
-    <link rel="prev" title="Numerical Root Finding" href="intro.html" />
+    <link rel="next" title="Linear Least Squares Minimization" href="least-squares.html" />
+    <link rel="prev" title="Linear Regression Algorithms" href="intro.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -423,28 +423,28 @@
      </span>
     </p>
     <ul class="current">
-     <li class="toctree-l1 current active collapsible-parent">
-      <a class="reference internal" href="intro.html">
+     <li class="toctree-l1 collapsible-parent">
+      <a class="reference internal" href="../root-finding/intro.html">
        Numerical Root Finding
       </a>
-      <ul class="current collapse-ul">
-       <li class="toctree-l2 current active">
-        <a class="current reference internal" href="#">
+      <ul class="collapse-ul">
+       <li class="toctree-l2">
+        <a class="reference internal" href="../root-finding/bisection.html">
          Bisection Method
         </a>
        </li>
        <li class="toctree-l2">
-        <a class="reference internal" href="secant.html">
+        <a class="reference internal" href="../root-finding/secant.html">
          Secant Method
         </a>
        </li>
        <li class="toctree-l2">
-        <a class="reference internal" href="newton.html">
+        <a class="reference internal" href="../root-finding/newton.html">
          Newton-Raphson Method
         </a>
        </li>
        <li class="toctree-l2">
-        <a class="reference internal" href="comparison.html">
+        <a class="reference internal" href="../root-finding/comparison.html">
          Comparing the Methods
         </a>
        </li>
@@ -452,33 +452,33 @@
       <i class="fas fa-chevron-down">
       </i>
      </li>
-     <li class="toctree-l1 collapsible-parent">
-      <a class="reference internal" href="../regression/intro.html">
+     <li class="toctree-l1 current active collapsible-parent">
+      <a class="reference internal" href="intro.html">
        Linear Regression Algorithms
       </a>
-      <ul class="collapse-ul">
-       <li class="toctree-l2">
-        <a class="reference internal" href="../regression/notation.html">
+      <ul class="current collapse-ul">
+       <li class="toctree-l2 current active">
+        <a class="current reference internal" href="#">
          Statistical Notation
         </a>
        </li>
        <li class="toctree-l2">
-        <a class="reference internal" href="../regression/least-squares.html">
+        <a class="reference internal" href="least-squares.html">
          Linear Least Squares Minimization
         </a>
        </li>
        <li class="toctree-l2">
-        <a class="reference internal" href="../regression/chi-squared.html">
+        <a class="reference internal" href="chi-squared.html">
          Chi Squared Minimization
         </a>
        </li>
        <li class="toctree-l2">
-        <a class="reference internal" href="../regression/multivariate-least-squares.html">
+        <a class="reference internal" href="multivariate-least-squares.html">
          Multivariate Linear Least Squares Minimization
         </a>
        </li>
        <li class="toctree-l2">
-        <a class="reference internal" href="../regression/scipy.html">
+        <a class="reference internal" href="scipy.html">
          Least Squares Minimization with
          <code class="docutils literal notranslate">
           <span class="pre">
@@ -587,7 +587,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/content/numerical-methods/root-finding/bisection.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/content/numerical-methods/regression/notation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -607,7 +607,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/numerical-methods/root-finding/bisection.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/numerical-methods/regression/notation.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -628,7 +628,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/maystey/uct-nassp-cm-2021/master?urlpath=tree/book/content/numerical-methods/root-finding/bisection.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/maystey/uct-nassp-cm-2021/master?urlpath=tree/book/content/numerical-methods/regression/notation.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../../_static/images/logo_binder.svg"
@@ -645,25 +645,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#in-depth">
-   In Depth
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#precision-of-the-result">
-   Precision of The Result
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -671,55 +652,30 @@
         
               <div>
                 
-  <section id="bisection-method">
-<h1>Bisection Method<a class="headerlink" href="#bisection-method" title="Permalink to this headline">¶</a></h1>
-<p>The bisection method is what is known as a bracketing root finding method. To use this method the root must not be a turning point of <span class="math notranslate nohighlight">\(f\)</span>, or rather <span class="math notranslate nohighlight">\(f\)</span> does not change sign as it passes through the root, and that there is only one root in the chosen interval.</p>
-<p>The method can be summarized as:</p>
-<ul class="simple">
-<li><p>Start with a bracket <span class="math notranslate nohighlight">\([x_L, x_R]\)</span> around the root.</p></li>
-<li><p>Halve the bracket, introducing the midpoint <span class="math notranslate nohighlight">\(x_M\)</span>, giving you two brackets: <span class="math notranslate nohighlight">\([x_L, x_M]\)</span> and <span class="math notranslate nohighlight">\([x_M, x_R]\)</span></p></li>
-<li><p>Keep the bracket that contains the root and discard the one that doesn’t</p></li>
-<li><p>Repeat the process until you are satisfied with the precision of your solution</p></li>
+  <section id="statistical-notation">
+<h1>Statistical Notation<a class="headerlink" href="#statistical-notation" title="Permalink to this headline">¶</a></h1>
+<p>Going forward we will use some notation to clean up our equations.</p>
+<p>For a data set of values for a variable <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(x_i\)</span> (<span class="math notranslate nohighlight">\(i = 1, 2, 3, \dots, N\)</span>):</p>
+<ul>
+<li><p>Expected value of <span class="math notranslate nohighlight">\(f(x)\)</span> (which can be considered the average of <span class="math notranslate nohighlight">\(f(x)\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+    \langle f(x) \rangle = \frac{1}{N} \sum_{i=1}^{N} f(x_i)
+    \]</div>
+</li>
+<li><p>Expected value of <span class="math notranslate nohighlight">\(x\)</span> is the mean of the data set:</p>
+<div class="math notranslate nohighlight">
+\[
+    \langle x \rangle = \frac{1}{N} \sum_{i=1}^{N} x_i
+    \]</div>
+</li>
+<li><p>Standard deviation (which is an indication of the spread of the data):<!--- Should I be using the experimental standard deviation --></p>
+<div class="math notranslate nohighlight">
+\[
+    \sigma = \sqrt{\frac{\sum_{i=1}^{N} (x_i - \langle x \rangle)^2}{N}}
+    \]</div>
+</li>
 </ul>
-<p>Note that with this technique you end up with an interval that contains the root, rather than an approximation for the root itself. Also note that this method will always converge on a root if one exists in the interval.</p>
-<section id="in-depth">
-<h2>In Depth<a class="headerlink" href="#in-depth" title="Permalink to this headline">¶</a></h2>
-<p>Let’s look at the steps of the method more in depth, starting with choosing our interval such that it contains the root:</p>
-<div class="cell tag_remove_input docutils container">
-<div class="cell_output docutils container">
-<img alt="../../../_images/bisection_6_0.png" src="../../../_images/bisection_6_0.png" />
-</div>
-</div>
-<p>We now divide the interval in half by intruding the midpoint <span class="math notranslate nohighlight">\(x_M = \tfrac{1}{2} (x_L + x_R)\)</span> and calculating <span class="math notranslate nohighlight">\(f(x_M)\)</span>:</p>
-<div class="cell tag_remove_input docutils container">
-<div class="cell_output docutils container">
-<img alt="../../../_images/bisection_8_0.png" src="../../../_images/bisection_8_0.png" />
-</div>
-</div>
-<p>Now we need to figure out which interval contains the root. We can do this by checking if the function value changes signs at the ends of the interval, i.e. which of <span class="math notranslate nohighlight">\(f(x_L)\)</span> and <span class="math notranslate nohighlight">\(f(x_R)\)</span> is the opposite sign of <span class="math notranslate nohighlight">\(f(x_M)\)</span>? An easy way to check this is to check if the product of <span class="math notranslate nohighlight">\(f(x_L) \times f(x_M)\)</span> or <span class="math notranslate nohighlight">\(f(x_M) \times f(x_R)\)</span> is negative. If the product is negative then the sign has changed in that interval and it is the one we choose.</p>
-<p>In the figure above, the right interval <span class="math notranslate nohighlight">\([x_M, x_R]\)</span> contains the root.</p>
-<p>If we want a more precise answer we can keep applying this technique to our chosen interval. Each time we are left with an interval that was half as big as the last, improving the precision of our solution.</p>
-<p>Subsequent iterations of the bisection method are illustrated in the figures below.</p>
-<div class="cell tag_remove_input docutils container">
-<div class="cell_output docutils container">
-<img alt="../../../_images/bisection_10_0.png" src="../../../_images/bisection_10_0.png" />
-<img alt="../../../_images/bisection_10_1.png" src="../../../_images/bisection_10_1.png" />
-<img alt="../../../_images/bisection_10_2.png" src="../../../_images/bisection_10_2.png" />
-</div>
-</div>
-</section>
-<section id="precision-of-the-result">
-<h2>Precision of The Result<a class="headerlink" href="#precision-of-the-result" title="Permalink to this headline">¶</a></h2>
-<p>The error of our solution is the size of the last interval. Because the length of our interval is halved every step, we can calculate how many steps are needed to achieve a particular accuracy, given the length of our initial interval. After the first step the error is <span class="math notranslate nohighlight">\({|b - a|}/{2}\)</span> and after the <span class="math notranslate nohighlight">\(n\)</span>-th step the error is <span class="math notranslate nohighlight">\({|b-a|}/{2^n}\)</span>. Thus, for a specified tolerance, the number of steps required is:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-\text{tolerance} &amp;= \frac{|b-a|}{2^n}\\
-\therefore 2^n &amp;= \frac{|b -a|}{\text{tolerance}} \\
-\therefore n &amp;= \log_2 \left(\frac{|b-a|}{\text{tolerance}}\right) \\
-\end{align*}\]</div>
-<p>This value is rounded up to an integer.</p>
-<p>As we know the number of iterations required to reach a given tolerance, we can use a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop instead of a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop (though both are perfectly acceptable). Note that the number of iterations depends on the size of the starting interval, so it helps to narrow this down before relying on the root finding technique.</p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -734,13 +690,13 @@
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python37364bitbaseconda97808f46a65a4f1e9dfdbcff18a07fbf",
-            path: "./content/numerical-methods/root-finding"
+            kernelName: "python3",
+            path: "./content/numerical-methods/regression"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python37364bitbaseconda97808f46a65a4f1e9dfdbcff18a07fbf'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -750,8 +706,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Numerical Root Finding</a>
-    <a class='right-next' id="next-link" href="secant.html" title="next page">Secant Method</a>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">Linear Regression Algorithms</a>
+    <a class='right-next' id="next-link" href="least-squares.html" title="next page">Linear Least Squares Minimization</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

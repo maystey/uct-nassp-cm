@@ -458,6 +458,11 @@
       </a>
       <ul class="current collapse-ul">
        <li class="toctree-l2">
+        <a class="reference internal" href="notation.html">
+         Statistical Notation
+        </a>
+       </li>
+       <li class="toctree-l2">
         <a class="reference internal" href="least-squares.html">
          Linear Least Squares Minimization
         </a>
@@ -669,7 +674,7 @@
 <p>We now want to weight the contribution that each error value <span class="math notranslate nohighlight">\(\epsilon_i\)</span> gives to the total error by the uncertainties <span class="math notranslate nohighlight">\(\sigma_i\)</span>. Ideally we want the model to fit within the uncertainties of the data points (or at least the fraction of the data points given by the confidence of the uncertainty). This means that we want to prioritize minimizing the error given by points with low uncertainty, or conversely we want to suppress the points with high uncertainty. To solve this we will minimize the <span class="math notranslate nohighlight">\(\chi^2\)</span> value of the data:</p>
 <div class="math notranslate nohighlight">
 \[
-\chi^2  = \sum_{i = 1}^{n} \bigg( \frac{\epsilon_i}{\sigma_i} \bigg)
+\chi^2  = \sum_{i = 1}^{N} \bigg( \frac{\epsilon_i}{\sigma_i} \bigg)^2
 \]</div>
 <p>where each error value is weighted by dividing it by the uncertainty. Note that if all of the <span class="math notranslate nohighlight">\(\sigma_i\)</span> where constant, we’d be dealing with least squares (the multiplicative factor will drop out in the minimization)</p>
 <section id="with-2-variables">
@@ -683,23 +688,22 @@ y = a_0 + a_1 x
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\chi^2  &amp;= \sum_{i = 1}^{n} \bigg( \frac{\epsilon_i}{\sigma_i} \bigg)\\
-        &amp;= \sum_{i = 1}^{n} \bigg(\frac{a_0 + a_1 x_i - y_i}{\sigma_i}\bigg)^2\\
+\chi^2  &amp;= \sum_{i = 1}^{N} \bigg( \frac{\epsilon_i}{\sigma_i} \bigg)^2\\
+        &amp;= \sum_{i = 1}^{N} \bigg(\frac{a_0 + a_1 x_i - y_i}{\sigma_i}\bigg)^2\\
 \end{align*}
 \end{split}\]</div>
 <p>Minimizing <span class="math notranslate nohighlight">\(\chi^2\)</span> with respect to <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>, will yield:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-a_0 &amp;= \left( \sum_{i = 1}^N \frac{y_i}{\sigma_i^2} \sum_{i = 1}^N \frac{x_i^2}{\sigma_i^2} - \sum_{i = 1}^N \frac{x_i}{\sigma_i^2} \sum_{i = 1}^N \frac{x_iy_i}{\sigma_i^2} \right)/ D\\
-a_1 &amp;= \left(\sum_{i = 1}^N \frac{1}{\sigma_i^2} \sum_{i = 1}^N \frac{x_i y_i}{\sigma_i^2} - \sum_{i = 1}^N \frac{x_i}{\sigma_i^2} \sum_{i = 1}^N \frac{y_i}{\sigma_i^2} \right)/ D\\
-\end{align*}
-\end{split}\]</div>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+a_0 &amp;= \left( \left\langle \frac{y}{\sigma^2} \right\rangle  \left\langle \frac{x^2}{\sigma^2} \right\rangle -  \left\langle \frac{x}{\sigma^2} \right\rangle \left\langle \frac{x y}{\sigma^2} \right\rangle \right)/ D\\
+a_1 &amp;= \left( \left\langle \frac{1}{\sigma^2} \right\rangle  \left\langle \frac{x y}{\sigma^2} \right\rangle - \left\langle \frac{x}{\sigma^2} \right\rangle  \left\langle \frac{y}{\sigma^2} \right\rangle \right)/ D\\
+\end{align*}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[
-D = \sum_{i = 1}^N \frac{1}{\sigma_i^2} \sum_{i = 1}^N \frac{x^2}{\sigma_i^2} - \left(\sum_{i = 1}^N \frac{x}{\sigma_i^2}\right)^2
+D = \left\langle \frac{1}{\sigma^2} \right\rangle  \left\langle \frac{x^2}{\sigma^2} \right\rangle  - \left\langle \frac{x}{\sigma^2} \right\rangle^2
 \]</div>
+<p>Note that in practice the <span class="math notranslate nohighlight">\(1/N\)</span> factors of the expectation values cancel out.</p>
 </section>
 </section>
 
