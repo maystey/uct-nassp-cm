@@ -98,6 +98,7 @@
 
   - file: content/numerical-methods/regression/intro
     sections:
+    - file: content/numerical-methods/regression/notation
     - file: content/numerical-methods/regression/least-squares
     - file: content/numerical-methods/regression/chi-squared
     - file: content/numerical-methods/regression/multivariate-least-squares

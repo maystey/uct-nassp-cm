@@ -26,6 +26,7 @@ the version number, `a.b.c`, follows the following scheme:
   - `standard-library/if-statements`
   - `standard-library/loops`
   - `numerical-methods/ode`
+  - `numerical-methods/regression`
 - Change `_toc` chapter titles:
   - **Control Flow: If Statements** to **If Statements**
   - **Control Flow: Loops** to **Loops**

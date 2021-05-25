@@ -65,7 +65,7 @@ $$
 S = \sum_{i=1}^{N} \epsilon_i^2
 $$
 
-We use the squares of the error as it is the magnitude of the errors we are concerned about, and with the errors ranging between positive and negative values will end up canceling each other out (these are illustrated as points above and below the lines in the figure above).
+We use the squares of the error as it is the magnitude of the errors we are concerned about, and with the errors ranging between positive and negative values, will end up canceling each other out (these are illustrated as points above and below the lines in the figure above).
 
 We can use the relation between our data points to replace the $\epsilon_i^2$:
 
@@ -75,24 +75,20 @@ $$
 
 Now, we want our choice of $a_0$ and $a_1$ to give us the least amount of error possible, or rather to give us the minimum value of $S$. To achieve this we minimize $S$ with respect to $a_0$:
 
-
-$$
 \begin{align*}
- \frac{\partial S}{\partial a_0} &= 2\sum_{i = 1}^{n} (a_0 + a_1 x_i - y_i) = 0\\
-                                 &= \\
- a_0 + a_1 \langle x \rangle     &= \langle y \rangle \\
+ \frac{\partial S}{\partial a_0} = 2\sum_{i = 1}^{N} (a_0 + a_1 x_i - y_i) &= 0\\
+ \therefore a_0 N + a_1 \sum_{i = 1}^{N} x_i - \sum_{i = 1}^{N} y_i        &= 0\\
+ \therefore a_0 + a_1 \langle x \rangle                                    &= \langle y \rangle \\
 \end{align*}
-$$
 
 and $a_1$:
 
-$$
 \begin{align*}
- \frac{\partial S}{\partial a_1} &= 2\sum_{i = 1}^{n} (a_0 + a_1 x_i - y_i)x_i = 0\\
-                                 &= \\
- a_0 \langle x \rangle + a_1 \langle x^2 \rangle &= \langle xy \rangle\\
+ \frac{\partial S}{\partial a_1} = 2\sum_{i = 1}^{N} (a_0 + a_1 x_i - y_i)x_i                &= 0\\
+ \therefore a_0 \sum_{i = 1}^{N} x_i + a_1 \sum_{i = 1}^{N} x_i^2 - \sum_{i = 1}^{N} x_i y_i &= 0\\
+ a_0 \langle x \rangle + a_1 \langle x^2 \rangle                                             &= \langle xy \rangle\\
 \end{align*}
-$$
+
 
 To solve this system of equations we could use a matrix equation and let the computer determine the solution to that numerically, but with only two equations and unknowns, an analytic solution is easy enough to find:
 
@@ -105,11 +101,11 @@ $$
 
 ## Variance of $y$
 
-If we assume that the $y_i$ data points are distributed around the "true" $y$ values for the given $x_i$ by a Gaussian distribution with constant variance, we can calculate that variance as:
+If we assume that the $y_i$ data points are distributed around the "true" $y$ values for the given $x_i$ by a Gaussian distribution with constant variance, we can calculate the variance of $y$ as:
 
 $$
 \begin{align*}
-\sigma^2  & = \frac{1}{N}\sum_{i=1}^N \epsilon_i^2\\
+\sigma_y^2  & = \frac{1}{N}\sum_{i=1}^N \epsilon_i^2\\
 & = \frac{1}{N} \sum_{i=1}^N (a_0 + a_1 x_i - y_i)^2\\
 \end{align*}
 $$
@@ -127,20 +123,42 @@ Note that the relation above is can be made more accurate by including the color
 
 As this relation is consistent across all specimens, these stars can be used as a standard candle for measuring distances, all that is needed are measurements from stars with known distances from Earth to determine $a_0$ and $a_1$.
 
-The standard is to measure Cepheids in the Large Magellanic Cloud, whose distance is known. A few of these measurements can be found in the data file 'cepheid_data.csv' provided on Vula (Resources/Exercises/Data/Exercise10/) or on [GitHub](https://raw.githubusercontent.com/maystey/uct_nassp_cm/gh-pages/regression/data/cepheid_data.csv). The data file contains measurements of:
+The standard is to measure Cepheids in the Large Magellanic Cloud, whose distance is known. A few of these measurements can be found in the data file 'cepheid_data.csv' provided on Vula (Resources/Exercises/Data/exercise10.1/) or on [GitHub](https://raw.githubusercontent.com/maystey/uct_nassp_cm2021/master/book/content/numerical-methods/regression/data/cepheid_data.csv). The data file contains measurements of:
 
 - $\log P$
 - $M$
 - $B - V$ (color, not using yet)
 
+We will determine $a_0$ and $a_1$ under 2 different assumptions:
+
+1. The error in the data is associated with $M$
+2. The error in the data is associated with $\log P$ (this will require us to re-arrange things)
+
 
 **Solution:**
 
-<!--- Come back and unpack this -->
+You are encouraged to attempt this yourself before continuing.
 
-def least_square(x, y):
+We start by reading in the file. We will read the data into a 2 arrays. This can be achieved using the standard library as in the page **{doc}`Python Standard Library/File IO/Data Files<../../standard-library/file-io/data>`**, or using `numpy.loadtxt()` (documentation [here](https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html)). We shall use the latter as it is far more convenient:
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+logP, M, color = np.loadtxt('./data/cepheid_data.csv', delimiter = ',', skiprows = 1, unpack = True)
+
+The keyword arguments used above are:
+
+- `delimeter`: the string used to separate the data columns
+- `skiprows`: the number of rows to skip from the data file (in this case the header)
+- `unpack`: this makes `loadtxt` return each column in the data file as arrays, as apposed to the default of a single 2D array.
+
+As we will be performing 2 minimizations, we will define a function to determine  $a_0$ and $a_1$, and $\sigma_y$:
+
+def least_squares(x, y):
     mean_x = np.mean(x)
     mean_y = np.mean(y)
+    
+    #Note that the expectation values can be calculated using the mean function
     expect_xy = np.mean(x*y)
     expect_xx = np.mean(x*x)
     
@@ -148,26 +166,59 @@ def least_square(x, y):
     
     return [mean_y - a1*mean_x, a1]
 
-def get_sigma(a0, a1, x, y):
+def sigma(a0, a1, x, y):
     return np.sqrt(np.mean((a0 + a1*x - y)**2))
+
+**Error in $M$**
+
+Let's estimate the coefficients for the relation:
+
+$$
+M = a_0 + a_1 \log P
+$$
+
+assuming the error resides primarily in $M$.
+
+a0, a1 = least_squares(logP, M)
+
+**Error in $\log P$**
+<!-- This could use some re-phrasing -->
+
+Now, if we assumed that the error resides primarily in $\log P$, we want to apply least squares minimization to the relation:
+
+$$
+\log P = b_0 + b_1 M
+$$
+
+to find the values for the coefficients $b_0$ and $b_1$. These values can be used to calculate $a_0$ and $a_1$ by re-arranging the relation to put $M$ as the subject:
+
+$$
+M = - \frac{b_0}{b_1} + \frac{1}{b_1} \log P
+$$
+
+which gives us:
+
+$$
+a_0 = - \frac{b_0}{b_1}, \quad a_1 = \frac{1}{b_1}
+$$
+
+b0, b1 = least_squares(M, logP)
+
+**Plotting the solutions**
+
+Instead of printing out the values of the coefficients, let's visualize them by plotting the linear relations.
 
 fontsize = 16
 linewidth = 2
 
+x = np.array([logP[0], logP[-1]]) #for the relation
 
-data = np.loadtxt('./data/cepheid_data.csv', delimiter = ',', skiprows = 1)
-
-a0 , a1 = least_square(data[:,0], data[:,1]) # error in M
-b0, b1 = least_square(data[:,1], data[:,0]) #error in logP
-
-x = np.linspace(data[:,0].min(), data[:,0].max(), 2)
-
-y_M = a0 + a1*x
-y_P = -b0/b1 + x/b1
+y_M = a0 + a1*x #error in M
+y_P = -b0/b1 + x/b1 #error in logP
 
 fig_ceph, ax = plt.subplots()
 
-ax.plot(data[:,0], data[:,1], 'ro')
+ax.plot(logP, M, 'ro', label = 'Data')
 ax.plot(x, y_M, 'k', label = 'Error in M', lw = linewidth)
 ax.plot(x, y_P, 'k--', label = 'Error in logP', lw = linewidth)
 

@@ -22,21 +22,17 @@ where $a_0$, $a_1$ and $a_2$ are unknown coefficients.
 
 Consider a data set of measured $(x_{1i}, x_{2i}, y_i)$ pairs for $i = 1, 2, 3, \dots , N$. If we attribute the dispersion of this data from the functional relation to error in the $y_i$ terms, $\epsilon_i$, then we can relate the data points with:
 
-$$
 \begin{align*}
 y_i + \epsilon_i &= a_0 + a_1 x_{1 i} + a_2 x_{2 i}\\
-\therefore \epsilon_i = a_0 + a_1 x_{1 i} + a_2 x_{2 i} - y_i\\
+\therefore \epsilon_i &= a_0 + a_1 x_{1 i} + a_2 x_{2 i} - y_i\\
 \end{align*}
-$$
 
 The sum of errors squared is given by:
 
-$$
 \begin{align*}
 S &= \sum_{i = 1}^N \epsilon_i^2 \\
   &= \sum_{i=1}^N (a_0 + a_1 x_{1i} + a_2 x_{2i} - y_i)\\
 \end{align*}
-$$
 
 We want to minimize $S$ with respect to each of the constants, $a_0$, $a_1$ and $a_2$:
 
@@ -92,12 +88,12 @@ $$
 $$
 
 This can easily be solved numerically using:
-$$
+
 \begin{align*}
 \boldsymbol{X}\boldsymbol{A} &= \boldsymbol{Y}\\ 
 \therefore \boldsymbol{A} &= \boldsymbol{X}^{-1} \boldsymbol{Y}\\
 \end{align*}
-$$
+
 
 <div class="worked-example">
     <h5 class="worked-example-title"><b>Worked Example</b> - Cepheid Variables</h5>
@@ -224,7 +220,11 @@ $$
 
 Let's work on a Python implementation of this solution. You may want to try it yourself before reading further. In order to verify our implementation we will use the Cepheid data we've used so far, though in further exercises you will be given data sets containing more variables.
 
-We start by reading in the file. We will read the data into a 2D array. This can be achieved using the standard library as in the page {doc}`Python Standard Library/File IO/Data Files<../../standard-library/file-io/data>`**, or using `numpy.loadtxt()` (documentation [here](https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html)). We shall use the latter as it is far more convenient:
+We start by reading in the file. We will read the data into a 2D array, using `numpy.loadtxt` as before.
+
+<!--
+This can be achieved using the standard library as in the page {doc}`Python Standard Library/File IO/Data Files<../../standard-library/file-io/data>`**, or using `numpy.loadtxt()` (documentation [here](https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html)). We shall use the latter as it is far more convenient:
+-->
 <!-- as in the [**File I/O**](/numpy/file-io) section from the **NumPy** chapter. -->
 
 import numpy as np
@@ -525,6 +525,8 @@ $$
 (B - V) \approx - \frac{a_0}{a_2} - \frac{a_1}{a_2} \log P
 $$
 
+#Do a 3d plot for this instead
+import numpy as np
 import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots(2, 2, sharex = True, sharey = True)
