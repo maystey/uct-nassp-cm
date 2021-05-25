@@ -293,16 +293,16 @@ where the $k$ values are the slopes:
 
 \begin{align*}
 k_1 &= f(x_i, y_i)\\
-k_2 &= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h k_1 \right)\\
-k_3 &= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h k_2\right)\\
-k_4 &= f(x_i + h, y_i + k_3)
+k_2 &= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h ~ k_1 \right)\\
+k_3 &= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h ~ k_2\right)\\
+k_4 &= f(x_i + h, y_i + h ~ k_3)
 \end{align*}
 
 $k_1$ is gradient value at the left of the interval. $k_2$ is the gradient at the midpoint of the interval, approximated using $k_1$. The $k_3$ value is the gradient at the midpoint of the interval using $k_2$ to approximate it. $k_4$ is the value of the gradient at the right end of the interval using $k_3$ to approximate it.
 
 <!--- Give interpretation for the the different k terms --->
 
-This method has an accumulated error of $\mathcal(h^4)$
+This method has an accumulated error of $O(h^4)$
 
 <div class="worked-example">
     <h5 class="worked-example-title"><b>Worked Example</b></h5>
@@ -352,10 +352,10 @@ for i,x in enumerate(x_arr[:-1]):
     k1 = f(x, y_arr[i])
     k2 = f(x + 0.5*h, y_arr[i] + 0.5*h*k1)
     k3 = f(x + 0.5*h, y_arr[i] + 0.5*h*k2)
-    k4 = f(x + h, y_arr[i] + k3)
+    k4 = f(x + h, y_arr[i] + h*k3)
     
     #update
-    y_arr[i+1] = y_arr[i] + h/6*(k1 + 2*k2 + 2*k3 + k4)
+    y_arr[i+1] = y_arr[i] + h * (k1 + 2*k2 + 2*k3 + k4) / 6.0
     
 
 #Plotting the solution
@@ -506,10 +506,10 @@ for i,x in enumerate(x_arr[:-1]):
     k1 = f(x, y)
     k2 = f(x + 0.5*h, y + 0.5*h*k1)
     k3 = f(x + 0.5*h, y + 0.5*h*k2)
-    k4 = f(x + h, y + h*k3)
+    k4 = f(x + h, y + h * k3)
     
     #update
-    y_arr[i+1, :] = y + h/6*(k1 + 2*k2 + 2*k3 + k4)
+    y_arr[i+1, :] = y + h * (k1 + 2*k2 + 2*k3 + k4) / 6.0
     
 
 #Plotting the solution

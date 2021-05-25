@@ -1,1 +1,1 @@
-ghp-import -n -p -f ./books/_build/html
+ghp-import -n -p -f ./book/_build/html
