@@ -20,32 +20,36 @@ $$
 
 where $a_0$, $a_1$ and $a_2$ are unknown coefficients.
 
-Consider a data set of measured $(x_{1i}, x_{2i}, y_i)$ pairs for $i = 1, 2, 3, \dots , N$. If we attribute the dispersion of this data from the functional relation to error in the $y_i$ terms, $\epsilon_i$, then we can relate the data points with:
+Consider a data set of measured $(x_{1,~i}, x_{2,~i}, y_i)$ pairs for $i = 1, 2, 3, \dots , N$. If we attribute the dispersion of this data from the functional relation to error in the $y_i$ terms, $\epsilon_i$, then we can relate the data points with:
 
 \begin{align*}
-y_i + \epsilon_i &= a_0 + a_1 x_{1 i} + a_2 x_{2 i}\\
-\therefore \epsilon_i &= a_0 + a_1 x_{1 i} + a_2 x_{2 i} - y_i\\
+y_i + \epsilon_i &= a_0 + a_1 x_{1,~i} + a_2 x_{2,~ i}\\
+\therefore \epsilon_i &= a_0 + a_1 x_{1,~ i} + a_2 x_{2,~ i} - y_i\\
 \end{align*}
 
 The sum of errors squared is given by:
 
 \begin{align*}
 S &= \sum_{i = 1}^N \epsilon_i^2 \\
-  &= \sum_{i=1}^N (a_0 + a_1 x_{1i} + a_2 x_{2i} - y_i)\\
+  &= \sum_{i=1}^N (a_0 + a_1 x_{1,~i} + a_2 x_{2,~i} - y_i)\\
 \end{align*}
 
 We want to minimize $S$ with respect to each of the constants, $a_0$, $a_1$ and $a_2$:
 
 $$
-\frac{\partial S}{\partial a_0} = 2 \sum_{i=0}^n (a_0 + a_1x_{1i} + a_2x_{2i} - y_i) = 0
+\frac{\partial S}{\partial a_0} = 2 \sum_{i=0}^n (a_0 + a_1 x_{1, ~i} + a_2 x_{2, ~i} - y_i) = 0
 $$
+
 ,
+
 $$
-\frac{\partial S}{\partial a_1} = 2 \sum_{i=0}^n (a_0 + a_1x_{1i} + a_2x_{2i} - y_i)x_{1i} = 0
+\frac{\partial S}{\partial a_1} = 2 \sum_{i=0}^n (a_0 + a_1 x_{1,~i} + a_2 x_{2,~i} - y_i)x_{1,~i} = 0
 $$
+
 and
+
 $$
-\frac{\partial S}{\partial a_2} = 2 \sum_{i=0}^n (a_0 + a_1x_{1i} + a_2x_{2i} - y_i)x_{2i} = 0
+\frac{\partial S}{\partial a_2} = 2 \sum_{i=0}^n (a_0 + a_1 x_{1,~i} + a_2 x_{2,~i} - y_i)x_{2,~i} = 0
 $$
 
 Re-arranging the above equations and using our statistical notation yields:
@@ -57,13 +61,13 @@ $$
 ,
 
 $$
-a_0\langle x_1\rangle + a_1\langle x_1^2\rangle + a_2\langle x_1x_2 \rangle = \langle x_1y \rangle\\
+a_0\langle x_1\rangle + a_1\langle x_1^2\rangle + a_2\langle x_1 x_2 \rangle = \langle x_1 y \rangle\\
 $$
 
 and
 
 $$
-a_0\langle x_2\rangle + a_1\langle x_1x_2\rangle + a_2\langle x_2^2\rangle = \langle x_2y\rangle
+a_0\langle x_2\rangle + a_1\langle x_1 x_2\rangle + a_2\langle x_2^{~~2}\rangle = \langle x_2 y\rangle
 $$
 
 This time algebraic manipulation is a lot more work, instead we shall use a matrix equation (which will serve us better in the more generic case to come). The matrix equation representation is:
@@ -104,7 +108,66 @@ $$
 M = a_0 + a_1 \log P + a_2 (B - V)
 $$
 
-using the same data file as before. (You should find the values $a_0 = -2.15$ mag, $a_1 = -3.12$ mag and $a_2 = 1.49$) 
+using the same data file as before. (You should find the values $a_0 = -2.15$ mag, $a_1 = -3.12$ mag and $a_2 = 1.49$). You may wish to use NumPy matrices, which have the inverse property `I` ($\boldsymbol{X}^{-1}$ is achieved using `X.I`, for the appropriately defined `X` matrix), and can be multiplied directly 
+
+Try this yourself before reading the solution that follows.
+
+**Solution:**
+
+As in the  **{doc}`Numerical Methods/Linear Regression Algorithms/Linear Least Squares Minimization<./least-squares>`** worked example, we shall read in the data using `numpy.loadtxt()`:
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+logP, M, color = np.loadtxt('./data/cepheid_data.csv', delimiter = ',', skiprows = 1, unpack = True)
+
+Here we have:
+
+\begin{align*}
+y   &= M\\
+x_1 &= logP\\
+x_2 &= (B - V)\\
+\end{align*}
+
+We will now proceed to construct the matrices using the data. Starting with simpler $\boldsymbol{Y}$ matrix:
+
+#Defining Y as a column matrix
+Y = np.matrix([
+    [np.mean(M)],
+    [np.mean(logP * M)],
+    [np.mean(color * M)]
+])
+
+Note that $\boldsymbol{X}$ is symmetric about the diagonal, i.e. $\boldsymbol{X}_{k~l} = \boldsymbol{X}_{l~k}$, we will make use of this to reduce the number of calculations we need to perform.
+
+X = np.matrix(np.ones( (3, 3) )) #Using an array generating function
+
+# X[0, 0] is just 1, so we leave it
+
+#The first row
+X[0, 1] = np.mean(logP)
+X[0, 2] = np.mean(color)
+
+#The first column (which is the transpose of the first row)
+X[1, 0] = X[0, 1]
+X[2, 0] = X[0, 2]
+
+#The diagonal
+X[1, 1] = np.mean(logP * logP)
+X[2, 2] = np.mean(color * color)
+
+#The off-diagonal elements
+X[1, 2] = np.mean(logP * color)
+X[2, 1] = X[1, 2]
+
+Now we calculate the $\boldsymbol{A}$ matrix:
+
+A = X.I * Y
+
+#Printing the constants
+
+for i in range(3):
+    print(f'a{i+1} =', '{:.3}'.format(A[i,0]) )
 
 </div>
 
@@ -121,34 +184,34 @@ $$
 
 where $a_0$, $a_1$, $\dots$ and $a_m$ are unknown constants.
 
-Suppose we have a data set of measured $(x_{1i}, x_{2i}, \dots, x_{mi}, y_i)$ values for $i = 1, 2, 3, \dots, N$. As before, we assume that the dispersion in our data from the functional relation is due to error in the $y_i$ data points only. Therefore we can write the relation between our data points as:
+Suppose we have a data set of measured $(x_{1,~i}, x_{2,~i}, \dots, x_{mi}, y_i)$ values for $i = 1, 2, 3, \dots, N$. As before, we assume that the dispersion in our data from the functional relation is due to error in the $y_i$ data points only. Therefore we can write the relation between our data points as:
 
 $$
-y_i + \epsilon_i = a_0 + \sum_{j = 1}^m a_j x_{ji}
+y_i + \epsilon_i = a_0 + \sum_{j = 1}^m a_j x_{j, ~i}
 $$
 
 The sum of errors squared can thus be written as:
 
 $$
-S = \sum_{i=1}^N \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{ji} \bigg) - y_i\bigg)^2
+S = \sum_{i=1}^N \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{j,~i} \bigg) - y_i\bigg)^2
 $$
 
 We want to find the values of $a_0$, $a_1$, $\dots$ and $a_m$ which gives us the minimum value of $S$. Minimizing $S$ with respect to $a_0$ gives us:
 
 $$
-\frac{\partial S}{\partial a_0} = 2 \sum_{i=1}^N \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{ji} \bigg) - y_i\bigg) = 0
+\frac{\partial S}{\partial a_0} = 2 \sum_{i=1}^N \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{j,~i} \bigg) - y_i\bigg) = 0
 $$
 
 Distributing the sum over $i$ amongst the terms: 
 
 $$
-\therefore N a_0 + \bigg(\sum_{j=1}^m a_j \sum_{i=1}^N x_{ji} \bigg) - \sum_{i=1}^N y_i = 0
+\therefore N a_0 + \bigg(\sum_{j=1}^m a_j \sum_{i=1}^N x_{j,~i} \bigg) - \sum_{i=1}^N y_i = 0
 $$
 
 Dividing by $N$:
 
 $$
-\therefore a_0 + \bigg(\sum_{j=1}^m a_j \frac{1}{N}\sum_{i=1}^N x_{ji} \bigg) - \frac{1}{N}\sum_{i=1}^N y_i = 0
+\therefore a_0 + \bigg(\sum_{j=1}^m a_j \frac{1}{N}\sum_{i=1}^N x_{j,~i} \bigg) - \frac{1}{N}\sum_{i=1}^N y_i = 0
 $$
 
 
@@ -162,8 +225,8 @@ Now, let's minimize $S$ with respect to one of the $a_k$ for $k = 1, 2, \dots, m
 
 $$
 \begin{align*}
-\frac{\partial S}{\partial a_k} = \sum_{i=1}^N 2 x_{ki} \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{ji} \bigg) - y_i\bigg) &= 0\\
-\therefore a_0 \sum_{i=1}^N x_{ki} + \sum_{j=1}^m a_j \bigg(\sum_{i=1}^N x_{ki} x_{ji} \bigg) - \sum_{i=1}^N x_{ki} y_i &= 0\\
+\frac{\partial S}{\partial a_k} = \sum_{i=1}^N 2 x_{k,~i} \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{j,~i} \bigg) - y_i\bigg) &= 0\\
+\therefore a_0 \sum_{i=1}^N x_{k, ~i} + \sum_{j=1}^m a_j \bigg(\sum_{i=1}^N x_{k,~i} x_{j,~i} \bigg) - \sum_{i=1}^N x_{k,~i} y_i &= 0\\
 \therefore a_0 \langle{x_{k}}\rangle + \sum_{j=1}^m a_j \langle{x_k x_j}\rangle &= \langle{x_k y}\rangle\\
 \end{align*}
 $$
@@ -218,71 +281,56 @@ $$
 
 ### Python Implementation
 
-Let's work on a Python implementation of this solution. You may want to try it yourself before reading further. In order to verify our implementation we will use the Cepheid data we've used so far, though in further exercises you will be given data sets containing more variables.
+Let's work on a Python implementation of this solution. You may want to try it yourself before reading further. In order to verify our implementation we will use the Cepheid data we've used so far, though we shall design it to support any number of $x_j$ variables.
 
-We start by reading in the file. We will read the data into a 2D array, using `numpy.loadtxt` as before.
-
-<!--
-This can be achieved using the standard library as in the page {doc}`Python Standard Library/File IO/Data Files<../../standard-library/file-io/data>`**, or using `numpy.loadtxt()` (documentation [here](https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html)). We shall use the latter as it is far more convenient:
--->
-<!-- as in the [**File I/O**](/numpy/file-io) section from the **NumPy** chapter. -->
-
-import numpy as np
-
-## Reading in the file
-
-data = np.loadtxt('data/cepheid_data.csv', delimiter = ',', skiprows = 1)
-
-The `data` array contains all of the data points for $y_i, x_{1i}, x_{2i}, x_{3i}, \dots, x_{ji}, \dots, x_{mi}$, where $i = 1, \dots, N$ corresponds to each row of `data`. Now, we want the data in the format:<!--, the first (or index 0) column contains the $y_i$ values and columns indexed 1 to $m$ contain the $x_{ij}$ values. -->
+We will start by designing a function that takes the data in as two arguments:
 
 $$
-\begin{eqnarray*}
+\texttt{y_data} = [y_{1}, y_{2}, y_{3}, \dots, y_{N}]
+$$
+
+$$,
 \begin{matrix}
-\texttt{data} = [   & [ y_{1},  & x_{11}, & x_{21}, & \cdots, & x_{m1} &], \\
-                    & [ y_{2},  & x_{12}, & x_{22}, & \cdots, & x_{m2} &],\\
-                    & [ y_{3},  & x_{13}, & x_{23}, & \cdots, & x_{m3} &],\\
-                    & [ ~\vdots~, & \vdots~~, & \vdots~~, & \ddots, & \vdots &],\\
-                    & [ y_{N},  & x_{1N}, & x_{2N}, & \cdots, & x_{mN} &]]\\
+\texttt{x_data} = [ & [x_{1,~1}, & x_{1,~2}, & \cdots, & x_{1,~N} &], \\
+                    & [x_{2,~1}, & x_{2,~2}, & \cdots, & x_{2,~N} &],\\
+                    & [x_{3,~1}, & x_{3,~2}, & \cdots, & x_{3~N} &],\\
+                    & [\vdots~~, & \vdots~~, & \ddots, & \vdots &],\\
+                    & [x_{m,~1}, & x_{m,~2}, & \cdots, & x_{m,~N} &]]\\
 \end{matrix}
-\end{eqnarray*}
 $$
 
-as this will make slicing it more clear. In the case of the Cepheid variable data, however, we have our "$y$" variable in the central column. Therefore we shall swap column 1 and 0 to better align with our desired data structure:
+as NumPy arrays.
 
-# Swapping data[:, 0] and data[:, 1]
-# Note that this is particular to the data file we are using
-# np.copy is necessaary as arrays are not passed as values by default but as reference
+#### Calculating Expectation Values
 
-data[:, 0], data[:, 1] = np.copy(data[:, 1]), np.copy(data[:, 0])
-
-To extract the values of a single variable for each measurement, slice columns out of `data`. For example, the $y_i$ are contained in the slice `data[:, 0]`, the $x_{1i}$ are contained in `data[:, 1]`, the $x_{2i}$ are contained in `data[:, 2]`, etc.
-
-Note that for each of the sums along the data sets ($\sum_{i = 1}^N$), we will be summing along the columns. For example, for the quantity:
+Note that for each of the sums along the data sets ($\sum_{i = 1}^N$), we will be summing along the rows. For example, for the quantity:
 
 $$
-\langle x_1 \rangle = \frac{1}{N} \sum_{i = 1}^N x_{1i}
-$$
-
-#Using numpy.mean to calculate the expectation value
-#Note that x1 = data[:,1]
-
-x1_mean = np.mean(data[:,1])
-
-To calculate an expectation value like 
-
-$$
-\langle x_1 x_2 \rangle = \frac{1}{N} \sum_{i = 1}^N x_{1 i} x_{2 i}
+\langle x_1 \rangle = \frac{1}{N} \sum_{i = 1}^N x_{1,~i}
 $$
 
 we can use:
 
-x1_x2_mean = np.mean( data[:,1] * data[:,2] )
+```Python
+np.mean(x_data[0, :])
+```
 
-where we've made use of NumPy array's vectorized operation to multiply each element together before taking the mean of the results.
+and for
+
+$$
+\langle x_1 x_2 \rangle = \frac{1}{N} \sum_{i = 1}^N x_{1,~ i} x_{2,~ i}
+$$
+
+we can use
+
+```Python
+np.mean(x_data[0, :] * x_data[1, :])
+```
+where we have made use of NumPy array's vectorized operations.
 
 #### Constructing the $\boldsymbol{X}$ Matrix
 
-Before we continue, let's break down the structure of the matrix:
+Now, let's break down the structure of the matrix:
 
 $$
 \boldsymbol{X} = 
@@ -296,13 +344,18 @@ $$
 \end{pmatrix}
 $$
 
-Let's construct an empty matrix for which we will fill in the entries as we go:
+the dimensions of this matrix is $(m+1)\times(m+1)$, we can get the value for $m$ from the dimensions of the `x_data` array:
 
-var_count = data.shape[1]
+```Python
+m = x_data.shape[0]
+```
 
-X = np.matrix(np.ones((var_count, var_count)))
+from this we can create a matrix of ones, which we will populate later:
 
-Note that we have created an $(m+1)\times(m+1)$ matrix, where $m+1$ is given by the length of axis-1 of `data`.
+```Python
+X = np.array(np.ones((m+1, m+1))
+```
+
 
 Now, as we have noted before, $\boldsymbol{X}$ is a symmetric matrix. That is for for row $k$ and column $l$, $\boldsymbol{X}_{k l} = \boldsymbol{X}_{l k}$. We only need to construct one of the triangles of the matrix, the other is obtained for free.
 
@@ -312,29 +365,29 @@ Let's work with the upper triangle of the matrix. Here there are 3 regions with 
 2. The diagonal
 3. The remaining triangle
 
+<!--**1. The First Row**-->
 The first element of the matrix is just one. The remainder of the first row is simply the expectation value of each of the $x_j$:
 
 $$
-\boldsymbol{X}_{0 0} = 1
+\boldsymbol{X}_{0 ~0} = 1
 $$
 
 and 
 
 $$
-\boldsymbol{X}_{0 l} = \langle{x_l}\rangle ~~~~ \text{where}~ l = 1, 2, \dots, m
+\boldsymbol{X}_{0~ l} = \langle{x_l}\rangle ~~~~ \text{where}~ l = 1, 2, \dots, m
 $$
 
-Note that here we are indexing $\boldsymbol{X}$ from 0 to better translate it to code:
+Note that here we are indexing $\boldsymbol{X}$ from 0 to better translate it to code (keep in mind that the `x_data` array also starts with a 0 index, so the $x_l$ data is in row $l - 1$):
 
-# First row and column
-# We leave the first element as is
-
-for l in range(1, var_count):
-    X[0, l] = np.mean(data[:, l])
+```Python
+for l in range(m):
+    X[0, l + 1] = np.mean(x_data[l, :])
     
     # Setting the values for the first column
     # remember that X[k, l] = X[l, k]
-    X[l, 0] = X[0, l]
+    X[l + 1, 0] = X[0, l + 1]
+```
 
 Now, consider the triangle off of the diagonal. That is the region:
 
@@ -369,14 +422,16 @@ $$
 
 In the code this becomes:
 
+```Python
 # Inner matrix
 
-for k in range(1, var_count):
-    for l in range(k, var_count):
-        X[k, l] = np.mean( data[:, k] * data[:, l] )
+for k in range(m):
+    for l in range(m):
+        X[k + 1, l + 1] = np.mean( x_data[k, :] * x_data[l, :] )
         
         #Setting the value for the lower triangle
-        X[l, k] = X[k, l]
+        X[l + 1, k + 1] = X[k + 1, l + 1]
+```
 
 That covers the $\boldsymbol{X}$ matrix.
 
@@ -398,24 +453,26 @@ $$
 This is fairly straight forward, with
 
 $$
-\boldsymbol{Y}_{0, 0} = \langle{y}\rangle
+\boldsymbol{Y}_{0~ 0} = \langle{y}\rangle
 $$
 
 and
 
 $$
-\boldsymbol{Y}_{k, 0} = \langle{x_k y}\rangle ~~~~\text{where}~ k = 1, \dots, m
+\boldsymbol{Y}_{k~ 0} = \langle{x_k y}\rangle ~~~~\text{where}~ k = 1, \dots, m
 $$
 
+```Python
 #Creating the Y column matrix:
-Y = np.matrix( np.zeros( (var_count, 1) ) )
+Y = np.matrix( np.zeros( (m + 1, 1) ) )
 
 #First entry
-Y[0, 0] = np.mean(data[:,0])
+Y[0, 0] = np.mean(y_data)
 
 #The remainder of the entries
-for k in range(1, var_count):
-    Y[k, 0] = np.mean( data[:, k] * data[:, 0] )
+for k in range(m):
+    Y[k + 1, 0] = np.mean( x_data[k, :] * y_data )
+```
 
 #### Finding Matrix $\boldsymbol{A}$ (Or Solving For the $a_j$)
 
@@ -446,125 +503,84 @@ $$
 
 To achieve this numerically, we simply take the inverse of `X`, `X.I`:
 
+```Python
 #Finding A:
 
 A = X.I*Y
+```
 
-print(A)
+This `A` matrix is a column matrix. As a bonus, if we wanted to turn it into a one-dimensional array, we can use the `flatten()` method:
 
-As you can see are results agree with the specific solution for the the case of 3 variables above.
+```Python
+np.array(A).flatten()
+```
 
-#### Putting it all together:
+#### Putting It All Together
 
-Let's gather all of the code cells together into a single script. We will also merge the loops together for efficiency:
+Putting this all together into a function:
 
-import numpy as np
-
-#Reading the data
-data = np.loadtxt('data/cepheid_data.csv', delimiter = ',', skiprows = 1)
-
-# Swapping data[:, 0] and data[:, 1]
-# Note that this is particular to the data file we are using
-# np.copy is necessaary as arrays are not passed as values by default but as reference
-data[:, 0], data[:, 1] = np.copy(data[:, 1]), np.copy(data[:, 0])
-
-#Creating empty X and Y matrices
-var_count = data.shape[1]
-
-X = np.matrix(np.ones( (var_count, var_count) ))
-Y = np.matrix( np.zeros( (var_count, 1) ) )
-
-#Filling the X and Y matrices
-
-Y[0, 0] = np.mean(data[:,0])
-
-for k in range(1, var_count):
-    #First row and column of X
-    X[0, k] = np.mean(data[:, k])
-    X[k, 0] = X[0, k]
-    
-    #Y
-    Y[k, 0] = np.mean( data[:, k] * data[:, 0] )
-    
-    #Inner matrix of X
-    for l in range(k, var_count):
-        X[k, l] = np.mean( data[:, k] * data[:, l] )
-        X[l, k] = X[k, l]
-
-#Calculating A
-
-A = X.I*Y
-
-print(A)
-
-#### Visualizing the Results to Test Plausibility
-
-Now let's visualize the results. We'll only plot 2 variables at a time as anything else would call for a surface plot, which is quite tricky. Remember that the relationship between our variables is:
-
-$$
-M = a_0 + a_1 \log P + a_2 (B - V)
-$$
-
-When we pair the variables up we shall approximate the relationships by removing the remaining variable.
-
-For our first pairing we shall express $M$ as a function of $\log P$:
-
-$$
-M \approx a_0 + a_1 \log P
-$$
-
-For our second pairing we shall express $M$ as a function of $(B-V)$:
-
-$$
-M \approx a_0 + a_2 (B-V)
-$$
-
-For our final pairing we shall express $(B - V)$ as a function of $\log P$:
-
-$$
-(B - V) \approx - \frac{a_0}{a_2} - \frac{a_1}{a_2} \log P
-$$
-
-#Do a 3d plot for this instead
 import numpy as np
 import matplotlib.pyplot as plt
 
-fig, ax = plt.subplots(2, 2, sharex = True, sharey = True)
 
-# M as function of log P
-logP_arr1 = np.linspace(data[:,1].min(), data[:,1].max())
-M_arr1 = A[0,0] + A[1,0] * logP_arr1
+def least_squares(y_data, x_data):
+    m = x_data.shape[0]
 
-ax[0,0].plot(data[:, 1], data[:, 0], 'ro')
-ax[0,0].plot(logP_arr1, M_arr1, 'k-')
+    X = np.matrix(np.ones((m+1, m+1)))
 
-ax[0,0].set_ylabel('M')
+    #First row
+    for l in range(m):
+        X[0, l + 1] = np.mean(x_data[l, :])
+
+        # Setting the values for the first column
+        # remember that X[k, l] = X[l, k]
+        X[l + 1, 0] = X[0, l + 1]
 
 
-# M as a function of (B-V)
-B_V_arr2 = np.linspace(data[:,2].min(), data[:,2].max())
-M_arr2 = A[0,0] + A[2,0]*B_V_arr2
+    # Upper triangle
+    for k in range(m):
+        for l in range(k, m):
+            X[k + 1, l + 1] = np.mean( x_data[k, :] * x_data[l, :] )
 
-ax[0,1].plot(data[:, 2], data[:, 0], 'ro')
-ax[0,1].plot(B_V_arr2, M_arr2, 'k-')
+            #Setting the value for the lower triangle
+            X[l + 1, k + 1] = X[k + 1, l + 1]
 
-ax[0,1].set_xlabel('B - V')
 
-# (B - V) as a function of log P
-logP_arr3 = logP_arr1
-B_V_arr3 = -A[0,0]/A[2,0] - A[1,0]/A[2,0]*logP_arr3
+    #Creating the Y column matrix:
+    Y = np.matrix( np.zeros( (m + 1, 1) ) )
 
-ax[1,0].plot(data[:,1], data[:, 2], 'ro')
-ax[1,0].plot(logP_arr3, B_V_arr3, 'k-')
+    #First entry
+    Y[0, 0] = np.mean(y_data)
 
-ax[1,0].set_xlabel('logP')
-ax[1,0].set_ylabel('B - V')
+    #The remainder of the entries
+    for k in range(m):
+        Y[k + 1, 0] = np.mean( x_data[k, :] * y_data )
+    
+    #Finding A:
 
-#Placing the legend in the 4th set of axis
-ax[1,1].plot([], 'ro', label = 'Data')
-ax[1,1].plot([], 'k-', label = 'Model')
+    A = X.I*Y
+    
+    return np.array(A).flatten()
 
-ax[1,1].legend()
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b> - Applying the Solution to the Cepheid Variables Data</h5>
 
-plt.show()
+Now, lets apply this function to the Cepheid Variables data to find the unknown coefficients for the functional relation of the magnitude ($M$), period ($P$) and color ($B-V$):
+    
+$$
+M = a_0 + a_1 \log P + a_2 (B - V)
+$$    
+    
+We'll unpack the data as in the **{doc}`Numerical Methods/Linear Regression Algorithms/Linear Least Squares Minimization<./least-squares>`** example, and then pack it into the structure that is required by the function.
 
+#Reading the data
+logP, M, color = np.loadtxt('./data/cepheid_data.csv', delimiter = ',', skiprows = 1, unpack = True)
+
+a_arr = least_squares(M, np.array([logP, color]))
+
+for i, a in enumerate(a_arr):
+    print(f'a_{i} =', '{:.3}'.format(a))
+
+Which matches the results from the worked example above.
+
+</div>
