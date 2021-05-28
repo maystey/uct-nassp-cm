@@ -666,6 +666,11 @@
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#calculating-expectation-values">
+       Calculating Expectation Values
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#constructing-the-boldsymbol-x-matrix">
        Constructing the
        <span class="math notranslate nohighlight">
@@ -698,7 +703,7 @@
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#putting-it-all-together">
-       Putting it all together:
+       Putting It All Together
       </a>
      </li>
     </ul>
@@ -733,31 +738,33 @@ y = a_0 + a_1 x
 y = a_0 + a_1 x_1 + a_2 x_2
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(a_0\)</span>, <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span> are unknown coefficients.</p>
-<p>Consider a data set of measured <span class="math notranslate nohighlight">\((x_{1i}, x_{2i}, y_i)\)</span> pairs for <span class="math notranslate nohighlight">\(i = 1, 2, 3, \dots , N\)</span>. If we attribute the dispersion of this data from the functional relation to error in the <span class="math notranslate nohighlight">\(y_i\)</span> terms, <span class="math notranslate nohighlight">\(\epsilon_i\)</span>, then we can relate the data points with:</p>
+<p>Consider a data set of measured <span class="math notranslate nohighlight">\((x_{1,~i}, x_{2,~i}, y_i)\)</span> pairs for <span class="math notranslate nohighlight">\(i = 1, 2, 3, \dots , N\)</span>. If we attribute the dispersion of this data from the functional relation to error in the <span class="math notranslate nohighlight">\(y_i\)</span> terms, <span class="math notranslate nohighlight">\(\epsilon_i\)</span>, then we can relate the data points with:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
-y_i + \epsilon_i &amp;= a_0 + a_1 x_{1 i} + a_2 x_{2 i}\\
-\therefore \epsilon_i &amp;= a_0 + a_1 x_{1 i} + a_2 x_{2 i} - y_i\\
+y_i + \epsilon_i &amp;= a_0 + a_1 x_{1,~i} + a_2 x_{2,~ i}\\
+\therefore \epsilon_i &amp;= a_0 + a_1 x_{1,~ i} + a_2 x_{2,~ i} - y_i\\
 \end{align*}\]</div>
 <p>The sum of errors squared is given by:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 S &amp;= \sum_{i = 1}^N \epsilon_i^2 \\
-  &amp;= \sum_{i=1}^N (a_0 + a_1 x_{1i} + a_2 x_{2i} - y_i)\\
+  &amp;= \sum_{i=1}^N (a_0 + a_1 x_{1,~i} + a_2 x_{2,~i} - y_i)\\
 \end{align*}\]</div>
 <p>We want to minimize <span class="math notranslate nohighlight">\(S\)</span> with respect to each of the constants, <span class="math notranslate nohighlight">\(a_0\)</span>, <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial S}{\partial a_0} = 2 \sum_{i=0}^n (a_0 + a_1x_{1i} + a_2x_{2i} - y_i) = 0
+\frac{\partial S}{\partial a_0} = 2 \sum_{i=0}^n (a_0 + a_1 x_{1, ~i} + a_2 x_{2, ~i} - y_i) = 0
 \]</div>
-<p>,
-$<span class="math notranslate nohighlight">\(
-\frac{\partial S}{\partial a_1} = 2 \sum_{i=0}^n (a_0 + a_1x_{1i} + a_2x_{2i} - y_i)x_{1i} = 0
-\)</span><span class="math notranslate nohighlight">\(
-and
-\)</span><span class="math notranslate nohighlight">\(
-\frac{\partial S}{\partial a_2} = 2 \sum_{i=0}^n (a_0 + a_1x_{1i} + a_2x_{2i} - y_i)x_{2i} = 0
-\)</span>$</p>
+<p>,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial S}{\partial a_1} = 2 \sum_{i=0}^n (a_0 + a_1 x_{1,~i} + a_2 x_{2,~i} - y_i)x_{1,~i} = 0
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial S}{\partial a_2} = 2 \sum_{i=0}^n (a_0 + a_1 x_{1,~i} + a_2 x_{2,~i} - y_i)x_{2,~i} = 0
+\]</div>
 <p>Re-arranging the above equations and using our statistical notation yields:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -766,12 +773,12 @@ a_0 + a_1 \langle x_1 \rangle + a_2 \langle x_2 \rangle = \langle y \rangle
 <p>,</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-a_0\langle x_1\rangle + a_1\langle x_1^2\rangle + a_2\langle x_1x_2 \rangle = \langle x_1y \rangle\\
+a_0\langle x_1\rangle + a_1\langle x_1^2\rangle + a_2\langle x_1 x_2 \rangle = \langle x_1 y \rangle\\
 \end{split}\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[
-a_0\langle x_2\rangle + a_1\langle x_1x_2\rangle + a_2\langle x_2^2\rangle = \langle x_2y\rangle
+a_0\langle x_2\rangle + a_1\langle x_1 x_2\rangle + a_2\langle x_2^{~~2}\rangle = \langle x_2 y\rangle
 \]</div>
 <p>This time algebraic manipulation is a lot more work, instead we shall use a matrix equation (which will serve us better in the more generic case to come). The matrix equation representation is:</p>
 <div class="math notranslate nohighlight">
@@ -805,7 +812,86 @@ a_0\langle x_2\rangle + a_1\langle x_1x_2\rangle + a_2\langle x_2^2\rangle = \la
 \[
 M = a_0 + a_1 \log P + a_2 (B - V)
 \]</div>
-<p>using the same data file as before. (You should find the values <span class="math notranslate nohighlight">\(a_0 = -2.15\)</span> mag, <span class="math notranslate nohighlight">\(a_1 = -3.12\)</span> mag and <span class="math notranslate nohighlight">\(a_2 = 1.49\)</span>)</p>
+<p>using the same data file as before. (You should find the values <span class="math notranslate nohighlight">\(a_0 = -2.15\)</span> mag, <span class="math notranslate nohighlight">\(a_1 = -3.12\)</span> mag and <span class="math notranslate nohighlight">\(a_2 = 1.49\)</span>). You may wish to use NumPy matrices, which have the inverse property <code class="docutils literal notranslate"><span class="pre">I</span></code> (<span class="math notranslate nohighlight">\(\boldsymbol{X}^{-1}\)</span> is achieved using <code class="docutils literal notranslate"><span class="pre">X.I</span></code>, for the appropriately defined <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix), and can be multiplied directly</p>
+<p>Try this yourself before reading the solution that follows.</p>
+<p><strong>Solution:</strong></p>
+<p>As in the  <strong><a class="reference internal" href="least-squares.html"><span class="doc">Numerical Methods/Linear Regression Algorithms/Linear Least Squares Minimization</span></a></strong> worked example, we shall read in the data using <code class="docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">logP</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./data/cepheid_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we have:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+y   &amp;= M\\
+x_1 &amp;= logP\\
+x_2 &amp;= (B - V)\\
+\end{align*}\]</div>
+<p>We will now proceed to construct the matrices using the data. Starting with simpler <span class="math notranslate nohighlight">\(\boldsymbol{Y}\)</span> matrix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Defining Y as a column matrix</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([</span>
+    <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">M</span><span class="p">)],</span>
+    <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">logP</span> <span class="o">*</span> <span class="n">M</span><span class="p">)],</span>
+    <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">color</span> <span class="o">*</span> <span class="n">M</span><span class="p">)]</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span> is symmetric about the diagonal, i.e. <span class="math notranslate nohighlight">\(\boldsymbol{X}_{k~l} = \boldsymbol{X}_{l~k}\)</span>, we will make use of this to reduce the number of calculations we need to perform.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="p">))</span> <span class="c1">#Using an array generating function</span>
+
+<span class="c1"># X[0, 0] is just 1, so we leave it</span>
+
+<span class="c1">#The first row</span>
+<span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">logP</span><span class="p">)</span>
+<span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c1">#The first column (which is the transpose of the first row)</span>
+<span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="c1">#The diagonal</span>
+<span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">logP</span> <span class="o">*</span> <span class="n">logP</span><span class="p">)</span>
+<span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">color</span> <span class="o">*</span> <span class="n">color</span><span class="p">)</span>
+
+<span class="c1">#The off-diagonal elements</span>
+<span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">logP</span> <span class="o">*</span> <span class="n">color</span><span class="p">)</span>
+<span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we calculate the <span class="math notranslate nohighlight">\(\boldsymbol{A}\)</span> matrix:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">I</span> <span class="o">*</span> <span class="n">Y</span>
+
+<span class="c1">#Printing the constants</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;a</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1"> =&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{:.3}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a1 = -2.15
+a2 = -3.12
+a3 = 1.49
+</pre></div>
+</div>
+</div>
+</div>
 </div></section>
 <section id="arbitrarily-many-variables">
 <h2>Arbitrarily Many Variables<a class="headerlink" href="#arbitrarily-many-variables" title="Permalink to this headline">¶</a></h2>
@@ -818,30 +904,30 @@ y   &amp;= a_0 + a_1 x_1 + a_2 x_2 + \dots + a_m x_m\\
 \end{align*}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(a_0\)</span>, <span class="math notranslate nohighlight">\(a_1\)</span>, <span class="math notranslate nohighlight">\(\dots\)</span> and <span class="math notranslate nohighlight">\(a_m\)</span> are unknown constants.</p>
-<p>Suppose we have a data set of measured <span class="math notranslate nohighlight">\((x_{1i}, x_{2i}, \dots, x_{mi}, y_i)\)</span> values for <span class="math notranslate nohighlight">\(i = 1, 2, 3, \dots, N\)</span>. As before, we assume that the dispersion in our data from the functional relation is due to error in the <span class="math notranslate nohighlight">\(y_i\)</span> data points only. Therefore we can write the relation between our data points as:</p>
+<p>Suppose we have a data set of measured <span class="math notranslate nohighlight">\((x_{1,~i}, x_{2,~i}, \dots, x_{mi}, y_i)\)</span> values for <span class="math notranslate nohighlight">\(i = 1, 2, 3, \dots, N\)</span>. As before, we assume that the dispersion in our data from the functional relation is due to error in the <span class="math notranslate nohighlight">\(y_i\)</span> data points only. Therefore we can write the relation between our data points as:</p>
 <div class="math notranslate nohighlight">
 \[
-y_i + \epsilon_i = a_0 + \sum_{j = 1}^m a_j x_{ji}
+y_i + \epsilon_i = a_0 + \sum_{j = 1}^m a_j x_{j, ~i}
 \]</div>
 <p>The sum of errors squared can thus be written as:</p>
 <div class="math notranslate nohighlight">
 \[
-S = \sum_{i=1}^N \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{ji} \bigg) - y_i\bigg)^2
+S = \sum_{i=1}^N \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{j,~i} \bigg) - y_i\bigg)^2
 \]</div>
 <p>We want to find the values of <span class="math notranslate nohighlight">\(a_0\)</span>, <span class="math notranslate nohighlight">\(a_1\)</span>, <span class="math notranslate nohighlight">\(\dots\)</span> and <span class="math notranslate nohighlight">\(a_m\)</span> which gives us the minimum value of <span class="math notranslate nohighlight">\(S\)</span>. Minimizing <span class="math notranslate nohighlight">\(S\)</span> with respect to <span class="math notranslate nohighlight">\(a_0\)</span> gives us:</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{\partial S}{\partial a_0} = 2 \sum_{i=1}^N \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{ji} \bigg) - y_i\bigg) = 0
+\frac{\partial S}{\partial a_0} = 2 \sum_{i=1}^N \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{j,~i} \bigg) - y_i\bigg) = 0
 \]</div>
 <p>Distributing the sum over <span class="math notranslate nohighlight">\(i\)</span> amongst the terms:</p>
 <div class="math notranslate nohighlight">
 \[
-\therefore N a_0 + \bigg(\sum_{j=1}^m a_j \sum_{i=1}^N x_{ji} \bigg) - \sum_{i=1}^N y_i = 0
+\therefore N a_0 + \bigg(\sum_{j=1}^m a_j \sum_{i=1}^N x_{j,~i} \bigg) - \sum_{i=1}^N y_i = 0
 \]</div>
 <p>Dividing by <span class="math notranslate nohighlight">\(N\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-\therefore a_0 + \bigg(\sum_{j=1}^m a_j \frac{1}{N}\sum_{i=1}^N x_{ji} \bigg) - \frac{1}{N}\sum_{i=1}^N y_i = 0
+\therefore a_0 + \bigg(\sum_{j=1}^m a_j \frac{1}{N}\sum_{i=1}^N x_{j,~i} \bigg) - \frac{1}{N}\sum_{i=1}^N y_i = 0
 \]</div>
 <p>Using our stats notation:</p>
 <div class="math notranslate nohighlight">
@@ -852,8 +938,8 @@ S = \sum_{i=1}^N \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{ji} \bigg) - y_i\bigg)^2
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
-\frac{\partial S}{\partial a_k} = \sum_{i=1}^N 2 x_{ki} \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{ji} \bigg) - y_i\bigg) &amp;= 0\\
-\therefore a_0 \sum_{i=1}^N x_{ki} + \sum_{j=1}^m a_j \bigg(\sum_{i=1}^N x_{ki} x_{ji} \bigg) - \sum_{i=1}^N x_{ki} y_i &amp;= 0\\
+\frac{\partial S}{\partial a_k} = \sum_{i=1}^N 2 x_{k,~i} \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{j,~i} \bigg) - y_i\bigg) &amp;= 0\\
+\therefore a_0 \sum_{i=1}^N x_{k, ~i} + \sum_{j=1}^m a_j \bigg(\sum_{i=1}^N x_{k,~i} x_{j,~i} \bigg) - \sum_{i=1}^N x_{k,~i} y_i &amp;= 0\\
 \therefore a_0 \langle{x_{k}}\rangle + \sum_{j=1}^m a_j \langle{x_k x_j}\rangle &amp;= \langle{x_k y}\rangle\\
 \end{align*}
 \end{split}\]</div>
@@ -903,80 +989,48 @@ a_m\\
 \end{split}\]</div>
 <section id="python-implementation">
 <h3>Python Implementation<a class="headerlink" href="#python-implementation" title="Permalink to this headline">¶</a></h3>
-<p>Let’s work on a Python implementation of this solution. You may want to try it yourself before reading further. In order to verify our implementation we will use the Cepheid data we’ve used so far, though in further exercises you will be given data sets containing more variables.</p>
-<p>We start by reading in the file. We will read the data into a 2D array, using <code class="docutils literal notranslate"><span class="pre">numpy.loadtxt</span></code> as before.</p>
-<!--
-This can be achieved using the standard library as in the page {doc}`Python Standard Library/File IO/Data Files<../../standard-library/file-io/data>`**, or using `numpy.loadtxt()` (documentation [here](https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html)). We shall use the latter as it is far more convenient:
--->
-<!-- as in the [**File I/O**](/numpy/file-io) section from the **NumPy** chapter. --><div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-<span class="c1">## Reading in the file</span>
-
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/cepheid_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">data</span></code> array contains all of the data points for <span class="math notranslate nohighlight">\(y_i, x_{1i}, x_{2i}, x_{3i}, \dots, x_{ji}, \dots, x_{mi}\)</span>, where <span class="math notranslate nohighlight">\(i = 1, \dots, N\)</span> corresponds to each row of <code class="docutils literal notranslate"><span class="pre">data</span></code>. Now, we want the data in the format:<!--, the first (or index 0) column contains the $y_i$ values and columns indexed 1 to $m$ contain the $x_{ij}$ values. --></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{eqnarray*}
-\begin{matrix}
-\texttt{data} = [   &amp; [ y_{1},  &amp; x_{11}, &amp; x_{21}, &amp; \cdots, &amp; x_{m1} &amp;], \\
-                    &amp; [ y_{2},  &amp; x_{12}, &amp; x_{22}, &amp; \cdots, &amp; x_{m2} &amp;],\\
-                    &amp; [ y_{3},  &amp; x_{13}, &amp; x_{23}, &amp; \cdots, &amp; x_{m3} &amp;],\\
-                    &amp; [ ~\vdots~, &amp; \vdots~~, &amp; \vdots~~, &amp; \ddots, &amp; \vdots &amp;],\\
-                    &amp; [ y_{N},  &amp; x_{1N}, &amp; x_{2N}, &amp; \cdots, &amp; x_{mN} &amp;]]\\
-\end{matrix}
-\end{eqnarray*}
-\end{split}\]</div>
-<p>as this will make slicing it more clear. In the case of the Cepheid variable data, however, we have our “<span class="math notranslate nohighlight">\(y\)</span>” variable in the central column. Therefore we shall swap column 1 and 0 to better align with our desired data structure:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Swapping data[:, 0] and data[:, 1]</span>
-<span class="c1"># Note that this is particular to the data file we are using</span>
-<span class="c1"># np.copy is necessaary as arrays are not passed as values by default but as reference</span>
-
-<span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>To extract the values of a single variable for each measurement, slice columns out of <code class="docutils literal notranslate"><span class="pre">data</span></code>. For example, the <span class="math notranslate nohighlight">\(y_i\)</span> are contained in the slice <code class="docutils literal notranslate"><span class="pre">data[:,</span> <span class="pre">0]</span></code>, the <span class="math notranslate nohighlight">\(x_{1i}\)</span> are contained in <code class="docutils literal notranslate"><span class="pre">data[:,</span> <span class="pre">1]</span></code>, the <span class="math notranslate nohighlight">\(x_{2i}\)</span> are contained in <code class="docutils literal notranslate"><span class="pre">data[:,</span> <span class="pre">2]</span></code>, etc.</p>
-<p>Note that for each of the sums along the data sets (<span class="math notranslate nohighlight">\(\sum_{i = 1}^N\)</span>), we will be summing along the columns. For example, for the quantity:</p>
+<p>Let’s work on a Python implementation of this solution. You may want to try it yourself before reading further. In order to verify our implementation we will use the Cepheid data we’ve used so far, though we shall design it to support any number of <span class="math notranslate nohighlight">\(x_j\)</span> variables.</p>
+<p>We will start by designing a function that takes the data in as two arguments:</p>
 <div class="math notranslate nohighlight">
 \[
-\langle x_1 \rangle = \frac{1}{N} \sum_{i = 1}^N x_{1i}
+\texttt{y_data} = [y_{1}, y_{2}, y_{3}, \dots, y_{N}]
 \]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Using numpy.mean to calculate the expectation value</span>
-<span class="c1">#Note that x1 = data[:,1]</span>
-
-<span class="n">x1_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>To calculate an expectation value like</p>
+<div class="math notranslate nohighlight">
+\[\begin{split},
+\begin{matrix}
+\texttt{x_data} = [ &amp; [x_{1,~1}, &amp; x_{1,~2}, &amp; \cdots, &amp; x_{1,~N} &amp;], \\
+                    &amp; [x_{2,~1}, &amp; x_{2,~2}, &amp; \cdots, &amp; x_{2,~N} &amp;],\\
+                    &amp; [x_{3,~1}, &amp; x_{3,~2}, &amp; \cdots, &amp; x_{3~N} &amp;],\\
+                    &amp; [\vdots~~, &amp; \vdots~~, &amp; \ddots, &amp; \vdots &amp;],\\
+                    &amp; [x_{m,~1}, &amp; x_{m,~2}, &amp; \cdots, &amp; x_{m,~N} &amp;]]\\
+\end{matrix}
+\end{split}\]</div>
+<p>as NumPy arrays.</p>
+<section id="calculating-expectation-values">
+<h4>Calculating Expectation Values<a class="headerlink" href="#calculating-expectation-values" title="Permalink to this headline">¶</a></h4>
+<p>Note that for each of the sums along the data sets (<span class="math notranslate nohighlight">\(\sum_{i = 1}^N\)</span>), we will be summing along the rows. For example, for the quantity:</p>
 <div class="math notranslate nohighlight">
 \[
-\langle x_1 x_2 \rangle = \frac{1}{N} \sum_{i = 1}^N x_{1 i} x_{2 i}
+\langle x_1 \rangle = \frac{1}{N} \sum_{i = 1}^N x_{1,~i}
 \]</div>
 <p>we can use:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1_x2_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:])</span>
 </pre></div>
 </div>
+<p>and for</p>
+<div class="math notranslate nohighlight">
+\[
+\langle x_1 x_2 \rangle = \frac{1}{N} \sum_{i = 1}^N x_{1,~ i} x_{2,~ i}
+\]</div>
+<p>we can use</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_data</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">x_data</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>
+</pre></div>
 </div>
-</div>
-<p>where we’ve made use of NumPy array’s vectorized operation to multiply each element together before taking the mean of the results.</p>
+<p>where we have made use of NumPy array’s vectorized operations.</p>
+</section>
 <section id="constructing-the-boldsymbol-x-matrix">
 <h4>Constructing the <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span> Matrix<a class="headerlink" href="#constructing-the-boldsymbol-x-matrix" title="Permalink to this headline">¶</a></h4>
-<p>Before we continue, let’s break down the structure of the matrix:</p>
+<p>Now, let’s break down the structure of the matrix:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \boldsymbol{X} = 
@@ -989,17 +1043,14 @@ This can be achieved using the standard library as in the page {doc}`Python Stan
 \langle{x_m}\rangle   &amp; \langle{x_m x_1}\rangle  &amp; \langle{x_m x_2}\rangle  &amp; \langle{x_m x_3}\rangle  &amp; \cdots &amp; \langle{x_m~^2}\rangle\\
 \end{pmatrix}
 \end{split}\]</div>
-<p>Let’s construct an empty matrix for which we will fill in the entries as we go:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var_count</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">var_count</span><span class="p">,</span> <span class="n">var_count</span><span class="p">)))</span>
+<p>the dimensions of this matrix is <span class="math notranslate nohighlight">\((m+1)\times(m+1)\)</span>, we can get the value for <span class="math notranslate nohighlight">\(m\)</span> from the dimensions of the <code class="docutils literal notranslate"><span class="pre">x_data</span></code> array:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">x_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
+<p>from this we can create a matrix of ones, which we will populate later:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
 </div>
-</div>
-<p>Note that we have created an <span class="math notranslate nohighlight">\((m+1)\times(m+1)\)</span> matrix, where <span class="math notranslate nohighlight">\(m+1\)</span> is given by the length of axis-1 of <code class="docutils literal notranslate"><span class="pre">data</span></code>.</p>
 <p>Now, as we have noted before, <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span> is a symmetric matrix. That is for for row <span class="math notranslate nohighlight">\(k\)</span> and column <span class="math notranslate nohighlight">\(l\)</span>, <span class="math notranslate nohighlight">\(\boldsymbol{X}_{k l} = \boldsymbol{X}_{l k}\)</span>. We only need to construct one of the triangles of the matrix, the other is obtained for free.</p>
 <p>Let’s work with the upper triangle of the matrix. Here there are 3 regions with distinguishable structures</p>
 <ol class="simple">
@@ -1007,31 +1058,25 @@ This can be achieved using the standard library as in the page {doc}`Python Stan
 <li><p>The diagonal</p></li>
 <li><p>The remaining triangle</p></li>
 </ol>
+<!--**1. The First Row**-->
 <p>The first element of the matrix is just one. The remainder of the first row is simply the expectation value of each of the <span class="math notranslate nohighlight">\(x_j\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{X}_{0 0} = 1
+\boldsymbol{X}_{0 ~0} = 1
 \]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{X}_{0 l} = \langle{x_l}\rangle ~~~~ \text{where}~ l = 1, 2, \dots, m
+\boldsymbol{X}_{0~ l} = \langle{x_l}\rangle ~~~~ \text{where}~ l = 1, 2, \dots, m
 \]</div>
-<p>Note that here we are indexing <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span> from 0 to better translate it to code:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First row and column</span>
-<span class="c1"># We leave the first element as is</span>
-
-<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">var_count</span><span class="p">):</span>
-    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="n">l</span><span class="p">])</span>
+<p>Note that here we are indexing <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span> from 0 to better translate it to code (keep in mind that the <code class="docutils literal notranslate"><span class="pre">x_data</span></code> array also starts with a 0 index, so the <span class="math notranslate nohighlight">\(x_l\)</span> data is in row <span class="math notranslate nohighlight">\(l - 1\)</span>):</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_data</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="p">:])</span>
     
     <span class="c1"># Setting the values for the first column</span>
     <span class="c1"># remember that X[k, l] = X[l, k]</span>
-    <span class="n">X</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span>
+    <span class="n">X</span><span class="p">[</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>Now, consider the triangle off of the diagonal. That is the region:</p>
 <div class="math notranslate nohighlight">
@@ -1061,19 +1106,15 @@ This can be achieved using the standard library as in the page {doc}`Python Stan
 \boldsymbol{X}_{k l} = \langle{x_k x_l}\rangle ~~~~\text{where}~ l \geq k
 \]</div>
 <p>In the code this becomes:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inner matrix</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inner matrix</span>
 
-<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">var_count</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">var_count</span><span class="p">):</span>
-        <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">l</span><span class="p">]</span> <span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">x_data</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">x_data</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="p">:]</span> <span class="p">)</span>
         
         <span class="c1">#Setting the value for the lower triangle</span>
-        <span class="n">X</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
-</div>
-</div>
 </div>
 <p>That covers the <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span> matrix.</p>
 </section>
@@ -1094,27 +1135,23 @@ This can be achieved using the standard library as in the page {doc}`Python Stan
 <p>This is fairly straight forward, with</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{Y}_{0, 0} = \langle{y}\rangle
+\boldsymbol{Y}_{0~ 0} = \langle{y}\rangle
 \]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{Y}_{k, 0} = \langle{x_k y}\rangle ~~~~\text{where}~ k = 1, \dots, m
+\boldsymbol{Y}_{k~ 0} = \langle{x_k y}\rangle ~~~~\text{where}~ k = 1, \dots, m
 \]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Creating the Y column matrix:</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="n">var_count</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Creating the Y column matrix:</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
 
 <span class="c1">#First entry</span>
-<span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span>
 
 <span class="c1">#The remainder of the entries</span>
-<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">var_count</span><span class="p">):</span>
-    <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">Y</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">x_data</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">y_data</span> <span class="p">)</span>
 </pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="finding-matrix-boldsymbol-a-or-solving-for-the-a-j">
@@ -1142,81 +1179,97 @@ a_m\\
 \boldsymbol{A} = \boldsymbol{X}^{-1} \boldsymbol{Y}
 \]</div>
 <p>To achieve this numerically, we simply take the inverse of <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">X.I</span></code>:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Finding A:</span>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Finding A:</span>
 
 <span class="n">A</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">I</span><span class="o">*</span><span class="n">Y</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-2.14515885]
- [-3.11733284]
- [ 1.48566643]]
+<p>This <code class="docutils literal notranslate"><span class="pre">A</span></code> matrix is a column matrix. As a bonus, if we wanted to turn it into a one-dimensional array, we can use the <code class="docutils literal notranslate"><span class="pre">flatten()</span></code> method:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-</div>
-<p>As you can see are results agree with the specific solution for the the case of 3 variables above.</p>
 </section>
 <section id="putting-it-all-together">
-<h4>Putting it all together:<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h4>
-<p>Let’s gather all of the code cells together into a single script. We will also merge the loops together for efficiency:</p>
+<h4>Putting It All Together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h4>
+<p>Putting this all together into a function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
-<span class="c1">#Reading the data</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;data/cepheid_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
-<span class="c1"># Swapping data[:, 0] and data[:, 1]</span>
-<span class="c1"># Note that this is particular to the data file we are using</span>
-<span class="c1"># np.copy is necessaary as arrays are not passed as values by default but as reference</span>
-<span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">least_squares</span><span class="p">(</span><span class="n">y_data</span><span class="p">,</span> <span class="n">x_data</span><span class="p">):</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">x_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
-<span class="c1">#Creating empty X and Y matrices</span>
-<span class="n">var_count</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
 
-<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="n">var_count</span><span class="p">,</span> <span class="n">var_count</span><span class="p">)</span> <span class="p">))</span>
-<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="n">var_count</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+    <span class="c1">#First row</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_data</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="p">:])</span>
 
-<span class="c1">#Filling the X and Y matrices</span>
+        <span class="c1"># Setting the values for the first column</span>
+        <span class="c1"># remember that X[k, l] = X[l, k]</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 
-<span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">var_count</span><span class="p">):</span>
-    <span class="c1">#First row and column of X</span>
-    <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span> <span class="n">k</span><span class="p">])</span>
-    <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span>
+    <span class="c1"># Upper triangle</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">x_data</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">x_data</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="p">:]</span> <span class="p">)</span>
+
+            <span class="c1">#Setting the value for the lower triangle</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+
+    <span class="c1">#Creating the Y column matrix:</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+
+    <span class="c1">#First entry</span>
+    <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span>
+
+    <span class="c1">#The remainder of the entries</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="n">Y</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">x_data</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">y_data</span> <span class="p">)</span>
     
-    <span class="c1">#Y</span>
-    <span class="n">Y</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">)</span>
+    <span class="c1">#Finding A:</span>
+
+    <span class="n">A</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">I</span><span class="o">*</span><span class="n">Y</span>
     
-    <span class="c1">#Inner matrix of X</span>
-    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">var_count</span><span class="p">):</span>
-        <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]</span> <span class="o">*</span> <span class="n">data</span><span class="p">[:,</span> <span class="n">l</span><span class="p">]</span> <span class="p">)</span>
-        <span class="n">X</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b> - Applying the Solution to the Cepheid Variables Data</h5>
+<p>Now, lets apply this function to the Cepheid Variables data to find the unknown coefficients for the functional relation of the magnitude (<span class="math notranslate nohighlight">\(M\)</span>), period (<span class="math notranslate nohighlight">\(P\)</span>) and color (<span class="math notranslate nohighlight">\(B-V\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+M = a_0 + a_1 \log P + a_2 (B - V)
+\]</div>
+<p>We’ll unpack the data as in the <strong><a class="reference internal" href="least-squares.html"><span class="doc">Numerical Methods/Linear Regression Algorithms/Linear Least Squares Minimization</span></a></strong> example, and then pack it into the structure that is required by the function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Reading the data</span>
+<span class="n">logP</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./data/cepheid_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
-<span class="c1">#Calculating A</span>
+<span class="n">a_arr</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">logP</span><span class="p">,</span> <span class="n">color</span><span class="p">]))</span>
 
-<span class="n">A</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">I</span><span class="o">*</span><span class="n">Y</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">a_arr</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;a_</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> =&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{:.3}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[-2.14515885]
- [-3.11733284]
- [ 1.48566643]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a_0 = -2.15
+a_1 = -3.12
+a_2 = 1.49
 </pre></div>
 </div>
 </div>
 </div>
-</section>
+<p>Which matches the results from the worked example above.</p>
+</div></section>
 </section>
 </section>
 </section>
