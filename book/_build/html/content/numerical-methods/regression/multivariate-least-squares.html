@@ -998,11 +998,11 @@ a_m\\
 <div class="math notranslate nohighlight">
 \[\begin{split},
 \begin{matrix}
-\texttt{x_data} = [ &amp; [x_{1,~1}, &amp; x_{1,~2}, &amp; \cdots, &amp; x_{1,~N} &amp;], \\
-                    &amp; [x_{2,~1}, &amp; x_{2,~2}, &amp; \cdots, &amp; x_{2,~N} &amp;],\\
-                    &amp; [x_{3,~1}, &amp; x_{3,~2}, &amp; \cdots, &amp; x_{3~N} &amp;],\\
-                    &amp; [\vdots~~, &amp; \vdots~~, &amp; \ddots, &amp; \vdots &amp;],\\
-                    &amp; [x_{m,~1}, &amp; x_{m,~2}, &amp; \cdots, &amp; x_{m,~N} &amp;]]\\
+\texttt{x_data} = [ &amp; [ &amp; x_{1,~1}, &amp; x_{1,~2}, &amp; \cdots, &amp; x_{1,~N} &amp;], \\
+                    &amp; [ &amp; x_{2,~1}, &amp; x_{2,~2}, &amp; \cdots, &amp; x_{2,~N} &amp;],\\
+                    &amp; [ &amp; x_{3,~1}, &amp; x_{3,~2}, &amp; \cdots, &amp; x_{3~N} &amp;],\\
+                    &amp; [ &amp; \vdots~~, &amp; \vdots~~, &amp; \ddots, &amp; \vdots &amp;],\\
+                    &amp; [ &amp; x_{m,~1}, &amp; x_{m,~2}, &amp; \cdots, &amp; x_{m,~N} &amp;]]\\
 \end{matrix}
 \end{split}\]</div>
 <p>as NumPy arrays.</p>
@@ -1079,7 +1079,7 @@ a_m\\
 </pre></div>
 </div>
 <p>Now, consider the triangle off of the diagonal. That is the region:</p>
-<div class="math notranslate nohighlight">
+<!-- Consider showing the diagonal in this, or perhaps find a way to annotate the matrix regions in the matrix drawn further up --><div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{pmatrix}
 -         &amp; -        &amp; -                         &amp; -                        &amp; \cdots  &amp; - \\
@@ -1087,29 +1087,29 @@ a_m\\
 -         &amp; -        &amp; -                         &amp; \langle{x_2 x_3}\rangle  &amp; \cdots  &amp; \langle{x_2 x_m}\rangle\\
 -         &amp; -        &amp; -                         &amp; -                        &amp; \cdots  &amp; \langle{x_3 x_m}\rangle\\
 \vdots    &amp; \vdots   &amp; \vdots                    &amp; \vdots                   &amp; \ddots  &amp; \vdots \\
--         &amp; -        &amp; -                         &amp; -                        &amp; \cdots  &amp; \langle{x_m~^2}\rangle\\
+-         &amp; -        &amp; -                         &amp; -                        &amp; \cdots  &amp; -\\
 \end{pmatrix}
 \end{split}\]</div>
 <p>This region exhibits the pattern:</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{X}_{k l} = \langle{x_k x_l}\rangle ~~~~\text{where}~ l &gt; k
+\boldsymbol{X}_{k l} = \langle{x_k x_l}\rangle ~~~~ \text{where}~ 1 \leq k \leq m ~~\text{and}~~  l &gt; k
 \]</div>
 <p>The diagonal has a fairly simple pattern, starting from (row, column) <span class="math notranslate nohighlight">\((1,1)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{X}_{k k} = \langle{x_k~^2}\rangle
+\boldsymbol{X}_{k k} = \langle{x_k~^2}\rangle ~~~~ \text{where}~ 1 \leq k \leq m
 \]</div>
 <p>Note, however, that this is a special case of the rules for constructing region 3. We can therefore combine regions 2 and 3 with the rule:</p>
 <div class="math notranslate nohighlight">
 \[
-\boldsymbol{X}_{k l} = \langle{x_k x_l}\rangle ~~~~\text{where}~ l \geq k
+\boldsymbol{X}_{k l} = \langle{x_k x_l}\rangle ~~~~\text{where}~ 1 \leq k \leq m ~~\text{and}~~  l \geq k
 \]</div>
 <p>In the code this becomes:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inner matrix</span>
 
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
         <span class="n">X</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">x_data</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">x_data</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="p">:]</span> <span class="p">)</span>
         
         <span class="c1">#Setting the value for the lower triangle</span>

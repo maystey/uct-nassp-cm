@@ -688,39 +688,16 @@
 <p>So far we have only considered functional relationships that are linear in the unknown constants. Non-linear cases are far more complicated and generally require numerical solutions. We will use a function from the SciPy module <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html"><code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code></a>, which contains functions for minimization, least squares and root finding techniques.</p>
 <section id="an-example-of-a-nonlinear-model">
 <h2>An Example of a Nonlinear Model<a class="headerlink" href="#an-example-of-a-nonlinear-model" title="Permalink to this headline">¶</a></h2>
-<p>Consider the data found in the data file <strong>nonlinear_data.csv</strong> on <a class="reference external" href="https://raw.githubusercontent.com/maystey/uct_nassp_cm/gh-pages/regression/data/nonlinear_data.csv">GitHub</a> , plotted below:</p>
-<p>Though the data may appear to follow a linear trend, this is not the case. Consider the linear fit below:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">leastsq</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-
-<span class="c1">#Remove input</span>
-
-<span class="k">def</span> <span class="nf">lin_f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span>
-
-<span class="k">def</span> <span class="nf">lin_err</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">lin_f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span>
-
-<span class="n">a0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>
-
-<span class="n">a</span><span class="p">,</span> <span class="n">success</span> <span class="o">=</span> <span class="n">leastsq</span><span class="p">(</span><span class="n">lin_err</span><span class="p">,</span> <span class="n">a0</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">))</span>
-
-<span class="c1">#Plotting the fit and data</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">xdata</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">xdata</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="mi">1000</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xdata</span><span class="p">,</span> <span class="n">ydata</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">lin_f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
+<p>Consider the data found in the data file <strong>nonlinear_data.csv</strong> on <a class="reference external" href="https://raw.githubusercontent.com/maystey/uct_nassp_cm2021/master/book/content/numerical-methods/regression/data/nonlinear_data.csv">GitHub</a> , plotted below:</p>
+<div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/scipy_6_0.png" src="../../../_images/scipy_6_0.png" />
+<img alt="../../../_images/scipy_5_0.png" src="../../../_images/scipy_5_0.png" />
+</div>
+</div>
+<p>Though the data may appear to follow a linear trend, this is not the case. Consider the linear fit below:</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/scipy_7_0.png" src="../../../_images/scipy_7_0.png" />
 </div>
 </div>
 <p>Instead a more appropriate functional relation is an exponential function:</p>
@@ -730,7 +707,7 @@ y = a_0 + a_1 e^{a_2 x}
 \]</div>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/scipy_8_0.png" src="../../../_images/scipy_8_0.png" />
+<img alt="../../../_images/scipy_9_0.png" src="../../../_images/scipy_9_0.png" />
 </div>
 </div>
 <p>Note that this functional relation is non-linear in <span class="math notranslate nohighlight">\(a_2\)</span>. Applying the method of least squares minimization to this functional relation will not yield an analytic solution, therefore a numerical method is required. We shall not be implementing this numerical method ourselves, instead using a function from <strong>SciPy</strong> to solve our problem. In short the numerical minimization technique involves following the negative gradient (or an approximation of this) from a given starting point, until a local minimum is found (essentially the solution is captured here).</p>
@@ -739,13 +716,13 @@ Include a visual analogy of a ball rolling down a surface
 ---></section>
 <section id="nonlinear-least-squares-minimization-with-scipy-optimize-leastsq">
 <h2>Nonlinear Least Squares Minimization with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.leastsq</span></code><a class="headerlink" href="#nonlinear-least-squares-minimization-with-scipy-optimize-leastsq" title="Permalink to this headline">¶</a></h2>
-<p>The SciPy module <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html"><code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code></a> contains functions for minimization, least squares and root finding techniques. Of particular interest to us now is the <code class="docutils literal notranslate"><span class="pre">leastsq</span></code> function (documentation <a class="reference external" href="https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.optimize.leastsq.html">here</a>), which we shall use to perform nonlinear least squares minimization.</p>
+<p>The SciPy module <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html"><code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code></a> contains functions for minimization, least squares and root finding techniques. Of particular interest to us now is the <code class="docutils literal notranslate"><span class="pre">leastsq</span></code> function (documentation <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.leastsq.html">here</a>), which we shall use to perform nonlinear least squares minimization.</p>
 <p>The call signature of <code class="docutils literal notranslate"><span class="pre">leastsq</span></code>, including only the arguments of immediate interest to us, is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">leastsq</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">args</span> <span class="o">=</span> <span class="p">()</span> <span class="p">)</span>
 </pre></div>
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">x0</span></code> argument is an initial guess for the unknown parameters we are trying to find (required by the numerical minimization technique). In our case this is an initial case of the <span class="math notranslate nohighlight">\(a_j\)</span> constants.</p>
-<p>The keyword argument <code class="docutils literal notranslate"><span class="pre">args</span></code> is a tuple of the variables or data we are fitting the model to. In our case <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. The order in which these variables are presented is up to you, but must correspond to the order they are used in <code class="docutils literal notranslate"><span class="pre">fun</span></code>. Each element of this tuple should be an array or list of data points, for instance <code class="docutils literal notranslate"><span class="pre">(xdata,</span> <span class="pre">ydata)</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">x0</span></code> argument is an initial guess for the unknown parameters we are trying to find (required by the numerical minimization technique). In our case this is an initial guess for the <span class="math notranslate nohighlight">\(a_j\)</span> constants.</p>
+<p>The keyword argument <code class="docutils literal notranslate"><span class="pre">args</span></code> is a tuple of the variables or data we are fitting the model to. In our case <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>. The order in which these variables are presented is up to you, but must correspond to the order they are used in <code class="docutils literal notranslate"><span class="pre">func</span></code>. Each element of this tuple should be an array or list of data points, for instance <code class="docutils literal notranslate"><span class="pre">(xdata,</span> <span class="pre">ydata)</span></code>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">func</span></code> argument is a callable object (function). It is referred to as the residual. It is the sum of the residuals squared that will be minimized.For the sum of errors squared the residual is equivalent to our error terms (<span class="math notranslate nohighlight">\(\epsilon_i\)</span>).</p>
 <!---
 Mention that the sum of errors squared is called the objective function
@@ -761,7 +738,30 @@ S^2 = \sum_{i = 1}^{N} \text{func(arguments)}^2
 <p>where <code class="docutils literal notranslate"><span class="pre">params</span></code> is a list or array of the parameters we are trying to find (<span class="math notranslate nohighlight">\(a_j\)</span>), and <code class="docutils literal notranslate"><span class="pre">args</span></code> is the tuple of the data for our variables (<span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>).</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">*</span></code> operator before a sequence data structure in a function argument unpacks that data structure as if each element where entered into the function individually. For example <code class="docutils literal notranslate"><span class="pre">f(</span> <span class="pre">*(x,y,z)</span> <span class="pre">)</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">f(x,</span> <span class="pre">y,</span> <span class="pre">z)</span></code></p>
 <p>The return value of the <code class="docutils literal notranslate"><span class="pre">leastsq</span></code> function (if it is only given the arguments listed above) is a tuple containing the solution for the <span class="math notranslate nohighlight">\(a_j\)</span> and an integer flag (for which a value between 1 and 4 indicates the solution was found).</p>
-<p>Putting this all together, we can solve the problem from above:</p>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5><p>Let’s use <code class="docutils literal notranslate"><span class="pre">scipy.optimize.leastsq</span></code> to fit the functional relation:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+y &amp;= a_0 + a_1 e^{a_2 x}\\
+  &amp;= f(x; \vec{a}) 
+\end{align*}\]</div>
+<p>to the <strong>nonlinear_data.csv</strong>.</p>
+<p>Firstly we shall define the functional relation:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>and use this to define the residuals. For regular least-squares, we will use the error as the residuals:</p>
+<div class="math notranslate nohighlight">
+\[
+\epsilon = f(x; \vec{a}) - y
+\]</div>
+<p>in Python this looks like:</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">err</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p>Putting this into action:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -799,10 +799,10 @@ S^2 = \sum_{i = 1}^{N} \text{func(arguments)}^2
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/scipy_16_0.png" src="../../../_images/scipy_16_0.png" />
+<img alt="../../../_images/scipy_18_0.png" src="../../../_images/scipy_18_0.png" />
 </div>
 </div>
-<section id="solutions-converging-on-local-minima">
+</div><section id="solutions-converging-on-local-minima">
 <h3>Solutions Converging on Local Minima<a class="headerlink" href="#solutions-converging-on-local-minima" title="Permalink to this headline">¶</a></h3>
 <p>As mentioned before, the numerical algorithm is complete once it has minimized the objective function (the sum of errors squared in out case) to a <strong>local minimum</strong>. It is possible for the solution to not represent the global minimum, which is the ideal solution to obtain.</p>
 <p>Let’s take a relatively simple example to illustrate this. Consider the functional relation:</p>
@@ -812,30 +812,30 @@ y = a_0 + a_1 e^{-a_2 x} \sin(a_3 x)
 \]</div>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/scipy_19_0.png" src="../../../_images/scipy_19_0.png" />
+<img alt="../../../_images/scipy_22_0.png" src="../../../_images/scipy_22_0.png" />
 </div>
 </div>
 <p>Given a set of data characterized by this relation:</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/scipy_21_0.png" src="../../../_images/scipy_21_0.png" />
+<img alt="../../../_images/scipy_24_0.png" src="../../../_images/scipy_24_0.png" />
 </div>
 </div>
 <p>It is relatively easy to find a good fit using <code class="docutils literal notranslate"><span class="pre">leastsq</span></code>:</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/scipy_23_0.png" src="../../../_images/scipy_23_0.png" />
+<img alt="../../../_images/scipy_26_0.png" src="../../../_images/scipy_26_0.png" />
 </div>
 </div>
 <p>Here are a couple of examples of solutions that returns a supposedly successful solution, but have obviously not converged to the best fit.</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/scipy_25_0.png" src="../../../_images/scipy_25_0.png" />
+<img alt="../../../_images/scipy_28_0.png" src="../../../_images/scipy_28_0.png" />
 </div>
 </div>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/scipy_26_0.png" src="../../../_images/scipy_26_0.png" />
+<img alt="../../../_images/scipy_29_0.png" src="../../../_images/scipy_29_0.png" />
 </div>
 </div>
 <p>Here is an example of a solution that has not succeded (returned an integer flag greater than 4):</p>
@@ -845,7 +845,7 @@ y = a_0 + a_1 e^{-a_2 x} \sin(a_3 x)
   warnings.warn(errors[info][0], RuntimeWarning)
 </pre></div>
 </div>
-<img alt="../../../_images/scipy_28_1.png" src="../../../_images/scipy_28_1.png" />
+<img alt="../../../_images/scipy_31_1.png" src="../../../_images/scipy_31_1.png" />
 </div>
 </div>
 <p>If your model does not fit, try varying the initial guess for the fit parameters.</p>

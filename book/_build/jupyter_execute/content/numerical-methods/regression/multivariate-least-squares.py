@@ -291,11 +291,11 @@ $$
 
 $$,
 \begin{matrix}
-\texttt{x_data} = [ & [x_{1,~1}, & x_{1,~2}, & \cdots, & x_{1,~N} &], \\
-                    & [x_{2,~1}, & x_{2,~2}, & \cdots, & x_{2,~N} &],\\
-                    & [x_{3,~1}, & x_{3,~2}, & \cdots, & x_{3~N} &],\\
-                    & [\vdots~~, & \vdots~~, & \ddots, & \vdots &],\\
-                    & [x_{m,~1}, & x_{m,~2}, & \cdots, & x_{m,~N} &]]\\
+\texttt{x_data} = [ & [ & x_{1,~1}, & x_{1,~2}, & \cdots, & x_{1,~N} &], \\
+                    & [ & x_{2,~1}, & x_{2,~2}, & \cdots, & x_{2,~N} &],\\
+                    & [ & x_{3,~1}, & x_{3,~2}, & \cdots, & x_{3~N} &],\\
+                    & [ & \vdots~~, & \vdots~~, & \ddots, & \vdots &],\\
+                    & [ & x_{m,~1}, & x_{m,~2}, & \cdots, & x_{m,~N} &]]\\
 \end{matrix}
 $$
 
@@ -390,6 +390,7 @@ for l in range(m):
 ```
 
 Now, consider the triangle off of the diagonal. That is the region:
+<!-- Consider showing the diagonal in this, or perhaps find a way to annotate the matrix regions in the matrix drawn further up -->
 
 $$
 \begin{pmatrix}
@@ -398,26 +399,26 @@ $$
 -         & -        & -                         & \langle{x_2 x_3}\rangle  & \cdots  & \langle{x_2 x_m}\rangle\\
 -         & -        & -                         & -                        & \cdots  & \langle{x_3 x_m}\rangle\\
 \vdots    & \vdots   & \vdots                    & \vdots                   & \ddots  & \vdots \\
--         & -        & -                         & -                        & \cdots  & \langle{x_m~^2}\rangle\\
+-         & -        & -                         & -                        & \cdots  & -\\
 \end{pmatrix}
 $$
 
 This region exhibits the pattern:
 
 $$
-\boldsymbol{X}_{k l} = \langle{x_k x_l}\rangle ~~~~\text{where}~ l > k
+\boldsymbol{X}_{k l} = \langle{x_k x_l}\rangle ~~~~ \text{where}~ 1 \leq k \leq m ~~\text{and}~~  l > k
 $$
 
 The diagonal has a fairly simple pattern, starting from (row, column) $(1,1)$:
 
 $$
-\boldsymbol{X}_{k k} = \langle{x_k~^2}\rangle
+\boldsymbol{X}_{k k} = \langle{x_k~^2}\rangle ~~~~ \text{where}~ 1 \leq k \leq m
 $$
 
 Note, however, that this is a special case of the rules for constructing region 3. We can therefore combine regions 2 and 3 with the rule:
 
 $$
-\boldsymbol{X}_{k l} = \langle{x_k x_l}\rangle ~~~~\text{where}~ l \geq k
+\boldsymbol{X}_{k l} = \langle{x_k x_l}\rangle ~~~~\text{where}~ 1 \leq k \leq m ~~\text{and}~~  l \geq k
 $$
 
 In the code this becomes:
@@ -426,7 +427,7 @@ In the code this becomes:
 # Inner matrix
 
 for k in range(m):
-    for l in range(m):
+    for l in range(k, m):
         X[k + 1, l + 1] = np.mean( x_data[k, :] * x_data[l, :] )
         
         #Setting the value for the lower triangle

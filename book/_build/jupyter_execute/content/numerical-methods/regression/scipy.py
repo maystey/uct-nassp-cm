@@ -1,10 +1,12 @@
+%matplotlib inline
+
 # Least Squares Minimization with `scipy.optimize.leastsq`
 
 So far we have only considered functional relationships that are linear in the unknown constants. Non-linear cases are far more complicated and generally require numerical solutions. We will use a function from the SciPy module [`scipy.optimize`](https://docs.scipy.org/doc/scipy/reference/optimize.html), which contains functions for minimization, least squares and root finding techniques.
 
 ## An Example of a Nonlinear Model
 
-Consider the data found in the data file **nonlinear_data.csv** on [GitHub](https://raw.githubusercontent.com/maystey/uct_nassp_cm/gh-pages/regression/data/nonlinear_data.csv) , plotted below:
+Consider the data found in the data file **nonlinear_data.csv** on [GitHub](https://raw.githubusercontent.com/maystey/uct_nassp_cm2021/master/book/content/numerical-methods/regression/data/nonlinear_data.csv) , plotted below:
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -29,7 +31,7 @@ ydata = np.random.normal(loc = f(a, xdata), scale = sigma_y)
 np.savetxt('data/nonlinear_data.csv', np.array((xdata, ydata)).T, header = 'x,y', delimiter = ',')
 
 #Plotting
-plt.plot(xdata, ydata, 'ro')
+plt.plot(xdata, ydata, 'bo')
 plt.show()
 
 Though the data may appear to follow a linear trend, this is not the case. Consider the linear fit below:
@@ -106,7 +108,7 @@ $$
 
 ## Nonlinear Least Squares Minimization with `scipy.optimize.leastsq`
 
-The SciPy module [`scipy.optimize`](https://docs.scipy.org/doc/scipy/reference/optimize.html) contains functions for minimization, least squares and root finding techniques. Of particular interest to us now is the `leastsq` function (documentation [here](https://docs.scipy.org/doc/scipy-0.19.0/reference/generated/scipy.optimize.leastsq.html)), which we shall use to perform nonlinear least squares minimization.
+The SciPy module [`scipy.optimize`](https://docs.scipy.org/doc/scipy/reference/optimize.html) contains functions for minimization, least squares and root finding techniques. Of particular interest to us now is the `leastsq` function (documentation [here](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.leastsq.html)), which we shall use to perform nonlinear least squares minimization.
 
 The call signature of `leastsq`, including only the arguments of immediate interest to us, is:
 
@@ -114,9 +116,9 @@ The call signature of `leastsq`, including only the arguments of immediate inter
 leastsq(func, x0, args = () )
 ```
 
-The `x0` argument is an initial guess for the unknown parameters we are trying to find (required by the numerical minimization technique). In our case this is an initial case of the $a_j$ constants.
+The `x0` argument is an initial guess for the unknown parameters we are trying to find (required by the numerical minimization technique). In our case this is an initial guess for the $a_j$ constants.
 
-The keyword argument `args` is a tuple of the variables or data we are fitting the model to. In our case $x$ and $y$. The order in which these variables are presented is up to you, but must correspond to the order they are used in `fun`. Each element of this tuple should be an array or list of data points, for instance `(xdata, ydata)`.
+The keyword argument `args` is a tuple of the variables or data we are fitting the model to. In our case $x$ and $y$. The order in which these variables are presented is up to you, but must correspond to the order they are used in `func`. Each element of this tuple should be an array or list of data points, for instance `(xdata, ydata)`.
 
 The `func` argument is a callable object (function). It is referred to as the residual. It is the sum of the residuals squared that will be minimized.For the sum of errors squared the residual is equivalent to our error terms ($\epsilon_i$). 
 
@@ -141,7 +143,40 @@ The `*` operator before a sequence data structure in a function argument unpacks
 
 The return value of the `leastsq` function (if it is only given the arguments listed above) is a tuple containing the solution for the $a_j$ and an integer flag (for which a value between 1 and 4 indicates the solution was found).
 
-Putting this all together, we can solve the problem from above:
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b></h5>
+
+Let's use `scipy.optimize.leastsq` to fit the functional relation:
+
+\begin{align*}
+y &= a_0 + a_1 e^{a_2 x}\\
+  &= f(x; \vec{a}) 
+\end{align*}
+
+    
+to the **nonlinear_data.csv**.
+
+Firstly we shall define the functional relation:
+
+```Python
+def f(a, x):
+    return a[0] + a[1] * np.exp(a[2] * x)
+```
+
+and use this to define the residuals. For regular least-squares, we will use the error as the residuals:
+
+$$
+\epsilon = f(x; \vec{a}) - y
+$$
+
+in Python this looks like:
+
+```Python
+def err(a, x, y):
+    return f(a, x) - y
+```
+
+Putting this into action:
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -174,6 +209,8 @@ plt.plot(x, f(a, x), 'r-')
 plt.xlabel('x')
 plt.ylabel('y')
 plt.show()
+
+</div>
 
 ### Solutions Converging on Local Minima
 
