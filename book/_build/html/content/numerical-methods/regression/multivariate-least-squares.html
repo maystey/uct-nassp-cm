@@ -748,7 +748,7 @@ y_i + \epsilon_i &amp;= a_0 + a_1 x_{1,~i} + a_2 x_{2,~ i}\\
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 S &amp;= \sum_{i = 1}^N \epsilon_i^2 \\
-  &amp;= \sum_{i=1}^N (a_0 + a_1 x_{1,~i} + a_2 x_{2,~i} - y_i)\\
+  &amp;= \sum_{i=1}^N (a_0 + a_1 x_{1,~i} + a_2 x_{2,~i} - y_i)^2\\
 \end{align*}\]</div>
 <p>We want to minimize <span class="math notranslate nohighlight">\(S\)</span> with respect to each of the constants, <span class="math notranslate nohighlight">\(a_0\)</span>, <span class="math notranslate nohighlight">\(a_1\)</span> and <span class="math notranslate nohighlight">\(a_2\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -958,10 +958,10 @@ a_0 \langle{x_{m}}\rangle &amp;+&amp; a_1 \langle{x_m x_1}\rangle &amp;+&amp; a_
 \[\begin{split}
 \begin{pmatrix}
 1                     &amp; \langle{x_1}\rangle      &amp; \langle{x_2}\rangle      &amp; \cdots &amp; \langle{x_m}\rangle\\
-\langle{x_1}\rangle   &amp; \langle{x_1~^2}\rangle   &amp; \langle{x_1 x_2}\rangle  &amp; \cdots &amp; \langle{x_1 x_m}\rangle\\
-\langle{x_2}\rangle   &amp; \langle{x_2 x_1}\rangle  &amp; \langle{x_2~^2}\rangle   &amp; \cdots &amp; \langle{x_2 x_m}\rangle\\
+\langle{x_1}\rangle   &amp; \langle{x_1^{~~2}}\rangle   &amp; \langle{x_1 x_2}\rangle  &amp; \cdots &amp; \langle{x_1 x_m}\rangle\\
+\langle{x_2}\rangle   &amp; \langle{x_2 x_1}\rangle  &amp; \langle{x_2^{~~2}}\rangle   &amp; \cdots &amp; \langle{x_2 x_m}\rangle\\
 \vdots                &amp; \vdots                   &amp; \vdots                   &amp; \ddots &amp; \vdots\\
-\langle{x_m}\rangle   &amp; \langle{x_m x_1}\rangle  &amp; \langle{x_m x_2}\rangle  &amp; \cdots &amp; \langle{x_m~^2}\rangle\\
+\langle{x_m}\rangle   &amp; \langle{x_m x_1}\rangle  &amp; \langle{x_m x_2}\rangle  &amp; \cdots &amp; \langle{x_m^{~~2}}\rangle\\
 \end{pmatrix}
 \begin{pmatrix}
 a_0\\
@@ -996,7 +996,7 @@ a_m\\
 \texttt{y_data} = [y_{1}, y_{2}, y_{3}, \dots, y_{N}]
 \]</div>
 <div class="math notranslate nohighlight">
-\[\begin{split},
+\[\begin{split}
 \begin{matrix}
 \texttt{x_data} = [ &amp; [ &amp; x_{1,~1}, &amp; x_{1,~2}, &amp; \cdots, &amp; x_{1,~N} &amp;], \\
                     &amp; [ &amp; x_{2,~1}, &amp; x_{2,~2}, &amp; \cdots, &amp; x_{2,~N} &amp;],\\
@@ -1036,11 +1036,11 @@ a_m\\
 \boldsymbol{X} = 
 \begin{pmatrix}
 1                     &amp; \langle{x_1}\rangle      &amp; \langle{x_2}\rangle      &amp; \langle{x_3}\rangle      &amp; \cdots &amp; \langle{x_m}\rangle\\
-\langle{x_1}\rangle   &amp; \langle{x_1~^2}\rangle   &amp; \langle{x_1 x_2}\rangle  &amp; \langle{x_1 x_3}\rangle  &amp; \cdots &amp; \langle{x_1 x_m}\rangle\\
-\langle{x_2}\rangle   &amp; \langle{x_2 x_1}\rangle  &amp; \langle{x_2~^2}\rangle   &amp; \langle{x_2 x_3}\rangle  &amp; \cdots &amp; \langle{x_2 x_m}\rangle\\
-\langle{x_3}\rangle   &amp; \langle{x_3 x_1}\rangle  &amp; \langle{x_3 x_2}\rangle  &amp; \langle{x_3~^2}\rangle   &amp; \cdots &amp; \langle{x_3 x_m}\rangle\\
+\langle{x_1}\rangle   &amp; \langle{x_1^{~~2}}\rangle   &amp; \langle{x_1 x_2}\rangle  &amp; \langle{x_1 x_3}\rangle  &amp; \cdots &amp; \langle{x_1 x_m}\rangle\\
+\langle{x_2}\rangle   &amp; \langle{x_2 x_1}\rangle  &amp; \langle{x_2^{~~2}}\rangle   &amp; \langle{x_2 x_3}\rangle  &amp; \cdots &amp; \langle{x_2 x_m}\rangle\\
+\langle{x_3}\rangle   &amp; \langle{x_3 x_1}\rangle  &amp; \langle{x_3 x_2}\rangle  &amp; \langle{x_3^{~2}}\rangle   &amp; \cdots &amp; \langle{x_3 x_m}\rangle\\
 \vdots                &amp; \vdots                   &amp; \vdots                   &amp; \vdots                   &amp; \ddots &amp; \vdots\\
-\langle{x_m}\rangle   &amp; \langle{x_m x_1}\rangle  &amp; \langle{x_m x_2}\rangle  &amp; \langle{x_m x_3}\rangle  &amp; \cdots &amp; \langle{x_m~^2}\rangle\\
+\langle{x_m}\rangle   &amp; \langle{x_m x_1}\rangle  &amp; \langle{x_m x_2}\rangle  &amp; \langle{x_m x_3}\rangle  &amp; \cdots &amp; \langle{x_m^{~~2}}\rangle\\
 \end{pmatrix}
 \end{split}\]</div>
 <p>the dimensions of this matrix is <span class="math notranslate nohighlight">\((m+1)\times(m+1)\)</span>, we can get the value for <span class="math notranslate nohighlight">\(m\)</span> from the dimensions of the <code class="docutils literal notranslate"><span class="pre">x_data</span></code> array:</p>

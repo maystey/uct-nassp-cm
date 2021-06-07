@@ -31,7 +31,7 @@ The sum of errors squared is given by:
 
 \begin{align*}
 S &= \sum_{i = 1}^N \epsilon_i^2 \\
-  &= \sum_{i=1}^N (a_0 + a_1 x_{1,~i} + a_2 x_{2,~i} - y_i)\\
+  &= \sum_{i=1}^N (a_0 + a_1 x_{1,~i} + a_2 x_{2,~i} - y_i)^2\\
 \end{align*}
 
 We want to minimize $S$ with respect to each of the constants, $a_0$, $a_1$ and $a_2$:
@@ -248,10 +248,10 @@ To solve these equations numerically, we can reformulate these equations into a 
 $$
 \begin{pmatrix}
 1                     & \langle{x_1}\rangle      & \langle{x_2}\rangle      & \cdots & \langle{x_m}\rangle\\
-\langle{x_1}\rangle   & \langle{x_1~^2}\rangle   & \langle{x_1 x_2}\rangle  & \cdots & \langle{x_1 x_m}\rangle\\
-\langle{x_2}\rangle   & \langle{x_2 x_1}\rangle  & \langle{x_2~^2}\rangle   & \cdots & \langle{x_2 x_m}\rangle\\
+\langle{x_1}\rangle   & \langle{x_1^{~~2}}\rangle   & \langle{x_1 x_2}\rangle  & \cdots & \langle{x_1 x_m}\rangle\\
+\langle{x_2}\rangle   & \langle{x_2 x_1}\rangle  & \langle{x_2^{~~2}}\rangle   & \cdots & \langle{x_2 x_m}\rangle\\
 \vdots                & \vdots                   & \vdots                   & \ddots & \vdots\\
-\langle{x_m}\rangle   & \langle{x_m x_1}\rangle  & \langle{x_m x_2}\rangle  & \cdots & \langle{x_m~^2}\rangle\\
+\langle{x_m}\rangle   & \langle{x_m x_1}\rangle  & \langle{x_m x_2}\rangle  & \cdots & \langle{x_m^{~~2}}\rangle\\
 \end{pmatrix}
 \begin{pmatrix}
 a_0\\
@@ -289,7 +289,7 @@ $$
 \texttt{y_data} = [y_{1}, y_{2}, y_{3}, \dots, y_{N}]
 $$
 
-$$,
+$$
 \begin{matrix}
 \texttt{x_data} = [ & [ & x_{1,~1}, & x_{1,~2}, & \cdots, & x_{1,~N} &], \\
                     & [ & x_{2,~1}, & x_{2,~2}, & \cdots, & x_{2,~N} &],\\
@@ -336,11 +336,11 @@ $$
 \boldsymbol{X} = 
 \begin{pmatrix}
 1                     & \langle{x_1}\rangle      & \langle{x_2}\rangle      & \langle{x_3}\rangle      & \cdots & \langle{x_m}\rangle\\
-\langle{x_1}\rangle   & \langle{x_1~^2}\rangle   & \langle{x_1 x_2}\rangle  & \langle{x_1 x_3}\rangle  & \cdots & \langle{x_1 x_m}\rangle\\
-\langle{x_2}\rangle   & \langle{x_2 x_1}\rangle  & \langle{x_2~^2}\rangle   & \langle{x_2 x_3}\rangle  & \cdots & \langle{x_2 x_m}\rangle\\
-\langle{x_3}\rangle   & \langle{x_3 x_1}\rangle  & \langle{x_3 x_2}\rangle  & \langle{x_3~^2}\rangle   & \cdots & \langle{x_3 x_m}\rangle\\
+\langle{x_1}\rangle   & \langle{x_1^{~~2}}\rangle   & \langle{x_1 x_2}\rangle  & \langle{x_1 x_3}\rangle  & \cdots & \langle{x_1 x_m}\rangle\\
+\langle{x_2}\rangle   & \langle{x_2 x_1}\rangle  & \langle{x_2^{~~2}}\rangle   & \langle{x_2 x_3}\rangle  & \cdots & \langle{x_2 x_m}\rangle\\
+\langle{x_3}\rangle   & \langle{x_3 x_1}\rangle  & \langle{x_3 x_2}\rangle  & \langle{x_3^{~2}}\rangle   & \cdots & \langle{x_3 x_m}\rangle\\
 \vdots                & \vdots                   & \vdots                   & \vdots                   & \ddots & \vdots\\
-\langle{x_m}\rangle   & \langle{x_m x_1}\rangle  & \langle{x_m x_2}\rangle  & \langle{x_m x_3}\rangle  & \cdots & \langle{x_m~^2}\rangle\\
+\langle{x_m}\rangle   & \langle{x_m x_1}\rangle  & \langle{x_m x_2}\rangle  & \langle{x_m x_3}\rangle  & \cdots & \langle{x_m^{~~2}}\rangle\\
 \end{pmatrix}
 $$
 
