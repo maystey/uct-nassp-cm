@@ -5,17 +5,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 the version number, `a.b.c`, follows the following scheme:
 
 - `a`. The edition (0 for the initial, incomplete edition), this will generally change on a yearly basis.
-- `b`. New chapter(s) added or drastically changed, the number increase is the number of chapters added/changed
+- `b`. New chapter(s) added or drastically changed.
 - `c`. New sections, corrections, etc. The number change is consecutive, not reflecting the number of changes.
 
-## [UNRELEASED]
+## [2.1.0] - 2021-08-13
 
 ### Added
 
 - Added part `numerical-methods`
 - Added page `standard-library/if-statements/nested`
-- Add custom css for formatting tables: `table.css`
-- Add custom css class for **Worked Examples**
+- Add custom css for 
+  - formatting tables: `table.css`
+  - worked examples: `worked_example_div.css`
 
 ### Changed
 
