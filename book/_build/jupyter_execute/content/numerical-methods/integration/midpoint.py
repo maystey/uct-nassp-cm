@@ -52,7 +52,7 @@ $$
 \int_a^b f(x) ~dx \approx \frac{b - a}{n} \sum_{i=1}^n f\left(\frac{x_i + x_{i-1}}{2}\right)
 $$
 
-Assuming that $n$ is chosen so that $0 < \tfrac{b - a}{n} < 1$, the error for this method is $O\left(\tfrac{1}{n}^3\right)$ {cite}`nm-i-m-efferson-numerical-methods`.
+Assuming that $n$ is chosen so that $0 < \tfrac{b - a}{n} < 1$, the error for this method is $O\left(\tfrac{1}{n}^3\right)$ {cite}`nm-i-m-epperson-numerical-methods`.
 
 ### Composite Midpoint Rule with a Discrete Data Set
 

@@ -161,7 +161,7 @@ $$
 \int_a^b f(x)~ dx \approx \frac{b - a}{6 n} \left[ f(a) + 2 \sum_{i = 2}^{n-1} f(x_i) + 4 \sum_{i =1}^{n} f\left( \frac{x_{i-1} + x_i}{2} \right) + f(b) \right]
 $$
 
-Assuming that $0 < \tfrac{b - a}{6 n} < 1$, then the error for this method is $O\left(\tfrac{1}{n}^4\right)$ {cite}`nm-i-s-efferson-numerical-methods`
+Assuming that $0 < \tfrac{b - a}{6 n} < 1$, then the error for this method is $O\left(\tfrac{1}{n}^4\right)$ {cite}`nm-i-s-epperson-numerical-methods`
 
 ### Composite Simpson's Rule with a Discrete Data Set
 

@@ -4,7 +4,7 @@ The aforementioned Euler's method is the simplest single step ODE solving method
 
 ## Outline of the Derivation
 
-The idea behind Runge-Kutta is to perform integration steps using a weighted average of Euler-like steps. The following outline {cite}`nm-ode-rk-efferson-numerical-methods` is not a full derivation of the method, as this requires theorems outside the scope of this course.
+The idea behind Runge-Kutta is to perform integration steps using a weighted average of Euler-like steps. The following outline {cite}`nm-ode-rk-epperson-numerical-methods` is not a full derivation of the method, as this requires theorems outside the scope of this course.
 
 ## Second Order Runge-Kutta (RK2)
 
@@ -200,7 +200,7 @@ $$
 y_{i+1} = y_i + hf\left(x_i + \tfrac{1}{2} h, y_i + \tfrac{1}{2} h f(x_i, y_i) \right)
 $$
 
-Both of these methods have an accumulated/global truncated error of $O(h^2)$, as opposed to the Euler method's $O(h)$ {cite}`nm-ode-rk-efferson-numerical-methods` (remember that an $O(h)$ trend dominates $O(h^2)$ for $0<h<1$, i.e. $O(h)$ will have higher error in general).
+Both of these methods have an accumulated/global truncated error of $O(h^2)$, as opposed to the Euler method's $O(h)$ {cite}`nm-ode-rk-epperson-numerical-methods` (remember that an $O(h)$ trend dominates $O(h^2)$ for $0<h<1$, i.e. $O(h)$ will have higher error in general).
 
 <div class="worked-example">
     <h5 class="worked-example-title"><b>Worked Example</b></h5>
