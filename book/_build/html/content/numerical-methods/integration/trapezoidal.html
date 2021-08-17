@@ -662,6 +662,11 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
         </nav>
@@ -735,6 +740,7 @@ x_{i} - x_{i - 1} = \frac{b- a}{n}
 \[
 \int_a^b f(x)~ dx \approx \frac{b -a}{2 n} \left[f(a) + 2 \sum_{i=1}^{n-1} f(x_i) + f(b)\right]
 \]</div>
+<p>For a choice of <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{n} &lt; 1\)</span>, the error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^2\right)\)</span> <span id="id1">[<a class="reference internal" href="#id4"><span>IntTrap1</span></a>]</span>.</p>
 <section id="composite-trapezoidal-rule-with-a-discrete-data-set">
 <h3>Composite Trapezoidal Rule with a Discrete Data Set<a class="headerlink" href="#composite-trapezoidal-rule-with-a-discrete-data-set" title="Permalink to this headline">¶</a></h3>
 <p>Again, consider the data set <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> for <span class="math notranslate nohighlight">\(i = 0, \dots, n\)</span>, where</p>
@@ -753,6 +759,15 @@ f(x_i) = y_i
 \int_{x_0}^{x_n} f(x)~ dx \approx \frac{\Delta x}{2} \left[ y_0 + 2 \sum_{i=1}^{n-1} y_i + y_n \right]
 \]</div>
 </section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id2"><dl class="citation">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">IntTrap1</a></span></dt>
+<dd><p>James F. Epperson. <em>An Introduction to Numerical Methods and Analysis</em>. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.</p>
+</dd>
+</dl>
+</p>
 </section>
 </section>
 

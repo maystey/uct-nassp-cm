@@ -135,6 +135,6 @@ There is a limit to how much reducing $h$ will help you. If $h$ is too small you
 ```{bibliography} ../../../_bibliography/references.bib
 :cited:
 :style: plain
-:labelprefix: EE
+:labelprefix: EulerErr
 :keyprefix: nm-ode-ee-
 ```

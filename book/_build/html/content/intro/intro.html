@@ -670,11 +670,11 @@
 <p>Programming is, in essence, writing a series of instructions for the computer to execute. This is done using a programming language, which can be understood or translated to a form that can be understood by the computer.</p>
 <p>At the lowest level the language of computers is called machine code. This language is used to communicate with the computer’s CPU through binary or hexadecimal instructions.
 Machine code is dependent on the computer hardware being used and is not easy to understand as humans. A step up from this is
-an assembly language, which uses some human language, but is still difficult to understand and dependent on the computer architecture <span id="id1">[<a class="reference internal" href="#id13"><span>I6</span></a>,<a class="reference internal" href="#id14"><span>I4</span></a>]</span>.</p>
+an assembly language, which uses some human language, but is still difficult to understand and dependent on the computer architecture <span id="id1">[<a class="reference internal" href="#id13"><span>Py6</span></a>,<a class="reference internal" href="#id14"><span>Py4</span></a>]</span>.</p>
 <p>Hardware dependence could be a big problem. Programs written for one computer would not necessarily work on another computer, they would have to be translated (by a human) first. To bridge this difference between hardware specifications high level programming languages were developed.</p>
 <p>Most of the programming languages you are likely to use these days are high-level programming languages. Besides being CPU independent, these languages are designed to be readable by humans. <!--They also allow for programs to be written independently (to some degree) from the hardware in question. -->
-At some level these languages will need to be compiled (translated <span id="id2">[<a class="reference internal" href="#id15"><span>I5</span></a>]</span>)
-to machine code <span id="id3">[<a class="reference internal" href="#id13"><span>I6</span></a>]</span>.</p>
+At some level these languages will need to be compiled (translated <span id="id2">[<a class="reference internal" href="#id15"><span>Py5</span></a>]</span>)
+to machine code <span id="id3">[<a class="reference internal" href="#id13"><span>Py6</span></a>]</span>.</p>
 </section>
 <section id="what-is-a-script">
 <h2>What is a Script?<a class="headerlink" href="#what-is-a-script" title="Permalink to this headline">¶</a></h2>
@@ -685,31 +685,31 @@ to machine code <span id="id3">[<a class="reference internal" href="#id13"><span
 <h2>Python, a Dynamic Programming Language.<a class="headerlink" href="#python-a-dynamic-programming-language" title="Permalink to this headline">¶</a></h2>
 <p>Python is a high level language and thus needs to eventually be compiled down. <!-- translated into machine code. Python is a dynamic programming language. --></p>
 <p>Many high level programming languages’ source code is compiled to machine code once, and then can be executed in this form. These are called static programming languages (C is an example).</p>
-<p>Dynamic programming languages are languages where operations that would normally take place at compile-time (when the code is compiled) can instead be done at run-time (when the program is executed) <span id="id4">[<a class="reference internal" href="#id16"><span>I2</span></a>]</span>. Python is a dynamic programming language.</p>
-<p>When you run a python script it is compiled to byte code (if it hasn’t been already). This byte code is a lower-level, platform independent representation of your source code <!--- sic --> <span id="id5">[<a class="reference internal" href="#id18"><span>I3</span></a>,<a class="reference internal" href="#id17"><span>I1</span></a>]</span>.</p>
-<p>Byte code is similar to the CPU <!--- Necessary repeatition?--> specific assembly code, but is instead executed by software called a virtual machine (which simulates a CPU environment). <span id="id6">[<a class="reference internal" href="#id18"><span>I3</span></a>]</span>. The Python Virtual Machine is always present in the Python system and is the last step of the Python Interpreter <span id="id7">[<a class="reference internal" href="#id17"><span>I1</span></a>]</span>. <!-- Too much jargon invoked? --></p>
+<p>Dynamic programming languages are languages where operations that would normally take place at compile-time (when the code is compiled) can instead be done at run-time (when the program is executed) <span id="id4">[<a class="reference internal" href="#id16"><span>Py2</span></a>]</span>. Python is a dynamic programming language.</p>
+<p>When you run a python script it is compiled to byte code (if it hasn’t been already). This byte code is a lower-level, platform independent representation of your source code <!--- sic --> <span id="id5">[<a class="reference internal" href="#id18"><span>Py3</span></a>,<a class="reference internal" href="#id17"><span>Py1</span></a>]</span>.</p>
+<p>Byte code is similar to the CPU <!--- Necessary repeatition?--> specific assembly code, but is instead executed by software called a virtual machine (which simulates a CPU environment). <span id="id6">[<a class="reference internal" href="#id18"><span>Py3</span></a>]</span>. The Python Virtual Machine is always present in the Python system and is the last step of the Python Interpreter <span id="id7">[<a class="reference internal" href="#id17"><span>Py1</span></a>]</span>. <!-- Too much jargon invoked? --></p>
 <!--- These virtual machines can be written in any language. {%cite ned %} -->
 <!-- Briefly mention dynamic typing? -->
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p id="id8"><dl class="citation">
-<dt class="label" id="id17"><span class="brackets">I1</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id7">2</a>)</span></dt>
+<dt class="label" id="id17"><span class="brackets">Py1</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id7">2</a>)</span></dt>
 <dd><p>Compiling and linking in python — Net-informations.com. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="http://net-informations.com/python/iq/linking.htm">http://net-informations.com/python/iq/linking.htm</a>.</p>
 </dd>
-<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id4">I2</a></span></dt>
+<dt class="label" id="id16"><span class="brackets"><a class="fn-backref" href="#id4">Py2</a></span></dt>
 <dd><p>Dynaimc programming language — MDN Web Docs. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_programming_language">https://developer.mozilla.org/en-US/docs/Glossary/Dynamic_programming_language</a>.</p>
 </dd>
-<dt class="label" id="id18"><span class="brackets">I3</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>)</span></dt>
+<dt class="label" id="id18"><span class="brackets">Py3</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>)</span></dt>
 <dd><p>Ned Batchelder. Is python interpreted or compiled? yes. — Ned Batchelder. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://nedbatchelder.com/blog/201803/is_python_interpreted_or_compiled_yes.html">https://nedbatchelder.com/blog/201803/is_python_interpreted_or_compiled_yes.html</a>.</p>
 </dd>
-<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id1">I4</a></span></dt>
+<dt class="label" id="id14"><span class="brackets"><a class="fn-backref" href="#id1">Py4</a></span></dt>
 <dd><p>Wikipedia contributors. Assembly language — Wikipedia, the free encyclopedia. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Assembly_language">https://en.wikipedia.org/wiki/Assembly_language</a>.</p>
 </dd>
-<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id2">I5</a></span></dt>
+<dt class="label" id="id15"><span class="brackets"><a class="fn-backref" href="#id2">Py5</a></span></dt>
 <dd><p>Wikipedia contributors. Compiler — Wikipedia, the free encyclopedia. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Compiler">https://en.wikipedia.org/wiki/Compiler</a>.</p>
 </dd>
-<dt class="label" id="id13"><span class="brackets">I6</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
+<dt class="label" id="id13"><span class="brackets">Py6</span><span class="fn-backref">(<a href="#id1">1</a>,<a href="#id3">2</a>)</span></dt>
 <dd><p>Wikipedia contributors. Machine code — Wikipedia, the free encyclopedia. [Online; accessed 10-February-2020]. URL: <a class="reference external" href="https://en.wikipedia.org/wiki/Machine_code">https://en.wikipedia.org/wiki/Machine_code</a>.</p>
 </dd>
 </dl>

@@ -650,26 +650,33 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#approximating-f-x-as-a-quadratic-polynomial">
-   Approximating
-   <span class="math notranslate nohighlight">
-    \(f(x)\)
-   </span>
-   as a Quadratic Polynomial
+  <a class="reference internal nav-link" href="#derivation">
+   Derivation
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#integrating-l-x">
-   Integrating
-   <span class="math notranslate nohighlight">
-    \(L(x)\)
-   </span>
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#alternative-interpretation">
-   Alternative Interpretation
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#approximating-f-x-as-a-quadratic-polynomial">
+     Approximating
+     <span class="math notranslate nohighlight">
+      \(f(x)\)
+     </span>
+     as a Quadratic Polynomial
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#integrating-l-x">
+     Integrating
+     <span class="math notranslate nohighlight">
+      \(L(x)\)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#alternative-derivation">
+     Alternative Derivation
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#composite-simpson-s-rule">
@@ -682,6 +689,11 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
  </li>
 </ul>
 
@@ -696,9 +708,17 @@
                 
   <section id="simpson-s-rule">
 <h1>Simpson’s Rule<a class="headerlink" href="#simpson-s-rule" title="Permalink to this headline">¶</a></h1>
-<p>One method of approximating the integral is to approximate the curve itself with something simpler that we know how to integrate. The Simpson’s rule approximates the curve as a parabola, which is simple to integrate.</p>
+<p>A way to interpret the trapezoidal method is that we approximate the integrand curve as a straight line, and then integrate that directly. The Simpson’s method does something similar, but instead of only using the integrand values at the boundaries it uses a third point (the midpoint) to approximate the integrand as a parabola.</p>
+<p>The method approximates the integral as:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_a^b f(x)~ dx \approx \frac{b - a}{6} \left[ f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b)\right]
+\]</div>
+<p>with the derivation of this in the following section.</p>
+<section id="derivation">
+<h2>Derivation<a class="headerlink" href="#derivation" title="Permalink to this headline">¶</a></h2>
 <section id="approximating-f-x-as-a-quadratic-polynomial">
-<h2>Approximating <span class="math notranslate nohighlight">\(f(x)\)</span> as a Quadratic Polynomial<a class="headerlink" href="#approximating-f-x-as-a-quadratic-polynomial" title="Permalink to this headline">¶</a></h2>
+<h3>Approximating <span class="math notranslate nohighlight">\(f(x)\)</span> as a Quadratic Polynomial<a class="headerlink" href="#approximating-f-x-as-a-quadratic-polynomial" title="Permalink to this headline">¶</a></h3>
 <p>In order to approximate <span class="math notranslate nohighlight">\(f(x)\)</span> as a quadratic polynomial we can use a second order Lagrange polynomial. We construct this polynomial by using 3 data points <span class="math notranslate nohighlight">\((a, f(a))\)</span>, <span class="math notranslate nohighlight">\((m, f(m))\)</span> and <span class="math notranslate nohighlight">\((b, f(b))\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
@@ -706,7 +726,7 @@ L(x) = f(a) \frac{(x - m)(x - b)}{(a - m)(a - b)} + f(m) \frac{(x - a)(x - b)}{(
 \]</div>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/simpson_6_0.png" src="../../../_images/simpson_6_0.png" />
+<img alt="../../../_images/simpson_7_0.png" src="../../../_images/simpson_7_0.png" />
 </div>
 </div>
 <p>If we use the midpoint of <span class="math notranslate nohighlight">\([a, b]\)</span> for <span class="math notranslate nohighlight">\(m\)</span>, i.e:</p>
@@ -726,7 +746,7 @@ L(x) = \frac{2}{(b - a)^2} \big[ f(a) (x - m) (x - b) - 2 f(m) (x - a) (x - b) +
 \]</div>
 </section>
 <section id="integrating-l-x">
-<h2>Integrating <span class="math notranslate nohighlight">\(L(x)\)</span><a class="headerlink" href="#integrating-l-x" title="Permalink to this headline">¶</a></h2>
+<h3>Integrating <span class="math notranslate nohighlight">\(L(x)\)</span><a class="headerlink" href="#integrating-l-x" title="Permalink to this headline">¶</a></h3>
 <p>Now, we wish to approximate the integral of <span class="math notranslate nohighlight">\(f(x)\)</span> as the integral of our Lagrange polynomial:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -735,7 +755,7 @@ L(x) = \frac{2}{(b - a)^2} \big[ f(a) (x - m) (x - b) - 2 f(m) (x - a) (x - b) +
 <p>illustrated in the figure below:</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/simpson_10_0.png" src="../../../_images/simpson_10_0.png" />
+<img alt="../../../_images/simpson_11_0.png" src="../../../_images/simpson_11_0.png" />
 </div>
 </div>
 <p>by substituting the variable:</p>
@@ -754,8 +774,8 @@ u = \frac{x - m}{b - m} = 2 \frac{x - \tfrac{1}{2} (a + b)}{b - a}
 \int_a^b f(x) ~dx \approx \frac{b -a}{6} \left[f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b) \right]
 \]</div>
 </section>
-<section id="alternative-interpretation">
-<h2>Alternative Interpretation<a class="headerlink" href="#alternative-interpretation" title="Permalink to this headline">¶</a></h2>
+<section id="alternative-derivation">
+<h3>Alternative Derivation<a class="headerlink" href="#alternative-derivation" title="Permalink to this headline">¶</a></h3>
 <p>Another way to see the Simpson’s rule is as a weighted average of the midpoint and trapezoidal rules:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2/3 midpoint + 1/3 trapezoidal
 </pre></div>
@@ -767,19 +787,20 @@ u = \frac{x - m}{b - m} = 2 \frac{x - \tfrac{1}{2} (a + b)}{b - a}
                  &amp;\approx \frac{b - a}{6} \left[ f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b)\right]\\   
 \end{align*}\]</div>
 </section>
+</section>
 <section id="composite-simpson-s-rule">
 <h2>Composite Simpson’s Rule<a class="headerlink" href="#composite-simpson-s-rule" title="Permalink to this headline">¶</a></h2>
 <p>As before we can improve the accuracy of our solution by subdividing the interval and calculating the integral using Simpson’s rule for each subinterval.</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/simpson_16_0.png" src="../../../_images/simpson_16_0.png" />
-<img alt="../../../_images/simpson_16_1.png" src="../../../_images/simpson_16_1.png" />
+<img alt="../../../_images/simpson_17_0.png" src="../../../_images/simpson_17_0.png" />
+<img alt="../../../_images/simpson_17_1.png" src="../../../_images/simpson_17_1.png" />
 </div>
 </div>
 <p>The composite Simpson’s rule is given by:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\int_a^b f(x)~ dx \approx \sum_{i = 1}^i \frac{x_i - x_{i-1}}{6} \left[ f(x_{i-1}) + 4 f\left(\frac{x_{i-1} + x_i}{2}\right) + f(x_i)\right]\\
+\int_a^b f(x)~ dx \approx \sum_{i = 1}^n \frac{x_i - x_{i-1}}{6} \left[ f(x_{i-1}) + 4 f\left(\frac{x_{i-1} + x_i}{2}\right) + f(x_i)\right]\\
 \end{split}\]</div>
 <!---
 Where $x_0 = a$, $x_n = b$ and $x_i = a +  i(b - a)/n$.
@@ -794,6 +815,7 @@ x_i - x_{i -1} = \frac{b - a}{n}
 \[
 \int_a^b f(x)~ dx \approx \frac{b - a}{6 n} \left[ f(a) + 2 \sum_{i = 2}^{n-1} f(x_i) + 4 \sum_{i =1}^{n} f\left( \frac{x_{i-1} + x_i}{2} \right) + f(b) \right]
 \]</div>
+<p>Assuming that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{6 n} &lt; 1\)</span>, then the error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^4\right)\)</span> <span id="id1">[<a class="reference internal" href="#id4"><span>IntSimp1</span></a>]</span></p>
 <section id="composite-simpson-s-rule-with-a-discrete-data-set">
 <h3>Composite Simpson’s Rule with a Discrete Data Set<a class="headerlink" href="#composite-simpson-s-rule-with-a-discrete-data-set" title="Permalink to this headline">¶</a></h3>
 <p>Again, consider the data set <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> for <span class="math notranslate nohighlight">\(i = 0, \dots, n\)</span>, where</p>
@@ -814,6 +836,15 @@ f(x_i) = y_i
 \]</div>
 <p>as each subinterval is made up of two intervals of length <span class="math notranslate nohighlight">\(\Delta x\)</span> each.</p>
 </section>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p id="id2"><dl class="citation">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">IntSimp1</a></span></dt>
+<dd><p>James F. Epperson. <em>An Introduction to Numerical Methods and Analysis</em>. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.</p>
+</dd>
+</dl>
+</p>
 </section>
 </section>
 

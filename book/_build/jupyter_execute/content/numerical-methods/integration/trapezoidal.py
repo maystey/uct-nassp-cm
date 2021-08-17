@@ -83,6 +83,8 @@ $$
 \int_a^b f(x)~ dx \approx \frac{b -a}{2 n} \left[f(a) + 2 \sum_{i=1}^{n-1} f(x_i) + f(b)\right]
 $$
 
+For a choice of $n$ such that $0 < \tfrac{b - a}{n} < 1$, the error for this method is $O\left(\tfrac{1}{n}^2\right)$ {cite}`nm-i-t-efferson-numerical-methods`.
+
 ### Composite Trapezoidal Rule with a Discrete Data Set
 
 Again, consider the data set $(x_i, y_i)$ for $i = 0, \dots, n$, where 
@@ -102,4 +104,12 @@ If the $x_i$ values are evenly spaced, with $x_i - x_{i-1} = \Delta x$ constant,
 $$
 \int_{x_0}^{x_n} f(x)~ dx \approx \frac{\Delta x}{2} \left[ y_0 + 2 \sum_{i=1}^{n-1} y_i + y_n \right]
 $$
+
+## References
+```{bibliography} ../../../_bibliography/references.bib
+:cited:
+:style: plain
+:labelprefix: IntTrap
+:keyprefix: nm-i-t-
+```
 

@@ -193,7 +193,7 @@ Also notice how, in the second slice above, the `0` index character is not prese
 ```{bibliography}
 :cited:
 :style: plain
-:labelprefix: S
+:labelprefix: Str
 :keyprefix: sl-s-s-
 ```
 

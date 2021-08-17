@@ -52,6 +52,8 @@ $$
 \int_a^b f(x) ~dx \approx \frac{b - a}{n} \sum_{i=1}^n f\left(\frac{x_i + x_{i-1}}{2}\right)
 $$
 
+Assuming that $n$ is chosen so that $0 < \tfrac{b - a}{n} < 1$, the error for this method is $O\left(\tfrac{1}{n}^3\right)$ {cite}`nm-i-m-efferson-numerical-methods`.
+
 ### Composite Midpoint Rule with a Discrete Data Set
 
 Let's consider the case where we have a discrete set of data points $(x_i, y_i)$ for $i = 0, \dots, n$, where:
@@ -64,11 +66,20 @@ $$
 The values being midpoints is kind of arbitrary, we don't need to 
 --->
 
-We want to approximate the integral of $f(x)$ using this data and the midpoint rule. We can treat each $x_i$ as the midpoint and determine the size of the interval around it using the adjacent values.
+We want to approximate the integral of $f(x)$ using this data and the midpoint rule. We can treat each $x_i$ as the midpoint (except for $x_0$ and $x_n$ at the boundaries) and determine the size of the interval around it using the adjacent values.
 
 For equally spaced data points, where $\Delta x = x_i - x_{i-1}$ is constant, we can approximate the integral as:
 
 $$
-\int_{x_0 - \Delta x/2}^{x_n + \Delta x/2} f(x) ~dx \approx \Delta x \sum_{i = 0}^{n} y_i
+\int_{x_0}^{x_n} f(x) ~dx \approx \Delta x \left( \frac{1}{2} y_0 + \sum_{i = 1}^{n-1} y_i + \frac{1}{2} y_n \right)
 $$
 
+where the first and final contributions are halved as the intervals they represent are halved (note that these aren't at the midpoints of their intervals, rather at the boundaries).
+
+## References
+```{bibliography} ../../../_bibliography/references.bib
+:cited:
+:style: plain
+:labelprefix: IntMid
+:keyprefix: nm-i-m-
+```

@@ -13,9 +13,19 @@ plt.plot(x, f(x))
 
 plt.show()
 
-One method of approximating the integral is to approximate the curve itself with something simpler that we know how to integrate. The Simpson's rule approximates the curve as a parabola, which is simple to integrate.
+A way to interpret the trapezoidal method is that we approximate the integrand curve as a straight line, and then integrate that directly. The Simpson's method does something similar, but instead of only using the integrand values at the boundaries it uses a third point (the midpoint) to approximate the integrand as a parabola.
 
-## Approximating $f(x)$ as a Quadratic Polynomial
+The method approximates the integral as:
+
+$$
+\int_a^b f(x)~ dx \approx \frac{b - a}{6} \left[ f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b)\right]
+$$
+
+with the derivation of this in the following section.
+
+## Derivation
+
+### Approximating $f(x)$ as a Quadratic Polynomial
 
 In order to approximate $f(x)$ as a quadratic polynomial we can use a second order Lagrange polynomial. We construct this polynomial by using 3 data points $(a, f(a))$, $(m, f(m))$ and $(b, f(b))$.
 
@@ -71,7 +81,7 @@ $$
 L(x) = \frac{2}{(b - a)^2} \big[ f(a) (x - m) (x - b) - 2 f(m) (x - a) (x - b) + f(b)(x - a)(x - m) \big]
 $$
 
-## Integrating $L(x)$
+### Integrating $L(x)$
 
 Now, we wish to approximate the integral of $f(x)$ as the integral of our Lagrange polynomial:
 
@@ -103,7 +113,7 @@ $$
 \int_a^b f(x) ~dx \approx \frac{b -a}{6} \left[f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b) \right]
 $$
 
-## Alternative Interpretation
+### Alternative Derivation
 
 Another way to see the Simpson's rule is as a weighted average of the midpoint and trapezoidal rules:
 
@@ -132,7 +142,7 @@ plt.show()
 The composite Simpson's rule is given by:
 
 $$
-\int_a^b f(x)~ dx \approx \sum_{i = 1}^i \frac{x_i - x_{i-1}}{6} \left[ f(x_{i-1}) + 4 f\left(\frac{x_{i-1} + x_i}{2}\right) + f(x_i)\right]\\
+\int_a^b f(x)~ dx \approx \sum_{i = 1}^n \frac{x_i - x_{i-1}}{6} \left[ f(x_{i-1}) + 4 f\left(\frac{x_{i-1} + x_i}{2}\right) + f(x_i)\right]\\
 $$
 
 <!---
@@ -150,6 +160,8 @@ taking this into account and the values of $f(x_i)$ which are repeated in the su
 $$
 \int_a^b f(x)~ dx \approx \frac{b - a}{6 n} \left[ f(a) + 2 \sum_{i = 2}^{n-1} f(x_i) + 4 \sum_{i =1}^{n} f\left( \frac{x_{i-1} + x_i}{2} \right) + f(b) \right]
 $$
+
+Assuming that $0 < \tfrac{b - a}{6 n} < 1$, then the error for this method is $O\left(\tfrac{1}{n}^4\right)$ {cite}`nm-i-s-efferson-numerical-methods`
 
 ### Composite Simpson's Rule with a Discrete Data Set
 
@@ -176,3 +188,10 @@ $$
 
 as each subinterval is made up of two intervals of length $\Delta x$ each.
 
+## References
+```{bibliography} ../../../_bibliography/references.bib
+:cited:
+:style: plain
+:labelprefix: IntSimp
+:keyprefix: nm-i-s-
+```

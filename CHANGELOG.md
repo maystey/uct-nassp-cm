@@ -8,6 +8,17 @@ the version number, `a.b.c`, follows the following scheme:
 - `b`. New chapter(s) added or drastically changed.
 - `c`. New sections, corrections, etc. The number change is consecutive, not reflecting the number of changes.
 
+
+## [UNRELEASED]
+
+### Changed
+
+- Rewrote chapter:
+  - `numercial-methods/integration`
+- Changed bibliography label prefix format.
+- Corrected mistake in `references.bib`: Efferson -> Epperson (not corrected in key)
+
+
 ## [2.1.0] - 2021-08-13
 
 ### Added
