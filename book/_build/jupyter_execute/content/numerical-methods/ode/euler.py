@@ -1,47 +1,53 @@
-# Euler's Method
+#!/usr/bin/env python
+# coding: utf-8
 
-Given a first order ODE of the form:
+# # Euler's Method
 
-$$
-\frac{dy}{dx} = y^\prime = f(x, y)
-$$
+# Given a first order ODE of the form:
+# 
+# $$
+# \frac{dy}{dx} = y^\prime = f(x, y)
+# $$
+# 
+# where the value for $y(x = x_0) = y_0$ is known. If we wanted to approximate the solution for $y(x_1) = y_1$ at the point $x_1 = x_0 + h$, we can use the Taylor approximation (expanding around $x_0$):
+# 
+# $$
+# y_1 = y_0 + y^\prime|_{x_0} h + y^{\prime\prime}|_{x_0} \frac{h^2}{2!} + y^{\prime\prime\prime}|_{x_0} \frac{h^3}{3!} + \dots
+# $$
+# 
+# For a small value of $h$ ($0 < h < 1$), we can neglect high order powers of $h$ without incurring too much error:
+# 
+# $$
+# \begin{align*}
+# y_1 &\approx y_0 + y^\prime h\\
+#     &\approx y_0 + h f(x_0, y_0)
+# \end{align*}
+# $$
 
-where the value for $y(x = x_0) = y_0$ is known. If we wanted to approximate the solution for $y(x_1) = y_1$ at the point $x_1 = x_0 + h$, we can use the Taylor approximation (expanding around $x_0$):
+# Now if we used this approximation to find the next value of $y$ at $x_2 = x_1 + h$ , $y_2$,:
+# 
+# $$
+# y_2 \approx y_1 + h f(x_1, y_1)
+# $$
+# 
+# and again for $x_3 = x_2 + h$, $y_3$:
+# 
+# $$
+# y_3 \approx y_2 + h f(x_2, y_2)
+# $$
+# 
+# This method can be iterated $n$ times to find:
+# 
+# $$
+# y_n \approx y_{n-1} + h f(x_{n-1}, y_{n-1})
+# $$
 
-$$
-y_1 = y_0 + y^\prime|_{x_0} h + y^{\prime\prime}|_{x_0} \frac{h^2}{2!} + y^{\prime\prime\prime}|_{x_0} \frac{h^3}{3!} + \dots
-$$
+# ## Geometric Interpretation
 
-For a small value of $h$ ($0 < h < 1$), we can neglect high order powers of $h$ without incurring too much error:
+# Another way to see the Euler method is as approximating the solution $y(x)$ as a straight line over the interval $[x_n, x_n + h]$, passing through the point $(x_n, y_n)$ with a gradient of $f(x_n, y_n)$ (the tangent of $y$ at that point):
 
-$$
-\begin{align*}
-y_1 &\approx y_0 + y^\prime h\\
-    &\approx y_0 + h f(x_0, y_0)
-\end{align*}
-$$
+# In[4]:
 
-Now if we used this approximation to find the next value of $y$ at $x_2 = x_1 + h$ , $y_2$,:
-
-$$
-y_2 \approx y_1 + h f(x_1, y_1)
-$$
-
-and again for $x_3 = x_2 + h$, $y_3$:
-
-$$
-y_3 \approx y_2 + h f(x_2, y_2)
-$$
-
-This method can be iterated $n$ times to find:
-
-$$
-y_n \approx y_{n-1} + h f(x_{n-1}, y_{n-1})
-$$
-
-## Geometric Interpretation
-
-Another way to see the Euler method is as approximating the solution $y(x)$ as a straight line over the interval $[x_n, x_n + h]$, passing through the point $(x_n, y_n)$ with a gradient of $f(x_n, y_n)$ (the tangent of $y$ at that point):
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -117,26 +123,30 @@ plt.yticks(y_euler + [f(a, x_euler[1])], y_ticks, fontsize = 14)
 plt.legend(fontsize = 14)
 plt.show()
 
-<div class="worked-example">
-    <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
-Consider the ODE:
+# <div class="worked-example">
+#     <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
-$$
-\frac{dy}{dx} = -2 (x - 1) y
-$$
+# Consider the ODE:
+# 
+# $$
+# \frac{dy}{dx} = -2 (x - 1) y
+# $$
+# 
+# with the given initial conditions: $y = 1$ at $x = 0$.
+# 
+# This has an analytic solution of:
+# 
+# $$
+# y(x) = e^{(x - 1)^2 + 1}
+# $$
+# 
+# which we can compare our numerical solutions to.
+# 
+# Let's say we want to find the value of $y$ at $x = 1$ numerically (it's $e$). We shall **choose** a step size of $h = 0.05$ when integrating this out. What we need to do is recursively apply Euler steps until we have reached the desired $x$:
 
-with the given initial conditions: $y = 1$ at $x = 0$.
+# In[11]:
 
-This has an analytic solution of:
-
-$$
-y(x) = e^{(x - 1)^2 + 1}
-$$
-
-which we can compare our numerical solutions to.
-
-Let's say we want to find the value of $y$ at $x = 1$ numerically (it's $e$). We shall **choose** a step size of $h = 0.05$ when integrating this out. What we need to do is recursively apply Euler steps until we have reached the desired $x$:
 
 import numpy as np
 
@@ -158,7 +168,11 @@ while x < x_end:
 print('y at x = 1 approximated using Euler: ', y)
 print('y at x = 1: ', np.e)
 
-Now, it is often important for us to visualize the solution for $y(x)$ over the interval, rather than only finding the value of $y$ at the end of it. We will plot the numerical solution for $y$ on the interval $0 < x < 5$ along with the exact solution for comparison. We could alter the solution above to append the values to an array (as would be the best solution if we didn't know how many iterations we needed), but instead we will create an array of $x$ values on the interval, as this is known to us before perform the Euler solution:
+
+# Now, it is often important for us to visualize the solution for $y(x)$ over the interval, rather than only finding the value of $y$ at the end of it. We will plot the numerical solution for $y$ on the interval $0 < x < 5$ along with the exact solution for comparison. We could alter the solution above to append the values to an array (as would be the best solution if we didn't know how many iterations we needed), but instead we will create an array of $x$ values on the interval, as this is known to us before perform the Euler solution:
+
+# In[21]:
+
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -193,4 +207,5 @@ ax.legend()
 
 plt.show()
 
-</div>
+
+# </div>

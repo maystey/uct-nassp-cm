@@ -1,6 +1,7 @@
-- file: content/intro
-
-- part: Introduction
+format: jb-book
+root: content/intro
+parts:
+- caption: Introduction
   chapters:
   - file: content/intro/intro
   #- file: content/intro/installing/anaconda
@@ -8,7 +9,7 @@
 
 ####################################################################
 
-- part: The Python Standard Library
+- caption: The Python Standard Library
   chapters:
 
   - file: content/standard-library/basics/intro
@@ -63,7 +64,7 @@
 
 ####################################################################
 
-- part: Scientific Packages
+- caption: Scientific Packages
   chapters:
 
   - file: content/scientific-packages/numpy/intro
@@ -87,7 +88,7 @@
 
 ##################################################################
 
-- part: Numerical Methods
+- caption: Numerical Methods
   chapters:
 
   - file: content/numerical-methods/root-finding/intro

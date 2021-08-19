@@ -1,37 +1,43 @@
-# Runge-Kutta Methods
+#!/usr/bin/env python
+# coding: utf-8
 
-The aforementioned Euler's method is the simplest single step ODE solving method, but has a fairly large error. The Runge-Kutta (RK) methods are more popular due to their improved accuracy, in particular 4th and 5th order methods.
+# # Runge-Kutta Methods
 
-## Outline of the Derivation
+# The aforementioned Euler's method is the simplest single step ODE solving method, but has a fairly large error. The Runge-Kutta (RK) methods are more popular due to their improved accuracy, in particular 4th and 5th order methods.
 
-The idea behind Runge-Kutta is to perform integration steps using a weighted average of Euler-like steps. The following outline {cite}`nm-ode-rk-epperson-numerical-methods` is not a full derivation of the method, as this requires theorems outside the scope of this course.
+# ## Outline of the Derivation
 
-## Second Order Runge-Kutta (RK2)
+# The idea behind Runge-Kutta is to perform integration steps using a weighted average of Euler-like steps. The following outline {cite}`nm-ode-rk-epperson-numerical-methods` is not a full derivation of the method, as this requires theorems outside the scope of this course.
 
-We shall start by looking at second order Runge-Kutta methods. We want to solve an ODE of the form
+# ## Second Order Runge-Kutta (RK2)
 
-$$
-\frac{dy}{dx} = f(x, y)
-$$
+# We shall start by looking at second order Runge-Kutta methods. We want to solve an ODE of the form
+# 
+# $$
+# \frac{dy}{dx} = f(x, y)
+# $$
+# 
+# on the interval $[x_i, x_{i+1}]$, where $x_{i+1} = x_i + h$, with a given initial condition $y(x = x_i) = y_i$. That is, we wish to determine the value of $y(x_{i+1}) = y_{i+1}$. We start by calculating the gradient of $y$ at 2 places:
+# 
+# - The start of the interval: $(x_i, y_i)$
+# - A point inside the interval, for which we approximate the $y$ value using Euler's method: $(x_i + \alpha h, y_i + \alpha h f(x_i, y_i))$, for some choice of $\alpha$.
+# 
+# <!--- Not necessarily inside the interval though... --->
+# We then approximate the value of $y_{i+1}$ using Euler's method with each of these gradients:
+# 
+# - $y_{i+1} \approx y_i + h f(x_i, y_i)$
+# - $y_{i+1} \approx y_i + h f(x_i + \alpha h, y_i + \alpha h f(x_i, y_i))$
+# 
+# The final approximation of $y_{i+1}$ is calculated by taking a weighted average of these two approximations:
+# 
+# $$
+# y_{i+1} \approx y_i + c_1 h f(x_i, y_i) + c_2 h f(x_i + \alpha h, y_i + \alpha h f(x_i, y_i) )
+# $$
+# 
+# where $c_1 + c_2 = 1$ is required.
 
-on the interval $[x_i, x_{i+1}]$, where $x_{i+1} = x_i + h$, with a given initial condition $y(x = x_i) = y_i$. That is, we wish to determine the value of $y(x_{i+1}) = y_{i+1}$. We start by calculating the gradient of $y$ at 2 places:
+# In[12]:
 
-- The start of the interval: $(x_i, y_i)$
-- A point inside the interval, for which we approximate the $y$ value using Euler's method: $(x_i + \alpha h, y_i + \alpha h f(x_i, y_i))$, for some choice of $\alpha$.
-
-<!--- Not necessarily inside the interval though... --->
-We then approximate the value of $y_{i+1}$ using Euler's method with each of these gradients:
-
-- $y_{i+1} \approx y_i + h f(x_i, y_i)$
-- $y_{i+1} \approx y_i + h f(x_i + \alpha h, y_i + \alpha h f(x_i, y_i))$
-
-The final approximation of $y_{i+1}$ is calculated by taking a weighted average of these two approximations:
-
-$$
-y_{i+1} \approx y_i + c_1 h f(x_i, y_i) + c_2 h f(x_i + \alpha h, y_i + \alpha h f(x_i, y_i) )
-$$
-
-where $c_1 + c_2 = 1$ is required.
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -180,48 +186,52 @@ ax.legend(fontsize = legend_fontsize)
 
 plt.show()
 
-Now, how do we go about choosing good values for $c_1$, $c_2$ and $\alpha$? If we Taylor expand the left-hand side of the equation above, and the last term on the right-hand side gives us the relation:
 
-$$
-\alpha = \frac{1}{2 c_2}
-$$
+# Now, how do we go about choosing good values for $c_1$, $c_2$ and $\alpha$? If we Taylor expand the left-hand side of the equation above, and the last term on the right-hand side gives us the relation:
+# 
+# $$
+# \alpha = \frac{1}{2 c_2}
+# $$
+# 
+# This still gives us a free choice of one of the parameters. Two popular choices are:
+# 
+# **The trapezoid rule:** $c1 = c2 = \tfrac{1}{2}$ and $\alpha = 1$, which yields:
+# 
+# $$
+# y_{i+1} = y_i + \tfrac{1}{2} h \left[ f(x_i, y_i) + f(x_i + h, y_i + h f(x_i, y_i)) \right]
+# $$
+# 
+# **The midpoint rule:** $c1 = 0$, $c2 = 1$ and $\alpha = \tfrac{1}{2}$, which yields:
+# 
+# $$
+# y_{i+1} = y_i + hf\left(x_i + \tfrac{1}{2} h, y_i + \tfrac{1}{2} h f(x_i, y_i) \right)
+# $$
+# 
+# Both of these methods have an accumulated/global truncated error of $O(h^2)$, as opposed to the Euler method's $O(h)$ {cite}`nm-ode-rk-epperson-numerical-methods` (remember that an $O(h)$ trend dominates $O(h^2)$ for $0<h<1$, i.e. $O(h)$ will have higher error in general).
 
-This still gives us a free choice of one of the parameters. Two popular choices are:
+# <div class="worked-example">
+#     <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
-**The trapezoid rule:** $c1 = c2 = \tfrac{1}{2}$ and $\alpha = 1$, which yields:
+# Consider the ordinary differential equation:
+# 
+# $$
+# \frac{d y}{dx} = \frac{1}{1 + x^2}
+# $$
+# 
+# with the initial condition $y = 1$ at $x = 0$.
+# 
+# This has the exact solution:
+# 
+# $$
+# y = 1 + \arctan(x)
+# $$
+# 
+# which we can compare our results to.
+# 
+# Let's solve this ODE up to $x = 1$ for both the trapezoidal and the midpoint rule RK2 methods.
 
-$$
-y_{i+1} = y_i + \tfrac{1}{2} h \left[ f(x_i, y_i) + f(x_i + h, y_i + h f(x_i, y_i)) \right]
-$$
+# In[5]:
 
-**The midpoint rule:** $c1 = 0$, $c2 = 1$ and $\alpha = \tfrac{1}{2}$, which yields:
-
-$$
-y_{i+1} = y_i + hf\left(x_i + \tfrac{1}{2} h, y_i + \tfrac{1}{2} h f(x_i, y_i) \right)
-$$
-
-Both of these methods have an accumulated/global truncated error of $O(h^2)$, as opposed to the Euler method's $O(h)$ {cite}`nm-ode-rk-epperson-numerical-methods` (remember that an $O(h)$ trend dominates $O(h^2)$ for $0<h<1$, i.e. $O(h)$ will have higher error in general).
-
-<div class="worked-example">
-    <h5 class="worked-example-title"><b>Worked Example</b></h5>
-
-Consider the ordinary differential equation:
-
-$$
-\frac{d y}{dx} = \frac{1}{1 + x^2}
-$$
-
-with the initial condition $y = 1$ at $x = 0$.
-
-This has the exact solution:
-
-$$
-y = 1 + \arctan(x)
-$$
-
-which we can compare our results to.
-
-Let's solve this ODE up to $x = 1$ for both the trapezoidal and the midpoint rule RK2 methods.
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -279,48 +289,52 @@ ax[1].legend(fontsize = 14)
 
 plt.show()
 
-</div>
 
-## Fourth Order Runge-Kutta (RK4)
+# </div>
 
-As mentioned, the more popular Runge-Kutta method is the fourth order (for which we will not cover the derivation):
+# ## Fourth Order Runge-Kutta (RK4)
 
-$$
-y_{i+1} = y_i + \tfrac{1}{6} h~ (k_1 + 2 k_2 + 2 k_3 + k_4)
-$$
+# As mentioned, the more popular Runge-Kutta method is the fourth order (for which we will not cover the derivation):
+# 
+# $$
+# y_{i+1} = y_i + \tfrac{1}{6} h~ (k_1 + 2 k_2 + 2 k_3 + k_4)
+# $$
+# 
+# where the $k$ values are the slopes:
+# 
+# \begin{align*}
+# k_1 &= f(x_i, y_i)\\
+# k_2 &= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h ~ k_1 \right)\\
+# k_3 &= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h ~ k_2\right)\\
+# k_4 &= f(x_i + h, y_i + h ~ k_3)
+# \end{align*}
+# 
+# $k_1$ is gradient value at the left of the interval. $k_2$ is the gradient at the midpoint of the interval, approximated using $k_1$. The $k_3$ value is the gradient at the midpoint of the interval using $k_2$ to approximate it. $k_4$ is the value of the gradient at the right end of the interval using $k_3$ to approximate it.
+# 
+# <!--- Give interpretation for the the different k terms --->
+# 
+# This method has an accumulated error of $O(h^4)$
 
-where the $k$ values are the slopes:
+# <div class="worked-example">
+#     <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
-\begin{align*}
-k_1 &= f(x_i, y_i)\\
-k_2 &= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h ~ k_1 \right)\\
-k_3 &= f\left(x_i + \tfrac{1}{2}h, y_i + \tfrac{1}{2} h ~ k_2\right)\\
-k_4 &= f(x_i + h, y_i + h ~ k_3)
-\end{align*}
+# Again, consider the ordinary differential equation:
+# 
+# $$
+# \frac{d y}{dx} = \frac{1}{1 + x^2}
+# $$
+# 
+# with initial conditions $y = 1$ at $x = 0$,
+# and the exact solution:
+# 
+# $$
+# y = 1 + \arctan(x)
+# $$
+# 
+# which we can compare our results to. Let's solve this ODE up to $x = 1$ using the RK4 method.
 
-$k_1$ is gradient value at the left of the interval. $k_2$ is the gradient at the midpoint of the interval, approximated using $k_1$. The $k_3$ value is the gradient at the midpoint of the interval using $k_2$ to approximate it. $k_4$ is the value of the gradient at the right end of the interval using $k_3$ to approximate it.
+# In[2]:
 
-<!--- Give interpretation for the the different k terms --->
-
-This method has an accumulated error of $O(h^4)$
-
-<div class="worked-example">
-    <h5 class="worked-example-title"><b>Worked Example</b></h5>
-
-Again, consider the ordinary differential equation:
-
-$$
-\frac{d y}{dx} = \frac{1}{1 + x^2}
-$$
-
-with initial conditions $y = 1$ at $x = 0$,
-and the exact solution:
-
-$$
-y = 1 + \arctan(x)
-$$
-
-which we can compare our results to. Let's solve this ODE up to $x = 1$ using the RK4 method.
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -370,109 +384,113 @@ ax.legend(fontsize = 14)
 
 plt.show()
 
-</div>
 
-### Coupled and Higher Order ODEs
+# </div>
 
-As we have discussed in a previous page, higher order ODEs can be reduced to a collection of coupled first order ODEs, for example:
+# ### Coupled and Higher Order ODEs
 
-\begin{align}
-\frac{d y_1}{dx} &= f_1(x, y_1, y_2, \dots, y_m)\\
-\frac{d y_2}{dx} &= f_2(x, y_1, y_2, \dots, y_m)\\
-                 &\vdots \\
-\frac{d y_m}{dx} &= f_m(x, y_1, y_2 \dots, y_m)
-\end{align}
+# As we have discussed in a previous page, higher order ODEs can be reduced to a collection of coupled first order ODEs, for example:
+# 
+# \begin{align}
+# \frac{d y_1}{dx} &= f_1(x, y_1, y_2, \dots, y_m)\\
+# \frac{d y_2}{dx} &= f_2(x, y_1, y_2, \dots, y_m)\\
+#                  &\vdots \\
+# \frac{d y_m}{dx} &= f_m(x, y_1, y_2 \dots, y_m)
+# \end{align}
+# 
+# As we have seen, the Euler's method solution for this is fairly simple. For the RK4 method, things are slightly more complicated. We must decide how to calculate the $k$ values.
 
-As we have seen, the Euler's method solution for this is fairly simple. For the RK4 method, things are slightly more complicated. We must decide how to calculate the $k$ values.
+# For the step from $x_n$ to $x_{n+1}$:
+# 
+# $$
+# y_{j\ n+1} = y_{j\ n} + \tfrac{h}{6} (k_{1\ j} + 2 k_{2\ j} + 2 k_{3\ j} + k_{4\ j} )
+# $$
+# 
+# 
+# Note that the $y_j$ variables are not explicitly dependent on each other, but on the independent variable $x$. Thus we do not have free choice over which $y_j$ values to use when examining another for a particular value of $x$. For any change in $x$, we expect simultaneous change in all of the $y_j$. For this reason, when calculating the $k_j$ values for a particular $y_j$, we need to consider the changes in the other $y_l$.
+# 
+# $$
+# \begin{array}{l l l l l l l}
+# k_{1\ j} &= f_j (x_n, &y_{1\ n}~, &\dots, &y_{j\ n}~, &\dots, &~y_{n-1\ n}~)\\
+# k_{2, j} &= f_j \big(x_n + \tfrac{1}{2}h, &y_{1\ n}~ + \tfrac{1}{2} k_{1\ 0}~, &\dots, &y_{j\ n}~ + \tfrac{1}{2} k_{1\ j}, &\dots, &y_{m, n}~ + \tfrac{1}{2} k_{1, m}~ \big)\\
+# k_{3, j} &= f_j \big(x_n + \tfrac{1}{2}h, &y_{1\ n}~ + \tfrac{1}{2} k_{2\ 0}~, &\dots, &y_{j\ n}~ + \tfrac{1}{2} k_{2\ j}, &\dots, &y_{m\ n}~ + \tfrac{1}{2} k_{2\ m}~\big)\\
+# k_{4, j} &= f_j ( x_n + h, &y_{1\ n}~ + k_{3, 1}~, &\dots, &y_{j\ n}~ + k_{3\ j}, &\dots, &y_{m\ n}~ + k_{3\ m} )\\
+# \end{array}
+# $$
+# 
+# This looks more complicated then it is to apply in practice. All we need to do is vectorize the solution, as in the previous section. We can represent all the $y_j$ as a vector:
+# 
+# $$
+# \vec{y} = \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{pmatrix}
+# $$
+# 
+# the ODE can thus be represented as:
+# 
+# $$
+# \frac{d \vec{y}}{dx} = \vec{f}(x, \vec{y}) = \begin{pmatrix} f_1 (x, \vec{y}) \\ f_2 (x, \vec{y}) \\ \vdots \\ f_m (x, \vec{y}) \end{pmatrix}
+# $$
+# 
+# and an update step as:
+# 
+# $$
+# \vec{y}_{n+1} = \vec{y}_n + \tfrac{1}{6} h (\vec{k_1} + 2 \vec{k_2} + 2 \vec{k_3} + \vec{k_4})
+# $$
+# 
+# where:
+# 
+# $$
+# \vec{k_i} = \begin{pmatrix} k_{i, 1} \\ k_{i, 2} \\ \vdots \\ k_{i, m} \end{pmatrix}
+# $$
+# 
+# Note that we can write:
+# 
+# $$
+# \begin{pmatrix}
+# y_{1, n}~ + \tfrac{1}{2} h k_{1, 1} \\\vdots \\y_{j, n}~ + \tfrac{1}{2} h k_{1, j} \\ \dots \\ y_{m, n}~ + \tfrac{1}{2} h k_{1, m}
+# \end{pmatrix}
+# = \vec{y}_n + \tfrac{1}{2} h \vec{k1}
+# $$
+# 
+# with this in mind, we can simply write the $k$ values as:
+# 
+# \begin{align*}
+# \vec{k_1} &= \vec{f}(x_n,\ \vec{y}_n)\\
+# \vec{k_2} &= \vec{f}\left(x_n + \tfrac{1}{2} h,\ \vec{y}_n + \tfrac{1}{2} h ~ \vec{k_1} \right)\\
+# \vec{k_3} &= \vec{f}\left(x_n + \tfrac{1}{2} h,\ \vec{y}_n + \tfrac{1}{2} h ~ \vec{k_2} \right)\\
+# \vec{k_4} & = \vec{f}\left(x_n + h,\ \vec{y}_n + h ~ \vec{k_3} \right)
+# \end{align*}
 
-For the step from $x_n$ to $x_{n+1}$:
+# <div class="worked-example">
+#     <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
-$$
-y_{j\ n+1} = y_{j\ n} + \tfrac{h}{6} (k_{1\ j} + 2 k_{2\ j} + 2 k_{3\ j} + k_{4\ j} )
-$$
+# Consider the third order differential equation:
+# 
+# $$
+# \frac{d^{4}y}{dx^4} = -12 x y - 4 x^2 \frac{d y}{dx}
+# $$
+# 
+# with the initial conditions: $y(x = 0) = 0$, $y^\prime(0) = 0$ and $y^{\prime\prime}(0) = 2$.
+# 
+# This has an exact solution of:
+# 
+# $$
+# y(x) = e^{-x^2}
+# $$
+# 
+# which we shall use to test our numerical result.
+# 
+# We shall solve this up to $x = 5$ with steps of size $h = 0.1$.
+# 
+# First we reduce this to a system of first order equations by introducing the variables $y_0(x) = y(x)$, $y_1(x) = y^\prime(x)$ and $y_2(x) = y^{\prime\prime}(x)$:
+# 
+# \begin{align*}
+# \frac{d y_1}{dx} &= y_2\\
+# \frac{d y_2}{dx} &= y_3\\
+# \frac{d y_3}{dx} &= -12 x y_1 - 4 x^2 y_2
+# \end{align*}
 
+# In[6]:
 
-Note that the $y_j$ variables are not explicitly dependent on each other, but on the independent variable $x$. Thus we do not have free choice over which $y_j$ values to use when examining another for a particular value of $x$. For any change in $x$, we expect simultaneous change in all of the $y_j$. For this reason, when calculating the $k_j$ values for a particular $y_j$, we need to consider the changes in the other $y_l$.
-
-$$
-\begin{array}{l l l l l l l}
-k_{1\ j} &= f_j (x_n, &y_{1\ n}~, &\dots, &y_{j\ n}~, &\dots, &~y_{n-1\ n}~)\\
-k_{2, j} &= f_j \big(x_n + \tfrac{1}{2}h, &y_{1\ n}~ + \tfrac{1}{2} k_{1\ 0}~, &\dots, &y_{j\ n}~ + \tfrac{1}{2} k_{1\ j}, &\dots, &y_{m, n}~ + \tfrac{1}{2} k_{1, m}~ \big)\\
-k_{3, j} &= f_j \big(x_n + \tfrac{1}{2}h, &y_{1\ n}~ + \tfrac{1}{2} k_{2\ 0}~, &\dots, &y_{j\ n}~ + \tfrac{1}{2} k_{2\ j}, &\dots, &y_{m\ n}~ + \tfrac{1}{2} k_{2\ m}~\big)\\
-k_{4, j} &= f_j ( x_n + h, &y_{1\ n}~ + k_{3, 1}~, &\dots, &y_{j\ n}~ + k_{3\ j}, &\dots, &y_{m\ n}~ + k_{3\ m} )\\
-\end{array}
-$$
-
-This looks more complicated then it is to apply in practice. All we need to do is vectorize the solution, as in the previous section. We can represent all the $y_j$ as a vector:
-
-$$
-\vec{y} = \begin{pmatrix} y_1 \\ y_2 \\ \vdots \\ y_m \end{pmatrix}
-$$
-
-the ODE can thus be represented as:
-
-$$
-\frac{d \vec{y}}{dx} = \vec{f}(x, \vec{y}) = \begin{pmatrix} f_1 (x, \vec{y}) \\ f_2 (x, \vec{y}) \\ \vdots \\ f_m (x, \vec{y}) \end{pmatrix}
-$$
-
-and an update step as:
-
-$$
-\vec{y}_{n+1} = \vec{y}_n + \tfrac{1}{6} h (\vec{k_1} + 2 \vec{k_2} + 2 \vec{k_3} + \vec{k_4})
-$$
-
-where:
-
-$$
-\vec{k_i} = \begin{pmatrix} k_{i, 1} \\ k_{i, 2} \\ \vdots \\ k_{i, m} \end{pmatrix}
-$$
-
-Note that we can write:
-
-$$
-\begin{pmatrix}
-y_{1, n}~ + \tfrac{1}{2} h k_{1, 1} \\\vdots \\y_{j, n}~ + \tfrac{1}{2} h k_{1, j} \\ \dots \\ y_{m, n}~ + \tfrac{1}{2} h k_{1, m}
-\end{pmatrix}
-= \vec{y}_n + \tfrac{1}{2} h \vec{k1}
-$$
-
-with this in mind, we can simply write the $k$ values as:
-
-\begin{align*}
-\vec{k_1} &= \vec{f}(x_n,\ \vec{y}_n)\\
-\vec{k_2} &= \vec{f}\left(x_n + \tfrac{1}{2} h,\ \vec{y}_n + \tfrac{1}{2} h ~ \vec{k_1} \right)\\
-\vec{k_3} &= \vec{f}\left(x_n + \tfrac{1}{2} h,\ \vec{y}_n + \tfrac{1}{2} h ~ \vec{k_2} \right)\\
-\vec{k_4} & = \vec{f}\left(x_n + h,\ \vec{y}_n + h ~ \vec{k_3} \right)
-\end{align*}
-
-<div class="worked-example">
-    <h5 class="worked-example-title"><b>Worked Example</b></h5>
-
-Consider the third order differential equation:
-
-$$
-\frac{d^{4}y}{dx^4} = -12 x y - 4 x^2 \frac{d y}{dx}
-$$
-
-with the initial conditions: $y(x = 0) = 0$, $y^\prime(0) = 0$ and $y^{\prime\prime}(0) = 2$.
-
-This has an exact solution of:
-
-$$
-y(x) = e^{-x^2}
-$$
-
-which we shall use to test our numerical result.
-
-We shall solve this up to $x = 5$ with steps of size $h = 0.1$.
-
-First we reduce this to a system of first order equations by introducing the variables $y_0(x) = y(x)$, $y_1(x) = y^\prime(x)$ and $y_2(x) = y^{\prime\prime}(x)$:
-
-\begin{align*}
-\frac{d y_1}{dx} &= y_2\\
-\frac{d y_2}{dx} &= y_3\\
-\frac{d y_3}{dx} &= -12 x y_1 - 4 x^2 y_2
-\end{align*}
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -527,12 +545,13 @@ ax.legend()
 
 plt.show()
 
-</div>
 
-## References
-```{bibliography} ../../../_bibliography/references.bib
-:cited:
-:style: plain
-:labelprefix: RK
-:keyprefix: nm-ode-rk-
-```
+# </div>
+
+# ## References
+# ```{bibliography} ../../../_bibliography/references.bib
+# :cited:
+# :style: plain
+# :labelprefix: RK
+# :keyprefix: nm-ode-rk-
+# ```

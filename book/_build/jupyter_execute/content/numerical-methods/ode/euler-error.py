@@ -1,14 +1,20 @@
-# Euler's Method: Truncation Error
+#!/usr/bin/env python
+# coding: utf-8
 
-Like all numerical methods, Euler's method has systemic error. This is introduced when we discard the higher order terms in the Taylor expansion. The **local** truncation error is thus:
+# # Euler's Method: Truncation Error
 
-$$
-E_{n+1} = \tfrac{1}{2} y^{\prime\prime}(x_n) h^2 + O(h^3)
-$$
+# Like all numerical methods, Euler's method has systemic error. This is introduced when we discard the higher order terms in the Taylor expansion. The **local** truncation error is thus:
+# 
+# $$
+# E_{n+1} = \tfrac{1}{2} y^{\prime\prime}(x_n) h^2 + O(h^3)
+# $$
+# 
+# If you are unfamiliar with the notation for $O(h^3)$ (big O notation), in this case it means the dominant terms are proportional to $h^3$ (higher order terms of $h$ will be less dominant for $0 < h < 1$).
+# 
+# The **local** truncation error is associated with a single integration step. It is far more useful, however, to consider the **global** truncation error, which is the error accumulated over multiple integration steps. The global truncation error is $O(h)$ {cite}`nm-ode-ee-epperson-numerical-methods`. The derivation for the bounds of the error are beyond the scope of the course. As this error approximately scales linearly with $h$, reducing the size of $h$ will generally reduce the global error:
 
-If you are unfamiliar with the notation for $O(h^3)$ (big O notation), in this case it means the dominant terms are proportional to $h^3$ (higher order terms of $h$ will be less dominant for $0 < h < 1$).
+# In[8]:
 
-The **local** truncation error is associated with a single integration step. It is far more useful, however, to consider the **global** truncation error, which is the error accumulated over multiple integration steps. The global truncation error is $O(h)$ {cite}`nm-ode-ee-epperson-numerical-methods`. The derivation for the bounds of the error are beyond the scope of the course. As this error approximately scales linearly with $h$, reducing the size of $h$ will generally reduce the global error:
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -108,7 +114,11 @@ for i, h in enumerate(h_list):
     ax[i].legend(fontsize = fontsize)
 plt.show()
 
-We can illustrate the relationship between the global error and $h$ directly by looking at the magnitude of error at the same final $x$ value for different $h$ values:
+
+# We can illustrate the relationship between the global error and $h$ directly by looking at the magnitude of error at the same final $x$ value for different $h$ values:
+
+# In[13]:
+
 
 ##Plotting different errors values for x_max:
 h_vals = np.linspace(hlims[0], hlims[1], 10)
@@ -129,12 +139,13 @@ ax.set_ylabel('Magnitude of Error', fontsize = fontsize)
 
 plt.show()
 
-There is a limit to how much reducing $h$ will help you. If $h$ is too small you could introduce floating point errors, that is when operations require more precision than afforded by the float data type. Reducing the size of $h$ also means that you will have more steps to integrate to a final $x$, which increases the computational time.
 
-## References
-```{bibliography} ../../../_bibliography/references.bib
-:cited:
-:style: plain
-:labelprefix: EulerErr
-:keyprefix: nm-ode-ee-
-```
+# There is a limit to how much reducing $h$ will help you. If $h$ is too small you could introduce floating point errors, that is when operations require more precision than afforded by the float data type. Reducing the size of $h$ also means that you will have more steps to integrate to a final $x$, which increases the computational time.
+
+# ## References
+# ```{bibliography} ../../../_bibliography/references.bib
+# :cited:
+# :style: plain
+# :labelprefix: EulerErr
+# :keyprefix: nm-ode-ee-
+# ```

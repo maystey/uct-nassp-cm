@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nested If Statements &#8212; AST4007W Computational Methods</title>
     
-  <link rel="stylesheet" href="../../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../../../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../../../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -36,7 +33,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
@@ -46,7 +43,7 @@
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -58,14 +55,14 @@
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Control Flow: Loops" href="../loops/intro.html" />
     <link rel="prev" title="If Statements" href="if.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -74,479 +71,515 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../../../index.html">
-  
-  <img src="../../../_static/UCTcircular_logo.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">AST4007W Computational Methods</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/UCTcircular_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AST4007W Computational Methods</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../intro.html">
    UCT NASSP AST4007W Computational Methods
   </a>
  </li>
 </ul>
-<figcaption>
- <p>
-  <span class="caption-text">
-   Introduction
-  </span>
- </p>
- <ul>
-  <li class="toctree-l1">
-   <a class="reference internal" href="../../intro/intro.html">
-    Programming and Python in a Nutshell
-   </a>
-  </li>
-  <li class="toctree-l1">
-   <a class="reference internal" href="../../intro/control-flow/control-flow-diagrams.html">
-    Control Flow Diagrams
-   </a>
-  </li>
- </ul>
- <figcaption>
-  <p>
-   <span class="caption-text">
-    The Python Standard Library
-   </span>
-  </p>
-  <ul class="current">
-   <li class="toctree-l1 collapsible-parent">
-    <a class="reference internal" href="../basics/intro.html">
-     Python Basics
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/intro.html">
+   Programming and Python in a Nutshell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/control-flow/control-flow-diagrams.html">
+   Control Flow Diagrams
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Python Standard Library
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../basics/intro.html">
+   Python Basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/variables.html">
+     Variables
     </a>
-    <ul class="collapse-ul">
-     <li class="toctree-l2">
-      <a class="reference internal" href="../basics/variables.html">
-       Variables
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../basics/comments.html">
-       Comments
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../basics/types.html">
-       Type Conversion
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../basics/operators.html">
-       Numerical Operators
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../basics/assignment-operators.html">
-       Compound Assignment Operators
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../basics/functions.html">
-       Introduction to Using Functions
-      </a>
-     </li>
-    </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
-   <li class="toctree-l1 collapsible-parent">
-    <a class="reference internal" href="../strings/strings.html">
-     Strings
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/comments.html">
+     Comments
     </a>
-    <ul class="collapse-ul">
-     <li class="toctree-l2">
-      <a class="reference internal" href="../strings/string-formatting.html">
-       String Formatting
-      </a>
-     </li>
-    </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
-   <li class="toctree-l1 collapsible-parent">
-    <a class="reference internal" href="../data-structures/intro.html">
-     Data Structures
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/types.html">
+     Type Conversion
     </a>
-    <ul class="collapse-ul">
-     <li class="toctree-l2">
-      <a class="reference internal" href="../data-structures/tuple.html">
-       Tuple
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../data-structures/lists.html">
-       Lists
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../data-structures/dictionaries.html">
-       Dictionaries
-      </a>
-     </li>
-    </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
-   <li class="toctree-l1 current active collapsible-parent">
-    <a class="reference internal" href="intro.html">
-     If Statements
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/operators.html">
+     Numerical Operators
     </a>
-    <ul class="current collapse-ul">
-     <li class="toctree-l2">
-      <a class="reference internal" href="bools.html">
-       Booleans (
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         bool
-        </span>
-       </code>
-       )
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="comparison-operators.html">
-       Comparison Operators
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="logical-operators.html">
-       Logical Operators
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="inclusion-operators.html">
-       Inclusion Operators
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="if.html">
-       If Statements
-      </a>
-     </li>
-     <li class="toctree-l2 current active">
-      <a class="current reference internal" href="#">
-       Nested If Statements
-      </a>
-     </li>
-    </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
-   <li class="toctree-l1 collapsible-parent">
-    <a class="reference internal" href="../loops/intro.html">
-     Loops
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/assignment-operators.html">
+     Compound Assignment Operators
     </a>
-    <ul class="collapse-ul">
-     <li class="toctree-l2">
-      <a class="reference internal" href="../loops/while.html">
-       While Loops
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../loops/for.html">
-       For Loops
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../loops/nested.html">
-       Nested Loops
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../loops/break.html">
-       Breaking Out of Loops
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../loops/else.html">
-       Else Statement and Loops
-      </a>
-     </li>
-    </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
-   <li class="toctree-l1 collapsible-parent">
-    <a class="reference internal" href="../functions/intro.html">
-     Defining Functions
+   <li class="toctree-l2">
+    <a class="reference internal" href="../basics/functions.html">
+     Introduction to Using Functions
     </a>
-    <ul class="collapse-ul">
-     <li class="toctree-l2">
-      <a class="reference internal" href="../functions/return.html">
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         return
-        </span>
-       </code>
-       Statement
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../functions/arguments.html">
-       Function Arguments
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../functions/local-variables.html">
-       Local Variables
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../functions/recursive.html">
-       Recursive Functions
-      </a>
-     </li>
-    </ul>
-    <i class="fas fa-chevron-down">
-    </i>
-   </li>
-   <li class="toctree-l1 collapsible-parent">
-    <a class="reference internal" href="../file-io/intro.html">
-     File I/O
-    </a>
-    <ul class="collapse-ul">
-     <li class="toctree-l2">
-      <a class="reference internal" href="../file-io/file-io.html">
-       File I/O
-      </a>
-     </li>
-     <li class="toctree-l2">
-      <a class="reference internal" href="../file-io/data.html">
-       Structured Data Files
-      </a>
-     </li>
-    </ul>
-    <i class="fas fa-chevron-down">
-    </i>
    </li>
   </ul>
-  <figcaption>
-   <p>
-    <span class="caption-text">
-     Scientific Packages
-    </span>
-   </p>
-   <ul>
-    <li class="toctree-l1 collapsible-parent">
-     <a class="reference internal" href="../../scientific-packages/numpy/intro.html">
-      Numpy
-     </a>
-     <ul class="collapse-ul">
-      <li class="toctree-l2">
-       <a class="reference internal" href="../../scientific-packages/numpy/arrays.html">
-        Arrays
-       </a>
-      </li>
-      <li class="toctree-l2">
-       <a class="reference internal" href="../../scientific-packages/numpy/array-methods.html">
-        Array Methods and Attributes
-       </a>
-      </li>
-      <li class="toctree-l2">
-       <a class="reference internal" href="../../scientific-packages/numpy/arrays2d.html">
-        2D Arrays and Matrices
-       </a>
-      </li>
-      <li class="toctree-l2">
-       <a class="reference internal" href="../../scientific-packages/numpy/random.html">
-        NumPy Random Module
-       </a>
-      </li>
-      <li class="toctree-l2">
-       <a class="reference internal" href="../../scientific-packages/numpy/where.html">
-        Array Conditional Statements and
-        <code class="docutils literal notranslate">
-         <span class="pre">
-          numpy.where()
-         </span>
-        </code>
-       </a>
-      </li>
-     </ul>
-     <i class="fas fa-chevron-down">
-     </i>
-    </li>
-    <li class="toctree-l1 collapsible-parent">
-     <a class="reference internal" href="../../scientific-packages/matplotlib/intro.html">
-      Matplotlib
-     </a>
-     <ul class="collapse-ul">
-      <li class="toctree-l2">
-       <a class="reference internal" href="../../scientific-packages/matplotlib/simple.html">
-        Simple Plots with Pyplot
-       </a>
-      </li>
-      <li class="toctree-l2">
-       <a class="reference internal" href="../../scientific-packages/matplotlib/subplots.html">
-        Subplots
-       </a>
-      </li>
-     </ul>
-     <i class="fas fa-chevron-down">
-     </i>
-    </li>
-    <li class="toctree-l1 collapsible-parent">
-     <a class="reference internal" href="../../scientific-packages/astropy/intro.html">
-      Astropy
-     </a>
-     <ul class="collapse-ul">
-      <li class="toctree-l2">
-       <a class="reference internal" href="../../scientific-packages/astropy/units.html">
-        Units and Quantities
-       </a>
-      </li>
-      <li class="toctree-l2">
-       <a class="reference internal" href="../../scientific-packages/astropy/constants.html">
-        Constants
-       </a>
-      </li>
-     </ul>
-     <i class="fas fa-chevron-down">
-     </i>
-    </li>
-   </ul>
-   <figcaption>
-    <p>
-     <span class="caption-text">
-      Numerical Methods
-     </span>
-    </p>
-    <ul>
-     <li class="toctree-l1 collapsible-parent">
-      <a class="reference internal" href="../../numerical-methods/root-finding/intro.html">
-       Numerical Root Finding
-      </a>
-      <ul class="collapse-ul">
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/root-finding/bisection.html">
-         Bisection Method
-        </a>
-       </li>
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/root-finding/secant.html">
-         Secant Method
-        </a>
-       </li>
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/root-finding/newton.html">
-         Newton-Raphson Method
-        </a>
-       </li>
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/root-finding/comparison.html">
-         Comparing the Methods
-        </a>
-       </li>
-      </ul>
-      <i class="fas fa-chevron-down">
-      </i>
-     </li>
-     <li class="toctree-l1 collapsible-parent">
-      <a class="reference internal" href="../../numerical-methods/regression/intro.html">
-       Linear Regression Algorithms
-      </a>
-      <ul class="collapse-ul">
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/regression/notation.html">
-         Statistical Notation
-        </a>
-       </li>
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/regression/least-squares.html">
-         Linear Least Squares Minimization
-        </a>
-       </li>
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/regression/chi-squared.html">
-         Chi Squared Minimization
-        </a>
-       </li>
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/regression/multivariate-least-squares.html">
-         Multivariate Linear Least Squares Minimization
-        </a>
-       </li>
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/regression/scipy.html">
-         Least Squares Minimization with
-         <code class="docutils literal notranslate">
-          <span class="pre">
-           scipy.optimize.leastsq
-          </span>
-         </code>
-        </a>
-       </li>
-      </ul>
-      <i class="fas fa-chevron-down">
-      </i>
-     </li>
-     <li class="toctree-l1 collapsible-parent">
-      <a class="reference internal" href="../../numerical-methods/ode/intro.html">
-       Numerical Solutions to Ordinary Differential Equations
-      </a>
-      <ul class="collapse-ul">
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/ode/euler.html">
-         Euler’s Method
-        </a>
-       </li>
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/ode/euler-error.html">
-         Euler’s Method: Truncation Error
-        </a>
-       </li>
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/ode/higher-order.html">
-         Solving Coupled and Higher Order ODEs
-        </a>
-       </li>
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/ode/runge-kutta.html">
-         Runge-Kutta Methods
-        </a>
-       </li>
-      </ul>
-      <i class="fas fa-chevron-down">
-      </i>
-     </li>
-     <li class="toctree-l1 collapsible-parent">
-      <a class="reference internal" href="../../numerical-methods/integration/intro.html">
-       Numerical Integration Techniques
-      </a>
-      <ul class="collapse-ul">
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/integration/midpoint.html">
-         Midpoint Rule
-        </a>
-       </li>
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/integration/trapezoidal.html">
-         Trapezoidal Rule
-        </a>
-       </li>
-       <li class="toctree-l2">
-        <a class="reference internal" href="../../numerical-methods/integration/simpson.html">
-         Simpson’s Rule
-        </a>
-       </li>
-      </ul>
-      <i class="fas fa-chevron-down">
-      </i>
-     </li>
-    </ul>
-   </figcaption>
-  </figcaption>
- </figcaption>
-</figcaption>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../strings/strings.html">
+   Strings
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../strings/string-formatting.html">
+     String Formatting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../data-structures/intro.html">
+   Data Structures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../data-structures/tuple.html">
+     Tuple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../data-structures/lists.html">
+     Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../data-structures/dictionaries.html">
+     Dictionaries
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   If Statements
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="bools.html">
+     Booleans (
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       bool
+      </span>
+     </code>
+     )
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="comparison-operators.html">
+     Comparison Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="logical-operators.html">
+     Logical Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="inclusion-operators.html">
+     Inclusion Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="if.html">
+     If Statements
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Nested If Statements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../loops/intro.html">
+   Loops
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../loops/while.html">
+     While Loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../loops/for.html">
+     For Loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../loops/nested.html">
+     Nested Loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../loops/break.html">
+     Breaking Out of Loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../loops/else.html">
+     Else Statement and Loops
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../functions/intro.html">
+   Defining Functions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../functions/return.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       return
+      </span>
+     </code>
+     Statement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../functions/arguments.html">
+     Function Arguments
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../functions/local-variables.html">
+     Local Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../functions/recursive.html">
+     Recursive Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../file-io/intro.html">
+   File I/O
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../file-io/file-io.html">
+     File I/O
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../file-io/data.html">
+     Structured Data Files
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Scientific Packages
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../scientific-packages/numpy/intro.html">
+   Numpy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/numpy/arrays.html">
+     Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/numpy/array-methods.html">
+     Array Methods and Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/numpy/arrays2d.html">
+     2D Arrays and Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/numpy/random.html">
+     NumPy Random Module
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/numpy/where.html">
+     Array Conditional Statements and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       numpy.where()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../scientific-packages/matplotlib/intro.html">
+   Matplotlib
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/simple.html">
+     Simple Plots with Pyplot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/subplots.html">
+     Subplots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../scientific-packages/astropy/intro.html">
+   Astropy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/astropy/units.html">
+     Units and Quantities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/astropy/constants.html">
+     Constants
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Numerical Methods
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../numerical-methods/root-finding/intro.html">
+   Numerical Root Finding
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/root-finding/bisection.html">
+     Bisection Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/root-finding/secant.html">
+     Secant Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/root-finding/newton.html">
+     Newton-Raphson Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/root-finding/comparison.html">
+     Comparing the Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../numerical-methods/regression/intro.html">
+   Linear Regression Algorithms
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/regression/notation.html">
+     Statistical Notation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/regression/least-squares.html">
+     Linear Least Squares Minimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/regression/chi-squared.html">
+     Chi Squared Minimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/regression/multivariate-least-squares.html">
+     Multivariate Linear Least Squares Minimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/regression/scipy.html">
+     Least Squares Minimization with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       scipy.optimize.leastsq
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../numerical-methods/ode/intro.html">
+   Numerical Solutions to Ordinary Differential Equations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/ode/euler.html">
+     Euler’s Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/ode/euler-error.html">
+     Euler’s Method: Truncation Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/ode/higher-order.html">
+     Solving Coupled and Higher Order ODEs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/ode/runge-kutta.html">
+     Runge-Kutta Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../numerical-methods/integration/intro.html">
+   Numerical Integration Techniques
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/integration/midpoint.html">
+     Midpoint Rule
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/integration/trapezoidal.html">
+     Trapezoidal Rule
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../numerical-methods/integration/simpson.html">
+     Simpson’s Rule
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -562,21 +595,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -594,7 +627,7 @@
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -612,14 +645,14 @@
     </div>
 </div>
 
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
-        <!-- Launch buttons -->
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
@@ -638,11 +671,12 @@
     </div>
 </div>
 
-    </div>
+        </div>
 
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
@@ -650,7 +684,7 @@
         
               <div>
                 
-  <section id="nested-if-statements">
+  <div class="section" id="nested-if-statements">
 <h1>Nested If Statements<a class="headerlink" href="#nested-if-statements" title="Permalink to this headline">¶</a></h1>
 <p>The code blocks inside the if statement can contain any valid Python code. This means that you can also nest other if statements inside an if statement. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span><span class="p">:</span>
@@ -666,17 +700,15 @@
 </pre></div>
 </div>
 <p>which can be illustrated with the control flow diagram:</p>
-<figure class="align-default" id="fig-if-else-nested-control-flow">
+<div class="figure align-default" id="fig-if-else-nested-control-flow">
 <img alt="../../../_images/if_else_nested.png" src="../../../_images/if_else_nested.png" />
-<figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Control flow diagram of the pseudo code example of an if statement nested inside an if statement.</span><a class="headerlink" href="#fig-if-else-nested-control-flow" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">Control flow diagram of the pseudo code example of an if statement nested inside an if statement.</span><a class="headerlink" href="#fig-if-else-nested-control-flow" title="Permalink to this image">¶</a></p>
+</div>
 <div class="admonition hint">
 <p class="admonition-title">Hint</p>
 <p>While there are situations which call for nested if statements, always consider whether a series of <code class="docutils literal notranslate"><span class="pre">elif</span></code>s will serve instead. Nested code blocks can make scripts harder to read.</p>
 </div>
-</section>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -700,15 +732,15 @@
 
               </div>
               
-        </div>
-    </div>
-    
-    
-    <div class='prev-next-bottom'>
         
+        <div class='prev-next-bottom'>
+            
     <a class='left-prev' id="prev-link" href="if.html" title="previous page">If Statements</a>
     <a class='right-next' id="next-link" href="../loops/intro.html" title="next page">Control Flow: Loops</a>
 
+        </div>
+        
+        </div>
     </div>
     <footer class="footer mt-5 mt-md-0">
     <div class="container">
@@ -716,7 +748,7 @@
         
           By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn<br/>
         
-            &copy; Copyright 2020.<br/>
+            &copy; Copyright 2021.<br/>
       </p>
     </div>
   </footer>
@@ -725,11 +757,9 @@
 
       </div>
     </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="../../../_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
+  
   </body>
 </html>

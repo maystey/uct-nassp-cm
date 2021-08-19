@@ -1,52 +1,58 @@
-# Solving Coupled and Higher Order ODEs
+#!/usr/bin/env python
+# coding: utf-8
 
-A common way to solve higher order ODEs using numerical methods is to convert this to a system of first order ODEs. We will first look at solving systems of coupled first order diffrential equations, and then we will focus on reducing higher order ODEs to solve them in a similar manner.
+# # Solving Coupled and Higher Order ODEs
 
-## Coupled Ordinary Differential Equations
+# A common way to solve higher order ODEs using numerical methods is to convert this to a system of first order ODEs. We will first look at solving systems of coupled first order diffrential equations, and then we will focus on reducing higher order ODEs to solve them in a similar manner.
 
-Consider a system of first order coupled ODEs in the form:
+# ## Coupled Ordinary Differential Equations
 
-\begin{align*}
-\frac{d x}{dt}(t) &= f\big(t, x(t), y(t)\big)\\
-\frac{d y}{dt}(t) &= g\big(t, x(t), y(t)\big)
-\end{align*}
+# Consider a system of first order coupled ODEs in the form:
+# 
+# \begin{align*}
+# \frac{d x}{dt}(t) &= f\big(t, x(t), y(t)\big)\\
+# \frac{d y}{dt}(t) &= g\big(t, x(t), y(t)\big)
+# \end{align*}
+# 
+# given the initial conditions:
+# 
+# \begin{align*}
+# x(t_0) &= x_0\\
+# y(t_0) &= y_0
+# \end{align*}
+# 
+# where there is one independent variable $t$, and two dependent variables $x(t)$ and $y(t)$.
+# 
+# Note that we cannot simply solve the ODEs for $x$ and $y$ independently, as the ODE functions contain both of these variables. Instead, for our numerical solution, we must solve them simultaneously, step-by-step. Applying Euler's method, defining $t_{n + 1} = t_n + h$, $x_n = x(t_n)$ and $y_n = y(t_n)$, the update step is:
+# 
+# \begin{align*}
+# x_{n+1} &= x_{n} + f(t_n, x_n, y_n)\\
+# y_{n+1} &= y_{n} + g(t_n, x_n, y_n)\\
+# \end{align*}
+# 
+# As you can see, in order to calculate $x_{n+1}$, you need to know both the values of $x_n$ and $y_n$ (the same goes for $y_{n+1}$).
 
-given the initial conditions:
+# <div class="worked-example">
+#     <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
-\begin{align*}
-x(t_0) &= x_0\\
-y(t_0) &= y_0
-\end{align*}
+# Consider the coupled system of first order ODEs: <!-- Find something less arbitrary, or at least verifiable through analytic/intuitive means-->
+# 
+# \begin{align*}
+# \frac{d x}{dt} &= t  +x y\\
+# \frac{d y}{dt} &= t - x
+# \end{align*}
+# 
+# with the initial conditions
+# 
+# \begin{align*}
+# x(0) &= 0\\
+# y(0) &= 1
+# \end{align*}
+# 
+# Let's write a script to integrate these ODEs using Euler's method to find $x(t)$ and $y(t)$ up to $t = 10$. We'll store the values in an array and plot them at the end.
 
-where there is one independent variable $t$, and two dependent variables $x(t)$ and $y(t)$.
+# In[2]:
 
-Note that we cannot simply solve the ODEs for $x$ and $y$ independently, as the ODE functions contain both of these variables. Instead, for our numerical solution, we must solve them simultaneously, step-by-step. Applying Euler's method, defining $t_{n + 1} = t_n + h$, $x_n = x(t_n)$ and $y_n = y(t_n)$, the update step is:
-
-\begin{align*}
-x_{n+1} &= x_{n} + f(t_n, x_n, y_n)\\
-y_{n+1} &= y_{n} + g(t_n, x_n, y_n)\\
-\end{align*}
-
-As you can see, in order to calculate $x_{n+1}$, you need to know both the values of $x_n$ and $y_n$ (the same goes for $y_{n+1}$).
-
-<div class="worked-example">
-    <h5 class="worked-example-title"><b>Worked Example</b></h5>
-
-Consider the coupled system of first order ODEs: <!-- Find something less arbitrary, or at least verifiable through analytic/intuitive means-->
-
-\begin{align*}
-\frac{d x}{dt} &= t  +x y\\
-\frac{d y}{dt} &= t - x
-\end{align*}
-
-with the initial conditions
-
-\begin{align*}
-x(0) &= 0\\
-y(0) &= 1
-\end{align*}
-
-Let's write a script to integrate these ODEs using Euler's method to find $x(t)$ and $y(t)$ up to $t = 10$. We'll store the values in an array and plot them at the end.
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -96,84 +102,88 @@ ax[1].set_ylabel('y(t)')
 
 plt.show()
 
-</div>
 
-### Arbitrarily Many Coupled Ordinary Differential Equations
+# </div>
 
-Now, let's consider a general solution for arbitrarily many coupled ODEs. Consider the system of coupled first order differential equations:
+# ### Arbitrarily Many Coupled Ordinary Differential Equations
 
-\begin{align*}
-\frac{d x_1}{dt} &= f_1 (t, x_1, x_2, \dots, x_m)\\
-\frac{d x_2}{dt} &= f_2 (t, x_1, x_2, \dots, x_m)\\
-\frac{d x_3}{dt} &= f_3 (t, x_1, x_2, \dots, x_m)\\
-& \vdots\\
-\frac{d x_m}{dt} &= f_m (t, x_1, x_2, \dots, x_m)\\
-\end{align*}
+# Now, let's consider a general solution for arbitrarily many coupled ODEs. Consider the system of coupled first order differential equations:
+# 
+# \begin{align*}
+# \frac{d x_1}{dt} &= f_1 (t, x_1, x_2, \dots, x_m)\\
+# \frac{d x_2}{dt} &= f_2 (t, x_1, x_2, \dots, x_m)\\
+# \frac{d x_3}{dt} &= f_3 (t, x_1, x_2, \dots, x_m)\\
+# & \vdots\\
+# \frac{d x_m}{dt} &= f_m (t, x_1, x_2, \dots, x_m)\\
+# \end{align*}
+# 
+# with initial conditions:
+# 
+# \begin{align*}
+# x_1(t_0) &= x_{1\ 0}\\
+# x_2(t_0) &= x_{2\ 0}\\
+# x_3(t_0) &= x_{3\ 0}\\
+# & \vdots\\
+# x_m(t_0) &= x_{m\ 0}
+# \end{align*}
+# 
+# We can boil down the update step to a single line of code by vectorizing the equations and conditions using NumPy arrays. Let's define the following vector and vector function:
+# 
+# $$
+# \vec{x}(t) =
+# \begin{pmatrix}
+# x_1 (t)\\
+# x_2 (t)\\
+# x_3 (t)\\
+# \vdots\\
+# x_m (t)
+# \end{pmatrix} \quad \text{and} \quad
+# \vec{f}(\vec{x}) = 
+# \begin{pmatrix}
+# f_1 (t, \vec{x})\\
+# f_2 (t, \vec{x})\\
+# f_3 (t, \vec{x})\\
+# \vdots\\
+# f_m (t, \vec{x})
+# \end{pmatrix}
+# $$
+# 
+# The system of ODEs can now be written as:
+# 
+# $$
+# \frac{d \vec{x}}{dt} = \vec{f}(t, \vec{x})
+# $$
+# 
+# Using our usual definitions of $t_{n+1} = t_n + h$ and $\vec{x}(t_n) = \vec{x}_n$, the Euler update step can be written as:
+# 
+# $$
+# \vec{x}_{n+1} = \vec{x}_n + h  \vec{f}(t_n, \vec{x}_n)
+# $$
+# 
 
-with initial conditions:
+# <div class="worked-example">
+#     <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
-\begin{align*}
-x_1(t_0) &= x_{1\ 0}\\
-x_2(t_0) &= x_{2\ 0}\\
-x_3(t_0) &= x_{3\ 0}\\
-& \vdots\\
-x_m(t_0) &= x_{m\ 0}
-\end{align*}
+# Consider the system of 3 first order coupled ODEs:
+# 
+# \begin{align*}
+# \frac{d x}{dt} &= t  +x y\\
+# \frac{d y}{dt} &= t - x\\
+# \frac{d z}{dt} &= y
+# \end{align*}
+# 
+# with the initial conditions
+# 
+# \begin{align*}
+# x(0) &= 0\\
+# y(0) &= 1\\
+# z(0) &= 0
+# \end{align*}
+# 
+# Let's adapt the previous script to integrate these coupled ODEs using Euler's method, this time making use of NumPy array's vectorized operations.
 
-We can boil down the update step to a single line of code by vectorizing the equations and conditions using NumPy arrays. Let's define the following vector and vector function:
+# In[4]:
 
-$$
-\vec{x}(t) =
-\begin{pmatrix}
-x_1 (t)\\
-x_2 (t)\\
-x_3 (t)\\
-\vdots\\
-x_m (t)
-\end{pmatrix} \quad \text{and} \quad
-\vec{f}(\vec{x}) = 
-\begin{pmatrix}
-f_1 (t, \vec{x})\\
-f_2 (t, \vec{x})\\
-f_3 (t, \vec{x})\\
-\vdots\\
-f_m (t, \vec{x})
-\end{pmatrix}
-$$
-
-The system of ODEs can now be written as:
-
-$$
-\frac{d \vec{x}}{dt} = \vec{f}(t, \vec{x})
-$$
-
-Using our usual definitions of $t_{n+1} = t_n + h$ and $\vec{x}(t_n) = \vec{x}_n$, the Euler update step can be written as:
-
-$$
-\vec{x}_{n+1} = \vec{x}_n + h  \vec{f}(t_n, \vec{x}_n)
-$$
-
-
-<div class="worked-example">
-    <h5 class="worked-example-title"><b>Worked Example</b></h5>
-
-Consider the system of 3 first order coupled ODEs:
-
-\begin{align*}
-\frac{d x}{dt} &= t  +x y\\
-\frac{d y}{dt} &= t - x\\
-\frac{d z}{dt} &= y
-\end{align*}
-
-with the initial conditions
-
-\begin{align*}
-x(0) &= 0\\
-y(0) &= 1\\
-z(0) &= 0
-\end{align*}
-
-Let's adapt the previous script to integrate these coupled ODEs using Euler's method, this time making use of NumPy array's vectorized operations.
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -219,89 +229,93 @@ ax[-1].set_xlabel('t')
 
 plt.show()
 
-<!-- Show a script where a function is used? -->
 
-</div>
+# <!-- Show a script where a function is used? -->
 
-## Second Order Differential Equations
+# </div>
 
-In general, if we wish to solve an ODE of the form
+# ## Second Order Differential Equations
 
-$$
-\frac{d^2y}{dx^2} = f\left(x, y, \frac{dy}{dx}\right)
-$$
+# In general, if we wish to solve an ODE of the form
+# 
+# $$
+# \frac{d^2y}{dx^2} = f\left(x, y, \frac{dy}{dx}\right)
+# $$
+# 
+# <!--- Problem with notation!!!!!!!!!! --->
+# with initial conditions $y(x = x_0) = y_0$ and $y^\prime(x = x_0) = y^\prime_0$ ,
+# we can transform these into a system of coupled first order equations by introducing the variable:
+# 
+# $$
+# v = \frac{dy}{dx}
+# $$
+# 
+# which gives us the equations:
+# 
+# $$
+# \begin{align*}
+# \frac{dy}{dx} &= v\\
+# \frac{dv}{dx} &= f(x, y, v)\\
+# \end{align*}
+# $$
+# 
+# with the initial conditions
+# 
+# As the ODE for $y$ depends on $v$ and the ODE for $v$ depends on $y$, these equations need to be integrated simultaneously.
 
-<!--- Problem with notation!!!!!!!!!! --->
-with initial conditions $y(x = x_0) = y_0$ and $y^\prime(x = x_0) = y^\prime_0$ ,
-we can transform these into a system of coupled first order equations by introducing the variable:
+# <div class="worked-example">
+#     <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
-$$
-v = \frac{dy}{dx}
-$$
+# Consider second order ODE:
+# 
+# $$
+# \frac{d^2 y}{dt^2} + 10 \frac{dy}{dt} + 100y = 100 |\sin(t)|
+# $$
+# 
+# which we wish to solve for the initial conditions $y = 0.1$, $dy/dx = -0.5$ at $t = 0$.
+# 
+# Firstly let's rearrange the equation to make $y^{\prime\prime}$ the subject:
+# 
+# $$
+# \frac{d^2 y}{dt^2} = 100 |\sin(t)| - 10 \frac{dy}{dt} - 100 y
+# $$
+# 
+# We start by introducing the variables:
+# 
+# \begin{align*}
+# y_0 &= y\\
+# y_1 &= \frac{dy}{dt} = \frac{d y_0}{dt}\\
+# \end{align*}
+# 
+# which form the vector:
+# 
+# $$
+# \vec{y} = \begin{pmatrix} y_0 \\ y_1 \end{pmatrix}
+# $$
+# 
+# in order to reduce the second order ODE to a coupled system of two first order ODEs:
+# 
+# $$
+# \begin{align*}
+# \frac{d y_0}{dt} &= y_1\\
+# \frac{d y_1}{dt} &= 100|sin(t)| - 10 y_1 - 100 y_0
+# \end{align*}
+# $$
+# 
+# which can be vectorized as:
+# 
+# $$
+# \frac{d \vec{y}}{dt} =
+# \begin{pmatrix}
+# y_1\\
+# 100|sin(t)| - 10 y_1 - 100 y_0
+# \end{pmatrix}
+# $$
+# 
+# This can be solved by modifying our solutions from the previous worked example:
 
-which gives us the equations:
+# In[7]:
 
-$$
-\begin{align*}
-\frac{dy}{dx} &= v\\
-\frac{dv}{dx} &= f(x, y, v)\\
-\end{align*}
-$$
-
-with the initial conditions
-
-As the ODE for $y$ depends on $v$ and the ODE for $v$ depends on $y$, these equations need to be integrated simultaneously.
-
-<div class="worked-example">
-    <h5 class="worked-example-title"><b>Worked Example</b></h5>
-
-Consider second order ODE:
-
-$$
-\frac{d^2 y}{dt^2} + 10 \frac{dy}{dt} + 100y = 100 |\sin(t)|
-$$
-
-which we wish to solve for the initial conditions $y = 0.1$, $dy/dx = -0.5$ at $t = 0$.
-
-Firstly let's rearrange the equation to make $y^{\prime\prime}$ the subject:
-
-$$
-\frac{d^2 y}{dt^2} = 100 |\sin(t)| - 10 \frac{dy}{dt} - 100 y
-$$
-
-We start by introducing the variables:
-
-\begin{align*}
-y_0 &= y\\
-y_1 &= \frac{dy}{dt} = \frac{d y_0}{dt}\\
-\end{align*}
-
-which form the vector:
-
-$$
-\vec{y} = \begin{pmatrix} y_0 \\ y_1 \end{pmatrix}
-$$
-
-in order to reduce the second order ODE to a coupled system of two first order ODEs:
-
-$$
-\begin{align*}
-\frac{d y_0}{dt} &= y_1\\
-\frac{d y_1}{dt} &= 100|sin(t)| - 10 y_1 - 100 y_0
-\end{align*}
-$$
-
-which can be vectorized as:
-
-$$
-\frac{d \vec{y}}{dt} =
-\begin{pmatrix}
-y_1\\
-100|sin(t)| - 10 y_1 - 100 y_0
-\end{pmatrix}
-$$
-
-This can be solved by modifying our solutions from the previous worked example:
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -349,87 +363,91 @@ ax[1].set_ylabel("y'(t)")
 
 plt.show()
 
-In the solution above we used separate variables to store the values for $y(x)$ and $v(x)$. In the example below, we shall see that it is more practical to store these values in a single 2D array.
 
-</div>
+# In the solution above we used separate variables to store the values for $y(x)$ and $v(x)$. In the example below, we shall see that it is more practical to store these values in a single 2D array.
 
-## Higher Order Differential Equations
+# </div>
 
-We can extend this technique of creating a system of coupled first order equations to an ODE of arbitrary order:
+# ## Higher Order Differential Equations
 
-$$
-\frac{d^m y}{d x^m} =  f\left(x, \frac{d y}{dx}, \frac{d^2y}{dx^2}, \frac{d^3y}{dx^3}, \dots, \frac{d^{m-1} y}{dx^{m-1}} \right)
-$$
+# We can extend this technique of creating a system of coupled first order equations to an ODE of arbitrary order:
+# 
+# $$
+# \frac{d^m y}{d x^m} =  f\left(x, \frac{d y}{dx}, \frac{d^2y}{dx^2}, \frac{d^3y}{dx^3}, \dots, \frac{d^{m-1} y}{dx^{m-1}} \right)
+# $$
+# 
+# with initial conditions
+# 
+# $$
+# y(x = x_0) = y_0 ~~~~~~ \frac{dy}{dx}(x = x_0) = y^\prime_0 ~~~~~~ \frac{d^2y}{dx^2}(x = x_0) = y^{\prime\prime}_0 ~~~~~~ \dots ~~~~~~ \frac{d^{n-1}y}{dx^{m-1}}(x = x_0) = y^{(m-1)}_0
+# $$
+# 
+# We start by introducing the variables:
+# 
+# $$
+# y_0 = y ~~~~~~ y_1 = \frac{dy}{dx} ~~~~~~ y_2 = \frac{d^2y}{dx^2} ~~~~~~ \dots ~~~~~ y_{m-1} = \frac{d^{m-1}y}{dx^{m-1}}
+# $$
+# 
+# we can transform the order $n$ ODE to a set of $n$ first order coupled differential equations:
+# 
+# $$
+# \begin{align*}
+# \frac{d y_0}{dx} &= y_1\\
+# \frac{d y_1}{dx} &= y_2\\
+# \frac{d y_2}{dx} &= y_3\\
+#                 &\vdots\\
+# \frac{d y_{m-2}}{dx} &= y_{m-1}\\
+# \frac{d y_{m-1}}{dx} &= f(x, y_0, y_1, y_2, y_3, \dots, y_{m-2}, y_{m-1})\\
+# \end{align*}
+# $$
+# 
+# Again, we can vectorize this in order to use a solution similar to those above:
+# 
+# $$
+# \vec{y} =
+# \begin{pmatrix}
+# y_0\\
+# y_1\\
+# \vdots\\
+# y_{m -1}
+# \end{pmatrix}
+# $$
 
-with initial conditions
+# <div class="worked-example">
+#     <h5 class="worked-example-title"><b>Worked Example</b></h5>
 
-$$
-y(x = x_0) = y_0 ~~~~~~ \frac{dy}{dx}(x = x_0) = y^\prime_0 ~~~~~~ \frac{d^2y}{dx^2}(x = x_0) = y^{\prime\prime}_0 ~~~~~~ \dots ~~~~~~ \frac{d^{n-1}y}{dx^{m-1}}(x = x_0) = y^{(m-1)}_0
-$$
+# Consider the order 3 ODE:
+# 
+# $$
+# \frac{d^3 y}{dx^3} + y \frac{d^2 y}{dx^2} = 0
+# $$
+# 
+# with the initial conditions $y = 1$, $\tfrac{d}{dx}y = 0.5$ and $\tfrac{d^2}{dx^2} y = 0.7$ at $x = 0$.
+# 
+# To solve this we introduce the variables:
+# 
+# $$
+# \begin{align*}
+# y_0 &= y\\
+# y_1 &= \frac{d y}{dx}\\
+# y_2 &= \frac{d^2y}{dx^2}
+# \end{align*}
+# $$
+# 
+# This gives us the system of equations:
+# 
+# $$
+# \begin{align*}
+# \frac{dy_0}{dx} &= y_1\\
+# \frac{dy_1}{dx} &= y_2\\
+# \frac{dy_2}{dx} &= -y_0 y_2
+# \end{align*}
+# $$
+# 
+# The solution in Python is:
 
-We start by introducing the variables:
+# In[4]:
 
-$$
-y_0 = y ~~~~~~ y_1 = \frac{dy}{dx} ~~~~~~ y_2 = \frac{d^2y}{dx^2} ~~~~~~ \dots ~~~~~ y_{m-1} = \frac{d^{m-1}y}{dx^{m-1}}
-$$
-
-we can transform the order $n$ ODE to a set of $n$ first order coupled differential equations:
-
-$$
-\begin{align*}
-\frac{d y_0}{dx} &= y_1\\
-\frac{d y_1}{dx} &= y_2\\
-\frac{d y_2}{dx} &= y_3\\
-                &\vdots\\
-\frac{d y_{m-2}}{dx} &= y_{m-1}\\
-\frac{d y_{m-1}}{dx} &= f(x, y_0, y_1, y_2, y_3, \dots, y_{m-2}, y_{m-1})\\
-\end{align*}
-$$
-
-Again, we can vectorize this in order to use a solution similar to those above:
-
-$$
-\vec{y} =
-\begin{pmatrix}
-y_0\\
-y_1\\
-\vdots\\
-y_{m -1}
-\end{pmatrix}
-$$
-
-<div class="worked-example">
-    <h5 class="worked-example-title"><b>Worked Example</b></h5>
-
-Consider the order 3 ODE:
-
-$$
-\frac{d^3 y}{dx^3} + y \frac{d^2 y}{dx^2} = 0
-$$
-
-with the initial conditions $y = 1$, $\tfrac{d}{dx}y = 0.5$ and $\tfrac{d^2}{dx^2} y = 0.7$ at $x = 0$.
-
-To solve this we introduce the variables:
-
-$$
-\begin{align*}
-y_0 &= y\\
-y_1 &= \frac{d y}{dx}\\
-y_2 &= \frac{d^2y}{dx^2}
-\end{align*}
-$$
-
-This gives us the system of equations:
-
-$$
-\begin{align*}
-\frac{dy_0}{dx} &= y_1\\
-\frac{dy_1}{dx} &= y_2\\
-\frac{dy_2}{dx} &= -y_0 y_2
-\end{align*}
-$$
-
-The solution in Python is:
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -483,4 +501,5 @@ ax2[-1].set_xlabel('x')
 
 plt.show()
 
-</div>
+
+# </div>

@@ -9,6 +9,13 @@ the version number, `a.b.c`, follows the following scheme:
 - `c`. New sections, corrections, etc. The number change is consecutive, not reflecting the number of changes.
 
 
+## [UNRELEASSED]
+
+### Changed
+
+- Update to Jupyter-Book version 11.2
+
+
 ## [2.2.0] - 2021-08-17
 
 ### Changed
