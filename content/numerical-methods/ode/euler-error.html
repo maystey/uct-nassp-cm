@@ -674,7 +674,7 @@
 E_{n+1} = \tfrac{1}{2} y^{\prime\prime}(x_n) h^2 + O(h^3)
 \]</div>
 <p>If you are unfamiliar with the notation for <span class="math notranslate nohighlight">\(O(h^3)\)</span> (big O notation), in this case it means the dominant terms are proportional to <span class="math notranslate nohighlight">\(h^3\)</span> (higher order terms of <span class="math notranslate nohighlight">\(h\)</span> will be less dominant for <span class="math notranslate nohighlight">\(0 &lt; h &lt; 1\)</span>).</p>
-<p>The <strong>local</strong> truncation error is associated with a single integration step. It is far more useful, however, to consider the <strong>global</strong> truncation error, which is the error accumulated over multiple integration steps. The global truncation error is <span class="math notranslate nohighlight">\(O(h)\)</span> <span id="id1">[<a class="reference internal" href="#id4"><span>EE1</span></a>]</span>. The derivation for the bounds of the error are beyond the scope of the course. As this error approximately scales linearly with <span class="math notranslate nohighlight">\(h\)</span>, reducing the size of <span class="math notranslate nohighlight">\(h\)</span> will generally reduce the global error:</p>
+<p>The <strong>local</strong> truncation error is associated with a single integration step. It is far more useful, however, to consider the <strong>global</strong> truncation error, which is the error accumulated over multiple integration steps. The global truncation error is <span class="math notranslate nohighlight">\(O(h)\)</span> <span id="id1">[<a class="reference internal" href="#id4"><span>EulerErr1</span></a>]</span>. The derivation for the bounds of the error are beyond the scope of the course. As this error approximately scales linearly with <span class="math notranslate nohighlight">\(h\)</span>, reducing the size of <span class="math notranslate nohighlight">\(h\)</span> will generally reduce the global error:</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../../_images/euler-error_2_0.png" src="../../../_images/euler-error_2_0.png" />
@@ -690,8 +690,8 @@ E_{n+1} = \tfrac{1}{2} y^{\prime\prime}(x_n) h^2 + O(h^3)
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p id="id2"><dl class="citation">
-<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">EE1</a></span></dt>
-<dd><p>James F. Efferson. <em>An Introduction to Numerical Methods and Analysis</em>. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.</p>
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">EulerErr1</a></span></dt>
+<dd><p>James F. Epperson. <em>An Introduction to Numerical Methods and Analysis</em>. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.</p>
 </dd>
 </dl>
 </p>

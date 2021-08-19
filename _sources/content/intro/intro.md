@@ -41,6 +41,6 @@ Byte code is similar to the CPU <!--- Necessary repeatition?--> specific assembl
 ```{bibliography}
 :cited:
 :style: plain
-:labelprefix: I
+:labelprefix: Py
 :keyprefix: i-i-
 ```
