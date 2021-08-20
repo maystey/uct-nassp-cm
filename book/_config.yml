@@ -50,4 +50,5 @@ exclude_patterns:
   - pdf_book
   - content/scientific-packages/numpy/special-functions.ipynb
   - content/numerical-methods/root-finding/utils.py
+  - content/numerical-methods/curve-fitting/data-gen.ipynb
   

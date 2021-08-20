@@ -98,13 +98,15 @@ parts:
     - file: content/numerical-methods/root-finding/newton
     - file: content/numerical-methods/root-finding/comparison
 
-  - file: content/numerical-methods/regression/intro
+  - file: content/numerical-methods/curve-fitting/intro
     sections:
-    - file: content/numerical-methods/regression/notation
-    - file: content/numerical-methods/regression/least-squares
-    - file: content/numerical-methods/regression/chi-squared
-    - file: content/numerical-methods/regression/multivariate-least-squares
-    - file: content/numerical-methods/regression/scipy
+    - file: content/numerical-methods/curve-fitting/linear-regression
+      sections:
+      - file: content/numerical-methods/curve-fitting/least-squares
+      - file: content/numerical-methods/curve-fitting/chi-squared
+      - file: content/numerical-methods/curve-fitting/multiple-least-squares
+    - file: content/numerical-methods/curve-fitting/scipy-least-squares
+    - file: content/numerical-methods/curve-fitting/scipy-curve-fit
 
   - file: content/numerical-methods/ode/intro
     sections:

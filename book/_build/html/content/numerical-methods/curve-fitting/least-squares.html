@@ -1,0 +1,983 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Linear Least Squares Minimization &#8212; AST4007W Computational Methods</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/table.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Linear Chi Squared Minimization" href="chi-squared.html" />
+    <link rel="prev" title="Linear Regression" href="linear-regression.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+      <img src="../../../_static/UCTcircular_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">AST4007W Computational Methods</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro.html">
+   UCT NASSP AST4007W Computational Methods
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/intro.html">
+   Programming and Python in a Nutshell
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../intro/control-flow/control-flow-diagrams.html">
+   Control Flow Diagrams
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  The Python Standard Library
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../standard-library/basics/intro.html">
+   Python Basics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/basics/variables.html">
+     Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/basics/comments.html">
+     Comments
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/basics/types.html">
+     Type Conversion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/basics/operators.html">
+     Numerical Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/basics/assignment-operators.html">
+     Compound Assignment Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/basics/functions.html">
+     Introduction to Using Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../standard-library/strings/strings.html">
+   Strings
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/strings/string-formatting.html">
+     String Formatting
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../standard-library/data-structures/intro.html">
+   Data Structures
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/data-structures/tuple.html">
+     Tuple
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/data-structures/lists.html">
+     Lists
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/data-structures/dictionaries.html">
+     Dictionaries
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../standard-library/if-statements/intro.html">
+   If Statements
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/if-statements/bools.html">
+     Booleans (
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       bool
+      </span>
+     </code>
+     )
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/if-statements/comparison-operators.html">
+     Comparison Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/if-statements/logical-operators.html">
+     Logical Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/if-statements/inclusion-operators.html">
+     Inclusion Operators
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/if-statements/if.html">
+     If Statements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/if-statements/nested.html">
+     Nested If Statements
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../standard-library/loops/intro.html">
+   Loops
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/loops/while.html">
+     While Loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/loops/for.html">
+     For Loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/loops/nested.html">
+     Nested Loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/loops/break.html">
+     Breaking Out of Loops
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/loops/else.html">
+     Else Statement and Loops
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../standard-library/functions/intro.html">
+   Defining Functions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/functions/return.html">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       return
+      </span>
+     </code>
+     Statement
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/functions/arguments.html">
+     Function Arguments
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/functions/local-variables.html">
+     Local Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/functions/recursive.html">
+     Recursive Functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../standard-library/file-io/intro.html">
+   File I/O
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/file-io/file-io.html">
+     File I/O
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../standard-library/file-io/data.html">
+     Structured Data Files
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Scientific Packages
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../scientific-packages/numpy/intro.html">
+   Numpy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/numpy/arrays.html">
+     Arrays
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/numpy/array-methods.html">
+     Array Methods and Attributes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/numpy/arrays2d.html">
+     2D Arrays and Matrices
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/numpy/random.html">
+     NumPy Random Module
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/numpy/where.html">
+     Array Conditional Statements and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       numpy.where()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../scientific-packages/matplotlib/intro.html">
+   Matplotlib
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/simple.html">
+     Simple Plots with Pyplot
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/subplots.html">
+     Subplots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../scientific-packages/astropy/intro.html">
+   Astropy
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/astropy/units.html">
+     Units and Quantities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/astropy/constants.html">
+     Constants
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Numerical Methods
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../root-finding/intro.html">
+   Numerical Root Finding
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../root-finding/bisection.html">
+     Bisection Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../root-finding/secant.html">
+     Secant Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../root-finding/newton.html">
+     Newton-Raphson Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../root-finding/comparison.html">
+     Comparing the Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="intro.html">
+   Curve Fitting
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="linear-regression.html">
+     Linear Regression
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+    <label for="toctree-checkbox-13">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Linear Least Squares Minimization
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="chi-squared.html">
+       Linear Chi Squared Minimization
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="multiple-least-squares.html">
+       Multiple Linear Least Squares Minimization
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scipy-least-squares.html">
+     Non-Linear Least Squares Minimization with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       scipy.optimize.least_squares
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="scipy-curve-fit.html">
+     Fitting Models to Data with
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       scipy.optimize.curve_fit
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ode/intro.html">
+   Numerical Solutions to Ordinary Differential Equations
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode/euler.html">
+     Euler’s Method
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode/euler-error.html">
+     Euler’s Method: Truncation Error
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode/higher-order.html">
+     Solving Coupled and Higher Order ODEs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode/runge-kutta.html">
+     Runge-Kutta Methods
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../integration/intro.html">
+   Numerical Integration Techniques
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/midpoint.html">
+     Midpoint Rule
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/trapezoidal.html">
+     Trapezoidal Rule
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/simpson.html">
+     Simpson’s Rule
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/content/numerical-methods/curve-fitting/least-squares.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/maystey/uct-nassp-cm-2021/issues/new?title=Issue%20on%20page%20%2Fcontent/numerical-methods/curve-fitting/least-squares.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/maystey/uct-nassp-cm-2021/master?urlpath=tree/book/content/numerical-methods/curve-fitting/least-squares.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-problem">
+   The Problem
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-solution">
+   The Solution
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variance-of-y">
+   Variance of
+   <span class="math notranslate nohighlight">
+    \(y\)
+   </span>
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="linear-least-squares-minimization">
+<h1>Linear Least Squares Minimization<a class="headerlink" href="#linear-least-squares-minimization" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-problem">
+<h2>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">¶</a></h2>
+<p>We propose a linear functional relation between 2 measurable variables, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+y = a_0 + a_1 x
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> are <strong>unknown</strong> constants. We wish to find these constants.</p>
+</div>
+<div class="section" id="the-solution">
+<h2>The Solution<a class="headerlink" href="#the-solution" title="Permalink to this headline">¶</a></h2>
+<p>To find these unknown coefficients in practice we measure many <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> pairs (assuming the measurements display some sort of dispersion). We now have a set of measured <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> pairs for <span class="math notranslate nohighlight">\(i = 1, 2, 3, \dots, N\)</span>.</p>
+<p>If we assume that the <span class="math notranslate nohighlight">\(x_i\)</span> are free of error, we can introduce error terms <font color = "red"> <span class="math notranslate nohighlight">\(\epsilon_i\)</span> </font> to the <span class="math notranslate nohighlight">\(y_i\)</span> data to make up for the dispersion of the data (i.e. that it doesn’t follow the linear relation exactly).</p>
+<div class="cell tag_remove_input docutils container">
+<div class="cell_output docutils container">
+<img alt="../../../_images/least-squares_6_0.png" src="../../../_images/least-squares_6_0.png" />
+</div>
+</div>
+<p>With this error term, the relation between our data points can be represented as:</p>
+<!--- center tag doesn't work with math -->
+<p><span class="math notranslate nohighlight">\(y_i +\)</span> <font color = "red"> <span class="math notranslate nohighlight">\(\epsilon_i\)</span> </font> <span class="math notranslate nohighlight">\(= a_0 + a_1 x_i\)</span></p>
+<p>Note that, at this point the error terms we have introduced are unknown to us. They represent the difference between the measured <span class="math notranslate nohighlight">\(y_i\)</span> values and the expected values if we plugged <span class="math notranslate nohighlight">\(x_i\)</span> into our relation (for which we have yet to determine <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>). The error terms can be seen as a means to an end and will soon be done away with.</p>
+<p>Now, we need some sort of metric to tell us how much error we have. We can use the sum of the errors squared for this:</p>
+<div class="math notranslate nohighlight">
+\[
+S = \sum_{i=1}^{N} \epsilon_i^2
+\]</div>
+<p>We use the squares of the error as it is the magnitude of the errors we are concerned about, and with the errors ranging between positive and negative values, will end up canceling each other out (these are illustrated as points above and below the lines in the figure above).</p>
+<p>We can use the relation between our data points to replace the <span class="math notranslate nohighlight">\(\epsilon_i^2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+S = \sum_{i=1}^{N} (a_0 + a_1 x_i - y_i)^2
+\]</div>
+<p>Now, we want our choice of <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> to give us the least amount of error possible, or rather to give us the minimum value of <span class="math notranslate nohighlight">\(S\)</span>. To achieve this we minimize <span class="math notranslate nohighlight">\(S\)</span> with respect to <span class="math notranslate nohighlight">\(a_0\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+ \frac{\partial S}{\partial a_0} = 2\sum_{i = 1}^{N} (a_0 + a_1 x_i - y_i) &amp;= 0\\
+ \therefore a_0 N + a_1 \sum_{i = 1}^{N} x_i - \sum_{i = 1}^{N} y_i        &amp;= 0\\
+ \therefore a_0 + a_1 \langle x \rangle                                    &amp;= \langle y \rangle \\
+\end{align*}\]</div>
+<p>and <span class="math notranslate nohighlight">\(a_1\)</span>:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+ \frac{\partial S}{\partial a_1} = 2\sum_{i = 1}^{N} (a_0 + a_1 x_i - y_i)x_i                &amp;= 0\\
+ \therefore a_0 \sum_{i = 1}^{N} x_i + a_1 \sum_{i = 1}^{N} x_i^2 - \sum_{i = 1}^{N} x_i y_i &amp;= 0\\
+ a_0 \langle x \rangle + a_1 \langle x^2 \rangle                                             &amp;= \langle xy \rangle\\
+\end{align*}\]</div>
+<p>To solve this system of equations we could use a matrix equation and let the computer determine the solution to that numerically, but with only two equations and unknowns, an analytic solution is easy enough to find:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+a_1 &amp;= \frac{\langle xy \rangle - \langle x \rangle\langle y \rangle}{\langle x^2 \rangle - \langle x \rangle^2}\\
+a_0 &amp;= \langle y \rangle - a_1 \langle x \rangle\\
+\end{align*}
+\end{split}\]</div>
+</div>
+<div class="section" id="variance-of-y">
+<h2>Variance of <span class="math notranslate nohighlight">\(y\)</span><a class="headerlink" href="#variance-of-y" title="Permalink to this headline">¶</a></h2>
+<p>If we assume that the <span class="math notranslate nohighlight">\(y_i\)</span> data points are distributed around the “true” <span class="math notranslate nohighlight">\(y\)</span> values for the given <span class="math notranslate nohighlight">\(x_i\)</span> by a Gaussian distribution with constant variance, we can calculate the variance of <span class="math notranslate nohighlight">\(y\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\sigma_y^2  &amp; = \frac{1}{N}\sum_{i=1}^N \epsilon_i^2\\
+&amp; = \frac{1}{N} \sum_{i=1}^N (a_0 + a_1 x_i - y_i)^2\\
+\end{align*}
+\end{split}\]</div>
+<div class="worked-example">
+    <h5 class="worked-example-title"><b>Worked Example</b> - Cepheid Variables</h5><p>For this worked example we will use data from Cepheid variables. These are pulsating stars with their luminosity (or magnitude <span class="math notranslate nohighlight">\(M\)</span>) related to the period (<span class="math notranslate nohighlight">\(P\)</span>) of their pulsations:</p>
+<div class="math notranslate nohighlight">
+\[
+M = a_0 + a_1 \log P
+\]</div>
+<p>Note that the relation above is can be made more accurate by including the color or temperature of the  star, which we shall use later in the chapter.</p>
+<p>As this relation is consistent across all specimens, these stars can be used as a standard candle for measuring distances, all that is needed are measurements from stars with known distances from Earth to determine <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>.</p>
+<p>The standard is to measure Cepheids in the Large Magellanic Cloud, whose distance is known. A few of these measurements can be found in the data file ‘cepheid_data.csv’ provided on Vula (Resources/Exercises/Data/exercise10.1/) or on <a class="reference external" href="https://raw.githubusercontent.com/maystey/uct_nassp_cm2021/master/book/content/numerical-methods/regression/data/cepheid_data.csv">GitHub</a>. The data file contains measurements of:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\log P\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(M\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(B - V\)</span> (color, not using yet)</p></li>
+</ul>
+<p>We will determine <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> under 2 different assumptions:</p>
+<ol class="simple">
+<li><p>The error in the data is associated with <span class="math notranslate nohighlight">\(M\)</span></p></li>
+<li><p>The error in the data is associated with <span class="math notranslate nohighlight">\(\log P\)</span> (this will require us to re-arrange things)</p></li>
+</ol>
+<p><strong>Solution:</strong></p>
+<p>You are encouraged to attempt this yourself before continuing.</p>
+<p>We start by reading in the file. We will read the data into a 2 arrays. This can be achieved using the standard library as in the page <strong><a class="reference internal" href="../../standard-library/file-io/data.html"><span class="doc">Python Standard Library/File IO/Data Files</span></a></strong>, or using <code class="docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code> (documentation <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.loadtxt.html">here</a>). We shall use the latter as it is far more convenient:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">logP</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./data/cepheid_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The keyword arguments used above are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">delimeter</span></code>: the string used to separate the data columns</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">skiprows</span></code>: the number of rows to skip from the data file (in this case the header)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unpack</span></code>: this makes <code class="docutils literal notranslate"><span class="pre">loadtxt</span></code> return each column in the data file as arrays, as apposed to the default of a single 2D array.</p></li>
+</ul>
+<p>As we will be performing 2 minimizations, we will define a function to determine  <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>, and <span class="math notranslate nohighlight">\(\sigma_y\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">least_squares</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="n">mean_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">mean_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="c1">#Note that the expectation values can be calculated using the mean function</span>
+    <span class="n">expect_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="p">)</span>
+    <span class="n">expect_xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="n">a1</span> <span class="o">=</span> <span class="p">(</span><span class="n">expect_xy</span> <span class="o">-</span> <span class="n">mean_x</span><span class="o">*</span><span class="n">mean_y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">expect_xx</span> <span class="o">-</span> <span class="n">mean_x</span><span class="o">*</span><span class="n">mean_x</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="p">[</span><span class="n">mean_y</span> <span class="o">-</span> <span class="n">a1</span><span class="o">*</span><span class="n">mean_x</span><span class="p">,</span> <span class="n">a1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">sigma</span><span class="p">(</span><span class="n">a0</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">a0</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Error in <span class="math notranslate nohighlight">\(M\)</span></strong></p>
+<p>Let’s estimate the coefficients for the relation:</p>
+<div class="math notranslate nohighlight">
+\[
+M = a_0 + a_1 \log P
+\]</div>
+<p>assuming the error resides primarily in <span class="math notranslate nohighlight">\(M\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a0</span><span class="p">,</span> <span class="n">a1</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">logP</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Error in <span class="math notranslate nohighlight">\(\log P\)</span></strong></p>
+<!-- This could use some re-phrasing -->
+<p>Now, if we assumed that the error resides primarily in <span class="math notranslate nohighlight">\(\log P\)</span>, we want to apply least squares minimization to the relation:</p>
+<div class="math notranslate nohighlight">
+\[
+\log P = b_0 + b_1 M
+\]</div>
+<p>to find the values for the coefficients <span class="math notranslate nohighlight">\(b_0\)</span> and <span class="math notranslate nohighlight">\(b_1\)</span>. These values can be used to calculate <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> by re-arranging the relation to put <span class="math notranslate nohighlight">\(M\)</span> as the subject:</p>
+<div class="math notranslate nohighlight">
+\[
+M = - \frac{b_0}{b_1} + \frac{1}{b_1} \log P
+\]</div>
+<p>which gives us:</p>
+<div class="math notranslate nohighlight">
+\[
+a_0 = - \frac{b_0}{b_1}, \quad a_1 = \frac{1}{b_1}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b0</span><span class="p">,</span> <span class="n">b1</span> <span class="o">=</span> <span class="n">least_squares</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">logP</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Plotting the solutions</strong></p>
+<p>Instead of printing out the values of the coefficients, let’s visualize them by plotting the linear relations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">logP</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">logP</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span> <span class="c1">#for the relation</span>
+
+<span class="n">y_M</span> <span class="o">=</span> <span class="n">a0</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">x</span> <span class="c1">#error in M</span>
+<span class="n">y_P</span> <span class="o">=</span> <span class="o">-</span><span class="n">b0</span><span class="o">/</span><span class="n">b1</span> <span class="o">+</span> <span class="n">x</span><span class="o">/</span><span class="n">b1</span> <span class="c1">#error in logP</span>
+
+<span class="n">fig_ceph</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logP</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_M</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Error in M&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="n">linewidth</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_P</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Error in logP&#39;</span><span class="p">,</span> <span class="n">lw</span> <span class="o">=</span> <span class="n">linewidth</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;logP&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="n">fontsize</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="n">fontsize</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">fontsize</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/least-squares_28_0.png" src="../../../_images/least-squares_28_0.png" />
+</div>
+</div>
+</div></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./content/numerical-methods/curve-fitting"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="linear-regression.html" title="previous page">Linear Regression</a>
+    <a class='right-next' id="next-link" href="chi-squared.html" title="next page">Linear Chi Squared Minimization</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
