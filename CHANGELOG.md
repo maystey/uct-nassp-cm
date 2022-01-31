@@ -12,12 +12,14 @@ the version number, `a.b.c`, follows the following scheme:
 ## [UNRELEASSED]
 
 ### Added
+
 - Section `numerical-methods/curve-fitting/curve-fitting`
 
 ### Changed
 
-- Update to Jupyter-Book version 11.2
-- Rename Chapter `numerical-methods/regression` to `numerical-methods/curve-fitting`
+- Update to Jupyter-Book version 0.11.2 .
+- PDF export has been improved and the document is now ready for distribution.
+- Rename Chapter `numerical-methods/regression` to `numerical-methods/curve-fitting`.
 
 ### Removed
 

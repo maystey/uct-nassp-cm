@@ -1,0 +1,36 @@
+format: jb-book
+root: content/intro
+parts:
+- caption: Introduction
+  chapters:
+  - file: ../../book/content/intro/intro
+  #- file: content/intro/installing/anaconda
+  - file: ../../book/content/intro/control-flow/control-flow-diagrams
+
+####################################################################
+
+- caption: The Python Standard Library
+  chapters:
+
+  - file: ../../book/content/standard-library/basics/intro
+    sections:
+    - file: ../../book/content/standard-library/basics/variables
+    - file: ../../book/content/standard-library/basics/comments
+    
+  - file: ../../book/content/standard-library/strings/strings
+    sections:
+    - file: ../../book/content/standard-library/strings/string-formatting
+  
+####################################################################
+
+- caption: Scientific Packages
+  chapters:
+
+  - file: ../../book/content/scientific-packages/numpy/intro
+    sections:
+    - file: ../../book/content/scientific-packages/numpy/arrays
+  
+  - file: ../../book/content/scientific-packages/astropy/intro
+    sections:
+    - file: ../../book/content/scientific-packages/astropy/constants
+

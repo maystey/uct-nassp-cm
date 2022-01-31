@@ -1,0 +1,101 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vertical Line Title Page
+% LaTeX Template
+% Version 2.0 (22/7/17)
+%
+% This template was downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Peter Wilson (herries.press@earthlink.net) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+% 
+% This template can be used in one of two ways:
+%
+% 1) Content can be added at the end of this file just before the \end{document}
+% to use this title page as the starting point for your document.
+%
+% 2) Alternatively, if you already have a document which you wish to add this
+% title page to, copy everything between the \begin{document} and
+% \end{document} and paste it where you would like the title page in your
+% document. You will then need to insert the packages and document 
+% configurations into your document carefully making sure you are not loading
+% the same package twice and that there are no clashes.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[a4paper, 11pt]{book} % A4 paper size and default 11pt font size
+ 
+\newcommand*{\plogo}{\fbox{$\mathcal{PL}$}} % Generic dummy publisher logo
+ 
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage{stix} % Use the STIX fonts
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks = true,
+    linkcolor = blue,
+    urlcolor = blue
+}
+
+\pagenumbering{gobble}
+
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+%Include the nassp and uct logos?
+
+\begin{titlepage} % Suppresses displaying the page number on the title page and the subsequent page counts as page 1
+	
+	\raggedleft % Right align the title page
+	
+	\rule{1pt}{\textheight} % Vertical line
+	\hspace{0.05\textwidth} % Whitespace between the vertical line and title page text
+	\parbox[b]{0.75\textwidth}{ % Paragraph box for holding the title page text, adjust the width to move the title page left or right on the page
+		
+% 		\begin{tabular}{l r}
+% 		{\Huge\bfseries AST4007W} & {\Huge\bfseries Computational} \\
+% 					  & {\Huge\bfseries Methods}\\
+% 		\end{tabular}
+		{\Huge\bfseries AST4007W} \\[0.5\baselineskip]
+		{\Huge\bfseries Computational Methods}
+		\\[2\baselineskip] % Title
+		{\large\textit{Scientific Programming in Python}}\\[4\baselineskip] % Subtitle or further description
+		{\Large\textsc{luis a. balona\\ ed elson\\ masimba paradza\\ mayhew steyn}} % Author name, lower case for consistent small caps
+		
+		\vspace{0.5\textheight} % Whitespace between the title block and the publisher
+		
+		%TODO: add UCT logo here
+% 		{\noindent The Publisher~~\plogo}\\[\baselineskip] % Publisher and logo
+	}
+
+\end{titlepage}
+
+
+\section*{About this book}
+
+This book serves as the notes for the Computational Methods module of the National Astrophysics and Space Sciences Programme (NASSP) honours course at the University of Cape Town. It was generated from the online version, found at \url{https://maystey.github.io/uct_nassp_cm/index.html}. The site was generated using \href{https://jupyterbook.org/intro.html}{Jupyter Books v0.11.2}.\\
+
+The source code used to generate this book, along with the changelog, are hosted on GitHub at \url{https://github.com/maystey/uct_nassp_cm}. If you find errors in these notes, or if you have any suggestions, please feel free to submit an issue on the GitHub repository.\\
+
+%TODO: include the liscence figure here
+This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-sa/4.0/} or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+\end{document}
+
+
+
+
+
