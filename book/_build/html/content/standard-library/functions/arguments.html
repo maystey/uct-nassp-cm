@@ -53,7 +53,7 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Local Variables" href="local-variables.html" />
+    <link rel="next" title="Local Namespace and Variables" href="local-variables.html" />
     <link rel="prev" title="return Statement" href="return.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -312,7 +312,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="local-variables.html">
-     Local Variables
+     Local Namespace and Variables
     </a>
    </li>
    <li class="toctree-l2">
@@ -699,19 +699,36 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#positional-arguments">
-   Positional Arguments
+  <a class="reference internal nav-link" href="#default-values-for-function-arguments">
+   Default Values for Function Arguments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#keyword-arguments">
-   Keyword Arguments
+  <a class="reference internal nav-link" href="#positional-and-keyword-arguments">
+   Positional and Keyword Arguments
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#combining-positional-and-keyword-arguments">
-   Combining Positional and Keyword Arguments
+  <a class="reference internal nav-link" href="#unpacking-data-structures-as-arguments">
+   Unpacking Data Structures As Arguments
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defining-functions-that-take-arbitrary-many-positional-and-keyword-arguments">
+   Defining Functions That Take Arbitrary Many Positional and Keyword Arguments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#positional-arguments">
+     Positional Arguments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keyword-arguments">
+     Keyword Arguments
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -772,9 +789,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="positional-arguments">
-<h2>Positional Arguments<a class="headerlink" href="#positional-arguments" title="Permalink to this headline">¶</a></h2>
-<p>The arguments defined above are called <strong>positional arguments</strong>. In order to set them correctly, you need to parse them in the order they are defined in the function. You must also provide a value for each argument:</p>
+<p>Note that for the function defined above, all of the arguments need to be passed into the functions:</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg3</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
@@ -792,15 +807,10 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="keyword-arguments">
-<h2>Keyword Arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h2>
-<p>If you want to set optional arguments with a default value, you can use keyword arguments. The syntax is:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">keyword_arg</span> <span class="o">=</span> <span class="n">default_value</span><span class="p">):</span>
-</pre></div>
-</div>
-<p>For example:</p>
-<!--- Should I really be using string formatting here? I guess it's as good a time as any... --><div class="cell docutils container">
+<div class="section" id="default-values-for-function-arguments">
+<h2>Default Values for Function Arguments<a class="headerlink" href="#default-values-for-function-arguments" title="Permalink to this headline">¶</a></h2>
+<p>You can assign default values to arguments by using the <code class="docutils literal notranslate"><span class="pre">=</span></code> operator, for example:</p>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;World&#39;</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="s1">&#39;today&#39;</span><span class="p">):</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Hello </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">! How are you </span><span class="si">{</span><span class="n">time</span><span class="si">}</span><span class="s1">?&#39;</span> 
@@ -809,7 +819,7 @@
 </div>
 </div>
 <p>(If you are unfamiliar with f-strings <code class="docutils literal notranslate"><span class="pre">f''</span></code>, see the page on <a class="reference internal" href="../strings/string-formatting.html"><span class="doc std std-doc"><strong>The Python Standard Library/Strings/String Formatting</strong></span></a>)</p>
-<p>This function can be called with no arguments, in which case the default values will be used:</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">hello()</span></code> is called without passing arguments, the values defined in the function will be used:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="p">()</span>
@@ -822,7 +832,7 @@
 </div>
 </div>
 </div>
-<p>We can also parse the arguments like positional arguments:</p>
+<p>alternatively you pass in new values:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="p">(</span><span class="s1">&#39;reader&#39;</span><span class="p">,</span> <span class="s1">&#39;feeling&#39;</span><span class="p">)</span>
@@ -835,6 +845,7 @@
 </div>
 </div>
 </div>
+<p>Not all arguments need be replaced:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="p">(</span><span class="s1">&#39;reader&#39;</span><span class="p">)</span>
@@ -847,73 +858,355 @@
 </div>
 </div>
 </div>
-<p>Keyword arguments can be referred to by name, and out of order:</p>
+<p>You don’t need to assign default values for every argument, for example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello</span><span class="p">(</span><span class="n">time</span> <span class="o">=</span> <span class="s1">&#39;this morning&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello_hello</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;World&#39;</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="s1">&#39;today&#39;</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">num</span><span class="o">*</span><span class="s1">&#39;hello &#39;</span><span class="si">}{</span><span class="n">name</span><span class="si">}</span><span class="s2">! How are you </span><span class="si">{</span><span class="n">time</span><span class="si">}</span><span class="s2">?&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">num</span></code> argument needs to have a value passed into it, but the others do not:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello_hello</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hello World! How are you this morning?&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hello hello World! How are you today?&#39;
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="combining-positional-and-keyword-arguments">
-<h2>Combining Positional and Keyword Arguments<a class="headerlink" href="#combining-positional-and-keyword-arguments" title="Permalink to this headline">¶</a></h2>
-<p>If you define a function with both positional and keyword arguments, the positional arguments must appear <strong>before</strong> the keyword arguments.</p>
-<p>For example:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello_hello</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;World&#39;</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="s1">&#39;today&#39;</span><span class="p">,</span> <span class="n">weather</span> <span class="o">=</span> <span class="s1">&#39;good&#39;</span><span class="p">):</span>
-    
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">num</span><span class="o">*</span><span class="s1">&#39;hello&#39;</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">! How are you </span><span class="si">{</span><span class="n">time</span><span class="si">}</span><span class="s2">?&quot;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>Here the positional argument <code class="docutils literal notranslate"><span class="pre">num</span></code> must be provided</p>
+<p>Also note that an argument without a default value cannot be defined after an argument that does:</p>
 <div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello_hello</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">hello_again</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;World&#39;</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="s1">&#39;today&#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Hello </span><span class="si">{</span><span class="n">num</span><span class="o">*</span><span class="s1">&#39;hello &#39;</span><span class="si">}{</span><span class="n">name</span><span class="si">}</span><span class="s2">! How are you </span><span class="si">{</span><span class="n">time</span><span class="si">}</span><span class="s2">?&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-11-c88f59c1414c&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">hello_again</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;World&#39;</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="s1">&#39;today&#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">):</span>
+                   <span class="o">^</span>
+<span class="ne">SyntaxError</span>: non-default argument follows default argument
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="positional-and-keyword-arguments">
+<h2>Positional and Keyword Arguments<a class="headerlink" href="#positional-and-keyword-arguments" title="Permalink to this headline">¶</a></h2>
+<p>In the examples above, we have been entering argument values directly into the function in the order in which they are defined. These are called <strong>positional arguments</strong>. Alternatively, arguments can be passed in by name:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg3</span><span class="p">(</span><span class="n">arg1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">arg2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">arg3</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>These are called <strong>keyword arguments</strong>. Keyword arguments can be passed into the function in any order:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg3</span><span class="p">(</span><span class="n">arg2</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">arg3</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">arg1</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+1
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<p>Both positional and keyword arguments can be used in the same function call:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg3</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">arg2</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">arg3</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that positional arguments cannot be passed into a function after keyword arguments:</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg3</span><span class="p">(</span><span class="n">arg2</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">arg1</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-15-685bc2be2307&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="n">arg3</span><span class="p">(</span><span class="n">arg2</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">arg1</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+                            <span class="o">^</span>
+<span class="ne">SyntaxError</span>: positional argument follows keyword argument
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="unpacking-data-structures-as-arguments">
+<h2>Unpacking Data Structures As Arguments<a class="headerlink" href="#unpacking-data-structures-as-arguments" title="Permalink to this headline">¶</a></h2>
+<p>You can unpack data structures to be passed into functions as individual arguments, this can be useful if you need to store the values of arguments to be used in functions later. Tuples and lists can be unpacked using the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator, and will behave like positional arguments:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span> <span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="p">)</span> <span class="c1">#Unpacking a tuple as 3 positional arguments</span>
+<span class="nb">print</span><span class="p">(</span> <span class="o">*</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span> <span class="p">)</span> <span class="c1">#Unpacking a list as 3 positional arguments</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 2 3
+a b c
+</pre></div>
+</div>
+</div>
+</div>
+<p>Dictionaries can be unpacked as keyword arguments using the <code class="docutils literal notranslate"><span class="pre">**</span></code> operator, using our <code class="docutils literal notranslate"><span class="pre">hello</span></code> function from above:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello_hello</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="p">{</span><span class="s1">&#39;name&#39;</span> <span class="p">:</span> <span class="s1">&#39;everybody&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span> <span class="p">:</span> <span class="s1">&#39;you all doing&#39;</span><span class="p">})</span> <span class="c1">#Unpacking a dictionary for the keyword arguments</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hello hello hello everybody! How are you you all doing?&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="defining-functions-that-take-arbitrary-many-positional-and-keyword-arguments">
+<h2>Defining Functions That Take Arbitrary Many Positional and Keyword Arguments<a class="headerlink" href="#defining-functions-that-take-arbitrary-many-positional-and-keyword-arguments" title="Permalink to this headline">¶</a></h2>
+<p>You can define functions that take an arbitrary number of positional or keyword arguments. So far we have encountered this in the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function which can take an arbitrary amount of positional arguments.</p>
+<div class="section" id="positional-arguments">
+<h3>Positional Arguments<a class="headerlink" href="#positional-arguments" title="Permalink to this headline">¶</a></h3>
+<p>You can collect arbitrarily many positional arguments by using the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator before the argument name. Non-keyword arguments that are passed into the function from the position of this argument on will be collected as a tuple and passed in as this argument. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">argn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">argn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">argn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+2
+3
+4
+5
+</pre></div>
+</div>
+</div>
+</div>
+<p>As implied above, any positional arguments that are defined before the <code class="docutils literal notranslate"><span class="pre">*args</span></code> argument will be collected separately:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">arg2n</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arg1:&#39;</span><span class="p">,</span> <span class="n">arg1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arg2:&#39;</span><span class="p">,</span> <span class="n">arg2</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Args:&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;     &#39;</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg2n</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arg1: a
+Arg2: b
+Args:
+      1
+      2
+      3
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that arguments defined after <code class="docutils literal notranslate"><span class="pre">*args</span></code> must be passed into the function as keyword arguments:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">arg2n1</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">arg3</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arg1:&#39;</span><span class="p">,</span> <span class="n">arg1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arg2:&#39;</span><span class="p">,</span> <span class="n">arg2</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Args:&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;     &#39;</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arg3:&#39;</span><span class="p">,</span> <span class="n">arg3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg2n1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">260</span><span class="n">a0f5fbf0a</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">hello_hello</span><span class="p">()</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="mi">37</span><span class="n">b8699f1f92</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">arg2n1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 
-<span class="ne">TypeError</span>: hello_hello() missing 1 required positional argument: &#39;num&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<p>As before, the keyword arguments can be provided like positional arguments or by name:</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello_hello</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;there&#39;</span><span class="p">,</span> <span class="s1">&#39;doing&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hello hello there! How are you doing?&#39;
+<span class="ne">TypeError</span>: arg2n1() missing 1 required keyword-only argument: &#39;arg3&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hello_hello</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">time</span> <span class="o">=</span> <span class="s1">&#39;awake this early&#39;</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;sleepy head&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg2n1</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">arg3</span> <span class="o">=</span> <span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Hello  sleepy head! How are you awake this early?&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arg1: 1
+Arg2: 2
+Args:
+      3
+      4
+      5
+Arg3: 6
 </pre></div>
+</div>
+</div>
+</div>
+<p>If you define arguments with default values, these must appear after the <code class="docutils literal notranslate"><span class="pre">*args</span></code> argument:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#TODO: rename or replace this with something a little more sensible</span>
+<span class="k">def</span> <span class="nf">arg2nkw</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">kwarg1</span> <span class="o">=</span> <span class="s1">&#39;kwarg1&#39;</span><span class="p">,</span> <span class="n">kwarg2</span> <span class="o">=</span> <span class="s1">&#39;kwarg2&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arg1:&#39;</span><span class="p">,</span> <span class="n">arg1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arg2:&#39;</span><span class="p">,</span> <span class="n">arg2</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Args:&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;     &#39;</span><span class="p">,</span> <span class="n">arg</span><span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Kwarg1:&#39;</span><span class="p">,</span> <span class="n">kwarg1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Kwarg2:&#39;</span><span class="p">,</span> <span class="n">kwarg2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arg2nkw</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">kwarg1</span> <span class="o">=</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="n">kwarg2</span> <span class="o">=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arg1: a
+Arg2: b
+Args:
+      1
+      2
+      3
+      4
+      5
+Kwarg1: c
+Kwarg2: d
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="keyword-arguments">
+<h3>Keyword Arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h3>
+<p>You can collect arbitrary keyword arguments using the <code class="docutils literal notranslate"><span class="pre">**</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kwargs</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="n">arg2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arg1&#39;</span><span class="p">,</span> <span class="n">arg1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Arg2&#39;</span><span class="p">,</span> <span class="n">arg2</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kwargs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">kwarg1</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">kwarg3</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arg1 1
+Arg2 2
+{&#39;kwarg1&#39;: 2, &#39;kwarg3&#39;: 3}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that no other arguments can be used after <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code>:</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">kwargs_arg</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">  File</span><span class="nn"> &quot;&lt;ipython-input-30-9d384e3524fa&gt;&quot;</span><span class="gt">, line </span><span class="mi">1</span>
+    <span class="k">def</span> <span class="nf">kwargs_arg</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">arg2</span><span class="p">):</span>
+                                      <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -946,7 +1239,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="return.html" title="previous page"><code class="docutils literal notranslate"><span class="pre">return</span></code> Statement</a>
-    <a class='right-next' id="next-link" href="local-variables.html" title="next page">Local Variables</a>
+    <a class='right-next' id="next-link" href="local-variables.html" title="next page">Local Namespace and Variables</a>
 
         </div>
         

@@ -20,6 +20,9 @@ the version number, `a.b.c`, follows the following scheme:
 - Update to Jupyter-Book version 0.11.2 .
 - PDF export has been improved and the document is now ready for distribution.
 - Rename Chapter `numerical-methods/regression` to `numerical-methods/curve-fitting`.
+- Rewrote Sections:
+ - `python-standard-library/functions/arguments`
+ - `python-standard-library/functions/local-variables`
 
 ### Removed
 

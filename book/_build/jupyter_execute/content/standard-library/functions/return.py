@@ -3,6 +3,8 @@
 
 # # `return` Statement
 
+# As was already mentioned, the `return` statement can be used to return values from a function call. There are more properties of the `return` statement that are worth covering.
+
 # ## `return None`
 
 # Some functions return nothing (for example the `print()` function). To achieve this you can either return `None`, leave the return value blank after `return`, or  put no `return` statement at all.
@@ -59,7 +61,7 @@ message()
 
 # It can be useful to use this feature of `return` to break out of a loop, or even to ignore the `else` or `elif` parts of an `if` statement. 
 # 
-# For example, consider the function that checks if it's argument is even or odd:
+# For example, consider the function that checks if its argument is even or odd:
 
 # In[7]:
 
@@ -98,4 +100,46 @@ def is_even(value):
 
 
 is_even(3)
+
+
+# ## `return` Tuples
+
+# Although not a feature of the `return` statement itself, it's worth noting that tuple packing can be used for the value returned. This can be particularly useful when you need to return multiple values.
+
+# For example consider a function that splits a floating point number into it's whole and decimal parts, returning both:
+
+# In[12]:
+
+
+def floor_rem(num):
+    whole = int(num)
+    frac = num - whole
+    
+    return whole, frac
+
+
+# In[13]:
+
+
+floor_rem(2.13)
+
+
+# Note that tuple unpacking can also be used to collect the return values of the function into multiple variables:
+
+# In[14]:
+
+
+num = 3.14
+
+whole, frac = floor_rem(num)
+
+print('Number:', num)
+print('Whole part:', whole)
+print('Decimal part:', frac)
+
+
+# In[ ]:
+
+
+
 

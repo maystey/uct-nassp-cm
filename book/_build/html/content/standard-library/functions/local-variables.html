@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Local Variables &#8212; AST4007W Computational Methods</title>
+    <title>Local Namespace and Variables &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -312,7 +312,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Local Variables
+     Local Namespace and Variables
     </a>
    </li>
    <li class="toctree-l2">
@@ -701,9 +701,10 @@
         
               <div>
                 
-  <div class="section" id="local-variables">
-<h1>Local Variables<a class="headerlink" href="#local-variables" title="Permalink to this headline">¶</a></h1>
-<p>Variables defined in the main body of a script are called <strong>global</strong> variables. <!--- Fact check! --> These variables are accessible inside of functions:</p>
+  <div class="section" id="local-namespace-and-variables">
+<h1>Local Namespace and Variables<a class="headerlink" href="#local-namespace-and-variables" title="Permalink to this headline">¶</a></h1>
+<!-- Consider putting this in a more generic chapter --><p>Variable names are stored in a <strong>namespace</strong>, and must be unique within a namespace. Variables that are defined in the main body of a script are stored in the <strong>global namespace</strong> and are referred to as <strong>global</strong> variables.</p>
+<p>The global namespace is accessible both in the script body and inside of functions:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
@@ -726,9 +727,12 @@
 </div>
 </div>
 </div>
-<p>The arguments parsed into and the variables defined inside the function are <strong>local variables</strong>. They only exist in a particular instance of a function. &lt;!— namespace —&gt;</p>
-<p>In other words, these variables are not accessable from outside the function. For example:</p>
-<div class="cell docutils container">
+<p>however, when variables are defined inside of the function (including arguments) these are only accessible within that function. For example:</p>
+<!--
+The arguments passed into, and the variables defined inside of, the function are **local variables**. They only exist inside the function, and for a particular function call.
+
+In other words, these variables are not accessible from outside the function. For example:
+--><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_var</span><span class="p">():</span>
     <span class="n">func_var</span> <span class="o">=</span> <span class="mi">4</span>
@@ -766,7 +770,9 @@
 </div>
 </div>
 </div>
-<p>If we were to define <code class="docutils literal notranslate"><span class="pre">func_var</span></code> as a global variable, <code class="docutils literal notranslate"><span class="pre">make_var</span></code> will instance a local variable instead of reassigning the global variable:</p>
+<p>This is because a function has it’s own namespace, referred to as a <strong>local namespace</strong>. Variables in the global namespace are still accessible inside the local namespace, but variables defined in the local namespace are not available in the global namespace (or any other namespaces that encompasses it).</p>
+<p>If a variable is defined in a local namespace with the same name as a variable in the global namespace, then the local variable will be used by default.</p>
+<p>For example, if we were to define <code class="docutils literal notranslate"><span class="pre">func_var</span></code> as a global variable, <code class="docutils literal notranslate"><span class="pre">make_var</span></code> will instance a local variable instead of reassigning a new value to the global variable:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">func_var</span> <span class="o">=</span> <span class="mi">6</span>
@@ -785,7 +791,7 @@ After function 6
 </div>
 </div>
 </div>
-<p>Note that when referencing a variable, Python will check the local namespace <strong>before</strong> the global namespace (i.e. local variables are given preference).</p>
+<p>In other words Python will check the local namespace <strong>before</strong> the global namespace.</p>
 <p>As stated above, function arguments can also be treated as local variables.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -805,6 +811,42 @@ After function 6
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<!--
+<div class="admonition warning" name="warning-object">
+    <p class="title">Warning</p>
+-->
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Although variable names are restricted to namespaces, the objects that they represent are not. This is not so important to keep in mind with numbers and strings (which are passed in by value), but it is important for objects that can be altered, such as arrays and dictionaries.</p>
+</div>
+<p>For example, if we were to pass a dictionary into a function, any alterations made to that dictionary inside the function would remain outside (as there is only one dictionary object being used).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_to_dict</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+    <span class="n">d</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;value&#39;</span>
+    <span class="k">return</span> <span class="n">d</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dictionary before the function call:&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Function return:&#39;</span><span class="p">,</span> <span class="n">add_to_dict</span><span class="p">(</span><span class="n">d</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dictionary after the function call:&#39;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dictionary before the function call: {}
+Function return: {&#39;key&#39;: &#39;value&#39;}
+Dictionary after the function call: {&#39;key&#39;: &#39;value&#39;}
 </pre></div>
 </div>
 </div>

@@ -312,7 +312,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="local-variables.html">
-     Local Variables
+     Local Namespace and Variables
     </a>
    </li>
    <li class="toctree-l2">
@@ -720,6 +720,16 @@
    Breaks Out of the Function
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#return-tuples">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     return
+    </span>
+   </code>
+   Tuples
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -733,6 +743,7 @@
                 
   <div class="section" id="return-statement">
 <h1><code class="docutils literal notranslate"><span class="pre">return</span></code> Statement<a class="headerlink" href="#return-statement" title="Permalink to this headline">¶</a></h1>
+<p>As was already mentioned, the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement can be used to return values from a function call. There are more properties of the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement that are worth covering.</p>
 <div class="section" id="return-none">
 <h2><code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">None</span></code><a class="headerlink" href="#return-none" title="Permalink to this headline">¶</a></h2>
 <p>Some functions return nothing (for example the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function). To achieve this you can either return <code class="docutils literal notranslate"><span class="pre">None</span></code>, leave the return value blank after <code class="docutils literal notranslate"><span class="pre">return</span></code>, or  put no <code class="docutils literal notranslate"><span class="pre">return</span></code> statement at all.</p>
@@ -813,7 +824,7 @@
 </div>
 </div>
 <p>It can be useful to use this feature of <code class="docutils literal notranslate"><span class="pre">return</span></code> to break out of a loop, or even to ignore the <code class="docutils literal notranslate"><span class="pre">else</span></code> or <code class="docutils literal notranslate"><span class="pre">elif</span></code> parts of an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement.</p>
-<p>For example, consider the function that checks if it’s argument is even or odd:</p>
+<p>For example, consider the function that checks if its argument is even or odd:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_even</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
@@ -868,6 +879,55 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="return-tuples">
+<h2><code class="docutils literal notranslate"><span class="pre">return</span></code> Tuples<a class="headerlink" href="#return-tuples" title="Permalink to this headline">¶</a></h2>
+<p>Although not a feature of the <code class="docutils literal notranslate"><span class="pre">return</span></code> statement itself, it’s worth noting that tuple packing can be used for the value returned. This can be particularly useful when you need to return multiple values.</p>
+<p>For example consider a function that splits a floating point number into it’s whole and decimal parts, returning both:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">floor_rem</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="n">whole</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+    <span class="n">frac</span> <span class="o">=</span> <span class="n">num</span> <span class="o">-</span> <span class="n">whole</span>
+    
+    <span class="k">return</span> <span class="n">whole</span><span class="p">,</span> <span class="n">frac</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">floor_rem</span><span class="p">(</span><span class="mf">2.13</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 0.1299999999999999)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that tuple unpacking can also be used to collect the return values of the function into multiple variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="mf">3.14</span>
+
+<span class="n">whole</span><span class="p">,</span> <span class="n">frac</span> <span class="o">=</span> <span class="n">floor_rem</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number:&#39;</span><span class="p">,</span> <span class="n">num</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Whole part:&#39;</span><span class="p">,</span> <span class="n">whole</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Decimal part:&#39;</span><span class="p">,</span> <span class="n">frac</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number: 3.14
+Whole part: 3
+Decimal part: 0.14000000000000012
 </pre></div>
 </div>
 </div>
