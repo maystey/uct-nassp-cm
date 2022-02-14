@@ -9,7 +9,7 @@ the version number, `a.b.c`, follows the following scheme:
 - `c`. New sections, corrections, etc. The number change is consecutive, not reflecting the number of changes.
 
 
-## [UNRELEASSED]
+## [3.0.1] - 2022-02-14
 
 ### Added
 
