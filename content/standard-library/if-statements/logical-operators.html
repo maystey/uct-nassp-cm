@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Logical Operators &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,17 +36,17 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -91,7 +92,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -108,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -345,7 +346,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -413,6 +414,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -438,7 +444,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -744,10 +750,10 @@
         
               <div>
                 
-  <div class="section" id="logical-operators">
+  <section id="logical-operators">
 <h1>Logical Operators<a class="headerlink" href="#logical-operators" title="Permalink to this headline">¶</a></h1>
 <p>Logical operators act on booleans and return booleans. The logical operators are <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code> and <code class="docutils literal notranslate"><span class="pre">not</span></code>.</p>
-<!--- Maybe mention bitwise operations? Python doesn't expose these in the Standard Library afaik, but just so that they are aware of the difference --><div class="section" id="logical-and">
+<!--- Maybe mention bitwise operations? Python doesn't expose these in the Standard Library afaik, but just so that they are aware of the difference --><section id="logical-and">
 <h2>Logical <code class="docutils literal notranslate"><span class="pre">and</span></code><a class="headerlink" href="#logical-and" title="Permalink to this headline">¶</a></h2>
 <p>This acts on 2 booleans. It returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if both booleans are <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. For example:</p>
 <div class="cell docutils container">
@@ -768,8 +774,8 @@ False and False is False
 </div>
 </div>
 </div>
-<!-- Add examples with comparison operators? Or do it all later? --></div>
-<div class="section" id="logical-or">
+<!-- Add examples with comparison operators? Or do it all later? --></section>
+<section id="logical-or">
 <h2>Logical <code class="docutils literal notranslate"><span class="pre">or</span></code><a class="headerlink" href="#logical-or" title="Permalink to this headline">¶</a></h2>
 <p>This operator acts on 2 booleans. It returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if at least one of the booleans is <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">False</span></code> if both booleans are <code class="docutils literal notranslate"><span class="pre">False</span></code>. For example:</p>
 <div class="cell docutils container">
@@ -790,8 +796,8 @@ False or False is False
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="logical-not">
+</section>
+<section id="logical-not">
 <h2>Logical <code class="docutils literal notranslate"><span class="pre">not</span></code><a class="headerlink" href="#logical-not" title="Permalink to this headline">¶</a></h2>
 <p>This operator acts on a single boolean. It returns the opposite of the boolean:</p>
 <div class="cell docutils container">
@@ -808,8 +814,8 @@ not False is True
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="combining-logical-operations">
+</section>
+<section id="combining-logical-operations">
 <h2>Combining Logical Operations<a class="headerlink" href="#combining-logical-operations" title="Permalink to this headline">¶</a></h2>
 <p>Although logical operations only act on up to 2 booleans at a time, just like arithmetic operators they can be combined in a single statement. For example:</p>
 <div class="cell docutils container">
@@ -831,8 +837,8 @@ not True or True and False False
 <!---The order in which the logical operators are executed if no brackets are used is: `not`, `and`, `or`.
 
 If you want to control the order in which the operators execute you can use brackets: ---><p>Although it isn’t important for the cases above, if you need to ensure a specific order for the operations you can use brackets to group them.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

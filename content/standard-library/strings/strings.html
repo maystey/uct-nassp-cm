@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Strings &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,17 +36,17 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -91,7 +92,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -108,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -345,7 +346,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -413,6 +414,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -438,7 +444,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -754,10 +760,10 @@
         
               <div>
                 
-  <div class="section" id="strings">
+  <section id="strings">
 <h1>Strings<a class="headerlink" href="#strings" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter we shall take a closer look at the string data type and some of the operations associated with it. The following page makes heavy reference to online notes by Dr. Andrew N. Harrington, <a class="reference external" href="http://anh.cs.luc.edu/python/hands-on/3.1/handsonHtml/index.html">Hands-on Python 3 Tutorial</a> <span id="id1">[<a class="reference internal" href="#id5">Str1</a>]</span>.</p>
-<div class="section" id="string-literals">
+<section id="string-literals">
 <h2>String Literals<a class="headerlink" href="#string-literals" title="Permalink to this headline">¶</a></h2>
 <p>A string literal simply refers to how you specify that the data you are writing is a string. In Python this is achieved by placing quotes around the string contents. For example:</p>
 <div class="cell docutils container">
@@ -850,8 +856,8 @@ line break
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="concatenation">
+</section>
+<section id="concatenation">
 <h2>Concatenation <code class="docutils literal notranslate"><span class="pre">+</span></code><a class="headerlink" href="#concatenation" title="Permalink to this headline">¶</a></h2>
 <p>For strings the <code class="docutils literal notranslate"><span class="pre">+</span></code> symbol is used to concatenate two strings together. For example:</p>
 <div class="cell docutils container">
@@ -866,8 +872,8 @@ line break
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="duplication">
+</section>
+<section id="duplication">
 <h2>Duplication <code class="docutils literal notranslate"><span class="pre">*</span></code><a class="headerlink" href="#duplication" title="Permalink to this headline">¶</a></h2>
 <p>The duplication <code class="docutils literal notranslate"><span class="pre">*</span></code> operator takes a string and an integer and repeats the string as many times as the integer value:</p>
 <div class="cell docutils container">
@@ -884,8 +890,8 @@ bye bye
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="indexing">
+</section>
+<section id="indexing">
 <h2>Indexing <code class="docutils literal notranslate"><span class="pre">[]</span></code><a class="headerlink" href="#indexing" title="Permalink to this headline">¶</a></h2>
 <p>Strings can be seen as a collection of characters. Each of these character has an integer index associated with it, based on it’s position in the string. For example, take the string <code class="docutils literal notranslate"><span class="pre">'computer'</span></code>:</p>
 <!---
@@ -948,7 +954,7 @@ Index 7: r
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_11767</span><span class="o">/</span><span class="mf">580220801.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">ipykernel_16616</span><span class="o">/</span><span class="mf">580220801.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Index 11&#39;</span><span class="p">,</span> <span class="n">computer_string</span><span class="p">[</span><span class="mi">11</span><span class="p">])</span>
 
 <span class="ne">IndexError</span>: string index out of range
@@ -1013,8 +1019,8 @@ Third last character t
 </div>
 </div>
 <p>Note that the index <code class="docutils literal notranslate"><span class="pre">-8</span></code> corresponds to the <code class="docutils literal notranslate"><span class="pre">0</span></code> index (<code class="docutils literal notranslate"><span class="pre">len(computer_string)</span> <span class="pre">-</span> <span class="pre">8</span></code> is <code class="docutils literal notranslate"><span class="pre">0</span></code>) so anything less than this would be out of bounds.</p>
-</div>
-<div class="section" id="slicing">
+</section>
+<section id="slicing">
 <h2>Slicing<a class="headerlink" href="#slicing" title="Permalink to this headline">¶</a></h2>
 <p>Slicing allows us to extract segments of the string, as apposed to individual characters. The syntax for string slicing is:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">string</span><span class="p">[</span><span class="n">start_index</span><span class="p">:</span><span class="n">stop_index</span><span class="p">]</span>
@@ -1161,8 +1167,8 @@ Not empty slice: etupmo
 </div>
 </div>
 <p>Also notice how, in the second slice above, the <code class="docutils literal notranslate"><span class="pre">0</span></code> index character is not present. Even when slicing with a negative step size the <code class="docutils literal notranslate"><span class="pre">stop_index</span></code> is <strong>not</strong> included in the slice.</p>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p id="id2"><dl class="citation">
 <dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id1">Str1</a></span></dt>
@@ -1170,10 +1176,10 @@ Not empty slice: etupmo
 </dd>
 </dl>
 </p>
-</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

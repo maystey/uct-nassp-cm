@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Simpson’s Rule &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,24 +36,24 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="prev" title="Trapezoidal Rule" href="trapezoidal.html" />
@@ -92,7 +93,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -109,7 +110,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -346,7 +347,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -414,6 +415,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -439,7 +445,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -756,7 +762,7 @@
         
               <div>
                 
-  <div class="section" id="simpson-s-rule">
+  <section id="simpson-s-rule">
 <h1>Simpson’s Rule<a class="headerlink" href="#simpson-s-rule" title="Permalink to this headline">¶</a></h1>
 <p>A way to interpret the trapezoidal method is that we approximate the integrand curve as a straight line, and then integrate that directly. The Simpson’s method does something similar, but instead of only using the integrand values at the boundaries it uses a third point (the midpoint) to approximate the integrand as a parabola.</p>
 <p>The method approximates the integral as:</p>
@@ -765,9 +771,9 @@
 \int_a^b f(x)~ dx \approx \frac{b - a}{6} \left[ f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b)\right]
 \]</div>
 <p>with the derivation of this in the following section.</p>
-<div class="section" id="derivation">
+<section id="derivation">
 <h2>Derivation<a class="headerlink" href="#derivation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="approximating-f-x-as-a-quadratic-polynomial">
+<section id="approximating-f-x-as-a-quadratic-polynomial">
 <h3>Approximating <span class="math notranslate nohighlight">\(f(x)\)</span> as a Quadratic Polynomial<a class="headerlink" href="#approximating-f-x-as-a-quadratic-polynomial" title="Permalink to this headline">¶</a></h3>
 <p>In order to approximate <span class="math notranslate nohighlight">\(f(x)\)</span> as a quadratic polynomial we can use a second order Lagrange polynomial. We construct this polynomial by using 3 data points <span class="math notranslate nohighlight">\((a, f(a))\)</span>, <span class="math notranslate nohighlight">\((m, f(m))\)</span> and <span class="math notranslate nohighlight">\((b, f(b))\)</span>.</p>
 <div class="math notranslate nohighlight">
@@ -794,8 +800,8 @@ m - a = b - m = \tfrac{1}{2} (b - a)
 \[
 L(x) = \frac{2}{(b - a)^2} \big[ f(a) (x - m) (x - b) - 2 f(m) (x - a) (x - b) + f(b)(x - a)(x - m) \big]
 \]</div>
-</div>
-<div class="section" id="integrating-l-x">
+</section>
+<section id="integrating-l-x">
 <h3>Integrating <span class="math notranslate nohighlight">\(L(x)\)</span><a class="headerlink" href="#integrating-l-x" title="Permalink to this headline">¶</a></h3>
 <p>Now, we wish to approximate the integral of <span class="math notranslate nohighlight">\(f(x)\)</span> as the integral of our Lagrange polynomial:</p>
 <div class="math notranslate nohighlight">
@@ -823,8 +829,8 @@ u = \frac{x - m}{b - m} = 2 \frac{x - \tfrac{1}{2} (a + b)}{b - a}
 \[
 \int_a^b f(x) ~dx \approx \frac{b -a}{6} \left[f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b) \right]
 \]</div>
-</div>
-<div class="section" id="alternative-derivation">
+</section>
+<section id="alternative-derivation">
 <h3>Alternative Derivation<a class="headerlink" href="#alternative-derivation" title="Permalink to this headline">¶</a></h3>
 <p>Another way to see the Simpson’s rule is as a weighted average of the midpoint and trapezoidal rules:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>2/3 midpoint + 1/3 trapezoidal
@@ -836,9 +842,9 @@ u = \frac{x - m}{b - m} = 2 \frac{x - \tfrac{1}{2} (a + b)}{b - a}
 \int_a^b f(x)~ dx &amp;\approx \frac{2}{3} f\left(\frac{a + b}{2}\right) (b - a) + \frac{1}{3} \times \frac{1}{2} (b - a) [f(a) + f(b)]\\
                  &amp;\approx \frac{b - a}{6} \left[ f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b)\right]\\   
 \end{align*}\]</div>
-</div>
-</div>
-<div class="section" id="composite-simpson-s-rule">
+</section>
+</section>
+<section id="composite-simpson-s-rule">
 <h2>Composite Simpson’s Rule<a class="headerlink" href="#composite-simpson-s-rule" title="Permalink to this headline">¶</a></h2>
 <p>As before we can improve the accuracy of our solution by subdividing the interval and calculating the integral using Simpson’s rule for each subinterval.</p>
 <div class="cell tag_remove_input docutils container">
@@ -866,7 +872,7 @@ x_i - x_{i -1} = \frac{b - a}{n}
 \int_a^b f(x)~ dx \approx \frac{b - a}{6 n} \left[ f(a) + 2 \sum_{i = 2}^{n-1} f(x_i) + 4 \sum_{i =1}^{n} f\left( \frac{x_{i-1} + x_i}{2} \right) + f(b) \right]
 \]</div>
 <p>Assuming that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{6 n} &lt; 1\)</span>, then the error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^4\right)\)</span> <span id="id1">[<a class="reference internal" href="#id4">IntSimp1</a>]</span></p>
-<div class="section" id="composite-simpson-s-rule-with-a-discrete-data-set">
+<section id="composite-simpson-s-rule-with-a-discrete-data-set">
 <h3>Composite Simpson’s Rule with a Discrete Data Set<a class="headerlink" href="#composite-simpson-s-rule-with-a-discrete-data-set" title="Permalink to this headline">¶</a></h3>
 <p>Again, consider the data set <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> for <span class="math notranslate nohighlight">\(i = 0, \dots, n\)</span>, where</p>
 <div class="math notranslate nohighlight">
@@ -885,9 +891,9 @@ f(x_i) = y_i
 \frac{b - a}{6 n} = \frac{2 \Delta x}{6} = \frac{\Delta x}{3}
 \]</div>
 <p>as each subinterval is made up of two intervals of length <span class="math notranslate nohighlight">\(\Delta x\)</span> each.</p>
-</div>
-</div>
-<div class="section" id="references">
+</section>
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p id="id2"><dl class="citation">
 <dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">IntSimp1</a></span></dt>
@@ -895,8 +901,8 @@ f(x_i) = y_i
 </dd>
 </dl>
 </p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

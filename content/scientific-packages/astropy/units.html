@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Units and Quantities &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,24 +36,24 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Constants" href="constants.html" />
@@ -93,7 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -110,7 +111,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -347,7 +348,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -415,6 +416,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -440,7 +446,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -768,7 +774,7 @@
         
               <div>
                 
-  <div class="section" id="units-and-quantities">
+  <section id="units-and-quantities">
 <h1>Units and Quantities<a class="headerlink" href="#units-and-quantities" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">astropy.units</span></code> module gives us the tools to work with units and quantities (values paired with units). The documentation can be found <a class="reference external" href="https://docs.astropy.org/en/stable/units/">here</a>.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">astropy.units.Unit</span></code> class is used to represent base units of measurement, such as meters, seconds, kilograms, ect). These units can be manipulated, for example to determine conversion factors from one set of units to another.</p>
@@ -787,7 +793,7 @@
 \[\mathrm{kg}\]</div>
 </div>
 </div>
-<div class="section" id="quantities">
+<section id="quantities">
 <h2>Quantities<a class="headerlink" href="#quantities" title="Permalink to this headline">¶</a></h2>
 <p>Quantities are created by multiplying a float/integer with units, for example a mass:</p>
 <div class="cell docutils container">
@@ -841,8 +847,8 @@
 \[12 \; \mathrm{\frac{kg\,m}{s^{2}}}\]</div>
 </div>
 </div>
-</div>
-<div class="section" id="converting-units">
+</section>
+<section id="converting-units">
 <h2>Converting Units<a class="headerlink" href="#converting-units" title="Permalink to this headline">¶</a></h2>
 <p>Units can be converted to like units. For example, let’s convert the force calculated above into Newtons:</p>
 <div class="cell docutils container">
@@ -883,8 +889,8 @@
 \[1200000 \; \mathrm{dyn}\]</div>
 </div>
 </div>
-</div>
-<div class="section" id="quantities-and-numpy-arrays">
+</section>
+<section id="quantities-and-numpy-arrays">
 <h2>Quantities and NumPy Arrays<a class="headerlink" href="#quantities-and-numpy-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Astropy quantities support NumPy arrays. The whole array will have the same units.</p>
 <div class="cell docutils container">
@@ -923,8 +929,8 @@
 \[[1,~2,~3,~4] \; \mathrm{\frac{m}{s}}\]</div>
 </div>
 </div>
-</div>
-<div class="section" id="compose-units">
+</section>
+<section id="compose-units">
 <h2>Compose Units<a class="headerlink" href="#compose-units" title="Permalink to this headline">¶</a></h2>
 <p>Above we converted our force from kg.m.s<span class="math notranslate nohighlight">\(^{-2}\)</span> to N directly. We can let Astropy compose those units for us:</p>
 <div class="cell docutils container">
@@ -940,8 +946,8 @@
 </div>
 </div>
 <p>As you can see this gives us all the standard options available.</p>
-</div>
-<div class="section" id="decompose-units">
+</section>
+<section id="decompose-units">
 <h2>Decompose Units<a class="headerlink" href="#decompose-units" title="Permalink to this headline">¶</a></h2>
 <p>You can also decompose units back into base units:</p>
 <div class="cell docutils container">
@@ -955,8 +961,8 @@
 \[12 \; \mathrm{\frac{kg\,m}{s^{2}}}\]</div>
 </div>
 </div>
-</div>
-<div class="section" id="dimensionless-quantities">
+</section>
+<section id="dimensionless-quantities">
 <h2>Dimensionless Quantities<a class="headerlink" href="#dimensionless-quantities" title="Permalink to this headline">¶</a></h2>
 <p>Astropy understands dimensionless quantities. For example, lets take the ratio of 2 lengths:</p>
 <div class="cell docutils container">
@@ -1000,8 +1006,8 @@
 \[0.5 \; \mathrm{}\]</div>
 </div>
 </div>
-</div>
-<div class="section" id="find-equivalent-units">
+</section>
+<section id="find-equivalent-units">
 <h2>Find Equivalent Units<a class="headerlink" href="#find-equivalent-units" title="Permalink to this headline">¶</a></h2>
 <p>You can find equivalent units by using the <code class="docutils literal notranslate"><span class="pre">find_equivalent_units()</span></code> method. For example, for miliseconds (ms):</p>
 <div class="cell docutils container">
@@ -1013,8 +1019,8 @@
 <div class="cell_output docutils container">
 <div class="output text_html"><table style="width:50%"><tr><th>Primary name</th><th>Unit definition</th><th>Aliases</th></tr><tr><td>a</td><td>3.15576e+07 s</td><td>annum</td></tr><tr><td>d</td><td>86400 s</td><td>day</td></tr><tr><td>fortnight</td><td>1.2096e+06 s</td><td></td></tr><tr><td>h</td><td>3600 s</td><td>hour, hr</td></tr><tr><td>min</td><td>60 s</td><td>minute</td></tr><tr><td>s</td><td>irreducible</td><td>second</td></tr><tr><td>sday</td><td>86164.1 s</td><td></td></tr><tr><td>wk</td><td>604800 s</td><td>week</td></tr><tr><td>yr</td><td>3.15576e+07 s</td><td>year</td></tr></table></div></div>
 </div>
-</div>
-<div class="section" id="set-equivalencies">
+</section>
+<section id="set-equivalencies">
 <h2>Set Equivalencies<a class="headerlink" href="#set-equivalencies" title="Permalink to this headline">¶</a></h2>
 <p>In some contexts we want to use certain units interchangeably, that are not actually equivalent.</p>
 <p>For example, the energy of a photon (<span class="math notranslate nohighlight">\(E\)</span>) is related to it’s wavelength (<span class="math notranslate nohighlight">\(\lambda\)</span>) and frequency (<span class="math notranslate nohighlight">\(\nu\)</span>) as:</p>
@@ -1037,7 +1043,7 @@ E = h \nu = h c / \lambda
 \[1420.4134 \; \mathrm{MHz}\]</div>
 </div>
 </div>
-<div class="section" id="finding-equivalent-units-with-set-equivalencies">
+<section id="finding-equivalent-units-with-set-equivalencies">
 <h3>Finding Equivalent Units with Set Equivalencies<a class="headerlink" href="#finding-equivalent-units-with-set-equivalencies" title="Permalink to this headline">¶</a></h3>
 <p>You can also find equivalent within the context of the equivalencies:</p>
 <div class="cell docutils container">
@@ -1051,9 +1057,9 @@ E = h \nu = h c / \lambda
 <div class="cell_output docutils container">
 <div class="output text_html"><table style="width:50%"><tr><th>Primary name</th><th>Unit definition</th><th>Aliases</th></tr><tr><td>AU</td><td>1.49598e+11 m</td><td>au, astronomical_unit</td></tr><tr><td>Angstrom</td><td>1e-10 m</td><td>AA, angstrom</td></tr><tr><td>Bq</td><td>1 / s</td><td>becquerel</td></tr><tr><td>Ci</td><td>3.7e+10 / s</td><td>curie</td></tr><tr><td>Hz</td><td>1 / s</td><td>Hertz, hertz</td></tr><tr><td>J</td><td>kg m2 / s2</td><td>Joule, joule</td></tr><tr><td>Ry</td><td>2.17987e-18 kg m2 / s2</td><td>rydberg</td></tr><tr><td>cm</td><td>0.01 m</td><td>centimeter</td></tr><tr><td>eV</td><td>1.60218e-19 kg m2 / s2</td><td>electronvolt</td></tr><tr><td>earthRad</td><td>6.3781e+06 m</td><td>R_earth, Rearth</td></tr><tr><td>erg</td><td>1e-07 kg m2 / s2</td><td></td></tr><tr><td>jupiterRad</td><td>7.1492e+07 m</td><td>R_jup, Rjup, R_jupiter, Rjupiter</td></tr><tr><td>k</td><td>100 / m</td><td>Kayser, kayser</td></tr><tr><td>lyr</td><td>9.46073e+15 m</td><td>lightyear</td></tr><tr><td>m</td><td>irreducible</td><td>meter</td></tr><tr><td>micron</td><td>1e-06 m</td><td></td></tr><tr><td>pc</td><td>3.08568e+16 m</td><td>parsec</td></tr><tr><td>solRad</td><td>6.957e+08 m</td><td>R_sun, Rsun</td></tr></table></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="fractional-units">
+</section>
+</section>
+<section id="fractional-units">
 <h2>Fractional Units<a class="headerlink" href="#fractional-units" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes we’ll need to work with fractional units (units with a fractional power). Floats can work for this, but it is better to use the Standard Library’s <code class="docutils literal notranslate"><span class="pre">fraction.Fraction</span></code> objects:</p>
 <div class="cell docutils container">
@@ -1081,8 +1087,8 @@ E = h \nu = h c / \lambda
 \[164316.77 \; \mathrm{K^{3/2}}\]</div>
 </div>
 </div>
-</div>
-<div class="section" id="defining-your-own-units">
+</section>
+<section id="defining-your-own-units">
 <h2>Defining Your Own Units<a class="headerlink" href="#defining-your-own-units" title="Permalink to this headline">¶</a></h2>
 <p>You can define your own units derived from other units. For example, lets make a unit called a baker’s fortnight (bf), which is a fortnight (14 days) and an extra day:</p>
 <div class="cell docutils container">
@@ -1121,8 +1127,8 @@ E = h \nu = h c / \lambda
 \[45 \; \mathrm{d}\]</div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

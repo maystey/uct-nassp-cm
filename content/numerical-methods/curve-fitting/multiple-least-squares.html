@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Multiple Linear Least Squares Minimization &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,24 +36,24 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Non-Linear Least Squares Minimization with scipy.optimize.least_squares" href="scipy-least-squares.html" />
@@ -93,7 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -110,7 +111,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -347,7 +348,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -415,6 +416,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -440,7 +446,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -771,7 +777,7 @@
         
               <div>
                 
-  <div class="section" id="multiple-linear-least-squares-minimization">
+  <section id="multiple-linear-least-squares-minimization">
 <h1>Multiple Linear Least Squares Minimization<a class="headerlink" href="#multiple-linear-least-squares-minimization" title="Permalink to this headline">¶</a></h1>
 <p>In <strong><a class="reference internal" href="least-squares.html"><span class="doc">Numerical Methods/Curve Fitting/Linear Regression/Linear Least Squares Minimization</span></a></strong>, we considered the linear functional relation between two measurable variables, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -780,7 +786,7 @@ y = a_0 + a_1 x
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> are unknown parameters to be determined.</p>
 <p>On this page we will look at the more generic case, where we solve the problem for an arbitrary number of independent variables and parameters.</p>
-<div class="section" id="two-independent-variables">
+<section id="two-independent-variables">
 <h2>Two Independent Variables<a class="headerlink" href="#two-independent-variables" title="Permalink to this headline">¶</a></h2>
 <p>Let’s start by solving this problem for three measurable variables: <span class="math notranslate nohighlight">\(y\)</span>, <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>, in the linear functional relation:</p>
 <div class="math notranslate nohighlight">
@@ -942,8 +948,8 @@ a3 = 1.49
 </div>
 </div>
 </div>
-</div></div>
-<div class="section" id="arbitrarily-many-independent-variables">
+</div></section>
+<section id="arbitrarily-many-independent-variables">
 <h2>Arbitrarily Many Independent Variables<a class="headerlink" href="#arbitrarily-many-independent-variables" title="Permalink to this headline">¶</a></h2>
 <p>Consider a linear functional relation between measurable variables <span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span>, <span class="math notranslate nohighlight">\(\dots\)</span>, <span class="math notranslate nohighlight">\(x_m\)</span> and <span class="math notranslate nohighlight">\(y\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -1037,7 +1043,7 @@ a_m\\
 \therefore \boldsymbol{A} &amp;= \boldsymbol{X}^{-1} \boldsymbol{Y}\\
 \end{align*}
 \end{split}\]</div>
-<div class="section" id="python-implementation">
+<section id="python-implementation">
 <h3>Python Implementation<a class="headerlink" href="#python-implementation" title="Permalink to this headline">¶</a></h3>
 <p>Let’s work on a Python implementation of this solution. You may want to try it yourself before reading further. In order to verify our implementation we will use the Cepheid data we’ve used so far, though we shall design it to support any number of <span class="math notranslate nohighlight">\(x_j\)</span> variables.</p>
 <p>We will start by designing a function that takes the data in as two arguments:</p>
@@ -1056,7 +1062,7 @@ a_m\\
 \end{matrix}
 \end{split}\]</div>
 <p>as NumPy arrays.</p>
-<div class="section" id="calculating-expectation-values">
+<section id="calculating-expectation-values">
 <h4>Calculating Expectation Values<a class="headerlink" href="#calculating-expectation-values" title="Permalink to this headline">¶</a></h4>
 <p>Note that for each of the sums along the data sets (<span class="math notranslate nohighlight">\(\sum_{i = 1}^N\)</span>), we will be summing along the rows. For example, for the quantity:</p>
 <div class="math notranslate nohighlight">
@@ -1077,8 +1083,8 @@ a_m\\
 </pre></div>
 </div>
 <p>where we have made use of NumPy array’s vectorized operations.</p>
-</div>
-<div class="section" id="constructing-the-boldsymbol-x-matrix">
+</section>
+<section id="constructing-the-boldsymbol-x-matrix">
 <h4>Constructing the <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span> Matrix<a class="headerlink" href="#constructing-the-boldsymbol-x-matrix" title="Permalink to this headline">¶</a></h4>
 <p>Now, let’s break down the structure of the matrix:</p>
 <div class="math notranslate nohighlight">
@@ -1167,8 +1173,8 @@ a_m\\
 </pre></div>
 </div>
 <p>That covers the <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span> matrix.</p>
-</div>
-<div class="section" id="constructing-the-boldsymbol-y-matrix">
+</section>
+<section id="constructing-the-boldsymbol-y-matrix">
 <h4>Constructing the <span class="math notranslate nohighlight">\(\boldsymbol{Y}\)</span> Matrix<a class="headerlink" href="#constructing-the-boldsymbol-y-matrix" title="Permalink to this headline">¶</a></h4>
 <p>Now let’s construct the matrix:</p>
 <div class="math notranslate nohighlight">
@@ -1203,8 +1209,8 @@ a_m\\
     <span class="n">Y</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">x_data</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">y_data</span> <span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="finding-matrix-boldsymbol-a-or-solving-for-the-a-j">
+</section>
+<section id="finding-matrix-boldsymbol-a-or-solving-for-the-a-j">
 <h4>Finding Matrix <span class="math notranslate nohighlight">\(\boldsymbol{A}\)</span> (Or Solving For the <span class="math notranslate nohighlight">\(a_j\)</span>)<a class="headerlink" href="#finding-matrix-boldsymbol-a-or-solving-for-the-a-j" title="Permalink to this headline">¶</a></h4>
 <p>Lastly, to solve for our <span class="math notranslate nohighlight">\(a_j\)</span> values, we consider the matrix:</p>
 <div class="math notranslate nohighlight">
@@ -1238,8 +1244,8 @@ a_m\\
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="putting-it-all-together">
+</section>
+<section id="putting-it-all-together">
 <h4>Putting It All Together<a class="headerlink" href="#putting-it-all-together" title="Permalink to this headline">¶</a></h4>
 <p>Putting this all together into a function:</p>
 <div class="cell docutils container">
@@ -1320,10 +1326,10 @@ a_2 = 1.49
 </div>
 <p>Which matches the results from the worked example above.</p>
 </div><p>It is left as an exercise to the reader to impliment a solution for multiple linear <span class="math notranslate nohighlight">\(\chi^2\)</span> minimization.</p>
-</div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

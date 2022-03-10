@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>2D Arrays and Matrices &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,17 +36,17 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -91,7 +92,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -108,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -345,7 +346,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -413,6 +414,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -438,7 +444,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -758,7 +764,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="d-arrays-and-matrices">
+<section id="d-arrays-and-matrices">
 <h1>2D Arrays and Matrices<a class="headerlink" href="#d-arrays-and-matrices" title="Permalink to this headline">¶</a></h1>
 <p>NumPy arrays can have any number of dimensions, but in this course we will only go up to 2. 2D arrays are quite common if you are working with images or running certain simulations of 3D systems.</p>
 <p>You can created 2D arrays from a nested sequence using the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function:</p>
@@ -792,13 +798,13 @@
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[list([1, 2, 3]) list([4, 5])]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_11328/1350215935.py:1: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_16067/1350215935.py:1: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify &#39;dtype=object&#39; when creating the ndarray.
   print(np.array([[1, 2, 3], [4, 5]]))
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="shape-and-size">
+<section id="shape-and-size">
 <h2>Shape and Size<a class="headerlink" href="#shape-and-size" title="Permalink to this headline">¶</a></h2>
 <p>Now would be a good time to talk about the distinction between the <code class="docutils literal notranslate"><span class="pre">shape</span></code> and <code class="docutils literal notranslate"><span class="pre">size</span></code> attributes of an array.</p>
 <div class="cell docutils container">
@@ -838,8 +844,8 @@
 </div>
 </div>
 <p>Note that <strong>axis 0</strong> (the first value in the tuple) corresponds to the “rows” and <strong>axis 1</strong> (the second value in the tuple) corresponds to the “columns” of the 2D array (this makes more sense when thinking about matrices).</p>
-</div>
-<div class="section" id="generating-2d-arrays">
+</section>
+<section id="generating-2d-arrays">
 <h2>Generating 2D Arrays<a class="headerlink" href="#generating-2d-arrays" title="Permalink to this headline">¶</a></h2>
 <p>You can also generate 2D arrays quickly by using the <code class="docutils literal notranslate"><span class="pre">np.ones()</span></code> and <code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code> functions by specifying the shape the array instead of the size:</p>
 <div class="cell docutils container">
@@ -873,8 +879,8 @@
 </div>
 </div>
 <p>Remember that the shape is a <strong>tuple</strong>. It is a common mistake to enter each axis as a separate argument.</p>
-</div>
-<div class="section" id="indexing-and-slicing">
+</section>
+<section id="indexing-and-slicing">
 <h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
 <p>To index a multidimensional array you specify the index you want for each axis:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">array</span><span class="p">[</span><span class="n">axis0_index</span><span class="p">,</span> <span class="n">axis1_index</span><span class="p">,</span> <span class="n">axis2_index</span><span class="p">,</span> <span class="o">...</span> <span class="p">]</span>
@@ -971,8 +977,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="transpose">
+</section>
+<section id="transpose">
 <h2>Transpose<a class="headerlink" href="#transpose" title="Permalink to this headline">¶</a></h2>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">.T</span></code> attribute of an array (or matrix) to get the transpose (swap the rows and columns):</p>
 <div class="cell docutils container">
@@ -990,8 +996,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="matrices">
+</section>
+<section id="matrices">
 <h2>Matrices<a class="headerlink" href="#matrices" title="Permalink to this headline">¶</a></h2>
 <p>NumPy’s matrices are similar to 2D arrays, except for some matrix specific attributes, methods and operations.</p>
 <p>You can create a matrix by using the <code class="docutils literal notranslate"><span class="pre">np.matrix()</span></code> function with a sequence argument:</p>
@@ -1027,11 +1033,11 @@
 </div>
 </div>
 </div>
-<div class="section" id="slicing-and-indexing">
+<section id="slicing-and-indexing">
 <h3>Slicing and Indexing<a class="headerlink" href="#slicing-and-indexing" title="Permalink to this headline">¶</a></h3>
 <p>Slicing and indexing matrices is the same as for 2D arrays.</p>
-</div>
-<div class="section" id="matrix-operations">
+</section>
+<section id="matrix-operations">
 <h3>Matrix Operations<a class="headerlink" href="#matrix-operations" title="Permalink to this headline">¶</a></h3>
 <p>Consider the 2 by 3 matrix <code class="docutils literal notranslate"><span class="pre">mat1</span></code> and the 3 by 2 matrix <code class="docutils literal notranslate"><span class="pre">mat2</span></code>.</p>
 <div class="cell docutils container">
@@ -1102,8 +1108,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="inverse">
+</section>
+<section id="inverse">
 <h3>Inverse<a class="headerlink" href="#inverse" title="Permalink to this headline">¶</a></h3>
 <p>You can use the <code class="docutils literal notranslate"><span class="pre">.I</span></code> attribute to get the multiplicative inverse of a matrix.</p>
 <div class="cell docutils container">
@@ -1159,9 +1165,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

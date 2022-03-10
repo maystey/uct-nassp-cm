@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Numerical Operators &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,24 +36,24 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Compound Assignment Operators" href="assignment-operators.html" />
@@ -93,7 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -110,7 +111,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -347,7 +348,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -415,6 +416,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -440,7 +446,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -751,7 +757,7 @@
         
               <div>
                 
-  <div class="section" id="numerical-operators">
+  <section id="numerical-operators">
 <h1>Numerical Operators<a class="headerlink" href="#numerical-operators" title="Permalink to this headline">¶</a></h1>
 <!--- Rename to arithmatic operators? --><p>Coding, in the simplest sense, is merely the action of assigning values to variables, and then ‘doing things’ with those variables.</p>
 <p>In this section we will look at some of the basic operators used for integers and floats. Other variable types have different operators, which we shall see later.</p>
@@ -805,7 +811,7 @@ a subtracted from c 8.0
 </div>
 </div>
 <p>If you are using Python version <a class="reference external" href="http://2.xxx">2.xxx</a> or below, beware of dividing by integers…</p>
-<div class="section" id="the-exponential-operator">
+<section id="the-exponential-operator">
 <h2>The Exponential Operator <code class="docutils literal notranslate"><span class="pre">**</span></code><a class="headerlink" href="#the-exponential-operator" title="Permalink to this headline">¶</a></h2>
 <p>Another useful operator is the exponential operator <code class="docutils literal notranslate"><span class="pre">**</span></code>. This returns the left number to the power of the right:</p>
 <div class="cell docutils container">
@@ -834,8 +840,8 @@ a subtracted from c 8.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="the-modulo-operator">
+</section>
+<section id="the-modulo-operator">
 <h2>The Modulo Operator <code class="docutils literal notranslate"><span class="pre">%</span></code><a class="headerlink" href="#the-modulo-operator" title="Permalink to this headline">¶</a></h2>
 <p>The modulo operator returns the remainder of the left number divided by the right:</p>
 <div class="cell docutils container">
@@ -865,8 +871,8 @@ a subtracted from c 8.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="the-floor-division-operator">
+</section>
+<section id="the-floor-division-operator">
 <h2>The Floor Division Operator <code class="docutils literal notranslate"><span class="pre">//</span></code><a class="headerlink" href="#the-floor-division-operator" title="Permalink to this headline">¶</a></h2>
 <p>This returns the result of the left number divided by the right, but without the remainder:</p>
 <div class="cell docutils container">
@@ -882,12 +888,12 @@ a subtracted from c 8.0
 </div>
 </div>
 <p>Like the others this works for both integers and floats.</p>
-</div>
-<div class="section" id="special-functions-and-advanced-mathematics">
+</section>
+<section id="special-functions-and-advanced-mathematics">
 <h2>Special Functions and Advanced Mathematics<a class="headerlink" href="#special-functions-and-advanced-mathematics" title="Permalink to this headline">¶</a></h2>
 <p>For more complex mathematics involving logs, trigonometry, etc. we’ll rely on the scientific packages SciPy and NumPy. We’ll discuss these at a later stage.</p>
-</div>
-<div class="section" id="multiple-operations-in-a-single-expression">
+</section>
+<section id="multiple-operations-in-a-single-expression">
 <h2>Multiple Operations in a Single Expression<a class="headerlink" href="#multiple-operations-in-a-single-expression" title="Permalink to this headline">¶</a></h2>
 <p>Though we have only seen one operation or function used per line, you can combine as many as you’d like:</p>
 <div class="cell docutils container">
@@ -916,8 +922,8 @@ a subtracted from c 8.0
 </div>
 </div>
 <p>where the <code class="docutils literal notranslate"><span class="pre">//</span></code> is applied first, then the <code class="docutils literal notranslate"><span class="pre">+</span></code> and lastly the <code class="docutils literal notranslate"><span class="pre">**</span></code>. We shall discuss the order in which operations and function calls are executed later. <!--- in Section.... Make a url --></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

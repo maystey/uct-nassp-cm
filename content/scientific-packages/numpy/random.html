@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>NumPy Random Module &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,24 +36,24 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Array Conditional Statements and numpy.where()" href="where.html" />
@@ -93,7 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -110,7 +111,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -347,7 +348,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -415,6 +416,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -440,7 +446,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -734,10 +740,10 @@
         
               <div>
                 
-  <div class="section" id="numpy-random-module">
+  <section id="numpy-random-module">
 <h1>NumPy Random Module<a class="headerlink" href="#numpy-random-module" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code> module provides us with random number generators (RNG). You can find the documentation <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.random.html">here</a>. As there name suggests, random number generators produce random numbers. In this section we highlight a few essential functions from the module:</p>
-<div class="section" id="np-random-random">
+<section id="np-random-random">
 <h2><code class="docutils literal notranslate"><span class="pre">np.random.random()</span></code><a class="headerlink" href="#np-random-random" title="Permalink to this headline">¶</a></h2>
 <p>This function produces random floating point numbers from a uniform probability distribution function (PDF) on the interval <span class="math notranslate nohighlight">\([0, 1)\)</span> (<span class="math notranslate nohighlight">\(1\)</span> is excluded). If no arguments are provided a single number is generated:</p>
 <div class="cell docutils container">
@@ -747,7 +753,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9061991677343284
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4757153096281538
 </pre></div>
 </div>
 </div>
@@ -760,7 +766,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.80966755, 0.45387406, 0.79052887, 0.36460828, 0.5014665 ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.71343004, 0.19935025, 0.04735039, 0.24946304, 0.44594486])
 </pre></div>
 </div>
 </div>
@@ -772,8 +778,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.00208037, 0.4406146 , 0.04215082],
-       [0.78992638, 0.36417475, 0.33859395]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.63436591, 0.64060283, 0.25514342],
+       [0.94114819, 0.93784103, 0.7766555 ]])
 </pre></div>
 </div>
 </div>
@@ -790,14 +796,14 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([19.04002623, 25.8890058 , 18.00538921, 23.16857695])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([19.15937838, 26.58999997, 24.08955534, 18.06008909])
 </pre></div>
 </div>
 </div>
 </div>
 <p>To read more about <code class="docutils literal notranslate"><span class="pre">numpy.random.random()</span></code>, see the <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.14.0/reference/generated/numpy.random.random.html#numpy.random.random">documentation</a>.</p>
-</div>
-<div class="section" id="np-random-randint">
+</section>
+<section id="np-random-randint">
 <h2><code class="docutils literal notranslate"><span class="pre">np.random.randint()</span></code><a class="headerlink" href="#np-random-randint" title="Permalink to this headline">¶</a></h2>
 <p>This function produces random integers sampled from a uniform probability distribution on a <strong>specified</strong> interval.</p>
 <p>The interval is defined by the first 2 arguments of <code class="docutils literal notranslate"><span class="pre">randint()</span></code>, the end of the interval (second number) is not included in the interval:</p>
@@ -822,7 +828,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2, 7, 4])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5, 1, 9])
 </pre></div>
 </div>
 </div>
@@ -834,20 +840,20 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 9, 8, 7],
-       [6, 6, 6, 9]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[7, 7, 6, 4],
+       [4, 9, 3, 4]])
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="random-numbers-from-other-distributions">
+</section>
+<section id="random-numbers-from-other-distributions">
 <h2>Random Numbers From Other Distributions<a class="headerlink" href="#random-numbers-from-other-distributions" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">numpy.random</span></code> provides us with many more RNG functions that sample from many of the most popular PDFs. You can see the full list <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.random.html#distributions">in the documentation</a>.</p>
 <p>For example, the <code class="docutils literal notranslate"><span class="pre">np.random.norm()</span></code> function produces random numbers sampled from the normal (Gaussian) distribution. Parameters like the mean and standard deviation (or first 2 moments) can be specified.</p>
 <p>All of these functions can generate array outputs</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

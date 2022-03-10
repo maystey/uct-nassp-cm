@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Arrays &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,17 +36,17 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -91,7 +92,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -108,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -345,7 +346,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -413,6 +414,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -438,7 +444,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -778,13 +784,13 @@
         
               <div>
                 
-  <div class="section" id="arrays">
+  <section id="arrays">
 <h1>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h1>
 <p>Arrays are one of NumPy’s most important objects.</p>
 <p>An array is a sequence of homogeneous data (each element must be the same data type). NumPy arrays use NumPy specific data types which are listed <a class="reference external" href="https://numpy.org/devdocs/user/basics.types.html">here</a>.</p>
 <p>Though we shall see that arrays can be indexed and sliced similarly to strings, tuples and lists, they behave differently under operations.</p>
 <p>Arrays can have any number of dimensions. In this section we will only consider the 1 dimensional case.</p>
-<div class="section" id="creating-arrays">
+<section id="creating-arrays">
 <h2>Creating Arrays<a class="headerlink" href="#creating-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Arrays can be created using the <code class="docutils literal notranslate"><span class="pre">np.array()</span></code> function with a list, tuple or another array as the argument:</p>
 <div class="cell docutils container">
@@ -827,8 +833,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="indexing-and-slicing">
+</section>
+<section id="indexing-and-slicing">
 <h2>Indexing and Slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
 <p>As said before, arrays can be indexed and sliced similarly to lists and strings</p>
 <div class="cell docutils container">
@@ -852,8 +858,8 @@ Every second character: [&#39;a&#39; &#39;c&#39; &#39;e&#39;]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="mutable-but-tricky-to-resize">
+</section>
+<section id="mutable-but-tricky-to-resize">
 <h2>Mutable But Tricky To Resize<a class="headerlink" href="#mutable-but-tricky-to-resize" title="Permalink to this headline">¶</a></h2>
 <p>Similarly to lists, arrays are mutable (you can change the array after initializing it). For example, you can change an element of an array:</p>
 <div class="cell docutils container">
@@ -882,8 +888,8 @@ Array: [1 2 7 4]
 </div>
 <p>However, unlike lists, it’s not easy or efficient to alter the size of an array. It is still possible to resize (with <code class="docutils literal notranslate"><span class="pre">np.resize()</span></code> ) and to concatenate (with <code class="docutils literal notranslate"><span class="pre">np.concatenate()</span></code> ) arrays, but they don’t have certain handy functions for lists like <code class="docutils literal notranslate"><span class="pre">.append()</span></code> and <code class="docutils literal notranslate"><span class="pre">.insert()</span></code>.</p>
 <p>In general you should only create an array once you know how big it needs to be. If you need to add elements to an array, consider starting with a list and converting that to an array when you need the array properties.</p>
-</div>
-<div class="section" id="iterating-through-arrays">
+</section>
+<section id="iterating-through-arrays">
 <h2>Iterating Through Arrays<a class="headerlink" href="#iterating-through-arrays" title="Permalink to this headline">¶</a></h2>
 <p>Like strings, tuples and lists, arrays are iterable:</p>
 <div class="cell docutils container">
@@ -904,8 +910,8 @@ Array: [1 2 7 4]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="vectorized-operations">
+</section>
+<section id="vectorized-operations">
 <h2>Vectorized Operations<a class="headerlink" href="#vectorized-operations" title="Permalink to this headline">¶</a></h2>
 <p>One of the most useful properties of NumPy arrays is their vectorized operations. That is arithmetic operations between an array and array, and an array and scalar are performed element by element.</p>
 <p>For example consider the scalar operations:</p>
@@ -983,11 +989,11 @@ Array: [1 2 7 4]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="creating-structured-arrays-rename-this">
+</section>
+<section id="creating-structured-arrays-rename-this">
 <h2>Creating Structured Arrays <!--- Rename this --><a class="headerlink" href="#creating-structured-arrays-rename-this" title="Permalink to this headline">¶</a></h2>
 <p>Often we would like to create a large array with a particular structure. We could create these arrays from lists using list comprehension, but NumPy provides some useful built in functions to use instead.</p>
-<div class="section" id="np-arange">
+<section id="np-arange">
 <h3><code class="docutils literal notranslate"><span class="pre">np.arange()</span></code><a class="headerlink" href="#np-arange" title="Permalink to this headline">¶</a></h3>
 <p>This function is analogous to the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function. It produces a series of values where you can specify the starting value, stopping value and the step size.</p>
 <p>The syntax is:</p>
@@ -1047,8 +1053,8 @@ Array: [1 2 7 4]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="np-linspace">
+</section>
+<section id="np-linspace">
 <h3><code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code><a class="headerlink" href="#np-linspace" title="Permalink to this headline">¶</a></h3>
 <p>This function creates a series of evenly spaced values between a stopping and starting value. The number of items in the array can also be specified.</p>
 <p>The syntax:</p>
@@ -1069,8 +1075,8 @@ Array: [1 2 7 4]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="np-zeroes">
+</section>
+<section id="np-zeroes">
 <h3><code class="docutils literal notranslate"><span class="pre">np.zeroes()</span></code><a class="headerlink" href="#np-zeroes" title="Permalink to this headline">¶</a></h3>
 <p>This function creates a uniform array of zeros. It takes the shape of the array you want to generate as an argument.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
@@ -1090,8 +1096,8 @@ Array: [1 2 7 4]
 </div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code> can be useful if you wish to create an array with a particular size, but will only be filling in the values later.</p>
-</div>
-<div class="section" id="np-ones">
+</section>
+<section id="np-ones">
 <h3><code class="docutils literal notranslate"><span class="pre">np.ones()</span></code><a class="headerlink" href="#np-ones" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">np.ones()</span></code> is similar to <code class="docutils literal notranslate"><span class="pre">np.zeros()</span></code>, except it generates a uniform array of ones.</p>
 <div class="cell docutils container">
@@ -1107,9 +1113,9 @@ Array: [1 2 7 4]
 </div>
 </div>
 <p>Note that, if you want a uniform array of a different value, you can either add that value to an array of zeros or multiply that value with an array of ones.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

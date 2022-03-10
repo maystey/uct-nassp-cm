@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Lists &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,17 +36,17 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -91,7 +92,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -108,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -345,7 +346,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -413,6 +414,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -438,7 +444,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -755,7 +761,7 @@
         
               <div>
                 
-  <div class="section" id="lists">
+  <section id="lists">
 <h1>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h1>
 <p>Lists are used to store a collection of objects but are more flexible than tuples. You can create lists using the <code class="docutils literal notranslate"><span class="pre">list</span></code> function with another iterable object or square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code>:</p>
 <div class="cell docutils container">
@@ -838,7 +844,7 @@ Changing the first three characters
 </div>
 </div>
 </div>
-<div class="section" id="concatenating-lists">
+<section id="concatenating-lists">
 <h2>Concatenating Lists<a class="headerlink" href="#concatenating-lists" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">+</span></code> operator acts on lists in a similar way to strings, concatenating the two lists:</p>
 <div class="cell docutils container">
@@ -856,8 +862,8 @@ Changing the first three characters
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="list-append">
+</section>
+<section id="list-append">
 <h2><code class="docutils literal notranslate"><span class="pre">list.append()</span></code><a class="headerlink" href="#list-append" title="Permalink to this headline">¶</a></h2>
 <p>You can add elements to the end of the list using the <code class="docutils literal notranslate"><span class="pre">.append()</span></code> method:</p>
 <div class="cell docutils container">
@@ -880,8 +886,8 @@ Appending an additional letter
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="list-insert">
+</section>
+<section id="list-insert">
 <h2><code class="docutils literal notranslate"><span class="pre">list.insert()</span></code><a class="headerlink" href="#list-insert" title="Permalink to this headline">¶</a></h2>
 <p>If you want to insert an element into a specific place in the list you can use the <code class="docutils literal notranslate"><span class="pre">.insert()</span></code> method. This takes the index and the object you want to add as the arguments:</p>
 <div class="cell docutils container">
@@ -904,8 +910,8 @@ Inserting number 3 at index 2
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="lists-remove">
+</section>
+<section id="lists-remove">
 <h2><code class="docutils literal notranslate"><span class="pre">lists.remove()</span></code><a class="headerlink" href="#lists-remove" title="Permalink to this headline">¶</a></h2>
 <p>If you want to remove the first instance of an element of a list with a specific value you can use the <code class="docutils literal notranslate"><span class="pre">.remove()</span></code> method:</p>
 <div class="cell docutils container">
@@ -928,8 +934,8 @@ Removing first 1 from numbers
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="list-pop">
+</section>
+<section id="list-pop">
 <h2><code class="docutils literal notranslate"><span class="pre">list.pop()</span></code><a class="headerlink" href="#list-pop" title="Permalink to this headline">¶</a></h2>
 <p>If you want to retrieve and remove an element at a particular index you can use the  <code class="docutils literal notranslate"><span class="pre">.remove()</span></code> method, which takes the index of the element you want to retrieve as the argument:</p>
 <div class="cell docutils container">
@@ -951,8 +957,8 @@ Retrieving number at index 2: 3
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="list-comprehension">
+</section>
+<section id="list-comprehension">
 <h2>List Comprehension<a class="headerlink" href="#list-comprehension" title="Permalink to this headline">¶</a></h2>
 <p>If you are not familiar with for loops you may wish to read the page <a class="reference internal" href="../loops/for.html"><span class="doc std std-doc"><strong>Python Standard Library/Loops/For Loops</strong></span></a> before returning to this section.</p>
 <p>There will be many times you will want to automate the creation of a list. You can use loops for this but can become impractical. A nice way to generate lists is using <strong>list comprehension</strong>:</p>
@@ -1001,8 +1007,8 @@ Retrieving number at index 2: 3
 </div>
 </div>
 </div>
-<!--- Talk about the map function?--></div>
-</div>
+<!--- Talk about the map function?--></section>
+</section>
 
     <script type="text/x-thebe-config">
     {

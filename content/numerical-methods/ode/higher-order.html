@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Solving Coupled and Higher Order ODEs &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,24 +36,24 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Runge-Kutta Methods" href="runge-kutta.html" />
@@ -93,7 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -110,7 +111,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -347,7 +348,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -415,6 +416,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -440,7 +446,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -733,10 +739,10 @@
         
               <div>
                 
-  <div class="section" id="solving-coupled-and-higher-order-odes">
+  <section id="solving-coupled-and-higher-order-odes">
 <h1>Solving Coupled and Higher Order ODEs<a class="headerlink" href="#solving-coupled-and-higher-order-odes" title="Permalink to this headline">¶</a></h1>
 <p>A common way to solve higher order ODEs using numerical methods is to convert this to a system of first order ODEs. We will first look at solving systems of coupled first order diffrential equations, and then we will focus on reducing higher order ODEs to solve them in a similar manner.</p>
-<div class="section" id="coupled-ordinary-differential-equations">
+<section id="coupled-ordinary-differential-equations">
 <h2>Coupled Ordinary Differential Equations<a class="headerlink" href="#coupled-ordinary-differential-equations" title="Permalink to this headline">¶</a></h2>
 <p>Consider a system of first order coupled ODEs in the form:</p>
 <div class="amsmath math notranslate nohighlight">
@@ -828,7 +834,7 @@ y(0) &amp;= 1
 <img alt="../../../_images/higher-order_6_0.png" src="../../../_images/higher-order_6_0.png" />
 </div>
 </div>
-</div><div class="section" id="arbitrarily-many-coupled-ordinary-differential-equations">
+</div><section id="arbitrarily-many-coupled-ordinary-differential-equations">
 <h3>Arbitrarily Many Coupled Ordinary Differential Equations<a class="headerlink" href="#arbitrarily-many-coupled-ordinary-differential-equations" title="Permalink to this headline">¶</a></h3>
 <p>Now, let’s consider a general solution for arbitrarily many coupled ODEs. Consider the system of coupled first order differential equations:</p>
 <div class="amsmath math notranslate nohighlight">
@@ -946,9 +952,9 @@ z(0) &amp;= 0
 <img alt="../../../_images/higher-order_12_0.png" src="../../../_images/higher-order_12_0.png" />
 </div>
 </div>
-<!-- Show a script where a function is used? --></div></div>
-</div>
-<div class="section" id="second-order-differential-equations">
+<!-- Show a script where a function is used? --></div></section>
+</section>
+<section id="second-order-differential-equations">
 <h2>Second Order Differential Equations<a class="headerlink" href="#second-order-differential-equations" title="Permalink to this headline">¶</a></h2>
 <p>In general, if we wish to solve an ODE of the form</p>
 <div class="math notranslate nohighlight">
@@ -1068,8 +1074,8 @@ y_1\\
 </div>
 </div>
 <p>In the solution above we used separate variables to store the values for <span class="math notranslate nohighlight">\(y(x)\)</span> and <span class="math notranslate nohighlight">\(v(x)\)</span>. In the example below, we shall see that it is more practical to store these values in a single 2D array.</p>
-</div></div>
-<div class="section" id="higher-order-differential-equations">
+</div></section>
+<section id="higher-order-differential-equations">
 <h2>Higher Order Differential Equations<a class="headerlink" href="#higher-order-differential-equations" title="Permalink to this headline">¶</a></h2>
 <p>We can extend this technique of creating a system of coupled first order equations to an ODE of arbitrary order:</p>
 <div class="math notranslate nohighlight">
@@ -1109,8 +1115,8 @@ y_1\\
 y_{m -1}
 \end{pmatrix}
 \end{split}\]</div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

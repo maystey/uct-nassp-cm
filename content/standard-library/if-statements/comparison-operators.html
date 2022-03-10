@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Comparison Operators &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,24 +36,24 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Logical Operators" href="logical-operators.html" />
@@ -93,7 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -110,7 +111,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -347,7 +348,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -415,6 +416,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -440,7 +446,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -763,10 +769,10 @@
         
               <div>
                 
-  <div class="section" id="comparison-operators">
+  <section id="comparison-operators">
 <h1>Comparison Operators<a class="headerlink" href="#comparison-operators" title="Permalink to this headline">¶</a></h1>
 <p>Comparison operators operate on two variables and return a boolean result.</p>
-<div class="section" id="less-than-and-greater-than">
+<section id="less-than-and-greater-than">
 <h2>Less-than <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> and  Greater-than <code class="docutils literal notranslate"><span class="pre">&gt;</span></code><a class="headerlink" href="#less-than-and-greater-than" title="Permalink to this headline">¶</a></h2>
 <p>These operators act in the same way as the mathematical objects you are familiar with. If <code class="docutils literal notranslate"><span class="pre">a</span></code> is less than <code class="docutils literal notranslate"><span class="pre">b</span></code>, then <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&lt;</span> <span class="pre">b</span></code> will return <code class="docutils literal notranslate"><span class="pre">True</span></code> and <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&gt;</span> <span class="pre">b</span></code> will return <code class="docutils literal notranslate"><span class="pre">False</span></code>. For example:</p>
 <div class="cell docutils container">
@@ -786,8 +792,8 @@
 </div>
 </div>
 <p>Note that these operators act on both integers and floats interchangeably.</p>
-</div>
-<div class="section" id="less-than-equal-to-and-greater-than-equal-to">
+</section>
+<section id="less-than-equal-to-and-greater-than-equal-to">
 <h2>Less-than-equal-to <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> and Greater-than-equal-to <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code><a class="headerlink" href="#less-than-equal-to-and-greater-than-equal-to" title="Permalink to this headline">¶</a></h2>
 <p>As there names suggest, the <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> operator is related to the <span class="math notranslate nohighlight">\(\leq\)</span> assertion in mathematics. Similarly <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> is related to <span class="math notranslate nohighlight">\(\geq\)</span>.</p>
 <div class="cell docutils container">
@@ -806,8 +812,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="equals-to">
+</section>
+<section id="equals-to">
 <h2>Equals-to <code class="docutils literal notranslate"><span class="pre">==</span></code><a class="headerlink" href="#equals-to" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">==</span></code> operator is used to check equality. When used on numbers, this is similar to the mathematical <span class="math notranslate nohighlight">\(=\)</span>.</p>
 <div class="cell docutils container">
@@ -843,8 +849,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="not-equal-to">
+</section>
+<section id="not-equal-to">
 <h2>Not-equal-to <code class="docutils literal notranslate"><span class="pre">!=</span></code><a class="headerlink" href="#not-equal-to" title="Permalink to this headline">¶</a></h2>
 <p>This operator returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if the two objects being compared aren’t equivalent (if <code class="docutils literal notranslate"><span class="pre">==</span></code> would return <code class="docutils literal notranslate"><span class="pre">False</span></code>). For example:</p>
 <div class="cell docutils container">
@@ -863,8 +869,8 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

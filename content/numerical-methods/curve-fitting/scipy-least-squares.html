@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Non-Linear Least Squares Minimization with scipy.optimize.least_squares &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,24 +36,24 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Fitting Models to Data with scipy.optimize.curve_fit" href="scipy-curve-fit.html" />
@@ -93,7 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -110,7 +111,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -347,7 +348,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -415,6 +416,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -440,7 +446,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -733,12 +739,12 @@
         
               <div>
                 
-  <div class="section" id="non-linear-least-squares-minimization-with-scipy-optimize-least-squares">
+  <section id="non-linear-least-squares-minimization-with-scipy-optimize-least-squares">
 <h1>Non-Linear Least Squares Minimization with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.least_squares</span></code><a class="headerlink" href="#non-linear-least-squares-minimization-with-scipy-optimize-least-squares" title="Permalink to this headline">¶</a></h1>
 <p>So far we have only considered functional relationships that are linear in the unknown constants. Non-linear cases are far more complicated and generally require purely numerical solutions. For non-linear cases, we can use the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.least_squares.html#scipy.optimize.least_squares"><code class="docutils literal notranslate"><span class="pre">least_squares</span></code></a> function from the <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/optimize.html"><code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code></a> submodule.</p>
 <!--
 We will use a function from the SciPy module [`scipy.optimize`](https://docs.scipy.org/doc/scipy/reference/optimize.html), which contains functions for minimization, least squares and root finding techniques.
---><div class="section" id="an-example-of-a-nonlinear-model">
+--><section id="an-example-of-a-nonlinear-model">
 <h2>An Example of a Nonlinear Model<a class="headerlink" href="#an-example-of-a-nonlinear-model" title="Permalink to this headline">¶</a></h2>
 <p>Consider the data found in the data file <strong>nonlinear_data.csv</strong> on <a class="reference external" href="https://raw.githubusercontent.com/maystey/uct_nassp_cm2021/master/book/content/numerical-methods/regression/data/nonlinear_data.csv">GitHub</a> , plotted below:</p>
 <div class="cell tag_remove_input docutils container">
@@ -765,8 +771,8 @@ y = a_0 + a_1 e^{a_2 x}
 <p>Note that this functional relation is non-linear for <span class="math notranslate nohighlight">\(a_2\)</span>. Applying the method for least squares minimization to this functional relation will not yield an analytic solution, therefore a numerical method is required. We shall not be implementing this numerical method ourselves, instead using the aforementioned function from <strong>SciPy</strong> to solve our problem. In essence the numerical minimization technique involves following the negative gradient (or an approximation of this) from a given starting point until a local minimum is found (which is taken as the solution).</p>
 <!---
 Include a visual analogy of a ball rolling down a surface
----></div>
-<div class="section" id="nonlinear-least-squares-minimization-with-scipy-optimize-least-squares">
+---></section>
+<section id="nonlinear-least-squares-minimization-with-scipy-optimize-least-squares">
 <h2>Nonlinear Least Squares Minimization with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.least_squares</span></code><a class="headerlink" href="#nonlinear-least-squares-minimization-with-scipy-optimize-least-squares" title="Permalink to this headline">¶</a></h2>
 <p>Unlike for the linear case, finding the <span class="math notranslate nohighlight">\(a_j\)</span> values which best fit the data will require starting with an initial guess for these values. If possible, it is advised to visualize the model produced by the initial fit and compare it to the data. As we will demonstrate, in certain cases it is possible that the algorithm will not converge on a desired solution if inappropriate initial values are used.</p>
 <p>The call signature of <code class="docutils literal notranslate"><span class="pre">least_squares</span></code> (including only the arguments of immediate interest to us) is:</p>
@@ -858,7 +864,7 @@ y &amp;= a_0 + a_1 e^{a_2 x}\\
 <img alt="../../../_images/scipy-least-squares_17_0.png" src="../../../_images/scipy-least-squares_17_0.png" />
 </div>
 </div>
-</div><div class="section" id="solutions-converging-on-local-minima">
+</div><section id="solutions-converging-on-local-minima">
 <h3>Solutions Converging on Local Minima<a class="headerlink" href="#solutions-converging-on-local-minima" title="Permalink to this headline">¶</a></h3>
 <p>As mentioned before, the numerical algorithm is complete once it has minimized the objective function (the sum of errors squared in out case) to a <strong>local minimum</strong>. It is possible for the solution to not represent the global minimum, which is the ideal solution to obtain.</p>
 <p>Let’s take a relatively simple example to illustrate this. Consider the functional relation:</p>
@@ -901,9 +907,9 @@ y = a_0 + a_1 e^{-a_2 x} \sin(a_3 x)
 </div>
 </div>
 <p>If your model does not fit, try varying the initial guess for the fit parameters.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

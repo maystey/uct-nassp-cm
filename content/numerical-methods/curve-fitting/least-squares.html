@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Linear Least Squares Minimization &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,24 +36,24 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Linear Chi Squared Minimization" href="chi-squared.html" />
@@ -93,7 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -110,7 +111,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -347,7 +348,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -415,6 +416,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -440,7 +446,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -729,9 +735,9 @@
         
               <div>
                 
-  <div class="section" id="linear-least-squares-minimization">
+  <section id="linear-least-squares-minimization">
 <h1>Linear Least Squares Minimization<a class="headerlink" href="#linear-least-squares-minimization" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="the-problem">
+<section id="the-problem">
 <h2>The Problem<a class="headerlink" href="#the-problem" title="Permalink to this headline">¶</a></h2>
 <p>We propose a linear functional relation between 2 measurable variables, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -739,8 +745,8 @@
 y = a_0 + a_1 x
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> are <strong>unknown</strong> constants. We wish to find these constants.</p>
-</div>
-<div class="section" id="the-solution">
+</section>
+<section id="the-solution">
 <h2>The Solution<a class="headerlink" href="#the-solution" title="Permalink to this headline">¶</a></h2>
 <p>To find these unknown coefficients in practice we measure many <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span> pairs (assuming the measurements display some sort of dispersion). We now have a set of measured <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> pairs for <span class="math notranslate nohighlight">\(i = 1, 2, 3, \dots, N\)</span>.</p>
 <p>If we assume that the <span class="math notranslate nohighlight">\(x_i\)</span> are free of error, we can introduce error terms <font color = "red"> <span class="math notranslate nohighlight">\(\epsilon_i\)</span> </font> to the <span class="math notranslate nohighlight">\(y_i\)</span> data to make up for the dispersion of the data (i.e. that it doesn’t follow the linear relation exactly).</p>
@@ -786,8 +792,8 @@ a_1 &amp;= \frac{\langle xy \rangle - \langle x \rangle\langle y \rangle}{\langl
 a_0 &amp;= \langle y \rangle - a_1 \langle x \rangle\\
 \end{align*}
 \end{split}\]</div>
-</div>
-<div class="section" id="variance-of-y">
+</section>
+<section id="variance-of-y">
 <h2>Variance of <span class="math notranslate nohighlight">\(y\)</span><a class="headerlink" href="#variance-of-y" title="Permalink to this headline">¶</a></h2>
 <p>If we assume that the <span class="math notranslate nohighlight">\(y_i\)</span> data points are distributed around the “true” <span class="math notranslate nohighlight">\(y\)</span> values for the given <span class="math notranslate nohighlight">\(x_i\)</span> by a Gaussian distribution with constant variance, we can calculate the variance of <span class="math notranslate nohighlight">\(y\)</span> as:</p>
 <div class="math notranslate nohighlight">
@@ -925,8 +931,8 @@ a_0 = - \frac{b_0}{b_1}, \quad a_1 = \frac{1}{b_1}
 <img alt="../../../_images/least-squares_28_0.png" src="../../../_images/least-squares_28_0.png" />
 </div>
 </div>
-</div></div>
-</div>
+</div></section>
+</section>
 
     <script type="text/x-thebe-config">
     {

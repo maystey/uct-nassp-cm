@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Function Arguments &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,17 +36,17 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -91,7 +92,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -108,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -345,7 +346,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -413,6 +414,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -438,7 +444,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -741,7 +747,7 @@
         
               <div>
                 
-  <div class="section" id="function-arguments">
+  <section id="function-arguments">
 <h1>Function Arguments<a class="headerlink" href="#function-arguments" title="Permalink to this headline">¶</a></h1>
 <p>You can include as many arguments as you want in your function definition. Inside the function, these arguments can be treated as variables.</p>
 <!--- The names you give these arguments can be treated as variable names inside the function. --><div class="cell docutils container">
@@ -807,7 +813,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="default-values-for-function-arguments">
+<section id="default-values-for-function-arguments">
 <h2>Default Values for Function Arguments<a class="headerlink" href="#default-values-for-function-arguments" title="Permalink to this headline">¶</a></h2>
 <p>You can assign default values to arguments by using the <code class="docutils literal notranslate"><span class="pre">=</span></code> operator, for example:</p>
 <div class="cell docutils container">
@@ -897,8 +903,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="positional-and-keyword-arguments">
+</section>
+<section id="positional-and-keyword-arguments">
 <h2>Positional and Keyword Arguments<a class="headerlink" href="#positional-and-keyword-arguments" title="Permalink to this headline">¶</a></h2>
 <p>In the examples above, we have been entering argument values directly into the function in the order in which they are defined. These are called <strong>positional arguments</strong>. Alternatively, arguments can be passed in by name:</p>
 <div class="cell docutils container">
@@ -967,8 +973,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="unpacking-data-structures-as-arguments">
+</section>
+<section id="unpacking-data-structures-as-arguments">
 <h2>Unpacking Data Structures As Arguments<a class="headerlink" href="#unpacking-data-structures-as-arguments" title="Permalink to this headline">¶</a></h2>
 <p>You can unpack data structures to be passed into functions as individual arguments, this can be useful if you need to store the values of arguments to be used in functions later. Tuples and lists can be unpacked using the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator, and will behave like positional arguments:</p>
 <div class="cell docutils container">
@@ -998,11 +1004,11 @@ a b c
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="defining-functions-that-take-arbitrary-many-positional-and-keyword-arguments">
+</section>
+<section id="defining-functions-that-take-arbitrary-many-positional-and-keyword-arguments">
 <h2>Defining Functions That Take Arbitrary Many Positional and Keyword Arguments<a class="headerlink" href="#defining-functions-that-take-arbitrary-many-positional-and-keyword-arguments" title="Permalink to this headline">¶</a></h2>
 <p>You can define functions that take an arbitrary number of positional or keyword arguments. So far we have encountered this in the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function which can take an arbitrary amount of positional arguments.</p>
-<div class="section" id="positional-arguments">
+<section id="positional-arguments">
 <h3>Positional Arguments<a class="headerlink" href="#positional-arguments" title="Permalink to this headline">¶</a></h3>
 <p>You can collect arbitrarily many positional arguments by using the <code class="docutils literal notranslate"><span class="pre">*</span></code> operator before the argument name. Non-keyword arguments that are passed into the function from the position of this argument on will be collected as a tuple and passed in as this argument. For example:</p>
 <div class="cell docutils container">
@@ -1164,8 +1170,8 @@ Kwarg2: d
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="keyword-arguments">
+</section>
+<section id="keyword-arguments">
 <h3>Keyword Arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h3>
 <p>You can collect arbitrary keyword arguments using the <code class="docutils literal notranslate"><span class="pre">**</span></code></p>
 <div class="cell docutils container">
@@ -1209,9 +1215,9 @@ Arg2 2
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

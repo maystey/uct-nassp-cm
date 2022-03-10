@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Simple Plots with Pyplot &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,24 +36,24 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Subplots" href="subplots.html" />
@@ -93,7 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -110,7 +111,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -347,7 +348,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -415,6 +416,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -440,7 +446,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -743,7 +749,7 @@
         
               <div>
                 
-  <div class="section" id="simple-plots-with-pyplot">
+  <section id="simple-plots-with-pyplot">
 <h1>Simple Plots with Pyplot<a class="headerlink" href="#simple-plots-with-pyplot" title="Permalink to this headline">¶</a></h1>
 <p>The Pyplot module of Matplotlib acts as an interface to the Matplotlib package. This gives us access to a library of 2-dimensional plotting functions. The standard way of importing Pyplot is:</p>
 <div class="cell docutils container">
@@ -783,7 +789,7 @@
 <p>In Jupyter Notebook, running <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> will display the plot in the cell output and will not pause the script.</p>
 </li>
 </ul>
-<div class="section" id="figures">
+<section id="figures">
 <h2>Figures<a class="headerlink" href="#figures" title="Permalink to this headline">¶</a></h2>
 <p>A Matplotlib figure contains plot elements, for example a set of (or multiple sets of) axis, a title etc. Figures can be created using</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -796,7 +802,7 @@
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">figsize</span></code> (a 2-tuple of width and height) is in inches.</p>
 <p>For more information on the figure class see the <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure">documentation</a>.</p>
-<div class="section" id="saving-figures">
+<section id="saving-figures">
 <h3>Saving Figures<a class="headerlink" href="#saving-figures" title="Permalink to this headline">¶</a></h3>
 <p>You can save figures using the</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
@@ -805,9 +811,9 @@
 <p>function, where <code class="docutils literal notranslate"><span class="pre">filename</span></code> is the filename of the image to be saved. If a file extension is specified, the image will be saved using that type, the default type is a PNG.</p>
 <p>This will save the current figure, if you want to save a particular figure then you can use <code class="docutils literal notranslate"><span class="pre">fig.savefig()</span></code>.</p>
 <p>If you’re not specifying the figure, make sure to save <strong>before</strong> you call <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> as this will clear the figure.</p>
-</div>
-</div>
-<div class="section" id="line-color">
+</section>
+</section>
+<section id="line-color">
 <h2>Line Color<a class="headerlink" href="#line-color" title="Permalink to this headline">¶</a></h2>
 <p>You can specify the line color for the plot using either a positional (single letter) argument:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
@@ -837,45 +843,62 @@
 </div>
 </div>
 <p>The list of colors, as found in the Matplotlib <a class="reference external" href="https://matplotlib.org/2.0.2/api/colors_api.html">documentation</a>, is:</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Single Letter</p></th>
-<th class="head"><p>Full Name</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>b</p></td>
-<td><p>blue</p></td>
-</tr>
-<tr class="row-odd"><td><p>g</p></td>
-<td><p>green</p></td>
-</tr>
-<tr class="row-even"><td><p>r</p></td>
-<td><p>red</p></td>
-</tr>
-<tr class="row-odd"><td><p>c</p></td>
-<td><p>cyan</p></td>
-</tr>
-<tr class="row-even"><td><p>m</p></td>
-<td><p>magenta</p></td>
-</tr>
-<tr class="row-odd"><td><p>y</p></td>
-<td><p>yellow</p></td>
-</tr>
-<tr class="row-even"><td><p>k</p></td>
-<td><p>black</p></td>
-</tr>
-<tr class="row-odd"><td><p>w</p></td>
-<td><p>white</p></td>
-</tr>
-</tbody>
+<!--
+| Single Letter | Full Name |
+| --- | --- |
+| b | blue |
+| g | green |
+| r | red |
+| c | cyan |
+| m | magenta |
+| y | yellow |
+| k | black |
+| w | white |
+-->
+<table>
+    <tr>
+        <th>Single Letter</th>
+        <th>Full Name</th>
+    </tr>
+    <tr>
+        <td>b</td>
+        <td>blue</td>
+    </tr>
+    <tr>
+        <td>g</td>
+        <td>green</td>
+    </tr>
+    <tr>
+        <td>r</td>
+        <td>red</td>
+    </tr>
+    <tr>
+        <td>c</td>
+        <td>cyan</td>
+    </tr>
+    <tr>
+        <td>m</td>
+        <td>magenta</td>
+    </tr>
+    <tr>
+        <td>y</td>
+        <td>yellow</td>
+    </tr>
+    <tr>
+        <td>k</td>
+        <td>black</td>
+    </tr>
+    <tr>
+        <td>w</td>
+        <td>white</td>
+    </tr>
 </table>
 <p>Shades of gray can be given as a string representation of a float between 0 and 1, for example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;0.75&#39;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="line-style">
+</section>
+<section id="line-style">
 <h2>Line Style<a class="headerlink" href="#line-style" title="Permalink to this headline">¶</a></h2>
 <p>Similar to the color of the plot, you can also set the line style, either as a positional argument:</p>
 <p>or as a keyword argument:</p>
@@ -886,8 +909,8 @@
 <img alt="../../../_images/simple_17_0.png" src="../../../_images/simple_17_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="marker">
+</section>
+<section id="marker">
 <h2>Marker<a class="headerlink" href="#marker" title="Permalink to this headline">¶</a></h2>
 <p>In addition to line style and color, you can specify a marker. The markers are placed at each data point. The possible markers are listed in the <a class="reference external" href="https://matplotlib.org/3.2.1/api/markers_api.html">documentation</a>, as an example let’s plot the data points as circles (<code class="docutils literal notranslate"><span class="pre">'o'</span></code> in the positional argument, or <code class="docutils literal notranslate"><span class="pre">marker</span> <span class="pre">=</span> <span class="pre">'o'</span></code> as a keyword argument):</p>
 <div class="cell docutils container">
@@ -909,8 +932,8 @@
 </div>
 </div>
 <p>As you can see the line style is set to <code class="docutils literal notranslate"><span class="pre">'None'</span></code> by default if a marker is specified without a line style.</p>
-</div>
-<div class="section" id="legends">
+</section>
+<section id="legends">
 <h2>Legends<a class="headerlink" href="#legends" title="Permalink to this headline">¶</a></h2>
 <p>You can add a legend to your figure by labeling the plots with the keyword argument <code class="docutils literal notranslate"><span class="pre">label</span></code> and calling the <code class="docutils literal notranslate"><span class="pre">plt.legend()</span></code> function:</p>
 <div class="cell docutils container">
@@ -934,8 +957,8 @@
 <img alt="../../../_images/simple_24_0.png" src="../../../_images/simple_24_0.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

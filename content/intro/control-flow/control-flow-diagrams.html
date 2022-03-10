@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Control Flow Diagrams &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,17 +36,17 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -91,7 +92,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -108,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -345,7 +346,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -413,6 +414,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -438,7 +444,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -701,42 +707,54 @@
         
               <div>
                 
-  <div class="section" id="control-flow-diagrams">
+  <section id="control-flow-diagrams">
 <h1>Control Flow Diagrams<a class="headerlink" href="#control-flow-diagrams" title="Permalink to this headline">¶</a></h1>
 <p>Control flow is the order in which a program is executed. A control flow diagram illustrates this with interconnected nodes. This page serves to introduce you to the format of the control flow diagrams used in this book. You may wish to come back to this page once you have encountered a control flow diagram.</p>
 <p>The program must have a starting point, in the diagrams this is illustrated by an elliptical node:</p>
-<div class="figure align-default" id="fig-start-control-flow">
+<figure class="align-default" id="fig-start-control-flow">
 <img alt="../../../_images/start.png" src="../../../_images/start.png" />
-<p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Start node of a control flow diagram.</span><a class="headerlink" href="#fig-start-control-flow" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Start node of a control flow diagram.</span><a class="headerlink" href="#fig-start-control-flow" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Control will always flow to an end point, this is illustrated as a rectangle with rounded corners:</p>
-<div class="figure align-default" id="fig-end-control-flow">
+<figure class="align-default" id="fig-end-control-flow">
 <img alt="../../../_images/end.png" src="../../../_images/end.png" />
-<p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">End node of a control flow diagram.</span><a class="headerlink" href="#fig-end-control-flow" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">End node of a control flow diagram.</span><a class="headerlink" href="#fig-end-control-flow" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The flow of control from one node to another is illustrated by arrows. Read the diagram by starting from the “Start” node and following the arrow from one node to the next. For example an empty program would be illustrated by:</p>
-<div class="figure align-default" id="fig-start-to-end-control-flow">
+<figure class="align-default" id="fig-start-to-end-control-flow">
 <img alt="../../../_images/start_to_end.png" src="../../../_images/start_to_end.png" />
-<p class="caption"><span class="caption-number">Fig. 3 </span><span class="caption-text">Control flow of an empty program, start node to end node.</span><a class="headerlink" href="#fig-start-to-end-control-flow" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Control flow of an empty program, start node to end node.</span><a class="headerlink" href="#fig-start-to-end-control-flow" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>A block of code is illustrated using a rectangular node:</p>
-<div class="figure align-default" id="fig-code-block-control-flow">
+<figure class="align-default" id="fig-code-block-control-flow">
 <img alt="../../../_images/code_block.png" src="../../../_images/code_block.png" />
-<p class="caption"><span class="caption-number">Fig. 4 </span><span class="caption-text">Control flow in and out of a block of code.</span><a class="headerlink" href="#fig-code-block-control-flow" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Control flow in and out of a block of code.</span><a class="headerlink" href="#fig-code-block-control-flow" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>The contents of this node are executed in the usual way before control leaves this node and flows through the rest of the diagram.</p>
 <p>Sometimes programs require possible branching in their control flow. This is where the essence of logic comes in. These branches can be considered as stemming from questions (or rather conditions that evaluate to true or false), the different branches themselves are the potential answers. This is illustrated using a diamond shaped node:</p>
-<div class="figure align-default" id="fig-condition-control-flow">
+<figure class="align-default" id="fig-condition-control-flow">
 <img alt="../../../_images/condition.png" src="../../../_images/condition.png" />
-<p class="caption"><span class="caption-number">Fig. 5 </span><span class="caption-text">Branching node where control follows a line depending on the outcome of the condition in question.</span><a class="headerlink" href="#fig-condition-control-flow" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Branching node where control follows a line depending on the outcome of the condition in question.</span><a class="headerlink" href="#fig-condition-control-flow" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>If you are reading a control flow diagram that branches, start by following one branch at a time.</p>
 <p>Sometimes it will be necessary to insert text into a control flow diagram that isn’t present in the code or pseudo code. In these cases that text will be gray, and the text which actually appears in the code will be black.</p>
-<div class="figure align-default" id="fig-black-and-gray-control-flow">
+<figure class="align-default" id="fig-black-and-gray-control-flow">
 <img alt="../../../_images/black_and_gray.png" src="../../../_images/black_and_gray.png" />
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">Black text is directly from the source code, gray text is inserted into the diagram for context.</span><a class="headerlink" href="#fig-black-and-gray-control-flow" title="Permalink to this image">¶</a></p>
-</div>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Black text is directly from the source code, gray text is inserted into the diagram for context.</span><a class="headerlink" href="#fig-black-and-gray-control-flow" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
 
     <script type="text/x-thebe-config">
     {

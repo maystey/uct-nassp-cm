@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Programming and Python in a Nutshell &#8212; AST4007W Computational Methods</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
@@ -35,17 +36,17 @@
     
   <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
     <script src="../../_static/underscore.js"></script>
     <script src="../../_static/doctools.js"></script>
     <script src="../../_static/togglebutton.js"></script>
     <script src="../../_static/clipboard.min.js"></script>
     <script src="../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -91,7 +92,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -108,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -345,7 +346,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -413,6 +414,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -438,7 +444,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -712,10 +718,10 @@
         
               <div>
                 
-  <div class="section" id="programming-and-python-in-a-nutshell">
+  <section id="programming-and-python-in-a-nutshell">
 <h1>Programming and Python in a Nutshell<a class="headerlink" href="#programming-and-python-in-a-nutshell" title="Permalink to this headline">¶</a></h1>
 <p>In this chapter we will go over a brief overview of programming languages and Python. While important, not having a full grasp of this chapter should not hinder your ability to program using Python.</p>
-<div class="section" id="what-is-a-programming-language">
+<section id="what-is-a-programming-language">
 <h2>What is a programming language?<a class="headerlink" href="#what-is-a-programming-language" title="Permalink to this headline">¶</a></h2>
 <p>Programming is, in essence, writing a series of instructions for the computer to execute. This is done using a programming language, which can be understood or translated to a form that can be understood by the computer.</p>
 <p>At the lowest level the language of computers is called machine code. This language is used to communicate with the computer’s CPU through binary or hexadecimal instructions.
@@ -725,13 +731,13 @@ an assembly language, which uses some human language, but is still difficult to 
 <p>Most of the programming languages you are likely to use these days are high-level programming languages. Besides being CPU independent, these languages are designed to be readable by humans. <!--They also allow for programs to be written independently (to some degree) from the hardware in question. -->
 At some level these languages will need to be compiled (translated <span id="id2">[<a class="reference internal" href="#id15">Py5</a>]</span>)
 to machine code <span id="id3">[<a class="reference internal" href="#id13">Py6</a>]</span>.</p>
-</div>
-<div class="section" id="what-is-a-script">
+</section>
+<section id="what-is-a-script">
 <h2>What is a Script?<a class="headerlink" href="#what-is-a-script" title="Permalink to this headline">¶</a></h2>
 <p>A script is a text file containing source code (instructions for the computer) written in a programming language. Programs can be composed of a single script, or many scripts working together.</p>
 <p>Generally scripts for a particular language are given a specific file suffix. Relevant to us, Python scripts end with a <code class="docutils literal notranslate"><span class="pre">.py</span></code>.</p>
-</div>
-<div class="section" id="python-a-dynamic-programming-language">
+</section>
+<section id="python-a-dynamic-programming-language">
 <h2>Python, a Dynamic Programming Language.<a class="headerlink" href="#python-a-dynamic-programming-language" title="Permalink to this headline">¶</a></h2>
 <p>Python is a high level language and thus needs to eventually be compiled down. <!-- translated into machine code. Python is a dynamic programming language. --></p>
 <p>Many high level programming languages’ source code is compiled to machine code once, and then can be executed in this form. These are called static programming languages (C is an example).</p>
@@ -740,8 +746,8 @@ to machine code <span id="id3">[<a class="reference internal" href="#id13">Py6</
 <p>Byte code is similar to the CPU <!--- Necessary repeatition?--> specific assembly code, but is instead executed by software called a virtual machine (which simulates a CPU environment). <span id="id6">[<a class="reference internal" href="#id18">Py3</a>]</span>. The Python Virtual Machine is always present in the Python system and is the last step of the Python Interpreter <span id="id7">[<a class="reference internal" href="#id17">Py1</a>]</span>. <!-- Too much jargon invoked? --></p>
 <!--- These virtual machines can be written in any language. {%cite ned %} -->
 <!-- Briefly mention dynamic typing? -->
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p id="id8"><dl class="citation">
 <dt class="label" id="id17"><span class="brackets">Py1</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id7">2</a>)</span></dt>
@@ -764,8 +770,8 @@ to machine code <span id="id3">[<a class="reference internal" href="#id13">Py6</
 </dd>
 </dl>
 </p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

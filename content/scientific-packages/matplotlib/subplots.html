@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Subplots &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,17 +36,17 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -53,7 +54,7 @@
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Astropy" href="../astropy/intro.html" />
+    <link rel="next" title="3D Plotting" href="3d-plots.html" />
     <link rel="prev" title="Simple Plots with Pyplot" href="simple.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -91,7 +92,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -108,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -345,7 +346,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -413,6 +414,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -438,7 +444,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -732,10 +738,10 @@
         
               <div>
                 
-  <div class="section" id="subplots">
+  <section id="subplots">
 <h1>Subplots<a class="headerlink" href="#subplots" title="Permalink to this headline">¶</a></h1>
 <p>You can create subplots in two different ways:</p>
-<div class="section" id="fig-add-subplot">
+<section id="fig-add-subplot">
 <h2><code class="docutils literal notranslate"><span class="pre">fig.add_subplot()</span></code><a class="headerlink" href="#fig-add-subplot" title="Permalink to this headline">¶</a></h2>
 <p>One way to add subplots is by creating a figure and calling the <code class="docutils literal notranslate"><span class="pre">fig.add_subplot()</span></code> method to add an axis to it with (one of) the call signature:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
@@ -771,8 +777,8 @@
 </div>
 </div>
 <p>Refer to the <a class="reference external" href="https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.add_subplot">documentation</a> for additional options.</p>
-</div>
-<div class="section" id="plt-subplots">
+</section>
+<section id="plt-subplots">
 <h2><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code><a class="headerlink" href="#plt-subplots" title="Permalink to this headline">¶</a></h2>
 <p>An alternative way to create subplots is to use the <code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> function which returns the figure object and a tuple of axis. The call signature is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
@@ -828,8 +834,8 @@
 </div>
 </div>
 <p>Refer to the <a class="reference external" href="https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.subplots.html">documentation</a> for additional options.</p>
-</div>
-<div class="section" id="using-subplots-for-general-plots">
+</section>
+<section id="using-subplots-for-general-plots">
 <h2>Using Subplots For General Plots<a class="headerlink" href="#using-subplots-for-general-plots" title="Permalink to this headline">¶</a></h2>
 <p>The subplot functions above are also used in general practice to create single axis plots, due to the ability to create a reference to the axis, which grants further customization. Simply:</p>
 <div class="cell docutils container">
@@ -849,8 +855,8 @@
 <img alt="../../../_images/subplots_15_0.png" src="../../../_images/subplots_15_0.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -878,7 +884,7 @@
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="simple.html" title="previous page">Simple Plots with Pyplot</a>
-    <a class='right-next' id="next-link" href="../astropy/intro.html" title="next page">Astropy</a>
+    <a class='right-next' id="next-link" href="3d-plots.html" title="next page">3D Plotting</a>
 
         </div>
         

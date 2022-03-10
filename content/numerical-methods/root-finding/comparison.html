@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Comparing the Methods &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,24 +36,24 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Curve Fitting" href="../curve-fitting/intro.html" />
@@ -93,7 +94,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -110,7 +111,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -347,7 +348,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -415,6 +416,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -440,7 +446,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -731,26 +737,26 @@
         
               <div>
                 
-  <div class="section" id="comparing-the-methods">
+  <section id="comparing-the-methods">
 <h1>Comparing the Methods<a class="headerlink" href="#comparing-the-methods" title="Permalink to this headline">¶</a></h1>
 <p>Let’s compare the three root finding algorithms we have covered to each other.</p>
-<div class="section" id="bisection-method">
+<section id="bisection-method">
 <h2>Bisection Method<a class="headerlink" href="#bisection-method" title="Permalink to this headline">¶</a></h2>
 <p>The bisection method starts with an interval that is known to contain the root. The size of this interval is halved with each iteration (improving the precision. For a desired tolerance (or precision), it is possible to calculate how many iterations the Bisection method will take.</p>
 <p>If <span class="math notranslate nohighlight">\(f\)</span> is continuous on the interval, the interval only contains one root, and the function changes signs as it passes through the root, then the root is guaranteed to be found.</p>
-</div>
-<div class="section" id="secant-method">
+</section>
+<section id="secant-method">
 <h2>Secant Method<a class="headerlink" href="#secant-method" title="Permalink to this headline">¶</a></h2>
 <p>The Secant method requires two points near the root to start off with. If it will converge to the root, then it generally converges quicker than the bisection method, although it’s not possible to calculate how many iterations the method will need for a given tolerance.</p>
 <p>It is possible for this method not to converge, especially in the case where the gradient of <span class="math notranslate nohighlight">\(f\)</span> becomes shallow, which would cause one of the calculated points to shoot off.</p>
 <p>It is also possible for this method to converge on a different root if there is one nearby.</p>
-</div>
-<div class="section" id="newton-raphson-method">
+</section>
+<section id="newton-raphson-method">
 <h2>Newton-Raphson Method<a class="headerlink" href="#newton-raphson-method" title="Permalink to this headline">¶</a></h2>
 <p>The Newton-Rhaphson method is similar to the secant method, except it makes use of the derivative of <span class="math notranslate nohighlight">\(f\)</span>.</p>
 <p>As for the secant method, the Newton-Raphson method converges to the root faster than the bisection method. Also like the secant method, it is possible the method not to converge, or to converge on another nearby root.</p>
-</div>
-<div class="section" id="in-summary">
+</section>
+<section id="in-summary">
 <h2>In Summary<a class="headerlink" href="#in-summary" title="Permalink to this headline">¶</a></h2>
 <table>
     <tr>
@@ -774,8 +780,8 @@
         <td colspan="2">Only requires the function, which must simply return values for given arguments on the interval.</td>
         <td>Requires knowledge of the first derivative of the function.</td>
     </tr>
-</table></div>
-</div>
+</table></section>
+</section>
 
     <script type="text/x-thebe-config">
     {

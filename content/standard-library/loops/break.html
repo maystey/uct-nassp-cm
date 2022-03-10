@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Breaking Out of Loops &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,17 +36,17 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -91,7 +92,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -108,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -345,7 +346,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -413,6 +414,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -438,7 +444,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -727,10 +733,10 @@
         
               <div>
                 
-  <div class="section" id="breaking-out-of-loops">
+  <section id="breaking-out-of-loops">
 <h1>Breaking Out of Loops<a class="headerlink" href="#breaking-out-of-loops" title="Permalink to this headline">¶</a></h1>
 <p>Sometimes you want to exit a loop before it’s finished, or skip the remainder of a loop and move to the next iteration. To do this you can use the <code class="docutils literal notranslate"><span class="pre">break</span></code> and <code class="docutils literal notranslate"><span class="pre">continue</span></code> statements respectively.</p>
-<div class="section" id="break">
+<section id="break">
 <h2><code class="docutils literal notranslate"><span class="pre">break</span></code><a class="headerlink" href="#break" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">break</span></code> statement causes control to exit the loop it is situated in. For example, if we were to put a break directly in the loop’s code block:</p>
 <div class="cell docutils container">
@@ -760,10 +766,12 @@
 </div>
 <p>In the example above <code class="docutils literal notranslate"><span class="pre">condition2</span></code> is evaluated as <strong>true</strong> in a loop iteration, then control will exit the loop before executing <code class="docutils literal notranslate"><span class="pre">code_block_2</span></code> for that iteration.</p>
 <p>Illustrating this using a control flow diagram:</p>
-<div class="figure align-default" id="fig-while-control-flow-break">
+<figure class="align-default" id="fig-while-control-flow-break">
 <img alt="../../../_images/while_break.png" src="../../../_images/while_break.png" />
-<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text">Control flow diagram of the break example above.</span><a class="headerlink" href="#fig-while-control-flow-break" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Control flow diagram of the break example above.</span><a class="headerlink" href="#fig-while-control-flow-break" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Let’s consider a similar script that loops through a sequence of numbers and stops when it reaches <code class="docutils literal notranslate"><span class="pre">5</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -836,8 +844,8 @@ for i in range(3):
         
         if j == 1:
             break
---></div>
-<div class="section" id="continue">
+--></section>
+<section id="continue">
 <h2><code class="docutils literal notranslate"><span class="pre">continue</span></code><a class="headerlink" href="#continue" title="Permalink to this headline">¶</a></h2>
 <p>If you want to end the current loop iteration, but you don’t want to break out of the loop, you can use the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement.</p>
 <p>Consider the pseudo code example:</p>
@@ -852,10 +860,12 @@ for i in range(3):
 </div>
 <p>Here if <code class="docutils literal notranslate"><span class="pre">condition2</span></code> is found to be <strong>true</strong> in a loop iteration, the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement will cause control to move directly to the next loop iteration, skipping <code class="docutils literal notranslate"><span class="pre">code_block_2</span></code> for that iteration.</p>
 <p>Illustrating this example in a control flow diagram:</p>
-<div class="figure align-default" id="fig-while-control-flow-continue">
+<figure class="align-default" id="fig-while-control-flow-continue">
 <img alt="../../../_images/while_continue.png" src="../../../_images/while_continue.png" />
-<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text">Control flow diagram of the continue example above.</span><a class="headerlink" href="#fig-while-control-flow-continue" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Control flow diagram of the continue example above.</span><a class="headerlink" href="#fig-while-control-flow-continue" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
 <p>Let’s look at real code example:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -881,8 +891,8 @@ for i in range(3):
 </div>
 </div>
 <p>As you can see in the example above, <code class="docutils literal notranslate"><span class="pre">5</span></code> is not printed as the <code class="docutils literal notranslate"><span class="pre">continue</span></code> statement has caused control to ‘skip’ the print statement.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

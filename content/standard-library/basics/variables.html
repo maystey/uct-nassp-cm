@@ -4,7 +4,8 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Variables &#8212; AST4007W Computational Methods</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet" />
@@ -22,8 +23,8 @@
       
 
     
-    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
@@ -35,17 +36,17 @@
     
   <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -91,7 +92,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -108,7 +109,7 @@
   </a>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -345,7 +346,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -413,6 +414,11 @@
      Subplots
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../scientific-packages/matplotlib/3d-plots.html">
+     3D Plotting
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -438,7 +444,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -724,7 +730,7 @@
         
               <div>
                 
-  <div class="section" id="variables">
+  <section id="variables">
 <h1>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h1>
 <p>Python receives information by means of variables. A variable is a dedicated piece of computer memory that holds some information. For example,</p>
 <div class="cell docutils container">
@@ -748,7 +754,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="data-types">
+<section id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h2>
 <p>The information stored in memory needs to be interprated if it’s to be of any use to us. To achieve this Python (and many other programming languages) uses variable types.</p>
 <p>In the example above we used an integer or <code class="docutils literal notranslate"><span class="pre">int</span></code> type. In order to check what type a variable has, we can use the <code class="docutils literal notranslate"><span class="pre">type()</span></code> function:</p>
@@ -792,8 +798,8 @@
 </div>
 </div>
 <p>You are not limited to using single quotes to define strings, see the chapter <a class="reference internal" href="../strings/strings.html"><span class="doc std std-doc">Standard Library/Strings</span></a> for more.</p>
-</div>
-<div class="section" id="variable-names">
+</section>
+<section id="variable-names">
 <h2>Variable Names<a class="headerlink" href="#variable-names" title="Permalink to this headline">¶</a></h2>
 <p>So far we have been using single letters (<code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code>, <code class="docutils literal notranslate"><span class="pre">d</span></code>, …) as variable names, but this approach can be confusing for long segments of codes. Variable names should be as clear and descriptive as possible (describing what they are used for), while still being short enough to type out efficiently.</p>
 <p>To this end we should delve into some of the restrictions on the character sequences that make up variable names:</p>
@@ -861,8 +867,8 @@
 <li><p>Using Pascal-case: similar to camel-case but capitalising the first word, <code class="docutils literal notranslate"><span class="pre">PriceAtOpening</span></code>.</p></li>
 </ul>
 <p>The standard in Python is to use underscore seperations for variable and function names.</p>
-</div>
-<div class="section" id="assigning-variable-values-to-other-variable-values">
+</section>
+<section id="assigning-variable-values-to-other-variable-values">
 <h2>Assigning Variable Values to other Variable Values<a class="headerlink" href="#assigning-variable-values-to-other-variable-values" title="Permalink to this headline">¶</a></h2>
 <p>You can assign the value of one variable to another:</p>
 <div class="cell docutils container">
@@ -910,8 +916,8 @@ Variable 2 is 3
 </div>
 </div>
 <p>Notice how, even though we change the value of <code class="docutils literal notranslate"><span class="pre">var1</span></code>, the value of <code class="docutils literal notranslate"><span class="pre">var2</span></code> remains the same.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
