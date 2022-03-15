@@ -832,9 +832,10 @@
 <p>First let’s generate an array of 50 random points in 2D space:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">points</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:],</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:],</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
@@ -847,69 +848,44 @@
 <img alt="../../../_images/where_15_0.png" src="../../../_images/where_15_0.png" />
 </div>
 </div>
-<p>Note that axis 0 of <code class="docutils literal notranslate"><span class="pre">points</span></code> is used to represent the x and y values, and axis 1 represents points. i.e. for the points <span class="math notranslate nohighlight">\((x_0, y_0), (x_1, y_1), \dots, (x_{49}, y_{49})\)</span>, <code class="docutils literal notranslate"><span class="pre">points</span></code> is:</p>
-<table>
-    <tr>
-        <td>x0</td>
-        <td>x1</td>
-        <td>x2</td>
-        <td>x3</td>
-        <td>x4</td>
-        <td>...</td>
-        <td>x48</td>
-        <td>x49</td>
-    </tr>
-    <tr>
-        <td>y0</td>
-        <td>y1</td>
-        <td>y2</td>
-        <td>y3</td>
-        <td>y4</td>
-        <td>...</td>
-        <td>y48</td>
-        <td>y49</td>
-    </tr>
-</table>
-<p>Now, let’s plot the points which lie to the left of 0.5 as blue and the others as red:</p>
+<p>Now, let’s plot the points which lie to the left of <span class="math notranslate nohighlight">\(x = 0.5\)</span> as blue circles and the others as red squares:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_left</span> <span class="o">=</span> <span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="c1">#True where left of 0.5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">is_left</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.5</span> <span class="c1">#True where left of 0.5</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">is_left</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">is_left</span><span class="p">],</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">~</span> <span class="p">(</span><span class="n">is_left</span><span class="p">)],</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">~</span> <span class="n">is_left</span><span class="p">],</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">is_left</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">is_left</span><span class="p">],</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">~</span><span class="n">is_left</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">~</span><span class="n">is_left</span><span class="p">],</span> <span class="s1">&#39;rs&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
-</pre></div>
-</div>
-<img alt="../../../_images/where_18_1.png" src="../../../_images/where_18_1.png" />
+<img alt="../../../_images/where_17_0.png" src="../../../_images/where_17_0.png" />
 </div>
 </div>
-<p>Note that, in the example above, we have used an array of booleans to <strong>slice the elements of the array which are true</strong>. We have also use the <strong>bitwise compliment</strong> to get the complement of our comparison result, there is no need to recalculate it.</p>
-<p>Now, lets plot the points right of 0.5 and above 0.5 (the top left square) as red and the rest as blue (remember the <strong>bitwise and</strong>):</p>
+<p>Note that, in the example above, we have used an array of booleans to <strong>slice the elements of the array which are true</strong>. We have also use the <strong>bitwise compliment</strong> to get the complement of our comparison result for the points that are on the right.</p>
+<p>Now, lets plot the points right of 0.5 and above 0.5 (the top left corner) as red squares, and the rest as blue circles (remember the <strong>bitwise and</strong>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#True if in top left square</span>
-<span class="n">is_top_left</span> <span class="o">=</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">is_top_left</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">y</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">is_top_left</span><span class="p">],</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">is_top_left</span><span class="p">],</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">points</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">~</span> <span class="p">(</span><span class="n">is_top_left</span><span class="p">)],</span> <span class="n">points</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">~</span> <span class="n">is_top_left</span><span class="p">],</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">is_top_left</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">is_top_left</span><span class="p">],</span> <span class="s1">&#39;rs&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="o">~</span><span class="n">is_top_left</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="o">~</span> <span class="n">is_top_left</span><span class="p">],</span> <span class="s1">&#39;bo&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
-</pre></div>
-</div>
-<img alt="../../../_images/where_21_1.png" src="../../../_images/where_21_1.png" />
+<img alt="../../../_images/where_20_0.png" src="../../../_images/where_20_0.png" />
 </div>
 </div>
 </div></section>
@@ -990,7 +966,7 @@ x &amp; \text{if $x \geq 0$}\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/where_29_0.png" src="../../../_images/where_29_0.png" />
+<img alt="../../../_images/where_28_0.png" src="../../../_images/where_28_0.png" />
 </div>
 </div>
 <p>Note that, in the plot above, the line does not reach zero, but flattens out to a value above it. This is because the array <code class="docutils literal notranslate"><span class="pre">x</span></code> does not contain the value 0, but values around it.</p>
@@ -1024,7 +1000,7 @@ f(x) =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/where_32_0.png" src="../../../_images/where_32_0.png" />
+<img alt="../../../_images/where_31_0.png" src="../../../_images/where_31_0.png" />
 </div>
 </div>
 </div></div></section>
