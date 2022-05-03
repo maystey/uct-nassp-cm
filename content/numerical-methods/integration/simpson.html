@@ -855,9 +855,9 @@ u = \frac{x - m}{b - m} = 2 \frac{x - \tfrac{1}{2} (a + b)}{b - a}
 </div>
 <p>The composite Simpson’s rule is given by:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\int_a^b f(x)~ dx \approx \sum_{i = 1}^n \frac{x_i - x_{i-1}}{6} \left[ f(x_{i-1}) + 4 f\left(\frac{x_{i-1} + x_i}{2}\right) + f(x_i)\right]\\
-\end{split}\]</div>
+\[
+\int_a^b f(x)~ dx \approx \sum_{i = 1}^n \frac{x_i - x_{i-1}}{6} \left[ f(x_{i-1}) + 4 f\left(\frac{x_{i-1} + x_i}{2}\right) + f(x_i)\right]
+\]</div>
 <!---
 Where $x_0 = a$, $x_n = b$ and $x_i = a +  i(b - a)/n$.
 --->
@@ -874,13 +874,18 @@ x_i - x_{i -1} = \frac{b - a}{n}
 <p>Assuming that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{6 n} &lt; 1\)</span>, then the error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^4\right)\)</span> <span id="id1">[<a class="reference internal" href="#id4">IntSimp1</a>]</span></p>
 <section id="composite-simpson-s-rule-with-a-discrete-data-set">
 <h3>Composite Simpson’s Rule with a Discrete Data Set<a class="headerlink" href="#composite-simpson-s-rule-with-a-discrete-data-set" title="Permalink to this headline">¶</a></h3>
-<p>Again, consider the data set <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> for <span class="math notranslate nohighlight">\(i = 0, \dots, n\)</span>, where</p>
+<p>Again, consider the data set <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> for <span class="math notranslate nohighlight">\(i = 0, \dots, n\)</span>, where <span class="math notranslate nohighlight">\(x_i &lt; x_{i+1}\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 f(x_i) = y_i
 \]</div>
-<p>Approximating the integral of the data using Simpson’s rule is a lot less straight forward than the Midpoint and Trapezoidal rule as we can’t calculate <span class="math notranslate nohighlight">\(f\left((x_{i -1} + x_i)/2\right)\)</span> directly, and the function values at the boundaries of the intervals are also required.</p>
-<p>If the <span class="math notranslate nohighlight">\(x_i\)</span> values are <strong>uniformly spaced</strong> (with <span class="math notranslate nohighlight">\(x_i - x_{i-1} = \Delta x\)</span>) and there is an odd number of data points, we can pair up the intervals between the points. Treating each pair of subintervals as a single subinterval, we can use the middle <span class="math notranslate nohighlight">\(x\)</span> values as the midpoints. In other words, for even <span class="math notranslate nohighlight">\(i= 2j\)</span>, the <span class="math notranslate nohighlight">\(x_{2j}\)</span> are used as the boundaries of the sub-intervals; for odd <span class="math notranslate nohighlight">\(i = 2k -1\)</span>, the <span class="math notranslate nohighlight">\(x_{2k-1}\)</span> are used as the midpoints of the subinterval. Thus the integral is approximated as:</p>
+<p>and we want to approximate the integral:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{x_0}^{x_n} f(x) dx
+\]</div>
+<p>Approximating the integral of the data using Simpson’s rule is a lot less straight forward than the Trapezoidal rule, as we can’t calculate <span class="math notranslate nohighlight">\(f\left((x_{i -1} + x_i)/2\right)\)</span> directly, and the function values at the boundaries of the intervals are also required.</p>
+<p>If the <span class="math notranslate nohighlight">\(x_i\)</span> values are <strong>uniformly spaced</strong> (with <span class="math notranslate nohighlight">\(x_i - x_{i-1} = \Delta x\)</span>) and there is an <strong>odd number of data points</strong>, we can pair up the intervals between the points. Treating each pair of subintervals as a single subinterval, we can use the middle <span class="math notranslate nohighlight">\(x\)</span> values as the midpoints. In other words, for even <span class="math notranslate nohighlight">\(i= 2j\)</span>, the <span class="math notranslate nohighlight">\(x_{2j}\)</span> are used as the boundaries of the sub-intervals; for odd <span class="math notranslate nohighlight">\(i = 2k -1\)</span>, the <span class="math notranslate nohighlight">\(x_{2k-1}\)</span> are used as the midpoints of the subinterval. Thus the integral is approximated as:</p>
 <div class="math notranslate nohighlight">
 \[
 \int_{x_0}^{x_n} f(x)~dx \approx \frac{\Delta x}{3} \left[y_0 + 2 \sum_{i = 1}^{n/2 - 1} y_{2i} + 4 \sum_{i=1}^{n/2} y_{2i-1} + y_n \right] 
@@ -891,6 +896,7 @@ f(x_i) = y_i
 \frac{b - a}{6 n} = \frac{2 \Delta x}{6} = \frac{\Delta x}{3}
 \]</div>
 <p>as each subinterval is made up of two intervals of length <span class="math notranslate nohighlight">\(\Delta x\)</span> each.</p>
+<p><strong>Note</strong> that if you have a data set with an even number of data points, you can break up the integral, integrating the first or last interval using the trapezoidal rule and the rest using the Simpson’s rule.</p>
 </section>
 </section>
 <section id="references">

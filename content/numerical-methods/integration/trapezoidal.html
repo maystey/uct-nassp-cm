@@ -799,12 +799,17 @@ x_{i} - x_{i - 1} = \frac{b- a}{n}
 <p>For a choice of <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{n} &lt; 1\)</span>, the error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^2\right)\)</span> <span id="id1">[<a class="reference internal" href="#id4">IntTrap1</a>]</span>.</p>
 <section id="composite-trapezoidal-rule-with-a-discrete-data-set">
 <h3>Composite Trapezoidal Rule with a Discrete Data Set<a class="headerlink" href="#composite-trapezoidal-rule-with-a-discrete-data-set" title="Permalink to this headline">¶</a></h3>
-<p>Again, consider the data set <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> for <span class="math notranslate nohighlight">\(i = 0, \dots, n\)</span>, where</p>
+<p>Consider a set of data points <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> for <span class="math notranslate nohighlight">\(i = 0, \dots, n\)</span>, where <span class="math notranslate nohighlight">\(x_i &lt; x_{i+1}\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 f(x_i) = y_i
 \]</div>
-<p>If we wanted to approximate the integral of this data set using the trapezoidal rule, we can apply this to each interval individually:</p>
+<p>and we want to approximate the integral</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{x_0}^{x_n} f(x) dx
+\]</div>
+<p>If we wanted to approximate this integral using the trapezoidal rule, we can apply this to each interval individually:</p>
 <div class="math notranslate nohighlight">
 \[
 \int_{x_0}^{x_n} f(x)~ dx \approx \tfrac{1}{2} \sum_{i = 1}^n (x_i - x_{i-1}) \left[y_i + y_i\right]

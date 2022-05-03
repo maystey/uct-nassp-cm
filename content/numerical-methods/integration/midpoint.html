@@ -770,24 +770,23 @@ x_i - x_{i-1} = \frac{b - a}{n}
 \[
 \int_a^b f(x) ~dx \approx \frac{b - a}{n} \sum_{i=1}^n f\left(\frac{x_i + x_{i-1}}{2}\right)
 \]</div>
-<p>Assuming that <span class="math notranslate nohighlight">\(n\)</span> is chosen so that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{n} &lt; 1\)</span>, the error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^3\right)\)</span> <span id="id1">[<a class="reference internal" href="#id4">IntMid1</a>]</span>.</p>
+<p>Assuming that <span class="math notranslate nohighlight">\(n\)</span> is chosen so that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{n} &lt; 1\)</span>, the error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^2\right)\)</span> <span id="id1">[<a class="reference internal" href="#id4">IntMid1</a>]</span>. Note that if <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{n} \geq 1\)</span> then the error will be fairly large, so pick your value of <span class="math notranslate nohighlight">\(n\)</span> carefully.</p>
 <section id="composite-midpoint-rule-with-a-discrete-data-set">
 <h3>Composite Midpoint Rule with a Discrete Data Set<a class="headerlink" href="#composite-midpoint-rule-with-a-discrete-data-set" title="Permalink to this headline">¶</a></h3>
-<p>Let’s consider the case where we have a discrete set of data points <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> for <span class="math notranslate nohighlight">\(i = 0, \dots, n\)</span>, where:</p>
+<!-- TLDR
+The composite midpoint rule is not well suited to this, but the trapezoidal method is.
+-->
+<p>Sometimes you may need to integrate a discrete set of data points, for example <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> for <span class="math notranslate nohighlight">\(i = 0, \dots, n\)</span>, where <span class="math notranslate nohighlight">\(x_i &lt; x_{i+1}\)</span>,</p>
 <div class="math notranslate nohighlight">
 \[
 y_i = f(x_i)
 \]</div>
-<!---
-The values being midpoints is kind of arbitrary, we don't need to 
---->
-<p>We want to approximate the integral of <span class="math notranslate nohighlight">\(f(x)\)</span> using this data and the midpoint rule. We can treat each <span class="math notranslate nohighlight">\(x_i\)</span> as the midpoint (except for <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_n\)</span> at the boundaries) and determine the size of the interval around it using the adjacent values.</p>
-<p>For equally spaced data points, where <span class="math notranslate nohighlight">\(\Delta x = x_i - x_{i-1}\)</span> is constant, we can approximate the integral as:</p>
+<p>and you need to approximate the integral:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{x_0}^{x_n} f(x) ~dx \approx \Delta x \left( \frac{1}{2} y_0 + \sum_{i = 1}^{n-1} y_i + \frac{1}{2} y_n \right)
+\int_{x_0}^{x_n} f(x) dx
 \]</div>
-<p>where the first and final contributions are halved as the intervals they represent are halved (note that these aren’t at the midpoints of their intervals, rather at the boundaries).</p>
+<p>If we were to apply the composite midpoint rule to this, the natural choice would be to use the <span class="math notranslate nohighlight">\(x_i\)</span> as the interval boundaries. The problem with this is that the midpoint rule requires the value of <span class="math notranslate nohighlight">\(f(x)\)</span> at the midpoint of each interval, however the data only gives us the values at the interval boundaries. We could instead consider the <span class="math notranslate nohighlight">\(x_i\)</span> as the midpoints of each interval, and then treat the first and last intervals differently, but this modification will result in something like the <strong>Trapezoidal Rule</strong>, which will be covered in the next section. It is, therefore, recommended that you used the trapezoidal rule for this kind of integration instead.</p>
 </section>
 </section>
 <section id="references">
