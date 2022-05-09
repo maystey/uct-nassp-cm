@@ -869,7 +869,7 @@ x_i - x_{i -1} = \frac{b - a}{n}
 <p>taking this into account and the values of <span class="math notranslate nohighlight">\(f(x_i)\)</span> which are repeated in the sum, the composite Simpson’s rule can be simplified to:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_a^b f(x)~ dx \approx \frac{b - a}{6 n} \left[ f(a) + 2 \sum_{i = 2}^{n-1} f(x_i) + 4 \sum_{i =1}^{n} f\left( \frac{x_{i-1} + x_i}{2} \right) + f(b) \right]
+\int_a^b f(x)~ dx \approx \frac{b - a}{6 n} \left[ f(a) + 2 \sum_{i = 1}^{n-1} f(x_i) + 4 \sum_{i =1}^{n} f\left( \frac{x_{i-1} + x_i}{2} \right) + f(b) \right]
 \]</div>
 <p>Assuming that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{6 n} &lt; 1\)</span>, then the error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^4\right)\)</span> <span id="id1">[<a class="reference internal" href="#id4">IntSimp1</a>]</span></p>
 <section id="composite-simpson-s-rule-with-a-discrete-data-set">

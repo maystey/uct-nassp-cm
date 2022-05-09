@@ -812,7 +812,7 @@ f(x_i) = y_i
 <p>If we wanted to approximate this integral using the trapezoidal rule, we can apply this to each interval individually:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{x_0}^{x_n} f(x)~ dx \approx \tfrac{1}{2} \sum_{i = 1}^n (x_i - x_{i-1}) \left[y_i + y_i\right]
+\int_{x_0}^{x_n} f(x)~ dx \approx \tfrac{1}{2} \sum_{i = 1}^n (x_i - x_{i-1}) \left[y_{i-1} + y_i\right]
 \]</div>
 <p>If the <span class="math notranslate nohighlight">\(x_i\)</span> values are evenly spaced, with <span class="math notranslate nohighlight">\(x_i - x_{i-1} = \Delta x\)</span> constant, then we can use the composite formula from the section above:</p>
 <div class="math notranslate nohighlight">
