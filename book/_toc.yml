@@ -79,6 +79,7 @@ parts:
     sections:
     - file: content/scientific-packages/matplotlib/simple
     - file: content/scientific-packages/matplotlib/subplots
+    - file: content/scientific-packages/matplotlib/3d-plots
 
   - file: content/scientific-packages/astropy/intro
     sections:
