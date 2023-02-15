@@ -25,6 +25,8 @@ TODO:
 > Print progress in the terminal as it builds
 > Test if the PdfFileMerger might be better for the job than the writer (maintaning internal links, ect)
 > There are opportunities to render browser pages concurrently, come back to this
+
+> Replace PyPDF2 with pdrw
 """
 
 from ctypes import alignment
@@ -37,10 +39,9 @@ from io import BytesIO, StringIO
 from yaml import safe_load
 
 from pyppeteer import launch
-from PyPDF2 import PdfFileReader, PdfFileWriter
+from PyPDF2 import PdfReader as PdfFileReader, PdfWriter as PdfFileWriter
 from fpdf import FPDF
 
-#TODO: Replace PyPDF2 with pdrw
 from pdfrw import PdfReader, PdfWriter
 from pagelabels import PageLabels, PageLabelScheme
 
@@ -61,6 +62,8 @@ TOC_FONT_SIZES = {
     'section' : 8
     }
 TOC_UNDERLINE_WIDTH = 1
+
+RE_PATTERN = r'<h1>(.*)<\/h1>'
 
 
 def book_to_pdf(book_path, pdf_file, cover_path = None, alt_toc_file = None):
@@ -84,7 +87,8 @@ def book_to_pdf(book_path, pdf_file, cover_path = None, alt_toc_file = None):
     if cover_path:
         #with open(cover_path, 'rb') as f:
         cover_file = open(cover_path, 'rb')
-    cover = PdfFileReader(cover_file)
+    if cover_file:
+        cover = PdfFileReader(cover_file)
 
     asyncio.get_event_loop().run_until_complete(_book_to_pdf(content_files, pdf_file, cover))
     cover_file.close()
@@ -107,7 +111,7 @@ def _prepend_path_to_toc(path, toc, extension = ''):
     #TODO: check if files exist
 
     if 'file' in toc.keys():
-        toc['file'] = os.path.join(path, toc['file'] + extension)
+        toc['file'] = os.path.join(path, toc['file'] + extension) #PRoblem herer
 
     parts = toc.get("parts")
 
@@ -134,8 +138,8 @@ async def _book_to_pdf(content, pdf_file, cover = None):
     pdf_writer = PdfFileWriter()
     
     if cover:
-        pdf_writer.appendPagesFromReader(cover)
-        pdf_writer.addBookmark('Cover', 0)
+        pdf_writer.append_pages_from_reader(cover)
+        pdf_writer.add_outline_item('Cover', 0)
 
     browser = await launch(args = ['--no-sandbox'])
     browser_page = await browser.newPage()
@@ -143,11 +147,11 @@ async def _book_to_pdf(content, pdf_file, cover = None):
     
     await _content_to_pdf_pages(content, browser_page)
     
-    toc_page_num = pdf_writer.getNumPages()
-    pdf_writer.appendPagesFromReader(PdfFileReader(_toc_pdf_pages_from_content(content)))
-    pdf_writer.addBookmark('Contents', toc_page_num)
+    toc_page_num = len(pdf_writer.pages)
+    pdf_writer.append_pages_from_reader(PdfFileReader(_toc_pdf_pages_from_content(content)))
+    pdf_writer.add_outline_item('Contents', toc_page_num)
 
-    content_page_num = pdf_writer.getNumPages()
+    content_page_num = len(pdf_writer.pages)
     _compile_pdf_content(pdf_writer, content)
     
     with open(pdf_file, 'wb') as f:
@@ -204,7 +208,7 @@ async def _content_to_pdf_pages(content, browser_page, numbered = False, page_nu
         content['pdf'] = pdf
         content['page_number'] = page_number
 
-        page_number += pdf.getNumPages()
+        page_number += len(pdf.pages)
 
         if not caption:
             content['caption'] = _infer_title(await browser_page.content())
@@ -217,18 +221,13 @@ async def _content_to_pdf_pages(content, browser_page, numbered = False, page_nu
             if not part.get('file'):
                 caption = part.get('caption', '')
                 
-                #print("Part ", caption)
-
                 pdf = _make_part_title_page(caption, page_number)
                 part['pdf'] = pdf
                 part['page_number'] = page_number
 
-                #print(" Page Num: ", page_number)
-                #print('Num Pages: ', pdf.getNumPages())
-                page_number += pdf.getNumPages()
+                page_number += len(pdf.pages)
                 
             page_number = await _content_to_pdf_pages(part, browser_page, numbered = content_numbered, page_number = page_number)
-            #print('Num Pages end: ', page_number)
         return page_number
 
 
@@ -292,9 +291,9 @@ def _compile_pdf_content(pdf_writer, content, parent_bookmark = None):
 
     content_bookmark = None
     if pdf:
-        page_num = pdf_writer.getNumPages()
-        pdf_writer.appendPagesFromReader(pdf)
-        content_bookmark = pdf_writer.addBookmark(caption, page_num, parent_bookmark)
+        page_num = len(pdf_writer.pages)
+        pdf_writer.append_pages_from_reader(pdf)
+        content_bookmark = pdf_writer.add_outline_item(caption, page_num, parent_bookmark)
 
     sections = content.get('parts')
     if not sections:
@@ -341,7 +340,7 @@ async def _html_to_pdf(html_file, page): #pdf_writer):
         }
     )
     return BytesIO(await page.pdf({"margin": page_margins}))
-    #pdf_writer.appendPagesFromReader(PdfFileReader(BytesIO(await page.pdf({"margin": page_margins}))))
+    #pdf_writer.append_pages_from_reader(PdfFileReader(BytesIO(await page.pdf({"margin": page_margins}))))
 
 
 def _make_part_title_page(caption, page_number):
@@ -361,7 +360,7 @@ def _pdf_number_overlay(pdf_stream, page_number):
     pdf_reader = PdfFileReader(pdf_stream)
     pdf_writer = PdfFileWriter()
 
-    for i in range(pdf_reader.getNumPages()):
+    for i in range(len(pdf_reader.pages)):
         num_page = FPDF()
 
         num_page.add_page()
@@ -369,13 +368,13 @@ def _pdf_number_overlay(pdf_stream, page_number):
         num_page.set_font(FONT, size = PAGE_NUMBER_FONT_SIZE)
         num_page.cell(0, PAGE_NUMBER_FONT_SIZE * CELL_HEIGHT_FACTOR, txt = str(page_number), align = 'R')
 
-        num_page = PdfFileReader( BytesIO(num_page.output(dest = 'S')) ).getPage(0)
+        num_page = PdfFileReader( BytesIO(num_page.output(dest = 'S')) ).pages[0]
 
-        page = pdf_reader.getPage(i)
-        #page.mergePage(num_page)
-        num_page.mergePage(page)
+        page = pdf_reader.pages[i]
+        #page.merge_page(num_page)
+        num_page.merge_page(page)
 
-        pdf_writer.insertPage(num_page, i)
+        pdf_writer.insert_page(num_page, i)
 
         page_number += 1
 
@@ -388,21 +387,38 @@ def _pdf_number_overlay(pdf_stream, page_number):
     
 
 def _infer_title(html):
-    RE_PATTERN = r'\<h1\>(.*)\<\/h1\>'
+    left_idx = html.find('<h1>')
+    if left_idx < 0: return None
+    left_idx += 4
 
-    match = re.search(RE_PATTERN, html, re.MULTILINE + re.DOTALL)
+    right_idx = html.find('</h1>')
+    if right_idx < 0: return None
+    right_idx += 1
 
-    if match:
-        #Solution borrowed from
-        #https://medium.com/@jorlugaqui/how-to-strip-html-tags-from-a-string-in-python-7cb81a2bbf44
-        clean = re.compile('<.*?>')
-        title =  re.sub(clean, '', match.group(0))
-
-        title = re.sub('¶', '', title) #Pilcrow sign, using the unicode code doesn't seem to work
-        title = re.sub(u'(\u2018|\u2019)', "'", title) #Left and right quote characters
-
-        return title
-        #I'm not sure about using this character directly in the code...
-        #return re.sub('¶', '', title)
+    right_idx2 = html[right_idx:].find('</h1>')
+    if right_idx2 < 0: return None 
+    right_idx += right_idx2
     
-    return None
+    title = html[left_idx : right_idx]
+    title = title.replace('¶', '')
+    title = title.replace(u'\u2018', "'")
+    title = title.replace(u'\u2019', "'")
+    return title
+
+    # #Abandoning regex for now
+    # match = re.search(RE_PATTERN, html, re.MULTILINE + re.DOTALL)
+
+    # if match:
+    #     #Solution borrowed from
+    #     #https://medium.com/@jorlugaqui/how-to-strip-html-tags-from-a-string-in-python-7cb81a2bbf44
+    #     #clean = re.compile('<.*?>')
+    #     title =  match.group(0)[4:-5]#re.sub(clean, '', match.group(0))
+        
+    #     title = re.sub('¶', '', title) #Pilcrow sign, using the unicode code doesn't seem to work
+    #     title = re.sub(u'(\u2018|\u2019)', "'", title) #Left and right quote characters
+    #     title = title.strip()
+    #     return title
+    #     #I'm not sure about using this character directly in the code...
+    #     #return re.sub('¶', '', title)
+    
+    # return None

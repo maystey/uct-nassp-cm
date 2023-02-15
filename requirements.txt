@@ -8,3 +8,5 @@ jupyter-book
 pyppeteer
 PyPDF2
 fpdf2
+pdfrw
+pagelabels
