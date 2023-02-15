@@ -9,6 +9,19 @@ the version number, `a.b.c`, follows the following scheme:
 - `c`. New sections, corrections, etc. The number change is consecutive, not reflecting the number of changes.
 
 
+## [UNRELEASED]
+
+### Added
+
+- Seciton `scientific-packages/matplotlib/3d-plotting`
+
+### Changed
+
+- Update to Jupyter-Book version 0.13.2
+- Update requirements.txt to include pdfrw and pagelabels module
+- Update PDF book generation
+
+
 ## [3.0.1] - 2022-02-14
 
 ### Added
