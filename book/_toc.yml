@@ -4,7 +4,7 @@ parts:
 - caption: Introduction
   chapters:
   - file: content/intro/intro
-  #- file: content/intro/installing/anaconda
+ #- file: content/intro/installing/anaconda
   - file: content/intro/control-flow/control-flow-diagrams
 
 ####################################################################
@@ -20,7 +20,7 @@ parts:
     - file: content/standard-library/basics/operators
     - file: content/standard-library/basics/assignment-operators
     - file: content/standard-library/basics/functions
-    
+
   - file: content/standard-library/strings/strings
     sections:
     - file: content/standard-library/strings/string-formatting
@@ -62,7 +62,7 @@ parts:
     - file: content/standard-library/file-io/file-io
     - file: content/standard-library/file-io/data
 
-####################################################################
+# ####################################################################
 
 - caption: Scientific Packages
   chapters:
@@ -86,7 +86,7 @@ parts:
     - file: content/scientific-packages/astropy/constants
 
 
-##################################################################
+# ##################################################################
 
 - caption: Numerical Methods
   chapters:
