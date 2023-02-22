@@ -8,8 +8,9 @@
 
     <title>Constants &#8212; AST4007W Computational Methods</title>
     
-  <link href="../../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,48 +20,64 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css" />
     <link rel="stylesheet" type="text/css" href="../../../_static/table.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
     <script src="../../../_static/jquery.js"></script>
     <script src="../../../_static/underscore.js"></script>
     <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/togglebutton.js"></script>
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script>
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
     <link rel="next" title="Numerical Root Finding" href="../../numerical-methods/root-finding/intro.html" />
     <link rel="prev" title="Units and Quantities" href="units.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -69,10 +86,15 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
       
       <img src="../../../_static/UCTcircular_logo.png" class="logo" alt="logo">
       
@@ -83,16 +105,17 @@
 </div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../intro.html">
-   UCT NASSP AST4007W Computational Methods
-  </a>
- </li>
-</ul>
-<p class="caption" role="heading">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    UCT NASSP AST4007W Computational Methods
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Introduction
  </span>
@@ -109,7 +132,7 @@
   </a>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   The Python Standard Library
  </span>
@@ -346,7 +369,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Scientific Packages
  </span>
@@ -444,7 +467,7 @@
   </ul>
  </li>
 </ul>
-<p class="caption" role="heading">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Numerical Methods
  </span>
@@ -603,12 +626,17 @@
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
 </div>
 
 
@@ -616,99 +644,195 @@
 
 
           
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
     
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+    <div class="header-article row sticky-top noprint">
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/content/scientific-packages/astropy/constants.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/maystey/uct-nassp-cm/master?urlpath=tree/book/content/scientific-packages/astropy/constants.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/maystey/uct-nassp-cm"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/maystey/uct-nassp-cm/issues/new?title=Issue%20on%20page%20%2Fcontent/scientific-packages/astropy/constants.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../../../_sources/content/scientific-packages/astropy/constants.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
     </div>
 </div>
 
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/maystey/uct-nassp-cm"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/maystey/uct-nassp-cm/issues/new?title=Issue%20on%20page%20%2Fcontent/scientific-packages/astropy/constants.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
 </div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/maystey/uct-nassp-cm/master?urlpath=tree/book/content/scientific-packages/astropy/constants.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
     </div>
-</div>
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-        </div>
-    </div>
-</div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Constants</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <section id="constants">
-<h1>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="constants">
+<h1>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">#</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">astropy.constants</span></code> module contains measured physical constants, for example the gravitational constant:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -719,287 +843,216 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  Name   = Gravitational constant
-  Value  = 6.6743e-11
-  Uncertainty  = 1.5e-15
-  Unit  = m3 / (kg s2)
-  Reference = CODATA 2018
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">astropy</span> <span class="kn">import</span> <span class="n">constants</span> <span class="k">as</span> <span class="n">c</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">G</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;astropy&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <p>These constants can be treated as quantities.</p>
 <p>See the <a class="reference external" href="https://docs.astropy.org/en/stable/constants/index.html">documentation</a> for the list of constants available:</p>
-<!--
-| Name | Value | Unit | Description |
-| --- | --- | --- | --- |
-| G | 6.6743e-11 | m3 / (kg s2) | Gravitational constant |
-| N_A | 6.02214076e+23 | 1 / (mol) | Avogadro’s number |
-| R | 8.31446262 | J / (K mol) | Gas constant |
-| Ryd | 10973731.6 | 1 / (m) | Rydberg constant |
-| a0 | 5.29177211e-11 | m | Bohr radius |
-| alpha | 0.00729735257 | | Fine-structure constant |
-| atm | 101325 | Pa | Standard atmosphere |
-| b_wien | 0.00289777196 | m K | Wien wavelength displacement law constant |
-| c | 299792458 | m / (s) | Speed of light in vacuum |
-| e | 1.60217663e-19 | C | Electron charge |
-| eps0 | 8.85418781e-12 | F/m | Vacuum electric permittivity |
-| g0 | 9.80665 | m / s2 | Standard acceleration of gravity |
-| h | 6.62607015e-34 | J s | Planck constant |
-| hbar | 1.05457182e-34 | J s | Reduced Planck constant |
-| k_B | 1.380649e-23 | J / (K) | Boltzmann constant |
-| m_e | 9.1093837e-31 | kg | Electron mass |
-| m_n | 1.6749275e-27 | kg | Neutron mass |
-| m_p | 1.67262192e-27 | kg | Proton mass |
-| mu0 | 1.25663706e-06 | N/A2 | Vacuum magnetic permeability |
-| muB | 9.27401008e-24 | J/T | Bohr magneton |
-| sigma_T | 6.65245873e-29 | m2 | Thomson scattering cross-section |
-| sigma_sb | 5.67037442e-08 | W / (K4 m2) | Stefan-Boltzmann constant |
-| u | 1.66053907e-27 | kg | Atomic mass |
-| GM_earth | 3.986004e+14 | m3 / (s2) | Nominal Earth mass parameter |
-| GM_jup | 1.2668653e+17 | m3 / (s2) | Nominal Jupiter mass parameter |
-| GM_sun | 1.3271244e+20 | m3 / (s2) | Nominal solar mass parameter |
-| L_bol0 | 3.0128e+28 | W | Luminosity for absolute bolometric magnitude 0 |
-| L_sun | 3.828e+26 | W | Nominal solar luminosity |
-| M_earth | 5.97216787e+24 | kg | Earth mass |
-| M_jup | 1.8981246e+27 | kg | Jupiter mass | 
-| M_sun | 1.98840987e+30 | kg | Solar mass |
-| R_earth | 6378100 | m | Nominal Earth equatorial radius |
-| R_jup | 71492000 | m | Nominal Jupiter equatorial radius |
-| R_sun | 695700000 | m | Nominal solar radius | 
-| au | 1.49597871e+11 | m | Astronomical Unit |
-| kpc | 3.08567758e+19 | m | Kiloparsec |
-| pc | 3.08567758e+16 | m | Parsec |
---><table>
-    <tr>
-        <th>Name</th>
-        <th>Value</th>
-        <th>Unit</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>G</td>
-        <td>6.6743e-11</td>
-        <td>m3 / (kg s2)</td>
-        <td>Gravitational constant</td>
-    </tr>
-    <tr>
-        <td>N_A</td>
-        <td>6.02214076e+23</td>
-        <td>1 / (mol)</td>
-        <td>Avogadro’s number</td>
-    </tr>
-    <tr>
-        <td>R</td>
-        <td>8.31446262</td>
-        <td>J / (K mol)</td>
-        <td>Gas constant</td>
-    </tr>
-    <tr>
-        <td>Ryd</td>
-        <td>10973731.6</td>
-        <td>1 / (m)</td>
-        <td>Rydberg constant</td>
-    </tr>
-    <tr>
-        <td>a0</td>
-        <td>5.29177211e-11</td>
-        <td>m</td>
-        <td>Bohr radius</td>
-    </tr>
-    <tr>
-        <td>alpha</td>
-        <td>0.00729735257</td>
-        <td></td>
-        <td>Fine-structure constant</td>
-    </tr>
-    <tr>
-        <td>atm</td>
-        <td>101325</td>
-        <td>Pa</td>
-        <td>Standard atmosphere</td>
-    </tr>
-    <tr>
-        <td>b_wien</td>
-        <td>0.00289777196</td>
-        <td>m K</td>
-        <td>Wien wavelength displacement law constant</td>
-    </tr>
-    <tr>
-        <td>c</td>
-        <td>299792458</td>
-        <td>m / (s)</td>
-        <td>Speed of light in vacuum</td>
-    </tr>
-    <tr>
-        <td>e</td>
-        <td>1.60217663e-19</td>
-        <td>C</td>
-        <td>Electron charge</td>
-    </tr>
-    <tr>
-        <td>eps0</td>
-        <td>8.85418781e-12</td>
-        <td>F/m</td>
-        <td>Vacuum electric permittivity</td>
-    </tr>
-    <tr>
-        <td>g0</td>
-        <td>9.80665</td>
-        <td>m / s2</td>
-        <td>Standard acceleration of gravity</td>
-    </tr>
-    <tr>
-        <td>h</td>
-        <td>6.62607015e-34</td>
-        <td>J s</td>
-        <td>Planck constant</td>
-    </tr>
-    <tr>
-        <td>hbar</td>
-        <td>1.05457182e-34</td>
-        <td>J s</td>
-        <td>Reduced Planck constant</td>
-    </tr>
-    <tr>
-        <td>k_B</td>
-        <td>1.380649e-23</td>
-        <td>J / (K)</td>
-        <td>Boltzmann constant</td>
-    </tr>
-    <tr>
-        <td>m_e</td>
-        <td>9.1093837e-31</td>
-        <td>kg</td>
-        <td>Electron mass</td>
-    </tr>
-    <tr>
-        <td>m_n</td>
-        <td>1.6749275e-27</td>
-        <td>kg</td>
-        <td>Neutron mass</td>
-    </tr>
-    <tr>
-        <td>m_p</td>
-        <td>1.67262192e-27</td>
-        <td>kg</td>
-        <td>Proton mass</td>
-    </tr>
-    <tr>
-        <td>mu0</td>
-        <td>1.25663706e-06</td>
-        <td>N/A2</td>
-        <td>Vacuum magnetic permeability</td>
-    </tr>
-    <tr>
-        <td>muB</td>
-        <td>9.27401008e-24</td>
-        <td>J/T</td>
-        <td>Bohr magneton</td>
-    </tr>
-    <tr>
-        <td>sigma_T</td>
-        <td>6.65245873e-29</td>
-        <td>m2</td>
-        <td>Thomson scattering cross-section</td>
-    </tr>
-    <tr>
-        <td>sigma_sb</td>
-        <td>5.67037442e-08</td>
-        <td>W / (K4 m2)</td>
-        <td>Stefan-Boltzmann constant</td>
-    </tr>
-    <tr>
-        <td>u</td>
-        <td>1.66053907e-27</td>
-        <td>kg</td>
-        <td>Atomic mass</td>
-    </tr>
-    <tr>
-        <td>GM_earth</td>
-        <td>3.986004e+14</td>
-        <td>m3 / (s2)</td>
-        <td>Nominal Earth mass parameter</td>
-    </tr>
-    <tr>
-        <td>GM_jup</td>
-        <td>1.2668653e+17</td>
-        <td>m3 / (s2)</td>
-        <td>Nominal Jupiter mass parameter</td>
-    </tr>
-    <tr>
-        <td>GM_sun</td>
-        <td>1.3271244e+20</td>
-        <td>m3 / (s2)</td>
-        <td>Nominal solar mass parameter</td>
-    </tr>
-    <tr>
-        <td>L_bol0</td>
-        <td>3.0128e+28</td>
-        <td>W</td>
-        <td>Luminosity for absolute bolometric magnitude 0</td>
-    </tr>
-    <tr>
-        <td>L_sun</td>
-        <td>3.828e+26</td>
-        <td>W</td>
-        <td>Nominal solar luminosity</td>
-    </tr>
-    <tr>
-        <td>M_earth</td>
-        <td>5.97216787e+24</td>
-        <td>kg</td>
-        <td>Earth mass</td>
-    </tr>
-    <tr>
-        <td>M_jup</td>
-        <td>1.8981246e+27</td>
-        <td>kg</td>
-        <td>Jupiter mass</td>
-    </tr>
-    <tr>
-        <td>M_sun</td>
-        <td>1.98840987e+30</td>
-        <td>kg</td>
-        <td>Solar mass</td>
-    </tr>
-    <tr>
-        <td>R_earth</td>
-        <td>6378100</td>
-        <td>m</td>
-        <td>Nominal Earth equatorial radius</td>
-    </tr>
-    <tr>
-        <td>R_jup</td>
-        <td>71492000</td>
-        <td>m</td>
-        <td>Nominal Jupiter equatorial radius</td>
-    </tr>
-    <tr>
-        <td>R_sun</td>
-        <td>695700000</td>
-        <td>m</td>
-        <td>Nominal solar radius</td>
-    </tr>
-    <tr>
-        <td>au</td>
-        <td>1.49597871e+11</td>
-        <td>m</td>
-        <td>Astronomical Unit</td>
-    </tr>
-    <tr>
-        <td>kpc</td>
-        <td>3.08567758e+19</td>
-        <td>m</td>
-        <td>Kiloparsec</td>
-    </tr>
-    <tr>
-        <td>pc</td>
-        <td>3.08567758e+16</td>
-        <td>m</td>
-        <td>Parsec</td>
-    </tr>
-</table></section>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Unit</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>G</p></td>
+<td><p>6.6743e-11</p></td>
+<td><p>m3 / (kg s2)</p></td>
+<td><p>Gravitational constant</p></td>
+</tr>
+<tr class="row-odd"><td><p>N_A</p></td>
+<td><p>6.02214076e+23</p></td>
+<td><p>1 / (mol)</p></td>
+<td><p>Avogadro’s number</p></td>
+</tr>
+<tr class="row-even"><td><p>R</p></td>
+<td><p>8.31446262</p></td>
+<td><p>J / (K mol)</p></td>
+<td><p>Gas constant</p></td>
+</tr>
+<tr class="row-odd"><td><p>Ryd</p></td>
+<td><p>10973731.6</p></td>
+<td><p>1 / (m)</p></td>
+<td><p>Rydberg constant</p></td>
+</tr>
+<tr class="row-even"><td><p>a0</p></td>
+<td><p>5.29177211e-11</p></td>
+<td><p>m</p></td>
+<td><p>Bohr radius</p></td>
+</tr>
+<tr class="row-odd"><td><p>alpha</p></td>
+<td><p>0.00729735257</p></td>
+<td><p>Fine-structure constant</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>atm</p></td>
+<td><p>101325</p></td>
+<td><p>Pa</p></td>
+<td><p>Standard atmosphere</p></td>
+</tr>
+<tr class="row-odd"><td><p>b_wien</p></td>
+<td><p>0.00289777196</p></td>
+<td><p>m K</p></td>
+<td><p>Wien wavelength displacement law constant</p></td>
+</tr>
+<tr class="row-even"><td><p>c</p></td>
+<td><p>299792458</p></td>
+<td><p>m / (s)</p></td>
+<td><p>Speed of light in vacuum</p></td>
+</tr>
+<tr class="row-odd"><td><p>e</p></td>
+<td><p>1.60217663e-19</p></td>
+<td><p>C</p></td>
+<td><p>Electron charge</p></td>
+</tr>
+<tr class="row-even"><td><p>eps0</p></td>
+<td><p>8.85418781e-12</p></td>
+<td><p>F/m</p></td>
+<td><p>Vacuum electric permittivity</p></td>
+</tr>
+<tr class="row-odd"><td><p>g0</p></td>
+<td><p>9.80665</p></td>
+<td><p>m / s2</p></td>
+<td><p>Standard acceleration of gravity</p></td>
+</tr>
+<tr class="row-even"><td><p>h</p></td>
+<td><p>6.62607015e-34</p></td>
+<td><p>J s</p></td>
+<td><p>Planck constant</p></td>
+</tr>
+<tr class="row-odd"><td><p>hbar</p></td>
+<td><p>1.05457182e-34</p></td>
+<td><p>J s</p></td>
+<td><p>Reduced Planck constant</p></td>
+</tr>
+<tr class="row-even"><td><p>k_B</p></td>
+<td><p>1.380649e-23</p></td>
+<td><p>J / (K)</p></td>
+<td><p>Boltzmann constant</p></td>
+</tr>
+<tr class="row-odd"><td><p>m_e</p></td>
+<td><p>9.1093837e-31</p></td>
+<td><p>kg</p></td>
+<td><p>Electron mass</p></td>
+</tr>
+<tr class="row-even"><td><p>m_n</p></td>
+<td><p>1.6749275e-27</p></td>
+<td><p>kg</p></td>
+<td><p>Neutron mass</p></td>
+</tr>
+<tr class="row-odd"><td><p>m_p</p></td>
+<td><p>1.67262192e-27</p></td>
+<td><p>kg</p></td>
+<td><p>Proton mass</p></td>
+</tr>
+<tr class="row-even"><td><p>mu0</p></td>
+<td><p>1.25663706e-06</p></td>
+<td><p>N/A2</p></td>
+<td><p>Vacuum magnetic permeability</p></td>
+</tr>
+<tr class="row-odd"><td><p>muB</p></td>
+<td><p>9.27401008e-24</p></td>
+<td><p>J/T</p></td>
+<td><p>Bohr magneton</p></td>
+</tr>
+<tr class="row-even"><td><p>sigma_T</p></td>
+<td><p>6.65245873e-29</p></td>
+<td><p>m2</p></td>
+<td><p>Thomson scattering cross-section</p></td>
+</tr>
+<tr class="row-odd"><td><p>sigma_sb</p></td>
+<td><p>5.67037442e-08</p></td>
+<td><p>W / (K4 m2)</p></td>
+<td><p>Stefan-Boltzmann constant</p></td>
+</tr>
+<tr class="row-even"><td><p>u</p></td>
+<td><p>1.66053907e-27</p></td>
+<td><p>kg</p></td>
+<td><p>Atomic mass</p></td>
+</tr>
+<tr class="row-odd"><td><p>GM_earth</p></td>
+<td><p>3.986004e+14</p></td>
+<td><p>m3 / (s2)</p></td>
+<td><p>Nominal Earth mass parameter</p></td>
+</tr>
+<tr class="row-even"><td><p>GM_jup</p></td>
+<td><p>1.2668653e+17</p></td>
+<td><p>m3 / (s2)</p></td>
+<td><p>Nominal Jupiter mass parameter</p></td>
+</tr>
+<tr class="row-odd"><td><p>GM_sun</p></td>
+<td><p>1.3271244e+20</p></td>
+<td><p>m3 / (s2)</p></td>
+<td><p>Nominal solar mass parameter</p></td>
+</tr>
+<tr class="row-even"><td><p>L_bol0</p></td>
+<td><p>3.0128e+28</p></td>
+<td><p>W</p></td>
+<td><p>Luminosity for absolute bolometric magnitude 0</p></td>
+</tr>
+<tr class="row-odd"><td><p>L_sun</p></td>
+<td><p>3.828e+26</p></td>
+<td><p>W</p></td>
+<td><p>Nominal solar luminosity</p></td>
+</tr>
+<tr class="row-even"><td><p>M_earth</p></td>
+<td><p>5.97216787e+24</p></td>
+<td><p>kg</p></td>
+<td><p>Earth mass</p></td>
+</tr>
+<tr class="row-odd"><td><p>M_jup</p></td>
+<td><p>1.8981246e+27</p></td>
+<td><p>kg</p></td>
+<td><p>Jupiter mass</p></td>
+</tr>
+<tr class="row-even"><td><p>M_sun</p></td>
+<td><p>1.98840987e+30</p></td>
+<td><p>kg</p></td>
+<td><p>Solar mass</p></td>
+</tr>
+<tr class="row-odd"><td><p>R_earth</p></td>
+<td><p>6378100</p></td>
+<td><p>m</p></td>
+<td><p>Nominal Earth equatorial radius</p></td>
+</tr>
+<tr class="row-even"><td><p>R_jup</p></td>
+<td><p>71492000</p></td>
+<td><p>m</p></td>
+<td><p>Nominal Jupiter equatorial radius</p></td>
+</tr>
+<tr class="row-odd"><td><p>R_sun</p></td>
+<td><p>695700000</p></td>
+<td><p>m</p></td>
+<td><p>Nominal solar radius</p></td>
+</tr>
+<tr class="row-even"><td><p>au</p></td>
+<td><p>1.49597871e+11</p></td>
+<td><p>m</p></td>
+<td><p>Astronomical Unit</p></td>
+</tr>
+<tr class="row-odd"><td><p>kpc</p></td>
+<td><p>3.08567758e+19</p></td>
+<td><p>m</p></td>
+<td><p>Kiloparsec</p></td>
+</tr>
+<tr class="row-even"><td><p>pc</p></td>
+<td><p>3.08567758e+16</p></td>
+<td><p>m</p></td>
+<td><p>Parsec</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1013,44 +1066,58 @@
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python37364bitbaseconda97808f46a65a4f1e9dfdbcff18a07fbf",
+            name: "python3",
             path: "./content/scientific-packages/astropy"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python37364bitbaseconda97808f46a65a4f1e9dfdbcff18a07fbf'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
-        
-        <div class='prev-next-bottom'>
-            
-    <a class='left-prev' id="prev-link" href="units.html" title="previous page">Units and Quantities</a>
-    <a class='right-next' id="next-link" href="../../numerical-methods/root-finding/intro.html" title="next page">Numerical Root Finding</a>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="units.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Units and Quantities</p>
         </div>
-        
+    </a>
+    <a class='right-next' id="next-link" href="../../numerical-methods/root-finding/intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Numerical Root Finding</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>
