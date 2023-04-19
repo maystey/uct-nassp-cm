@@ -10,3 +10,4 @@ PyPDF2
 fpdf2
 pdfrw
 pagelabels
+ghp-import
