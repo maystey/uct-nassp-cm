@@ -21,6 +21,9 @@ the version number, `a.b.c`, follows the following scheme:
 - Update requirements.txt to include pdfrw and pagelabels module
 - Update PDF book generation
 - Corrections:
+  - `numerical-methods/ode/higher-order`
+    - Missing IVs for 2nd order differential equations
+    - Some "n"s should have been "m" in the Higher Order ODE section
   - `numerical-methods/curve-fitting/linear-regression` x_j were referred to as "dependant variable", corrected to "independent variables"
 
 
