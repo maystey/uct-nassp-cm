@@ -9,7 +9,7 @@
 # y = a_0 + a_1 x_1 + a_2 x_2 + \dots + a_m x_m
 # $$
 # 
-# where $y$ is the dependent variable, the $x_j$ are the dependent variable, and the $a_j$ are scalar parameters. Note that it is the linearity of the $a_j$ parameters that is important, any non-linear combination of $x_j$ that do not cause a non-linear combination of $a_j$ can be dealt with by redefining the $x_j$ variables. The $a_j$ parameters are often unkown and need to be determined from paired measurements of the $y$ and $x_j$ variables.
+# where $y$ is the dependent variable, the $x_j$ are the independent variables, and the $a_j$ are scalar parameters. Note that it is the linearity of the $a_j$ parameters that is important, any non-linear combination of $x_j$ that do not cause a non-linear combination of $a_j$ can be dealt with by redefining the $x_j$ variables. The $a_j$ parameters are often unkown and need to be determined from paired measurements of the $y$ and $x_j$ variables.
 
 # ## Statistical Notation
 # 

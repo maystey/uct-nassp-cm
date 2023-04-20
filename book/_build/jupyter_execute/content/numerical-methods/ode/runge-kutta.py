@@ -36,7 +36,7 @@
 # 
 # where $c_1 + c_2 = 1$ is required.
 
-# In[12]:
+# In[3]:
 
 
 import numpy as np
@@ -152,14 +152,14 @@ x_rk, y_rk, m_euler, m_between, x_between, y_between, y_euler_end, y_between_end
 #plotting:
 fig, ax = plt.subplots(figsize = fig_size)
 
-ax.plot(x, y, ls = '-.', color = 'black', linewidth = linewidth, label = 'Exact Solution')
-ax.plot(x_rk, y_rk, color = 'black', linewidth = linewidth, 
+plot_exact = ax.plot(x, y, ls = '-.', color = 'black', linewidth = linewidth, label = 'Exact Solution')
+plot_rk = ax.plot(x_rk, y_rk, color = 'black', linewidth = linewidth, 
          label = 'Runge-Kutta Solution')
-ax.plot(x_rk, [y_rk[0], y_euler_end], color = 'blue', linewidth = linewidth, 
+plot_euler = ax.plot(x_rk, [y_rk[0], y_euler_end], color = 'blue', linewidth = linewidth, 
          label = 'Euler Solution')
-ax.plot(x_rk, [y_rk[0], y_between_end], color = 'red', linewidth = linewidth,
-         label = r'Solution using')
-ax.plot([], [], ls = 'none', label = r'Gradient at $x_i + \alpha$')
+plot_mid = ax.plot(x_rk, [y_rk[0], y_between_end], color = 'red', linewidth = linewidth,
+         label = 'Solution using\n' + r'Gradient at $x_i + \alpha$')
+# ax.plot([], [], ls = 'none', label = r'Gradient at $x_i + \alpha$')
 
 
 arrow_width = 0.01*linewidth
@@ -182,7 +182,12 @@ ax.annotate("", xy=(x0 + arrow_dx, f(a, x0) + arrow_dx*m_euler),
 ax.set_xticks([x_rk[0], x_between, x_rk[1]])
 ax.set_xticklabels([r'$x_i$', r'$x_i + \alpha$', r'$x_{i+1}$'], fontsize = tick_fontsize)
 ax.set_yticks([])
-ax.legend(fontsize = legend_fontsize)
+
+handles, labels = plt.gca().get_legend_handles_labels()
+
+order = [2, 0, 1, 3]
+
+ax.legend([handles[i] for i in order], [labels[i] for i in order], fontsize = legend_fontsize)
 
 plt.show()
 
@@ -230,7 +235,7 @@ plt.show()
 # 
 # Let's solve this ODE up to $x = 1$ for both the trapezoidal and the midpoint rule RK2 methods.
 
-# In[5]:
+# In[4]:
 
 
 import numpy as np
@@ -275,13 +280,13 @@ for i,x in enumerate(x_arr[:-1]):
 fig, ax = plt.subplots(2, 1, sharex = True, figsize = (6.4, 8))
 
 ##Plotting trapezoidal
-ax[0].plot(x_arr, y_exact(x_arr), color = '0.4', label = 'Exact solution', linewidth = 2)
+ax[0].plot(x_arr, y_exact(x_arr), color = 'red', label = 'Exact solution', linewidth = 2)
 ax[0].plot(x_arr, y_trapz, '--k', label = 'RK2 trapezoidal solution', linewidth = 2)
 ax[0].set_ylabel('y(x)', fontsize = 14)
 ax[0].legend(fontsize = 14)
 
 ##Plotting midpoint
-ax[1].plot(x_arr, y_exact(x_arr), color = '0.4', label = 'Exact solution', linewidth = 2)
+ax[1].plot(x_arr, y_exact(x_arr), color = 'red', label = 'Exact solution', linewidth = 2)
 ax[1].plot(x_arr, y_mid, '--k', label = 'RK2 midpoint solution', linewidth = 2)
 ax[1].set_ylabel('y(x)', fontsize = 14)
 ax[1].set_xlabel('x', fontsize = 14)
@@ -333,7 +338,7 @@ plt.show()
 # 
 # which we can compare our results to. Let's solve this ODE up to $x = 1$ using the RK4 method.
 
-# In[2]:
+# In[5]:
 
 
 import numpy as np
@@ -375,7 +380,7 @@ for i,x in enumerate(x_arr[:-1]):
 #Plotting the solution
 fig, ax = plt.subplots()
 
-ax.plot(x_arr, y_exact(x_arr), color = '0.4', label = 'Exact solution', linewidth = 2)
+ax.plot(x_arr, y_exact(x_arr), color = 'red', label = 'Exact solution', linewidth = 2)
 ax.plot(x_arr, y_arr, '--k', label = 'RK4 solution', linewidth = 2)
 ax.set_xlabel('x', fontsize = 14)
 ax.set_ylabel('y', fontsize = 14)
@@ -533,7 +538,7 @@ for i,x in enumerate(x_arr[:-1]):
 #Plotting the solution
 fig, ax = plt.subplots()
 
-ax.plot(x_arr, y_arr[:, 0], color = '0.4', linewidth = 2, label = 'Numerical solution')
+ax.plot(x_arr, y_arr[:, 0], color = 'red', linewidth = 2, label = 'Numerical solution')
 
 x_exact = np.linspace(x_arr[0], x_arr[-1], 1000) #x_arr is too sparse to properly plot the curve
 ax.plot(x_exact, y_exact(x_exact), 'k--', linewidth = 2, label = 'Exact solution')

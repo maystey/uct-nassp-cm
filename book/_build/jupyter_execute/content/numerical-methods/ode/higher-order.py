@@ -243,7 +243,7 @@ plt.show()
 # $$
 # 
 # <!--- Problem with notation!!!!!!!!!! --->
-# with initial conditions $y(x = x_0) = y_0$ and $y^\prime(x = x_0) = y^\prime_0$ ,
+# with initial conditions $y(x = x_0) = y_0$ and $y'(x = x_0) = y'_0$ ,
 # we can transform these into a system of coupled first order equations by introducing the variable:
 # 
 # $$
@@ -259,7 +259,7 @@ plt.show()
 # \end{align*}
 # $$
 # 
-# with the initial conditions
+# with the initial conditions $y(x_0) = y_0$ and $v(x_0) = y'_0$.
 # 
 # As the ODE for $y$ depends on $v$ and the ODE for $v$ depends on $y$, these equations need to be integrated simultaneously.
 
@@ -379,7 +379,7 @@ plt.show()
 # with initial conditions
 # 
 # $$
-# y(x = x_0) = y_0 ~~~~~~ \frac{dy}{dx}(x = x_0) = y^\prime_0 ~~~~~~ \frac{d^2y}{dx^2}(x = x_0) = y^{\prime\prime}_0 ~~~~~~ \dots ~~~~~~ \frac{d^{n-1}y}{dx^{m-1}}(x = x_0) = y^{(m-1)}_0
+# y(x = x_0) = y_0 ~~~~~~ \frac{dy}{dx}(x = x_0) = y'_0 ~~~~~~ \frac{d^2y}{dx^2}(x = x_0) = y''_0 ~~~~~~ \dots ~~~~~~ \frac{d^{m-1}y}{dx^{m-1}}(x = x_0) = y^{(m-1)}_0
 # $$
 # 
 # We start by introducing the variables:
@@ -388,7 +388,7 @@ plt.show()
 # y_0 = y ~~~~~~ y_1 = \frac{dy}{dx} ~~~~~~ y_2 = \frac{d^2y}{dx^2} ~~~~~~ \dots ~~~~~ y_{m-1} = \frac{d^{m-1}y}{dx^{m-1}}
 # $$
 # 
-# we can transform the order $n$ ODE to a set of $n$ first order coupled differential equations:
+# we can transform the order $m$ ODE to a set of $m$ first order coupled differential equations:
 # 
 # $$
 # \begin{align*}

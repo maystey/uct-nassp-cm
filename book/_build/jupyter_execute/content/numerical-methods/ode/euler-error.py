@@ -13,7 +13,7 @@
 # 
 # The **local** truncation error is associated with a single integration step. It is far more useful, however, to consider the **global** truncation error, which is the error accumulated over multiple integration steps. The global truncation error is $O(h)$ {cite}`nm-ode-ee-epperson-numerical-methods`. The derivation for the bounds of the error are beyond the scope of the course. As this error approximately scales linearly with $h$, reducing the size of $h$ will generally reduce the global error:
 
-# In[8]:
+# In[2]:
 
 
 import numpy as np
@@ -88,7 +88,7 @@ fig, ax = plt.subplots(1,2, figsize = (12.8, 4.8), sharey = True)
 for i, h in enumerate(h_list):
     x_euler[i],y_euler[i],x_ticks[i],y_ticks[i] = euler(a,xlims, h)
     
-    ax[i].plot(x_euler[i], y_euler[i], 'k-', label = 'Euler Solution')
+    ax[i].plot(x_euler[i], y_euler[i], 'r-', label = 'Euler Solution')
     ax[i].plot(x, f(a,x), 'k--', label = 'Exact Solution')
     
     ylim = ax[i].get_ylim()

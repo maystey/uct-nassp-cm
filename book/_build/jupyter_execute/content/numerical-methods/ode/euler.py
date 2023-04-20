@@ -46,7 +46,7 @@
 
 # Another way to see the Euler method is as approximating the solution $y(x)$ as a straight line over the interval $[x_n, x_n + h]$, passing through the point $(x_n, y_n)$ with a gradient of $f(x_n, y_n)$ (the tangent of $y$ at that point):
 
-# In[4]:
+# In[1]:
 
 
 import numpy as np
@@ -98,7 +98,7 @@ y_ticks = [r'$y_n$', r'$y_{n+1}$', r'$y(x_{n+1})$']
 ##Plot
 x = np.linspace(xlims[0], xlims[1], 1000)    
 
-plt.plot(x_euler, y_euler, 'k-', label = 'Euler')
+plt.plot(x_euler, y_euler, 'r-', label = 'Euler')
 plt.plot(x, f(a,x), 'k--', label = 'Exact')
 
 ylim = plt.ylim()
@@ -171,7 +171,7 @@ print('y at x = 1: ', np.e)
 
 # Now, it is often important for us to visualize the solution for $y(x)$ over the interval, rather than only finding the value of $y$ at the end of it. We will plot the numerical solution for $y$ on the interval $0 < x < 5$ along with the exact solution for comparison. We could alter the solution above to append the values to an array (as would be the best solution if we didn't know how many iterations we needed), but instead we will create an array of $x$ values on the interval, as this is known to us before perform the Euler solution:
 
-# In[21]:
+# In[2]:
 
 
 import numpy as np
@@ -198,7 +198,7 @@ for i,x in enumerate(x_arr[:-1]):
 #Plotting the solution
 fig, ax = plt.subplots()
 
-ax.plot(x_arr, y_arr, color = '0.3', label = 'Numerical solution')
+ax.plot(x_arr, y_arr, color = 'red', label = 'Numerical solution')
 ax.plot(x_arr, np.exp( -(x_arr - 1)**2 + 1 ), 'k--', label = 'Exact solution')
 ax.set_xlabel('x')
 ax.set_ylabel('y')

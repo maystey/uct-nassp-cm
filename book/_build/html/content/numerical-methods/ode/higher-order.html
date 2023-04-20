@@ -1127,7 +1127,7 @@ z(0) &amp;= 0
 \frac{d^2y}{dx^2} = f\left(x, y, \frac{dy}{dx}\right)
 \]</div>
 <!--- Problem with notation!!!!!!!!!! --->
-<p>with initial conditions <span class="math notranslate nohighlight">\(y(x = x_0) = y_0\)</span> and <span class="math notranslate nohighlight">\(y^\prime(x = x_0) = y^\prime_0\)</span> ,
+<p>with initial conditions <span class="math notranslate nohighlight">\(y(x = x_0) = y_0\)</span> and <span class="math notranslate nohighlight">\(y'(x = x_0) = y'_0\)</span> ,
 we can transform these into a system of coupled first order equations by introducing the variable:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1141,7 +1141,7 @@ v = \frac{dy}{dx}
 \frac{dv}{dx} &amp;= f(x, y, v)\\
 \end{align*}
 \end{split}\]</div>
-<p>with the initial conditions</p>
+<p>with the initial conditions <span class="math notranslate nohighlight">\(y(x_0) = y_0\)</span> and <span class="math notranslate nohighlight">\(v(x_0) = y'_0\)</span>.</p>
 <p>As the ODE for <span class="math notranslate nohighlight">\(y\)</span> depends on <span class="math notranslate nohighlight">\(v\)</span> and the ODE for <span class="math notranslate nohighlight">\(v\)</span> depends on <span class="math notranslate nohighlight">\(y\)</span>, these equations need to be integrated simultaneously.</p>
 <div class="worked-example">
     <h5 class="worked-example-title"><b>Worked Example</b></h5><p>Consider second order ODE:</p>
@@ -1250,14 +1250,14 @@ y_1\\
 <p>with initial conditions</p>
 <div class="math notranslate nohighlight">
 \[
-y(x = x_0) = y_0 ~~~~~~ \frac{dy}{dx}(x = x_0) = y^\prime_0 ~~~~~~ \frac{d^2y}{dx^2}(x = x_0) = y^{\prime\prime}_0 ~~~~~~ \dots ~~~~~~ \frac{d^{n-1}y}{dx^{m-1}}(x = x_0) = y^{(m-1)}_0
+y(x = x_0) = y_0 ~~~~~~ \frac{dy}{dx}(x = x_0) = y'_0 ~~~~~~ \frac{d^2y}{dx^2}(x = x_0) = y''_0 ~~~~~~ \dots ~~~~~~ \frac{d^{m-1}y}{dx^{m-1}}(x = x_0) = y^{(m-1)}_0
 \]</div>
 <p>We start by introducing the variables:</p>
 <div class="math notranslate nohighlight">
 \[
 y_0 = y ~~~~~~ y_1 = \frac{dy}{dx} ~~~~~~ y_2 = \frac{d^2y}{dx^2} ~~~~~~ \dots ~~~~~ y_{m-1} = \frac{d^{m-1}y}{dx^{m-1}}
 \]</div>
-<p>we can transform the order <span class="math notranslate nohighlight">\(n\)</span> ODE to a set of <span class="math notranslate nohighlight">\(n\)</span> first order coupled differential equations:</p>
+<p>we can transform the order <span class="math notranslate nohighlight">\(m\)</span> ODE to a set of <span class="math notranslate nohighlight">\(m\)</span> first order coupled differential equations:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{align*}
