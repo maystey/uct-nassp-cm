@@ -20,6 +20,8 @@ the version number, `a.b.c`, follows the following scheme:
 - Update to Jupyter-Book version 0.13.2
 - Update requirements.txt to include pdfrw and pagelabels module
 - Update PDF book generation
+- Corrections:
+  - `numerical-methods/curve-fitting/linear-regression` x_j were referred to as "dependant variable", corrected to "independent variables"
 
 
 ## [3.0.1] - 2022-02-14
