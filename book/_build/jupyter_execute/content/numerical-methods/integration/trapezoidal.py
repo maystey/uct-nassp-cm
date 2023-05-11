@@ -44,21 +44,21 @@ plt.show()
 # In the case where $f(a) < f(b)$, this area is given by:
 # 
 # \begin{align*}
-# A_\text{trapezoid}  &= (b - a)f(a) + \tfrac{1}{2} (b - a) [f(b) - f(a)]\\
-#                     &= \tfrac{1}{2}(b - a) [f(a) + f(b)]
+# A_\text{trapezoid}  &= (b - a)f(a) + \tfrac{1}{2} (b - a) \left[f(b) - f(a)\right]\\
+#                     &= \tfrac{1}{2}(b - a) \left[f(a) + f(b)\right]
 # \end{align*}
 # 
 # In the case where $f(a) > f(b)$, the area is give by:
 # 
 # \begin{align*}
-# A_\text{trapezoid}  &= (b - a)f(b) + \tfrac{1}{2} (b - a) [f(a) - f(b)]\\
-#                     &= \tfrac{1}{2}(b - a) [f(a) + f(b)]
+# A_\text{trapezoid}  &= (b - a)f(b) + \tfrac{1}{2} (b - a) \left[f(a) - f(b)\right]\\
+#                     &= \tfrac{1}{2}(b - a) \left[f(a) + f(b)\right]
 # \end{align*}
 # 
 # which is the same as above, so in general we can approximate the integral as:
 # 
 # $$
-# \int_a^b f(x)~ dx \approx \tfrac{1}{2} (b - a) [f(a) + f(b)]
+# \int_a^b f(x)~ dx \approx \tfrac{1}{2} (b - a) \left[f(a) + f(b)\right]
 # $$
 
 # ## Composite Trapezoid Rule
@@ -81,7 +81,7 @@ plt.show()
 # To calculate this we use the sum:
 # 
 # $$
-# \int_a^b f(x)~ dx \approx \sum_{i=1}^n \tfrac{1}{2} (x_i - x_{i-1}) [f(x_{i-1}) + f(x_i)]
+# \int_a^b f(x)~ dx \approx \sum_{i=1}^n \tfrac{1}{2} (x_i - x_{i-1}) \left[f(x_{i-1}) + f(x_i)\right]
 # $$
 # 
 # where $x_0 = a$ and $x_n = b$. As we have specified that each of the $n$ subintervals are of equal sizes, we have that:
@@ -93,13 +93,13 @@ plt.show()
 # we can therefore write the approximation as:
 # 
 # $$
-# \int_a^b f(x)~ dx \approx \frac{b -a}{2 n} \sum_{i=1}^n [f(x_{i-1}) + f(x_i)]
+# \int_a^b f(x)~ dx \approx \frac{b -a}{2 n} \sum_{i=1}^n \left[f(x_{i-1}) + f(x_i)\right]
 # $$
 # 
 # note how each $f(x_i)$ in the sum above is repeated twice, except for $f(x_0)$ and $f(x_n)$, which only feature once each. We can now write the approximation as:
 # 
 # $$
-# \int_a^b f(x)~ dx \approx \frac{b -a}{2 n} \left[f(a) + 2 \sum_{i=1}^{n-1} f(x_i) + f(b)\right]
+# \int_a^b f(x)~ dx \approx \frac{b -a}{2 n} \left[f(a) + 2 \left\{\sum_{i=1}^{n-1} f(x_i)\right\} + f(b)\right]
 # $$
 # 
 # For a choice of $n$ such that $0 < \tfrac{b - a}{n} < 1$, the error for this method is $O\left(\tfrac{1}{n}^2\right)$ {cite}`nm-i-t-epperson-numerical-methods`.
@@ -115,13 +115,13 @@ plt.show()
 # If we wanted to approximate the integral of this data set using the trapezoidal rule, we can apply this to each interval individually:
 # 
 # $$
-# \int_{x_0}^{x_n} f(x)~ dx \approx \tfrac{1}{2} \sum_{i = 1}^n (x_i - x_{i-1}) \left[y_i + y_i\right]
+# \int_{x_0}^{x_n} f(x)~ dx \approx \tfrac{1}{2} \sum_{i = 1}^n (x_i - x_{i-1}) \left[y_{i-1} + y_i\right]
 # $$
 # 
 # If the $x_i$ values are evenly spaced, with $x_i - x_{i-1} = \Delta x$ constant, then we can use the composite formula from the section above:
 # 
 # $$
-# \int_{x_0}^{x_n} f(x)~ dx \approx \frac{\Delta x}{2} \left[ y_0 + 2 \sum_{i=1}^{n-1} y_i + y_n \right]
+# \int_{x_0}^{x_n} f(x)~ dx \approx \frac{\Delta x}{2} \left[ y_0 + 2 \left\{\sum_{i=1}^{n-1} y_i\right\} + y_n \right]
 # $$
 
 # ## References
@@ -131,9 +131,3 @@ plt.show()
 # :labelprefix: IntTrap
 # :keyprefix: nm-i-t-
 # ```
-
-# In[ ]:
-
-
-
-

@@ -8,8 +8,11 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
-from utils import (plot_simpsons, point_gridlines, lagrange,
-                    FIGSIZE, LW, FS, SOLID_COLOR)
+from utils import (
+    plot_simpsons, point_gridlines, lagrange,
+    FIGSIZE, LW, FS,
+    TOPLINE_COLOR_MIDPOINT, TOPLINE_COLOR_TRAPZ, TOPLINE_COLOR_SIMPSONS
+)
 
 
 # In[2]:
@@ -58,7 +61,7 @@ ax.plot(xlims, [0,0], 'k', linewidth = LW)
 
 x_norm = np.linspace(0,1)
 
-ax.plot(x_norm, lagrange(x_norm, [0, 0.5, 1], [f(0), f(0.5), f(1)]), color = SOLID_COLOR, linestyle = '-.', linewidth = LW, label = r'$L(x)$')
+ax.plot(x_norm, lagrange(x_norm, [0, 0.5, 1], [f(0), f(0.5), f(1)]), color = TOPLINE_COLOR_SIMPSONS, linestyle = '-.', linewidth = LW, label = r'$L(x)$')
 
 point_gridlines( ax, 0, f(0) )
 point_gridlines( ax, 0.5, f(0.5) )
@@ -181,7 +184,7 @@ plt.show()
 # taking this into account and the values of $f(x_i)$ which are repeated in the sum, the composite Simpson's rule can be simplified to:
 # 
 # $$
-# \int_a^b f(x)~ dx \approx \frac{b - a}{6 n} \left[ f(a) + 2 \sum_{i = 2}^{n-1} f(x_i) + 4 \sum_{i =1}^{n} f\left( \frac{x_{i-1} + x_i}{2} \right) + f(b) \right]
+# \int_a^b f(x)~ dx \approx \frac{b - a}{6 n} \left[ f(a) + 2 \left\{\sum_{i = 1}^{n-1} f(x_i)\right\} + 4 \left\{\sum_{i =1}^{n} f\left( \frac{x_{i-1} + x_i}{2} \right)\right\} + f(b) \right]
 # $$
 # 
 # Assuming that $0 < \tfrac{b - a}{6 n} < 1$, then the error for this method is $O\left(\tfrac{1}{n}^4\right)$ {cite}`nm-i-s-epperson-numerical-methods`
@@ -200,7 +203,7 @@ plt.show()
 # If the $x_i$ values are **uniformly spaced** (with $x_i - x_{i-1} = \Delta x$) and there is an odd number of data points, we can pair up the intervals between the points. Treating each pair of subintervals as a single subinterval, we can use the middle $x$ values as the midpoints. In other words, for even $i= 2j$, the $x_{2j}$ are used as the boundaries of the sub-intervals; for odd $i = 2k -1$, the $x_{2k-1}$ are used as the midpoints of the subinterval. Thus the integral is approximated as:
 # 
 # $$
-# \int_{x_0}^{x_n} f(x)~dx \approx \frac{\Delta x}{3} \left[y_0 + 2 \sum_{i = 1}^{n/2 - 1} y_{2i} + 4 \sum_{i=1}^{n/2} y_{2i-1} + y_n \right] 
+# \int_{x_0}^{x_n} f(x)~dx \approx \frac{\Delta x}{3} \left[y_0 + 2 \left\{\sum_{i = 1}^{n/2 - 1} y_{2i}\right\} + 4 \left\{\sum_{i=1}^{n/2} y_{2i-1}\right\} + y_n \right] 
 # $$
 # 
 # Note that 

@@ -90,7 +90,7 @@ plt.show()
 # For equally spaced data points, where $\Delta x = x_i - x_{i-1}$ is constant, we can approximate the integral as:
 # 
 # $$
-# \int_{x_0}^{x_n} f(x) ~dx \approx \Delta x \left( \frac{1}{2} y_0 + \sum_{i = 1}^{n-1} y_i + \frac{1}{2} y_n \right)
+# \int_{x_0}^{x_n} f(x) ~dx \approx \Delta x \left[ \frac{1}{2} y_0 + \left\{\sum_{i = 1}^{n-1} y_i \right\} + \frac{1}{2} y_n \right]
 # $$
 # 
 # where the first and final contributions are halved as the intervals they represent are halved (note that these aren't at the midpoints of their intervals, rather at the boundaries).

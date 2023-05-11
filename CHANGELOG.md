@@ -25,6 +25,7 @@ the version number, `a.b.c`, follows the following scheme:
     - Missing IVs for 2nd order differential equations
     - Some "n"s should have been "m" in the Higher Order ODE section
   - `numerical-methods/curve-fitting/linear-regression` x_j were referred to as "dependant variable", corrected to "independent variables"
+  - `numerical-methods/integration/simpson` first summation term in composite method started from "i=2", corrected to "i=1"
 
 
 ## [3.0.1] - 2022-02-14

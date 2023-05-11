@@ -7,6 +7,9 @@ FIGSIZE = [9,6]
 FILL_COLOR = '0.8'
 DOT_COLOR = '0.4'
 SOLID_COLOR = '0.4'
+TOPLINE_COLOR_MIDPOINT = '0.4'
+TOPLINE_COLOR_TRAPZ = '0.4'
+TOPLINE_COLOR_SIMPSONS = 'red'
 
 #Integration techniques
 def plot_midpoint(f, a, b, n, xlims, fs = FS, lw = LW, figsize = FIGSIZE):
@@ -39,7 +42,7 @@ def plot_midpoint(f, a, b, n, xlims, fs = FS, lw = LW, figsize = FIGSIZE):
         ax.plot(xm, fm, 'ko')
 
         #Top line
-        ax.plot([xl, xr], [fm, fm], color = SOLID_COLOR, lw = lw)
+        ax.plot([xl, xr], [fm, fm], color = TOPLINE_COLOR_MIDPOINT, lw = lw)
 
         xm_label = r'\frac{{x_{{{}}} + x_{{{}}}}}{{ 2 }}'.format(i, i+1)
         
@@ -108,7 +111,7 @@ def plot_trapezoidal(f, a, b, n, xlims, fs = FS, lw = LW, figsize = FIGSIZE):
         ax.plot([xr, xr], [0, fr], color = DOT_COLOR, ls = '--', lw = lw)
 
         #Top line
-        ax.plot([xl, xr], [fl, fr], color = SOLID_COLOR, lw = lw)
+        ax.plot([xl, xr], [fl, fr], color = TOPLINE_COLOR_TRAPZ, lw = lw)
 
         xticks.append(xr)
         xtick_labels.append(r'$x_{{{}}}$'.format(i+1))
@@ -174,7 +177,7 @@ def plot_simpsons(f, a, b, n, xlims, fs = FS, lw = LW, figsize = FIGSIZE):
         ax.plot([xr, xr], [0, fr], color = DOT_COLOR, ls = ':', lw = lw)
 
         #Top line
-        ax.plot(x, fx, color = SOLID_COLOR, ls = '--', lw = lw)
+        ax.plot(x, fx, color = TOPLINE_COLOR_SIMPSONS, ls = '--', lw = lw)
 
         xticks.append(xr)
         xtick_labels.append(r'$x_{{{}}}$'.format(i+1))
