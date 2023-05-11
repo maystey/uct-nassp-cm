@@ -945,7 +945,7 @@ The values being midpoints is kind of arbitrary, we don't need to
 <p>For equally spaced data points, where <span class="math notranslate nohighlight">\(\Delta x = x_i - x_{i-1}\)</span> is constant, we can approximate the integral as:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_{x_0}^{x_n} f(x) ~dx \approx \Delta x \left( \frac{1}{2} y_0 + \sum_{i = 1}^{n-1} y_i + \frac{1}{2} y_n \right)
+\int_{x_0}^{x_n} f(x) ~dx \approx \Delta x \left[ \frac{1}{2} y_0 + \left\{\sum_{i = 1}^{n-1} y_i \right\} + \frac{1}{2} y_n \right]
 \]</div>
 <p>where the first and final contributions are halved as the intervals they represent are halved (note that these aren’t at the midpoints of their intervals, rather at the boundaries).</p>
 </section>
