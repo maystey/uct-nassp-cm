@@ -1,6 +1,7 @@
 sphinx
 numpy
 scipy
+astropy
 pandas
 matplotlib
 quantecon
