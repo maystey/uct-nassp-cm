@@ -1,0 +1,12 @@
+@media print {
+    #print-main-content {
+        display: none;
+    }
+    .skip-link {
+        visibility: hidden;
+    }
+    /* Preventing page break in cell (this may be over-reaching, it may be better to set for cell_input and cell_output individually */
+    .cell{
+        page-break-inside: avoid;
+    }
+}
