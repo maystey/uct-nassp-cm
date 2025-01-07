@@ -32,12 +32,18 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[a4paper, 11pt]{book} % A4 paper size and default 11pt font size
- 
-\newcommand*{\plogo}{\fbox{$\mathcal{PL}$}} % Generic dummy publisher logo
+\usepackage[margin=2cm]{geometry}
+
+% \newcommand*{\plogo}{\fbox{$\mathcal{PL}$}} % Generic dummy publisher logo
  
 \usepackage[utf8]{inputenc} % Required for inputting international characters
 \usepackage[T1]{fontenc} % Output font encoding for international characters
-\usepackage{stix} % Use the STIX fonts
+% \usepackage{stix} % Use the STIX fonts
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{graphicx}
+\usepackage{parskip}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -63,19 +69,20 @@
 	
 	\rule{1pt}{\textheight} % Vertical line
 	\hspace{0.05\textwidth} % Whitespace between the vertical line and title page text
-	\parbox[b]{0.75\textwidth}{ % Paragraph box for holding the title page text, adjust the width to move the title page left or right on the page
-		
-% 		\begin{tabular}{l r}
-% 		{\Huge\bfseries AST4007W} & {\Huge\bfseries Computational} \\
-% 					  & {\Huge\bfseries Methods}\\
-% 		\end{tabular}
+	\parbox[b][\textheight][t]{0.75\textwidth}{ % Paragraph box for holding the title page text, adjust the width to move the title page left or right on the page
+		\vspace{0.2\textheight}
 		{\Huge\bfseries AST4007W} \\[0.5\baselineskip]
 		{\Huge\bfseries Computational Methods}
 		\\[2\baselineskip] % Title
 		{\large\textit{Scientific Programming in Python}}\\[4\baselineskip] % Subtitle or further description
 		{\Large\textsc{luis a. balona\\ ed elson\\ masimba paradza\\ mayhew steyn}} % Author name, lower case for consistent small caps
 		
-		\vspace{0.5\textheight} % Whitespace between the title block and the publisher
+		% \vspace{0.3\textheight} % Whitespace between the title block and the publisher
+		
+		\vfill
+		% \begin{tabular}{lr}
+		Last Updated: \today \hfill \includegraphics[trim=0 20 0 0, clip]{../book/images/UCTcircular\_logo.png}\\
+		% \end{tabular}
 		
 		%TODO: add UCT logo here
 % 		{\noindent The Publisher~~\plogo}\\[\baselineskip] % Publisher and logo
@@ -86,9 +93,9 @@
 
 \section*{About this book}
 
-This book serves as the notes for the Computational Methods module of the National Astrophysics and Space Sciences Programme (NASSP) honours course at the University of Cape Town. It was generated from the online version, found at \url{https://maystey.github.io/uct-nassp-cm/index.html}. The site was generated using \href{https://jupyterbook.org/intro.html}{Jupyter Books v0.11.2}.\\
+This book serves as the notes for the Computational Methods module of the National Astrophysics and Space Sciences Programme (NASSP) honours course at the University of Cape Town. It was generated from the online version, found at \url{https://maystey.github.io/uct-nassp-cm/index.html}. The site was generated using \href{https://jupyterbook.org/intro.html}{Jupyter Books v0.15.1}.
 
-The source code used to generate this book, along with the changelog, are hosted on GitHub at \url{https://github.com/maystey/uct-nassp-cm}. If you find errors in these notes, or if you have any suggestions, please feel free to submit an issue on the GitHub repository.\\
+The source code used to generate this book, along with the changelog, are hosted on GitHub at \url{https://github.com/maystey/uct-nassp-cm}. If you find errors in these notes, or if you have any suggestions, please feel free to submit an issue on the GitHub repository.
 
 %TODO: include the liscence figure here
 This work is licensed under the Creative Commons Attribution-ShareAlike 4.0 International License. To view a copy of this license, visit \url{http://creativecommons.org/licenses/by-sa/4.0/} or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.

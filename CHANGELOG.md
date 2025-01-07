@@ -17,9 +17,9 @@ the version number, `a.b.c`, follows the following scheme:
 
 ### Changed
 
-- Update to Jupyter-Book version 0.13.2
-- Update requirements.txt to include pdfrw and pagelabels module
-- Update PDF book generation
+- Updated to Jupyter-Book version ~~0.13.2~~ 0.15.1
+- Updated requirements.txt to include pdfrw and pagelabels module
+- Updated PDF book generation
 - Corrections:
   - `numerical-methods/ode/higher-order`
     - Missing IVs for 2nd order differential equations

@@ -200,10 +200,7 @@ async def _content_to_pdf_pages(content, browser_page, numbered = False, page_nu
     caption = content.get('caption')
     content_numbered = content.get('numbered', numbered)
 
-    #content_page_num = page_number
     if file_path and file_type == 'html':
-        pdf = PdfFileReader(await _html_to_pdf(file_path, browser_page))
-        
         pdf = _pdf_number_overlay(await _html_to_pdf(file_path, browser_page), page_number)
         content['pdf'] = pdf
         content['page_number'] = page_number
@@ -305,42 +302,19 @@ def _compile_pdf_content(pdf_writer, content, parent_bookmark = None):
             _compile_pdf_content(pdf_writer, section, content_bookmark)
 
 
-async def _html_to_pdf(html_file, page): #pdf_writer):
+async def _html_to_pdf(html_file, page):
     # Should I be making a new page each time instead?
-    # If I need to edit html content then use page.setContent() instead of goto
-
+    
     # Absolute path is needed
     html_file = Path(html_file).resolve()
-
-    #This doesn't work. Need to figure out a way to alter page contents
-    # with open(html_file, 'rt') as f:
-    #     html = f.read()
-    # await page.setContent(html)
-    # await page.reload({"waitUntil": ["networkidle0"]})
 
     # Waiting for networkidle0 seems to let mathjax render
     await page.goto(f"file:///{html_file}", {"waitUntil": ["networkidle0"]})
     # Give it *some* margins to make it look a little prettier
-    # I just made these up
-    page_margins = {"left": "0in", "right": "0in", "top": ".5in", "bottom": ".5in"}
-    await page.addStyleTag(
-        {
-            "content": """
-                div.cell_input {
-                    -webkit-column-break-inside: avoid;
-                    page-break-inside: avoid;
-                    break-inside: avoid;
-                }
-                div.cell_output {
-                    -webkit-column-break-inside: avoid;
-                    page-break-inside: avoid;
-                    break-inside: avoid;
-                }
-         """
-        }
-    )
+    # page_margins = {"left": "0in", "right": "0in", "top": ".5in", "bottom": ".5in"}
+    page_margins = {"left": "0in", "right": "0.5in", "top": "0.5in", "bottom": "0.5in"}
+    
     return BytesIO(await page.pdf({"margin": page_margins}))
-    #pdf_writer.append_pages_from_reader(PdfFileReader(BytesIO(await page.pdf({"margin": page_margins}))))
 
 
 def _make_part_title_page(caption, page_number):
@@ -387,38 +361,17 @@ def _pdf_number_overlay(pdf_stream, page_number):
     
 
 def _infer_title(html):
+    #I couldn't figure out how to use regex for this
     left_idx = html.find('<h1>')
     if left_idx < 0: return None
-    left_idx += 4
+    left_idx += 4 #Set index after the tag
 
     right_idx = html.find('</h1>')
     if right_idx < 0: return None
-    right_idx += 1
-
-    right_idx2 = html[right_idx:].find('</h1>')
-    if right_idx2 < 0: return None 
-    right_idx += right_idx2
     
     title = html[left_idx : right_idx]
+    #Removing unwanted characters
     title = title.replace('¶', '')
     title = title.replace(u'\u2018', "'")
     title = title.replace(u'\u2019', "'")
     return title
-
-    # #Abandoning regex for now
-    # match = re.search(RE_PATTERN, html, re.MULTILINE + re.DOTALL)
-
-    # if match:
-    #     #Solution borrowed from
-    #     #https://medium.com/@jorlugaqui/how-to-strip-html-tags-from-a-string-in-python-7cb81a2bbf44
-    #     #clean = re.compile('<.*?>')
-    #     title =  match.group(0)[4:-5]#re.sub(clean, '', match.group(0))
-        
-    #     title = re.sub('¶', '', title) #Pilcrow sign, using the unicode code doesn't seem to work
-    #     title = re.sub(u'(\u2018|\u2019)', "'", title) #Left and right quote characters
-    #     title = title.strip()
-    #     return title
-    #     #I'm not sure about using this character directly in the code...
-    #     #return re.sub('¶', '', title)
-    
-    # return None
