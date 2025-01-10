@@ -1,4 +1,5 @@
 @media print {
+    /* Hiding unwanted elements from printing */
     #print-main-content {
         display: none;
     }

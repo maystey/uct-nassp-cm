@@ -27,8 +27,11 @@ bibtex_bibfiles:
   - _bibliography/references.bib
 
 sphinx:
+  recursive_update: true
   config:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  local_extensions:
+    docnum: _ext
 
 ######################################################################################
 # MyST Markdown settings:
@@ -42,7 +45,6 @@ parse:
 
     - amsmath
     - html_admonition
-
 
 ######################################################################################
 # Exclude

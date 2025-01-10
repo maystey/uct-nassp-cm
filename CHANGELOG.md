@@ -8,12 +8,24 @@ the version number, `a.b.c`, follows the following scheme:
 - `b`. New chapter(s) added or drastically changed.
 - `c`. New sections, corrections, etc. The number change is consecutive, not reflecting the number of changes.
 
+## [Unreleased]
+
+### Added
+
+- Exercises
+- Numbering using a custom role extension. Required files to be ordered.
+
+### Changed
+
+- Updated to Jupyter-Book version 1.0.3.
+- Moved Strings chapters into Basics.
+
 
 ## [3.1.0] - 2022-01-07
 
 ### Added
 
-- Seciton `scientific-packages/matplotlib/3d-plotting`
+- Section `scientific-packages/matplotlib/3d-plotting`
 
 ### Changed
 

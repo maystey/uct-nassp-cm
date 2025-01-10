@@ -1,123 +1,128 @@
 format: jb-book
-root: content/intro
+root: content/00-intro
 parts:
 - caption: Introduction
+  # numbered: true  
   chapters:
-  - file: content/intro/intro
- #- file: content/intro/installing/anaconda
-  - file: content/intro/control-flow/control-flow-diagrams
+  - file: content/01-intro/00-intro
+ #- file: content/01-intro/01-installing/anaconda
+  - file: content/01-intro/02-control-flow/control-flow-diagrams
 
 ####################################################################
 
 - caption: The Python Standard Library
+  # numbered: true
   chapters:
 
-  - file: content/standard-library/basics/intro
+  - file: content/02-standard-library/00-basics/00-intro
     sections:
-    - file: content/standard-library/basics/variables
-    - file: content/standard-library/basics/comments
-    - file: content/standard-library/basics/types
-    - file: content/standard-library/basics/operators
-    - file: content/standard-library/basics/assignment-operators
-    - file: content/standard-library/basics/functions
-
-  - file: content/standard-library/strings/strings
-    sections:
-    - file: content/standard-library/strings/string-formatting
+    - file: content/02-standard-library/00-basics/01-variables
+    - file: content/02-standard-library/00-basics/02-comments
+    - file: content/02-standard-library/00-basics/03-operators
+    - file: content/02-standard-library/00-basics/04-assignment-operators
+    - file: content/02-standard-library/00-basics/05-exercise-a
+    - file: content/02-standard-library/00-basics/06-types
+    - file: content/02-standard-library/00-basics/07-functions
+    - file: content/02-standard-library/00-basics/08-strings
+    - file: content/02-standard-library/00-basics/09-exercise-b
+    - file: content/02-standard-library/00-basics/10-string-formatting
   
-  - file: content/standard-library/data-structures/intro
+  - file: content/02-standard-library/01-data-structures/00-intro
     sections:
-    - file: content/standard-library/data-structures/tuple
-    - file: content/standard-library/data-structures/lists
-    - file: content/standard-library/data-structures/dictionaries
+    - file: content/02-standard-library/01-data-structures/01-tuple
+    - file: content/02-standard-library/01-data-structures/02-lists
+    - file: content/02-standard-library/01-data-structures/03-dictionaries
 
-  - file: content/standard-library/if-statements/intro
-    title: If Statements
+  - file: content/02-standard-library/02-if-statements/00-intro
     sections:
-    - file: content/standard-library/if-statements/bools
-    - file: content/standard-library/if-statements/comparison-operators
-    - file: content/standard-library/if-statements/logical-operators
-    - file: content/standard-library/if-statements/inclusion-operators
-    - file: content/standard-library/if-statements/if
-    - file: content/standard-library/if-statements/nested
+    - file: content/02-standard-library/02-if-statements/01-bools
+    - file: content/02-standard-library/02-if-statements/02-comparison-operators
+    - file: content/02-standard-library/02-if-statements/03-logical-operators
+    - file: content/02-standard-library/02-if-statements/04-inclusion-operators
+    - file: content/02-standard-library/02-if-statements/05-if
+    - file: content/02-standard-library/02-if-statements/06-nested
+    - file: content/02-standard-library/02-if-statements/07-exercise
 
-  - file: content/standard-library/loops/intro
-    title: Loops
+  - file: content/02-standard-library/03-loops/00-intro
     sections:
-    - file: content/standard-library/loops/while
-    - file: content/standard-library/loops/for
-    - file: content/standard-library/loops/nested
-    - file: content/standard-library/loops/break
-    - file: content/standard-library/loops/else
+    - file: content/02-standard-library/03-loops/01-while
+    - file: content/02-standard-library/03-loops/01=exercise-while
+    - file: content/02-standard-library/03-loops/02-for
+    - file: content/02-standard-library/03-loops/02=exercise-for
+    - file: content/02-standard-library/03-loops/03-nested
+    - file: content/02-standard-library/03-loops/04-break
+    - file: content/02-standard-library/03-loops/04=exercise-break
+    - file: content/02-standard-library/03-loops/05-else
 
-  - file: content/standard-library/functions/intro
-    sections:
-    - file: content/standard-library/functions/return
-    - file: content/standard-library/functions/arguments
-    - file: content/standard-library/functions/local-variables
-    - file: content/standard-library/functions/recursive
+#   - file: content/standard-library/functions/intro
+#     sections:
+#     - file: content/standard-library/functions/return
+#     - file: content/standard-library/functions/arguments
+#     - file: content/standard-library/functions/local-variables
+#     - file: content/standard-library/functions/recursive
 
-  - file: content/standard-library/file-io/intro
-    sections:
-    - file: content/standard-library/file-io/file-io
-    - file: content/standard-library/file-io/data
+#   - file: content/standard-library/file-io/intro
+#     sections:
+#     - file: content/standard-library/file-io/file-io
+#     - file: content/standard-library/file-io/data
 
-# ####################################################################
+# # ####################################################################
 
-- caption: Scientific Packages
-  chapters:
+# - caption: Scientific Packages
+#   # numbered: true
+#   chapters:
 
-  - file: content/scientific-packages/numpy/intro
-    sections:
-    - file: content/scientific-packages/numpy/arrays
-    - file: content/scientific-packages/numpy/array-methods
-    - file: content/scientific-packages/numpy/arrays2d
-    - file: content/scientific-packages/numpy/random
-    - file: content/scientific-packages/numpy/where
+#   - file: content/scientific-packages/numpy/intro
+#     sections:
+#     - file: content/scientific-packages/numpy/arrays
+#     - file: content/scientific-packages/numpy/array-methods
+#     - file: content/scientific-packages/numpy/arrays2d
+#     - file: content/scientific-packages/numpy/random
+#     - file: content/scientific-packages/numpy/where
 
-  - file: content/scientific-packages/matplotlib/intro
-    sections:
-    - file: content/scientific-packages/matplotlib/simple
-    - file: content/scientific-packages/matplotlib/subplots
-    - file: content/scientific-packages/matplotlib/3d-plots
+#   - file: content/scientific-packages/matplotlib/intro
+#     sections:
+#     - file: content/scientific-packages/matplotlib/simple
+#     - file: content/scientific-packages/matplotlib/subplots
+#     - file: content/scientific-packages/matplotlib/3d-plots
 
-  - file: content/scientific-packages/astropy/intro
-    sections:
-    - file: content/scientific-packages/astropy/units
-    - file: content/scientific-packages/astropy/constants
+#   - file: content/scientific-packages/astropy/intro
+#     sections:
+#     - file: content/scientific-packages/astropy/units
+#     - file: content/scientific-packages/astropy/constants
 
+# # ##################################################################
 
-# ##################################################################
+# - caption: Numerical Methods
+#   # numbered: true
+#   chapters:
 
-- caption: Numerical Methods
-  chapters:
+#   - file: content/numerical-methods/root-finding/intro
+#     sections:
+#     - file: content/numerical-methods/root-finding/bisection
+#     - file: content/numerical-methods/root-finding/secant
+#     - file: content/numerical-methods/root-finding/newton
+#     - file: content/numerical-methods/root-finding/comparison
 
-  - file: content/numerical-methods/root-finding/intro
-    sections:
-    - file: content/numerical-methods/root-finding/bisection
-    - file: content/numerical-methods/root-finding/secant
-    - file: content/numerical-methods/root-finding/newton
-    - file: content/numerical-methods/root-finding/comparison
+#   - file: content/numerical-methods/curve-fitting/intro
+#     sections:
+#     - file: content/numerical-methods/curve-fitting/linear-regression
+#       sections:
+#       - file: content/numerical-methods/curve-fitting/least-squares
+#       - file: content/numerical-methods/curve-fitting/chi-squared
+#       - file: content/numerical-methods/curve-fitting/multiple-least-squares
+#     - file: content/numerical-methods/curve-fitting/scipy-least-squares
+#     - file: content/numerical-methods/curve-fitting/scipy-curve-fit
 
-  - file: content/numerical-methods/curve-fitting/intro
-    sections:
-    - file: content/numerical-methods/curve-fitting/linear-regression
-      sections:
-      - file: content/numerical-methods/curve-fitting/least-squares
-      - file: content/numerical-methods/curve-fitting/chi-squared
-      - file: content/numerical-methods/curve-fitting/multiple-least-squares
-    - file: content/numerical-methods/curve-fitting/scipy-least-squares
-    - file: content/numerical-methods/curve-fitting/scipy-curve-fit
+#   - file: content/numerical-methods/ode/intro
+#     sections:
+#     - file: content/numerical-methods/ode/euler
+#     - file: content/numerical-methods/ode/euler-error
+#     - file: content/numerical-methods/ode/higher-order
+#     - file: content/numerical-methods/ode/runge-kutta
 
-  - file: content/numerical-methods/ode/intro
-    sections:
-    - file: content/numerical-methods/ode/euler
-    - file: content/numerical-methods/ode/euler-error
-    - file: content/numerical-methods/ode/higher-order
-    - file: content/numerical-methods/ode/runge-kutta
-
-  - file: content/numerical-methods/integration/intro
-    sections:
-    - file: content/numerical-methods/integration/midpoint
-    - file: content/numerical-methods/integration/trapezoidal
-    - file: content/numerical-methods/integration/simpson
+#   - file: content/numerical-methods/integration/intro
+#     sections:
+#     - file: content/numerical-methods/integration/midpoint
+#     - file: content/numerical-methods/integration/trapezoidal
+#     - file: content/numerical-methods/integration/simpson
