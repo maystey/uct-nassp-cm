@@ -2,7 +2,6 @@ format: jb-book
 root: content/00-intro
 parts:
 - caption: Introduction
-  # numbered: true  
   chapters:
   - file: content/01-intro/00-intro
  #- file: content/01-intro/01-installing/anaconda
@@ -11,7 +10,6 @@ parts:
 ####################################################################
 
 - caption: The Python Standard Library
-  # numbered: true
   chapters:
 
   - file: content/02-standard-library/00-basics/00-intro
@@ -20,12 +18,12 @@ parts:
     - file: content/02-standard-library/00-basics/02-comments
     - file: content/02-standard-library/00-basics/03-operators
     - file: content/02-standard-library/00-basics/04-assignment-operators
-    - file: content/02-standard-library/00-basics/05-exercise-a
-    - file: content/02-standard-library/00-basics/06-types
-    - file: content/02-standard-library/00-basics/07-functions
-    - file: content/02-standard-library/00-basics/08-strings
-    - file: content/02-standard-library/00-basics/09-exercise-b
-    - file: content/02-standard-library/00-basics/10-string-formatting
+    - file: content/02-standard-library/00-basics/04=exercise-a
+    - file: content/02-standard-library/00-basics/05-types
+    - file: content/02-standard-library/00-basics/06-functions
+    - file: content/02-standard-library/00-basics/07-strings
+    - file: content/02-standard-library/00-basics/07=exercise-b
+    - file: content/02-standard-library/00-basics/08-string-formatting
   
   - file: content/02-standard-library/01-data-structures/00-intro
     sections:
@@ -41,7 +39,7 @@ parts:
     - file: content/02-standard-library/02-if-statements/04-inclusion-operators
     - file: content/02-standard-library/02-if-statements/05-if
     - file: content/02-standard-library/02-if-statements/06-nested
-    - file: content/02-standard-library/02-if-statements/07-exercise
+    - file: content/02-standard-library/02-if-statements/06=exercise
 
   - file: content/02-standard-library/03-loops/00-intro
     sections:
@@ -54,75 +52,99 @@ parts:
     - file: content/02-standard-library/03-loops/04=exercise-break
     - file: content/02-standard-library/03-loops/05-else
 
-#   - file: content/standard-library/functions/intro
-#     sections:
-#     - file: content/standard-library/functions/return
-#     - file: content/standard-library/functions/arguments
-#     - file: content/standard-library/functions/local-variables
-#     - file: content/standard-library/functions/recursive
+  - file: content/02-standard-library/04-functions/00-intro
+    sections:
+    - file: content/02-standard-library/04-functions/01-return
+    - file: content/02-standard-library/04-functions/02-arguments
+    - file: content/02-standard-library/04-functions/03-local-variables
+    - file: content/02-standard-library/04-functions/03=exercise
+    - file: content/02-standard-library/04-functions/04-recursive
+    - file: content/02-standard-library/04-functions/04=exercise-recursive
 
-#   - file: content/standard-library/file-io/intro
-#     sections:
-#     - file: content/standard-library/file-io/file-io
-#     - file: content/standard-library/file-io/data
+  - file: content/02-standard-library/05-file-io/00-intro
+    sections:
+    - file: content/02-standard-library/05-file-io/01-file-io
+    - file: content/02-standard-library/05-file-io/01=exercise-file-io
+    - file: content/02-standard-library/05-file-io/02-data
+    - file: content/02-standard-library/05-file-io/02=exercise-data
 
-# # ####################################################################
+####################################################################
 
-# - caption: Scientific Packages
-#   # numbered: true
-#   chapters:
+- caption: Scientific Packages
+  chapters:
 
-#   - file: content/scientific-packages/numpy/intro
-#     sections:
-#     - file: content/scientific-packages/numpy/arrays
-#     - file: content/scientific-packages/numpy/array-methods
-#     - file: content/scientific-packages/numpy/arrays2d
-#     - file: content/scientific-packages/numpy/random
-#     - file: content/scientific-packages/numpy/where
+  - file: content/03-scientific-packages/01-numpy/00-intro
+    sections:
+    - file: content/03-scientific-packages/01-numpy/01-arrays
+    - file: content/03-scientific-packages/01-numpy/02-array-methods
+    - file: content/03-scientific-packages/01-numpy/02=exercise-a
+    - file: content/03-scientific-packages/01-numpy/03-arrays2d
+    - file: content/03-scientific-packages/01-numpy/03=exercise-arrays2d
+    - file: content/03-scientific-packages/01-numpy/04-random
+    - file: content/03-scientific-packages/01-numpy/04=exercise-random
+    - file: content/03-scientific-packages/01-numpy/05-where
 
-#   - file: content/scientific-packages/matplotlib/intro
-#     sections:
-#     - file: content/scientific-packages/matplotlib/simple
-#     - file: content/scientific-packages/matplotlib/subplots
-#     - file: content/scientific-packages/matplotlib/3d-plots
+  - file: content/03-scientific-packages/02-matplotlib/00-intro
+    sections:
+    - file: content/03-scientific-packages/02-matplotlib/01-simple
+    - file: content/03-scientific-packages/02-matplotlib/01=exercise-simple  
+    - file: content/03-scientific-packages/02-matplotlib/02-subplots
+    - file: content/03-scientific-packages/02-matplotlib/03-3d-plots
+    - file: content/03-scientific-packages/02-matplotlib/03=exercise-3d
 
-#   - file: content/scientific-packages/astropy/intro
-#     sections:
-#     - file: content/scientific-packages/astropy/units
-#     - file: content/scientific-packages/astropy/constants
+  - file: content/03-scientific-packages/04-astropy/00-intro
+    sections:
+    - file: content/03-scientific-packages/04-astropy/01-units
+    - file: content/03-scientific-packages/04-astropy/02-constants
+    - file: content/03-scientific-packages/04-astropy/02=exercise-a
+    - file: content/03-scientific-packages/04-astropy/03-fits
+    - file: content/03-scientific-packages/04-astropy/03=exercise-fits
 
 # # ##################################################################
 
-# - caption: Numerical Methods
-#   # numbered: true
-#   chapters:
+- caption: Numerical Methods
+  chapters:
 
-#   - file: content/numerical-methods/root-finding/intro
-#     sections:
-#     - file: content/numerical-methods/root-finding/bisection
-#     - file: content/numerical-methods/root-finding/secant
-#     - file: content/numerical-methods/root-finding/newton
-#     - file: content/numerical-methods/root-finding/comparison
+  - file: content/04-numerical-methods/01-root-finding/00-intro
+    sections:
+    - file: content/04-numerical-methods/01-root-finding/01-bisection
+    - file: content/04-numerical-methods/01-root-finding/01=exercise-bisection
+    - file: content/04-numerical-methods/01-root-finding/02-secant
+    - file: content/04-numerical-methods/01-root-finding/02=exercise-secant
+    - file: content/04-numerical-methods/01-root-finding/03-newton
+    - file: content/04-numerical-methods/01-root-finding/03=exercise-newton
+    - file: content/04-numerical-methods/01-root-finding/04-comparison
 
-#   - file: content/numerical-methods/curve-fitting/intro
-#     sections:
-#     - file: content/numerical-methods/curve-fitting/linear-regression
-#       sections:
-#       - file: content/numerical-methods/curve-fitting/least-squares
-#       - file: content/numerical-methods/curve-fitting/chi-squared
-#       - file: content/numerical-methods/curve-fitting/multiple-least-squares
-#     - file: content/numerical-methods/curve-fitting/scipy-least-squares
-#     - file: content/numerical-methods/curve-fitting/scipy-curve-fit
+  - file: content/04-numerical-methods/02-curve-fitting/00-intro
+    sections:
+    - file: content/04-numerical-methods/02-curve-fitting/01-linear-regression
+      sections:
+      - file: content/04-numerical-methods/02-curve-fitting/02-least-squares
+      - file: content/04-numerical-methods/02-curve-fitting/02=exercise-least-squares
+      - file: content/04-numerical-methods/02-curve-fitting/03-chi-squared
+      - file: content/04-numerical-methods/02-curve-fitting/03=exercise-chi-squared
+      - file: content/04-numerical-methods/02-curve-fitting/04-multiple-least-squares
+      - file: content/04-numerical-methods/02-curve-fitting/04=exercise-multivar
+    - file: content/04-numerical-methods/02-curve-fitting/05-scipy-least-squares
+    - file: content/04-numerical-methods/02-curve-fitting/06-scipy-curve-fit
+    - file: content/04-numerical-methods/02-curve-fitting/06=exercise-curve-fit
 
-#   - file: content/numerical-methods/ode/intro
-#     sections:
-#     - file: content/numerical-methods/ode/euler
-#     - file: content/numerical-methods/ode/euler-error
-#     - file: content/numerical-methods/ode/higher-order
-#     - file: content/numerical-methods/ode/runge-kutta
+  - file: content/04-numerical-methods/03-ode/00-intro
+    sections:
+    - file: content/04-numerical-methods/03-ode/01-euler
+      # sections:
+    - file: content/04-numerical-methods/03-ode/02-euler-error
+    - file: content/04-numerical-methods/03-ode/02=exercise-euler
+    - file: content/04-numerical-methods/03-ode/03-higher-order
+    - file: content/04-numerical-methods/03-ode/03=exercise-higher-order
+    - file: content/04-numerical-methods/03-ode/04-runge-kutta
+    - file: content/04-numerical-methods/03-ode/04=exercise-runge-kutta
 
-#   - file: content/numerical-methods/integration/intro
-#     sections:
-#     - file: content/numerical-methods/integration/midpoint
-#     - file: content/numerical-methods/integration/trapezoidal
-#     - file: content/numerical-methods/integration/simpson
+  - file: content/04-numerical-methods/04-integration/00-intro
+    sections:
+    - file: content/04-numerical-methods/04-integration/01-midpoint
+    - file: content/04-numerical-methods/04-integration/01=exercise-midpoint
+    - file: content/04-numerical-methods/04-integration/02-trapezoidal
+    - file: content/04-numerical-methods/04-integration/02=exercise-trapz
+    - file: content/04-numerical-methods/04-integration/03-simpson
+    - file: content/04-numerical-methods/04-integration/03=exercise-simps
