@@ -521,72 +521,17 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-10-1">
 <h1>Exercise <span>10.1</span><a class="headerlink" href="#exercise-10-1" title="Link to this heading">#</a></h1>
-<div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
 <section id="question-1">
 <h2>Question 1<a class="headerlink" href="#question-1" title="Link to this heading">#</a></h2>
 <p>NumPy has a number of <a class="reference external" href="https://numpy.org/doc/stable/reference/routines.math.html">Mathematical functions</a> and <a class="reference external" href="https://numpy.org/doc/stable/reference/constants.html">Constants</a>. Use these to plot the following:</p>
 <p>(1) <span class="math notranslate nohighlight">\(sin(x)\)</span>  for  <span class="math notranslate nohighlight">\(0 &lt; x &lt; 2\pi\)</span></p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-
-<span class="n">fig1</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-
-<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x1</span><span class="p">),</span> <span class="s1">&#39;k-&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="n">fig1</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../../_images/3b96fb052b5d4e2a3b016a3f69ab08e769892b9f9c4f11883ad650e80348e442.png" src="../../../_images/3b96fb052b5d4e2a3b016a3f69ab08e769892b9f9c4f11883ad650e80348e442.png" />
 </div>
 </div>
 <p>(2) <span class="math notranslate nohighlight">\(|x - 2|\)</span>  for  <span class="math notranslate nohighlight">\(0 &lt; x &lt; 3\)</span></p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-
-<span class="n">fig2</span><span class="p">,</span> <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-
-<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;k-&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">fig2</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../../_images/79837e62f89ef520724e59a841f6021cf02a958b5235f272eb7b1fbb8ad3eaf7.png" src="../../../_images/79837e62f89ef520724e59a841f6021cf02a958b5235f272eb7b1fbb8ad3eaf7.png" />
 </div>
@@ -596,37 +541,13 @@
 <section id="question-2">
 <h2>Question 2<a class="headerlink" href="#question-2" title="Link to this heading">#</a></h2>
 <p>Plot a unit circle. Remember that the circle can be parameterized as:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f6ddd92c-e5ba-448b-86ec-fdef2e08d59a">
-<span class="eqno">(3)<a class="headerlink" href="#equation-f6ddd92c-e5ba-448b-86ec-fdef2e08d59a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c3131345-506f-4ded-aae2-a9ebc4422f39">
+<span class="eqno">(3)<a class="headerlink" href="#equation-c3131345-506f-4ded-aae2-a9ebc4422f39" title="Permalink to this equation">#</a></span>\[\begin{align}
 x(s) &amp;= \cos(2 \pi s)\\
 y(s) &amp;= \sin(2 \pi s)
 \end{align}\]</div>
 <p>for <span class="math notranslate nohighlight">\(0 &lt; s &lt; 1\)</span>.</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-
-<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">s</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span>
-
-<span class="n">fig_circ</span><span class="p">,</span> <span class="n">ax_circ</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-
-<span class="n">ax_circ</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">)</span>
-
-<span class="n">ax_circ</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-<span class="n">ax_circ</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">ax_circ</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">fig_circ</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../../_images/b435a9547193d4bef01f105bea546936ebc0224e62468a9715b952cb748fe4cc.png" src="../../../_images/b435a9547193d4bef01f105bea546936ebc0224e62468a9715b952cb748fe4cc.png" />
 </div>
@@ -636,37 +557,13 @@ y(s) &amp;= \sin(2 \pi s)
 <section id="question-3">
 <h2>Question 3<a class="headerlink" href="#question-3" title="Link to this heading">#</a></h2>
 <p>Plot a spiral, parameterized by:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d29e6f65-da04-442f-aaa1-3becbe8e3009">
-<span class="eqno">(4)<a class="headerlink" href="#equation-d29e6f65-da04-442f-aaa1-3becbe8e3009" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a4399556-541a-472d-8f79-a09e0cf06bc3">
+<span class="eqno">(4)<a class="headerlink" href="#equation-a4399556-541a-472d-8f79-a09e0cf06bc3" title="Permalink to this equation">#</a></span>\[\begin{align}
 x(s) &amp;= s \cos(2 \pi s)\\
 y(s) &amp;= s \sin(2 \pi s)
 \end{align}\]</div>
 <p>for <span class="math notranslate nohighlight">\(0 &lt; s &lt; 1\)</span>.</p>
-<div class="cell tag_hide-input docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell source</span>
-<span class="expanded">Hide code cell source</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-
-<span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">s</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span>
-
-<span class="n">fig_spiral</span><span class="p">,</span> <span class="n">ax_spiral</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-
-<span class="n">ax_spiral</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s</span> <span class="o">*</span> <span class="n">x</span><span class="p">,</span> <span class="n">s</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;k-&#39;</span><span class="p">)</span>
-
-<span class="n">ax_spiral</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-<span class="n">ax_spiral</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
-<span class="n">ax_spiral</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-<span class="n">fig_spiral</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-</details>
+<div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../../_images/ebda10ae27935b9de44f3bf67689a5966a6631f398d0690bddfd72cc8a142a0c.png" src="../../../_images/ebda10ae27935b9de44f3bf67689a5966a6631f398d0690bddfd72cc8a142a0c.png" />
 </div>
