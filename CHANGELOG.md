@@ -14,6 +14,7 @@ the version number, `a.b.c`, follows the following scheme:
 
 - Exercises
 - Numbering using a custom role extension. Required files to be ordered.
+- Redirect script and pages for 2023-2024 links.
 
 ### Changed
 
