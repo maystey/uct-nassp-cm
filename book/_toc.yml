@@ -6,6 +6,10 @@ parts:
   - file: content/01-intro/00-intro
  #- file: content/01-intro/01-installing/anaconda
   - file: content/01-intro/02-control-flow/control-flow-diagrams
+  - file: content/01-intro/03-debugging/00-intro
+    sections:
+    - file: content/01-intro/03-debugging/01-errors
+    - file: content/01-intro/03-debugging/02-strategy
 
 ####################################################################
 
@@ -67,6 +71,8 @@ parts:
     - file: content/02-standard-library/05-file-io/01=exercise-file-io
     - file: content/02-standard-library/05-file-io/02-data
     - file: content/02-standard-library/05-file-io/02=exercise-data
+  
+  - file: content/02-standard-library/06-modules/00-intro
 
 ####################################################################
 
