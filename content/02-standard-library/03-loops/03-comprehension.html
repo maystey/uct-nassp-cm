@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Exercise 4.4 &#8212; AST4007W Computational Methods</title>
+    <title>7.3 List and Dictionary Comprehension &#8212; AST4007W Computational Methods</title>
   
   
   
@@ -63,13 +63,11 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'content/02-standard-library/00-basics/04=exercise-a';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/02-standard-library/03-loops/03-comprehension';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="4.5 Type Conversion" href="05-types.html" />
-    <link rel="prev" title="4.4 Compound Assignment Operators" href="04-assignment-operators.html" />
+    <link rel="next" title="7.4 Nested Loops" href="03-nested.html" />
+    <link rel="prev" title="Exercise 7.2" href="02%3Dexercise-for.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -185,17 +183,17 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">The Python Standard Library</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-intro.html"><span>4</span> Python Basics</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01-variables.html"><span>4.1</span> Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02-comments.html"><span>4.2</span> Comments</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03-operators.html"><span>4.3</span> Numerical Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04-assignment-operators.html"><span>4.4</span> Compound Assignment Operators</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercise <span>4.4</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="05-types.html"><span>4.5</span> Type Conversion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="06-functions.html"><span>4.6</span> Introduction to Using Functions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07-strings.html"><span>4.7</span> Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="07%3Dexercise-b.html">Exercise <span>4.7</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="08-string-formatting.html"><span>4.8</span> String Formatting</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../00-basics/00-intro.html"><span>4</span> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../00-basics/01-variables.html"><span>4.1</span> Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00-basics/02-comments.html"><span>4.2</span> Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00-basics/03-operators.html"><span>4.3</span> Numerical Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00-basics/04-assignment-operators.html"><span>4.4</span> Compound Assignment Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00-basics/04%3Dexercise-a.html">Exercise <span>4.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00-basics/05-types.html"><span>4.5</span> Type Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00-basics/06-functions.html"><span>4.6</span> Introduction to Using Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00-basics/07-strings.html"><span>4.7</span> Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00-basics/07%3Dexercise-b.html">Exercise <span>4.7</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../00-basics/08-string-formatting.html"><span>4.8</span> String Formatting</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01-data-structures/00-intro.html"><span>5</span> Data Structures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -214,16 +212,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../02-if-statements/06%3Dexercise.html">Exercise <span>6</span></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../03-loops/00-intro.html"><span>7</span> Loops</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../03-loops/01-while.html"><span>7.1</span> While Loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03-loops/01%3Dexercise-while.html">Exercise <span>7.1</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03-loops/02-for.html"><span>7.2</span> For Loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03-loops/02%3Dexercise-for.html">Exercise <span>7.2</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03-loops/03-comprehension.html"><span>7.3</span> List and Dictionary Comprehension</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03-loops/03-nested.html"><span>7.4</span> Nested Loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03-loops/04-break.html"><span>7.5</span> Breaking Out of Loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03-loops/04%3Dexercise-break.html">Exercise <span>7.5</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../03-loops/05-else.html"><span>7.6</span> Else Statement and Loops</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-intro.html"><span>7</span> Loops</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-while.html"><span>7.1</span> While Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01%3Dexercise-while.html">Exercise <span>7.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-for.html"><span>7.2</span> For Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02%3Dexercise-for.html">Exercise <span>7.2</span></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><span>7.3</span> List and Dictionary Comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-nested.html"><span>7.4</span> Nested Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-break.html"><span>7.5</span> Breaking Out of Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04%3Dexercise-break.html">Exercise <span>7.5</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-else.html"><span>7.6</span> Else Statement and Loops</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04-functions/00-intro.html"><span>8</span> Defining Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -397,7 +395,7 @@
       
       
       
-      <li><a href="https://github.com/maystey/uct-nassp-cm/issues/new?title=Issue%20on%20page%20%2Fcontent/02-standard-library/00-basics/04=exercise-a.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/maystey/uct-nassp-cm/issues/new?title=Issue%20on%20page%20%2Fcontent/02-standard-library/03-loops/03-comprehension.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -427,7 +425,7 @@
       
       
       
-      <li><a href="../../../_sources/content/02-standard-library/00-basics/04=exercise-a.ipynb" target="_blank"
+      <li><a href="../../../_sources/content/02-standard-library/03-loops/03-comprehension.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -503,7 +501,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Exercise 4.4</h1>
+    <h1>7.3 List and Dictionary Comprehension</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -513,10 +511,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">Question 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4">Question 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension">List Comprehension</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-comprehension">Dictionary Comprehension</a></li>
 </ul>
             </nav>
         </div>
@@ -528,85 +524,153 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="exercise-4-4">
-<h1>Exercise <span>4.4</span><a class="headerlink" href="#exercise-4-4" title="Link to this heading">#</a></h1>
-<p>Unless stated otherwise, for this module you may make use of any part of the Python standard library and the packages presented in these notes. The challenge for this activity, however, is to only use what you’ve learned in this chapter so far to complete the question. In other words, try to see if you can complete this exercise without using if statements, for loops, custom functions and methods from other Python modules.</p>
-<section id="question-1">
-<h2>Question 1<a class="headerlink" href="#question-1" title="Link to this heading">#</a></h2>
-<p>Write a script that calculates the following and prints the results:</p>
-<ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(\sqrt{2}\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\((3.6/4.7)^4\)</span></p></li>
-<li><p><span class="math notranslate nohighlight">\(\frac{3\times5.789}{3.32^6 + 10}\)</span></p></li>
-</ol>
-</section>
-<section id="question-2">
-<h2>Question 2<a class="headerlink" href="#question-2" title="Link to this heading">#</a></h2>
-<p>Write a script that swaps the values of two variables . Print out both the initial values and the final values. So if you start the script like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#variables to swap</span>
-<span class="n">var1</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">var2</span> <span class="o">=</span> <span class="mi">5</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="list-and-dictionary-comprehension">
+<h1><span>7.3</span> List and Dictionary Comprehension<a class="headerlink" href="#list-and-dictionary-comprehension" title="Link to this heading">#</a></h1>
+<p>You can use loops to generate lists and dictionaries with defined structures. You can use regular loops for this, but sometimes list and dictionary comprehension is more convenient.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This should only be used if you are interested in the list or dictionary specifically, not if you only intend to use them as iterators (as that is inefficient).</p>
+</div>
+<section id="list-comprehension">
+<h2>List Comprehension<a class="headerlink" href="#list-comprehension" title="Link to this heading">#</a></h2>
+<p>Lists can be generated by using the syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">iterator</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">iterator</span></code> can be any iterator used in a loop. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generating a list of integers in ascending order</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5]
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can put any kind of code in the list, not only the iteration variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dots</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;.&#39;</span> <span class="o">*</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dots</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;&#39;, &#39;.&#39;, &#39;..&#39;, &#39;...&#39;, &#39;....&#39;, &#39;.....&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can treat the <code class="docutils literal notranslate"><span class="pre">for</span></code> inside the list just like a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, including looping through collections:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">string</span> <span class="o">=</span> <span class="s1">&#39;abcdefg&#39;</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Initial values:&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;var1 is&#39;</span><span class="p">,</span> <span class="n">var1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;var2 is&#39;</span><span class="p">,</span> <span class="n">var2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+<span class="c1">#Generating a list of characters from a string</span>
+<span class="n">char_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">char</span> <span class="k">for</span> <span class="n">char</span> <span class="ow">in</span> <span class="n">string</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">char_list</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>and then after you have swapped the variables, end the script like this:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Final values:&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;var1 is&#39;</span><span class="p">,</span> <span class="n">var1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;var2 is&#39;</span><span class="p">,</span> <span class="n">var2</span><span class="p">)</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;]
 </pre></div>
 </div>
-<p>you should see the following output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Initial</span> <span class="n">values</span><span class="p">:</span>
-<span class="n">var1</span> <span class="ow">is</span> <span class="mi">3</span>
-<span class="n">var2</span> <span class="ow">is</span> <span class="mi">5</span>
+</div>
+</div>
+<p>Only use list comprehension if you are interested in the list itself. Do not use it in place of a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop.</p>
+<p>You can also nest list comprehension:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">([[</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0, 1, 2], [1, 2, 3], [2, 3, 4], [3, 4, 5]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dictionary-comprehension">
+<h2>Dictionary Comprehension<a class="headerlink" href="#dictionary-comprehension" title="Link to this heading">#</a></h2>
+<p>You can generate dictionaries in a similar way to lists using dictionary comprehension, with the syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">iterator</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">iterator</span></code> needs to return pairs of keys and values. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;val0&#39;</span><span class="p">,</span> <span class="s1">&#39;val1&#39;</span><span class="p">,</span> <span class="s1">&#39;val2&#39;</span><span class="p">])}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{0: &#39;val0&#39;, 1: &#39;val1&#39;, 2: &#39;val2&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Or</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#List of keys</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
 
-<span class="n">Final</span> <span class="n">values</span><span class="p">:</span>
-<span class="n">var1</span> <span class="ow">is</span> <span class="mi">5</span>
-<span class="n">var2</span> <span class="ow">is</span> <span class="mi">3</span>
+<span class="c1">#List of values</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="n">dictionary</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">)}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-<section id="question-3">
-<h2>Question 3<a class="headerlink" href="#question-3" title="Link to this heading">#</a></h2>
-<p>The phase of a variable star with period <span class="math notranslate nohighlight">\(P\)</span> is the decimal part of <span class="math notranslate nohighlight">\(t/P\)</span>, where <span class="math notranslate nohighlight">\(t\)</span> is
-the time elapsed since a given date. Write a python program that calculate the
-phase when <span class="math notranslate nohighlight">\(t = 3456.789\)</span> days and the period is <span class="math notranslate nohighlight">\(P = 3.1416\)</span> days.</p>
-<p>[The answer is 0.327540106952].</p>
-</section>
-<section id="question-4">
-<h2>Question 4<a class="headerlink" href="#question-4" title="Link to this heading">#</a></h2>
-<p>The most energy efficient trajectory between Earth and Mars is an orbit with Earth at perihelion (<span class="math notranslate nohighlight">\(R_2 = 1.496\times10^{8}\)</span>km) and Mars at aphelion (<span class="math notranslate nohighlight">\(R_1 = 2.279\times10^{8}\)</span>km). Calculate the semi-major axis <span class="math notranslate nohighlight">\(a = \tfrac{1}{2} (R_1 + R_2)\)</span> and eccentricity <span class="math notranslate nohighlight">\(e = (R_1 - R_2)/(R_1 + R_2)\)</span>. The product of the gravitational constant and solar
-mass, <span class="math notranslate nohighlight">\(\mu_S = GM_\circ = 1.32\times10^{20}\)</span> Newton.m<span class="math notranslate nohighlight">\(^2\)</span>/kg . Write a python program that:</p>
-<ol class="arabic simple">
-<li><p>Calculates the velocity of the spacecraft (in km/s) at the Earth’s location using</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-V = \sqrt{\frac{\mu_S(1 + e)}{a (1 - e)}}
-\]</div>
-<ol class="arabic simple" start="2">
-<li><p>Calculates the velocity of the Earth (in km/s) itself using</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-V_E = \sqrt{\mu_S/R_2}
-\]</div>
-<ol class="arabic simple" start="3">
-<li><p>Calculates the duration of the journey to Mars (in days) using</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-T = \pi a^{3/2}/\mu_S^{1/2}
-\]</div>
-<p>Your output should look like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Velocity</span> <span class="n">at</span> <span class="n">perihelion</span> <span class="o">=</span> <span class="mf">32.64</span> <span class="n">km</span><span class="o">/</span><span class="n">s</span>
-<span class="n">Velocity</span> <span class="n">of</span> <span class="n">Earth</span> <span class="o">=</span> <span class="mf">29.70</span> <span class="n">km</span><span class="o">/</span><span class="n">s</span>
-<span class="n">Duration</span> <span class="o">=</span> <span class="mf">259.5</span> <span class="n">days</span>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: 1, &#39;b&#39;: 2, &#39;c&#39;: 3, &#39;d&#39;: 4}
 </pre></div>
+</div>
+</div>
+</div>
+<p>Note, that you can alter the keys and values that are used:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#List of keys</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
+
+<span class="c1">#List of values</span>
+<span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+<span class="n">dictionary</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="p">:</span> <span class="n">v</span> <span class="o">/</span> <span class="mf">10.0</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">values</span><span class="p">)}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">dictionary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;A&#39;: 0.1, &#39;B&#39;: 0.2, &#39;C&#39;: 0.3, &#39;D&#39;: 0.4}
+</pre></div>
+</div>
+</div>
+</div>
+<p>It isn’t strictly necessary to loop through pairs of iteration variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">i</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="p">:</span> <span class="n">i</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="s1">&#39;aBcdE&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;a&#39;: &#39;A&#39;, &#39;b&#39;: &#39;B&#39;, &#39;c&#39;: &#39;C&#39;, &#39;d&#39;: &#39;D&#39;, &#39;e&#39;: &#39;E&#39;}
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -624,7 +688,7 @@ T = \pi a^{3/2}/\mu_S^{1/2}
         },
         kernelOptions: {
             name: "python3",
-            path: "./content\02-standard-library\00-basics"
+            path: "./content\02-standard-library\03-loops"
         },
         predefinedOutput: true
     }
@@ -642,20 +706,20 @@ T = \pi a^{3/2}/\mu_S^{1/2}
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="04-assignment-operators.html"
+       href="02%3Dexercise-for.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span>4.4</span> Compound Assignment Operators</p>
+        <p class="prev-next-title">Exercise <span>7.2</span></p>
       </div>
     </a>
     <a class="right-next"
-       href="05-types.html"
+       href="03-nested.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span>4.5</span> Type Conversion</p>
+        <p class="prev-next-title"><span>7.4</span> Nested Loops</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -676,10 +740,8 @@ T = \pi a^{3/2}/\mu_S^{1/2}
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">Question 3</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-4">Question 4</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list-comprehension">List Comprehension</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-comprehension">Dictionary Comprehension</a></li>
 </ul>
   </nav></div>
 
