@@ -51,6 +51,7 @@ parts:
     - file: content/02-standard-library/03-loops/01=exercise-while
     - file: content/02-standard-library/03-loops/02-for
     - file: content/02-standard-library/03-loops/02=exercise-for
+    - file: content/02-standard-library/03-loops/03-comprehension
     - file: content/02-standard-library/03-loops/03-nested
     - file: content/02-standard-library/03-loops/04-break
     - file: content/02-standard-library/03-loops/04=exercise-break
@@ -73,6 +74,7 @@ parts:
     - file: content/02-standard-library/05-file-io/02=exercise-data
   
   - file: content/02-standard-library/06-modules/00-intro
+    title: 10 Python Modules
 
 ####################################################################
 
@@ -95,6 +97,7 @@ parts:
     - file: content/03-scientific-packages/02-matplotlib/01-simple
     - file: content/03-scientific-packages/02-matplotlib/01=exercise-simple  
     - file: content/03-scientific-packages/02-matplotlib/02-subplots
+    - file: content/03-scientific-packages/02-matplotlib/02=exercise-subplots
     - file: content/03-scientific-packages/02-matplotlib/03-3d-plots
     - file: content/03-scientific-packages/02-matplotlib/03=exercise-3d
 
