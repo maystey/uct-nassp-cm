@@ -1,0 +1,229 @@
+# - url_from: #relative to root
+#   url_to: #relative to from path
+
+# 2023-2024 links
+- url_from: content/intro.html
+  url_to: ./00-intro.html
+
+- url_from: content/intro/intro.html
+  url_to: ../01-intro/00-intro.html
+
+- url_from: content/intro/control-flow/control-flow-diagrams.html
+  url_to: ../../01-intro/02-control-flow/control-flow-diagrams.html
+
+- url_from: content/standard-library/basics/intro.html
+  url_to: ../../02-standard-library/00-basics/00-intro.html
+
+- url_from: content/standard-library/basics/variables.html
+  url_to: ../../02-standard-library/00-basics/01-variables.html
+
+- url_from: content/standard-library/basics/comments.html
+  url_to: ../../02-standard-library/00-basics/02-comments.html
+  
+- url_from: content/standard-library/basics/types.html
+  url_to: ../../02-standard-library/00-basics/05-types.html
+
+- url_from: content/standard-library/basics/operators.html
+  url_to: ../../02-standard-library/00-basics/03-operators.html
+
+- url_from: content/standard-library/basics/assignment-operators.html
+  url_to: ../../02-standard-library/00-basics/04-assignment-operators.html
+
+- url_from: content/standard-library/basics/functions.html
+  url_to: ../../02-standard-library/00-basics/06-functions.html
+
+
+- url_from: content/standard-library/strings/strings.html
+  url_to: ../../02-standard-library/00-basics/07-strings.html
+
+- url_from: content/standard-library/strings/string-formatting.html
+  url_to: ../../02-standard-library/00-basics/08-string-formatting.html
+
+  
+- url_from: content/standard-library/data-structures/intro.html
+  url_to: ../../02-standard-library/01-data-structures/00-intro.html
+
+- url_from: content/standard-library/data-structures/tuple.html
+  url_to: ../../02-standard-library/01-data-structures/01-tuple.html
+
+- url_from: content/standard-library/data-structures/lists.html
+  url_to: ../../02-standard-library/01-data-structures/02-lists.html
+
+- url_from: content/standard-library/data-structures/dictionaries.html
+  url_to: ../../02-standard-library/01-data-structures/03-dictionaries.html
+
+
+- url_from: content/standard-library/if-statements/intro.html
+  url_to: ../../02-standard-library/02-if-statements/00-intro.html
+
+- url_from: content/standard-library/if-statements/bools.html
+  url_to: ../../02-standard-library/02-if-statements/01-bools.html
+
+- url_from: content/standard-library/if-statements/comparison-operators.html
+  url_to: ../../02-standard-library/02-if-statements/02-comparison-operators.html
+
+- url_from: content/standard-library/if-statements/logical-operators.html
+  url_to: ../../02-standard-library/02-if-statements/03-logical-operators.html
+
+- url_from: content/standard-library/if-statements/inclusion-operators.html
+  url_to: ../../02-standard-library/02-if-statements/04-inclusion-operators.html
+
+- url_from: content/standard-library/if-statements/if.html
+  url_to: ../../02-standard-library/02-if-statements/05-if.html
+
+- url_from: content/standard-library/if-statements/nested.html
+  url_to: ../../02-standard-library/02-if-statements/06-nested.html
+
+
+- url_from: content/standard-library/loops/intro.html
+  url_to: ../../02-standard-library/03-loops/00-intro.html
+
+- url_from: content/standard-library/loops/while.html
+  url_to: ../../02-standard-library/03-loops/01-while.html
+
+- url_from: content/standard-library/loops/for.html
+  url_to: ../../02-standard-library/03-loops/02-for.html
+
+- url_from: content/standard-library/loops/nested.html
+  url_to: ../../02-standard-library/03-loops/03-nested.html
+
+- url_from: content/standard-library/loops/break.html
+  url_to: ../../02-standard-library/03-loops/04-break.html
+
+- url_from: content/standard-library/loops/else.html
+  url_to: ../../02-standard-library/03-loops/05-else.html
+
+
+- url_from: content/standard-library/functions/intro.html
+  url_to: ../../02-standard-library/04-functions/00-intro.html
+
+- url_from: content/standard-library/functions/return.html
+  url_to: ../../02-standard-library/04-functions/01-return.html
+
+- url_from: content/standard-library/functions/arguments.html
+  url_to: ../../02-standard-library/04-functions/02-arguments.html
+
+- url_from: content/standard-library/functions/local-variables.html
+  url_to: ../../02-standard-library/04-functions/03-local-variables.html
+
+- url_from: content/standard-library/functions/recursive.html
+  url_to: ../../02-standard-library/04-functions/04-recursive.html
+
+
+- url_from: content/standard-library/file-io/intro.html
+  url_to: ../../02-standard-library/05-file-io/00-intro.html
+
+- url_from: content/standard-library/file-io/file-io.html
+  url_to: ../../02-standard-library/05-file-io/01-file-io.html
+
+- url_from: content/standard-library/file-io/data.html
+  url_to: ../../02-standard-library/05-file-io/02-data.html
+
+
+- url_from: content/scientific-packages/numpy/intro.html
+  url_to: ../../03-scientific-packages/01-numpy/00-intro.html
+
+- url_from: content/scientific-packages/numpy/arrays.html
+  url_to: ../../03-scientific-packages/01-numpy/01-arrays.html
+
+- url_from: content/scientific-packages/numpy/array-methods.html
+  url_to: ../../03-scientific-packages/01-numpy/02-array-methods.html
+
+- url_from: content/scientific-packages/numpy/arrays2d.html
+  url_to: ../../03-scientific-packages/01-numpy/03-arrays2d.html
+
+- url_from: content/scientific-packages/numpy/random.html
+  url_to: ../../03-scientific-packages/01-numpy/04-random.html
+
+- url_from: content/scientific-packages/numpy/where.html
+  url_to: ../../03-scientific-packages/01-numpy/05-where.html
+
+
+- url_from: content/scientific-packages/matplotlib/intro.html
+  url_to: ../../03-scientific-packages/02-matplotlib/00-intro.html
+
+- url_from: content/scientific-packages/matplotlib/simple.html
+  url_to: ../../03-scientific-packages/02-matplotlib/01-simple.html
+
+- url_from: content/scientific-packages/matplotlib/subplots.html
+  url_to: ../../03-scientific-packages/02-matplotlib/02-subplots.html
+
+- url_from: content/scientific-packages/matplotlib/3d-plots.html
+  url_to: ../../03-scientific-packages/02-matplotlib/03-3d-plots.html
+
+
+- url_from: content/scientific-packages/astropy/intro.html
+  url_to: ../../03-scientific-packages/04-astropy/00-intro.html
+
+- url_from: content/scientific-packages/astropy/units.html
+  url_to: ../../03-scientific-packages/04-astropy/01-units.html
+
+- url_from: content/scientific-packages/astropy/constants.html
+  url_to: ../../03-scientific-packages/04-astropy/02-constants.html
+
+
+- url_from: content/numerical-methods/root-finding/intro.html
+  url_to: ../../04-numerical-methods/01-root-finding/00-intro.html
+
+- url_from: content/numerical-methods/root-finding/bisection.html
+  url_to: ../../04-numerical-methods/01-root-finding/01-bisection.html
+
+- url_from: content/numerical-methods/root-finding/secant.html
+  url_to: ../../04-numerical-methods/01-root-finding/02-secant.html
+
+- url_from: content/numerical-methods/root-finding/newton.html
+  url_to: ../../04-numerical-methods/01-root-finding/03-newton.html
+
+- url_from: content/numerical-methods/root-finding/comparison.html
+  url_to: ../../04-numerical-methods/01-root-finding/04-comparison.html
+
+
+- url_from: content/numerical-methods/curve-fitting/intro.html
+  url_to: ../../04-numerical-methods/02-curve-fitting/00-intro.html
+
+- url_from: content/numerical-methods/curve-fitting/linear-regression.html
+  url_to: ../../04-numerical-methods/02-curve-fitting/01-linear-regression.html
+
+- url_from: content/numerical-methods/curve-fitting/least-squares.html
+  url_to: ../../04-numerical-methods/02-curve-fitting/02-least-squares.html
+
+- url_from: content/numerical-methods/curve-fitting/chi-squared.html
+  url_to: ../../04-numerical-methods/02-curve-fitting/03-chi-squared.html
+
+- url_from: content/numerical-methods/curve-fitting/multiple-least-squares.html
+  url_to: ../../04-numerical-methods/02-curve-fitting/04-multiple-least-squares.html
+
+- url_from: content/numerical-methods/curve-fitting/scipy-least-squares.html
+  url_to: ../../04-numerical-methods/02-curve-fitting/05-scipy-least-squares.html
+
+- url_from: content/numerical-methods/curve-fitting/scipy-curve-fit.html
+  url_to: ../../04-numerical-methods/02-curve-fitting/06-scipy-curve-fit.html
+
+
+- url_from: content/numerical-methods/ode/intro.html
+  url_to: ../../04-numerical-methods/03-ode/00-intro.html
+
+- url_from: content/numerical-methods/ode/euler.html
+  url_to: ../../04-numerical-methods/03-ode/01-euler.html
+
+- url_from: content/numerical-methods/ode/euler-error.html
+  url_to: ../../04-numerical-methods/03-ode/02-euler-error.html
+
+- url_from: content/numerical-methods/ode/higher-order.html
+  url_to: ../../04-numerical-methods/03-ode/03-higher-order.html
+
+- url_from: content/numerical-methods/ode/runge-kutta.html
+  url_to: ../../04-numerical-methods/03-ode/04-runge-kutta.html
+
+
+- url_from: content/numerical-methods/integration/intro.html
+  url_to: ../../04-numerical-methods/04-integration/00-intro.html
+
+- url_from: content/numerical-methods/integration/midpoint.html
+  url_to: ../../04-numerical-methods/04-integration/01-midpoint.html
+
+- url_from: content/numerical-methods/integration/trapezoidal.html
+  url_to: ../../04-numerical-methods/04-integration/02-trapezoidal.html
+
+- url_from: content/numerical-methods/integration/simpson.html
+  url_to: ../../04-numerical-methods/04-integration/03-simpson.html
