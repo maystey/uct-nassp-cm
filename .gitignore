@@ -1,1 +1,8 @@
+#Python byte code
+__pycache__/
+
+#Jupyter Notebook
 .ipynb_checkpoints
+
+#Book build
+./book/_build/
