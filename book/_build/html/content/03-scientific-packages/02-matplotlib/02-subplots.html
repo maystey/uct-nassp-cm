@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>12.2 Subplots &#8212; AST4007W Computational Methods</title>
+    <title>12.2 Figures, Axes and Subplots &#8212; AST4007W Computational Methods</title>
   
   
   
@@ -39,7 +39,7 @@
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/print.css?v=d03beadb" />
     <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=88953031" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css?v=7927ccb2" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css?v=d33bc4f6" />
   
   <!-- So that users can add custom icons -->
   <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -58,7 +58,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
@@ -66,7 +66,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/03-scientific-packages/02-matplotlib/02-subplots';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="12.3 3D Plotting" href="03-3d-plots.html" />
+    <link rel="next" title="Exercise 12.2" href="02%3Dexercise-subplots.html" />
     <link rel="prev" title="Exercise 12.1" href="01%3Dexercise-simple.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -188,11 +188,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/02-comments.html"><span>4.2</span> Comments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/03-operators.html"><span>4.3</span> Numerical Operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/04-assignment-operators.html"><span>4.4</span> Compound Assignment Operators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/04%3Dexercise-a.html">Exercise <span>4</span>A</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/04%3Dexercise-a.html">Exercise <span>4.4</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/05-types.html"><span>4.5</span> Type Conversion</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/06-functions.html"><span>4.6</span> Introduction to Using Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/07-strings.html"><span>4.7</span> Strings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/07%3Dexercise-b.html">Exercise <span>4</span>B</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/07%3Dexercise-b.html">Exercise <span>4.7</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/08-string-formatting.html"><span>4.8</span> String Formatting</a></li>
 </ul>
 </details></li>
@@ -202,7 +202,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/01-data-structures/03-dictionaries.html"><span>5.3</span> Dictionaries</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../02-standard-library/02-if-statements/00-intro.html"><span>6</span> Control Flow: If Statements</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02-standard-library/02-if-statements/00-intro.html"><span>6</span> If Statements</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/02-if-statements/01-bools.html"><span>6.1</span> Booleans (<code class="docutils literal notranslate"><span class="pre">bool</span></code>)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/02-if-statements/02-comparison-operators.html"><span>6.2</span> Comparison Operators</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/02-if-statements/03-logical-operators.html"><span>6.3</span> Logical Operators</a></li>
@@ -212,15 +212,16 @@
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/02-if-statements/06%3Dexercise.html">Exercise <span>6</span></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../02-standard-library/03-loops/00-intro.html"><span>7</span> Control Flow: Loops</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02-standard-library/03-loops/00-intro.html"><span>7</span> Loops</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/01-while.html"><span>7.1</span> While Loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/01%3Dexercise-while.html">Exercise <span>7.1</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/02-for.html"><span>7.2</span> For Loops</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/02%3Dexercise-for.html">Exercise <span>7.2</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/03-nested.html"><span>7.3</span> Nested Loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/04-break.html"><span>7.4</span> Breaking Out of Loops</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/04%3Dexercise-break.html">Exercise <span>7.4</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/05-else.html"><span>7.5</span> Else Statement and Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/03-comprehension.html"><span>7.3</span> List and Dictionary Comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/03-nested.html"><span>7.4</span> Nested Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/04-break.html"><span>7.5</span> Breaking Out of Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/04%3Dexercise-break.html">Exercise <span>7.5</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/05-else.html"><span>7.6</span> Else Statement and Loops</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../02-standard-library/04-functions/00-intro.html"><span>8</span> Defining Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -236,18 +237,17 @@
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/05-file-io/01-file-io.html"><span>9.1</span> File I/O</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/05-file-io/01%3Dexercise-file-io.html">Exercise <span>9.1</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/05-file-io/02-data.html"><span>9.2</span> Structured Data Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/05-file-io/02%3Dexercise-data.html">Exercise <span>9</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/05-file-io/02%3Dexercise-data.html">Exercise <span>9.2</span></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1"><a class="reference internal" href="../../02-standard-library/06-modules/00-intro.html"></a></li>
-
+<li class="toctree-l1"><a class="reference internal" href="../../02-standard-library/06-modules/00-intro.html">10 Python Modules</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Scientific Packages</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../01-numpy/00-intro.html"><span>11</span> Numpy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../01-numpy/01-arrays.html"><span>11.1</span> Arrays</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01-numpy/02-array-methods.html"><span>11.2</span> Array Methods and Attributes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../01-numpy/02%3Dexercise-a.html">Exercise <span>11</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-numpy/02%3Dexercise-a.html">Exercise <span>11.2</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01-numpy/03-arrays2d.html"><span>11.3</span> 2D Arrays and Matrices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01-numpy/03%3Dexercise-arrays2d.html">Exercise <span>11.3</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01-numpy/04-random.html"><span>11.4</span> NumPy Random Module</a></li>
@@ -258,7 +258,8 @@
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="00-intro.html"><span>12</span> Matplotlib</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="01-simple.html"><span>12.1</span> Simple Plots with Pyplot</a></li>
 <li class="toctree-l2"><a class="reference internal" href="01%3Dexercise-simple.html">Exercise <span>12.1</span></a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#"><span>12.2</span> Subplots</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><span>12.2</span> Figures, Axes and Subplots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02%3Dexercise-subplots.html">Exercise <span>12.2</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-3d-plots.html"><span>12.3</span> 3D Plotting</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03%3Dexercise-3d.html">Exercise <span>12.3</span></a></li>
 </ul>
@@ -500,7 +501,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>12.2 Subplots</h1>
+    <h1>12.2 Figures, Axes and Subplots</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -510,9 +511,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-add-subplot"><code class="docutils literal notranslate"><span class="pre">fig.add_subplot()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-subplots"><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-subplots-for-general-plots">Using Subplots For General Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figures">Figures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axes">Axes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subplots">Subplots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-add-subplot"><code class="docutils literal notranslate"><span class="pre">fig.add_subplot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-subplots"><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tight-layout">Tight Layout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subplots-with-multiple-rows-and-columns">Subplots With Multiple Rows and Columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-subplots-for-general-plots">Using Subplots For General Plots</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -524,16 +532,41 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="subplots">
-<h1><span>12.2</span> Subplots<a class="headerlink" href="#subplots" title="Link to this heading">#</a></h1>
-<p>You can create subplots in two different ways:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="figures-axes-and-subplots">
+<h1><span>12.2</span> Figures, Axes and Subplots<a class="headerlink" href="#figures-axes-and-subplots" title="Link to this heading">#</a></h1>
+<p>In this section we will briefly discuss the underlying objects being used by the pyplot module (Figures and Axes), and how to make subplots.</p>
+<section id="figures">
+<h2>Figures<a class="headerlink" href="#figures" title="Link to this heading">#</a></h2>
+<p>A Matplotlib figure contains plot elements, for example a set of (or multiple sets of) axis, a title etc. Pyplot automatically creates a figure object when you start plotting.
+To manually create your own figures using pyplot, you can use the function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">{info}</span> <span class="pre">When</span> <span class="pre">using</span> <span class="pre">`plt.plot()`</span> <span class="pre">Matplotlib</span> <span class="pre">will</span> <span class="pre">automatically</span> <span class="pre">add</span> <span class="pre">the</span> <span class="pre">plot</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">last</span> <span class="pre">figure</span> <span class="pre">that</span> <span class="pre">was</span> <span class="pre">defined.</span></code></p>
+<p>If you want to specify the dimensions of the plot, you can create a figure with the first positional or keyword argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">figsize</span></code> (a 2-tuple of width and height) is in inches.</p>
+<!-- ```{warning} If you create a figure with the `plt.figure()` function, or the `plt.subplots` function (shown below), then it is good``` -->
+<p><code class="docutils literal notranslate"><span class="pre">{note}</span> <span class="pre">If</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">to</span> <span class="pre">save</span> <span class="pre">a</span> <span class="pre">particular</span> <span class="pre">figure,</span> <span class="pre">then</span> <span class="pre">you</span> <span class="pre">can</span> <span class="pre">call</span> <span class="pre">the</span> <span class="pre">`figure.savefig()`</span> <span class="pre">method</span> <span class="pre">from</span> <span class="pre">that</span> <span class="pre">figure.</span> </code></p>
+<p>For more information on the Figure class see the <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure">documentation</a>.</p>
+</section>
+<section id="axes">
+<h2>Axes<a class="headerlink" href="#axes" title="Link to this heading">#</a></h2>
+<p>The Axes object contains all the elements of a sub-plot, including the x/y ticks, plotting functions, etc. Axes are usually generated by the Figure methods or other functions like <code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> (discussed below).</p>
+<p>For more information on the Axes class see the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html">documentation</a>.</p>
+</section>
+<section id="subplots">
+<h2>Subplots<a class="headerlink" href="#subplots" title="Link to this heading">#</a></h2>
+<p>If you want to create a plot with multiple axis (sub-plots), then there are two major ways to do that:</p>
 <section id="fig-add-subplot">
-<h2><code class="docutils literal notranslate"><span class="pre">fig.add_subplot()</span></code><a class="headerlink" href="#fig-add-subplot" title="Link to this heading">#</a></h2>
-<p>One way to add subplots is by creating a figure and calling the <code class="docutils literal notranslate"><span class="pre">fig.add_subplot()</span></code> method to add an axis to it with (one of) the call signature:</p>
+<h3><code class="docutils literal notranslate"><span class="pre">fig.add_subplot()</span></code><a class="headerlink" href="#fig-add-subplot" title="Link to this heading">#</a></h3>
+<p>One way to add subplots is by creating a figure and calling the <code class="docutils literal notranslate"><span class="pre">fig.add_subplot()</span></code> method to add an axes to it with the call signature:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="n">nrows</span><span class="p">,</span> <span class="n">ncols</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>where <code class="docutils literal notranslate"><span class="pre">nrows</span></code> and <code class="docutils literal notranslate"><span class="pre">ncols</span></code> are the total number of rows and columns of axis and <code class="docutils literal notranslate"><span class="pre">index</span></code> is the position on the grid of axis.</p>
+<p>where <code class="docutils literal notranslate"><span class="pre">nrows</span></code> and <code class="docutils literal notranslate"><span class="pre">ncols</span></code> are the total number of rows and columns of axis and <code class="docutils literal notranslate"><span class="pre">index</span></code> is the position on the grid of axes (starting from 1). This method returns the Axes object added.</p>
 <p>Consider the plot with two rows and a single column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -565,7 +598,7 @@
 <p>Refer to the <a class="reference external" href="https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.add_subplot">documentation</a> for additional options.</p>
 </section>
 <section id="plt-subplots">
-<h2><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code><a class="headerlink" href="#plt-subplots" title="Link to this heading">#</a></h2>
+<h3><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code><a class="headerlink" href="#plt-subplots" title="Link to this heading">#</a></h3>
 <p>An alternative way to create subplots is to use the <code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> function which returns the figure object and a tuple of axis. The call signature is:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 </pre></div>
@@ -621,8 +654,85 @@
 </div>
 <p>Refer to the <a class="reference external" href="https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.subplots.html">documentation</a> for additional options.</p>
 </section>
+<section id="tight-layout">
+<h3>Tight Layout<a class="headerlink" href="#tight-layout" title="Link to this heading">#</a></h3>
+<p>When working with subplots, you will often come across the problem of axes titles and labels overlapping. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Axis 0&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Axis 1&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/cbf8e4559482095aa45e929d1159aadb4a8ec0572849d1436e1b74667bedbf57.png" src="../../../_images/cbf8e4559482095aa45e929d1159aadb4a8ec0572849d1436e1b74667bedbf57.png" />
+</div>
+</div>
+<p>While you can change the layout settings of your plot manually, there is an automated solution provided, the function <code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code>. If called from <code class="docutils literal notranslate"><span class="pre">pyplot</span></code>, this will affect the current figure, alternatively it can be called as a method from a figure of choice. Applying this to our example above:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Axis 0&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Axis 1&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/3eba8a4686cb2969bcec4efc6054ce34668eade9dd5f3d351c1bcdcdec37980c.png" src="../../../_images/3eba8a4686cb2969bcec4efc6054ce34668eade9dd5f3d351c1bcdcdec37980c.png" />
+</div>
+</div>
+</section>
+<section id="subplots-with-multiple-rows-and-columns">
+<h3>Subplots With Multiple Rows and Columns<a class="headerlink" href="#subplots-with-multiple-rows-and-columns" title="Link to this heading">#</a></h3>
+<p>All the subplots above have either a single column and multiple rows, or a single row and multiple columns. For both of these cases the <code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code> function returns a one-dimensional array for the axes. If you specify multiple rows and columns, then the array of axes is two dimensional, with the first index corresponding to the rows and the second index corresponding to the columns. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Row 0, column 0&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Row 0, column 1&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Row 1 column 0&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Row 1, column 1&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/b8f21196f3cc56592844830464812417d57712e8fa567a32b6dbc10c9feaeefc.png" src="../../../_images/b8f21196f3cc56592844830464812417d57712e8fa567a32b6dbc10c9feaeefc.png" />
+</div>
+</div>
+</section>
 <section id="using-subplots-for-general-plots">
-<h2>Using Subplots For General Plots<a class="headerlink" href="#using-subplots-for-general-plots" title="Link to this heading">#</a></h2>
+<h3>Using Subplots For General Plots<a class="headerlink" href="#using-subplots-for-general-plots" title="Link to this heading">#</a></h3>
 <p>The subplot functions above are also used in general practice to create single axis plots, due to the ability to create a reference to the axis, which grants further customization. Simply:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -641,6 +751,7 @@
 <img alt="../../../_images/8c589dddab977152fe6bbad3187eeb7663b57bbf162c753ab8ba38cd316d4ced.png" src="../../../_images/8c589dddab977152fe6bbad3187eeb7663b57bbf162c753ab8ba38cd316d4ced.png" />
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -684,11 +795,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="03-3d-plots.html"
+       href="02%3Dexercise-subplots.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span>12.3</span> 3D Plotting</p>
+        <p class="prev-next-title">Exercise <span>12.2</span></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -709,9 +820,16 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-add-subplot"><code class="docutils literal notranslate"><span class="pre">fig.add_subplot()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-subplots"><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-subplots-for-general-plots">Using Subplots For General Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figures">Figures</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axes">Axes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#subplots">Subplots</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fig-add-subplot"><code class="docutils literal notranslate"><span class="pre">fig.add_subplot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plt-subplots"><code class="docutils literal notranslate"><span class="pre">plt.subplots()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tight-layout">Tight Layout</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subplots-with-multiple-rows-and-columns">Subplots With Multiple Rows and Columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-subplots-for-general-plots">Using Subplots For General Plots</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
