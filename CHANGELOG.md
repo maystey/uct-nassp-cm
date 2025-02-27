@@ -8,18 +8,20 @@ the version number, `a.b.c`, follows the following scheme:
 - `b`. New chapter(s) added or drastically changed.
 - `c`. New sections, corrections, etc. The number change is consecutive, not reflecting the number of changes.
 
-## [Unreleased]
+## [4.0.0] - 2025-02-07
 
 ### Added
 
-- Exercises
-- Numbering using a custom role extension. Required files to be ordered.
+- All exercises
+- Numbering using a custom role extension. Requires files to be ordered.
 - Redirect script and pages for 2023-2024 links.
+
 
 ### Changed
 
 - Updated to Jupyter-Book version 1.0.3.
 - Moved Strings chapters into Basics.
+- Updated Matplotlib/Subplots chapter
 
 
 ## [3.1.0] - 2022-01-07
