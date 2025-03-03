@@ -68,7 +68,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/03-scientific-packages/01-numpy/05-where';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="12 Matplotlib" href="../02-matplotlib/00-intro.html" />
+    <link rel="next" title="Exercise 11.5" href="05%3Dexercise-where.html" />
     <link rel="prev" title="Exercise 11.4" href="04%3Dexercise-random.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -255,6 +255,7 @@
 <li class="toctree-l2"><a class="reference internal" href="04-random.html"><span>11.4</span> NumPy Random Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04%3Dexercise-random.html">Exercise <span>11.4</span></a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><span>11.5</span> Array Conditional Statements and <code class="docutils literal notranslate"><span class="pre">numpy.where()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="05%3Dexercise-where.html">Exercise <span>11.5</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02-matplotlib/00-intro.html"><span>12</span> Matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -514,6 +515,7 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-and-bitwise-operations-on-arrays">Comparison and Bitwise Operations on Arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-nonzero"><code class="docutils literal notranslate"><span class="pre">numpy.nonzero()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-where"><code class="docutils literal notranslate"><span class="pre">numpy.where()</span></code></a></li>
 </ul>
             </nav>
@@ -623,7 +625,7 @@
 </div>
 </div>
 <div class="worked-example">
-    <p class="worked-example-title">Worked Example - Random Points in a Region</p><p>We can use <code class="docutils literal notranslate"><span class="pre">np.where()</span></code> to check which points in an array lie inside or outside of region.</p>
+    <p class="worked-example-title">Worked Example - Random Points in a Region</p><p>We can use boolean arrays to index other arrays (selecting elements where the boolean array is true). For example, let’s use this to highlight which points in an array lie inside or outside of region.</p>
 <p>First let’s generate an array of 50 random points in 2D space:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -639,7 +641,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/a51d47460185af0add5090a259d9fc4cd23a047f2016d33f37ad3fbcd911dd26.png" src="../../../_images/a51d47460185af0add5090a259d9fc4cd23a047f2016d33f37ad3fbcd911dd26.png" />
+<img alt="../../../_images/78d5694f4105b3a9a70ee460408fa823d737860cf8a99977d3a18cf2fab76648.png" src="../../../_images/78d5694f4105b3a9a70ee460408fa823d737860cf8a99977d3a18cf2fab76648.png" />
 </div>
 </div>
 <p>Note that axis 0 of <code class="docutils literal notranslate"><span class="pre">points</span></code> is used to represent the x and y values, and axis 1 represents points. i.e. for the points <span class="math notranslate nohighlight">\((x_0, y_0), (x_1, y_1), \dots, (x_{49}, y_{49})\)</span>, <code class="docutils literal notranslate"><span class="pre">points</span></code> is:</p>
@@ -682,7 +684,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/e1051c0de4741e0f67f6d1420669bd84cddd2a6450032f45c01a593ec1f9950d.png" src="../../../_images/e1051c0de4741e0f67f6d1420669bd84cddd2a6450032f45c01a593ec1f9950d.png" />
+<img alt="../../../_images/dfc9406105e6b14053ef752b74c7a663e145c389bb0e0b4f7c28588245a923d9.png" src="../../../_images/dfc9406105e6b14053ef752b74c7a663e145c389bb0e0b4f7c28588245a923d9.png" />
 </div>
 </div>
 <p>Note that, in the example above, we have used an array of booleans to <strong>slice the elements of the array which are true</strong>. We have also use the <strong>bitwise compliment</strong> to get the complement of our comparison result, there is no need to recalculate it.</p>
@@ -704,26 +706,26 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/5f4784f1c2dff2cd08fd5e79baf8ff7b9e272811995ac793deaeec9dd56c78de.png" src="../../../_images/5f4784f1c2dff2cd08fd5e79baf8ff7b9e272811995ac793deaeec9dd56c78de.png" />
+<img alt="../../../_images/54593a41e02b317f63bcc8fecd97cdf214ab73a4aa06de2f79af0d16fac6ca6c.png" src="../../../_images/54593a41e02b317f63bcc8fecd97cdf214ab73a4aa06de2f79af0d16fac6ca6c.png" />
 </div>
 </div>
 </div></section>
-<section id="numpy-where">
-<h2><code class="docutils literal notranslate"><span class="pre">numpy.where()</span></code><a class="headerlink" href="#numpy-where" title="Link to this heading">#</a></h2>
-<p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html">Documentation</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">condition</span><span class="p">[,</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+<section id="numpy-nonzero">
+<h2><code class="docutils literal notranslate"><span class="pre">numpy.nonzero()</span></code><a class="headerlink" href="#numpy-nonzero" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.nonzero.html">Documentation</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Returns elements chosen from <code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code> depending on the condition. If no <code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code> arguments are provided it returns and array of indices.</p>
+<p>Returns a tuple of arrays of indices where <code class="docutils literal notranslate"><span class="pre">a</span></code> is non-zero. Each array in the tuple is for each dimension of <code class="docutils literal notranslate"><span class="pre">a</span></code>. If <code class="docutils literal notranslate"><span class="pre">a</span></code> is an array of booleans (such as from a comparison operator) then the indices are returned from where the array has <code class="docutils literal notranslate"><span class="pre">True</span></code> values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 
-<span class="n">arr_where</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">arr</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">)</span> 
+<span class="n">arr_nonzero</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nonzero</span><span class="p">(</span><span class="n">arr</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">)</span> 
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;arr1:&#39;</span><span class="p">,</span> <span class="n">arr</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Indices where arr1 is greater than 15:&#39;</span><span class="p">,</span> <span class="n">arr_where</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The sub-array of arr1 that is greater than 15:&#39;</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">arr_where</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Indices where arr1 is greater than 15:&#39;</span><span class="p">,</span> <span class="n">arr_nonzero</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The sub-array of arr1 that is greater than 15:&#39;</span><span class="p">,</span> <span class="n">arr</span><span class="p">[</span><span class="n">arr_nonzero</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -735,7 +737,15 @@ The sub-array of arr1 that is greater than 15: [16 17 18 19]
 </div>
 </div>
 </div>
-<p>If both <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> is specified, the elements of the returned array come from <code class="docutils literal notranslate"><span class="pre">x</span></code> if <code class="docutils literal notranslate"><span class="pre">condition</span></code> is true, or from <code class="docutils literal notranslate"><span class="pre">y</span></code> if <code class="docutils literal notranslate"><span class="pre">condition</span></code> is false.</p>
+</section>
+<section id="numpy-where">
+<h2><code class="docutils literal notranslate"><span class="pre">numpy.where()</span></code><a class="headerlink" href="#numpy-where" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://docs.scipy.org/doc/numpy/reference/generated/numpy.where.html">Documentation</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">condition</span><span class="p">[,</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Returns elements chosen from <code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code> depending on the condition. If no <code class="docutils literal notranslate"><span class="pre">x</span></code> or <code class="docutils literal notranslate"><span class="pre">y</span></code> arguments are provided, it behaves like <code class="docutils literal notranslate"><span class="pre">numpy.nonzero()</span></code>.</p>
+<p>If both <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> is specified, the elements of the returned array come from <code class="docutils literal notranslate"><span class="pre">x</span></code> if <code class="docutils literal notranslate"><span class="pre">condition</span></code> is true, or from <code class="docutils literal notranslate"><span class="pre">y</span></code> if <code class="docutils literal notranslate"><span class="pre">condition</span></code> is false:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
@@ -804,7 +814,7 @@ f(x) =
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 
-<span class="c1">#Left condition</span>
+<span class="c1">#Left conditions</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="n">x</span><span class="p">)</span>
 
 <span class="c1">#Right condition</span>
@@ -865,11 +875,11 @@ f(x) =
       </div>
     </a>
     <a class="right-next"
-       href="../02-matplotlib/00-intro.html"
+       href="05%3Dexercise-where.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span>12</span> Matplotlib</p>
+        <p class="prev-next-title">Exercise <span>11.5</span></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -891,6 +901,7 @@ f(x) =
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-and-bitwise-operations-on-arrays">Comparison and Bitwise Operations on Arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-nonzero"><code class="docutils literal notranslate"><span class="pre">numpy.nonzero()</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-where"><code class="docutils literal notranslate"><span class="pre">numpy.where()</span></code></a></li>
 </ul>
   </nav></div>
