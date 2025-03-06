@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.31)  27 FEB 2025 11:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.8.31)  3 MAR 2025 08:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -378,7 +378,7 @@ Package rerunfilecheck Info: File `cover.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  9431 strings out of 476410
- 151113 string characters out of 5789113
+ 151125 string characters out of 5789113
  1854845 words of memory out of 5000000
  29671 multiletter control sequences out of 15000+600000
  540804 words of font info for 58 fonts, out of 8000000 for 9000
@@ -389,7 +389,7 @@ Here is how much of TeX's memory you used:
 uhvb8a.pfb><C:/Users/mayhe/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvet
 ic/uhvr8a.pfb><C:/Users/mayhe/AppData/Local/Programs/MiKTeX/fonts/type1/urw/hel
 vetic/uhvro8a.pfb>
-Output written on cover.pdf (2 pages, 72186 bytes).
+Output written on cover.pdf (2 pages, 72038 bytes).
 PDF statistics:
  71 PDF objects out of 1000 (max. 8388607)
  3 named destinations out of 1000 (max. 500000)

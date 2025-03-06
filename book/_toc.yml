@@ -91,6 +91,7 @@ parts:
     - file: content/03-scientific-packages/01-numpy/04-random
     - file: content/03-scientific-packages/01-numpy/04=exercise-random
     - file: content/03-scientific-packages/01-numpy/05-where
+    - file: content/03-scientific-packages/01-numpy/05=exercise-where
 
   - file: content/03-scientific-packages/02-matplotlib/00-intro
     sections:
