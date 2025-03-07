@@ -228,7 +228,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../04-functions/01-return.html"><span>8.1</span> <code class="docutils literal notranslate"><span class="pre">return</span></code> Statement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04-functions/02-arguments.html"><span>8.2</span> Function Arguments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04-functions/03-local-variables.html"><span>8.3</span> Local Namespace and Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../04-functions/03%3Dexercise.html">Exercise <span>8</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-functions/03%3Dexercise.html">Exercise <span>8.3</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04-functions/04-recursive.html"><span>8.4</span> Recursive Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04-functions/04%3Dexercise-recursive.html">Exercise <span>8.4</span></a></li>
 </ul>
@@ -541,17 +541,17 @@
 <h1><span>9.1</span> File I/O<a class="headerlink" href="#file-i-o" title="Link to this heading">#</a></h1>
 <section id="open-function">
 <h2><code class="docutils literal notranslate"><span class="pre">open()</span></code> Function<a class="headerlink" href="#open-function" title="Link to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">open()</span></code> function is the Standard Library option for reading and writing both text and binary files. It returns a file object, the exact type depending on the type of file you read.</p>
-<p>The file object has methods for reading from and writing to the file.</p>
-<ul>
-<li><p>The file object is iterable</p></li>
-<li><p>Signature</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<p>The <code class="docutils literal notranslate"><span class="pre">open()</span></code> function is the Standard Library option for reading and writing both text and binary files. It returns a file object, the exact type depending on the type of file you read. The file object has methods for reading from and writing to the file.
+Call signature:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
-</ul>
-<section id="file-modes">
+<p>where <code class="docutils literal notranslate"><span class="pre">filename</span></code> is the path (relative to the current working directory) and name of the file (including the file extension). The <code class="docutils literal notranslate"><span class="pre">mode</span></code> keyword argument will be discussed in the subsection that follows.</p>
+<!-- - The file object is iterable
+- Signature
+    ```python
+    open(filename, mode = 'r')
+    ```    --><section id="file-modes">
 <h3>File Modes<a class="headerlink" href="#file-modes" title="Link to this heading">#</a></h3>
 <p>The different modes for <code class="docutils literal notranslate"><span class="pre">open()</span></code> are (taken from the docstring):</p>
 <div class="pst-scrollable-table-container"><table class="table">

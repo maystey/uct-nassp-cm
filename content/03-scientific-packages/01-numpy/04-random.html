@@ -230,7 +230,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/01-return.html"><span>8.1</span> <code class="docutils literal notranslate"><span class="pre">return</span></code> Statement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/02-arguments.html"><span>8.2</span> Function Arguments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/03-local-variables.html"><span>8.3</span> Local Namespace and Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/03%3Dexercise.html">Exercise <span>8</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/03%3Dexercise.html">Exercise <span>8.3</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/04-recursive.html"><span>8.4</span> Recursive Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/04%3Dexercise-recursive.html">Exercise <span>8.4</span></a></li>
 </ul>
@@ -528,20 +528,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <div class="cell tag_hide-cell docutils container">
-<details class="hide above-input">
-<summary aria-label="Toggle hidden content">
-<span class="collapsed">Show code cell content</span>
-<span class="expanded">Hide code cell content</span>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<section class="tex2jax_ignore mathjax_ignore" id="numpy-random-module">
+  <section class="tex2jax_ignore mathjax_ignore" id="numpy-random-module">
 <h1><span>11.4</span> NumPy Random Module<a class="headerlink" href="#numpy-random-module" title="Link to this heading">#</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">numpy.random</span></code> module provides us with random number generators (RNG). You can find the documentation <a class="reference external" href="https://docs.scipy.org/doc/numpy-1.14.0/reference/routines.random.html">here</a>. As there name suggests, random number generators produce random numbers. In this section we highlight a few essential functions from the module:</p>
 <section id="np-random-random">
@@ -554,7 +541,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5983243833148786
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.4937164177321578
 </pre></div>
 </div>
 </div>
@@ -567,7 +554,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.467056  , 0.01882352, 0.85303843, 0.45990403, 0.86486909])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.52725432, 0.98371521, 0.90361609, 0.19567829, 0.18009127])
 </pre></div>
 </div>
 </div>
@@ -579,8 +566,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.44761912, 0.74569344, 0.41513887],
-       [0.19648364, 0.13805507, 0.6019816 ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.80578337, 0.17564293, 0.12250653],
+       [0.45079059, 0.45491095, 0.72766543]])
 </pre></div>
 </div>
 </div>
@@ -597,7 +584,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([27.81318851, 24.54211248, 29.63099668, 28.5931057 ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([29.83987088, 20.03045015, 23.70466458, 18.04854417])
 </pre></div>
 </div>
 </div>
@@ -616,7 +603,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
 </pre></div>
 </div>
 </div>
@@ -629,7 +616,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([7, 6, 4])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([8, 6, 8])
 </pre></div>
 </div>
 </div>
@@ -641,8 +628,8 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[9, 5, 2, 6],
-       [6, 8, 6, 6]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[4, 5, 7, 2],
+       [6, 2, 1, 7]])
 </pre></div>
 </div>
 </div>
