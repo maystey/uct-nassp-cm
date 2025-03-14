@@ -65,6 +65,7 @@ parts:
     - file: content/02-standard-library/04-functions/03=exercise
     - file: content/02-standard-library/04-functions/04-recursive
     - file: content/02-standard-library/04-functions/04=exercise-recursive
+    - file: content/02-standard-library/04-functions/05-docstrings
 
   - file: content/02-standard-library/05-file-io/00-intro
     sections:
