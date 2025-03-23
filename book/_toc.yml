@@ -103,6 +103,8 @@ parts:
     - file: content/03-scientific-packages/02-matplotlib/03-3d-plots
     - file: content/03-scientific-packages/02-matplotlib/03=exercise-3d
 
+  - file: content/03-scientific-packages/03-scipy/00-intro
+
   - file: content/03-scientific-packages/04-astropy/00-intro
     sections:
     - file: content/03-scientific-packages/04-astropy/01-units
@@ -125,6 +127,8 @@ parts:
     - file: content/04-numerical-methods/01-root-finding/03-newton
     - file: content/04-numerical-methods/01-root-finding/03=exercise-newton
     - file: content/04-numerical-methods/01-root-finding/04-comparison
+    - file: content/04-numerical-methods/01-root-finding/05-scipy
+    - file: content/04-numerical-methods/01-root-finding/05=exercise-scipy
 
   - file: content/04-numerical-methods/02-curve-fitting/00-intro
     sections:
