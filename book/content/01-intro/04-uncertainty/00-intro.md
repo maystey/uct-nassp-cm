@@ -10,103 +10,79 @@ In this chapter works from the Joint Committee for Guides in Metrology (JCGM) ar
 
 <!-- Metrology is the science of measurement (normally physical) - terminology will reflect this -->
 
-\begin{frame}{What is a measurement?}
-\begin{itemize}
-    \item The objective of a measurement: determine the unique value of a physical quantity - the \textbf{measurand}.
-    % \item Realistically, we cannot know the ``true value'' of the measurand, instead we determine an interval of likely values, along with a level of confidence for this interval
-    \item Cannot know value of measurand with absolute certainty
-    \begin{itemize}
-        \item Limited definition
-        \item Limited by nature of measurement (apparatus, etc)
-    \end{itemize}
+The context for the GUM framework is metrology - the science of measurement (normally physical). The terminology will reflect the physical nature of this framework, and much of our uses for it are adaptations or extensions of the framework.
 
-    % \item Determined by the nature of the measurement, and the apparatus involved
-    \item Usually quoted as a best approximation %/ central value 
-    of the measurand, along with an \textbf{uncertainty of the measurement} %or uncertainty of measurement?
-    \item \textbf{Standard uncertainty} - uncertainty of a measurement expressed as a standard deviation.
-    %  that can be used to determine the interval of likely values around this
-    \item \textbf{Note} some people use \textbf{error} interchangeably with \textbf{uncertainty}.
-    \begin{itemize}
-        \item I will use the term \textbf{uncertainty} precisely as described in the GUM. 
-        \item I will use the term \textbf{error} in more general cases:
-        \begin{itemize}
-            \item Errors as flaws in code
-            \item Errors as resulting from approximations in numerical methods
-        \end{itemize}
-    \end{itemize}
-\end{itemize}
-\end{frame}
+```{admonition} What is a measurement?
+:class: info
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The objective of a measurement is to determine the unique value of a physical quantity called the **measurand**.
 
-\begin{frame}{Uncertainty of a Measurement}
+```
+
+We cannot know the value of the measurand with absolute certainty due to:
+
+- Limitations in the definition of the measurement
+- Limitations from the nature of the measurement (apparatus, etc)
+
+The result of a measurement is usually quoted as the **best approximation** of the measurand, along with an estimated uncertainty of the measurand. The **standard uncertainty** is the uncertainty of a measurement expressed as a standard deviation.
+
+```{important}
+    Some people use the term "error" interchangeably with "uncertainty". In these notes the term "standard uncertainty" will be used precisely as described in the GUM. The term "error" will be used in more general cases:
+
+    - Errors as flaws in code
+    - Errors as resulting from approximations / truncations in numerical methods
+    - Errors as the difference between an approximated value and the analytical value
+```
+
+```{admonition} What is the uncertainty of a measurement?
+:class: info
+
 From the GUM \autocite{JCGMGUM} and VIM \autocite{JCGMVIM3}:
 
-\begin{itemize}
-    \item parameter, associated with the result of a measurement, that characterizes the dispersion of the values that
-    could reasonably be attributed to the measurand.
-\end{itemize}
+> The uncertainty parameter, associated with the result of a measurement, that characterizes the dispersion of the values that could reasonably be attributed to the measurand.
 
-\end{frame}
+```
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+## Sources of Uncertainty
 
-\begin{frame}{Sources of Uncertainty}
+The sources of uncertainty depend entirely on the context of the measurement. For example, for physical measurements some sources may be:
 
-%Mention QM's inherent probabilistic nature?
-\begin{block}{Physical Measurements}
-    \begin{itemize}
-        \item Precision of measurement instruments
-        \item Randomness due to uncontrollable complexities in a physical system
-    \end{itemize}
-\end{block}
+- Precision of measurement instruments
+- Randomness due to uncontrollable complexities in a physical system
 
-\begin{block}{Numerical Algorithms}
-    \begin{itemize}
-        \item Floating point precision (often negligible)
-        \item Truncation errors (from specific algorithm used)
-        \item Randomness from sampling random variables
-    \end{itemize}
-\end{block}
+For numerical algorithms, some sources of uncertainty may be:
 
-\end{frame}
+- Floating point precision (often negligible)
+- Truncation errors (from specific algorithm used)
+- Randomness from sampling random variables
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+## Methods of Uncertainty Evaluation
 
-\begin{frame}{Important Terminology for Uncertainty}{Methods of Uncertainty Evaluation}
+To determine the standard uncertainty of a measurand, knowledge of what the possible measurand values is needed. This is often in the form on a **probability distribution function** (PDF).
 
-    \begin{itemize}
-        \item Knowledge of the distribution of possible measurand values is needed to determine the uncertainty of a measurement
-        \begin{itemize}
-            \item Often in the form of a \textbf{probability distribution function} (PDF).
-        \end{itemize}
-        \item There are two types of methodologies for evaluating the uncertainty of a measurement result defined in GUM\autocite{JCGMGUM}:
-    \end{itemize}
-    % Knowledge of the distribution of possible measurand values is needed to determine the uncertainty of a measurement, which is often in the form of a \textbf{probability distribution function} (PDF).
-    
-    \begin{block}{Type A evaluation of uncertainty}
-        Evaluating uncertainty by \textbf{statistical analysis} of a series of observations - PDF derived from observed frequency distribution
-    \end{block}
-    
-    \begin{block}{Type B evaluation of uncertainty}
-        Evaluation of uncertainty by other means (includes single measurements) -  PDF assumed based on knowledge of measurement
-    \end{block}
-    
-\end{frame}
+There are two types of methodologies on the GUM framework for evaluating the uncertainty of a measurement result:
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+```{admonition} Type A evaluation of uncertainty
+:class:hint
 
-\begin{frame}{Mathematical Notation}
-    \begin{itemize}
-        \item Given a measurand $X$, an estimation of this (as resulting from a measurement) is denoted as $x$. 
-        \item The standard uncertainty of this estimation will be denoted by $u(x)$.
-        \item Note that $u(x)$ should not be interpreted as a function of $x$.
-    \end{itemize}
-    
-\end{frame}
+Evaluating uncertainty by **statistical analysis** of a series of observations. The PDF is derived from the observed frequency distribution of measurements.
+```
 
+```{admonition} Type B evaluation of uncertainty
+:class:hint
+
+Evaluation of uncertainty by other means (includes single measurements). The PDF is assumed based on knowledge of measurement.
+```
+
+## Mathematical Notation
+
+We will be using a consistent mathematical notation for measurements and uncertainty in these notes. Given a measurand $X$:
+
+- An estimation of this (as resulting from a measurement) is denoted as $x$.
+- The standard uncertainty of this estimation will be denoted by $u(x)$. Note that this should not necessarily be interpreted as a "function of $x$".
 
 ## References
+
 ```{bibliography}
 :cited:
 :style: plain
