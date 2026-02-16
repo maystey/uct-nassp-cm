@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>13.3 Reading Fits Files &#8212; AST4007W Computational Methods</title>
+    <title>14.3 Reading Fits Files &#8212; AST4007W Computational Methods</title>
   
   
   
@@ -63,11 +63,13 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/03-scientific-packages/04-astropy/03-fits';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Exercise 13.3" href="03%3Dexercise-fits.html" />
-    <link rel="prev" title="Exercise 13" href="02%3Dexercise-a.html" />
+    <link rel="next" title="Exercise 14.3" href="03%3Dexercise-fits.html" />
+    <link rel="prev" title="Exercise 14" href="02%3Dexercise-a.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -228,9 +230,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/01-return.html"><span>8.1</span> <code class="docutils literal notranslate"><span class="pre">return</span></code> Statement</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/02-arguments.html"><span>8.2</span> Function Arguments</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/03-local-variables.html"><span>8.3</span> Local Namespace and Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/03%3Dexercise.html">Exercise <span>8</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/03%3Dexercise.html">Exercise <span>8.3</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/04-recursive.html"><span>8.4</span> Recursive Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/04%3Dexercise-recursive.html">Exercise <span>8.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/05-docstrings.html"><span>8.5</span> Doc Strings</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../02-standard-library/05-file-io/00-intro.html"><span>9</span> File I/O</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -253,6 +256,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../01-numpy/04-random.html"><span>11.4</span> NumPy Random Module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01-numpy/04%3Dexercise-random.html">Exercise <span>11.4</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01-numpy/05-where.html"><span>11.5</span> Array Conditional Statements and <code class="docutils literal notranslate"><span class="pre">numpy.where()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-numpy/05%3Dexercise-where.html">Exercise <span>11.5</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02-matplotlib/00-intro.html"><span>12</span> Matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -264,59 +268,62 @@
 <li class="toctree-l2"><a class="reference internal" href="../02-matplotlib/03%3Dexercise-3d.html">Exercise <span>12.3</span></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-intro.html"><span>13</span> Astropy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="01-units.html"><span>13.1</span> Units and Quantities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02-constants.html"><span>13.2</span> Constants</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02%3Dexercise-a.html">Exercise <span>13</span></a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#"><span>13.3</span> Reading Fits Files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03%3Dexercise-fits.html">Exercise <span>13.3</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-scipy/00-intro.html"><span>13</span> SciPy</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-intro.html"><span>14</span> Astropy</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-units.html"><span>14.1</span> Units and Quantities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-constants.html"><span>14.2</span> Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02%3Dexercise-a.html">Exercise <span>14</span></a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><span>14.3</span> Reading Fits Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03%3Dexercise-fits.html">Exercise <span>14.3</span></a></li>
 </ul>
 </details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical Methods</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/00-intro.html"><span>14</span> Numerical Root Finding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/01-bisection.html"><span>14.1</span> Bisection Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/01%3Dexercise-bisection.html">Exercise <span>14.1</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/02-secant.html"><span>14.2</span> Secant Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/02%3Dexercise-secant.html">Exercise <span>14.2</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/03-newton.html"><span>14.3</span> Newton-Raphson Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/03%3Dexercise-newton.html">Exercise <span>14.3</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/04-comparison.html"><span>14.4</span> Comparing the Methods</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/00-intro.html"><span>15</span> Numerical Root Finding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/01-bisection.html"><span>15.1</span> Bisection Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/01%3Dexercise-bisection.html">Exercise <span>15.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/02-secant.html"><span>15.2</span> Secant Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/02%3Dexercise-secant.html">Exercise <span>15.2</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/03-newton.html"><span>15.3</span> Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/03%3Dexercise-newton.html">Exercise <span>15.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/04-comparison.html"><span>15.4</span> Comparing the Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/05-scipy.html"><span>15.5</span> Root Finding Using SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/05%3Dexercise-scipy.html">Exercise <span>15.5</span></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/00-intro.html"><span>15</span> Curve Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/01-linear-regression.html"><span>15.1</span> Linear Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/02-least-squares.html"><span>15.1.1</span> Linear Least Squares Minimization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/02%3Dexercise-least-squares.html">Exercise <span>15.1.1</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/03-chi-squared.html"><span>15.1.2</span> Linear Chi Squared Minimization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/03%3Dexercise-chi-squared.html">Exercise <span>15.1.2</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/04-multiple-least-squares.html"><span>15.1.3</span> Multiple Linear Least Squares Minimization</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/04%3Dexercise-multivar.html">Exercise <span>15.1.3</span></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/00-intro.html"><span>16</span> Curve Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/01-linear-regression.html"><span>16.1</span> Linear Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/02-least-squares.html"><span>16.1.1</span> Linear Least Squares Minimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/02%3Dexercise-least-squares.html">Exercise <span>16.1.1</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/03-chi-squared.html"><span>16.1.2</span> Linear Chi Squared Minimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/03%3Dexercise-chi-squared.html">Exercise <span>16.1.2</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/04-multiple-least-squares.html"><span>16.1.3</span> Multiple Linear Least Squares Minimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/04%3Dexercise-multivar.html">Exercise <span>16.1.3</span></a></li>
 </ul>
 </details></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/05-scipy-least-squares.html"><span>15.2</span> Non-Linear Least Squares Minimization with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.least_squares</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/06-scipy-curve-fit.html"><span>15.3</span> Fitting Models to Data with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/06%3Dexercise-curve-fit.html">Exercise <span>15.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/05-scipy-least-squares.html"><span>16.2</span> Non-Linear Least Squares Minimization with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.least_squares</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/06-scipy-curve-fit.html"><span>16.3</span> Fitting Models to Data with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/06%3Dexercise-curve-fit.html">Exercise <span>16.3</span></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/03-ode/00-intro.html"><span>16</span> Numerical Solutions to Ordinary Differential Equations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/01-euler.html"><span>16.1</span> Euler’s Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/02-euler-error.html"><span>16.2</span> Euler’s Method: Truncation Error</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/02%3Dexercise-euler.html">Exercise <span>16.2</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/03-higher-order.html"><span>16.3</span> Solving Coupled and Higher Order ODEs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/03%3Dexercise-higher-order.html">Exercise <span>16.3</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/04-runge-kutta.html"><span>16.4</span> Runge-Kutta Methods</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/04%3Dexercise-runge-kutta.html">Exercise <span>16.4</span></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/03-ode/00-intro.html"><span>17</span> Numerical Solutions to Ordinary Differential Equations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/01-euler.html"><span>17.1</span> Euler’s Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/02-euler-error.html"><span>17.2</span> Euler’s Method: Truncation Error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/02%3Dexercise-euler.html">Exercise <span>17.2</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/03-higher-order.html"><span>17.3</span> Solving Coupled and Higher Order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/03%3Dexercise-higher-order.html">Exercise <span>17.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/04-runge-kutta.html"><span>17.4</span> Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/04%3Dexercise-runge-kutta.html">Exercise <span>17.4</span></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/04-integration/00-intro.html"><span>17</span> Numerical Integration Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/01-midpoint.html"><span>17.1</span> Midpoint Rule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/01%3Dexercise-midpoint.html">Exercise <span>17.1</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/02-trapezoidal.html"><span>17.2</span> Trapezoidal Rule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/02%3Dexercise-trapz.html">Exercise <span>17.2</span></a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/03-simpson.html"><span>17.3</span> Simpson’s Rule</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/03%3Dexercise-simps.html">Exercise <span>17.3</span></a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/04-integration/00-intro.html"><span>18</span> Numerical Integration Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/01-midpoint.html"><span>18.1</span> Midpoint Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/01%3Dexercise-midpoint.html">Exercise <span>18.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/02-trapezoidal.html"><span>18.2</span> Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/02%3Dexercise-trapz.html">Exercise <span>18.2</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/03-simpson.html"><span>18.3</span> Simpson’s Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
 </ul>
 </details></li>
 </ul>
@@ -501,7 +508,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>13.3 Reading Fits Files</h1>
+    <h1>14.3 Reading Fits Files</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -511,7 +518,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wcs-and-fits"><code class="docutils literal notranslate"><span class="pre">WCS</span></code> and <code class="docutils literal notranslate"><span class="pre">fits</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-fits-files">Reading and Writing Fits Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wcs-and-plotting"><code class="docutils literal notranslate"><span class="pre">WCS</span></code> and Plotting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-fits-file">Creating New Fits File</a></li>
 </ul>
             </nav>
         </div>
@@ -524,7 +533,7 @@
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="reading-fits-files">
-<h1><span>13.3</span> Reading Fits Files<a class="headerlink" href="#reading-fits-files" title="Link to this heading">#</a></h1>
+<h1><span>14.3</span> Reading Fits Files<a class="headerlink" href="#reading-fits-files" title="Link to this heading">#</a></h1>
 <p>Flexible Image Transport System (FITS) files are used to store astronomical images. As seen in the figure below, a FITS file is made up of two parts: an ASCII header and a binary image. The header usually contains important metadata that describes photometric and spatial calibration information.</p>
 <p><img alt="" src="../../../_images/fits.png" /></p>
 <p>Some of the more important header information includes:</p>
@@ -539,16 +548,70 @@
 </ul>
 </li>
 </ul>
-<section id="wcs-and-fits">
-<h2><code class="docutils literal notranslate"><span class="pre">WCS</span></code> and <code class="docutils literal notranslate"><span class="pre">fits</span></code><a class="headerlink" href="#wcs-and-fits" title="Link to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">astropy.wcs.WCS</span></code> sub-package is used to create an object to represent the world coordinate system (WCS) transformation of an image.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.wcs</span><span class="w"> </span><span class="kn">import</span> <span class="n">WCS</span>
-</pre></div>
-</div>
+<section id="reading-and-writing-fits-files">
+<h2>Reading and Writing Fits Files<a class="headerlink" href="#reading-and-writing-fits-files" title="Link to this heading">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">astropy.io.fits</span></code> sub-package is used to read-in FITS images.</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits</span>
 </pre></div>
 </div>
+<p>You can read FITS files using <a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/api/files.html#astropy.io.fits.open"><code class="docutils literal notranslate"><span class="pre">fits.open()</span></code></a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_list</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filepath</span><span class="p">)</span>
+<span class="n">hdu</span> <span class="o">=</span> <span class="n">hdu_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>This function returns a list of <a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/api/hdus.html">Header Data Unit (HDU)</a> objects (one per image in the file). In this example we will use the first HDU object in the list.</p>
+<p>The header from an HDU can be accessed using the <code class="docutils literal notranslate"><span class="pre">header</span></code> property.
+For example getting the heading from the first HDU in the list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hdr</span> <span class="o">=</span> <span class="n">hdu</span><span class="o">.</span><span class="n">header</span>
+</pre></div>
+</div>
+<p>The <a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/api/headers.html#astropy.io.fits.Header">Header</a> object contains all the header properties from the FITS file.
+This object has a dictionary like interface for accessing header properties, for example you can get or set the property <code class="docutils literal notranslate"><span class="pre">SKY</span></code> by using <code class="docutils literal notranslate"><span class="pre">hdr['sky']</span></code>.</p>
+<p>The image data can be accessed from the HDU by using the <code class="docutils literal notranslate"><span class="pre">data</span></code> property.
+For example, getting the image data from the first HDU in the list:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">img</span> <span class="o">=</span> <span class="n">hdu</span><span class="o">.</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>The image data is in the form of an n-dimensional array (depending on the dimensions and values of the image data).</p>
+<p>Alternatively, the header and image data can be read directly from the file using the <a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/api/files.html#astropy.io.fits.getheader"><code class="docutils literal notranslate"><span class="pre">fits.getheader()</span></code></a> and <a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/api/files.html#astropy.io.fits.getdata"><code class="docutils literal notranslate"><span class="pre">fits.getdata()</span></code></a> functions.</p>
+<p>You can save FITS files using the <a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/api/files.html#writeto"><code class="docutils literal notranslate"><span class="pre">fits.writeto()</span></code></a> function. The call signature for this (with ony arguments of immediate interest) is:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">fits</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>with arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code> - the filename of the file you are writing to</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> - the image data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">header</span></code> - the header (HDU) of the FITS file. If <code class="docutils literal notranslate"><span class="pre">None</span></code>, then a header is automatically generated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">overwrite</span></code> - if <code class="docutils literal notranslate"><span class="pre">True</span></code> overwrites the file if it exists. If <code class="docutils literal notranslate"><span class="pre">False</span></code> then it raises an exception if the file exists.</p></li>
+</ul>
+</section>
+<section id="wcs-and-plotting">
+<h2><code class="docutils literal notranslate"><span class="pre">WCS</span></code> and Plotting<a class="headerlink" href="#wcs-and-plotting" title="Link to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.wcs.WCS.html#astropy.wcs.WCS">WCS</a> class from the <a class="reference external" href="https://docs.astropy.org/en/stable/wcs/reference_api.html#module-astropy.wcs"><code class="docutils literal notranslate"><span class="pre">astropy.wcs</span></code></a> sub-package can be used to create an object to represent the world coordinate system (WCS) transformation of an image.</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">astropy.wcs</span><span class="w"> </span><span class="kn">import</span> <span class="n">WCS</span>
+</pre></div>
+</div>
+<p>For example, the WCS object can be used to translate pixel coordinates (the indices of your image data) to world coordinates. This is most easily achieved using the <a class="reference external" href="https://docs.astropy.org/en/stable/api/astropy.wcs.WCS.html#astropy.wcs.WCS.wcs_pix2world"><code class="docutils literal notranslate"><span class="pre">WCS.wcs_pix2world()</span></code></a> which takes an array of pixel coordinates as an argument. For pixel coordinates <span class="math notranslate nohighlight">\((a_0, a_1), (b_0, b_1), (c_0, c_1)\)</span>, the function can be used as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">wcs</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">hdr</span><span class="p">)</span>
+<span class="n">ref_coords</span> <span class="o">=</span> <span class="n">wcs</span><span class="o">.</span><span class="n">pixel_to_world</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span><span class="n">a0</span><span class="p">,</span> <span class="n">a1</span><span class="p">],</span> <span class="p">[</span><span class="n">b0</span><span class="p">,</span> <span class="n">b1</span><span class="p">],</span> <span class="p">[</span><span class="n">c0</span><span class="p">,</span> <span class="n">c1</span><span class="p">]</span> <span class="p">])</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>You can make plots using the WCS object. You can read further on this in the official Astropy tutorial <a class="reference external" href="https://docs.astropy.org/en/stable/visualization/wcsaxes/index.html">Making plots with world coordinates (WCSAxes)</a>. An example of this is presented at the end of <a class="reference internal" href="03%3Dexercise-fits.html"><span class="doc">Exercise 14.3</span></a>.</p>
+</section>
+<section id="creating-new-fits-file">
+<h2>Creating New Fits File<a class="headerlink" href="#creating-new-fits-file" title="Link to this heading">#</a></h2>
+<p>To create a new fits image from data, you can instance a <a class="reference external" href="https://docs.astropy.org/en/stable/io/fits/api/hdus.html#primaryhdu"><code class="docutils literal notranslate"><span class="pre">fits.PrimaryHDU</span></code></a> class, which will automatically generate a header object based on the data. The image data and header object can be used when writing the file out.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">PrimaryHDU</span><span class="p">(</span><span class="n">image_data</span><span class="p">)</span>
+<span class="n">hdr</span> <span class="o">=</span> <span class="n">hdu</span><span class="o">.</span><span class="n">header</span>
+</pre></div>
+</div>
+<p>If you have an existing fits image and you want to create a new image from this, for example if you want to take a smaller slice of the image, then you can copy the existing HDU object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_new</span> <span class="o">=</span> <span class="n">hdu</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Note that you may need to update certain header properties manually if you make changes to the image data.
+Be careful when changing values in the image data as this can affect the previous FITS image, though if you don’t need the previous FITS image, then a copy is not needed in the first place.</p>
 </section>
 </section>
 
@@ -588,7 +651,7 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exercise <span>13</span></p>
+        <p class="prev-next-title">Exercise <span>14</span></p>
       </div>
     </a>
     <a class="right-next"
@@ -596,7 +659,7 @@
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exercise <span>13.3</span></p>
+        <p class="prev-next-title">Exercise <span>14.3</span></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -617,7 +680,9 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wcs-and-fits"><code class="docutils literal notranslate"><span class="pre">WCS</span></code> and <code class="docutils literal notranslate"><span class="pre">fits</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-fits-files">Reading and Writing Fits Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wcs-and-plotting"><code class="docutils literal notranslate"><span class="pre">WCS</span></code> and Plotting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-new-fits-file">Creating New Fits File</a></li>
 </ul>
   </nav></div>
 
