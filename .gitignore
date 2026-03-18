@@ -8,4 +8,4 @@ __pycache__/
 .vscode
 
 #Book build
-./book/_build/
+book/_build/

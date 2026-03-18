@@ -1,6 +1,7 @@
-# Uncertainty in Numerical Methods
+# {docnum}`step-super ref step-sub` Uncertainty Analysis for Numerical Methods
 
-In this chapter the measurement uncertainty framework outlined in the Guide to the expression of uncertainty in measurement is introduced. This will be adapted to the numerical methods covered in this course more directly in each of the chapters dedicated to the numerical methods.
+In this chapter the measurement uncertainty framework outlined in the Guide to the expression of uncertainty in measurement is introduced. 
+This will be adapted to the numerical methods covered in this course more directly in each of the chapters dedicated to the numerical methods.
 
 In this chapter works from the Joint Committee for Guides in Metrology (JCGM) are used, specifically:
 
@@ -10,7 +11,8 @@ In this chapter works from the Joint Committee for Guides in Metrology (JCGM) ar
 
 <!-- Metrology is the science of measurement (normally physical) - terminology will reflect this -->
 
-The context for the GUM framework is metrology - the science of measurement (normally physical). The terminology will reflect the physical nature of this framework, and much of our uses for it are adaptations or extensions of the framework.
+The context for the GUM framework is metrology - the science of measurement (normally physical). 
+The terminology will reflect the physical nature of this framework, and much of our uses for it are adaptations or extensions of the framework.
 
 ```{admonition} What is a measurement?
 :class: info
@@ -29,15 +31,15 @@ The result of a measurement is usually quoted as the **best approximation** of t
 ```{important}
     Some people use the term "error" interchangeably with "uncertainty". In these notes the term "standard uncertainty" will be used precisely as described in the GUM. The term "error" will be used in more general cases:
 
-    - Errors as flaws in code
-    - Errors as resulting from approximations / truncations in numerical methods
-    - Errors as the difference between an approximated value and the analytical value
+    - Errors as flaws in code (syntax / runtime errors)
+    - Errors as resulting from approximations / truncations in numerical methods (truncation error)
+    - Errors as the difference between an approximated value and the analytical value (true error / absolute error)
 ```
 
 ```{admonition} What is the uncertainty of a measurement?
 :class: info
 
-From the GUM \autocite{JCGMGUM} and VIM \autocite{JCGMVIM3}:
+From the GUM {cite}`u-i-JCGMGUM` and VIM {cite}`u-i-JCGMVIM3`:
 
 > The uncertainty parameter, associated with the result of a measurement, that characterizes the dispersion of the values that could reasonably be attributed to the measurand.
 
@@ -58,20 +60,23 @@ For numerical algorithms, some sources of uncertainty may be:
 
 ## Methods of Uncertainty Evaluation
 
-To determine the standard uncertainty of a measurand, knowledge of what the possible measurand values is needed. This is often in the form on a **probability distribution function** (PDF).
+To determine the standard uncertainty of a measurand, knowledge of what the possible measurand values is needed. 
+This is often in the form on a **probability distribution function** (PDF).
 
 There are two types of methodologies on the GUM framework for evaluating the uncertainty of a measurement result:
 
 ```{admonition} Type A evaluation of uncertainty
 :class:hint
 
-Evaluating uncertainty by **statistical analysis** of a series of observations. The PDF is derived from the observed frequency distribution of measurements.
+Evaluating uncertainty by **statistical analysis** of a series of observations. 
+The PDF is derived from the observed frequency distribution of measurements.
 ```
 
 ```{admonition} Type B evaluation of uncertainty
 :class:hint
 
-Evaluation of uncertainty by other means (includes single measurements). The PDF is assumed based on knowledge of measurement.
+Evaluation of uncertainty by other means (includes single measurements). 
+The PDF is assumed based on knowledge of measurement.
 ```
 
 ## Mathematical Notation
