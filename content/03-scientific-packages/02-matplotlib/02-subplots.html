@@ -16,36 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/print.css?v=d03beadb" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=88953031" />
     <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css?v=d33bc4f6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=88953031" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
@@ -70,7 +67,6 @@
     <link rel="prev" title="Exercise 12.1" href="01%3Dexercise-simple.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -86,8 +82,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -95,6 +102,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -102,8 +110,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -119,8 +127,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -150,17 +157,21 @@
     
     
     <img src="../../../_static/UCTcircular_logo.png" class="logo__image only-light" alt="AST4007W Computational Methods - Home"/>
-    <img src="../../../_static/UCTcircular_logo.png" class="logo__image only-dark pst-js-only" alt="AST4007W Computational Methods - Home"/>
+    <script>document.write(`<img src="../../../_static/UCTcircular_logo.png" class="logo__image only-dark" alt="AST4007W Computational Methods - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -324,6 +335,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/01-typeA.html"><span>19.1</span> Type A Uncertainty Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/01%3Dexercise-typeA.html">Exercise <span>19.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/02-typeB.html"><span>19.2</span> Type B Uncertainty Evaluation</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -332,14 +349,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -483,16 +495,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -597,7 +617,7 @@ To manually create your own figures using pyplot, you can use the function:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/24200a604b34fc3f17872c44e69e42e11584370a4d9f7f5ab2f89cf61e011365.png" src="../../../_images/24200a604b34fc3f17872c44e69e42e11584370a4d9f7f5ab2f89cf61e011365.png" />
+<img alt="../../../_images/0587eb9669250d37eab25b4243a35f8ece5472beca326fe7237458f0ea663bef.png" src="../../../_images/0587eb9669250d37eab25b4243a35f8ece5472beca326fe7237458f0ea663bef.png" />
 </div>
 </div>
 <p>Refer to the <a class="reference external" href="https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure.add_subplot">documentation</a> for additional options.</p>
@@ -631,7 +651,7 @@ To manually create your own figures using pyplot, you can use the function:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/24200a604b34fc3f17872c44e69e42e11584370a4d9f7f5ab2f89cf61e011365.png" src="../../../_images/24200a604b34fc3f17872c44e69e42e11584370a4d9f7f5ab2f89cf61e011365.png" />
+<img alt="../../../_images/0587eb9669250d37eab25b4243a35f8ece5472beca326fe7237458f0ea663bef.png" src="../../../_images/0587eb9669250d37eab25b4243a35f8ece5472beca326fe7237458f0ea663bef.png" />
 </div>
 </div>
 <p>A couple of additional keyword arguments are <code class="docutils literal notranslate"><span class="pre">sharex</span></code> and <code class="docutils literal notranslate"><span class="pre">sharey</span></code>. These take boolean values. If true the subplots will share the relevant axis’s ticks. For example:</p>
@@ -654,7 +674,7 @@ To manually create your own figures using pyplot, you can use the function:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/22328c7b19be4069be77f10efced832cae840a1aceaaea66989bede174dcf614.png" src="../../../_images/22328c7b19be4069be77f10efced832cae840a1aceaaea66989bede174dcf614.png" />
+<img alt="../../../_images/7e0793a32088cd2a7a6d71747ab92baa70730c42eb5780c05ec66464829e932a.png" src="../../../_images/7e0793a32088cd2a7a6d71747ab92baa70730c42eb5780c05ec66464829e932a.png" />
 </div>
 </div>
 <p>Refer to the <a class="reference external" href="https://matplotlib.org/3.2.1/api/_as_gen/matplotlib.pyplot.subplots.html">documentation</a> for additional options.</p>
@@ -679,7 +699,7 @@ To manually create your own figures using pyplot, you can use the function:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/cbf8e4559482095aa45e929d1159aadb4a8ec0572849d1436e1b74667bedbf57.png" src="../../../_images/cbf8e4559482095aa45e929d1159aadb4a8ec0572849d1436e1b74667bedbf57.png" />
+<img alt="../../../_images/4c2dc8147a83f13fa5345ec42486f2ff9669bcdc720aac688254e4e292e9aeae.png" src="../../../_images/4c2dc8147a83f13fa5345ec42486f2ff9669bcdc720aac688254e4e292e9aeae.png" />
 </div>
 </div>
 <p>While you can change the layout settings of your plot manually, there is an automated solution provided, the function <code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code>. If called from <code class="docutils literal notranslate"><span class="pre">pyplot</span></code>, this will affect the current figure, alternatively it can be called as a method from a figure of choice. Applying this to our example above:</p>
@@ -702,7 +722,7 @@ To manually create your own figures using pyplot, you can use the function:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/3eba8a4686cb2969bcec4efc6054ce34668eade9dd5f3d351c1bcdcdec37980c.png" src="../../../_images/3eba8a4686cb2969bcec4efc6054ce34668eade9dd5f3d351c1bcdcdec37980c.png" />
+<img alt="../../../_images/85b1912ba3fb9b828e0a09bc5700186372629fdcebde4c7d1fa657b75380e423.png" src="../../../_images/85b1912ba3fb9b828e0a09bc5700186372629fdcebde4c7d1fa657b75380e423.png" />
 </div>
 </div>
 </section>
@@ -732,7 +752,7 @@ To manually create your own figures using pyplot, you can use the function:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/b8f21196f3cc56592844830464812417d57712e8fa567a32b6dbc10c9feaeefc.png" src="../../../_images/b8f21196f3cc56592844830464812417d57712e8fa567a32b6dbc10c9feaeefc.png" />
+<img alt="../../../_images/e7be806569fd2eca3dd258625f5784248212c7ef37c24aac0c7805a36d674b80.png" src="../../../_images/e7be806569fd2eca3dd258625f5784248212c7ef37c24aac0c7805a36d674b80.png" />
 </div>
 </div>
 </section>
@@ -753,7 +773,7 @@ To manually create your own figures using pyplot, you can use the function:</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/8c589dddab977152fe6bbad3187eeb7663b57bbf162c753ab8ba38cd316d4ced.png" src="../../../_images/8c589dddab977152fe6bbad3187eeb7663b57bbf162c753ab8ba38cd316d4ced.png" />
+<img alt="../../../_images/4d284cb7fd5c82d28a2422d37d20277ada38bdc7f8a5f5700f2f1de006dcf8c8.png" src="../../../_images/4d284cb7fd5c82d28a2422d37d20277ada38bdc7f8a5f5700f2f1de006dcf8c8.png" />
 </div>
 </div>
 </section>
@@ -773,7 +793,7 @@ To manually create your own figures using pyplot, you can use the function:</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./content\03-scientific-packages\02-matplotlib"
+            path: "./content/03-scientific-packages/02-matplotlib"
         },
         predefinedOutput: true
     }
@@ -815,8 +835,7 @@ To manually create your own figures using pyplot, you can use the function:</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -883,8 +902,8 @@ By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

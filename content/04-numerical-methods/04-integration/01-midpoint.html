@@ -16,36 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/print.css?v=d03beadb" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=88953031" />
     <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css?v=d33bc4f6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=88953031" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
@@ -72,7 +69,6 @@
     <link rel="prev" title="18 Numerical Integration Techniques" href="00-intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -88,8 +84,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -97,6 +104,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -104,8 +112,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -121,8 +129,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -152,17 +159,21 @@
     
     
     <img src="../../../_static/UCTcircular_logo.png" class="logo__image only-light" alt="AST4007W Computational Methods - Home"/>
-    <img src="../../../_static/UCTcircular_logo.png" class="logo__image only-dark pst-js-only" alt="AST4007W Computational Methods - Home"/>
+    <script>document.write(`<img src="../../../_static/UCTcircular_logo.png" class="logo__image only-dark" alt="AST4007W Computational Methods - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -326,6 +337,12 @@
 <li class="toctree-l2"><a class="reference internal" href="03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/01-typeA.html"><span>19.1</span> Type A Uncertainty Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/01%3Dexercise-typeA.html">Exercise <span>19.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/02-typeB.html"><span>19.2</span> Type B Uncertainty Evaluation</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -334,14 +351,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -485,16 +497,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -518,10 +538,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composite-midpoint-rule">Composite Midpoint Rule</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composite-midpoint-rule-with-a-discrete-data-set">Composite Midpoint Rule with a Discrete Data Set</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composite-midpoint-rule">Composite Midpoint Rule</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
@@ -539,7 +556,7 @@
 <p>In the midpoint rule you approximate the area under the curve as a rectangle with the height as the function value at the midpoint of the interval:</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/80966eaed1812823cf9386dd154373441e06e3d3a05d167f36f3392510af84bd.png" src="../../../_images/80966eaed1812823cf9386dd154373441e06e3d3a05d167f36f3392510af84bd.png" />
+<img alt="../../../_images/7ec186535df09e9da14dc45fadb3b01eb939551ae0dc438b778078b73f485d40.png" src="../../../_images/7ec186535df09e9da14dc45fadb3b01eb939551ae0dc438b778078b73f485d40.png" />
 </div>
 </div>
 <div class="math notranslate nohighlight">
@@ -551,8 +568,8 @@
 <p>For a more accurate solution we can subdivide the interval further, constructing rectangles for each subinterval, with the function value of the midpoint used as the height:</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/dad9242f5dd56c13363be833ff7e5e7a4e798f42bf03f321cee3fdaca46d8379.png" src="../../../_images/dad9242f5dd56c13363be833ff7e5e7a4e798f42bf03f321cee3fdaca46d8379.png" />
-<img alt="../../../_images/4cb7e0d52a92ac6688f2a00f08afc1dc21b4ff7becb0cb38a3fc7a6c4a37ee92.png" src="../../../_images/4cb7e0d52a92ac6688f2a00f08afc1dc21b4ff7becb0cb38a3fc7a6c4a37ee92.png" />
+<img alt="../../../_images/6303f2b1d815e81d3cbaee078191cccca621fb6b56011c45066796c2c4099e39.png" src="../../../_images/6303f2b1d815e81d3cbaee078191cccca621fb6b56011c45066796c2c4099e39.png" />
+<img alt="../../../_images/f647ae672a5c19aebee08a0b987f5495cda1facf10052cc510488f84c9038702.png" src="../../../_images/f647ae672a5c19aebee08a0b987f5495cda1facf10052cc510488f84c9038702.png" />
 </div>
 </div>
 <p>For <span class="math notranslate nohighlight">\(n\)</span> subdivisions:</p>
@@ -570,31 +587,13 @@ x_i - x_{i-1} = \frac{b - a}{n}
 \[
 \int_a^b f(x) ~dx \approx \frac{b - a}{n} \sum_{i=1}^n f\left(\frac{x_i + x_{i-1}}{2}\right)
 \]</div>
-<p>Assuming that <span class="math notranslate nohighlight">\(n\)</span> is chosen so that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{n} &lt; 1\)</span>, the error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^3\right)\)</span> <span id="id1">[<a class="reference internal" href="#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntMid1</a>]</span>.</p>
-<section id="composite-midpoint-rule-with-a-discrete-data-set">
-<h3>Composite Midpoint Rule with a Discrete Data Set<a class="headerlink" href="#composite-midpoint-rule-with-a-discrete-data-set" title="Link to this heading">#</a></h3>
-<p>Let’s consider the case where we have a discrete set of data points <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> for <span class="math notranslate nohighlight">\(i = 0, \dots, n\)</span>, where:</p>
-<div class="math notranslate nohighlight">
-\[
-y_i = f(x_i)
-\]</div>
-<!---
-The values being midpoints is kind of arbitrary, we don't need to 
---->
-<p>We want to approximate the integral of <span class="math notranslate nohighlight">\(f(x)\)</span> using this data and the midpoint rule. We can treat each <span class="math notranslate nohighlight">\(x_i\)</span> as the midpoint (except for <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(x_n\)</span> at the boundaries) and determine the size of the interval around it using the adjacent values.</p>
-<p>For equally spaced data points, where <span class="math notranslate nohighlight">\(\Delta x = x_i - x_{i-1}\)</span> is constant, we can approximate the integral as:</p>
-<div class="math notranslate nohighlight">
-\[
-\int_{x_0}^{x_n} f(x) ~dx \approx \Delta x \left[ \frac{1}{2} y_0 + \left\{\sum_{i = 1}^{n-1} y_i \right\} + \frac{1}{2} y_n \right]
-\]</div>
-<p>where the first and final contributions are halved as the intervals they represent are halved (note that these aren’t at the midpoints of their intervals, rather at the boundaries).</p>
-</section>
+<p>Assuming that <span class="math notranslate nohighlight">\(n\)</span> is chosen so that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{n} &lt; 1\)</span>, the (global) error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^2\right)\)</span> <span id="id1">[<a class="reference internal" href="#id3" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntMid1</a>]</span>.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id2">
 <div role="list" class="citation-list">
-<div class="citation" id="id4" role="doc-biblioentry">
+<div class="citation" id="id3" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">IntMid1</a><span class="fn-bracket">]</span></span>
 <p>James F. Epperson. <em>An Introduction to Numerical Methods and Analysis</em>. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.</p>
 </div>
@@ -616,7 +615,7 @@ The values being midpoints is kind of arbitrary, we don't need to
         },
         kernelOptions: {
             name: "python3",
-            path: "./content\04-numerical-methods\04-integration"
+            path: "./content/04-numerical-methods/04-integration"
         },
         predefinedOutput: true
     }
@@ -658,8 +657,7 @@ The values being midpoints is kind of arbitrary, we don't need to
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -668,10 +666,7 @@ The values being midpoints is kind of arbitrary, we don't need to
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composite-midpoint-rule">Composite Midpoint Rule</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composite-midpoint-rule-with-a-discrete-data-set">Composite Midpoint Rule with a Discrete Data Set</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composite-midpoint-rule">Composite Midpoint Rule</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
@@ -721,8 +716,8 @@ By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

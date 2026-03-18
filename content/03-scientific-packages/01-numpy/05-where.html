@@ -16,36 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/print.css?v=d03beadb" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=88953031" />
     <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css?v=d33bc4f6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=88953031" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
@@ -72,7 +69,6 @@
     <link rel="prev" title="Exercise 11.4" href="04%3Dexercise-random.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -88,8 +84,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -97,6 +104,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -104,8 +112,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -121,8 +129,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -152,17 +159,21 @@
     
     
     <img src="../../../_static/UCTcircular_logo.png" class="logo__image only-light" alt="AST4007W Computational Methods - Home"/>
-    <img src="../../../_static/UCTcircular_logo.png" class="logo__image only-dark pst-js-only" alt="AST4007W Computational Methods - Home"/>
+    <script>document.write(`<img src="../../../_static/UCTcircular_logo.png" class="logo__image only-dark" alt="AST4007W Computational Methods - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -326,6 +337,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/01-typeA.html"><span>19.1</span> Type A Uncertainty Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/01%3Dexercise-typeA.html">Exercise <span>19.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/02-typeB.html"><span>19.2</span> Type B Uncertainty Evaluation</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -334,14 +351,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -485,16 +497,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -645,7 +665,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/f144e747e3934d165eaf0b280c401767410dfc7fff758e2bcba2b703db7845b8.png" src="../../../_images/f144e747e3934d165eaf0b280c401767410dfc7fff758e2bcba2b703db7845b8.png" />
+<img alt="../../../_images/7c6a0d3d08a07e42322dfa90f976545161c3763bf6c417b20c8f96aabfbce713.png" src="../../../_images/7c6a0d3d08a07e42322dfa90f976545161c3763bf6c417b20c8f96aabfbce713.png" />
 </div>
 </div>
 <p>Note that axis 0 of <code class="docutils literal notranslate"><span class="pre">points</span></code> is used to represent the x and y values, and axis 1 represents points. i.e. for the points <span class="math notranslate nohighlight">\((x_0, y_0), (x_1, y_1), \dots, (x_{49}, y_{49})\)</span>, <code class="docutils literal notranslate"><span class="pre">points</span></code> is:</p>
@@ -688,7 +708,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/04275806c3be32d996096acf624c3c7e9b3c53ddb06eaa3abf403169a32d08e0.png" src="../../../_images/04275806c3be32d996096acf624c3c7e9b3c53ddb06eaa3abf403169a32d08e0.png" />
+<img alt="../../../_images/7e165cd75485d4f14c256142fe670c95ca289b38780b793c0f41d20a5f3986e1.png" src="../../../_images/7e165cd75485d4f14c256142fe670c95ca289b38780b793c0f41d20a5f3986e1.png" />
 </div>
 </div>
 <p>Note that, in the example above, we have used an array of booleans to <strong>slice the elements of the array which are true</strong>. We have also use the <strong>bitwise compliment</strong> to get the complement of our comparison result, there is no need to recalculate it.</p>
@@ -710,7 +730,7 @@
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/71cc30f3d48e127d6a751e7c1a38aab429354d85cbefd6c943b4724fbae7026a.png" src="../../../_images/71cc30f3d48e127d6a751e7c1a38aab429354d85cbefd6c943b4724fbae7026a.png" />
+<img alt="../../../_images/8e37b3f43ab776b0cef6f494b9d5d6c9c73641d4b531f046d500db8a64e3e510.png" src="../../../_images/8e37b3f43ab776b0cef6f494b9d5d6c9c73641d4b531f046d500db8a64e3e510.png" />
 </div>
 </div>
 </div></section>
@@ -735,7 +755,7 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>arr1: [10 11 12 13 14 15 16 17 18 19]
-Indices where arr1 is greater than 15: (array([6, 7, 8, 9], dtype=int64),)
+Indices where arr1 is greater than 15: (array([6, 7, 8, 9]),)
 The sub-array of arr1 that is greater than 15: [16 17 18 19]
 </pre></div>
 </div>
@@ -799,7 +819,7 @@ x &amp; \text{if $x \geq 0$}\\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/38bd3ffe851a3bcd89400cf3b2f27b49572c063c16a40aa0c5ac1e7719a8d326.png" src="../../../_images/38bd3ffe851a3bcd89400cf3b2f27b49572c063c16a40aa0c5ac1e7719a8d326.png" />
+<img alt="../../../_images/35d696449d95dc0d121e4c5254c8b2392992dae9a7f3fd23c188c1ee38cfe091.png" src="../../../_images/35d696449d95dc0d121e4c5254c8b2392992dae9a7f3fd23c188c1ee38cfe091.png" />
 </div>
 </div>
 <p>Note that, in the plot above, the line does not reach zero, but flattens out to a value above it. This is because the array <code class="docutils literal notranslate"><span class="pre">x</span></code> does not contain the value 0, but values around it.</p>
@@ -833,7 +853,7 @@ f(x) =
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/3601deaac534c489f134980cd4b1fc6adba2cbcd043df02f49802f2a0392f50b.png" src="../../../_images/3601deaac534c489f134980cd4b1fc6adba2cbcd043df02f49802f2a0392f50b.png" />
+<img alt="../../../_images/75f52c8851a0ce0ad948d86466baba90895eedb875b699f5771df5611a47933d.png" src="../../../_images/75f52c8851a0ce0ad948d86466baba90895eedb875b699f5771df5611a47933d.png" />
 </div>
 </div>
 </div></div></section>
@@ -852,7 +872,7 @@ f(x) =
         },
         kernelOptions: {
             name: "python3",
-            path: "./content\03-scientific-packages\01-numpy"
+            path: "./content/03-scientific-packages/01-numpy"
         },
         predefinedOutput: true
     }
@@ -894,8 +914,7 @@ f(x) =
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -955,8 +974,8 @@ By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

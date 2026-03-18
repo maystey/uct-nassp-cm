@@ -16,36 +16,33 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!--
-    this give us a css class that will be invisible only if js is disabled
-  -->
-  <noscript>
-    <style>
-      .pst-js-only { display: none !important; }
-
-    </style>
-  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../../_static/print.css?v=d03beadb" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=88953031" />
     <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css?v=d33bc4f6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=88953031" />
   
-  <!-- So that users can add custom icons -->
-  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../../_static/doctools.js?v=9a2dae69"></script>
@@ -72,7 +69,6 @@
     <link rel="prev" title="14.3 Reading Fits Files" href="03-fits.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -88,8 +84,19 @@
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <dialog id="pst-search-dialog">
-    
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
 <form class="bd-search d-flex align-items-center"
       action="../../../search.html"
       method="get">
@@ -97,6 +104,7 @@
   <input type="search"
          class="form-control"
          name="q"
+         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -104,8 +112,8 @@
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form>
-  </dialog>
+</form></div>
+  </div>
 
   <div class="pst-async-banner-revealer d-none">
   <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
@@ -121,8 +129,7 @@
       
       
       
-      <dialog id="pst-primary-sidebar-modal"></dialog>
-      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+      <div class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -152,17 +159,21 @@
     
     
     <img src="../../../_static/UCTcircular_logo.png" class="logo__image only-light" alt="AST4007W Computational Methods - Home"/>
-    <img src="../../../_static/UCTcircular_logo.png" class="logo__image only-dark pst-js-only" alt="AST4007W Computational Methods - Home"/>
+    <script>document.write(`<img src="../../../_static/UCTcircular_logo.png" class="logo__image only-dark" alt="AST4007W Computational Methods - Home"/>`);</script>
   
   
 </a></div>
         <div class="sidebar-primary-item">
 
-<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
- <i class="fa-solid fa-magnifying-glass"></i>
- <span class="search-button__default-text">Search</span>
- <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
-</button></div>
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
@@ -326,6 +337,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
 </ul>
 </details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/01-typeA.html"><span>19.1</span> Type A Uncertainty Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/01%3Dexercise-typeA.html">Exercise <span>19.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/02-typeB.html"><span>19.2</span> Type B Uncertainty Evaluation</a></li>
+</ul>
+</details></li>
 </ul>
 
     </div>
@@ -334,14 +351,9 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
-      <div class="sidebar-primary-item">
-<div id="ethical-ad-placement"
-      class="flat"
-      data-ea-publisher="readthedocs"
-      data-ea-type="readthedocs-sidebar"
-      data-ea-manual="true">
-</div></div>
   </div>
+  
+  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -485,16 +497,24 @@
 
 
 
-<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
-  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
-  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
-  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
-</button>
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
 
 
-<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-</button>
+  </button>
+`);
+</script>
 <button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
 </button>
@@ -518,15 +538,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-the-fits-image">Read In the FITS Image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-image">Plot the Image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-the-region-of-interest">Extracting the Region of Interest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-fits-image">Create a New FITS Image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#investigating-the-background-noise">Investigating the Background Noise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-fits-file">Create a New FITS File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#investigating-background-noise-in-the-image">Investigating Background Noise in the Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-the-background-noise">Removing the Background Noise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibrating-the-new-image">Calibrating the New Image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-the-new-fits-file">Saving the New FITS File</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-final-image">Plotting the Final Image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-plotting-the-new-fits-file">Saving and Plotting the New FITS File</a></li>
 </ul>
             </nav>
         </div>
@@ -540,150 +556,48 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-14-3">
 <h1>Exercise <span>14.3</span><a class="headerlink" href="#exercise-14-3" title="Link to this heading">#</a></h1>
-<p>Your task is to use Astropy to read in a FITS image of a galaxy emission, isolate the region of interest, remove the background noise, calibrate it and save this processed image into a new FITS file. Download the FITS image <strong>ex11.2.fits</strong> from the resource files on Vula, and then create a Python script or notebook to do the following, filling in the missing code where necessary:</p>
-<section id="read-in-the-fits-image">
-<h2>Read In the FITS Image<a class="headerlink" href="#read-in-the-fits-image" title="Link to this heading">#</a></h2>
-<p>Read in the FITS image using the <a class="reference external" href="http://astropy.io">astropy.io</a> package.  What are the pixel dimensions of the image?</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.wcs</span><span class="w"> </span><span class="kn">import</span> <span class="n">WCS</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">astropy.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">fits</span>
-
-<span class="c1">##Read in FITS file</span>
-<span class="n">hdu</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;ex11.2.fits&#39;</span><span class="p">)</span> <span class="c1">#header data units</span>
-<span class="n">hdr</span> <span class="o">=</span> <span class="n">hdu</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span> <span class="c1">#Header</span>
-<span class="n">img</span> <span class="o">=</span> <span class="n">hdu</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span> <span class="c1">#Image</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;image pixel dimensions: &#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">shape</span><span class="p">(</span><span class="n">img</span><span class="p">))</span>
-</pre></div>
-</div>
-</section>
-<section id="plot-the-image">
-<h2>Plot the Image<a class="headerlink" href="#plot-the-image" title="Link to this heading">#</a></h2>
-<p>Now would be a good time to plot the image you’ve read in. As this image is two dimensional and contains light intensity as the data for each pixel, a useful <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> function to use is <code class="docutils literal notranslate"><span class="pre">imshow()</span></code>. This produces a heat map from 2D arrays.</p>
-<p>Firstly, we should determine the interval in which our minimum and maximum colour values should be. What are the min/max pixel values (in raw image units)?</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1">#the min/max pixel values in img will guide our choice for the colour map max and min values</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;min/max pixel values [dn]: &#39;</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">img</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-</pre></div>
-</div>
-<p>Now for the image itself:</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Plotting the image as a colour map</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">vmin</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_heat&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
+<p>Your task is to use Astropy to read in a FITS image of a galaxy emission, isolate the region of interest, remove the background noise, calibrate it and save this processed image into a new FITS file. Download the FITS image <a class="reference download internal" download="" href="../../../_downloads/eeca76dfb8533a8d38bc7d08c527535c/fits_image.fits"><code class="xref download docutils literal notranslate"><span class="pre">fits_image.fits</span></code></a> and then create a Python script or notebook to do the following.</p>
+<p>Read in the FITS image using the <a class="reference external" href="http://astropy.io">astropy.io</a> package and plot it using the <a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html"><code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot.imshow()</span></code></a> function which is used to plot images from 2D arrays. You may wish to change the minimum and maximum colour values in the plot (using the <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code> keyword arguments) to make the features of the image more clear, you should inspect the maximum and minimum values of the data itself to when determining these values.</p>
+<p>Your plot should look something like this:</p>
 <p><img alt="" src="../../../_images/color_map1.png" /></p>
-<p>Note that the values of <code class="docutils literal notranslate"><span class="pre">vmin</span></code> and <code class="docutils literal notranslate"><span class="pre">vmax</span></code> were chosen to make the plot look presentable.</p>
-</section>
-<section id="extracting-the-region-of-interest">
-<h2>Extracting the Region of Interest<a class="headerlink" href="#extracting-the-region-of-interest" title="Link to this heading">#</a></h2>
-<p>The dark regions of the image are of no interest to us. Extract a 601 by 601 pixel sub-image from the central region of <code class="docutils literal notranslate"><span class="pre">img</span></code> by slicing it and plot this. Follow the following steps to achieve this:</p>
-<ol class="arabic simple">
-<li><p>Find central the pixel’s coordinates: <code class="docutils literal notranslate"><span class="pre">midx</span></code> and <code class="docutils literal notranslate"><span class="pre">midy</span></code></p></li>
-<li><p>Extract a sub-image centred on these pixels (call it <code class="docutils literal notranslate"><span class="pre">img_new</span></code>). Take the region starting 300 pixels before (<code class="docutils literal notranslate"><span class="pre">midx</span></code>, <code class="docutils literal notranslate"><span class="pre">midy</span></code>) and ending 300 pixels after (<code class="docutils literal notranslate"><span class="pre">midx</span></code>, <code class="docutils literal notranslate"><span class="pre">midy</span></code>). In other words:</p>
+<p>where the keyword arguments:</p>
 <ul class="simple">
-<li><p>The <span class="math notranslate nohighlight">\(x\)</span>-range of the image should be from <code class="docutils literal notranslate"><span class="pre">midx</span> <span class="pre">-</span> <span class="pre">300</span></code> up to and <strong>including</strong> <code class="docutils literal notranslate"><span class="pre">midx</span> <span class="pre">+</span> <span class="pre">300</span></code></p></li>
-<li><p>And the <span class="math notranslate nohighlight">\(y\)</span>-range from  <code class="docutils literal notranslate"><span class="pre">midy</span> <span class="pre">-</span> <span class="pre">300</span></code> up to and <strong>including</strong> <code class="docutils literal notranslate"><span class="pre">midy</span> <span class="pre">+</span> <span class="pre">300</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmin=1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">vmax=50</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cmap='gist_heat'</span></code></p></li>
 </ul>
-</li>
-<li><p>Plot this extracted sub-image using <code class="docutils literal notranslate"><span class="pre">imshow</span></code> to verify that the primary region of interest is contained within the new image.</p></li>
-</ol>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Extracting the region of interest</span>
-
-<span class="c1"># Your code here</span>
-</pre></div>
-</div>
+<p>were used.</p>
+<section id="create-a-new-fits-file">
+<h2>Create a New FITS File<a class="headerlink" href="#create-a-new-fits-file" title="Link to this heading">#</a></h2>
+<p>The dark regions of the image are of no interest. Extract a square region of about 600 pixels from the center of the image, and plot this. Create a new FITS file for this smaller sub-image. Make sure to get the RA and Dec of the midpoint coordinates in the original image, and assign those coordinates to the centre pixels of new sub-image (CRVAL1 and CRVAL 2 properties of the header) (WCS will be needed for this).</p>
 </section>
-<section id="create-a-new-fits-image">
-<h2>Create a New FITS Image<a class="headerlink" href="#create-a-new-fits-image" title="Link to this heading">#</a></h2>
-<p>Now, to create the new FITS image from this extracted image.
-The purpose of the code that follows is to:</p>
-<ol class="arabic simple">
-<li><p>Manually create the header by using astropy to create a very basic header.</p></li>
-<li><p>Get RA, Dec of midx, midy in original image, and assign those coordinates to centre pixels of new sub-image (WCS will be needed for this).</p></li>
-<li><p>Add the astronometry keywords from the <strong>ex11.2.fits</strong> header.</p></li>
-<li><p>Update BUNIT as you will be calibrating the image later.</p></li>
-</ol>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">hdu_new</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">PrimaryHDU</span><span class="p">(</span><span class="n">img_new</span><span class="p">)</span> 
-<span class="n">hdulist_new</span> <span class="o">=</span> <span class="n">fits</span><span class="o">.</span><span class="n">HDUList</span><span class="p">([</span><span class="n">hdu_new</span><span class="p">])</span>
-<span class="n">hdr_new</span> <span class="o">=</span> <span class="n">hdulist_new</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">header</span> 
-
-<span class="c1">#initialise WCSAxes:</span>
-<span class="n">wcs</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">hdr</span><span class="p">)</span>
-
-<span class="c1">#get RA, Dec of midx, midy in original image, and assign those </span>
-<span class="c1">#coordinates to centre pixels of new sub-image:</span>
-<span class="n">ref_coords</span> <span class="o">=</span> <span class="n">wcs</span><span class="o">.</span><span class="n">wcs_pix2world</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">midx</span><span class="p">,</span><span class="n">midy</span><span class="p">]]),</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="c1">#now add the astronometry keywords from the ex11.2.fits header:</span>
-<span class="n">hdr_new</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CRVAL1</span><span class="o">=</span><span class="n">ref_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">CRVAL2</span><span class="o">=</span><span class="n">ref_coords</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span> 
-<span class="n">hdr_new</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CRPIX1</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">CRPIX2</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
-<span class="n">hdr_new</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CDELT1</span><span class="o">=</span><span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;CDELT1&#39;</span><span class="p">])</span> 
-<span class="n">hdr_new</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CDELT2</span><span class="o">=</span><span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;CDELT2&#39;</span><span class="p">])</span> 
-<span class="n">hdr_new</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CTYPE1</span><span class="o">=</span><span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;CTYPE1&#39;</span><span class="p">])</span> 
-<span class="n">hdr_new</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">CTYPE2</span><span class="o">=</span><span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;CTYPE2&#39;</span><span class="p">])</span> 
-
-<span class="c1">#we&#39;re going to calibrate the image, so we may as well update BUNIT:</span>
-<span class="n">hdr_new</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">BUNIT</span><span class="o">=</span><span class="s1">&#39;app mag&#39;</span><span class="p">)</span>
-<span class="n">wcs_new</span> <span class="o">=</span> <span class="n">WCS</span><span class="p">(</span><span class="n">hdr_new</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="investigating-the-background-noise">
-<h2>Investigating the Background Noise<a class="headerlink" href="#investigating-the-background-noise" title="Link to this heading">#</a></h2>
+<section id="investigating-background-noise-in-the-image">
+<h2>Investigating Background Noise in the Image<a class="headerlink" href="#investigating-background-noise-in-the-image" title="Link to this heading">#</a></h2>
 <p>The measurement contains background noise which should be subtracted in order to clarify the signal data. In this section you will investigate the noise distribution.</p>
-<p>From the original full-size image, extract the 400 x 400 pixels making up the top left corner (this starts at the index (0,0) up to 400 on each axis). These pixels are mostly noise pixels. Create a histogram of the values of these pixels, and calculate the mean and standard deviation of this distribution.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Investigating a sample of the background noise</span>
-
-<span class="c1">#Your code here</span>
-</pre></div>
-</div>
+<p>From the original full-size image, extract the 400 x 400 pixels making up the top left corner. These pixels are mostly noise pixels. Create a histogram of the values of these pixels, and calculate the mean and standard deviation of this distribution.</p>
 <p>The basic noise statistics are given in the FITS header:</p>
 <ul class="simple">
 <li><p>The mean of the noise is given by <code class="docutils literal notranslate"><span class="pre">hdr['SKY']</span></code></p></li>
 <li><p>The standard deviation of the noise is given by <code class="docutils literal notranslate"><span class="pre">hdr['SKYSIG']</span></code></p></li>
 </ul>
 <p>Compare your noise sample to this header information by overlaying a normal distribution with these moments over your histogram.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Comparing the background noise sample to the header data</span>
-
-<span class="c1">#Your code here</span>
-</pre></div>
-</div>
 </section>
 <section id="removing-the-background-noise">
 <h2>Removing the Background Noise<a class="headerlink" href="#removing-the-background-noise" title="Link to this heading">#</a></h2>
-<p>Subtract the sky background (as given in the header) from your sub-image.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">sky</span> <span class="o">=</span> <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;SKY&#39;</span><span class="p">]</span>
-<span class="n">img_new</span> <span class="o">=</span> <span class="n">img_new</span> <span class="o">-</span> <span class="n">sky</span>
-</pre></div>
-</div>
-<p>Once you have your sky-subtracted sub-image, apply a 2.5-sigma flux cut by setting any pixels <span class="math notranslate nohighlight">\(&lt; 2.5~\sigma~\)</span> to non-values.
-This will  get rid of most of the noise.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">skysig</span> <span class="o">=</span> <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;SKYSIG&#39;</span><span class="p">]</span>
-<span class="n">img_new</span><span class="p">[</span><span class="n">img_new</span> <span class="o">&lt;</span> <span class="mf">2.5</span><span class="o">*</span><span class="n">skysig</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
-</pre></div>
-</div>
+<p>Subtract the sky background mean (as given in the header) from your new image data.
+Once you have your sky-subtracted image, apply a 2.5-sigma flux cut by setting any pixels with values <span class="math notranslate nohighlight">\(&lt; 2.5~\sigma~\)</span> to non-values (<code class="docutils literal notranslate"><span class="pre">np.nan</span></code>).
+This will get rid of most of the noise.</p>
 </section>
 <section id="calibrating-the-new-image">
 <h2>Calibrating the New Image<a class="headerlink" href="#calibrating-the-new-image" title="Link to this heading">#</a></h2>
-<p>Photometrically calibrate your sky-subtracted, flux-cut sub-image using: apparent mag = MAGZP <span class="math notranslate nohighlight">\(-2.5 \log_{10}\)</span>(img).
+<p>Photometrically calibrate your sky-subtracted, flux-cut sub-image using the apparent magnitude, which can be calculated as: <span class="math notranslate nohighlight">\(\text{MAGZP} -2.5 \log_{10}(\text{image values})\)</span>.
 MAGZP is the magnitude zero point, given in the FITS header.</p>
-<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">magzp</span> <span class="o">=</span> <span class="n">hdr</span><span class="p">[</span><span class="s1">&#39;MAGZP&#39;</span><span class="p">]</span> 
-<span class="n">img_new</span> <span class="o">=</span> <span class="n">magzp</span> <span class="o">-</span> <span class="mf">2.5</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">img_new</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>Once you have made this calibration, make sure to update the <code class="docutils literal notranslate"><span class="pre">BUNIT</span></code> property of the header to <code class="docutils literal notranslate"><span class="pre">'app</span> <span class="pre">mag'</span></code>.</p>
 </section>
-<section id="saving-the-new-fits-file">
-<h2>Saving the New FITS File<a class="headerlink" href="#saving-the-new-fits-file" title="Link to this heading">#</a></h2>
-<p>Save the new image data to a new FITS file using <code class="docutils literal notranslate"><span class="pre">fits.writeto()</span></code>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fits</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="s1">&#39;ex11.2_sub.fits&#39;</span><span class="p">,</span> <span class="n">img_new</span><span class="p">,</span> <span class="n">hdr_new</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</pre></div>
-</div>
-</section>
-<section id="plotting-the-final-image">
-<h2>Plotting the Final Image<a class="headerlink" href="#plotting-the-final-image" title="Link to this heading">#</a></h2>
-<p>Finally, using a linear colour stretch (having an image in units of mag/arcsec<span class="math notranslate nohighlight">\(^2\)</span> automatically provides us with a logarithmic colour stretch):</p>
+<section id="saving-and-plotting-the-new-fits-file">
+<h2>Saving and Plotting the New FITS File<a class="headerlink" href="#saving-and-plotting-the-new-fits-file" title="Link to this heading">#</a></h2>
+<p>Save the new image data to a new FITS file using <code class="docutils literal notranslate"><span class="pre">fits.writeto()</span></code>.</p>
+<p>Finally plot the new image using WCS units for the axes. To do this you may use the WCS object for your new image as a <code class="docutils literal notranslate"><span class="pre">projection</span></code> for the plot. Example code used to produce a nice plot using this projection is shown below:</p>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">wcs_new</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">img_new</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_heat&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">)</span>
 <span class="n">ra</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;ra&#39;</span><span class="p">]</span> 
@@ -697,8 +611,9 @@ MAGZP is the magnitude zero point, given in the FITS header.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>which should produce a plot that looks like:</p>
 <p><img alt="" src="../../../_images/final.png" /></p>
-<p>Make sure to include this image alongside your code in you tutorial submission.</p>
+<p>Note that the plot uses a linear colour stretch as the image is in units of mag/arcsec<span class="math notranslate nohighlight">\(^2\)</span>, which automatically provides us with a logarithmic scale for values.</p>
 </section>
 </section>
 
@@ -715,7 +630,7 @@ MAGZP is the magnitude zero point, given in the FITS header.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./content\03-scientific-packages\04-astropy"
+            path: "./content/03-scientific-packages/04-astropy"
         },
         predefinedOutput: true
     }
@@ -757,8 +672,7 @@ MAGZP is the magnitude zero point, given in the FITS header.</p>
             
             
               
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
   <div class="sidebar-secondary-item">
@@ -767,15 +681,11 @@ MAGZP is the magnitude zero point, given in the FITS header.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-in-the-fits-image">Read In the FITS Image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-the-image">Plot the Image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-the-region-of-interest">Extracting the Region of Interest</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-fits-image">Create a New FITS Image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#investigating-the-background-noise">Investigating the Background Noise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-new-fits-file">Create a New FITS File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#investigating-background-noise-in-the-image">Investigating Background Noise in the Image</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#removing-the-background-noise">Removing the Background Noise</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibrating-the-new-image">Calibrating the New Image</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-the-new-fits-file">Saving the New FITS File</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-final-image">Plotting the Final Image</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-and-plotting-the-new-fits-file">Saving and Plotting the New FITS File</a></li>
 </ul>
   </nav></div>
 
@@ -824,8 +734,8 @@ By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
