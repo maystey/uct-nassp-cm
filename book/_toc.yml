@@ -129,6 +129,7 @@ parts:
     - file: content/04-numerical-methods/01-root-finding/04-comparison
     - file: content/04-numerical-methods/01-root-finding/05-scipy
     - file: content/04-numerical-methods/01-root-finding/05=exercise-scipy
+    - file: content/04-numerical-methods/01-root-finding/06-uncertainty
 
   - file: content/04-numerical-methods/02-curve-fitting/00-intro
     sections:
@@ -169,3 +170,8 @@ parts:
     - file: content/04-numerical-methods/05-uncertainty/01-typeA
     - file: content/04-numerical-methods/05-uncertainty/01=exercise-typeA
     - file: content/04-numerical-methods/05-uncertainty/02-typeB
+    - file: content/04-numerical-methods/05-uncertainty/03-combining
+    - file: content/04-numerical-methods/05-uncertainty/04-expanded
+    - file: content/04-numerical-methods/05-uncertainty/05-comparing   
+    - file: content/04-numerical-methods/05-uncertainty/06-reporting
+    
