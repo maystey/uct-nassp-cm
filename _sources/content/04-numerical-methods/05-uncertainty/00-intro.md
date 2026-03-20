@@ -29,11 +29,11 @@ We cannot know the value of the measurand with absolute certainty due to:
 The result of a measurement is usually quoted as the **best approximation** of the measurand, along with an estimated uncertainty of the measurand. The **standard uncertainty** is the uncertainty of a measurement expressed as a standard deviation.
 
 ```{important}
-    Some people use the term "error" interchangeably with "uncertainty". In these notes the term "standard uncertainty" will be used precisely as described in the GUM. The term "error" will be used in more general cases:
+Some people use the term "error" interchangeably with "uncertainty". In these notes the term "standard uncertainty" will be used precisely as described in the GUM. The term "error" will be used in more general cases:
 
-    - Errors as flaws in code (syntax / runtime errors)
-    - Errors as resulting from approximations / truncations in numerical methods (truncation error)
-    - Errors as the difference between an approximated value and the analytical value (true error / absolute error)
+- Errors as flaws in code (syntax / runtime errors)
+- Errors as resulting from approximations / truncations in numerical methods (truncation error)
+- Errors as the difference between an approximated value and the analytical value (true error / absolute error)
 ```
 
 ```{admonition} What is the uncertainty of a measurement?

@@ -301,6 +301,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../01-root-finding/04-comparison.html"><span>15.4</span> Comparing the Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01-root-finding/05-scipy.html"><span>15.5</span> Root Finding Using SciPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01-root-finding/05%3Dexercise-scipy.html">Exercise <span>15.5</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-root-finding/06-uncertainty.html"><span>15.6</span> Error and Uncertainty Estimation in Numerical Root Finding</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02-curve-fitting/00-intro.html"><span>16</span> Curve Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -341,6 +342,10 @@
 <li class="toctree-l2"><a class="reference internal" href="01-typeA.html"><span>19.1</span> Type A Uncertainty Evaluation</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercise <span>19.1</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="02-typeB.html"><span>19.2</span> Type B Uncertainty Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-combining.html"><span>19.3</span> Combined Standard Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-expanded.html"><span>19.4</span> Expanded Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-comparing.html"><span>19.5</span> Comparing Quantities with Uncertainties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
 </ul>
 </details></li>
 </ul>
@@ -554,10 +559,12 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-19-1">
 <h1>Exercise <span>19.1</span><a class="headerlink" href="#exercise-19-1" title="Link to this heading">#</a></h1>
-<p>In <a class="reference external" href="https://maystey.github.io/uct-nassp-cm/content/03-scientific-packages/01-numpy/05%3Dexercise-where.html#question-2">Exercise 11.5</a> you were tasked with approximating <span class="math notranslate nohighlight">\(\pi\)</span> using a Monte-Carlo method.
+<p>In {doc}’../../03-scientific-packages/01-numpy/05=exercise-where’</p>
+<!-- [Exercise 11.5](https://maystey.github.io/uct-nassp-cm/content/03-scientific-packages/01-numpy/05%3Dexercise-where.html#question-2)  -->
+<p>you were tasked with approximating <span class="math notranslate nohighlight">\(\pi\)</span> using a Monte-Carlo method.
 Here you are tasked with determining the standard uncertainty of your approximation using a Type A uncertainty analysis.
 Before that, here is a recap of the problem:</p>
-<p>The area of a circle (<span class="math notranslate nohighlight">\(A_\circ\)</span>) can be approximated by generating <span class="math notranslate nohighlight">\(N\)</span> random points inside a square region (with area <span class="math notranslate nohighlight">\(A_square\)</span>) containing this circle, counting how many points fall inside the circle <span class="math notranslate nohighlight">\(N_circle\)</span> and using this in the relation:</p>
+<p>The area of a circle (<span class="math notranslate nohighlight">\(A_\circ\)</span>) can be approximated by generating <span class="math notranslate nohighlight">\(N\)</span> random points inside a square region (with area <span class="math notranslate nohighlight">\(A_\square\)</span>) containing this circle, counting how many points fall inside the circle <span class="math notranslate nohighlight">\(N_\circ\)</span> and using this in the relation:</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{N_\circ}{N} \approx \frac{A_\circ}{A_\square}
@@ -574,7 +581,9 @@ A_\circ = \pi r^2
 \]</div>
 <section id="question-1">
 <h2>Question 1<a class="headerlink" href="#question-1" title="Link to this heading">#</a></h2>
-<p>If you haven’t already done so for Exercise 11.5, write a program that takes a user input for <span class="math notranslate nohighlight">\(N\)</span> and prints an approximation for <span class="math notranslate nohighlight">\(pi\)</span>.
+<p>If you haven’t already done so for {doc}’../../03-scientific-packages/01-numpy/05=exercise-where’</p>
+<!-- Exercise 11.5,  -->
+<p>write a program that takes a user input for <span class="math notranslate nohighlight">\(N\)</span> and prints an approximation for <span class="math notranslate nohighlight">\(pi\)</span>.
 Run the program a few times for the same value of <span class="math notranslate nohighlight">\(N\)</span>; do you notice the value changing?</p>
 </section>
 <section id="question-2">

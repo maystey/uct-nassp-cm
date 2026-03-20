@@ -301,6 +301,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../01-root-finding/04-comparison.html"><span>15.4</span> Comparing the Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01-root-finding/05-scipy.html"><span>15.5</span> Root Finding Using SciPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../01-root-finding/05%3Dexercise-scipy.html">Exercise <span>15.5</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-root-finding/06-uncertainty.html"><span>15.6</span> Error and Uncertainty Estimation in Numerical Root Finding</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../02-curve-fitting/00-intro.html"><span>16</span> Curve Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -341,6 +342,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/01-typeA.html"><span>19.1</span> Type A Uncertainty Evaluation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/01%3Dexercise-typeA.html">Exercise <span>19.1</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/02-typeB.html"><span>19.2</span> Type B Uncertainty Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/03-combining.html"><span>19.3</span> Combined Standard Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/04-expanded.html"><span>19.4</span> Expanded Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/05-comparing.html"><span>19.5</span> Comparing Quantities with Uncertainties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
 </ul>
 </details></li>
 </ul>
@@ -778,8 +783,8 @@ y = 1 + \arctan(x)
 </div><section id="coupled-and-higher-order-odes">
 <h3>Coupled and Higher Order ODEs<a class="headerlink" href="#coupled-and-higher-order-odes" title="Link to this heading">#</a></h3>
 <p>As we have discussed in a previous page, higher order ODEs can be reduced to a collection of coupled first order ODEs, for example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-91b9e616-1585-4e89-b565-b1db3e61d0c9">
-<span class="eqno">(5)<a class="headerlink" href="#equation-91b9e616-1585-4e89-b565-b1db3e61d0c9" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-438fb800-0291-4b84-938a-e71560a14b69">
+<span class="eqno">(5)<a class="headerlink" href="#equation-438fb800-0291-4b84-938a-e71560a14b69" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{d y_1}{dx} &amp;= f_1(x, y_1, y_2, \dots, y_m)\\
 \frac{d y_2}{dx} &amp;= f_2(x, y_1, y_2, \dots, y_m)\\
                  &amp;\vdots \\

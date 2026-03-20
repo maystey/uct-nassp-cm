@@ -301,6 +301,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/04-comparison.html"><span>15.4</span> Comparing the Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/05-scipy.html"><span>15.5</span> Root Finding Using SciPy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/05%3Dexercise-scipy.html">Exercise <span>15.5</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/01-root-finding/06-uncertainty.html"><span>15.6</span> Error and Uncertainty Estimation in Numerical Root Finding</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/02-curve-fitting/00-intro.html"><span>16</span> Curve Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -341,6 +342,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/01-typeA.html"><span>19.1</span> Type A Uncertainty Evaluation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/01%3Dexercise-typeA.html">Exercise <span>19.1</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/02-typeB.html"><span>19.2</span> Type B Uncertainty Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/03-combining.html"><span>19.3</span> Combined Standard Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/04-expanded.html"><span>19.4</span> Expanded Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/05-comparing.html"><span>19.5</span> Comparing Quantities with Uncertainties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
 </ul>
 </details></li>
 </ul>
@@ -665,7 +670,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/7c6a0d3d08a07e42322dfa90f976545161c3763bf6c417b20c8f96aabfbce713.png" src="../../../_images/7c6a0d3d08a07e42322dfa90f976545161c3763bf6c417b20c8f96aabfbce713.png" />
+<img alt="../../../_images/02636735c7e3ee9973fd4db387ff953a8bd26fa6318040050931f5f80486ec47.png" src="../../../_images/02636735c7e3ee9973fd4db387ff953a8bd26fa6318040050931f5f80486ec47.png" />
 </div>
 </div>
 <p>Note that axis 0 of <code class="docutils literal notranslate"><span class="pre">points</span></code> is used to represent the x and y values, and axis 1 represents points. i.e. for the points <span class="math notranslate nohighlight">\((x_0, y_0), (x_1, y_1), \dots, (x_{49}, y_{49})\)</span>, <code class="docutils literal notranslate"><span class="pre">points</span></code> is:</p>
@@ -708,7 +713,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/7e165cd75485d4f14c256142fe670c95ca289b38780b793c0f41d20a5f3986e1.png" src="../../../_images/7e165cd75485d4f14c256142fe670c95ca289b38780b793c0f41d20a5f3986e1.png" />
+<img alt="../../../_images/91e34fb7f6d86bd0d08224cff8ca5a9ad3f04bee847150d3f4a23bf81b2233f0.png" src="../../../_images/91e34fb7f6d86bd0d08224cff8ca5a9ad3f04bee847150d3f4a23bf81b2233f0.png" />
 </div>
 </div>
 <p>Note that, in the example above, we have used an array of booleans to <strong>slice the elements of the array which are true</strong>. We have also use the <strong>bitwise compliment</strong> to get the complement of our comparison result, there is no need to recalculate it.</p>
@@ -730,7 +735,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/8e37b3f43ab776b0cef6f494b9d5d6c9c73641d4b531f046d500db8a64e3e510.png" src="../../../_images/8e37b3f43ab776b0cef6f494b9d5d6c9c73641d4b531f046d500db8a64e3e510.png" />
+<img alt="../../../_images/81c5f9d42e7957856763c7dc2cd08be0f3e7efe4460fd406cb809e61415b3631.png" src="../../../_images/81c5f9d42e7957856763c7dc2cd08be0f3e7efe4460fd406cb809e61415b3631.png" />
 </div>
 </div>
 </div></section>
