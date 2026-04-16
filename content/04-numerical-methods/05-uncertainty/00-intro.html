@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>19 Uncertainty Analysis for Numerical Methods &#8212; AST4007W Computational Methods</title>
+    <title>1 Uncertainty Analysis for Numerical Methods &#8212; AST4007W Computational Methods</title>
   
   
   
@@ -327,6 +327,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../03-ode/03%3Dexercise-higher-order.html">Exercise <span>17.3</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03-ode/04-runge-kutta.html"><span>17.4</span> Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03-ode/04%3Dexercise-runge-kutta.html">Exercise <span>17.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-ode/05-extrapolation.html"><span>1</span> Applying Richardson Extrapolation to Euler’s Method</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04-integration/00-intro.html"><span>18</span> Numerical Integration Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -338,7 +339,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#"><span>1</span> Uncertainty Analysis for Numerical Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="01-typeA.html"><span>19.1</span> Type A Uncertainty Evaluation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="01%3Dexercise-typeA.html">Exercise <span>19.1</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="02-typeB.html"><span>19.2</span> Type B Uncertainty Evaluation</a></li>
@@ -348,6 +349,7 @@
 <li class="toctree-l2"><a class="reference internal" href="06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-extrapolation/00-intro.html"><span>20</span> Richardson Extrapolation</a></li>
 </ul>
 
     </div>
@@ -533,7 +535,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>19 Uncertainty Analysis for Numerical Methods</h1>
+    <h1>1 Uncertainty Analysis for Numerical Methods</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -559,7 +561,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="uncertainty-analysis-for-numerical-methods">
-<h1><span>19</span> Uncertainty Analysis for Numerical Methods<a class="headerlink" href="#uncertainty-analysis-for-numerical-methods" title="Link to this heading">#</a></h1>
+<h1><span>1</span> Uncertainty Analysis for Numerical Methods<a class="headerlink" href="#uncertainty-analysis-for-numerical-methods" title="Link to this heading">#</a></h1>
 <p>In this chapter the measurement uncertainty framework outlined in the Guide to the expression of uncertainty in measurement is introduced.
 This will be adapted to the numerical methods covered in this course more directly in each of the chapters dedicated to the numerical methods.</p>
 <p>In this chapter works from the Joint Committee for Guides in Metrology (JCGM) are used, specifically:</p>
@@ -571,8 +573,9 @@ This will be adapted to the numerical methods covered in this course more direct
 <!-- Metrology is the science of measurement (normally physical) - terminology will reflect this -->
 <p>The context for the GUM framework is metrology - the science of measurement (normally physical).
 The terminology will reflect the physical nature of this framework, and much of our uses for it are adaptations or extensions of the framework.</p>
-<div class="info admonition">
-<p class="admonition-title">What is a measurement?</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>What is a measurement?</p>
 <p>The objective of a measurement is to determine the unique value of a physical quantity called the <strong>measurand</strong>.</p>
 </div>
 <p>We cannot know the value of the measurand with absolute certainty due to:</p>
@@ -590,8 +593,9 @@ The terminology will reflect the physical nature of this framework, and much of 
 <li><p>Errors as the difference between an approximated value and the analytical value (true error / absolute error)</p></li>
 </ul>
 </div>
-<div class="info admonition">
-<p class="admonition-title">What is the uncertainty of a measurement?</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>What is the uncertainty of a measurement?</p>
 <p>From the GUM <span id="id3">[<a class="reference internal" href="#id20" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. Evaluation of measurement data — Guide to the expression of uncertainty in measurement. Joint Committee for Guides in Metrology, JCGM 100:2008. URL: https://www.bipm.org/documents/20126/2071204/JCGM\_100\_2008\_E.pdf/cb0ef43f-baa5-11cf-3f85-4dcd86f77bd6.">U1</a>]</span> and VIM <span id="id4">[<a class="reference internal" href="#id22" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. International vocabulary of metrology — Basic and general concepts and associated terms (VIM). Joint Committee for Guides in Metrology, JCGM 200:2012. (3rd edition). URL: https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf/f0e1ad45-d337-bbeb-53a6-15fe649d0ff1.">U2</a>]</span>:</p>
 <blockquote>
 <div><p>The uncertainty parameter, associated with the result of a measurement, that characterizes the dispersion of the values that could reasonably be attributed to the measurand.</p>
@@ -616,13 +620,15 @@ The terminology will reflect the physical nature of this framework, and much of 
 <p>To determine the standard uncertainty of a measurand, knowledge of what the possible measurand values is needed.
 This is often in the form on a <strong>probability distribution function</strong> (PDF).</p>
 <p>There are two types of methodologies on the GUM framework for evaluating the uncertainty of a measurement result:</p>
-<div class="admonition-type-a-evaluation-of-uncertainty admonition">
-<p class="admonition-title">Type A evaluation of uncertainty</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Type A evaluation of uncertainty</p>
 <p>Evaluating uncertainty by <strong>statistical analysis</strong> of a series of observations.
 The PDF is derived from the observed frequency distribution of measurements.</p>
 </div>
-<div class="admonition-type-b-evaluation-of-uncertainty admonition">
-<p class="admonition-title">Type B evaluation of uncertainty</p>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>Type B evaluation of uncertainty</p>
 <p>Evaluation of uncertainty by other means (includes single measurements).
 The PDF is assumed based on knowledge of measurement.</p>
 </div>

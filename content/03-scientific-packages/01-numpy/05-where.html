@@ -327,6 +327,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/03%3Dexercise-higher-order.html">Exercise <span>17.3</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/04-runge-kutta.html"><span>17.4</span> Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/04%3Dexercise-runge-kutta.html">Exercise <span>17.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/05-extrapolation.html"><span>17.5</span> Applying Richardson Extrapolation to Euler’s Method</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/04-integration/00-intro.html"><span>18</span> Numerical Integration Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -348,6 +349,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04-numerical-methods/06-extrapolation/00-intro.html"><span>20</span> Richardson Extrapolation</a></li>
 </ul>
 
     </div>
@@ -670,7 +672,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../../_images/02636735c7e3ee9973fd4db387ff953a8bd26fa6318040050931f5f80486ec47.png" src="../../../_images/02636735c7e3ee9973fd4db387ff953a8bd26fa6318040050931f5f80486ec47.png" />
+<img alt="../../../_images/4da9128d9c04835201c8e4976d25c5fe5dceccca247d7662a0972579ed28a34d.png" src="../../../_images/4da9128d9c04835201c8e4976d25c5fe5dceccca247d7662a0972579ed28a34d.png" />
 </div>
 </div>
 <p>Note that axis 0 of <code class="docutils literal notranslate"><span class="pre">points</span></code> is used to represent the x and y values, and axis 1 represents points. i.e. for the points <span class="math notranslate nohighlight">\((x_0, y_0), (x_1, y_1), \dots, (x_{49}, y_{49})\)</span>, <code class="docutils literal notranslate"><span class="pre">points</span></code> is:</p>
@@ -713,7 +715,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/91e34fb7f6d86bd0d08224cff8ca5a9ad3f04bee847150d3f4a23bf81b2233f0.png" src="../../../_images/91e34fb7f6d86bd0d08224cff8ca5a9ad3f04bee847150d3f4a23bf81b2233f0.png" />
+<img alt="../../../_images/0c35c53a4a290cd86b0af56ea0bf174a187ddb8f0fc9ddce247101d19b2c7fe0.png" src="../../../_images/0c35c53a4a290cd86b0af56ea0bf174a187ddb8f0fc9ddce247101d19b2c7fe0.png" />
 </div>
 </div>
 <p>Note that, in the example above, we have used an array of booleans to <strong>slice the elements of the array which are true</strong>. We have also use the <strong>bitwise compliment</strong> to get the complement of our comparison result, there is no need to recalculate it.</p>
@@ -735,7 +737,7 @@ document.write(`
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;y&#39;)
 </pre></div>
 </div>
-<img alt="../../../_images/81c5f9d42e7957856763c7dc2cd08be0f3e7efe4460fd406cb809e61415b3631.png" src="../../../_images/81c5f9d42e7957856763c7dc2cd08be0f3e7efe4460fd406cb809e61415b3631.png" />
+<img alt="../../../_images/c41c583427e10703b7b7643bbbf729cafc4e6e0dd3694f31afeedc84970c30ef.png" src="../../../_images/c41c583427e10703b7b7643bbbf729cafc4e6e0dd3694f31afeedc84970c30ef.png" />
 </div>
 </div>
 </div></section>

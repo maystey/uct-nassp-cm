@@ -327,6 +327,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/03%3Dexercise-higher-order.html">Exercise <span>17.3</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/04-runge-kutta.html"><span>17.4</span> Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/04%3Dexercise-runge-kutta.html">Exercise <span>17.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/03-ode/05-extrapolation.html"><span>17.5</span> Applying Richardson Extrapolation to Euler’s Method</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/04-integration/00-intro.html"><span>18</span> Numerical Integration Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -348,6 +349,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../04-numerical-methods/06-extrapolation/00-intro.html"><span>20</span> Richardson Extrapolation</a></li>
 </ul>
 
     </div>
@@ -570,7 +572,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9170781651021015
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8142765941970963
 </pre></div>
 </div>
 </div>
@@ -583,7 +585,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.40536076, 0.76164446, 0.40880477, 0.5238797 , 0.92533605])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.14725386, 0.5836487 , 0.50438239, 0.01661917, 0.09801697])
 </pre></div>
 </div>
 </div>
@@ -595,8 +597,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.20435859, 0.32993302, 0.01133293],
-       [0.11669225, 0.81498708, 0.84480141]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.91917698, 0.49336068, 0.2572832 ],
+       [0.05185916, 0.36984394, 0.11812297]])
 </pre></div>
 </div>
 </div>
@@ -613,7 +615,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([18.94161786, 28.67258578, 28.28791065, 25.33282371])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([28.39181973, 20.04006027, 29.45873827, 26.58072065])
 </pre></div>
 </div>
 </div>
@@ -645,7 +647,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([6, 4, 1])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4, 7, 7])
 </pre></div>
 </div>
 </div>
@@ -657,8 +659,8 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[3, 6, 7, 1],
-       [8, 9, 1, 2]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[6, 5, 6, 2],
+       [7, 4, 4, 6]])
 </pre></div>
 </div>
 </div>

@@ -327,6 +327,7 @@
 <li class="toctree-l2"><a class="reference internal" href="03%3Dexercise-higher-order.html">Exercise <span>17.3</span></a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><span>17.4</span> Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="04%3Dexercise-runge-kutta.html">Exercise <span>17.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-extrapolation.html"><span>17.5</span> Applying Richardson Extrapolation to Euler’s Method</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04-integration/00-intro.html"><span>18</span> Numerical Integration Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -348,6 +349,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-extrapolation/00-intro.html"><span>20</span> Richardson Extrapolation</a></li>
 </ul>
 
     </div>
@@ -783,8 +785,8 @@ y = 1 + \arctan(x)
 </div><section id="coupled-and-higher-order-odes">
 <h3>Coupled and Higher Order ODEs<a class="headerlink" href="#coupled-and-higher-order-odes" title="Link to this heading">#</a></h3>
 <p>As we have discussed in a previous page, higher order ODEs can be reduced to a collection of coupled first order ODEs, for example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-438fb800-0291-4b84-938a-e71560a14b69">
-<span class="eqno">(5)<a class="headerlink" href="#equation-438fb800-0291-4b84-938a-e71560a14b69" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9ebb2adf-7244-4892-8eb5-7caf22aa7739">
+<span class="eqno">(5)<a class="headerlink" href="#equation-9ebb2adf-7244-4892-8eb5-7caf22aa7739" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{d y_1}{dx} &amp;= f_1(x, y_1, y_2, \dots, y_m)\\
 \frac{d y_2}{dx} &amp;= f_2(x, y_1, y_2, \dots, y_m)\\
                  &amp;\vdots \\

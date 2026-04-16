@@ -327,6 +327,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../03-ode/03%3Dexercise-higher-order.html">Exercise <span>17.3</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03-ode/04-runge-kutta.html"><span>17.4</span> Runge-Kutta Methods</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../03-ode/04%3Dexercise-runge-kutta.html">Exercise <span>17.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-ode/05-extrapolation.html"><span>17.5</span> Applying Richardson Extrapolation to Euler’s Method</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../04-integration/00-intro.html"><span>18</span> Numerical Integration Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -348,6 +349,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
 </ul>
 </details></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-extrapolation/00-intro.html"><span>20</span> Richardson Extrapolation</a></li>
 </ul>
 
     </div>
@@ -574,7 +576,7 @@ y = a_0 + a_1 x
 <p>If we assume that the <span class="math notranslate nohighlight">\(x_i\)</span> are free of error, we can introduce error terms <font color = "red"> <span class="math notranslate nohighlight">\(\epsilon_i\)</span> </font> to the <span class="math notranslate nohighlight">\(y_i\)</span> data to make up for the dispersion of the data (i.e. that it doesn’t follow the linear relation exactly).</p>
 <div class="cell tag_remove_input tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/7c67429fac9c14102358eb4061aa5ff499e069354809d8b6f1eab5cd69820c8c.png" src="../../../_images/7c67429fac9c14102358eb4061aa5ff499e069354809d8b6f1eab5cd69820c8c.png" />
+<img alt="../../../_images/939e443a24ab848b8c0210fa03cf6a55e7e8fb762eeffb0a2311307082077614.png" src="../../../_images/939e443a24ab848b8c0210fa03cf6a55e7e8fb762eeffb0a2311307082077614.png" />
 </div>
 </div>
 <p>With this error term, the relation between our data points can be represented as:</p>
