@@ -522,7 +522,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -538,6 +540,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -549,13 +560,25 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-16-1-2">
 <h1>Exercise <span>16.1.2</span><a class="headerlink" href="#exercise-16-1-2" title="Link to this heading">#</a></h1>
-<p>Write a program to calculate the <span class="math notranslate nohighlight">\(\chi^2\)</span> estimates of <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>. For the functional relation</p>
+<section id="question-1">
+<h2>Question 1<a class="headerlink" href="#question-1" title="Link to this heading">#</a></h2>
+<p>Using pen-and-paper, reproduce the results from Equations <a class="reference internal" href="03-chi-squared.html#equation-chisqr-a0">(10)</a>, <a class="reference internal" href="03-chi-squared.html#equation-chisqr-a1">(11)</a>, <a class="reference internal" href="03-chi-squared.html#equation-chisqr-u-a0">(12)</a> and <a class="reference internal" href="03-chi-squared.html#equation-chisqr-u-a1">(13)</a> yourself.</p>
+</section>
+<section id="question-2">
+<h2>Question 2<a class="headerlink" href="#question-2" title="Link to this heading">#</a></h2>
+<p>Write a program to calculate the constants <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> with uncertainties for the functional relation</p>
 <div class="math notranslate nohighlight">
 \[
 y = a_0 + a_1 x
 \]</div>
-<p>where each <span class="math notranslate nohighlight">\(y_i\)</span> has a given error of <span class="math notranslate nohighlight">\(\sigma_i\)</span>.</p>
-<p>Test your program by reading the data in <a class="reference download internal" download="" href="../../../_downloads/47c73b9966c75ea31cd2b2a37f2279cd/data01.txt"><code class="xref download docutils literal notranslate"><span class="pre">./exercise-data/data01.txt</span></code></a>. (<strong>Answers:</strong> <span class="math notranslate nohighlight">\(a_0 = 2.81\)</span> and <span class="math notranslate nohighlight">\(a_1 = 17.13\)</span>)</p>
+<p>using <span class="math notranslate nohighlight">\(chi^2\)</span> minimization from a set of <span class="math notranslate nohighlight">\(x_i\)</span>, <span class="math notranslate nohighlight">\(y_i\)</span> and <span class="math notranslate nohighlight">\(u(y_i) = \sigma_i\)</span> data points.</p>
+<p>Test your program by reading the data in <a class="reference download internal" download="" href="../../../_downloads/a9dbb2769e39ba37b684011dc5cad4e1/data_chisqr_01.txt"><code class="xref download docutils literal notranslate"><span class="pre">./exercise-data/data_chisqr_01.txt</span></code></a>.</p>
+<p><strong>Answers:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a_0 = 2.8(4.6)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a_1 = 17.13(0.57)\)</span>)</p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -612,6 +635,22 @@ y = a_0 + a_1 x
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

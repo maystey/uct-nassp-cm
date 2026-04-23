@@ -547,7 +547,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">The Problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-solution">The Solution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-y">Variance of <span class="math notranslate nohighlight">\(y\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-uncertainties">Determining Uncertainties</a></li>
 </ul>
             </nav>
         </div>
@@ -576,7 +576,7 @@ y = a_0 + a_1 x
 <p>If we assume that the <span class="math notranslate nohighlight">\(x_i\)</span> are free of error, we can introduce error terms <font color = "red"> <span class="math notranslate nohighlight">\(\epsilon_i\)</span> </font> to the <span class="math notranslate nohighlight">\(y_i\)</span> data to make up for the dispersion of the data (i.e. that it doesn’t follow the linear relation exactly).</p>
 <div class="cell tag_remove_input tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/939e443a24ab848b8c0210fa03cf6a55e7e8fb762eeffb0a2311307082077614.png" src="../../../_images/939e443a24ab848b8c0210fa03cf6a55e7e8fb762eeffb0a2311307082077614.png" />
+<img alt="../../../_images/79b9b2b13d27431ddfbbfad189e1b92cf8b234ab848a53a99ee8cec50cec646f.png" src="../../../_images/79b9b2b13d27431ddfbbfad189e1b92cf8b234ab848a53a99ee8cec50cec646f.png" />
 </div>
 </div>
 <p>With this error term, the relation between our data points can be represented as:</p>
@@ -599,6 +599,7 @@ S = \sum_{i=1}^{N} (a_0 + a_1 x_i - y_i)^2
 \[\begin{align*}
  \frac{\partial S}{\partial a_0} = 2\sum_{i = 1}^{N} (a_0 + a_1 x_i - y_i) &amp;= 0\\
  \therefore a_0 N + a_1 \sum_{i = 1}^{N} x_i - \sum_{i = 1}^{N} y_i        &amp;= 0\\
+ \\
  \therefore a_0 + a_1 \langle x \rangle                                    &amp;= \langle y \rangle \\
 \end{align*}\]</div>
 <p>and <span class="math notranslate nohighlight">\(a_1\)</span>:</p>
@@ -606,27 +607,21 @@ S = \sum_{i=1}^{N} (a_0 + a_1 x_i - y_i)^2
 \[\begin{align*}
  \frac{\partial S}{\partial a_1} = 2\sum_{i = 1}^{N} (a_0 + a_1 x_i - y_i)x_i                &amp;= 0\\
  \therefore a_0 \sum_{i = 1}^{N} x_i + a_1 \sum_{i = 1}^{N} x_i^2 - \sum_{i = 1}^{N} x_i y_i &amp;= 0\\
+ \\
  a_0 \langle x \rangle + a_1 \langle x^2 \rangle                                             &amp;= \langle xy \rangle\\
 \end{align*}\]</div>
 <p>To solve this system of equations we could use a matrix equation and let the computer determine the solution to that numerically, but with only two equations and unknowns, an analytic solution is easy enough to find:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
+<div class="math notranslate nohighlight" id="equation-lsqr-a1">
+<span class="eqno">(5)<a class="headerlink" href="#equation-lsqr-a1" title="Link to this equation">#</a></span>\[\begin{split}
+a_1 = \frac{\langle xy \rangle - \langle x \rangle\langle y \rangle}{\langle x^2 \rangle - \langle x \rangle^2}\\
+\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight" id="equation-lsqr-a0">
+<span class="eqno">(6)<a class="headerlink" href="#equation-lsqr-a0" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{align*}
-a_1 &amp;= \frac{\langle xy \rangle - \langle x \rangle\langle y \rangle}{\langle x^2 \rangle - \langle x \rangle^2}\\
 a_0 &amp;= \langle y \rangle - a_1 \langle x \rangle\\
-\end{align*}
-\end{split}\]</div>
-</section>
-<section id="variance-of-y">
-<h2>Variance of <span class="math notranslate nohighlight">\(y\)</span><a class="headerlink" href="#variance-of-y" title="Link to this heading">#</a></h2>
-<p>If we assume that the <span class="math notranslate nohighlight">\(y_i\)</span> data points are distributed around the “true” <span class="math notranslate nohighlight">\(y\)</span> values for the given <span class="math notranslate nohighlight">\(x_i\)</span> by a Gaussian distribution with constant variance, we can calculate the variance of <span class="math notranslate nohighlight">\(y\)</span> as:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
-\sigma_y^2  &amp; = \frac{1}{N}\sum_{i=1}^N \epsilon_i^2\\
-&amp; = \frac{1}{N} \sum_{i=1}^N (a_0 + a_1 x_i - y_i)^2\\
-\end{align*}
-\end{split}\]</div>
+    &amp;= \frac{\left\langle x^2 \right\rangle \langle y \rangle - \langle x \rangle \langle x y \rangle}{\left\langle x^2 \right\rangle - \langle x \rangle^2}
+\end{align*}\end{split}\]</div>
 <div class="worked-example">
     <p class="worked-example-title">Worked Example - Cepheid Variables</p><p>For this worked example we will use data from Cepheid variables. These are pulsating stars with their luminosity (or magnitude <span class="math notranslate nohighlight">\(M\)</span>) related to the period (<span class="math notranslate nohighlight">\(P\)</span>) of their pulsations:</p>
 <div class="math notranslate nohighlight">
@@ -666,7 +661,12 @@ M = a_0 + a_1 \log P
 <li><p><code class="docutils literal notranslate"><span class="pre">unpack</span></code>: this makes <code class="docutils literal notranslate"><span class="pre">loadtxt</span></code> return each column in the data file as arrays, as apposed to the default of a single 2D array.</p></li>
 </ul>
 <p>As we will be performing 2 minimizations, we will define a function to determine  <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>, and <span class="math notranslate nohighlight">\(\sigma_y\)</span>:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">least_squares</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="n">mean_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -679,12 +679,10 @@ M = a_0 + a_1 \log P
     <span class="n">a1</span> <span class="o">=</span> <span class="p">(</span><span class="n">expect_xy</span> <span class="o">-</span> <span class="n">mean_x</span><span class="o">*</span><span class="n">mean_y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">expect_xx</span> <span class="o">-</span> <span class="n">mean_x</span><span class="o">*</span><span class="n">mean_x</span><span class="p">)</span>
     
     <span class="k">return</span> <span class="p">[</span><span class="n">mean_y</span> <span class="o">-</span> <span class="n">a1</span><span class="o">*</span><span class="n">mean_x</span><span class="p">,</span> <span class="n">a1</span><span class="p">]</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">sigma</span><span class="p">(</span><span class="n">a0</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">a0</span> <span class="o">+</span> <span class="n">a1</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">y</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p><strong>Error in <span class="math notranslate nohighlight">\(M\)</span></strong></p>
 <p>Let’s estimate the coefficients for the relation:</p>
@@ -726,7 +724,12 @@ a_0 = - \frac{b_0}{b_1}, \quad a_1 = \frac{1}{b_1}
 </div>
 <p><strong>Plotting the solutions</strong></p>
 <p>Instead of printing out the values of the coefficients, let’s visualize them by plotting the linear relations.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span>
 <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span>
@@ -751,10 +754,50 @@ a_0 = - \frac{b_0}{b_1}, \quad a_1 = \frac{1}{b_1}
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <img alt="../../../_images/3cc2b118e06831857d02d2e5e2574bfa7f2984a59e62abc9db1efcaa964a061a.png" src="../../../_images/3cc2b118e06831857d02d2e5e2574bfa7f2984a59e62abc9db1efcaa964a061a.png" />
 </div>
 </div>
+</div></section>
+<section id="determining-uncertainties">
+<h2>Determining Uncertainties<a class="headerlink" href="#determining-uncertainties" title="Link to this heading">#</a></h2>
+<p>For this simple least squares minimization the only data we have is <span class="math notranslate nohighlight">\(x_i\)</span>, <span class="math notranslate nohighlight">\(y_i\)</span> pairs.
+Although we attribute some error <span class="math notranslate nohighlight">\(\epsilon_i\)</span> to the <span class="math notranslate nohighlight">\(y_i\)</span> values (with none to <span class="math notranslate nohighlight">\(x_i\)</span>), we do not have a measurement for uncertainties of the <span class="math notranslate nohighlight">\(y_i\)</span>.
+If we assume that the uncertainties for the <span class="math notranslate nohighlight">\(y_i\)</span> are uniform (<span class="math notranslate nohighlight">\(u(y_0) = y(y_1) = \cdots = u(y_i)\)</span>) and that the distributions of possible <span class="math notranslate nohighlight">\(y_i\)</span> values follows a normal distribution centered on the modelled vaule <span class="math notranslate nohighlight">\(y(x_i)\)</span>, then the uncertinties can be approximated as:</p>
+<div class="math notranslate nohighlight" id="equation-lsqr-u-y">
+<span class="eqno">(7)<a class="headerlink" href="#equation-lsqr-u-y" title="Link to this equation">#</a></span>\[
+u(y)^2 = \sigma^2 = \sum_{i=0}^{N-1} \frac{\left(y_i - y(x_i)\right)^2}{N - M}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(N\)</span> is the number of data points, <span class="math notranslate nohighlight">\(M\)</span> is the number of constants (2 for <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>) and <span class="math notranslate nohighlight">\(N - M\)</span> is the number of degrees of freedom.</p>
+<p>With uncertainties for <span class="math notranslate nohighlight">\(y_i\)</span>, we can now determine uncertainties for the constants <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> using the combined uncertainty Equation <a class="reference internal" href="../05-uncertainty/03-combining.html#equation-u-com-uncorr">(15)</a> from <a class="reference internal" href="../05-uncertainty/03-combining.html"><span class="doc">19.3 Combined Standard Uncertainty</span></a> for uncorrelated uncertainties.
+Applying this to <a class="reference internal" href="#equation-lsqr-a0">(6)</a>, we can calculate <span class="math notranslate nohighlight">\(u(a_0)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+u(a_0)^2 = \sum_{i=0}^{N-1} \left( \frac{\partial}{\partial y_i} \frac{\left\langle x^2 \right\rangle \langle y \rangle - \langle x \rangle \langle x y \rangle}{\left\langle x^2 \right\rangle - \langle x \rangle^2} \right)^2 u(y_i)^2\\
+\end{split}\]</div>
+<p>Noting that <span class="math notranslate nohighlight">\(u(y_i) = \sigma\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial}{\partial y_i} \big\langle y \big\rangle = \frac{\partial}{\partial y_i} \frac{1}{N} \sum_{j = 0}^{N-1} y_j = \frac{1}{N}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial}{\partial y_i} \big\langle x y \big\rangle = \frac{\partial}{\partial y_i} \frac{1}{N} \sum_{j = 0}^{N-1} x_j y_j = \frac{x_i}{N}
+\]</div>
+<p>this can be simplified to:</p>
+<div class="math notranslate nohighlight" id="equation-lsqr-u-a0">
+<span class="eqno">(8)<a class="headerlink" href="#equation-lsqr-u-a0" title="Link to this equation">#</a></span>\[
+u(a_0)^2 = \frac{\sigma^2}{N} \frac{\left\langle x^2 \right\rangle}{\left\langle x^2 \right\rangle - \langle x \rangle^2}
+\]</div>
+<p>Similalry, from <a class="reference internal" href="#equation-lsqr-a1">(5)</a> we can get:</p>
+<div class="math notranslate nohighlight" id="equation-lsqr-u-a1">
+<span class="eqno">(9)<a class="headerlink" href="#equation-lsqr-u-a1" title="Link to this equation">#</a></span>\[
+u(a_1)^2 = \frac{\sigma^2}{N} \frac{1}{\left\langle x^2 \right\rangle - \langle x \rangle^2}
+\]</div>
+<div class="worked-example">
+    <p class="worked-example-title">Worked Example - Cepheid Variables</p><p>Coming soon. See if you can do it yourself in the mean-time.</p>
 </div></section>
 </section>
 
@@ -824,7 +867,7 @@ a_0 = - \frac{b_0}{b_1}, \quad a_1 = \frac{1}{b_1}
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-problem">The Problem</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-solution">The Solution</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-y">Variance of <span class="math notranslate nohighlight">\(y\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-uncertainties">Determining Uncertainties</a></li>
 </ul>
   </nav></div>
 

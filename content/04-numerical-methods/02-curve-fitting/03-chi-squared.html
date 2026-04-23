@@ -546,6 +546,8 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-1-independent-variable">With 1 Independent Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-fit">Goodness of Fit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-uncertainties">Determining Uncertainties</a></li>
 </ul>
             </nav>
         </div>
@@ -584,17 +586,45 @@ y = a_0 + a_1 x
 \end{align*}
 \end{split}\]</div>
 <p>Minimizing <span class="math notranslate nohighlight">\(\chi^2\)</span> with respect to <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>, will yield:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
-a_0 &amp;= \left( \left\langle \frac{y}{\sigma^2} \right\rangle  \left\langle \frac{x^2}{\sigma^2} \right\rangle -  \left\langle \frac{x}{\sigma^2} \right\rangle \left\langle \frac{x y}{\sigma^2} \right\rangle \right)/ D\\
-a_1 &amp;= \left( \left\langle \frac{1}{\sigma^2} \right\rangle  \left\langle \frac{x y}{\sigma^2} \right\rangle - \left\langle \frac{x}{\sigma^2} \right\rangle  \left\langle \frac{y}{\sigma^2} \right\rangle \right)/ D\\
-\end{align*}\]</div>
+<div class="math notranslate nohighlight" id="equation-chisqr-a0">
+<span class="eqno">(10)<a class="headerlink" href="#equation-chisqr-a0" title="Link to this equation">#</a></span>\[
+a_0 = \left( \left\langle \frac{y}{\sigma^2} \right\rangle  \left\langle \frac{x^2}{\sigma^2} \right\rangle -  \left\langle \frac{x}{\sigma^2} \right\rangle \left\langle \frac{x y}{\sigma^2} \right\rangle \right)/ D
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight" id="equation-chisqr-a1">
+<span class="eqno">(11)<a class="headerlink" href="#equation-chisqr-a1" title="Link to this equation">#</a></span>\[\begin{split}
+a_1 = \left( \left\langle \frac{1}{\sigma^2} \right\rangle  \left\langle \frac{x y}{\sigma^2} \right\rangle - \left\langle \frac{x}{\sigma^2} \right\rangle  \left\langle \frac{y}{\sigma^2} \right\rangle \right)/ D\\
+\end{split}\]</div>
 <p>where</p>
 <div class="math notranslate nohighlight">
 \[
 D = \left\langle \frac{1}{\sigma^2} \right\rangle  \left\langle \frac{x^2}{\sigma^2} \right\rangle  - \left\langle \frac{x}{\sigma^2} \right\rangle^2
 \]</div>
-<p>Note that in practice the <span class="math notranslate nohighlight">\(1/N\)</span> factors of the expectation values cancel out.</p>
+<p>Note that in practice the <span class="math notranslate nohighlight">\(1/N\)</span> factors of the expectation values cancel out, so that regular sums can be used.</p>
+</section>
+<section id="goodness-of-fit">
+<h2>Goodness of Fit<a class="headerlink" href="#goodness-of-fit" title="Link to this heading">#</a></h2>
+<p>A rule of thumb for the quality of the fit (i.e. how well the model fits the data) is:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\chi^2 / (N - M) \approx 1\)</span> - the fit is good</p></li>
+<li><p><span class="math notranslate nohighlight">\(\chi^2 / (N - M) \gg 1\)</span> - the model is inapropriate for the data</p></li>
+<li><p><span class="math notranslate nohighlight">\(\chi^2 / (N - M) \ll 1\)</span> - the model has too many parameters (over-fitting)</p></li>
+</ul>
+</section>
+<section id="determining-uncertainties">
+<h2>Determining Uncertainties<a class="headerlink" href="#determining-uncertainties" title="Link to this heading">#</a></h2>
+<p>In this section we are considering data with quantified standard uncertainties for <span class="math notranslate nohighlight">\(y_i\)</span>, <span class="math notranslate nohighlight">\(u(y_i) = \sigma_i\)</span>.
+These uncertainties can be used to determine the combined uncertainties for the <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> constants.
+As before, we can use Equation <a class="reference internal" href="../05-uncertainty/03-combining.html#equation-u-com-uncorr">(15)</a> from <a class="reference internal" href="../05-uncertainty/03-combining.html"><span class="doc">19.3 Combined Standard Uncertainty</span></a> and  to determine the combined uncertainties assuming uncorrelated <span class="math notranslate nohighlight">\(u(y_i)\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-chisqr-u-a0">
+<span class="eqno">(12)<a class="headerlink" href="#equation-chisqr-u-a0" title="Link to this equation">#</a></span>\[
+u(a_0)^2 = \frac{1}{N D} \left\langle \frac{x^2}{\sigma^2} \right\rangle
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight" id="equation-chisqr-u-a1">
+<span class="eqno">(13)<a class="headerlink" href="#equation-chisqr-u-a1" title="Link to this equation">#</a></span>\[
+u(a_1)^2 = \frac{1}{N D} \left\langle \frac{1}{\sigma^2} \right\rangle
+\]</div>
 </section>
 </section>
 
@@ -663,6 +693,8 @@ D = \left\langle \frac{1}{\sigma^2} \right\rangle  \left\langle \frac{x^2}{\sigm
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-1-independent-variable">With 1 Independent Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goodness-of-fit">Goodness of Fit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-uncertainties">Determining Uncertainties</a></li>
 </ul>
   </nav></div>
 

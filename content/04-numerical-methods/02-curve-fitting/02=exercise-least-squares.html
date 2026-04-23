@@ -522,7 +522,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -538,6 +540,16 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quesiton-2">Quesiton 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">Question 3</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -549,9 +561,39 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-16-1-1">
 <h1>Exercise <span>16.1.1</span><a class="headerlink" href="#exercise-16-1-1" title="Link to this heading">#</a></h1>
-<p>Write a program which reads the data file <a class="reference download internal" download="" href="../../../_downloads/9e6a8d5368106ac9ebcbd933e006d62c/cepheid_data.csv"><code class="xref download docutils literal notranslate"><span class="pre">./data/cepheid_data.csv</span></code></a> calculates the linear least-squares coefficients <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> in  <span class="math notranslate nohighlight">\(M = a_0 + a_1 \log P\)</span>.</p>
-<p>Plot the data points and the straight line calculated.
-(Answer: <span class="math notranslate nohighlight">\(a_0 = -1.619033,~~~a_1 = -2.547323.\)</span>)</p>
+<section id="question-1">
+<h2>Question 1<a class="headerlink" href="#question-1" title="Link to this heading">#</a></h2>
+<p>Using pen-and-paper, reproduce the results from Equations <a class="reference internal" href="02-least-squares.html#equation-lsqr-a0">(6)</a>, <a class="reference internal" href="02-least-squares.html#equation-lsqr-a1">(5)</a>, <a class="reference internal" href="02-least-squares.html#equation-lsqr-u-a0">(8)</a> and <a class="reference internal" href="02-least-squares.html#equation-lsqr-u-a1">(9)</a> yourself.</p>
+</section>
+<section id="quesiton-2">
+<h2>Quesiton 2<a class="headerlink" href="#quesiton-2" title="Link to this heading">#</a></h2>
+<p>Write a program which reads the data file <a class="reference download internal" download="" href="../../../_downloads/9e6a8d5368106ac9ebcbd933e006d62c/cepheid_data.csv"><code class="xref download docutils literal notranslate"><span class="pre">./data/cepheid_data.csv</span></code></a> calculates the linear least-squares coefficients <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> for the model <span class="math notranslate nohighlight">\(M = a_0 + a_1 \log P\)</span>.
+Additionally, determine the uncertainties of <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>.</p>
+<p>Plot the data points, the straight line calculated by the model and the expanded uncertanty interval about the model using a coverage factor of 2 (this may be done using lines or a fill-between, etc).</p>
+<p>Answers:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a_0 = -1.619(0.023)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a_1 = -2.547(0.016))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(u(M) = 0.28\)</span></p></li>
+</ul>
+</section>
+<section id="question-3">
+<h2>Question 3<a class="headerlink" href="#question-3" title="Link to this heading">#</a></h2>
+<p>In the data file <a class="reference download internal" download="" href="../../../_downloads/742908a1439f6004ad4ab0be8c0bbd45/data_lsqr_01.csv"><code class="xref download docutils literal notranslate"><span class="pre">./exercise-data/data_lsqr_01.csv</span></code></a> is a set of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> data with the following model suggested:</p>
+<div class="math notranslate nohighlight">
+\[
+y = a_0 + a_1 \tanh(x)
+\]</div>
+<p>It is assumed that the uncertainties for <span class="math notranslate nohighlight">\(y\)</span> are uniform.</p>
+<p>Use linear least-squares minimization to find the best-fit values of <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>, as well as the uncertainties of these and <span class="math notranslate nohighlight">\(y\)</span>.
+Plot the data points, the model and the expanded uncertainty interval about the model using a coverage factor of 2.</p>
+<p>Answers:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a_0 = 5.38(0.87)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a_1 = 3.31(0.28)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(u(y) = 3.5\)</span></p></li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -608,6 +650,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quesiton-2">Quesiton 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">Question 3</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

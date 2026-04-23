@@ -575,8 +575,8 @@ We will not look into the derivation, but rather the results in the next two sec
 <section id="combining-uncorrelated-measurements">
 <h2>Combining Uncorrelated Measurements<a class="headerlink" href="#combining-uncorrelated-measurements" title="Link to this heading">#</a></h2>
 <p>If the measurands <span class="math notranslate nohighlight">\(X_1, \dots, X_N\)</span> are <strong>uncorrelated / independant</strong>, then the combined variance of measurement <span class="math notranslate nohighlight">\(y\)</span> is given by:</p>
-<div class="math notranslate nohighlight">
-\[        
+<div class="math notranslate nohighlight" id="equation-u-com-uncorr">
+<span class="eqno">(15)<a class="headerlink" href="#equation-u-com-uncorr" title="Link to this equation">#</a></span>\[        
 u^2(y) = \sum_{i=1}^N \left( \frac{\partial f}{\partial x_i} \right)^2 u^2 (x_i)
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\tfrac{\partial f}{\partial x_i}\)</span> represents <span class="math notranslate nohighlight">\(\tfrac{\partial f}{\partial X_i}\)</span> at <span class="math notranslate nohighlight">\(X_i = x_i\)</span>.</p>
@@ -584,12 +584,12 @@ u^2(y) = \sum_{i=1}^N \left( \frac{\partial f}{\partial x_i} \right)^2 u^2 (x_i)
 <section id="combining-correlated-measurements">
 <h2>Combining Correlated  Measurements<a class="headerlink" href="#combining-correlated-measurements" title="Link to this heading">#</a></h2>
 <p>If the measurands <span class="math notranslate nohighlight">\(X_1, \dots, X_N\)</span> are <strong>correlated / dependant</strong>, then the combined variance of measurement <span class="math notranslate nohighlight">\(y\)</span> is given by:</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}
-\begin{align*}
+<div class="math notranslate nohighlight" id="equation-u-com-corr">
+<span class="eqno">(16)<a class="headerlink" href="#equation-u-com-corr" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{align}
     u^2(y) &amp; = \sum_{i=1}^N \sum_{j = 1}^N \frac{\partial f}{\partial x_i}\frac{\partial f}{\partial x_j} u(x_i, x_j) \\
     &amp; = \sum_{i=1}^N \left( \frac{\partial f}{\partial x_i} \right)^2 u^2 (x_i) + 2 \sum_{i=1}^{N-1}\sum_{j=i+1}^{N} \frac{\partial f}{\partial x_i}\frac{\partial f}{\partial x_j} u(x_i, x_j)\\
-\end{align*}
+\end{align}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(u(x_i, x_j)\)</span> is the covariance between <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(x_j\)</span>.</p>
 </section>

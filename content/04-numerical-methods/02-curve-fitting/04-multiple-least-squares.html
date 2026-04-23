@@ -557,6 +557,8 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-uncertainties">Determining Uncertainties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-linear-chi-2-minimization">Multiple Linear <span class="math notranslate nohighlight">\(\chi\)</span>^2 Minimization</a></li>
 </ul>
             </nav>
         </div>
@@ -660,7 +662,7 @@ a_0\langle x_2\rangle + a_1\langle x_1 x_2\rangle + a_2\langle x_2^{~~2}\rangle 
 M = a_0 + a_1 \log P + a_2 (B - V)
 \]</div>
 <p>using the same data file as before. (You should find the values <span class="math notranslate nohighlight">\(a_0 = -2.15\)</span> mag, <span class="math notranslate nohighlight">\(a_1 = -3.12\)</span> mag and <span class="math notranslate nohighlight">\(a_2 = 1.49\)</span>). You may wish to use NumPy matrices, which have the inverse property <code class="docutils literal notranslate"><span class="pre">I</span></code> (<span class="math notranslate nohighlight">\(\boldsymbol{X}^{-1}\)</span> is achieved using <code class="docutils literal notranslate"><span class="pre">X.I</span></code>, for the appropriately defined <code class="docutils literal notranslate"><span class="pre">X</span></code> matrix), and can be multiplied directly</p>
-<p>Try this yourself before reading the solution that follows.</p>
+<p><strong>Try this yourself before reading the solution that follows.</strong></p>
 <p><strong>Solution:</strong></p>
 <p>As in the  <a class="reference internal" href="02-least-squares.html"><span class="doc">16.1.1 Linear Least Squares Minimization</span></a> worked example, we shall read in the data using <code class="docutils literal notranslate"><span class="pre">numpy.loadtxt()</span></code>:</p>
 <div class="cell docutils container">
@@ -681,7 +683,12 @@ x_1 &amp;= logP\\
 x_2 &amp;= (B - V)\\
 \end{align*}\]</div>
 <p>We will now proceed to construct the matrices using the data. Starting with simpler <span class="math notranslate nohighlight">\(\boldsymbol{Y}\)</span> matrix:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Defining Y as a column matrix</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">([</span>
@@ -692,9 +699,15 @@ x_2 &amp;= (B - V)\\
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Note that <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span> is symmetric about the diagonal, i.e. <span class="math notranslate nohighlight">\(\boldsymbol{X}_{k~l} = \boldsymbol{X}_{l~k}\)</span>, we will make use of this to reduce the number of calculations we need to perform.</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="p">))</span> <span class="c1">#Using an array generating function</span>
 
@@ -718,9 +731,15 @@ x_2 &amp;= (B - V)\\
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>Now we calculate the <span class="math notranslate nohighlight">\(\boldsymbol{A}\)</span> matrix:</p>
-<div class="cell docutils container">
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">I</span> <span class="o">*</span> <span class="n">Y</span>
 
@@ -738,6 +757,7 @@ a3 = 1.49
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </div></section>
 <section id="arbitrarily-many-independent-variables">
@@ -1116,9 +1136,17 @@ a_2 = 1.49
 </div>
 </div>
 <p>Which matches the results from the worked example above.</p>
-</div><p>It is left as an exercise to the reader to impliment a solution for multiple linear <span class="math notranslate nohighlight">\(\chi^2\)</span> minimization.</p>
+</div></section>
 </section>
 </section>
+<section id="determining-uncertainties">
+<h2>Determining Uncertainties<a class="headerlink" href="#determining-uncertainties" title="Link to this heading">#</a></h2>
+<p>Coming soon. In the meantime, can you figure this out yourself?</p>
+</section>
+<section id="multiple-linear-chi-2-minimization">
+<h2>Multiple Linear <span class="math notranslate nohighlight">\(\chi\)</span>^2 Minimization<a class="headerlink" href="#multiple-linear-chi-2-minimization" title="Link to this heading">#</a></h2>
+<p>In a similar way to the multiple linear least-squares miminization above, you can implement a general solution for multiple linear <span class="math notranslate nohighlight">\(\chi^2\)</span> minimization.
+This is left as an exercise to the reader.</p>
 </section>
 </section>
 
@@ -1198,6 +1226,8 @@ a_2 = 1.49
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-uncertainties">Determining Uncertainties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-linear-chi-2-minimization">Multiple Linear <span class="math notranslate nohighlight">\(\chi\)</span>^2 Minimization</a></li>
 </ul>
   </nav></div>
 

@@ -22,7 +22,7 @@ If the measurands $X_1, \dots, X_N$ are **uncorrelated / independant**, then the
 
 $$        
 u^2(y) = \sum_{i=1}^N \left( \frac{\partial f}{\partial x_i} \right)^2 u^2 (x_i)
-$$
+$$(u_com:uncorr)
 
 where $\tfrac{\partial f}{\partial x_i}$ represents $\tfrac{\partial f}{\partial X_i}$ at $X_i = x_i$.
 
@@ -31,10 +31,10 @@ where $\tfrac{\partial f}{\partial x_i}$ represents $\tfrac{\partial f}{\partial
 If the measurands $X_1, \dots, X_N$ are **correlated / dependant**, then the combined variance of measurement $y$ is given by:
 
 $$
-\begin{align*}
+\begin{align}
     u^2(y) & = \sum_{i=1}^N \sum_{j = 1}^N \frac{\partial f}{\partial x_i}\frac{\partial f}{\partial x_j} u(x_i, x_j) \\
     & = \sum_{i=1}^N \left( \frac{\partial f}{\partial x_i} \right)^2 u^2 (x_i) + 2 \sum_{i=1}^{N-1}\sum_{j=i+1}^{N} \frac{\partial f}{\partial x_i}\frac{\partial f}{\partial x_j} u(x_i, x_j)\\
-\end{align*}
-$$
+\end{align}
+$$(u_com:corr)
 
 where $u(x_i, x_j)$ is the covariance between $x_i$ and $x_j$.
