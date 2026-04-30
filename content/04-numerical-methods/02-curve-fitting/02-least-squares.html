@@ -576,7 +576,7 @@ y = a_0 + a_1 x
 <p>If we assume that the <span class="math notranslate nohighlight">\(x_i\)</span> are free of error, we can introduce error terms <font color = "red"> <span class="math notranslate nohighlight">\(\epsilon_i\)</span> </font> to the <span class="math notranslate nohighlight">\(y_i\)</span> data to make up for the dispersion of the data (i.e. that it doesn’t follow the linear relation exactly).</p>
 <div class="cell tag_remove_input tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/f7c19c7fd32e327307622cc0f53394f6e51870a872822456e0194683cac1eeaf.png" src="../../../_images/f7c19c7fd32e327307622cc0f53394f6e51870a872822456e0194683cac1eeaf.png" />
+<img alt="../../../_images/9d6e69009a2e4812025027dfedf7627c16af06a31d365efbb7323d77d58c19fa.png" src="../../../_images/9d6e69009a2e4812025027dfedf7627c16af06a31d365efbb7323d77d58c19fa.png" />
 </div>
 </div>
 <p>With this error term, the relation between our data points can be represented as:</p>
@@ -621,7 +621,8 @@ a_1 = \frac{\langle xy \rangle - \langle x \rangle\langle y \rangle}{\langle x^2
 \begin{align*}
 a_0 &amp;= \langle y \rangle - a_1 \langle x \rangle\\
     &amp;= \frac{\left\langle x^2 \right\rangle \langle y \rangle - \langle x \rangle \langle x y \rangle}{\left\langle x^2 \right\rangle - \langle x \rangle^2}
-\end{align*}\end{split}\]</div>
+\end{align*}
+\end{split}\]</div>
 <div class="worked-example">
     <p class="worked-example-title">Worked Example - Cepheid Variables</p><p>For this worked example we will use data from Cepheid variables. These are pulsating stars with their luminosity (or magnitude <span class="math notranslate nohighlight">\(M\)</span>) related to the period (<span class="math notranslate nohighlight">\(P\)</span>) of their pulsations:</p>
 <div class="math notranslate nohighlight">
@@ -630,7 +631,9 @@ M = a_0 + a_1 \log P
 \]</div>
 <p>Note that the relation above is can be made more accurate by including the color or temperature of the  star, which we shall use later in the chapter.</p>
 <p>As this relation is consistent across all specimens, these stars can be used as a standard candle for measuring distances, all that is needed are measurements from stars with known distances from Earth to determine <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>.</p>
-<p>The standard is to measure Cepheids in the Large Magellanic Cloud, whose distance is known. A few of these measurements can be found in the data file ‘cepheid_data.csv’ provided on Vula (Resources/Exercises/Data/exercise10.1/) or on <a class="reference external" href="https://raw.githubusercontent.com/maystey/uct_nassp_cm2021/master/book/content/numerical-methods/regression/data/cepheid_data.csv">GitHub</a>. The data file contains measurements of:</p>
+<p>The standard is to measure Cepheids in the Large Magellanic Cloud, whose distance is known.
+Some such measurements can be found in the file <a class="reference download internal" download="" href="../../../_downloads/9e6a8d5368106ac9ebcbd933e006d62c/cepheid_data.csv"><code class="xref download docutils literal notranslate"><span class="pre">data/cepheid_data.csv</span></code></a>.
+The data file contains measurements of:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\log P\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(M\)</span></p></li>
@@ -649,7 +652,8 @@ M = a_0 + a_1 \log P
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
-<span class="n">logP</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./data/cepheid_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">logP</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./data/cepheid_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> 
+                            <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -669,6 +673,8 @@ M = a_0 + a_1 \log P
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">least_squares</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Least squares minimization to find the constants of a linear fit&#39;&#39;&#39;</span>
+    
     <span class="n">mean_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">mean_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
     
@@ -677,8 +683,9 @@ M = a_0 + a_1 \log P
     <span class="n">expect_xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
     
     <span class="n">a1</span> <span class="o">=</span> <span class="p">(</span><span class="n">expect_xy</span> <span class="o">-</span> <span class="n">mean_x</span><span class="o">*</span><span class="n">mean_y</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">expect_xx</span> <span class="o">-</span> <span class="n">mean_x</span><span class="o">*</span><span class="n">mean_x</span><span class="p">)</span>
+    <span class="n">a0</span> <span class="o">=</span> <span class="n">mean_y</span> <span class="o">-</span> <span class="n">a1</span><span class="o">*</span><span class="n">mean_x</span>
     
-    <span class="k">return</span> <span class="p">[</span><span class="n">mean_y</span> <span class="o">-</span> <span class="n">a1</span><span class="o">*</span><span class="n">mean_x</span><span class="p">,</span> <span class="n">a1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">a0</span><span class="p">,</span> <span class="n">a1</span>
 </pre></div>
 </div>
 </div>
@@ -770,7 +777,7 @@ If we assume that the uncertainties for the <span class="math notranslate nohigh
 u(y)^2 = \sigma^2 = \sum_{i=0}^{N-1} \frac{\left(y_i - y(x_i)\right)^2}{N - M}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(N\)</span> is the number of data points, <span class="math notranslate nohighlight">\(M\)</span> is the number of constants (2 for <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>) and <span class="math notranslate nohighlight">\(N - M\)</span> is the number of degrees of freedom.</p>
-<p>With uncertainties for <span class="math notranslate nohighlight">\(y_i\)</span>, we can now determine uncertainties for the constants <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> using the combined uncertainty Equation <a class="reference internal" href="../05-uncertainty/03-combining.html#equation-u-com-uncorr">(15)</a> from <a class="reference internal" href="../05-uncertainty/03-combining.html"><span class="doc">19.3 Combined Standard Uncertainty</span></a> for uncorrelated uncertainties.
+<p>With uncertainties for <span class="math notranslate nohighlight">\(y_i\)</span>, we can now determine uncertainties for the constants <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> using the combined uncertainty Equation <a class="reference internal" href="../05-uncertainty/03-combining.html#equation-u-com-uncorr">(17)</a> from <a class="reference internal" href="../05-uncertainty/03-combining.html"><span class="doc">19.3 Combined Standard Uncertainty</span></a> for uncorrelated uncertainties.
 Applying this to <a class="reference internal" href="#equation-lsqr-a0">(6)</a>, we can calculate <span class="math notranslate nohighlight">\(u(a_0)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -797,7 +804,104 @@ u(a_0)^2 = \frac{\sigma^2}{N} \frac{\left\langle x^2 \right\rangle}{\left\langle
 u(a_1)^2 = \frac{\sigma^2}{N} \frac{1}{\left\langle x^2 \right\rangle - \langle x \rangle^2}
 \]</div>
 <div class="worked-example">
-    <p class="worked-example-title">Worked Example - Cepheid Variables</p><p>Coming soon. See if you can do it yourself in the mean-time.</p>
+    <p class="worked-example-title">Worked Example - Cepheid Variables Model with Uncertainty</p><p>Now, let’s calculate the uncertainties for the model constants for the Cepheid variables data used above. First, we will expand on the <code class="docutils literal notranslate"><span class="pre">least_squares()</span></code> function defined above by including the uncertainty.</p>
+<div class="cell tag_hide-cell docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell content</span>
+<span class="expanded">Hide code cell content</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">least_squares_uncertainties</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Least squares minimization to find the constants of a linear fit with uncertainties&#39;&#39;&#39;</span>
+
+    <span class="n">expect_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
+    <span class="n">expect_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span>
+    <span class="n">expect_xy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_data</span> <span class="o">*</span> <span class="n">y_data</span><span class="p">)</span>
+    <span class="n">expect_xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_data</span> <span class="o">*</span> <span class="n">x_data</span><span class="p">)</span>
+
+    <span class="c1">#Denenator</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="p">(</span><span class="n">expect_xx</span> <span class="o">-</span> <span class="n">expect_x</span> <span class="o">*</span> <span class="n">expect_x</span><span class="p">)</span>
+    
+    <span class="n">n</span> <span class="o">=</span> <span class="n">y_data</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">dof</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">2</span>
+    
+    <span class="n">a1</span> <span class="o">=</span> <span class="p">(</span><span class="n">expect_xy</span> <span class="o">-</span> <span class="n">expect_x</span> <span class="o">*</span> <span class="n">expect_y</span><span class="p">)</span> <span class="o">/</span> <span class="n">D</span>
+    <span class="n">a0</span> <span class="o">=</span> <span class="n">expect_y</span> <span class="o">-</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">expect_x</span>
+    
+    <span class="n">u_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span> <span class="p">(</span><span class="n">a0</span> <span class="o">+</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">x_data</span> <span class="o">-</span> <span class="n">y_data</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span> <span class="o">/</span> <span class="n">dof</span><span class="p">)</span>
+
+    <span class="n">u_a0</span> <span class="o">=</span> <span class="n">u_y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">expect_xx</span> <span class="o">/</span> <span class="n">D</span> <span class="o">/</span> <span class="n">n</span><span class="p">)</span>
+    
+    <span class="n">u_a1</span> <span class="o">=</span> <span class="n">u_y</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">D</span> <span class="o">*</span> <span class="n">n</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">a0</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">u_a0</span><span class="p">,</span> <span class="n">u_a1</span><span class="p">,</span> <span class="n">u_y</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p>Now to apply this to the Cepheid variables data. As before we will only use the <span class="math notranslate nohighlight">\(\log P\)</span> and <span class="math notranslate nohighlight">\(M\)</span> variables, with the model:</p>
+<div class="math notranslate nohighlight">
+\[
+M = a_0 + a_1 \log P
+\]</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span>
+<span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">logP</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./data/cepheid_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> 
+                            <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">a0</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="n">u_a0</span><span class="p">,</span> <span class="n">u_a1</span><span class="p">,</span> <span class="n">u_M</span> <span class="o">=</span> <span class="n">least_squares_uncertainties</span><span class="p">(</span><span class="n">logP</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">logP_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">((</span><span class="n">logP</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">logP</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+<span class="n">M_plot</span> <span class="o">=</span> <span class="n">a0</span> <span class="o">+</span> <span class="n">a1</span> <span class="o">*</span> <span class="n">logP_plot</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logP</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logP_plot</span><span class="p">,</span> <span class="n">M_plot</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Model&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="n">linewidth</span><span class="p">)</span>
+
+<span class="c1">#Plotting expanded uncertainty</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logP_plot</span><span class="p">,</span> <span class="n">M_plot</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u_M</span><span class="p">,</span> <span class="s1">&#39;--k&#39;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Expanded uncertainty</span><span class="se">\n</span><span class="s1">(95.45</span><span class="si">% c</span><span class="s1">ondidence)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logP_plot</span><span class="p">,</span> <span class="n">M_plot</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">u_M</span><span class="p">,</span> <span class="s1">&#39;--k&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;logP&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="n">fontsize</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="n">fontsize</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span> <span class="o">=</span> <span class="n">fontsize</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Printing</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;u(M) = </span><span class="si">{</span><span class="n">u_M</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;a0 = </span><span class="si">{</span><span class="n">a0</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">u_a0</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;a1 = </span><span class="si">{</span><span class="n">a1</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">u_a1</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/fb3bbcdd1ef51937cb379942ee80176b2e780fefa6d1993f1c4e8547dbd46abf.png" src="../../../_images/fb3bbcdd1ef51937cb379942ee80176b2e780fefa6d1993f1c4e8547dbd46abf.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u(M) = 0.2836785277443489
+a0 = -1.619033264793699 (0.15139784299976927)
+a1 = -2.54732312970848 (0.12757667951220317)
+</pre></div>
+</div>
+</div>
+</div>
 </div></section>
 </section>
 

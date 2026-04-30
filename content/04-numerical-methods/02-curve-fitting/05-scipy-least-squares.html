@@ -616,7 +616,7 @@ Include a visual analogy of a ball rolling down a surface
 <li><p><code class="docutils literal notranslate"><span class="pre">kwargs</span></code> a dictionary of optional additional keyword arguments to pass into <code class="docutils literal notranslate"><span class="pre">fun</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bounds</span></code> is a tuple of array-like values. If limits should be imposed on allowed <span class="math notranslate nohighlight">\(a_j\)</span> values, then you can set these here. The structure of the limits are <span class="math notranslate nohighlight">\(([a_{0~\text{min}}, a_{1~\text{min}}, \dots, a_{m~\text{min}}], [a_{0~\text{max}}, a_{1~\text{max}}, \dots, a_{m~\text{max}}])\)</span>. You can use <code class="docutils literal notranslate"><span class="pre">np.inf</span></code> if you want to leave a value unbounded.</p></li>
 </ul>
-<p>The return value of the <code class="docutils literal notranslate"><span class="pre">least_squares</span></code> function is an object with the following fields of interest to us:</p>
+<p>The return value of the <code class="docutils literal notranslate"><span class="pre">least_squares</span></code> function is an object. The following attributes of this are of interest to us:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>: an array of the solution found for the <span class="math notranslate nohighlight">\(a_j\)</span> values.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">success</span></code>: boolean, True if the solution has converged.</p></li>

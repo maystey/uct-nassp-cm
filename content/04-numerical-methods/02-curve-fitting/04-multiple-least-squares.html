@@ -557,8 +557,11 @@ document.write(`
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-uncertainties">Determining Uncertainties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-linear-chi-2-minimization">Multiple Linear <span class="math notranslate nohighlight">\(\chi\)</span>^2 Minimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-uncertainties">Determining Uncertainties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Python Implementation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-linear-chi-2-minimization">Multiple Linear <span class="math notranslate nohighlight">\(\chi^2\)</span> Minimization</a></li>
 </ul>
             </nav>
         </div>
@@ -650,11 +653,13 @@ a_0\langle x_2\rangle + a_1\langle x_1 x_2\rangle + a_2\langle x_2^{~~2}\rangle 
  \end{pmatrix}
 \end{split}\]</div>
 <p>This can easily be solved numerically using:</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{align*}
+<div class="math notranslate nohighlight" id="equation-mlsqr-a3">
+<span class="eqno">(14)<a class="headerlink" href="#equation-mlsqr-a3" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{align}
 \boldsymbol{X}\boldsymbol{A} &amp;= \boldsymbol{Y}\\ 
 \therefore \boldsymbol{A} &amp;= \boldsymbol{X}^{-1} \boldsymbol{Y}\\
-\end{align*}\]</div>
+\end{align}
+\end{split}\]</div>
 <div class="worked-example">
     <p class="worked-example-title">Worked Example - Cepheid Variables</p><p>You now have all you need to find the unknown coefficients for the full functional relation of the magnitude (<span class="math notranslate nohighlight">\(M\)</span>), period (<span class="math notranslate nohighlight">\(P\)</span>) and color (<span class="math notranslate nohighlight">\(B-V\)</span>) of the Cepheid variables:</p>
 <div class="math notranslate nohighlight">
@@ -860,12 +865,12 @@ a_m\\
 <p>We will start by designing a function that takes the data in as two arguments:</p>
 <div class="math notranslate nohighlight">
 \[
-\texttt{y_data} = [y_{1}, y_{2}, y_{3}, \dots, y_{N}]
+\texttt{y\_data} = [y_{1}, y_{2}, y_{3}, \dots, y_{N}]
 \]</div>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{matrix}
-\texttt{x_data} = [ &amp; [ &amp; x_{1,~1}, &amp; x_{1,~2}, &amp; \cdots, &amp; x_{1,~N} &amp;], \\
+\texttt{x\_data} = [ &amp; [ &amp; x_{1,~1}, &amp; x_{1,~2}, &amp; \cdots, &amp; x_{1,~N} &amp;], \\
                     &amp; [ &amp; x_{2,~1}, &amp; x_{2,~2}, &amp; \cdots, &amp; x_{2,~N} &amp;],\\
                     &amp; [ &amp; x_{3,~1}, &amp; x_{3,~2}, &amp; \cdots, &amp; x_{3~N} &amp;],\\
                     &amp; [ &amp; \vdots~~, &amp; \vdots~~, &amp; \ddots, &amp; \vdots &amp;],\\
@@ -977,9 +982,10 @@ a_m\\
 
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+        <span class="c1">#Calculating value for the upper triangle</span>
         <span class="n">X</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">x_data</span><span class="p">[</span><span class="n">k</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">x_data</span><span class="p">[</span><span class="n">l</span><span class="p">,</span> <span class="p">:]</span> <span class="p">)</span>
         
-        <span class="c1">#Setting the value for the lower triangle</span>
+        <span class="c1">#Setting the same value for the lower triangle</span>
         <span class="n">X</span><span class="p">[</span><span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">l</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -1041,8 +1047,8 @@ a_m\\
 \boldsymbol{X}\boldsymbol{A} = \boldsymbol{Y}
 \]</div>
 <p>where we’ve already constructed <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{Y}\)</span>. All that’s left is to solve the equation be inverting <span class="math notranslate nohighlight">\(\boldsymbol{X}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-msqr-a">
+<span class="eqno">(15)<a class="headerlink" href="#equation-msqr-a" title="Link to this equation">#</a></span>\[
 \boldsymbol{A} = \boldsymbol{X}^{-1} \boldsymbol{Y}
 \]</div>
 <p>To achieve this numerically, we simply take the inverse of <code class="docutils literal notranslate"><span class="pre">X</span></code>, <code class="docutils literal notranslate"><span class="pre">X.I</span></code>:</p>
@@ -1062,10 +1068,11 @@ a_m\\
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">least_squares</span><span class="p">(</span><span class="n">y_data</span><span class="p">,</span> <span class="n">x_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Least squares minimization to find the constants of a linear fit&#39;&#39;&#39;</span>
+
     <span class="n">m</span> <span class="o">=</span> <span class="n">x_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
     <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
@@ -1107,6 +1114,10 @@ a_m\\
 </div>
 </div>
 </div>
+<p>Note that the function above could do with some optimisation.
+For one, some of the loops can be combined (each loop adds to the runtime of the code).
+Alternatively, all of the loops can be replaced with clever use of NumPy functions and arrays.
+All of these are left as an exercise to the reader.</p>
 <div class="worked-example">
     <p class="worked-example-title">Worked Example - Applying the Solution to the Cepheid Variables Data</p>
 <p>Now, lets apply this function to the Cepheid Variables data to find the unknown coefficients for the functional relation of the magnitude (<span class="math notranslate nohighlight">\(M\)</span>), period (<span class="math notranslate nohighlight">\(P\)</span>) and color (<span class="math notranslate nohighlight">\(B-V\)</span>):</p>
@@ -1141,10 +1152,250 @@ a_2 = 1.49
 </section>
 <section id="determining-uncertainties">
 <h2>Determining Uncertainties<a class="headerlink" href="#determining-uncertainties" title="Link to this heading">#</a></h2>
-<p>Coming soon. In the meantime, can you figure this out yourself?</p>
+<p>Now, lets consider how we can determine the uncertainty of the <span class="math notranslate nohighlight">\(y\)</span> variable and <span class="math notranslate nohighlight">\(a_j\)</span> constants when we have arbitrarily many <span class="math notranslate nohighlight">\(x_j\)</span> variables.
+As before, the uncertainty for <span class="math notranslate nohighlight">\(y\)</span> can be determined as in <a class="reference internal" href="02-least-squares.html"><span class="doc">16.1.1 Linear Least Squares Minimization</span></a> (assuming that each <span class="math notranslate nohighlight">\(y_i\)</span> has uniform uncertainty and is normally distributed):</p>
+<div class="math notranslate nohighlight">
+\[
+u(y)^2 = \sigma^2 = \sum_{i=0}^{N-1} \frac{\left(a_0 + a_1 x_{1~i} + \cdots + a_{M-1~i} - y_i\right)^2}{N - M}
+\]</div>
+<p>Now, let’s find the uncertainties of the <span class="math notranslate nohighlight">\(a_j\)</span> constants.
+Using Equation <a class="reference internal" href="#equation-msqr-a">(15)</a> as the function defining the <span class="math notranslate nohighlight">\(a_j\)</span> constants given <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(y_i\)</span> variables, and the combined uncertainties equation for quantities with uncorrelated uncertainties <a class="reference internal" href="../05-uncertainty/03-combining.html#equation-u-com-uncorr">(17)</a>, the uncertainty for the constants can be defined using the matrix equation:</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{u(A)}^{\circ 2} = \sum_{i=0}^{N-1} \left( \frac{\partial}{\partial y_i} \boldsymbol{X}^{-1} \boldsymbol{Y} \right)^2 u(y_i)^{\circ 2}
+\]</div>
+<p>where we note that the square operation: <span class="math notranslate nohighlight">\(\circ 2\)</span> is applied element-wise, and not using matrix multiplication.</p>
+<p>Using the product rule the derivative can be distributed into the matrix mutlitplication:</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\frac{\partial}{\partial y_i} \left( \boldsymbol{X}^{-1} \boldsymbol{Y} \right) &amp;= \left( \frac{\partial \boldsymbol{X}^{-1}}{\partial y_i} \right) \boldsymbol{Y} + \boldsymbol{X}^{-1} \left( \frac{\partial \boldsymbol{Y}}{\partial y_i} \right)\\
+\\
+&amp;= \boldsymbol{X}^{-1} \frac{\partial \boldsymbol{Y}}{\partial y_i}
+\end{align*}\]</div>
+<p>noting that the <span class="math notranslate nohighlight">\(\boldsymbol{X}^{-1}\)</span> matrix has no dependence on any of the <span class="math notranslate nohighlight">\(y_i\)</span>.
+Now to resolve <span class="math notranslate nohighlight">\({\partial}\boldsymbol{Y}/{\partial y_i}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\frac{\partial \boldsymbol{Y}}{\partial y_i}  = \frac{\partial}{\partial y_i} \begin{pmatrix}
+\langle{y}\rangle\\
+\langle{x_1 y}\rangle\\
+\langle{x_2 y}\rangle\\
+\vdots\\
+\langle{x_m y}\rangle\\
+\end{pmatrix} = \frac{1}{N} \begin{pmatrix}
+1\\
+x_{1,~i}\\
+x_{2,~i}\\
+\vdots\\
+x_{m,~i}\\
+\end{pmatrix}
+\end{split}\]</div>
+<p>for which we will define:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\tilde{x}}_{i} \equiv \begin{pmatrix}
+1\\
+x_{1,~i}\\
+x_{2,~i}\\
+\vdots \\
+x_{m,~i}
+\end{pmatrix}
+\end{split}\]</div>
+<p>Putting this back into our equation for <span class="math notranslate nohighlight">\(\boldsymbol{u(a_j)}\)</span> and remembering that the <span class="math notranslate nohighlight">\(u(y_i) = \sigma\)</span> are uniform:</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{u(A)}^{\circ 2} = \frac{\sigma^2}{N^2} \sum_{i=0}^{N-1} \left( \boldsymbol{X}^{-1} \boldsymbol{\tilde{x}}_{i}\right)^{\circ 2}
+\]</div>
+<section id="id1">
+<h3>Python Implementation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Now, lets create a Python implementation to calculate the uncertainties of <span class="math notranslate nohighlight">\(u(y)\)</span> and <span class="math notranslate nohighlight">\(u(a_j)\)</span> as defined above.
+We will build-up on our previous solutions that have already constructed the <span class="math notranslate nohighlight">\(\boldsymbol(X)\)</span> matrix and determined <span class="math notranslate nohighlight">\(\boldsymbol{A}\)</span>.</p>
+<p>Lets start by calculating <span class="math notranslate nohighlight">\(u(y)\)</span>.
+As the inner sum of <span class="math notranslate nohighlight">\(a_j x_j\)</span> terms is of an arbitrary length, we will need to make use of either a loop or <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code>.
+Considering that this sum is nested in a sum of data points, it becomes tricky to avoid a loop (though this can be done if you know what you are doing).
+The easiest way to calculate <span class="math notranslate nohighlight">\(u(y)\)</span> is to use a loop for the sum over data points, and the inner sum to calculate the model value of y for a given data point can be done using <code class="docutils literal notranslate"><span class="pre">np.sum</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Initializing the variable</span>
+<span class="n">u_y</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y_data</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="n">u_y</span> <span class="o">+=</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">*</span> <span class="n">x_data</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">y_data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">u_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u_y</span> <span class="o">/</span> <span class="p">(</span><span class="n">y_data</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Note that we need <code class="docutils literal notranslate"><span class="pre">A</span></code> to be a 1D array at this point.</p>
+<p>Now, to determine the <span class="math notranslate nohighlight">\(u(a_j)\)</span>.
+The sum over data points is easiest to achieve using a loop through the data points (as before, you can use <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code> if you construct a <span class="math notranslate nohighlight">\(M \times N\)</span> matrix for the <span class="math notranslate nohighlight">\(\boldsymbol{x_i}\)</span>).
+Inside this loop, we can construct the <span class="math notranslate nohighlight">\(\boldsymbol{x_i}\)</span> column matrix for each data point and calculate it’s matrix product with <span class="math notranslate nohighlight">\(\boldsymbol{\chi^}^{-1}\)</span>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">u_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y_data</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+    <span class="c1">#Column matrix of (1, x1, x2, x3, ..., xm)</span>
+    <span class="n">x_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">x_mat</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_data</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+
+    <span class="c1">#Element-wise power</span>
+    <span class="n">u_A</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">I</span> <span class="o">*</span> <span class="n">x_mat</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">#Sqrt is calculated element-wise</span>
+<span class="n">u_A</span> <span class="o">=</span> <span class="n">u_y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u_A</span> <span class="o">/</span> <span class="n">y_data</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Now, lets put it together. We will combine all the loops in the origin <code class="docutils literal notranslate"><span class="pre">least_squares()</span></code> function.
+We also combine the loops for calculating <span class="math notranslate nohighlight">\(u(y)\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{u(A)}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">least_squares_uncertainty</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Least squares minimization to find the constants of a linear fit with uncertainties&#39;&#39;&#39;</span>
+
+    <span class="c1">#Number of independent variables (note that m+1 constants are needed)</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">x_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">)))</span>
+
+    <span class="c1">#Creating the Y column matrix:</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
+
+    <span class="c1">#First entry</span>
+    <span class="n">Y</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+        <span class="c1">#First row</span>
+        <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x_data</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="p">:])</span>
+
+        <span class="c1"># Setting the values for the first column</span>
+        <span class="c1"># remember that X[k, l] = X[l, k]</span>
+        <span class="n">X</span><span class="p">[</span><span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1">#Triangles</span>
+        <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">m</span><span class="p">):</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">col</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">x_data</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">x_data</span><span class="p">[</span><span class="n">col</span><span class="p">,</span> <span class="p">:]</span> <span class="p">)</span>
+
+            <span class="c1">#Setting the value for the lower triangle</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">col</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">col</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1">#Y matrix values</span>
+        <span class="n">Y</span><span class="p">[</span><span class="n">row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span> <span class="n">x_data</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="p">:]</span> <span class="o">*</span> <span class="n">y_data</span> <span class="p">)</span>
+    
+    <span class="c1">#Finding A:</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">I</span><span class="o">*</span><span class="n">Y</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+    <span class="c1">#Calculating the uncertainty of y</span>
+    <span class="n">u_y</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1">#Calculating the uncertainty of A</span>
+    <span class="n">u_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y_data</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>
+        <span class="n">u_y</span> <span class="o">+=</span> <span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="o">*</span> <span class="n">x_data</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="o">-</span> <span class="n">y_data</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">**</span><span class="mi">2</span>
+        
+        <span class="c1">#Column matrix of (1, x1, x2, x3, ..., xm)</span>
+        <span class="n">x_mat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+        <span class="n">x_mat</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">x_data</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+
+        <span class="c1">#Element-wise power</span>
+        <span class="n">u_A</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">I</span> <span class="o">*</span> <span class="n">x_mat</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="n">u_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u_y</span> <span class="o">/</span> <span class="p">(</span><span class="n">y_data</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="n">m</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+
+    <span class="n">u_A</span> <span class="o">=</span> <span class="n">u_y</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u_A</span><span class="p">)</span> <span class="o">/</span> <span class="n">y_data</span><span class="o">.</span><span class="n">size</span>
+
+    <span class="k">return</span> <span class="n">A</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">u_A</span><span class="p">)</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">u_y</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>As before, this solution can be further optimised by removing all of the loops, which is made possible by some smart application of NumPy functions.
+This is left as an exercise to the reader.</p>
+<div class="worked-example">
+    <p class="worked-example-title">Worked Example - Cepheid Variables Model with Uncertainty</p>
+<p>Let’s use the code above to determine the constants and their uncertainties for the Cepheid Variables data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">logP</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;./data/cepheid_data.csv&#39;</span><span class="p">,</span> <span class="n">delimiter</span> <span class="o">=</span> <span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before making use of all the data, let’s compare our results for the general solution to the solution for 1 independent variable from <a class="reference internal" href="02-least-squares.html"><span class="doc">16.1.1 Linear Least Squares Minimization</span></a>:</p>
+<div class="math notranslate nohighlight">
+\[
+M = a_0 + a_1 \log P
+\]</div>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">least_squares_uncertainty()</span></code> function expects its <code class="docutils literal notranslate"><span class="pre">x_data</span></code> argument to be a 2D array with axis 0 for the different variables and axis 1 for the data points.
+Even with only 1 variable, we must still ensure that the <code class="docutils literal notranslate"><span class="pre">x_data</span></code> argument has this shape (1 row and <span class="math notranslate nohighlight">\(N\)</span> columns):</p>
+<div class="math notranslate nohighlight">
+\[
+\texttt{x\_data} = [~[\log P_0, ~\log P_1, ~\log P_2, ~\cdots, ~\log P_{N-1}]~]
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">logP</span><span class="p">])</span>
+
+<span class="n">y_data</span> <span class="o">=</span> <span class="n">M</span>
+
+<span class="n">A</span><span class="p">,</span> <span class="n">u_A</span><span class="p">,</span> <span class="n">u_M</span> <span class="o">=</span> <span class="n">least_squares_uncertainty</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;u(M) = </span><span class="si">{</span><span class="n">u_M</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">u_a</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">u_A</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;a</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">u_a</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u(M) = 0.283678527744349
+a0 = -1.6190332647937085 (0.15139784299976922)
+a1 = -2.5473231297084764 (0.12757667951220308)
+</pre></div>
+</div>
+</div>
+</div>
+<p>As we can see, the values we’ve calculated for the <span class="math notranslate nohighlight">\(a_j\)</span> constants, their uncertainties and the uncertainty of <span class="math notranslate nohighlight">\(M\)</span> are all the same as our solution from <a class="reference internal" href="02-least-squares.html"><span class="doc">16.1.1 Linear Least Squares Minimization</span></a>.</p>
+<p>Now, let’s apply this to the full model:</p>
+<div class="math notranslate nohighlight">
+\[
+M = a_0 + a_1 \log P + a_2 (B - V)
+\]</div>
+<p>for which we will construct the array:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{matrix}
+\texttt{x\_data} = [ &amp; [ &amp; \log P_0, &amp; \log P_1, &amp;\cdots, &amp; \log P_{N-1} &amp;], \\
+                    &amp; [ &amp; (B-V)_0, &amp;(B-V)_1, &amp; \cdots, &amp; (B-V)_{N-1} &amp;]]\\
+\end{matrix}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">logP</span><span class="p">,</span> <span class="n">color</span><span class="p">])</span>
+
+<span class="n">y_data</span> <span class="o">=</span> <span class="n">M</span>
+
+<span class="n">A</span><span class="p">,</span> <span class="n">u_A</span><span class="p">,</span> <span class="n">u_y</span> <span class="o">=</span> <span class="n">least_squares_uncertainty</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u(y)&#39;</span><span class="p">,</span> <span class="n">u_y</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">u_a</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">u_A</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;a</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1"> (</span><span class="si">{</span><span class="n">u_a</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u(y) 0.2537054158692781
+a0 = -2.1451588503718906 (0.22347671372965403)
+a1 = -3.117332841989028 (0.2238733339614743)
+a2 = 1.4856664300002658 (0.5020333709282061)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="multiple-linear-chi-2-minimization">
-<h2>Multiple Linear <span class="math notranslate nohighlight">\(\chi\)</span>^2 Minimization<a class="headerlink" href="#multiple-linear-chi-2-minimization" title="Link to this heading">#</a></h2>
+<h2>Multiple Linear <span class="math notranslate nohighlight">\(\chi^2\)</span> Minimization<a class="headerlink" href="#multiple-linear-chi-2-minimization" title="Link to this heading">#</a></h2>
 <p>In a similar way to the multiple linear least-squares miminization above, you can implement a general solution for multiple linear <span class="math notranslate nohighlight">\(\chi^2\)</span> minimization.
 This is left as an exercise to the reader.</p>
 </section>
@@ -1226,8 +1477,11 @@ This is left as an exercise to the reader.</p>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-uncertainties">Determining Uncertainties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-linear-chi-2-minimization">Multiple Linear <span class="math notranslate nohighlight">\(\chi\)</span>^2 Minimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-uncertainties">Determining Uncertainties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Python Implementation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-linear-chi-2-minimization">Multiple Linear <span class="math notranslate nohighlight">\(\chi^2\)</span> Minimization</a></li>
 </ul>
   </nav></div>
 

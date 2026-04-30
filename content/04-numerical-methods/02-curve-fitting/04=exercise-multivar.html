@@ -547,6 +547,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">Question 3</a></li>
 </ul>
             </nav>
         </div>
@@ -568,7 +569,12 @@ document.write(`
 M = a_0 + a_1 \log P + a_2 (B - V)
 \]</div>
 <p>using the same data file as before: <a class="reference download internal" download="" href="../../../_downloads/9e6a8d5368106ac9ebcbd933e006d62c/cepheid_data.csv"><code class="xref download docutils literal notranslate"><span class="pre">./data/cepheid_data.csv</span></code></a>.</p>
-<p>(<strong>Answer</strong>: a_0 = -2.15 mag, a1 = -3.12 mag, a2 = 1.49)</p>
+<p><strong>Answers</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a_0 = -2.15\)</span> mag</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_1 = -3.12\)</span> mag</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_2 = 1.49\)</span></p></li>
+</ul>
 </section>
 <section id="question-2">
 <h2>Question 2<a class="headerlink" href="#question-2" title="Link to this heading">#</a></h2>
@@ -600,6 +606,46 @@ M = a_0 + a_1 \log P + a_2 (B - V)
 0.65\\
 4.05\\
 -2.81\\
+\end{pmatrix}\\
+\end{eqnarray*}\]</div>
+</section>
+<section id="question-3">
+<h2>Question 3<a class="headerlink" href="#question-3" title="Link to this heading">#</a></h2>
+<p>Solve the problems in Question 1 and 2, but now using <span class="math notranslate nohighlight">\(\chi^2\)</span> minimization.
+Use the same data sets with a relative uncertainty 10% for y ( <span class="math notranslate nohighlight">\(\sigma = 0.1 y\)</span>).
+Note that this may not produce better fits, as the data doesn’t necessarily agree with these uncertainties.</p>
+<p><strong>Answers for Question 1:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a_0 = -2.13\)</span> mag</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_1 = -3.20\)</span> mag</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_2 = 1.61\)</span></p></li>
+</ul>
+<p><strong>Answers for Question 2:</strong></p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{eqnarray*}
+\text{data02.csv} &amp; \quad \quad \quad &amp; \text{data03.csv}\\
+\boldsymbol{A} =
+\begin{pmatrix}
+-0.216\\
+0.201\\
+1.214\\
+0.343\\
+0.132\\
+\end{pmatrix}
+&amp; \quad \quad \quad &amp;
+\boldsymbol{A} = 
+\begin{pmatrix}
+3.680\\
+0.549\\
+1.514\\
+2.706\\
+1.332\\
+1.172\\
+2.400\\
+1.252\\
+0.638\\
+4.046\\
+-2.813\\
 \end{pmatrix}\\
 \end{eqnarray*}\]</div>
 </section>
@@ -671,6 +717,7 @@ M = a_0 + a_1 \log P + a_2 (B - V)
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-3">Question 3</a></li>
 </ul>
   </nav></div>
 

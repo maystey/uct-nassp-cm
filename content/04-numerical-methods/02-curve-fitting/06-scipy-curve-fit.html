@@ -563,13 +563,26 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">sigma</span></code> is the uncertainty in the <code class="docutils literal notranslate"><span class="pre">ydata</span></code>. If this is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, then <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> will use <span class="math notranslate nohighlight">\(\chi^2\)</span> minimization.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">bounds</span></code> is a tuple of 2 arrays for the lower and upper bounds of the parameters (the same use as in <code class="docutils literal notranslate"><span class="pre">least_squares</span></code>).</p></li>
 </ul>
-<p>The <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> function returns a tuple where the first element is an array of the values for the model parameters which best fit the data.</p>
-<!--
-The `curve_fit` function returns a tuple with the elements:
-
-- `popt`: array of the values for the model parameters which best fit the data.
-- `pcov`: the estimated 
---><div class="worked-example">
+<p>The <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> function returns a tuple, the first 2 elements are of particular interest to us:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">popt</span></code>: array of the values for the <span class="math notranslate nohighlight">\(a_j\)</span> model parameters which best fit the data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pcov</span></code>: a matrix of the estimated covariances of the <span class="math notranslate nohighlight">\(a_j\)</span> values:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+    \begin{pmatrix}
+        u(a_0)^2        &amp;u(a_0, a_1)^2  &amp;u(a_0, a_2)^2  &amp;\cdots\\
+        u(a_1, a_0)^2   &amp;u(a_1)^2       &amp;u(a_1, a_2)^2  &amp;\cdots\\
+        u(a_2, a_0)^2   &amp;u(a_2, a_1)^2  &amp;u(a_2)^2       &amp;\cdots\\
+        \vdots          &amp; \vdots        &amp; \vdots        &amp;\ddots\\
+    \end{pmatrix}
+    \end{split}\]</div>
+<p>The uncertainties can be acquired by taking the square-roots of the diagonal:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">u_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">pcov</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="worked-example">
     <p class="worked-example-title">Worked Example</p><p>Let’s use <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> to fit the previous functional relation:</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
