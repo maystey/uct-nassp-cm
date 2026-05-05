@@ -568,8 +568,17 @@ document.write(`
 </div>
 <div class="math notranslate nohighlight">
 \[
-\int_a^b f(x)~ dx \approx f\left(\frac{a + b}{2}\right) (b - a)
+\int_a^b f(x)~ dx \approx M(f) = f\left(\frac{a + b}{2}\right) (b - a)
 \]</div>
+<p>Which can also be derived from a Taylor expansion <span id="id1">[<a class="reference internal" href="#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntMid1</a>]</span>.</p>
+<p>This can be shown to have an error of:</p>
+<div class="math notranslate nohighlight">
+\[
+I(f) - M(f) = \frac{1}{24} (b - a)^3f''(\xi)
+\]</div>
+<p>for some <span class="math notranslate nohighlight">\(\xi \in [a, b]\)</span>.
+Thus for a large interval (bigger than 1) the midpoint rule is not very accurate.
+One solution if this is the case is to sub-divide the interval so that the sub-intervals are sufficiently small, which we will cover in the next session.</p>
 <section id="composite-midpoint-rule">
 <h2>Composite Midpoint Rule<a class="headerlink" href="#composite-midpoint-rule" title="Link to this heading">#</a></h2>
 <p>For a more accurate solution we can subdivide the interval further, constructing rectangles for each subinterval, with the function value of the midpoint used as the height:</p>
@@ -582,26 +591,33 @@ document.write(`
 <p>For <span class="math notranslate nohighlight">\(n\)</span> subdivisions:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_a^b f(x)~ dx \approx \sum_{i=1}^n (x_i - x_{i-1}) f\left(\frac{x_i + x_{i-1}}{2}\right)
+\int_a^b f(x)~ dx \approx M_n(f) = \sum_{i=0}^{n-1} (x_{i+1} - x_{i}) f\left(\frac{x_{i+1} + x_{i}}{2}\right)
 \]</div>
 <p>If these divisions are equal, then</p>
 <div class="math notranslate nohighlight">
 \[
-x_i - x_{i-1} = \frac{b - a}{n}
+x_{i+1} - x_{i} = \frac{b - a}{n} \equiv h
 \]</div>
-<p>which makes the approximation:</p>
+<p>which gives us:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_a^b f(x) ~dx \approx \frac{b - a}{n} \sum_{i=1}^n f\left(\frac{x_i + x_{i-1}}{2}\right)
+M_n(f) =  h \sum_{i=0}^{n-1} f\left(a + \frac{i h}{2} \right)
 \]</div>
-<p>Assuming that <span class="math notranslate nohighlight">\(n\)</span> is chosen so that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{n} &lt; 1\)</span>, the (global) error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^2\right)\)</span> <span id="id1">[<a class="reference internal" href="#id3" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntMid1</a>]</span>.</p>
+<p>This can be shown <span id="id2">[<a class="reference internal" href="#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntMid1</a>]</span> to have an (global) error of:</p>
+<div class="math notranslate nohighlight">
+\[
+I(f) - M_n(f) = \frac{b - a}{24} h^2 f''(\xi) = O(h^2)
+\]</div>
+<p>for some different <span class="math notranslate nohighlight">\(\xi \in [a, b]\)</span>.
+Remember, that we want to choose <span class="math notranslate nohighlight">\(n\)</span> so that <span class="math notranslate nohighlight">\(h &lt; 1\)</span> to reduce the error.</p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id2">
+<div class="docutils container" id="id3">
 <div role="list" class="citation-list">
-<div class="citation" id="id3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">IntMid1</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>IntMid1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
 <p>James F. Epperson. <em>An Introduction to Numerical Methods and Analysis</em>. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.</p>
 </div>
 </div>

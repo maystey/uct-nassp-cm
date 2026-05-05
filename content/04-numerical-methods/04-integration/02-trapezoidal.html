@@ -591,8 +591,16 @@ A_\text{trapezoid}  &amp;= (b - a)f(b) + \tfrac{1}{2} (b - a) \left[f(a) - f(b)\
 <p>which is the same as above, so in general we can approximate the integral as:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_a^b f(x)~ dx \approx \tfrac{1}{2} (b - a) \left[f(a) + f(b)\right]
+\int_a^b f(x)~ dx \approx T(f) = \tfrac{1}{2} (b - a) \left[f(a) + f(b)\right]
 \]</div>
+<p>This can be shown to have an error of:</p>
+<div class="math notranslate nohighlight">
+\[
+I(f) - T(f) = - \frac{1}{12} (b - a)^3 f''(\xi)
+\]</div>
+<p>for some <span class="math notranslate nohighlight">\(\xi \in [a, b]\)</span> <span id="id1">[<a class="reference internal" href="#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntTrap1</a>]</span>.
+Note that this is double the error of the midpoint rule.
+As before, a large interval will have a large error, to reduce this we can sub-divide the interval.</p>
 <section id="composite-trapezoid-rule">
 <h2>Composite Trapezoid Rule<a class="headerlink" href="#composite-trapezoid-rule" title="Link to this heading">#</a></h2>
 <p>Now, if we were to break up this interval into <span class="math notranslate nohighlight">\(n\)</span> equal sub-intervals, and approximate the integral on each of these, we arrive at the composite trapezoidal rule (illustrated in the diagrams that follow).</p>
@@ -606,24 +614,32 @@ A_\text{trapezoid}  &amp;= (b - a)f(b) + \tfrac{1}{2} (b - a) \left[f(a) - f(b)\
 <p>To calculate this we use the sum:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_a^b f(x)~ dx \approx \sum_{i=1}^n \tfrac{1}{2} (x_i - x_{i-1}) \left[f(x_{i-1}) + f(x_i)\right]
+\int_a^b f(x)~ dx \approx T_n(f) = \sum_{i=0}^{n-1} \tfrac{1}{2} (x_{i+1} - x_{i}) \left[f(x_{i}) + f(x_{i+1})\right]
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(x_0 = a\)</span> and <span class="math notranslate nohighlight">\(x_n = b\)</span>. As we have specified that each of the <span class="math notranslate nohighlight">\(n\)</span> subintervals are of equal sizes, we have that:</p>
+<p>where <span class="math notranslate nohighlight">\(x_0 = a\)</span> and <span class="math notranslate nohighlight">\(x_n = b\)</span>.
+As we have specified that each of the <span class="math notranslate nohighlight">\(n\)</span> sub-intervals are of equal sizes, we have that:</p>
 <div class="math notranslate nohighlight">
 \[
-x_{i} - x_{i - 1} = \frac{b- a}{n}
+x_{i+1} - x_{i} = \frac{b- a}{n} \equiv h
 \]</div>
-<p>we can therefore write the approximation as:</p>
+<p>we can therefore write <span class="math notranslate nohighlight">\(T_n(f)\)</span> as:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_a^b f(x)~ dx \approx \frac{b -a}{2 n} \sum_{i=1}^n \left[f(x_{i-1}) + f(x_i)\right]
+T_n(f) = \frac{h}{2} \sum_{i=0}^{n-1} \left[f(x_i) + f(x_{i+1})\right]
 \]</div>
-<p>note how each <span class="math notranslate nohighlight">\(f(x_i)\)</span> in the sum above is repeated twice, except for <span class="math notranslate nohighlight">\(f(x_0)\)</span> and <span class="math notranslate nohighlight">\(f(x_n)\)</span>, which only feature once each. We can now write the approximation as:</p>
+<p>note how each <span class="math notranslate nohighlight">\(f(x_i)\)</span> in the sum above is repeated twice, except for <span class="math notranslate nohighlight">\(f(x_0)\)</span> and <span class="math notranslate nohighlight">\(f(x_n)\)</span>, which only feature once each.
+We can now write the <span class="math notranslate nohighlight">\(T_n(f)\)</span> as:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_a^b f(x)~ dx \approx \frac{b -a}{2 n} \left[f(a) + 2 \left\{\sum_{i=1}^{n-1} f(x_i)\right\} + f(b)\right]
+T_n(f) = \frac{h}{2} \left[f(a) + 2 \left\{\sum_{i=1}^{n-1} f(a + ih)\right\} + f(b)\right]
 \]</div>
-<p>For a choice of <span class="math notranslate nohighlight">\(n\)</span> such that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{n} &lt; 1\)</span>, the (global) error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^2\right)\)</span> <span id="id1">[<a class="reference internal" href="#id3" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntTrap1</a>]</span>.</p>
+<p>This can be shown <span id="id2">[<a class="reference internal" href="#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntTrap1</a>]</span> to have a (global) error of:</p>
+<div class="math notranslate nohighlight">
+\[
+I(f) - T_n(f) = - \frac{b-a}{12} h^2 f''(\xi) = O(h^2)
+\]</div>
+<p>for some different <span class="math notranslate nohighlight">\(\xi \in [a, b]\)</span>.
+Again, this is double the error of the composite midpoint rule.</p>
 <section id="composite-trapezoidal-rule-with-a-discrete-data-set">
 <h3>Composite Trapezoidal Rule with a Discrete Data Set<a class="headerlink" href="#composite-trapezoidal-rule-with-a-discrete-data-set" title="Link to this heading">#</a></h3>
 <p>The composite trapezoidal rule can be used to integrate a discrete set of data. Consider a discrete set of data points <span class="math notranslate nohighlight">\((x_i, y_i)\)</span> for <span class="math notranslate nohighlight">\(i = 0, \dots, n\)</span>, where:</p>
@@ -646,10 +662,11 @@ y_i = f(x_i)
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id2">
+<div class="docutils container" id="id3">
 <div role="list" class="citation-list">
-<div class="citation" id="id3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">IntTrap1</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>IntTrap1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
 <p>James F. Epperson. <em>An Introduction to Numerical Methods and Analysis</em>. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.</p>
 </div>
 </div>

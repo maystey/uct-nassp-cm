@@ -573,9 +573,15 @@ document.write(`
 <p>The method approximates the integral as:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_a^b f(x)~ dx \approx \frac{b - a}{6} \left[ f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b)\right]
+\int_a^b f(x)~ dx \approx S(f) = \frac{b - a}{6} \left[ f(a) + 4 f\left(\frac{a + b}{2}\right) + f(b)\right]
 \]</div>
 <p>with the derivation of this in the following section.</p>
+<p>This can be shown <span id="id1">[<a class="reference internal" href="#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntSimp1</a>]</span> to have an error of</p>
+<div class="math notranslate nohighlight">
+\[
+I(f) - S(f) = - \frac{1}{90} \left( \frac{b-a}{2} \right)^5 f^{(4)}(\xi)
+\]</div>
+<p>for some <span class="math notranslate nohighlight">\(\xi \in [a, b]\)</span>.</p>
 <section id="derivation">
 <h2>Derivation<a class="headerlink" href="#derivation" title="Link to this heading">#</a></h2>
 <section id="approximating-f-x-as-a-quadratic-polynomial">
@@ -661,22 +667,27 @@ u = \frac{x - m}{b - m} = 2 \frac{x - \tfrac{1}{2} (a + b)}{b - a}
 <p>The composite Simpson’s rule is given by:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-\int_a^b f(x)~ dx \approx \sum_{i = 1}^n \frac{x_i - x_{i-1}}{6} \left[ f(x_{i-1}) + 4 f\left(\frac{x_{i-1} + x_i}{2}\right) + f(x_i)\right]\\
+\int_a^b f(x)~ dx \approx S_n (f) = \sum_{i = 0}^{n-1} \frac{x_{i+1} - x_i}{6} \left[ f(x_i) + 4 f\left(\frac{x_{i} + x_{i+1}}{2}\right) + f(x_{i+1})\right]\\
 \end{split}\]</div>
 <!---
 Where $x_0 = a$, $x_n = b$ and $x_i = a +  i(b - a)/n$.
 --->
-<p>If we use equal sized subintervals, then we have that:</p>
+<p>If we use equal sized sub-intervals, then we have that:</p>
 <div class="math notranslate nohighlight">
 \[
-x_i - x_{i -1} = \frac{b - a}{n}
+x_i - x_{i -1} = \frac{b - a}{n} \equiv h
 \]</div>
 <p>taking this into account and the values of <span class="math notranslate nohighlight">\(f(x_i)\)</span> which are repeated in the sum, the composite Simpson’s rule can be simplified to:</p>
 <div class="math notranslate nohighlight">
 \[
-\int_a^b f(x)~ dx \approx \frac{b - a}{6 n} \left[ f(a) + 2 \left\{\sum_{i = 1}^{n-1} f(x_i)\right\} + 4 \left\{\sum_{i =1}^{n} f\left( \frac{x_{i-1} + x_i}{2} \right)\right\} + f(b) \right]
+S_n(f) = \frac{h}{6} \left[ f(a) + 2 \left\{\sum_{i = 1}^{n-1} f(a + ih)\right\} + 4 \left\{\sum_{i =0}^{n-1} f\left( a + \left(i + \tfrac{1}{2}\right) h  \right)\right\} + f(b) \right]
 \]</div>
-<p>Assuming that <span class="math notranslate nohighlight">\(0 &lt; \tfrac{b - a}{6 n} &lt; 1\)</span>, then the (global) error for this method is <span class="math notranslate nohighlight">\(O\left(\tfrac{1}{n}^4\right)\)</span> <span id="id1">[<a class="reference internal" href="#id3" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntSimp1</a>]</span></p>
+<p>The (global) error for this can be determined <span id="id2">[<a class="reference internal" href="#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntSimp1</a>]</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+I(f) - S_n (f) = - \frac{b - a}{180} h^4 f^{(4)}(\xi) = O(h^4)
+\]</div>
+<p>for some different <span class="math notranslate nohighlight">\(\xi \in [a, b]\)</span>.</p>
 <section id="composite-simpson-s-rule-with-a-discrete-data-set">
 <h3>Composite Simpson’s Rule with a Discrete Data Set<a class="headerlink" href="#composite-simpson-s-rule-with-a-discrete-data-set" title="Link to this heading">#</a></h3>
 <p>We can use the Simpson’s rule to integrate a discrete set of data, though there are some requirements that the data set must fulfill in order to do so.</p>
@@ -701,10 +712,11 @@ f(x_i) = y_i
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<div class="docutils container" id="id2">
+<div class="docutils container" id="id3">
 <div role="list" class="citation-list">
-<div class="citation" id="id3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">IntSimp1</a><span class="fn-bracket">]</span></span>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>IntSimp1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
 <p>James F. Epperson. <em>An Introduction to Numerical Methods and Analysis</em>. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.</p>
 </div>
 </div>
