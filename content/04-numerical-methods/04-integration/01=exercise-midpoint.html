@@ -337,6 +337,10 @@
 <li class="toctree-l2"><a class="reference internal" href="02%3Dexercise-trapz.html">Exercise <span>18.2</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-simpson.html"><span>18.3</span> Simpson’s Rule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="04a-improved-trapezoidal.html"><span>18.4</span> Improved Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04b-exercise-improved-trapz.html">Exercise <span>18.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="05a-extrapolation.html"><span>18.5</span> Applying Richardson Extrapolation to the Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05b-exercise-extrapolation.html">Exercise <span>18.5</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -522,7 +526,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -538,6 +544,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -549,6 +567,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-18-1">
 <h1>Exercise <span>18.1</span><a class="headerlink" href="#exercise-18-1" title="Link to this heading">#</a></h1>
+<section id="question-1">
+<h2>Question 1<a class="headerlink" href="#question-1" title="Link to this heading">#</a></h2>
 <p>Consider the integral</p>
 <div class="math notranslate nohighlight">
 \[
@@ -559,9 +579,19 @@ document.write(`
 \[
 \frac{1}{2}\ln\left(\frac{x + 1}{1 - x}\right)~~\Bigg|_{x = 0.9}
 \]</div>
-<p>Approximate the value of the integral using the composite midpoint rule.</p>
-<!-- It will serve you well in the future to define functions for each of these. -->
-<p>Calculate the values for <span class="math notranslate nohighlight">\(n = 1, 2, \dots, 10\)</span> sub-intervals and compare the approximations to the exact value by plotting the value of the integral versus <span class="math notranslate nohighlight">\(n\)</span>. Be sure to represent the exact solution in the plot as well.</p>
+<section id="part-1">
+<h3>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h3>
+<p>Approximate the value of the integral using the composite midpoint rule for
+<span class="math notranslate nohighlight">\(n = 1, 2, \dots, 10\)</span> sub-intervals
+and compare the approximations to the exact value by plotting the value of the integral versus <span class="math notranslate nohighlight">\(n\)</span>.
+Be sure to represent the exact solution in the plot as well.</p>
+</section>
+<section id="part-2">
+<h3>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h3>
+<p>For the same sub-intervals, determine the true error of the midpoint rule.
+Compare this to the upper bound of the error (which you can determine by finding using <a class="reference internal" href="01-midpoint.html#equation-midpoint-compound-error">(18)</a> with the maximum of <span class="math notranslate nohighlight">\(f''\)</span> in the interval).</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -618,6 +648,25 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/04-numerical-methods/04-integration/03=exercise-simps';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="19 Uncertainty Analysis for Numerical Methods" href="../05-uncertainty/00-intro.html" />
+    <link rel="next" title="18.4 Improved Trapezoidal Rule" href="04a-improved-trapezoidal.html" />
     <link rel="prev" title="18.3 Simpson’s Rule" href="03-simpson.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -337,6 +337,10 @@
 <li class="toctree-l2"><a class="reference internal" href="02%3Dexercise-trapz.html">Exercise <span>18.2</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-simpson.html"><span>18.3</span> Simpson’s Rule</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Exercise <span>18.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="04a-improved-trapezoidal.html"><span>18.4</span> Improved Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04b-exercise-improved-trapz.html">Exercise <span>18.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="05a-extrapolation.html"><span>18.5</span> Applying Richardson Extrapolation to the Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05b-exercise-extrapolation.html">Exercise <span>18.5</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -522,7 +526,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -538,6 +544,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -549,6 +568,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exercise-18-3">
 <h1>Exercise <span>18.3</span><a class="headerlink" href="#exercise-18-3" title="Link to this heading">#</a></h1>
+<section id="question-1">
+<h2>Question 1<a class="headerlink" href="#question-1" title="Link to this heading">#</a></h2>
 <p>Consider the integral</p>
 <div class="math notranslate nohighlight">
 \[
@@ -559,9 +580,30 @@ document.write(`
 \[
 \frac{1}{2}\ln\left(\frac{x + 1}{1 - x}\right)~~\Bigg|_{x = 0.9}
 \]</div>
-<p>Approximate the value of the integral using the composite Simpsons rule.</p>
-<!-- It will serve you well in the future to define functions for each of these. -->
-<p>Calculate the values for <span class="math notranslate nohighlight">\(n = 1, 2, \dots, 10\)</span> sub-intervals and compare the approximations to the exact value by plotting the value of the integral versus <span class="math notranslate nohighlight">\(n\)</span>. Be sure to represent the exact solution in the plot as well.</p>
+<section id="part-1">
+<h3>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h3>
+<p>Approximate the value of the integral using the composite Simpson’s rule for
+<span class="math notranslate nohighlight">\(n = 1, 2, \dots, 10\)</span> sub-intervals
+and compare the approximations to the exact value by plotting the value of the integral versus <span class="math notranslate nohighlight">\(n\)</span>.
+Be sure to represent the exact solution in the plot as well.</p>
+</section>
+<section id="part-2">
+<h3>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h3>
+<p>For the same sub-intervals, determine the true error of the Simpson’s rule.
+Compare this to the theoretical upper bound of the error (which you can determine by finding using <a class="reference internal" href="03-simpson.html#equation-simps-compound-error">(22)</a> with the maximum of <span class="math notranslate nohighlight">\(f^{(4)}\)</span> in the interval).</p>
+</section>
+</section>
+<section id="question-2">
+<h2>Question 2<a class="headerlink" href="#question-2" title="Link to this heading">#</a></h2>
+<p>Use the composite Simpson’s rule to approximate the integral <span class="math notranslate nohighlight">\(\int y~dx\)</span> for the data sets</p>
+<ul class="simple">
+<li><p><a class="reference download internal" download="" href="../../../_downloads/a87825f00844d015ac708b475b1f7f4c/data1.csv"><code class="xref download docutils literal notranslate"><span class="pre">exercise-data/data1.csv</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/5b32615d1c1b7b2c36d774925473fec6/data2.csv"><code class="xref download docutils literal notranslate"><span class="pre">exercise-data/data2.csv</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/5b8c59ef42e33480b57765157412dfbc/data3.csv"><code class="xref download docutils literal notranslate"><span class="pre">exercise-data/data3.csv</span></code></a></p></li>
+<li><p><a class="reference download internal" download="" href="../../../_downloads/48f7e9e20c2f1841cfa31f19e32b09ba/data4.csv"><code class="xref download docutils literal notranslate"><span class="pre">exercise-data/data4.csv</span></code></a></p></li>
+</ul>
+<p>Note that the function of the integrand is defined in the header of the files, use these to determine the true error of the integrals and compare this to the theoretical upper bound of the error. Compare these results to the trapezoidal rule from <a class="reference internal" href="02%3Dexercise-trapz.html"><span class="doc">Exercise 18.2</span></a>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -604,11 +646,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="../05-uncertainty/00-intro.html"
+       href="04a-improved-trapezoidal.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span>19</span> Uncertainty Analysis for Numerical Methods</p>
+        <p class="prev-next-title"><span>18.4</span> Improved Trapezoidal Rule</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -618,6 +660,26 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

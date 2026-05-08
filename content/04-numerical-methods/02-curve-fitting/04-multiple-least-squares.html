@@ -337,6 +337,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/02%3Dexercise-trapz.html">Exercise <span>18.2</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/03-simpson.html"><span>18.3</span> Simpson’s Rule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/04a-improved-trapezoidal.html"><span>18.4</span> Improved Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/04b-exercise-improved-trapz.html">Exercise <span>18.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/05a-extrapolation.html"><span>18.5</span> Applying Richardson Extrapolation to the Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/05b-exercise-extrapolation.html">Exercise <span>18.5</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -817,14 +821,16 @@ S = \sum_{i=1}^N \bigg(a_0 + \bigg(\sum_{j=1}^m a_j x_{j,~i} \bigg) - y_i\bigg)^
 \end{split}\]</div>
 <p>Writing the results for <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_k\)</span> (<span class="math notranslate nohighlight">\(k = 1,\dots,m\)</span>) into a system of equations, expanding the sum over <span class="math notranslate nohighlight">\(j\)</span>:</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{eqnarray*}
+\[\begin{split}
+\begin{matrix}
 a_0 &amp;+&amp; a_1 \langle{x_1}\rangle &amp;+&amp; a_2 \langle{x_2}\rangle  &amp;+&amp; \dots &amp;+&amp; a_m \langle{x_m}\rangle &amp;=&amp; \langle{y}\rangle\\
 a_0 \langle{x_{1}}\rangle &amp;+&amp; a_1 \langle{x_1~^2}\rangle &amp;+&amp; a_2 \langle{x_1 x_2}\rangle &amp;+&amp; \cdots &amp;+&amp; a_m \langle{x_1 x_m}\rangle &amp;=&amp;  \langle{x_1 y}\rangle\\
 a_0 \langle{x_{2}}\rangle &amp;+&amp; a_1 \langle{x_2 x_1}\rangle &amp;+&amp; a_2 \langle{x_2~^2}\rangle &amp;+&amp; \cdots &amp;+&amp; a_m \langle{x_2 x_m}\rangle &amp;=&amp;  \langle{x_2 y}\rangle\\
 a_0 \langle{x_{3}}\rangle &amp;+&amp; a_1 \langle{x_3 x_1}\rangle &amp;+&amp; a_2 \langle{x_3 x_2}\rangle &amp;+&amp; \cdots &amp;+&amp; a_m \langle{x_3 x_m}\rangle &amp;=&amp;  \langle{x_3 y}\rangle\\
 \vdots ~~~~ &amp;+&amp; ~~~~\vdots &amp;+&amp; ~~~~\vdots &amp;+&amp; \ddots &amp;+&amp; ~~~~\vdots &amp;=&amp; ~~~\vdots\\
 a_0 \langle{x_{m}}\rangle &amp;+&amp; a_1 \langle{x_m x_1}\rangle &amp;+&amp; a_2 \langle{x_m x_2}\rangle &amp;+&amp; \cdots &amp;+&amp; a_m \langle{x_m~^2}\rangle &amp;=&amp;  \langle{x_m y}\rangle\\
-\end{eqnarray*}\end{split}\]</div>
+\end{matrix}
+\end{split}\]</div>
 <p>To solve these equations numerically, we can reformulate these equations into a matrix equation:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -1159,7 +1165,7 @@ As before, the uncertainty for <span class="math notranslate nohighlight">\(y\)<
 u(y)^2 = \sigma^2 = \sum_{i=0}^{N-1} \frac{\left(a_0 + a_1 x_{1~i} + \cdots + a_{M-1~i} - y_i\right)^2}{N - M}
 \]</div>
 <p>Now, let’s find the uncertainties of the <span class="math notranslate nohighlight">\(a_j\)</span> constants.
-Using Equation <a class="reference internal" href="#equation-msqr-a">(15)</a> as the function defining the <span class="math notranslate nohighlight">\(a_j\)</span> constants given <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(y_i\)</span> variables, and the combined uncertainties equation for quantities with uncorrelated uncertainties <a class="reference internal" href="../05-uncertainty/03-combining.html#equation-u-com-uncorr">(17)</a>, the uncertainty for the constants can be defined using the matrix equation:</p>
+Using Equation <a class="reference internal" href="#equation-msqr-a">(15)</a> as the function defining the <span class="math notranslate nohighlight">\(a_j\)</span> constants given <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(y_i\)</span> variables, and the combined uncertainties equation for quantities with uncorrelated uncertainties <a class="reference internal" href="../05-uncertainty/03-combining.html#equation-u-com-uncorr">(28)</a>, the uncertainty for the constants can be defined using the matrix equation:</p>
 <div class="math notranslate nohighlight">
 \[
 \boldsymbol{u(A)}^{\circ 2} = \sum_{i=0}^{N-1} \left( \frac{\partial}{\partial y_i} \boldsymbol{X}^{-1} \boldsymbol{Y} \right)^2 u(y_i)^{\circ 2}
@@ -1226,7 +1232,7 @@ The easiest way to calculate <span class="math notranslate nohighlight">\(u(y)\)
 <p>Note that we need <code class="docutils literal notranslate"><span class="pre">A</span></code> to be a 1D array at this point.</p>
 <p>Now, to determine the <span class="math notranslate nohighlight">\(u(a_j)\)</span>.
 The sum over data points is easiest to achieve using a loop through the data points (as before, you can use <code class="docutils literal notranslate"><span class="pre">np.sum()</span></code> if you construct a <span class="math notranslate nohighlight">\(M \times N\)</span> matrix for the <span class="math notranslate nohighlight">\(\boldsymbol{x_i}\)</span>).
-Inside this loop, we can construct the <span class="math notranslate nohighlight">\(\boldsymbol{x_i}\)</span> column matrix for each data point and calculate it’s matrix product with <span class="math notranslate nohighlight">\(\boldsymbol{\chi^}^{-1}\)</span>.</p>
+Inside this loop, we can construct the <span class="math notranslate nohighlight">\(\boldsymbol{x_i}\)</span> column matrix for each data point and calculate it’s matrix product with <span class="math notranslate nohighlight">\(\boldsymbol{X}^{-1}\)</span>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">u_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">m</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">y_data</span><span class="o">.</span><span class="n">size</span><span class="p">):</span>

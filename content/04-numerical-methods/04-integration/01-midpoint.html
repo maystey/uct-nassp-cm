@@ -337,6 +337,10 @@
 <li class="toctree-l2"><a class="reference internal" href="02%3Dexercise-trapz.html">Exercise <span>18.2</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-simpson.html"><span>18.3</span> Simpson’s Rule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="04a-improved-trapezoidal.html"><span>18.4</span> Improved Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04b-exercise-improved-trapz.html">Exercise <span>18.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="05a-extrapolation.html"><span>18.5</span> Applying Richardson Extrapolation to the Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05b-exercise-extrapolation.html">Exercise <span>18.5</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -577,11 +581,12 @@ document.write(`
 I(f) - M(f) = \frac{1}{24} (b - a)^3f''(\xi)
 \]</div>
 <p>for some <span class="math notranslate nohighlight">\(\xi \in [a, b]\)</span>.
-Thus for a large interval (bigger than 1) the midpoint rule is not very accurate.
-One solution if this is the case is to sub-divide the interval so that the sub-intervals are sufficiently small, which we will cover in the next session.</p>
+Although we can’t actually determine the relevant <span class="math notranslate nohighlight">\(\xi\)</span>, we can find an upper bound for the error by finding the maximum of <span class="math notranslate nohighlight">\(f''\)</span> in the interval of <span class="math notranslate nohighlight">\([a, b]\)</span>.
+Note as the error is proportional to <span class="math notranslate nohighlight">\((b - a)^3\)</span>, for a large interval (larger than 1) the midpoint rule is not very accurate.</p>
 <section id="composite-midpoint-rule">
 <h2>Composite Midpoint Rule<a class="headerlink" href="#composite-midpoint-rule" title="Link to this heading">#</a></h2>
-<p>For a more accurate solution we can subdivide the interval further, constructing rectangles for each subinterval, with the function value of the midpoint used as the height:</p>
+<p>For a more accurate solution we can subdivide the interval into small sub-intervals, approximate the integral values for the sub-intervals and sum these.
+Let’s illustrate this for the midpoint rule:</p>
 <div class="cell tag_remove_input docutils container">
 <div class="cell_output docutils container">
 <img alt="../../../_images/6303f2b1d815e81d3cbaee078191cccca621fb6b56011c45066796c2c4099e39.png" src="../../../_images/6303f2b1d815e81d3cbaee078191cccca621fb6b56011c45066796c2c4099e39.png" />
@@ -599,13 +604,13 @@ One solution if this is the case is to sub-divide the interval so that the sub-i
 x_{i+1} - x_{i} = \frac{b - a}{n} \equiv h
 \]</div>
 <p>which gives us:</p>
-<div class="math notranslate nohighlight">
-\[
-M_n(f) =  h \sum_{i=0}^{n-1} f\left(a + \frac{i h}{2} \right)
+<div class="math notranslate nohighlight" id="equation-midpoint-composite">
+<span class="eqno">(17)<a class="headerlink" href="#equation-midpoint-composite" title="Link to this equation">#</a></span>\[
+M_n(f) =  h \sum_{i=0}^{n-1} f\left(a + \left(i + \tfrac{1}{2}\right) h \right)
 \]</div>
 <p>This can be shown <span id="id2">[<a class="reference internal" href="#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntMid1</a>]</span> to have an (global) error of:</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-midpoint-compound-error">
+<span class="eqno">(18)<a class="headerlink" href="#equation-midpoint-compound-error" title="Link to this equation">#</a></span>\[
 I(f) - M_n(f) = \frac{b - a}{24} h^2 f''(\xi) = O(h^2)
 \]</div>
 <p>for some different <span class="math notranslate nohighlight">\(\xi \in [a, b]\)</span>.

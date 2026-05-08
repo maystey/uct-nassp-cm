@@ -337,6 +337,10 @@
 <li class="toctree-l2"><a class="reference internal" href="02%3Dexercise-trapz.html">Exercise <span>18.2</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="03-simpson.html"><span>18.3</span> Simpson’s Rule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="04a-improved-trapezoidal.html"><span>18.4</span> Improved Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04b-exercise-improved-trapz.html">Exercise <span>18.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="05a-extrapolation.html"><span>18.5</span> Applying Richardson Extrapolation to the Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05b-exercise-extrapolation.html">Exercise <span>18.5</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -593,12 +597,12 @@ A_\text{trapezoid}  &amp;= (b - a)f(b) + \tfrac{1}{2} (b - a) \left[f(a) - f(b)\
 \[
 \int_a^b f(x)~ dx \approx T(f) = \tfrac{1}{2} (b - a) \left[f(a) + f(b)\right]
 \]</div>
-<p>This can be shown to have an error of:</p>
+<p>This can be shown <span id="id1">[<a class="reference internal" href="#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntTrap1</a>]</span> to have an error of:</p>
 <div class="math notranslate nohighlight">
 \[
 I(f) - T(f) = - \frac{1}{12} (b - a)^3 f''(\xi)
 \]</div>
-<p>for some <span class="math notranslate nohighlight">\(\xi \in [a, b]\)</span> <span id="id1">[<a class="reference internal" href="#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntTrap1</a>]</span>.
+<p>for some <span class="math notranslate nohighlight">\(\xi \in [a, b]\)</span>.
 Note that this is double the error of the midpoint rule.
 As before, a large interval will have a large error, to reduce this we can sub-divide the interval.</p>
 <section id="composite-trapezoid-rule">
@@ -629,13 +633,13 @@ T_n(f) = \frac{h}{2} \sum_{i=0}^{n-1} \left[f(x_i) + f(x_{i+1})\right]
 \]</div>
 <p>note how each <span class="math notranslate nohighlight">\(f(x_i)\)</span> in the sum above is repeated twice, except for <span class="math notranslate nohighlight">\(f(x_0)\)</span> and <span class="math notranslate nohighlight">\(f(x_n)\)</span>, which only feature once each.
 We can now write the <span class="math notranslate nohighlight">\(T_n(f)\)</span> as:</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-trapz-compound">
+<span class="eqno">(19)<a class="headerlink" href="#equation-trapz-compound" title="Link to this equation">#</a></span>\[
 T_n(f) = \frac{h}{2} \left[f(a) + 2 \left\{\sum_{i=1}^{n-1} f(a + ih)\right\} + f(b)\right]
 \]</div>
 <p>This can be shown <span id="id2">[<a class="reference internal" href="#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntTrap1</a>]</span> to have a (global) error of:</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-trapz-compound-error">
+<span class="eqno">(20)<a class="headerlink" href="#equation-trapz-compound-error" title="Link to this equation">#</a></span>\[
 I(f) - T_n(f) = - \frac{b-a}{12} h^2 f''(\xi) = O(h^2)
 \]</div>
 <p>for some different <span class="math notranslate nohighlight">\(\xi \in [a, b]\)</span>.

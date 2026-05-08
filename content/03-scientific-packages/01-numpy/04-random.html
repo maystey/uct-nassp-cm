@@ -337,6 +337,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/02%3Dexercise-trapz.html">Exercise <span>18.2</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/03-simpson.html"><span>18.3</span> Simpson’s Rule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/04a-improved-trapezoidal.html"><span>18.4</span> Improved Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/04b-exercise-improved-trapz.html">Exercise <span>18.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/05a-extrapolation.html"><span>18.5</span> Applying Richardson Extrapolation to the Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/04-integration/05b-exercise-extrapolation.html">Exercise <span>18.5</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -572,7 +576,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7424432226726629
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7155210977796773
 </pre></div>
 </div>
 </div>
@@ -585,7 +589,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.75555764, 0.89950917, 0.19307743, 0.80167328, 0.62887454])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.52565532, 0.97125885, 0.02833467, 0.74797267, 0.01614604])
 </pre></div>
 </div>
 </div>
@@ -597,8 +601,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.53470706, 0.66334748, 0.86358473],
-       [0.27401235, 0.76741706, 0.77498196]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.28507469, 0.86396252, 0.79810204],
+       [0.98830121, 0.00782237, 0.98170287]])
 </pre></div>
 </div>
 </div>
@@ -615,7 +619,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([24.03482743, 21.322866  , 24.71886991, 22.44591158])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([28.29712384, 27.62620308, 25.93556454, 23.46471178])
 </pre></div>
 </div>
 </div>
@@ -634,7 +638,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
 </pre></div>
 </div>
 </div>
@@ -647,7 +651,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([3, 7, 7])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 8, 3])
 </pre></div>
 </div>
 </div>
@@ -659,8 +663,8 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[9, 9, 5, 4],
-       [7, 2, 9, 7]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[6, 3, 4, 1],
+       [9, 9, 5, 2]])
 </pre></div>
 </div>
 </div>

@@ -337,6 +337,10 @@
 <li class="toctree-l2"><a class="reference internal" href="02%3Dexercise-trapz.html">Exercise <span>18.2</span></a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><span>18.3</span> Simpson’s Rule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="04a-improved-trapezoidal.html"><span>18.4</span> Improved Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04b-exercise-improved-trapz.html">Exercise <span>18.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="05a-extrapolation.html"><span>18.5</span> Applying Richardson Extrapolation to the Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05b-exercise-extrapolation.html">Exercise <span>18.5</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -678,13 +682,13 @@ Where $x_0 = a$, $x_n = b$ and $x_i = a +  i(b - a)/n$.
 x_i - x_{i -1} = \frac{b - a}{n} \equiv h
 \]</div>
 <p>taking this into account and the values of <span class="math notranslate nohighlight">\(f(x_i)\)</span> which are repeated in the sum, the composite Simpson’s rule can be simplified to:</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-simps-compound">
+<span class="eqno">(21)<a class="headerlink" href="#equation-simps-compound" title="Link to this equation">#</a></span>\[
 S_n(f) = \frac{h}{6} \left[ f(a) + 2 \left\{\sum_{i = 1}^{n-1} f(a + ih)\right\} + 4 \left\{\sum_{i =0}^{n-1} f\left( a + \left(i + \tfrac{1}{2}\right) h  \right)\right\} + f(b) \right]
 \]</div>
 <p>The (global) error for this can be determined <span id="id2">[<a class="reference internal" href="#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntSimp1</a>]</span> as:</p>
-<div class="math notranslate nohighlight">
-\[
+<div class="math notranslate nohighlight" id="equation-simps-compound-error">
+<span class="eqno">(22)<a class="headerlink" href="#equation-simps-compound-error" title="Link to this equation">#</a></span>\[
 I(f) - S_n (f) = - \frac{b - a}{180} h^4 f^{(4)}(\xi) = O(h^4)
 \]</div>
 <p>for some different <span class="math notranslate nohighlight">\(\xi \in [a, b]\)</span>.</p>

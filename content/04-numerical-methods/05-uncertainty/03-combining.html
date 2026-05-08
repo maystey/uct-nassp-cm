@@ -337,6 +337,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/02%3Dexercise-trapz.html">Exercise <span>18.2</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/03-simpson.html"><span>18.3</span> Simpson’s Rule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/04a-improved-trapezoidal.html"><span>18.4</span> Improved Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/04b-exercise-improved-trapz.html">Exercise <span>18.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/05a-extrapolation.html"><span>18.5</span> Applying Richardson Extrapolation to the Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/05b-exercise-extrapolation.html">Exercise <span>18.5</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
@@ -576,7 +580,7 @@ We will not look into the derivation, but rather the results in the next two sec
 <h2>Combining Uncorrelated Measurements<a class="headerlink" href="#combining-uncorrelated-measurements" title="Link to this heading">#</a></h2>
 <p>If the measurands <span class="math notranslate nohighlight">\(X_1, \dots, X_N\)</span> are <strong>uncorrelated / independant</strong>, then the combined variance of measurement <span class="math notranslate nohighlight">\(y\)</span> is given by:</p>
 <div class="math notranslate nohighlight" id="equation-u-com-uncorr">
-<span class="eqno">(17)<a class="headerlink" href="#equation-u-com-uncorr" title="Link to this equation">#</a></span>\[        
+<span class="eqno">(28)<a class="headerlink" href="#equation-u-com-uncorr" title="Link to this equation">#</a></span>\[        
 u^2(y) = \sum_{i=1}^N \left( \frac{\partial f}{\partial x_i} \right)^2 u^2 (x_i)
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(\tfrac{\partial f}{\partial x_i}\)</span> represents <span class="math notranslate nohighlight">\(\tfrac{\partial f}{\partial X_i}\)</span> at <span class="math notranslate nohighlight">\(X_i = x_i\)</span>.</p>
@@ -585,7 +589,7 @@ u^2(y) = \sum_{i=1}^N \left( \frac{\partial f}{\partial x_i} \right)^2 u^2 (x_i)
 <h2>Combining Correlated  Measurements<a class="headerlink" href="#combining-correlated-measurements" title="Link to this heading">#</a></h2>
 <p>If the measurands <span class="math notranslate nohighlight">\(X_1, \dots, X_N\)</span> are <strong>correlated / dependant</strong>, then the combined variance of measurement <span class="math notranslate nohighlight">\(y\)</span> is given by:</p>
 <div class="math notranslate nohighlight" id="equation-u-com-corr">
-<span class="eqno">(18)<a class="headerlink" href="#equation-u-com-corr" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(29)<a class="headerlink" href="#equation-u-com-corr" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{align}
     u^2(y) &amp; = \sum_{i=1}^N \sum_{j = 1}^N \frac{\partial f}{\partial x_i}\frac{\partial f}{\partial x_j} u(x_i, x_j) \\
     &amp; = \sum_{i=1}^N \left( \frac{\partial f}{\partial x_i} \right)^2 u^2 (x_i) + 2 \sum_{i=1}^{N-1}\sum_{j=i+1}^{N} \frac{\partial f}{\partial x_i}\frac{\partial f}{\partial x_j} u(x_i, x_j)\\

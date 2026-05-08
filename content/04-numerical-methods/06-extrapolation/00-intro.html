@@ -336,6 +336,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/02%3Dexercise-trapz.html">Exercise <span>18.2</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/03-simpson.html"><span>18.3</span> Simpson’s Rule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/04a-improved-trapezoidal.html"><span>18.4</span> Improved Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/04b-exercise-improved-trapz.html">Exercise <span>18.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/05a-extrapolation.html"><span>18.5</span> Applying Richardson Extrapolation to the Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/05b-exercise-extrapolation.html">Exercise <span>18.5</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -551,17 +555,17 @@ document.write(`
 <p>Richardson extrapolation is a numerical method that can be used to improve truncated numerical approximations by estimating the error of these.</p>
 <p>Consider a variable <span class="math notranslate nohighlight">\(A\)</span> that is approximated by a numerical solution <span class="math notranslate nohighlight">\(A_0(h)\)</span>, given a small perturbation <span class="math notranslate nohighlight">\(h\)</span> (<span class="math notranslate nohighlight">\(0 &lt; h &lt; 1\)</span>), and an error that can be expressed by a power series:</p>
 <div class="math notranslate nohighlight" id="equation-eq-a-h">
-<span class="eqno">(19)<a class="headerlink" href="#equation-eq-a-h" title="Link to this equation">#</a></span>\[
+<span class="eqno">(30)<a class="headerlink" href="#equation-eq-a-h" title="Link to this equation">#</a></span>\[
 A = A_0(h) + a_0 h^{k_0} + a_1 h^{k_1} + ...
 \]</div>
 <p>with <span class="math notranslate nohighlight">\(k_0 &lt; k_1\)</span>. As <span class="math notranslate nohighlight">\(0 &lt; h &lt; 1\)</span>, the leading order of the local error is <span class="math notranslate nohighlight">\(O(h^{k_0})\)</span>.
 To improve the approximations, we can eliminate the leading error term <span class="math notranslate nohighlight">\(a_0 h^{k_0}\)</span>.</p>
 <p>We choose a constant <span class="math notranslate nohighlight">\(t\)</span> and express <span class="math notranslate nohighlight">\(A\)</span> using <span class="math notranslate nohighlight">\(A(h/t)\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-a-h-t">
-<span class="eqno">(20)<a class="headerlink" href="#equation-eq-a-h-t" title="Link to this equation">#</a></span>\[
+<span class="eqno">(31)<a class="headerlink" href="#equation-eq-a-h-t" title="Link to this equation">#</a></span>\[
 A = A_0 \left( \tfrac{h}{t} \right) + a_0 \left( \tfrac{h}{t} \right)^{k_0} + a_1 \left( \tfrac{h}{t} \right)^{k_1} + \cdots
 \]</div>
-<p>Now, <span class="math notranslate nohighlight">\(t^{k_0}\)</span> <a class="reference internal" href="#equation-eq-a-h-t">(20)</a> - <a class="reference internal" href="#equation-eq-a-h">(19)</a> will eliminate the <span class="math notranslate nohighlight">\(O(h^{k_0})\)</span> term:</p>
+<p>Now, <span class="math notranslate nohighlight">\(t^{k_0}\)</span> <a class="reference internal" href="#equation-eq-a-h-t">(31)</a> - <a class="reference internal" href="#equation-eq-a-h">(30)</a> will eliminate the <span class="math notranslate nohighlight">\(O(h^{k_0})\)</span> term:</p>
 <div class="math notranslate nohighlight">
 \[
 A = \frac{t^{k_0} A_0\left(\tfrac{h}{t}\right) - A_0(h)}{t^{k_0} - 1} + O\left(h^{k_1}\right)

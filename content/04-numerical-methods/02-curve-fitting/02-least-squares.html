@@ -337,6 +337,10 @@
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/02%3Dexercise-trapz.html">Exercise <span>18.2</span></a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/03-simpson.html"><span>18.3</span> Simpson’s Rule</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../04-integration/03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/04a-improved-trapezoidal.html"><span>18.4</span> Improved Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/04b-exercise-improved-trapz.html">Exercise <span>18.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/05a-extrapolation.html"><span>18.5</span> Applying Richardson Extrapolation to the Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/05b-exercise-extrapolation.html">Exercise <span>18.5</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../05-uncertainty/00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -576,7 +580,7 @@ y = a_0 + a_1 x
 <p>If we assume that the <span class="math notranslate nohighlight">\(x_i\)</span> are free of error, we can introduce error terms <font color = "red"> <span class="math notranslate nohighlight">\(\epsilon_i\)</span> </font> to the <span class="math notranslate nohighlight">\(y_i\)</span> data to make up for the dispersion of the data (i.e. that it doesn’t follow the linear relation exactly).</p>
 <div class="cell tag_remove_input tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<img alt="../../../_images/474c094bb7fedf3520c34def93c38527fa7684d795e8735d5ee1015d5e931f41.png" src="../../../_images/474c094bb7fedf3520c34def93c38527fa7684d795e8735d5ee1015d5e931f41.png" />
+<img alt="../../../_images/5768286cdb1f3acfa1be64daeaaaf3d6c5ec4b2e5b530ee40037b44dbb1f313e.png" src="../../../_images/5768286cdb1f3acfa1be64daeaaaf3d6c5ec4b2e5b530ee40037b44dbb1f313e.png" />
 </div>
 </div>
 <p>With this error term, the relation between our data points can be represented as:</p>
@@ -777,7 +781,7 @@ If we assume that the uncertainties for the <span class="math notranslate nohigh
 u(y)^2 = \sigma^2 = \sum_{i=0}^{N-1} \frac{\left(y_i - y(x_i)\right)^2}{N - M}
 \]</div>
 <p>where <span class="math notranslate nohighlight">\(N\)</span> is the number of data points, <span class="math notranslate nohighlight">\(M\)</span> is the number of constants (2 for <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span>) and <span class="math notranslate nohighlight">\(N - M\)</span> is the number of degrees of freedom.</p>
-<p>With uncertainties for <span class="math notranslate nohighlight">\(y_i\)</span>, we can now determine uncertainties for the constants <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> using the combined uncertainty Equation <a class="reference internal" href="../05-uncertainty/03-combining.html#equation-u-com-uncorr">(17)</a> from <a class="reference internal" href="../05-uncertainty/03-combining.html"><span class="doc">19.3 Combined Standard Uncertainty</span></a> for uncorrelated uncertainties.
+<p>With uncertainties for <span class="math notranslate nohighlight">\(y_i\)</span>, we can now determine uncertainties for the constants <span class="math notranslate nohighlight">\(a_0\)</span> and <span class="math notranslate nohighlight">\(a_1\)</span> using the combined uncertainty Equation <a class="reference internal" href="../05-uncertainty/03-combining.html#equation-u-com-uncorr">(28)</a> from <a class="reference internal" href="../05-uncertainty/03-combining.html"><span class="doc">19.3 Combined Standard Uncertainty</span></a> for uncorrelated uncertainties.
 Applying this to <a class="reference internal" href="#equation-lsqr-a0">(6)</a>, we can calculate <span class="math notranslate nohighlight">\(u(a_0)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
