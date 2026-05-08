@@ -165,6 +165,10 @@ parts:
     - file: content/04-numerical-methods/04-integration/02=exercise-trapz
     - file: content/04-numerical-methods/04-integration/03-simpson
     - file: content/04-numerical-methods/04-integration/03=exercise-simps
+    - file: content/04-numerical-methods/04-integration/04a-improved-trapezoidal
+    - file: content/04-numerical-methods/04-integration/04b-exercise-improved-trapz
+    - file: content/04-numerical-methods/04-integration/05a-extrapolation
+    - file: content/04-numerical-methods/04-integration/05b-exercise-extrapolation
 
   - file: content/04-numerical-methods/05-uncertainty/00-intro
     sections:
@@ -173,7 +177,7 @@ parts:
     - file: content/04-numerical-methods/05-uncertainty/02-typeB
     - file: content/04-numerical-methods/05-uncertainty/03-combining
     - file: content/04-numerical-methods/05-uncertainty/04-expanded
-    - file: content/04-numerical-methods/05-uncertainty/05-comparing   
+    - file: content/04-numerical-methods/05-uncertainty/05-comparing
     - file: content/04-numerical-methods/05-uncertainty/06-reporting
   
   - file: content/04-numerical-methods/06-extrapolation/00-intro

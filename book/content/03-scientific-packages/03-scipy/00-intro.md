@@ -26,7 +26,9 @@ The [`scipy.integrate`](https://docs.scipy.org/doc/scipy/reference/integrate.htm
 
 ### Integration
 
-For the integration functions, there are options for integrating [given the function](https://docs.scipy.org/doc/scipy/reference/integrate.html#integrating-functions-given-function-object) or [given fixed samples](https://docs.scipy.org/doc/scipy/reference/integrate.html#integrating-functions-given-fixed-samples) (or a data set).
+An overview of integration using SciPy can be found [here](https://docs.scipy.org/doc/scipy/tutorial/integrate.html).
+For references to all the integration functions:
+there are options for integrating [given the integrand function](https://docs.scipy.org/doc/scipy/reference/integrate.html#integrating-functions-given-function-object) or [given fixed samples](https://docs.scipy.org/doc/scipy/reference/integrate.html#integrating-functions-given-fixed-samples) (or a data set).
 
 ### ODE Solving
 
