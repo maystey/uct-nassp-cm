@@ -351,6 +351,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/04-expanded.html"><span>19.4</span> Expanded Uncertainty</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/05-comparing.html"><span>19.5</span> Comparing Quantities with Uncertainties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/07a-monte-carlo.html"><span>19.7</span> Monte Carlo Uncertainty Propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/07b-exercise-monte-carlo.html">Exercise <span>19.7</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../06-extrapolation/00-intro.html"><span>20</span> Richardson Extrapolation</a></li>
@@ -580,12 +582,12 @@ Equation <a class="reference internal" href="#equation-imp-trapz-error">(23)</a>
 <p>which can be substituted into <a class="reference internal" href="#equation-imp-trapz-error">(23)</a>:</p>
 <div class="math notranslate nohighlight" id="equation-imp-trapz-error-approx">
 <span class="eqno">(24)<a class="headerlink" href="#equation-imp-trapz-error-approx" title="Link to this equation">#</a></span>\[
-I_n - T_n(f) \approx - \frac{1}{12} h^2 \sum_{i=0}^{n-1} (f'(b) - f'(a))
+I_n - T_n(f) \approx - \frac{1}{12} h^2 (f'(b) - f'(a))
 \]</div>
 <p>Equation <a class="reference internal" href="#equation-imp-trapz-error-approx">(24)</a> can be used to define the improved trapezoidal method:</p>
 <div class="math notranslate nohighlight" id="equation-imp-trapz-improved">
 <span class="eqno">(25)<a class="headerlink" href="#equation-imp-trapz-improved" title="Link to this equation">#</a></span>\[
-T_n^C(f) = T_n(f) - \frac{1}{12} h^2 \sum_{i=0}^{n-1} (f'(b) - f'(a))
+T_n^C(f) = T_n(f) - \frac{1}{12} h^2 (f'(b) - f'(a))
 \]</div>
 <p>Although we don’t have a way of estimating the error of <a class="reference internal" href="#equation-imp-trapz-improved">(25)</a> directly, we can use <a class="reference internal" href="#equation-imp-trapz-error-approx">(24)</a> as an over-estimation.</p>
 <p>Equation <a class="reference internal" href="#equation-imp-trapz-error-approx">(24)</a> can also be used to approximate the number of sub-intervals required to approximate the integral using the (improved) trapezoidal rule within a given tolerance.

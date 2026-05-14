@@ -351,6 +351,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/04-expanded.html"><span>19.4</span> Expanded Uncertainty</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/05-comparing.html"><span>19.5</span> Comparing Quantities with Uncertainties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/07a-monte-carlo.html"><span>19.7</span> Monte Carlo Uncertainty Propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../04-numerical-methods/05-uncertainty/07b-exercise-monte-carlo.html">Exercise <span>19.7</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../../04-numerical-methods/06-extrapolation/00-intro.html"><span>20</span> Richardson Extrapolation</a></li>
@@ -576,7 +578,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7155210977796773
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.6020982326057397
 </pre></div>
 </div>
 </div>
@@ -589,7 +591,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.52565532, 0.97125885, 0.02833467, 0.74797267, 0.01614604])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.39224226, 0.92546617, 0.56258505, 0.01261652, 0.83932   ])
 </pre></div>
 </div>
 </div>
@@ -601,8 +603,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.28507469, 0.86396252, 0.79810204],
-       [0.98830121, 0.00782237, 0.98170287]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.46657451, 0.35811534, 0.83924017],
+       [0.65978943, 0.31398999, 0.26619622]])
 </pre></div>
 </div>
 </div>
@@ -619,7 +621,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([28.29712384, 27.62620308, 25.93556454, 23.46471178])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([29.05131913, 22.66286319, 22.44118136, 29.83576595])
 </pre></div>
 </div>
 </div>
@@ -638,7 +640,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9
 </pre></div>
 </div>
 </div>
@@ -651,7 +653,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 8, 3])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([8, 4, 6])
 </pre></div>
 </div>
 </div>
@@ -663,8 +665,8 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[6, 3, 4, 1],
-       [9, 9, 5, 2]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 9, 3, 3],
+       [4, 9, 6, 4]])
 </pre></div>
 </div>
 </div>

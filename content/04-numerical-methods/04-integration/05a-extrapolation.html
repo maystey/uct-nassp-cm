@@ -351,6 +351,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/04-expanded.html"><span>19.4</span> Expanded Uncertainty</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/05-comparing.html"><span>19.5</span> Comparing Quantities with Uncertainties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/07a-monte-carlo.html"><span>19.7</span> Monte Carlo Uncertainty Propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../05-uncertainty/07b-exercise-monte-carlo.html">Exercise <span>19.7</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../06-extrapolation/00-intro.html"><span>20</span> Richardson Extrapolation</a></li>
@@ -592,7 +594,7 @@ A_i\left(\tfrac{h}{t}\right) = A_i\left(\tfrac{h}{2}\right) = I_{2n}^{[i]}(f)
 <p>Using this, the first iteration of the extrapolated method is:</p>
 <div class="math notranslate nohighlight" id="equation-int-extrap-int">
 <span class="eqno">(26)<a class="headerlink" href="#equation-int-extrap-int" title="Link to this equation">#</a></span>\[
-I_n^{[1]}(f) = \frac{2^k I_{2n}(f) - I_n}{2^k - 1}
+I_n^{[1]}(f) = \frac{2^k I_{2n}(f) - I_n(f)}{2^k - 1}
 \]</div>
 <p>and the error can be estimated as:</p>
 <div class="math notranslate nohighlight" id="equation-int-extrap-error">

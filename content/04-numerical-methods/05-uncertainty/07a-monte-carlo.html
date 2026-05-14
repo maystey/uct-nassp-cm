@@ -1,0 +1,1002 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>19.7 Monte Carlo Uncertainty Propagation &#8212; AST4007W Computational Methods</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/print.css?v=d03beadb" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/worked_example_div.css?v=d33bc4f6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/table.css?v=88953031" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/04-numerical-methods/05-uncertainty/07a-monte-carlo';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Exercise 19.7" href="07b-exercise-monte-carlo.html" />
+    <link rel="prev" title="19.6 Reporting Uncertainty" href="06-reporting.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../00-intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/UCTcircular_logo.png" class="logo__image only-light" alt="AST4007W Computational Methods - Home"/>
+    <script>document.write(`<img src="../../../_static/UCTcircular_logo.png" class="logo__image only-dark" alt="AST4007W Computational Methods - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../00-intro.html">
+                    UCT NASSP AST4007W Computational Methods
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../01-intro/00-intro.html"><span>1</span> Programming and Python in a Nutshell</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../01-intro/02-control-flow/control-flow-diagrams.html"><span>2</span> Control Flow Diagrams</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../01-intro/03-debugging/00-intro.html"><span>3</span> Debugging and Problem Solving Strategies</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../01-intro/03-debugging/01-errors.html"><span>3.1</span> Errors, Bugs and Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../01-intro/03-debugging/02-strategy.html"><span>3.2</span> Problem Solving Strategy</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">The Python Standard Library</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02-standard-library/00-basics/00-intro.html"><span>4</span> Python Basics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/01-variables.html"><span>4.1</span> Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/02-comments.html"><span>4.2</span> Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/03-operators.html"><span>4.3</span> Numerical Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/04-assignment-operators.html"><span>4.4</span> Compound Assignment Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/04%3Dexercise-a.html">Exercise <span>4.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/05-types.html"><span>4.5</span> Type Conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/06-functions.html"><span>4.6</span> Introduction to Using Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/07-strings.html"><span>4.7</span> Strings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/07%3Dexercise-b.html">Exercise <span>4.7</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/00-basics/08-string-formatting.html"><span>4.8</span> String Formatting</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02-standard-library/01-data-structures/00-intro.html"><span>5</span> Data Structures</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/01-data-structures/01-tuple.html"><span>5.1</span> Tuple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/01-data-structures/02-lists.html"><span>5.2</span> Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/01-data-structures/03-dictionaries.html"><span>5.3</span> Dictionaries</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02-standard-library/02-if-statements/00-intro.html"><span>6</span> If Statements</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/02-if-statements/01-bools.html"><span>6.1</span> Booleans (<code class="docutils literal notranslate"><span class="pre">bool</span></code>)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/02-if-statements/02-comparison-operators.html"><span>6.2</span> Comparison Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/02-if-statements/03-logical-operators.html"><span>6.3</span> Logical Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/02-if-statements/04-inclusion-operators.html"><span>6.4</span> Inclusion Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/02-if-statements/05-if.html"><span>6.5</span> If Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/02-if-statements/06-nested.html"><span>6.6</span> Nested If Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/02-if-statements/06%3Dexercise.html">Exercise <span>6</span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02-standard-library/03-loops/00-intro.html"><span>7</span> Loops</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/01-while.html"><span>7.1</span> While Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/01%3Dexercise-while.html">Exercise <span>7.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/02-for.html"><span>7.2</span> For Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/02%3Dexercise-for.html">Exercise <span>7.2</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/03-comprehension.html"><span>7.3</span> List and Dictionary Comprehension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/03-nested.html"><span>7.4</span> Nested Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/04-break.html"><span>7.5</span> Breaking Out of Loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/04%3Dexercise-break.html">Exercise <span>7.5</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/03-loops/05-else.html"><span>7.6</span> Else Statement and Loops</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02-standard-library/04-functions/00-intro.html"><span>8</span> Defining Functions</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/01-return.html"><span>8.1</span> <code class="docutils literal notranslate"><span class="pre">return</span></code> Statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/02-arguments.html"><span>8.2</span> Function Arguments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/03-local-variables.html"><span>8.3</span> Local Namespace and Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/03%3Dexercise.html">Exercise <span>8.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/04-recursive.html"><span>8.4</span> Recursive Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/04%3Dexercise-recursive.html">Exercise <span>8.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/04-functions/05-docstrings.html"><span>8.5</span> Doc Strings</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../02-standard-library/05-file-io/00-intro.html"><span>9</span> File I/O</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/05-file-io/01-file-io.html"><span>9.1</span> File I/O</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/05-file-io/01%3Dexercise-file-io.html">Exercise <span>9.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/05-file-io/02-data.html"><span>9.2</span> Structured Data Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../02-standard-library/05-file-io/02%3Dexercise-data.html">Exercise <span>9.2</span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../02-standard-library/06-modules/00-intro.html">10 Python Modules</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Scientific Packages</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03-scientific-packages/01-numpy/00-intro.html"><span>11</span> Numpy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/01-numpy/01-arrays.html"><span>11.1</span> Arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/01-numpy/02-array-methods.html"><span>11.2</span> Array Methods and Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/01-numpy/02%3Dexercise-a.html">Exercise <span>11.2</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/01-numpy/03-arrays2d.html"><span>11.3</span> 2D Arrays and Matrices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/01-numpy/03%3Dexercise-arrays2d.html">Exercise <span>11.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/01-numpy/04-random.html"><span>11.4</span> NumPy Random Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/01-numpy/04%3Dexercise-random.html">Exercise <span>11.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/01-numpy/05-where.html"><span>11.5</span> Array Conditional Statements and <code class="docutils literal notranslate"><span class="pre">numpy.where()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/01-numpy/05%3Dexercise-where.html">Exercise <span>11.5</span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03-scientific-packages/02-matplotlib/00-intro.html"><span>12</span> Matplotlib</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/02-matplotlib/01-simple.html"><span>12.1</span> Simple Plots with Pyplot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/02-matplotlib/01%3Dexercise-simple.html">Exercise <span>12.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/02-matplotlib/02-subplots.html"><span>12.2</span> Figures, Axes and Subplots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/02-matplotlib/02%3Dexercise-subplots.html">Exercise <span>12.2</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/02-matplotlib/03-3d-plots.html"><span>12.3</span> 3D Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/02-matplotlib/03%3Dexercise-3d.html">Exercise <span>12.3</span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../03-scientific-packages/03-scipy/00-intro.html"><span>13</span> SciPy</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../03-scientific-packages/04-astropy/00-intro.html"><span>14</span> Astropy</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/04-astropy/01-units.html"><span>14.1</span> Units and Quantities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/04-astropy/02-constants.html"><span>14.2</span> Constants</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/04-astropy/02%3Dexercise-a.html">Exercise <span>14</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/04-astropy/03-fits.html"><span>14.3</span> Reading Fits Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../03-scientific-packages/04-astropy/03%3Dexercise-fits.html">Exercise <span>14.3</span></a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical Methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../01-root-finding/00-intro.html"><span>15</span> Numerical Root Finding</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-root-finding/01-bisection.html"><span>15.1</span> Bisection Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-root-finding/01%3Dexercise-bisection.html">Exercise <span>15.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-root-finding/02-secant.html"><span>15.2</span> Secant Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-root-finding/02%3Dexercise-secant.html">Exercise <span>15.2</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-root-finding/03-newton.html"><span>15.3</span> Newton-Raphson Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-root-finding/03%3Dexercise-newton.html">Exercise <span>15.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-root-finding/04-comparison.html"><span>15.4</span> Comparing the Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-root-finding/05-scipy.html"><span>15.5</span> Root Finding Using SciPy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-root-finding/05%3Dexercise-scipy.html">Exercise <span>15.5</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-root-finding/06-uncertainty.html"><span>15.6</span> Error and Uncertainty Estimation in Numerical Root Finding</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../02-curve-fitting/00-intro.html"><span>16</span> Curve Fitting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../02-curve-fitting/01-linear-regression.html"><span>16.1</span> Linear Regression</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-curve-fitting/02-least-squares.html"><span>16.1.1</span> Linear Least Squares Minimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02-curve-fitting/02%3Dexercise-least-squares.html">Exercise <span>16.1.1</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02-curve-fitting/03-chi-squared.html"><span>16.1.2</span> Linear Chi Squared Minimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02-curve-fitting/03%3Dexercise-chi-squared.html">Exercise <span>16.1.2</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02-curve-fitting/04-multiple-least-squares.html"><span>16.1.3</span> Multiple Linear Least Squares Minimization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../02-curve-fitting/04%3Dexercise-multivar.html">Exercise <span>16.1.3</span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-curve-fitting/05-scipy-least-squares.html"><span>16.2</span> Non-Linear Least Squares Minimization with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.least_squares</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-curve-fitting/06-scipy-curve-fit.html"><span>16.3</span> Fitting Models to Data with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.curve_fit</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-curve-fitting/06%3Dexercise-curve-fit.html">Exercise <span>16.3</span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../03-ode/00-intro.html"><span>17</span> Numerical Solutions to Ordinary Differential Equations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-ode/01-euler.html"><span>17.1</span> Euler’s Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-ode/02-euler-error.html"><span>17.2</span> Euler’s Method: Truncation Error</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-ode/02%3Dexercise-euler.html">Exercise <span>17.2</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-ode/03-higher-order.html"><span>17.3</span> Solving Coupled and Higher Order ODEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-ode/03%3Dexercise-higher-order.html">Exercise <span>17.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-ode/04-runge-kutta.html"><span>17.4</span> Runge-Kutta Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-ode/04%3Dexercise-runge-kutta.html">Exercise <span>17.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-ode/05-extrapolation.html"><span>17.5</span> Applying Richardson Extrapolation to Euler’s Method</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../04-integration/00-intro.html"><span>18</span> Numerical Integration Techniques</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/01-midpoint.html"><span>18.1</span> Midpoint Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/01%3Dexercise-midpoint.html">Exercise <span>18.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/02-trapezoidal.html"><span>18.2</span> Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/02%3Dexercise-trapz.html">Exercise <span>18.2</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/03-simpson.html"><span>18.3</span> Simpson’s Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/03%3Dexercise-simps.html">Exercise <span>18.3</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/04a-improved-trapezoidal.html"><span>18.4</span> Improved Trapezoidal Rule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/04b-exercise-improved-trapz.html">Exercise <span>18.4</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/05a-extrapolation.html"><span>18.5</span> Applying Richardson Extrapolation to the Numerical Integration Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-integration/05b-exercise-extrapolation.html">Exercise <span>18.5</span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="00-intro.html"><span>19</span> Uncertainty Analysis for Numerical Methods</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01-typeA.html"><span>19.1</span> Type A Uncertainty Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01%3Dexercise-typeA.html">Exercise <span>19.1</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-typeB.html"><span>19.2</span> Type B Uncertainty Evaluation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-combining.html"><span>19.3</span> Combined Standard Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04-expanded.html"><span>19.4</span> Expanded Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-comparing.html"><span>19.5</span> Comparing Quantities with Uncertainties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><span>19.7</span> Monte Carlo Uncertainty Propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07b-exercise-monte-carlo.html">Exercise <span>19.7</span></a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-extrapolation/00-intro.html"><span>20</span> Richardson Extrapolation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/maystey/uct-nassp-cm" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/maystey/uct-nassp-cm/issues/new?title=Issue%20on%20page%20%2Fcontent/04-numerical-methods/05-uncertainty/07a-monte-carlo.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/content/04-numerical-methods/05-uncertainty/07a-monte-carlo.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>19.7 Monte Carlo Uncertainty Propagation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-random-numbers-from-pdfs">Sampling Random Numbers From PDFs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-how-many-random-samples-to-use-m">Choosing How Many Random Samples to Use (<span class="math notranslate nohighlight">\(M\)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-the-monte-carlo-method">Implementing the Monte Carlo Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="monte-carlo-uncertainty-propagation">
+<h1><span>19.7</span> Monte Carlo Uncertainty Propagation<a class="headerlink" href="#monte-carlo-uncertainty-propagation" title="Link to this heading">#</a></h1>
+<p>Sometimes a measurand is determined by combining other measurements, but the combined standard uncertainty cannot be determined directly.
+One approach to determining a combined standard uncertainty for this is to use a Monte Carlo approach, as outlined in
+<em>Supplement 1 to the GUM - Propagation of distributions using a Monte Carlo method</em>
+<span id="id1">[<a class="reference internal" href="#id14" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. Evaluation of measurement data — Supplement 1 to the “Guide to the expression of uncertainty in measurement” — Propagation of distributions using a Monte Carlo method. Joint Committee for Guides in Metrology, JCGM 101:2008. URL: https://www.bipm.org/documents/20126/2071204/JCGM\_101\_2008\_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c.">UMC1</a>]</span>.</p>
+<!-- _Evaluation of measurement data - Supplement 1 to the GUM - Propagation of distributions using a Monte Carlo method_ -->
+<p>Consider a measurand <span class="math notranslate nohighlight">\(Y\)</span> obtained by combining measurands <span class="math notranslate nohighlight">\(X_i\)</span> for <span class="math notranslate nohighlight">\(i= 1, \dots, X_N\)</span> through the relation:</p>
+<div class="math notranslate nohighlight">
+\[
+Y = f(X_1, \dots, X_N)
+\]</div>
+<p>The goal of our Monte Carlo method (MCM) is to approximate the PDF of Y, which it will achieve through repeated sampling of the PDFs for the <span class="math notranslate nohighlight">\(X_i\)</span>.
+Let’s take <span class="math notranslate nohighlight">\(M\)</span> samples of each of the PDFs for <span class="math notranslate nohighlight">\(X_i\)</span>, which gives us the values <span class="math notranslate nohighlight">\(x_{i,~r}\)</span> for <span class="math notranslate nohighlight">\(r = 1, \dots, M\)</span>.
+From these we can determine the corresponding <span class="math notranslate nohighlight">\(y_r\)</span> values:</p>
+<div class="math notranslate nohighlight">
+\[
+y_r = f(x_{1,~r}, \dots, x_{N,~r})
+\]</div>
+<p>These <span class="math notranslate nohighlight">\(y_r\)</span> values can be used to approximate the PDF of <span class="math notranslate nohighlight">\(Y\)</span>.
+From this PDF we can determine the best approximation <span class="math notranslate nohighlight">\(y\)</span> as the expected value and the standard uncertainty <span class="math notranslate nohighlight">\(u(y)\)</span> as the standard deviation.
+If the <span class="math notranslate nohighlight">\(y_r\)</span> appear to be normally distributed (after using a histogram of the <span class="math notranslate nohighlight">\(y_r\)</span> to convince ourselves),
+then the best approximation can be determined using the arithmetic mean:</p>
+<div class="math notranslate nohighlight">
+\[
+y = \bar{y} = \frac{1}{M} \sum_{r=1}^M y_r
+\]</div>
+<p>and the standard uncertainty from the experimental standard deviation:</p>
+<div class="math notranslate nohighlight">
+\[
+u(y) = s(\bar{y}) = \frac{1}{M-1} \sum_{r=1}^M (y_r - \bar{y})^2
+\]</div>
+<section id="sampling-random-numbers-from-pdfs">
+<h2>Sampling Random Numbers From PDFs<a class="headerlink" href="#sampling-random-numbers-from-pdfs" title="Link to this heading">#</a></h2>
+<p>To generate a sample of random numbers from a PDF we can use random number generators from NumPy. You can find a list of distributions <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generator.html#distributions">here</a>, though the distributions that we are most interested in are:</p>
+<ul class="simple">
+<li><p>Normal distribution: <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html"><code class="docutils literal notranslate"><span class="pre">normal</span></code></a> (commonly resulting from a Type A uncertainty evaluation)</p></li>
+<li><p>Uniform distribution: <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.uniform.html"><code class="docutils literal notranslate"><span class="pre">uniform</span></code></a> (commonly resulting from a Type B uncertainty evaluation)</p></li>
+<li><p>Triangular distribution <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.triangular.html"><code class="docutils literal notranslate"><span class="pre">triangle</span></code></a> (commonly resulting from a Type B uncertainty evaluation)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here we are using the more up-to-date random number generators from the <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generator.html">Generator</a> class.
+For the purpose of this course you may use the legacy random number generators which still appear in earlier parts of the notes,
+though you are advised to use the new generators for new code.</p>
+</div>
+<div class="worked-example">
+    <p class="worked-example-title">Worked Example - Generating $x_{i,~r}$</p><p>In this worked example we will focus on generating random samples for input variables <span class="math notranslate nohighlight">\(X_i\)</span>, this is <strong>not</strong> a full solution for the Monte Carlo method.</p>
+<p>Consider 3 quantities with same best approximation and standard uncertainty:</p>
+<div class="math notranslate nohighlight">
+\[
+x_0 = x_1 = x_2 = 10 \quad \text{and} \quad u(x_0) = u(x_1) = u(x_2) = 1
+\]</div>
+<p>but with different PDFs characterizing their dispersion:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_0\)</span> with a normal distribution</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_1\)</span> with a uniform distribution</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_2\)</span> with a triangle distribution</p></li>
+</ul>
+<p>We will use <span class="math notranslate nohighlight">\(M = 10000\)</span> samples for the random <span class="math notranslate nohighlight">\(x_{i,~r}\)</span> samples and plot histograms of these.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">u_x</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="c1">#x-values for plotting distributions</span>
+<span class="n">x_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Functional forms of the PDFs (used for plotting)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">norm_dist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span> <span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">/</span> <span class="n">sigma</span> <span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">uniform_dist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">mean</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">mean</span> <span class="o">+</span> <span class="n">a</span><span class="p">),</span> <span class="mf">0.5</span> <span class="o">/</span> <span class="n">a</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">triangle_dist</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="n">dist</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    
+    <span class="c1"># Left side of triangle</span>
+    <span class="n">where_left</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">mean</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="n">mean</span><span class="p">)</span>
+    <span class="n">dist</span><span class="p">[</span><span class="n">where_left</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">where_left</span><span class="p">]</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">a</span> <span class="o">/</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">a</span>
+    
+    <span class="c1"># Right side of triangle</span>
+    <span class="n">where_right</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="n">mean</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="n">mean</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">dist</span><span class="p">[</span><span class="n">where_right</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">mean</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">where_right</span><span class="p">])</span> <span class="o">/</span> <span class="n">a</span> <span class="o">/</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span> <span class="n">a</span>
+    <span class="k">return</span> <span class="n">dist</span>
+
+<span class="c1"># Generating random samples</span>
+<span class="c1">## Normal</span>
+<span class="n">x_norm</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">u_x</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
+<span class="n">y_norm</span> <span class="o">=</span> <span class="n">norm_dist</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">u_x</span><span class="p">)</span> <span class="c1">#y-values for plotting the distribution</span>
+
+<span class="c1">## Uniform</span>
+<span class="c1">#Half-width of rectangular distribution is sqrt(3) * u_x</span>
+<span class="n">a_uniform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">u_x</span>
+<span class="n">x_uniform</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="n">x</span> <span class="o">-</span> <span class="n">a_uniform</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">x</span> <span class="o">+</span> <span class="n">a_uniform</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
+<span class="n">y_uniform</span> <span class="o">=</span> <span class="n">uniform_dist</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">a_uniform</span><span class="p">)</span>
+
+<span class="c1">## Triangle</span>
+<span class="c1">#Half-width of triangle distribution is sqrt(6) * u_x</span>
+<span class="n">a_triangle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span> <span class="o">*</span> <span class="n">u_x</span>
+<span class="n">x_triangle</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">triangular</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="n">x</span> <span class="o">-</span> <span class="n">a_triangle</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="n">x</span> <span class="o">+</span> <span class="n">a_triangle</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
+<span class="n">y_triangle</span> <span class="o">=</span> <span class="n">triangle_dist</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">a_triangle</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">sharex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">x_r</span><span class="p">,</span> <span class="n">y_plot</span><span class="p">,</span> <span class="n">lbl</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+        <span class="n">axs</span><span class="p">,</span> 
+        <span class="p">(</span><span class="n">x_norm</span><span class="p">,</span> <span class="n">x_uniform</span><span class="p">,</span> <span class="n">x_triangle</span><span class="p">),</span><span class="n">_Supplement</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">the</span> <span class="n">GUM</span>
+        <span class="p">(</span><span class="n">y_norm</span><span class="p">,</span> <span class="n">y_uniform</span><span class="p">,</span> <span class="n">y_triangle</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;$X_0$ Normal Distribution&#39;</span><span class="p">,</span> <span class="s1">&#39;$X_1$ Uniform Distribution&#39;</span><span class="p">,</span> <span class="s1">&#39;$X_2$ Triangular Distribution&#39;</span><span class="p">)</span>
+    <span class="p">):</span>
+    
+    <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">x_r</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Histogram of $x_r$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_plot</span><span class="p">,</span> <span class="n">y_plot</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">u_x</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;x - u(x)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="n">u_x</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">lbl</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x_r$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/aeec4dd12261d0b66a1730036c70c3a3ad9f5ea404876ab99327b38461841d86.png" src="../../../_images/aeec4dd12261d0b66a1730036c70c3a3ad9f5ea404876ab99327b38461841d86.png" />
+</div>
+</div>
+</div><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If any of your <span class="math notranslate nohighlight">\(X_i\)</span> result from Monte Carlo uncertainty propagation, then the approximated distribution can be used to generate random numbers, or if the same <span class="math notranslate nohighlight">\(M\)</span> is being used for each Monte Carlo method, then the <span class="math notranslate nohighlight">\(x_{i,~r}\)</span> resulting from the first propagation can be used directly.</p>
+</div>
+</section>
+<section id="choosing-how-many-random-samples-to-use-m">
+<h2>Choosing How Many Random Samples to Use (<span class="math notranslate nohighlight">\(M\)</span>)<a class="headerlink" href="#choosing-how-many-random-samples-to-use-m" title="Link to this heading">#</a></h2>
+<p>The number of random samples to use (<span class="math notranslate nohighlight">\(M\)</span>) ultimately depends on the resulting distribution of <span class="math notranslate nohighlight">\(y_r\)</span> values, however a certain rule of thumb can be used:
+for a target level of confidence <span class="math notranslate nohighlight">\(p\)</span>, the choice of <span class="math notranslate nohighlight">\(M\)</span> should be much greater than <span class="math notranslate nohighlight">\(1 / (1 - p)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+M \gg \frac{1}{1 - p}
+\]</div>
+<div class="worked-example">
+    <p class="worked-example-title">Worked Example - Choosing a (Static) Value for M$</p>
+<p>For example, we can choose <span class="math notranslate nohighlight">\(M\)</span> so that it is at least <span class="math notranslate nohighlight">\(10^4 \times\)</span> bigger than <span class="math notranslate nohighlight">\(1 / (1 - p)\)</span> targeting a level of confidence of <span class="math notranslate nohighlight">\(p = 95%\)</span>, thus:</p>
+<div class="math notranslate nohighlight">
+\[
+M \geq \frac{10^4}{1 - p} = \frac{10^4}{0.05} = 2\times10^5
+\]</div>
+<p>Thus a choice of <span class="math notranslate nohighlight">\(M = 10^6\)</span> would be appropriate for this case.
+2</p>
+</div><p>Ahs we can’t know ahead of time what an appropriate choice for <span class="math notranslate nohighlight">\(M\)</span> would be for all cases, we could use an adaptive method that checks our results each Monte Carlo iteration for some tolerance.
+This is outlined in the <em>Supplement 1 to the GUM</em><span id="id2">[<a class="reference internal" href="#id14" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. Evaluation of measurement data — Supplement 1 to the “Guide to the expression of uncertainty in measurement” — Propagation of distributions using a Monte Carlo method. Joint Committee for Guides in Metrology, JCGM 101:2008. URL: https://www.bipm.org/documents/20126/2071204/JCGM\_101\_2008\_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c.">UMC1</a>]</span>, but is beyond the scope of this course.</p>
+</section>
+<section id="implementing-the-monte-carlo-method">
+<h2>Implementing the Monte Carlo Method<a class="headerlink" href="#implementing-the-monte-carlo-method" title="Link to this heading">#</a></h2>
+<p>Now lets put this Monte Carlo method into practice with a simple example.
+Before reading through the worked example below, try to complete <a class="reference internal" href="07b-exercise-monte-carlo.html"><span class="doc">Exercise 19.7</span></a> Question 1.
+Once you’ve completed the question, or if you get stuck, you can compare your code to the worked example.</p>
+<div class="worked-example">
+    <p class="worked-example-title">Worked Example - Monte Carlo Method for a Simple Model$</p><p>Let’s implement and test the Monte Carlo method for a simple case where the combined / propagated uncertainty can be determined directly from the combined uncertainty equation <a class="reference internal" href="03-combining.html#equation-u-com-uncorr">(28)</a>.
+Consider the relation:</p>
+<div class="math notranslate nohighlight">
+\[
+Y_i = X_1 + X_2 + X_3 + X_4
+\]</div>
+<p>for variables <span class="math notranslate nohighlight">\(X_i\)</span> that all have uniform dispersion, with measured quantities:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_1 = 10.0\)</span>, <span class="math notranslate nohighlight">\(u(x_1) = 1.0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_2 = 20.0\)</span>, <span class="math notranslate nohighlight">\(u(x_2) = 2.0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_3 = 30.0\)</span>, <span class="math notranslate nohighlight">\(u(x_3) = 3.0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_4 = 40.0\)</span>, <span class="math notranslate nohighlight">\(u(x_4) = 4.0\)</span></p></li>
+</ul>
+<p>We will use <span class="math notranslate nohighlight">\(M = 10^6\)</span> Monte Carlo iterations to approximate <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(u(y)\)</span> (as chosen in the worked example above).
+As part of the process, we will plot a histogram to inspect the distribution of the sampled <span class="math notranslate nohighlight">\(y_r\)</span> values,
+and although we find that the distribution is not quite normal, we will approximate it as such.</p>
+<p>Lastly we will compare this to the same values calculated directly from the combined uncertainty equation (applied to the relation above):</p>
+<div class="math notranslate nohighlight">
+\[
+u(y) = \sqrt{u(x_1) + u(x_2) + u(x_3) + u(x_4)}
+\]</div>
+<div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">()</span>
+
+<span class="n">M</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>
+
+<span class="n">x1</span><span class="p">,</span> <span class="n">u_x1</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span>
+<span class="n">x2</span><span class="p">,</span> <span class="n">u_x2</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">x3</span><span class="p">,</span> <span class="n">u_x3</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">x4</span><span class="p">,</span> <span class="n">u_x4</span> <span class="o">=</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">4</span>
+
+<span class="c1"># Defining functions for the sake of best practices</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">random_uniform</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u_x</span><span class="p">,</span> <span class="n">M</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Wrapper for the uniform random number generator using more convenient arguments&#39;&#39;&#39;</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">u_x</span>
+    <span class="k">return</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="n">x</span> <span class="o">-</span> <span class="n">a</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">M</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Function for calculating y&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span> <span class="o">+</span> <span class="n">x3</span> <span class="o">+</span> <span class="n">x4</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f_uncertainty</span><span class="p">(</span><span class="n">u_x1</span><span class="p">,</span> <span class="n">u_x2</span><span class="p">,</span> <span class="n">u_x3</span><span class="p">,</span> <span class="n">u_x4</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Uncertainty propagation formula for f&#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u_x1</span> <span class="o">*</span> <span class="n">u_x1</span> <span class="o">+</span>  <span class="n">u_x2</span> <span class="o">*</span> <span class="n">u_x2</span> <span class="o">+</span> <span class="n">u_x3</span> <span class="o">*</span> <span class="n">u_x3</span> <span class="o">+</span> <span class="n">u_x4</span> <span class="o">*</span> <span class="n">u_x4</span><span class="p">)</span>
+
+<span class="c1"># Random samples for x_i</span>
+<span class="n">x1_r</span> <span class="o">=</span> <span class="n">random_uniform</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">u_x1</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+<span class="n">x2_r</span> <span class="o">=</span> <span class="n">random_uniform</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">u_x2</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+<span class="n">x3_r</span> <span class="o">=</span> <span class="n">random_uniform</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">u_x3</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+<span class="n">x4_r</span> <span class="o">=</span> <span class="n">random_uniform</span><span class="p">(</span><span class="n">x4</span><span class="p">,</span> <span class="n">u_x4</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
+
+<span class="n">y_r</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x1_r</span><span class="p">,</span> <span class="n">x2_r</span><span class="p">,</span> <span class="n">x3_r</span><span class="p">,</span> <span class="n">x4_r</span><span class="p">)</span>
+
+<span class="c1"># Inspecting the discrete distribution of y_r</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">y_r</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$y_r$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Counts&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Distribution of $y_r$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Approximating u(y) assuming y_r is distributed normally</span>
+<span class="n">y_m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y_r</span><span class="p">)</span>
+<span class="n">u_y_m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">y_r</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Monte Carlo Method:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y =&#39;</span><span class="p">,</span> <span class="n">y_m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u(y) =&#39;</span><span class="p">,</span> <span class="n">u_y_m</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Directly calculating y and u(y) using the combined uncertainty formula</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">,</span> <span class="n">x4</span><span class="p">)</span>
+<span class="n">u_y</span> <span class="o">=</span> <span class="n">f_uncertainty</span><span class="p">(</span><span class="n">u_x1</span><span class="p">,</span> <span class="n">u_x2</span><span class="p">,</span> <span class="n">u_x3</span><span class="p">,</span> <span class="n">u_x4</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Direct Calculation:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;y =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;u(y) =&#39;</span><span class="p">,</span> <span class="n">u_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Comparing the y/u(y) values we got from each of these methods using different coverage factors (assuming normal distribution)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Testing agreement between each method&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+        <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+        <span class="p">(</span><span class="s1">&#39;68.27%&#39;</span><span class="p">,</span> <span class="s1">&#39;95.45%&#39;</span><span class="p">,</span> <span class="s1">&#39;99.73%&#39;</span><span class="p">)</span>
+    <span class="p">):</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_m</span><span class="p">)</span>
+    <span class="n">u_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u_y</span> <span class="o">*</span> <span class="n">u_y</span> <span class="o">+</span> <span class="n">u_y_m</span> <span class="o">*</span> <span class="n">u_y_m</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="o">*</span> <span class="n">u_d</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Methods agree with </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1"> level of confidence.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<img alt="../../../_images/ad6070384219044ca89410266cf745659494648a439d5dfdcee2db902e6b1f1d.png" src="../../../_images/ad6070384219044ca89410266cf745659494648a439d5dfdcee2db902e6b1f1d.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Monte Carlo Method:
+y = 100.00062011483149
+u(y) = 5.47601079806008
+
+Direct Calculation:
+y = 100
+u(y) = 5.477225575051661
+
+Testing agreement between each method
+Methods agree with 68.27% level of confidence.
+Methods agree with 95.45% level of confidence.
+Methods agree with 99.73% level of confidence.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that, although the distribution of <span class="math notranslate nohighlight">\(y_r\)</span> isn’t exactly normal we have treated it as such.
+By the central limit theorem, we expect the distribution of <span class="math notranslate nohighlight">\(y_r\)</span> to be more normal with an increase in the number of <span class="math notranslate nohighlight">\(X_i\)</span> variables (<span class="math notranslate nohighlight">\(N\)</span>); with the <span class="math notranslate nohighlight">\(X_i\)</span> being uniformly distributed, this approach to a normal distribution is slower.</p>
+<p>As we can see each of the methods agreed with a confidence level of 68.27% (given this agreement with higher confidence levels are guaranteed).</p>
+</div></section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id3">
+<div role="list" class="citation-list">
+<div class="citation" id="id14" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>UMC1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
+<p>BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. Evaluation of measurement data — Supplement 1 to the “Guide to the expression of uncertainty in measurement” — Propagation of distributions using a Monte Carlo method. Joint Committee for Guides in Metrology, JCGM 101:2008. URL: <a class="reference external" href="https://www.bipm.org/documents/20126/2071204/JCGM\_101\_2008\_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c">https://www.bipm.org/documents/20126/2071204/JCGM\_101\_2008\_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c</a>.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/04-numerical-methods/05-uncertainty"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="06-reporting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span>19.6</span> Reporting Uncertainty</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="07b-exercise-monte-carlo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exercise <span>19.7</span></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-random-numbers-from-pdfs">Sampling Random Numbers From PDFs</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#choosing-how-many-random-samples-to-use-m">Choosing How Many Random Samples to Use (<span class="math notranslate nohighlight">\(M\)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-the-monte-carlo-method">Implementing the Monte Carlo Method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Luis A. Balona, Ed Elson, Masimba Paradza and Mayhew Steyn
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

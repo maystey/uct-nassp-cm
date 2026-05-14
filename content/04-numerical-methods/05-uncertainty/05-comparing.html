@@ -60,6 +60,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/04-numerical-methods/05-uncertainty/05-comparing';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -349,6 +351,8 @@
 <li class="toctree-l2"><a class="reference internal" href="04-expanded.html"><span>19.4</span> Expanded Uncertainty</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><span>19.5</span> Comparing Quantities with Uncertainties</a></li>
 <li class="toctree-l2"><a class="reference internal" href="06-reporting.html"><span>19.6</span> Reporting Uncertainty</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07a-monte-carlo.html"><span>19.7</span> Monte Carlo Uncertainty Propagation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="07b-exercise-monte-carlo.html">Exercise <span>19.7</span></a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../06-extrapolation/00-intro.html"><span>20</span> Richardson Extrapolation</a></li>
@@ -524,7 +528,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -540,6 +546,17 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-quantities-as-recommended-in-the-undergraduate-physics-lab-at-uct">Comparing Quantities as Recommended in the Undergraduate Physics Lab at UCT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-quantities-as-recommended-by-the-vim">Comparing Quantities As Recommended by the VIM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-more-than-two-quantities">Comparing More Than Two Quantities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -551,11 +568,76 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="comparing-quantities-with-uncertainties">
 <h1><span>19.5</span> Comparing Quantities with Uncertainties<a class="headerlink" href="#comparing-quantities-with-uncertainties" title="Link to this heading">#</a></h1>
-<p>Using expanded uncertainties, two best-approximations of a measurand with associated standard uncertainties can be compared.
-Two approximations are said to be in agreement with the given confidence level if their expanded uncertainty intervals overlap (note that the confidence level for both expanded uncertainties must be identical).</p>
-<div class="worked-example">
-<p class="worked-example-title">Worked Example - Comparing quantities with standard uncertainties</p><p><em>This worked example is a work in progress…</em></p>
-</p></section>
+<p>For various reasons we want a way to compare two or more quantities which have standard uncertainties determined using the GUM framework.
+For example, if we want to compare different measurement techniques that have been used to determine the same measurand, or if we want to compare different measurands to determine if there is a significant different between them.
+The GUM itself does not have a prescribed method for comparing quantities with standard uncertainties, so we will consider two techniques from different sources:</p>
+<ol class="arabic simple">
+<li><p>the method used in the undergraduate physics lab at UCT <span id="id1">[<a class="reference internal" href="#id15" title="Andy Buffler, Saalih Allie, Fred Lubben, and Bob Campbell. Introduction to Measurement in the Physics Laboratory. A probabilistic approach. Department of Physics, University of Cape Town, South Africa and Science Education Group, Department of Educational Studies, University of York, UK, version 3.5 edition, 2009. [Online; accessed 18-February-2020]. URL: http://www.phy.uct.ac.za/phy/people/academic/buffler/downloads/labmanual.">UCompare2</a>]</span></p></li>
+<li><p>the method described in the VIM <span id="id2">[<a class="reference internal" href="#id22" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. International vocabulary of metrology — Basic and general concepts and associated terms (VIM). Joint Committee for Guides in Metrology, JCGM 200:2012. (3rd edition). URL: https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf/f0e1ad45-d337-bbeb-53a6-15fe649d0ff1.">UCompare1</a>]</span>.</p></li>
+</ol>
+<section id="comparing-quantities-as-recommended-in-the-undergraduate-physics-lab-at-uct">
+<h2>Comparing Quantities as Recommended in the Undergraduate Physics Lab at UCT<a class="headerlink" href="#comparing-quantities-as-recommended-in-the-undergraduate-physics-lab-at-uct" title="Link to this heading">#</a></h2>
+<p>In the <em>Introduction to Measurement in the Physics Laboratory</em> <span id="id3">[<a class="reference internal" href="#id15" title="Andy Buffler, Saalih Allie, Fred Lubben, and Bob Campbell. Introduction to Measurement in the Physics Laboratory. A probabilistic approach. Department of Physics, University of Cape Town, South Africa and Science Education Group, Department of Educational Studies, University of York, UK, version 3.5 edition, 2009. [Online; accessed 18-February-2020]. URL: http://www.phy.uct.ac.za/phy/people/academic/buffler/downloads/labmanual.">UCompare2</a>]</span> to compare two quantities it is advised to use the expanded uncertainties of the quantities as coverage intervals, if the intervals overlap then the quantities are said to agree within the given level of confidence.</p>
+<p>In other words, consider the quantities <span class="math notranslate nohighlight">\(a\)</span> with standard uncertainty <span class="math notranslate nohighlight">\(u(a)\)</span> and <span class="math notranslate nohighlight">\(b\)</span> with standard uncertainty <span class="math notranslate nohighlight">\(u(b)\)</span>.
+For a chosen confidence level <span class="math notranslate nohighlight">\(p\)</span>, the expanded uncertainties can be expressed as <span class="math notranslate nohighlight">\(a \pm k_a u(a)\)</span> and <span class="math notranslate nohighlight">\(b \pm k_b u(b)\)</span> where <span class="math notranslate nohighlight">\(k_a\)</span> and <span class="math notranslate nohighlight">\(k_b\)</span> are the coverage factors used to achieve the confidence level of <span class="math notranslate nohighlight">\(p\)</span>.
+Note that, if the dispersion of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are both described with the same kind of probability distribution function, then <span class="math notranslate nohighlight">\(k_a = k_b\)</span>.
+If these expanded uncertainty intervals overlap, then the quantities are said to agree within a level of confidence of <span class="math notranslate nohighlight">\(p\)</span>, illustrated:</p>
+<p><img alt="" src="../../../_images/overlapping_intervals.svg" /></p>
+</section>
+<section id="comparing-quantities-as-recommended-by-the-vim">
+<h2>Comparing Quantities As Recommended by the VIM<a class="headerlink" href="#comparing-quantities-as-recommended-by-the-vim" title="Link to this heading">#</a></h2>
+<!-- ## Comparing Quantities By Comparing Their Absolute Difference to the Combined Uncertainty of the Absolute Difference --><p>In the <em>International vocabulary of metrology (VIM)</em>, “2.47 metrological compatibility of measurement results” <span id="id4">[<a class="reference internal" href="#id22" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. International vocabulary of metrology — Basic and general concepts and associated terms (VIM). Joint Committee for Guides in Metrology, JCGM 200:2012. (3rd edition). URL: https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf/f0e1ad45-d337-bbeb-53a6-15fe649d0ff1.">UCompare1</a>]</span>, to compare two quantities it is advised to take the absolute difference of the the two quantities and determine the combined uncertainty of these quantities.
+If the absolute difference is less than the expanded uncertainty, then the two quantities are in agreement given the level of confidence.</p>
+<p>In other words, consider the quantities <span class="math notranslate nohighlight">\(a\)</span> with standard uncertainty <span class="math notranslate nohighlight">\(u(a)\)</span> and <span class="math notranslate nohighlight">\(b\)</span> with standard uncertainty <span class="math notranslate nohighlight">\(u(b)\)</span>.
+The absolute difference is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+d \equiv |a - b|
+\]</div>
+<p>The combined uncertainty of <span class="math notranslate nohighlight">\(d\)</span> (assuming <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> aren’t correlated) can be determined using <a class="reference internal" href="03-combining.html#equation-u-com-uncorr">(28)</a>:</p>
+<div class="math notranslate nohighlight">
+\[
+u(d) = \sqrt{u^2(a) + u^2(b)}
+\]</div>
+<p>The two quantities can be said to be in agreement given a confidence level of <span class="math notranslate nohighlight">\(p\)</span> if</p>
+<div class="math notranslate nohighlight">
+\[
+d &lt; k~u(d)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> is the coverage factor corresponding to <span class="math notranslate nohighlight">\(p\)</span>.</p>
+</section>
+<section id="comparing-more-than-two-quantities">
+<h2>Comparing More Than Two Quantities<a class="headerlink" href="#comparing-more-than-two-quantities" title="Link to this heading">#</a></h2>
+<p>If you need to compare more than two quantities, then you can use one of the techniques described above to compare the quantities in pairs.
+In other words if you have quantities <span class="math notranslate nohighlight">\(a\)</span>, <span class="math notranslate nohighlight">\(b\)</span>, <span class="math notranslate nohighlight">\(c\)</span> and <span class="math notranslate nohighlight">\(d\)</span>; compare each of these in pairs:</p>
+<ul class="simple">
+<li><p>Compare <span class="math notranslate nohighlight">\(a\)</span> to <span class="math notranslate nohighlight">\(b\)</span></p></li>
+<li><p>Compare <span class="math notranslate nohighlight">\(a\)</span> to <span class="math notranslate nohighlight">\(c\)</span></p></li>
+<li><p>Compare <span class="math notranslate nohighlight">\(a\)</span> to <span class="math notranslate nohighlight">\(d\)</span></p></li>
+<li><p>Compare <span class="math notranslate nohighlight">\(b\)</span> to <span class="math notranslate nohighlight">\(c\)</span></p></li>
+<li><p>Compare <span class="math notranslate nohighlight">\(b\)</span> to <span class="math notranslate nohighlight">\(d\)</span></p></li>
+<li><p>Compare <span class="math notranslate nohighlight">\(c\)</span> to <span class="math notranslate nohighlight">\(d\)</span></p></li>
+</ul>
+<p>Note it is possible for two quantities to have agreement with a third, but not each other; for example: <span class="math notranslate nohighlight">\(a\)</span> could agree with <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(b\)</span> could agree with <span class="math notranslate nohighlight">\(c\)</span> but it is possible for <span class="math notranslate nohighlight">\(a\)</span> not to agree with <span class="math notranslate nohighlight">\(c\)</span>.</p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<div class="docutils container" id="id5">
+<div role="list" class="citation-list">
+<div class="citation" id="id22" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>UCompare1<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id2">1</a>,<a role="doc-backlink" href="#id4">2</a>)</span>
+<p>BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. International vocabulary of metrology — Basic and general concepts and associated terms (VIM). Joint Committee for Guides in Metrology, JCGM 200:2012. (3rd edition). URL: <a class="reference external" href="https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf/f0e1ad45-d337-bbeb-53a6-15fe649d0ff1">https://www.bipm.org/documents/20126/2071204/JCGM_200_2012.pdf/f0e1ad45-d337-bbeb-53a6-15fe649d0ff1</a>.</p>
+</div>
+<div class="citation" id="id15" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>UCompare2<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id3">2</a>)</span>
+<p>Andy Buffler, Saalih Allie, Fred Lubben, and Bob Campbell. <em>Introduction to Measurement in the Physics Laboratory. A probabilistic approach.</em> Department of Physics, University of Cape Town, South Africa and Science Education Group, Department of Educational Studies, University of York, UK, version 3.5 edition, 2009. [Online; accessed 18-February-2020]. URL: <a class="reference external" href="http://www.phy.uct.ac.za/phy/people/academic/buffler/downloads/labmanual">http://www.phy.uct.ac.za/phy/people/academic/buffler/downloads/labmanual</a>.</p>
+</div>
+</div>
+</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -611,6 +693,24 @@ Two approximations are said to be in agreement with the given confidence level i
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-quantities-as-recommended-in-the-undergraduate-physics-lab-at-uct">Comparing Quantities as Recommended in the Undergraduate Physics Lab at UCT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-quantities-as-recommended-by-the-vim">Comparing Quantities As Recommended by the VIM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-more-than-two-quantities">Comparing More Than Two Quantities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
