@@ -600,6 +600,8 @@ u(y) = s(\bar{y}) = \frac{1}{M-1} \sum_{r=1}^M (y_r - \bar{y})^2
 \]</div>
 <section id="sampling-random-numbers-from-pdfs">
 <h2>Sampling Random Numbers From PDFs<a class="headerlink" href="#sampling-random-numbers-from-pdfs" title="Link to this heading">#</a></h2>
+<p>To sample random values for <span class="math notranslate nohighlight">\(X_i\)</span>, we need to know the PDF that defines its dispersion.
+This PDF can often be re-constructed given a best approximation (<span class="math notranslate nohighlight">\(x_i\)</span>), standard uncertainty (<span class="math notranslate nohighlight">\(u(x_i)\)</span>) and knowledge of what kind of distribution defines the dispersion (e.g. normal, uniform, triangular); at least this will be the case for the problems covered in this course.</p>
 <p>To generate a sample of random numbers from a PDF we can use random number generators from NumPy. You can find a list of distributions <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generator.html#distributions">here</a>, though the distributions that we are most interested in are:</p>
 <ul class="simple">
 <li><p>Normal distribution: <a class="reference external" href="https://numpy.org/doc/stable/reference/random/generated/numpy.random.Generator.normal.html"><code class="docutils literal notranslate"><span class="pre">normal</span></code></a> (commonly resulting from a Type A uncertainty evaluation)</p></li>
@@ -613,7 +615,7 @@ For the purpose of this course you may use the legacy random number generators w
 though you are advised to use the new generators for new code.</p>
 </div>
 <div class="worked-example">
-    <p class="worked-example-title">Worked Example - Generating $x_{i,~r}$</p><p>In this worked example we will focus on generating random samples for input variables <span class="math notranslate nohighlight">\(X_i\)</span>, this is <strong>not</strong> a full solution for the Monte Carlo method.</p>
+    <p class="worked-example-title">Worked Example - Generating <math><msub> <mi>x</mi> <mrow> <mi>i</mi> <mo>,</mo> <mi>r</mi> </mrow> </msub></math></p><p>In this worked example we will focus on generating random samples for input variables <span class="math notranslate nohighlight">\(X_i\)</span>, this is <strong>not</strong> a full solution for the Monte Carlo method.</p>
 <p>Consider 3 quantities with same best approximation and standard uncertainty:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -717,15 +719,14 @@ for a target level of confidence <span class="math notranslate nohighlight">\(p\
 M \gg \frac{1}{1 - p}
 \]</div>
 <div class="worked-example">
-    <p class="worked-example-title">Worked Example - Choosing a (Static) Value for M$</p>
-<p>For example, we can choose <span class="math notranslate nohighlight">\(M\)</span> so that it is at least <span class="math notranslate nohighlight">\(10^4 \times\)</span> bigger than <span class="math notranslate nohighlight">\(1 / (1 - p)\)</span> targeting a level of confidence of <span class="math notranslate nohighlight">\(p = 95%\)</span>, thus:</p>
+    <p class="worked-example-title">Worked Example - Choosing a (Static) Value for <math><mi>M</mi></math></p>
+<p>For example, we can choose <span class="math notranslate nohighlight">\(M\)</span> so that it is at least <span class="math notranslate nohighlight">\(10^4 \times\)</span> bigger than <span class="math notranslate nohighlight">\(1 / (1 - p)\)</span> targeting a level of confidence of <span class="math notranslate nohighlight">\(p = 95 \% \)</span>, thus:</p>
 <div class="math notranslate nohighlight">
 \[
 M \geq \frac{10^4}{1 - p} = \frac{10^4}{0.05} = 2\times10^5
 \]</div>
-<p>Thus a choice of <span class="math notranslate nohighlight">\(M = 10^6\)</span> would be appropriate for this case.
-2</p>
-</div><p>Ahs we can’t know ahead of time what an appropriate choice for <span class="math notranslate nohighlight">\(M\)</span> would be for all cases, we could use an adaptive method that checks our results each Monte Carlo iteration for some tolerance.
+<p>Thus a choice of <span class="math notranslate nohighlight">\(M = 10^6\)</span> would be appropriate for this case.</p>
+</div><p>As we can’t know ahead of time what an appropriate choice for <span class="math notranslate nohighlight">\(M\)</span> would be for all cases, we could use an adaptive method that checks our results each Monte Carlo iteration for some tolerance.
 This is outlined in the <em>Supplement 1 to the GUM</em><span id="id2">[<a class="reference internal" href="#id14" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. Evaluation of measurement data — Supplement 1 to the “Guide to the expression of uncertainty in measurement” — Propagation of distributions using a Monte Carlo method. Joint Committee for Guides in Metrology, JCGM 101:2008. URL: https://www.bipm.org/documents/20126/2071204/JCGM\_101\_2008\_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c.">UMC1</a>]</span>, but is beyond the scope of this course.</p>
 </section>
 <section id="implementing-the-monte-carlo-method">
@@ -734,7 +735,7 @@ This is outlined in the <em>Supplement 1 to the GUM</em><span id="id2">[<a class
 Before reading through the worked example below, try to complete <a class="reference internal" href="07b-exercise-monte-carlo.html"><span class="doc">Exercise 19.7</span></a> Question 1.
 Once you’ve completed the question, or if you get stuck, you can compare your code to the worked example.</p>
 <div class="worked-example">
-    <p class="worked-example-title">Worked Example - Monte Carlo Method for a Simple Model$</p><p>Let’s implement and test the Monte Carlo method for a simple case where the combined / propagated uncertainty can be determined directly from the combined uncertainty equation <a class="reference internal" href="03-combining.html#equation-u-com-uncorr">(28)</a>.
+    <p class="worked-example-title">Worked Example - Monte Carlo Method for a Simple Model</p><p>Let’s implement and test the Monte Carlo method for a simple case where the combined / propagated uncertainty can be determined directly from the combined uncertainty equation <a class="reference internal" href="03-combining.html#equation-u-com-uncorr">(28)</a>.
 Consider the relation:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -750,10 +751,10 @@ Y_i = X_1 + X_2 + X_3 + X_4
 <p>We will use <span class="math notranslate nohighlight">\(M = 10^6\)</span> Monte Carlo iterations to approximate <span class="math notranslate nohighlight">\(y\)</span> and <span class="math notranslate nohighlight">\(u(y)\)</span> (as chosen in the worked example above).
 As part of the process, we will plot a histogram to inspect the distribution of the sampled <span class="math notranslate nohighlight">\(y_r\)</span> values,
 and although we find that the distribution is not quite normal, we will approximate it as such.</p>
-<p>Lastly we will compare this to the same values calculated directly from the combined uncertainty equation (applied to the relation above):</p>
+<p>Lastly we will compare this to the same values calculated directly from the combined uncertainty equation <a class="reference internal" href="03-combining.html#equation-u-com-uncorr">(28)</a> (applied to the relation above):</p>
 <div class="math notranslate nohighlight">
 \[
-u(y) = \sqrt{u(x_1) + u(x_2) + u(x_3) + u(x_4)}
+u(y) = \sqrt{u(x_1)^2 + u(x_2)^2 + u(x_3)^2 + u(x_4)^2}
 \]</div>
 <div class="cell tag_hide-input docutils container">
 <details class="hide above-input">

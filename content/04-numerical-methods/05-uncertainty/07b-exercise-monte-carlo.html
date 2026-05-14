@@ -60,6 +60,8 @@
     <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'content/04-numerical-methods/05-uncertainty/07b-exercise-monte-carlo';</script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -566,7 +568,28 @@ document.write(`
 <h1>Exercise <span>19.7</span><a class="headerlink" href="#exercise-19-7" title="Link to this heading">#</a></h1>
 <section id="question-1">
 <h2>Question 1<a class="headerlink" href="#question-1" title="Link to this heading">#</a></h2>
-<p>This question will involve completing the worked example for yourself. I am working on the phrasing to make it more question-like, but you may get started by following the introductory text of the worked example (no peeking at the code…)</p>
+<p>Consider the following relation to determine a variable <span class="math notranslate nohighlight">\(Y\)</span> from variables <span class="math notranslate nohighlight">\(X_i\)</span> with known quantities:</p>
+<div class="math notranslate nohighlight">
+\[
+Y = X_1 + X_2 + X_3 + X_4
+\]</div>
+<p>The <span class="math notranslate nohighlight">\(X_i\)</span> variables all have <strong>uniform</strong> dispersion, with measured quantities:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_1 = 10.0\)</span>, <span class="math notranslate nohighlight">\(u(x_1) = 1.0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_2 = 20.0\)</span>, <span class="math notranslate nohighlight">\(u(x_2) = 2.0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_3 = 30.0\)</span>, <span class="math notranslate nohighlight">\(u(x_3) = 3.0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x_4 = 40.0\)</span>, <span class="math notranslate nohighlight">\(u(x_4) = 4.0\)</span></p></li>
+</ul>
+<p>Use <span class="math notranslate nohighlight">\(M = 10^6\)</span> samples to find the best approximation of <span class="math notranslate nohighlight">\(Y\)</span>: <span class="math notranslate nohighlight">\(y\)</span> and the standard uncertainty <span class="math notranslate nohighlight">\(u(y)\)</span> using  Monte Carlo uncertainty propagation.</p>
+<p>As part of this process, plot a histogram of your <span class="math notranslate nohighlight">\(y_r\)</span> samples.
+Visualize how well a normal distribution fits by plotting a Gaussian over the histogram (use the mean and experimental standard deviation of the <span class="math notranslate nohighlight">\(y_r\)</span> to determine the parameters for the plot).
+Even if it’s not an exact fit, you may assume the <span class="math notranslate nohighlight">\(y_r\)</span> are sufficiently normally distributed to find the best approximation and standard uncertainty.</p>
+<p>Compare your results from the Monte Carlo methods to the results from the combined uncertainty equation <a class="reference internal" href="03-combining.html#equation-u-com-uncorr">(28)</a>, for which you can calculate the best approximation of <span class="math notranslate nohighlight">\(Y\)</span> directly from the <span class="math notranslate nohighlight">\(x_i\)</span> quantities and the standard uncertainty as:</p>
+<div class="math notranslate nohighlight">
+\[
+u(y) = \sqrt{u(x_1)^2 + u(x_2)^2 + u(x_3)^2 + u(x_4)^2}
+\]</div>
+<p>Do the results from the Monte Carlo method and the direct calculation agree given a level of confidence of <span class="math notranslate nohighlight">\(68.27\%\)</span>? (You may assume that the different <span class="math notranslate nohighlight">\(y\)</span> results as well as their differences are normally distributed)</p>
 </section>
 <section id="question-2">
 <h2>Question 2<a class="headerlink" href="#question-2" title="Link to this heading">#</a></h2>
