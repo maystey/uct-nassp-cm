@@ -14,8 +14,7 @@ In this chapter works from the Joint Committee for Guides in Metrology (JCGM) ar
 The context for the GUM framework is metrology - the science of measurement (normally physical). 
 The terminology will reflect the physical nature of this framework, and much of our uses for it are adaptations or extensions of the framework.
 
-```{admonition} What is a measurement?
-:class: info
+```{note} What is a measurement?
 
 The objective of a measurement is to determine the unique value of a physical quantity called the **measurand**.
 
@@ -36,8 +35,7 @@ Some people use the term "error" interchangeably with "uncertainty". In these no
 - Errors as the difference between an approximated value and the analytical value (true error / absolute error)
 ```
 
-```{admonition} What is the uncertainty of a measurement?
-:class: info
+```{note} What is the uncertainty of a measurement?
 
 From the GUM {cite}`u-i-JCGMGUM` and VIM {cite}`u-i-JCGMVIM3`:
 
@@ -65,15 +63,13 @@ This is often in the form on a **probability distribution function** (PDF).
 
 There are two types of methodologies on the GUM framework for evaluating the uncertainty of a measurement result:
 
-```{admonition} Type A evaluation of uncertainty
-:class:hint
+```{hint} Type A evaluation of uncertainty
 
 Evaluating uncertainty by **statistical analysis** of a series of observations. 
 The PDF is derived from the observed frequency distribution of measurements.
 ```
 
-```{admonition} Type B evaluation of uncertainty
-:class:hint
+```{hint} Type B evaluation of uncertainty
 
 Evaluation of uncertainty by other means (includes single measurements). 
 The PDF is assumed based on knowledge of measurement.
