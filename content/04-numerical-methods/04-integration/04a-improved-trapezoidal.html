@@ -570,7 +570,7 @@ document.write(`
 This was the result of applying the Discrete Average Value theorem <span id="id1">[<a class="reference internal" href="02-trapezoidal.html#id4" title="James F. Epperson. An Introduction to Numerical Methods and Analysis. John Wiley &amp; Sons, Inc., Hoboken, New Jersey, second edition edition, 2013.">IntTrap1</a>]</span> to</p>
 <div class="math notranslate nohighlight" id="equation-imp-trapz-error">
 <span class="eqno">(23)<a class="headerlink" href="#equation-imp-trapz-error" title="Link to this equation">#</a></span>\[
-I_n - T_n(f) = - \frac{1}{12} h^3 \sum_{i=0}^{n-1} f''(\xi_i)
+I_n(f) - T_n(f) = - \frac{1}{12} h^3 \sum_{i=0}^{n-1} f''(\xi_i)
 \]</div>
 <p>for <span class="math notranslate nohighlight">\(\xi_i \in [a+ih, a+(i+1)h]\)</span>.
 Equation <a class="reference internal" href="#equation-imp-trapz-error">(23)</a> is a direct result of summing the errors of the trapezoidal rule for each sub-interval.</p>
@@ -582,14 +582,15 @@ Equation <a class="reference internal" href="#equation-imp-trapz-error">(23)</a>
 <p>which can be substituted into <a class="reference internal" href="#equation-imp-trapz-error">(23)</a>:</p>
 <div class="math notranslate nohighlight" id="equation-imp-trapz-error-approx">
 <span class="eqno">(24)<a class="headerlink" href="#equation-imp-trapz-error-approx" title="Link to this equation">#</a></span>\[
-I_n - T_n(f) \approx - \frac{1}{12} h^2 (f'(b) - f'(a))
+I_n(f) - T_n(f) \approx - \frac{1}{12} h^2 (f'(b) - f'(a))
 \]</div>
 <p>Equation <a class="reference internal" href="#equation-imp-trapz-error-approx">(24)</a> can be used to define the improved trapezoidal method:</p>
 <div class="math notranslate nohighlight" id="equation-imp-trapz-improved">
 <span class="eqno">(25)<a class="headerlink" href="#equation-imp-trapz-improved" title="Link to this equation">#</a></span>\[
 T_n^C(f) = T_n(f) - \frac{1}{12} h^2 (f'(b) - f'(a))
 \]</div>
-<p>Although we don’t have a way of estimating the error of <a class="reference internal" href="#equation-imp-trapz-improved">(25)</a> directly, we can use <a class="reference internal" href="#equation-imp-trapz-error-approx">(24)</a> as an over-estimation.</p>
+<p>Although we don’t have a way of estimating the error of <a class="reference internal" href="#equation-imp-trapz-improved">(25)</a> directly, we can use the <strong>magnitude</strong> of <a class="reference internal" href="#equation-imp-trapz-error-approx">(24)</a> as an over-estimation of its <strong>absolute error</strong>.
+We cannot predict the sign of <span class="math notranslate nohighlight">\(I(f) - T_n^C(f)\)</span>, as the error approximation <a class="reference internal" href="#equation-imp-trapz-error-approx">(24)</a> may underestimate the error (giving <span class="math notranslate nohighlight">\(I(f) - T_n^C(f)\)</span> the same sign as <span class="math notranslate nohighlight">\(I(f) - T_n(f)\)</span>) or the error may be over-estimated (giving <span class="math notranslate nohighlight">\(I(f) - T_n^C(f)\)</span> the opposite sign of <span class="math notranslate nohighlight">\(I(f) - T_n(f)\)</span>).</p>
 <p>Equation <a class="reference internal" href="#equation-imp-trapz-error-approx">(24)</a> can also be used to approximate the number of sub-intervals required to approximate the integral using the (improved) trapezoidal rule within a given tolerance.
 If we have a desired tolerance for a method, we require that the error is smaller than this:</p>
 <div class="amsmath math notranslate nohighlight">
