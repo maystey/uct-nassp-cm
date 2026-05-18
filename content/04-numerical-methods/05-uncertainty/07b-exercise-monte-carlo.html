@@ -553,6 +553,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
             </nav>
         </div>
@@ -593,8 +594,34 @@ u(y) = \sqrt{u(x_1)^2 + u(x_2)^2 + u(x_3)^2 + u(x_4)^2}
 </section>
 <section id="question-2">
 <h2>Question 2<a class="headerlink" href="#question-2" title="Link to this heading">#</a></h2>
-<p>Follow-up questions, work-in-progress.</p>
+<p>In Question 1 you were told to approximate the distribution of <span class="math notranslate nohighlight">\(y_r\)</span> values as normal, however you may have found that this doesn’t appear to be a good approximation.
+A metric that can be used to measure how well a data-set is characterised by a normal distribution is to approximate it’s excess kurtosis <span id="id1">[]</span>; with a perfectly normally distributed data-set having an excess kurtosis of 0.
+A (biased) estimator for the excess kurtosis of a data-set is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+g_2 \equiv \frac{\tfrac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^4}{\left[\tfrac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2\right]^2} - 3
+\]</div>
+<p>Consider the generic relation used to determine a variable <span class="math notranslate nohighlight">\(Y\)</span> from variables <span class="math notranslate nohighlight">\(X_i\)</span> with known quantities:</p>
+<div class="math notranslate nohighlight">
+\[
+Y = \sum_{i=1}^N X_i
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(X_i\)</span> has measured quantities with best approximations and uncertainties:</p>
+<div class="math notranslate nohighlight">
+\[
+x_i = 10~i \quad u(x_i) = i
+\]</div>
+<p>Compare the distributions of <span class="math notranslate nohighlight">\(y_r\)</span> and its excess kurtosis for a range of <span class="math notranslate nohighlight">\(N\)</span> values from 1 to 7 and for <span class="math notranslate nohighlight">\(X_i\)</span> with uniform, triangular and normally distributed dispersion.
+Use two sets of subplots:</p>
+<ul class="simple">
+<li><p>Histograms of the distributions of <span class="math notranslate nohighlight">\(y_r\)</span> for different values of <span class="math notranslate nohighlight">\(N\)</span> and different distributions for the <span class="math notranslate nohighlight">\(X_i\)</span></p></li>
+<li><p>Line plots of the excess kurtosis vs <span class="math notranslate nohighlight">\(N\)</span> for the different distributions for the <span class="math notranslate nohighlight">\(X_i\)</span></p></li>
+</ul>
+<p>What trend do you notice as <span class="math notranslate nohighlight">\(N\)</span> increases? Are the distributions of <span class="math notranslate nohighlight">\(y_r\)</span> becoming more normal?</p>
 </section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<span class="target" id="id2"></span></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -663,6 +690,7 @@ u(y) = \sqrt{u(x_1)^2 + u(x_2)^2 + u(x_3)^2 + u(x_4)^2}
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-1">Question 1</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#question-2">Question 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
 </ul>
   </nav></div>
 

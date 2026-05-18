@@ -571,7 +571,7 @@ document.write(`
 <p>Sometimes a measurand is determined by combining other measurements, but the combined standard uncertainty cannot be determined directly.
 One approach to determining a combined standard uncertainty for this is to use a Monte Carlo approach, as outlined in
 <em>Supplement 1 to the GUM - Propagation of distributions using a Monte Carlo method</em>
-<span id="id1">[<a class="reference internal" href="#id14" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. Evaluation of measurement data — Supplement 1 to the “Guide to the expression of uncertainty in measurement” — Propagation of distributions using a Monte Carlo method. Joint Committee for Guides in Metrology, JCGM 101:2008. URL: https://www.bipm.org/documents/20126/2071204/JCGM\_101\_2008\_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c.">UMC1</a>]</span>.</p>
+<span id="id1">[<a class="reference internal" href="#id15" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. Evaluation of measurement data — Supplement 1 to the “Guide to the expression of uncertainty in measurement” — Propagation of distributions using a Monte Carlo method. Joint Committee for Guides in Metrology, JCGM 101:2008. URL: https://www.bipm.org/documents/20126/2071204/JCGM\_101\_2008\_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c.">UMC1</a>]</span>.</p>
 <!-- _Evaluation of measurement data - Supplement 1 to the GUM - Propagation of distributions using a Monte Carlo method_ -->
 <p>Consider a measurand <span class="math notranslate nohighlight">\(Y\)</span> obtained by combining measurands <span class="math notranslate nohighlight">\(X_i\)</span> for <span class="math notranslate nohighlight">\(i= 1, \dots, X_N\)</span> through the relation:</p>
 <div class="math notranslate nohighlight">
@@ -682,7 +682,7 @@ x_0 = x_1 = x_2 = 10 \quad \text{and} \quad u(x_0) = u(x_1) = u(x_2) = 1
 
 <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">x_r</span><span class="p">,</span> <span class="n">y_plot</span><span class="p">,</span> <span class="n">lbl</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
         <span class="n">axs</span><span class="p">,</span> 
-        <span class="p">(</span><span class="n">x_norm</span><span class="p">,</span> <span class="n">x_uniform</span><span class="p">,</span> <span class="n">x_triangle</span><span class="p">),</span><span class="n">_Supplement</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">the</span> <span class="n">GUM</span>
+        <span class="p">(</span><span class="n">x_norm</span><span class="p">,</span> <span class="n">x_uniform</span><span class="p">,</span> <span class="n">x_triangle</span><span class="p">),</span>
         <span class="p">(</span><span class="n">y_norm</span><span class="p">,</span> <span class="n">y_uniform</span><span class="p">,</span> <span class="n">y_triangle</span><span class="p">),</span>
         <span class="p">(</span><span class="s1">&#39;$X_0$ Normal Distribution&#39;</span><span class="p">,</span> <span class="s1">&#39;$X_1$ Uniform Distribution&#39;</span><span class="p">,</span> <span class="s1">&#39;$X_2$ Triangular Distribution&#39;</span><span class="p">)</span>
     <span class="p">):</span>
@@ -727,7 +727,7 @@ M \geq \frac{10^4}{1 - p} = \frac{10^4}{0.05} = 2\times10^5
 \]</div>
 <p>Thus a choice of <span class="math notranslate nohighlight">\(M = 10^6\)</span> would be appropriate for this case.</p>
 </div><p>As we can’t know ahead of time what an appropriate choice for <span class="math notranslate nohighlight">\(M\)</span> would be for all cases, we could use an adaptive method that checks our results each Monte Carlo iteration for some tolerance.
-This is outlined in the <em>Supplement 1 to the GUM</em><span id="id2">[<a class="reference internal" href="#id14" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. Evaluation of measurement data — Supplement 1 to the “Guide to the expression of uncertainty in measurement” — Propagation of distributions using a Monte Carlo method. Joint Committee for Guides in Metrology, JCGM 101:2008. URL: https://www.bipm.org/documents/20126/2071204/JCGM\_101\_2008\_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c.">UMC1</a>]</span>, but is beyond the scope of this course.</p>
+This is outlined in the <em>Supplement 1 to the GUM</em><span id="id2">[<a class="reference internal" href="#id15" title="BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. Evaluation of measurement data — Supplement 1 to the “Guide to the expression of uncertainty in measurement” — Propagation of distributions using a Monte Carlo method. Joint Committee for Guides in Metrology, JCGM 101:2008. URL: https://www.bipm.org/documents/20126/2071204/JCGM\_101\_2008\_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c.">UMC1</a>]</span>, but is beyond the scope of this course.</p>
 </section>
 <section id="implementing-the-monte-carlo-method">
 <h2>Implementing the Monte Carlo Method<a class="headerlink" href="#implementing-the-monte-carlo-method" title="Link to this heading">#</a></h2>
@@ -829,15 +829,17 @@ u(y) = \sqrt{u(x_1)^2 + u(x_2)^2 + u(x_3)^2 + u(x_4)^2}
 
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Testing agreement between each method&#39;</span><span class="p">)</span>
 
+<span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_m</span><span class="p">)</span>
+<span class="n">u_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u_y</span> <span class="o">*</span> <span class="n">u_y</span> <span class="o">+</span> <span class="n">u_y_m</span> <span class="o">*</span> <span class="n">u_y_m</span><span class="p">)</span>
+
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
         <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
         <span class="p">(</span><span class="s1">&#39;68.27%&#39;</span><span class="p">,</span> <span class="s1">&#39;95.45%&#39;</span><span class="p">,</span> <span class="s1">&#39;99.73%&#39;</span><span class="p">)</span>
     <span class="p">):</span>
-    <span class="n">d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_m</span><span class="p">)</span>
-    <span class="n">u_d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">u_y</span> <span class="o">*</span> <span class="n">u_y</span> <span class="o">+</span> <span class="n">u_y_m</span> <span class="o">*</span> <span class="n">u_y_m</span><span class="p">)</span>
-    
     <span class="k">if</span> <span class="n">d</span> <span class="o">&lt;</span> <span class="n">k</span> <span class="o">*</span> <span class="n">u_d</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Methods agree with </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1"> level of confidence.&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Methods don</span><span class="se">\&#39;</span><span class="s1">t agree with </span><span class="si">{</span><span class="n">p</span><span class="si">}</span><span class="s1"> level of confidence.&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -868,7 +870,7 @@ By the central limit theorem, we expect the distribution of <span class="math no
 <h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
 <div class="docutils container" id="id3">
 <div role="list" class="citation-list">
-<div class="citation" id="id14" role="doc-biblioentry">
+<div class="citation" id="id15" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>UMC1<span class="fn-bracket">]</span></span>
 <span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>)</span>
 <p>BIPM, IEC, IFCC, ILAC, ISO, IUPAC, IUPAP, and OIML. Evaluation of measurement data — Supplement 1 to the “Guide to the expression of uncertainty in measurement” — Propagation of distributions using a Monte Carlo method. Joint Committee for Guides in Metrology, JCGM 101:2008. URL: <a class="reference external" href="https://www.bipm.org/documents/20126/2071204/JCGM\_101\_2008\_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c">https://www.bipm.org/documents/20126/2071204/JCGM\_101\_2008\_E.pdf/325dcaad-c15a-407c-1105-8b7f322d651c</a>.</p>
