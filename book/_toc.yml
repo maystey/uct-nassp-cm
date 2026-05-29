@@ -156,6 +156,8 @@ parts:
     - file: content/04-numerical-methods/03-ode/04-runge-kutta
     - file: content/04-numerical-methods/03-ode/04=exercise-runge-kutta
     - file: content/04-numerical-methods/03-ode/05-extrapolation
+    - file: content/04-numerical-methods/03-ode/06a-adaptive
+    - file: content/04-numerical-methods/03-ode/07a-scipy
 
   - file: content/04-numerical-methods/04-integration/00-intro
     sections:
