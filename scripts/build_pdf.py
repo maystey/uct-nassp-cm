@@ -250,7 +250,7 @@ def _toc_pdf_pages_from_content(content):
 
     _toc_content(page, content)
 
-    return BytesIO(page.output(dest = 'S'))
+    return BytesIO(page.output(dest = 'S').encode('latin-1'))
 
 
 def _toc_content(page, content, section_type = '', level = -1):
@@ -327,7 +327,7 @@ def _make_part_title_page(caption, page_number):
     page.cell(0, PART_TITLE_FONT_SIZE * 1.3, 'Part', border = 'B', ln = 2)
     page.cell(0, 30, caption)
 
-    return PdfFileReader(BytesIO(page.output(dest = 'S')))
+    return PdfFileReader(BytesIO(page.output(dest = 'S').encode('latin-1')))
 
 
 def _pdf_number_overlay(pdf_stream, page_number):
@@ -342,7 +342,7 @@ def _pdf_number_overlay(pdf_stream, page_number):
         num_page.set_font(FONT, size = PAGE_NUMBER_FONT_SIZE)
         num_page.cell(0, PAGE_NUMBER_FONT_SIZE * CELL_HEIGHT_FACTOR, txt = str(page_number), align = 'R')
 
-        num_page = PdfFileReader( BytesIO(num_page.output(dest = 'S')) ).pages[0]
+        num_page = PdfFileReader( BytesIO(num_page.output(dest = 'S').encode('latin-1')) ).pages[0]
 
         page = pdf_reader.pages[i]
         #page.merge_page(num_page)
